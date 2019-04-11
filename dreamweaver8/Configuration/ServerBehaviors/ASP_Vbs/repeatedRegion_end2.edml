@@ -1,0 +1,21 @@
+<participant>
+     <quickSearch><![CDATA[__index+1]]></quickSearch>
+     <insertText location="afterSelection">
+<![CDATA[
+<% 
+  @@loopName@@__index=@@loopName@@__index+1
+  @@loopName@@__numRows=@@loopName@@__numRows-1
+  @@rsName@@.MoveNext()
+Wend
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="loopName"><![CDATA[/\b(\w+)__numRows\s*=\s*(\w+)__numRows-1/i]]></searchPattern>
+       <searchPattern paramNames="rsName"><![CDATA[/\b(\w+)\.MoveNext\(\)/i]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="loopName"><![CDATA[/(\b)\w+(__numRows|__index)/i]]></updatePattern>
+       <updatePattern paramName="rsName"><![CDATA[/(\b)\w+(\.MoveNext\(\))/i]]></updatePattern>
+     </updatePatterns>
+</participant>

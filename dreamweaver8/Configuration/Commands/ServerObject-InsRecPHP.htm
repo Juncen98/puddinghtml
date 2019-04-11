@@ -1,0 +1,126 @@
+<!-- MENU-LOCATION=NONE -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<head>
+<title>插入记录表单</title>
+<script language = "JavaScript">
+// note: this global variable needs to be at the top of this file to load properly
+// it is not a localizable variable, and localizing it will break the script!!
+var EDIT_OP_TYPE = "Insert";
+</script>
+<SCRIPT src="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT src="../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<SCRIPT src="../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/SQLStatementClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/TreeControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/ConnectionMenu.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/ConnectionTableMenu.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/TextField.js"></SCRIPT>
+<SCRIPT SRC="EditOpsCustomObjs.js"></SCRIPT>
+<SCRIPT SRC="ServerObject-FormCmnPHP.js"></SCRIPT>
+<SCRIPT SRC="ServerObject-InsRecPHP.js"></SCRIPT>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onload="initializeUI()">
+  <form>
+    <table border=0 width="482">
+	    <tr><td height="1"></td></tr>
+	    <tr valign="baseline">
+	      <td align="right" NOWRAP>连接:</TD>
+	      <td colspan="2" NOWRAP>
+	        <select name="ConnectionName" class="connNameList" onChange="updateUI('ConnectionName','onChange')" wrap="virtual">
+	        </select>
+	        &nbsp;
+	      </td>
+	    </tr>
+		<tr><td height="1"></td></tr>
+     <TR VALIGN="baseline">
+        <TD ALIGN="right" NOWRAP>表格: </TD>
+        <TD COLSPAN="2" NOWRAP>
+          <select name="TableName" class="connRSTableList" style="width:200px;" onChange="updateUI('TableName','onChange')" wrap="virtual">
+          </select>
+        </TD>
+      </TR>
+		<tr><td height="1"></td></tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap>插入后，转到:</td>
+        <td valign="baseline" colspan="4" nowrap>
+          <input name="GoToURL" type="text" class="largeTField">
+          <input type="button" value="浏览..." onClick="updateUI('GoToURL','onClick');focus(this)">
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap colspan="5">
+          <hr>
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap>表单字段:</td>
+        <td valign="baseline" colspan="4" nowrap align="left">
+          <input type="image" border="0" alt="添加项" name="elemAdd" src="../Shared/MM/Images/btnAdd.gif"  onClick="updateUI('AddRow','onClick')">
+          <input type="image" border="0" alt="移除项" name="elemDel" src="../Shared/MM/Images/btnDel.gif"  onClick="updateUI('DeleteRow','onClick')">
+          <img src="../Shared/MM/Images/transparent.gif" height="8" width="295">
+          <input type="image" name="elemUp" alt="在列表中上移项" onClick="updateUI('MoveRowUp','onClick')" border="0" src="../Shared/MM/Images/btnUp.gif" >
+          <input type="image" name="elemDown" alt="在列表中下移项" onClick="updateUI('MoveRowDown','onClick')" border="0" src="../Shared/MM/Images/btnDown.gif" >
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap></td>
+        <td valign="baseline" rowspan="2" colspan="4" nowrap>
+          <mm:treecontrol noexpandbuttons name="ColumnNames" style="width:390px;height:116px" onChange="updateUI('ColumnNames','onChange')">
+            <mm:treecolumn width="80">
+            <mm:treecolumn width="90">
+            <mm:treecolumn width="90">
+            <mm:treecolumn width="80">
+          </mm:treecontrol>
+        </td>
+      </tr>
+      <tr><td height=1></td></tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap>标签:</td>
+        <td valign="baseline" nowrap colspan="4">
+          <input name="ElementLabel" type="text" class="medTField" onBlur="updateUI('ElementLabel','onBlur')">
+        </td>
+      </tr>
+      <tr><td height=1></td></tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap>显示为: </td>
+        <td valign="baseline" nowrap colspan="4">
+          <select name="DisplayAs" class="dataTypeList" onChange="updateUI('DisplayAs','onChange')">
+            <option value="textField">文本字段</option>
+            <option value="textArea">文本区域</option>
+            <option value="menu">菜单</option>
+            <option value="checkBox">复选框</option>
+            <option value="radioGroup">单选按钮组</option>
+          </select>
+          <mmsubmit>
+          提交为: 
+          
+        <select name="SubmitAs" class="dataTypeList" onChange="updateUI('SubmitAs','onChange')">
+            
+          <!-- Format values: value="char to wrap with, alt value if not wrapping, default value if empty" -->
+            <option value="',none,none" selected>文本</option>
+            <option value="none,0,NULL">数字</option>
+            <option value="none,.,NULL">双精度</option>
+            <option value="',none,NULL">日期</option>
+            <option value="none,Y,N"   >复选框: Y,N</option>
+            <option value="none,1,0"   >复选框: 1,0</option>
+            <option value="none,-1,0"  >复选框: -1,0</option>
+          </select>
+          </mmsubmit>
+        </td>
+      </tr>
+      <tr><td height=1></td></tr>
+      <mmParams>
+      <tr>
+        <td nowrap valign="baseline" align="right" height="50">&nbsp;</td>
+        <td nowrap align="left">&nbsp;</td>
+      </tr>
+      </mmParams>
+    </table>
+  </form>
+</body>
+</html>

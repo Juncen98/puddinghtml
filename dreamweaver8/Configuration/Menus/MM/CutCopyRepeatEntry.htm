@@ -1,0 +1,108 @@
+<html> 
+<head> 
+<title>剪切或复制重复项</title> 
+<!--Copyright 2001, 2002 Macromedia, Inc. All rights reserved.--> 
+<script src="../../Shared/MM/Scripts/CMN/TemplateUtils.js"></script> 
+ 
+<SCRIPT LANGUAGE="Javascript"> 
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var LABEL_cutEntry =  "剪切重复项";
+var LABEL_copyEntry = "复制重复项";
+var LABEL_deleteEntry = "删除重复项";
+var LABEL_pasteRepeatEntry = "粘贴重复项";
+var LABEL_clear = "清除(_A)";
+var LABEL_noEntry = "（未选定任何重复项）";
+
+//--------------- END LOCALIZEABLE   --------------- 
+ 
+ 
+ 
+function receiveArguments() 
+	{ 
+	switch (arguments[0]) 
+		{	 
+		case "0":  
+			return;  
+				 
+		case "cutEntry":  
+			{ 
+			if (!canCutCopyRepeatEntry(null)) 
+				{ 
+				dw.beep(); 
+				return;  
+				} 
+				 
+			doCutCopyRepeatEntry(null, true); 
+			break;  
+			}  
+			 
+		case "copyEntry":  
+			{ 
+			if (!canCutCopyRepeatEntry(null)) 
+				{ 
+				dw.beep(); 
+				return;  
+				} 
+ 
+			doCutCopyRepeatEntry(null, false); 
+			break;  
+			} 
+		
+		case "pasteEntry":
+			{
+			dw.runCommand("pasteRepeatEntry.htm"); 
+			break;
+			}
+				  
+		case "deleteEntry":  
+			{ 
+			if (!canDeleteRepeatEntry(null, null)) 
+				{ 
+				dw.beep(); 
+				return;  
+				} 
+ 
+			doDeleteRepeatEntry(null, null); 
+			break;  
+			} 
+		} 
+	} //receiveArguments 
+	 
+	 
+function canAcceptCommand()  
+	{		 
+	return(dw.getDocumentDOM('document') != null && dw.getDocumentDOM().getParseMode() == 'html'); 
+	} //canAcceptCommand 
+ 
+function getDynamicContent() 
+	{ 
+	var result = new Array(); 
+	var repeatEntryInSel = fastCheckForSelectedRepeatEntry(null, null); 
+			 
+	//if (canCutCopyRepeatEntry(null)) 
+	if (repeatEntryInSel)
+		{ 
+		result.push(LABEL_cutEntry + ";id='cutEntry'");  
+		result.push(LABEL_copyEntry + ";id='copyEntry'");  
+		} 
+	
+	if (clipIsRepeatEntry(null))
+		result.push(LABEL_pasteRepeatEntry + ";id='pasteEntry'");  
+
+	//if (canDeleteRepeatEntry(null, null))
+	if (repeatEntryInSel) 
+		result.push(LABEL_deleteEntry + ";id='deleteEntry'");  
+		 
+	if (result.length == 0) 
+		result.push(LABEL_noEntry + ";id='0'"); 	 
+	 	 
+	return result;  
+	} //getDynamicContent 
+	 
+</SCRIPT> 
+ 
+</HEAD> 
+<BODY> 
+</BODY> 
+</HTML> 

@@ -1,0 +1,159 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>jrun:getmail</title>
+  <link rel="stylesheet" href="../../fields.css">
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var SELECTORLIST;
+var theUIObjects;
+var applyType = "dynamic"; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.inspectTagCommon(tagNodeObj, null, applyType, activeDisplayNode, SELECTORLIST); 
+}
+
+function applyTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.applyTagCommon(tagNodeObj, null, applyType, activeDisplayNode); 
+}
+
+function updateUI()
+{
+  var curDiv = SELECTORLIST.getValue(); 
+  tagDialog.showOnlyThisLayer(curDiv,document.layers[0]); 
+}
+
+function initializeUI()
+{
+	SELECTORLIST = new ListControl("theselector"); 
+	theUIObjects = new Array(SELECTORLIST);
+	
+  tagDialog.populateDropDownList(SELECTORLIST, theMailTypesCap, theMailTypesVal, 0); 
+}
+</script>
+</head>
+
+<body onLoad="initializeUI()">
+<div name="常规"> 
+ 
+使用: 
+<select name="theselector" class="selectorList" id="attr:jrungetmail:selector" onChange="updateUI();" editable="false">
+</select>
+<hr width="100%"> 
+<div id="themailserver" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 43px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">宿主: </td>
+      <td nowrap="nowrap">
+        <input name="thehost" type="text" class="basicTextField" id="attr:jrun:getmail:msgsrc" attname="host" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">端口: </td>
+      <td nowrap="nowrap">
+        <input name="theport" type="text" class="basicTextField" id="attr:jrun:getmail:port" attname="port" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">超时: </td>
+      <td nowrap="nowrap">
+        <input name="thetimeout" type="text" class="basicTextField" id="attr:jrun:getmail:timeout" attname="timeout" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">用户名: </td>
+      <td nowrap="nowrap">
+        <input name="theusername" type="text" class="basicTextField" id="attr:jrun:getmail:username" attname="username" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">密码: </td>
+      <td nowrap="nowrap">
+        <input name="thepassword" type="text" class="basicTextField" id="attr:jrun:getmail:password" attname="password" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="attr:jrun:getmail:id" attname="id" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">范围: </td>
+      <td nowrap="nowrap">
+        <input name="thescope" type="text" class="basicTextField" id="attr:jrun:getmail:scope" attname="scope" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">协议: </td>
+      <td nowrap="nowrap">
+        <input name="theprotocol" type="text" class="basicTextField" id="attr:jrun:getmail:protocol" attname="protocol" required="true" />
+      </td>
+    </tr>
+  </table> 
+</div>
+
+<div id="thejavamail" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 43px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">阶段: </td>
+      <td nowrap="nowrap">
+        <input name="thesession" type="text" class="basicTextField" id="attr:jrun:getmail:session" attname="session" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">用户名: </td>
+      <td nowrap="nowrap">
+        <input name="theusername" type="text" class="basicTextField" id="attr:jrun:getmail:username" attname="username" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">密码: </td>
+      <td nowrap="nowrap">
+        <input name="thepassword" type="text" class="basicTextField" id="attr:jrun:getmail:password" attname="password" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="attr:jrun:getmail:id" attname="id" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">范围: </td>
+      <td nowrap="nowrap">
+        <input name="thescope" type="text" class="basicTextField" id="attr:jrun:getmail:scope" attname="scope" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">协议: </td>
+      <td nowrap="nowrap">
+        <input name="theprotocol" type="text" class="basicTextField" id="attr:jrun:getmail:protocol" attname="protocol" required="true" />
+      </td>
+    </tr>
+  </table> 
+</div>
+</div>
+<div name="邮件正文"> 
+  <textarea name="innerHTML" attname="innerHTML" id="attr:jrun:getmail:theinnerhtml" class="contentsField"  wrap="VIRTUAL"></textarea>
+</div>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>CFPOP</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var SELECTORLIST;
+var theUIObjects;
+
+/****************************************************************/
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var applyType = "动态";
+
+//--------------- END LOCALIZEABLE ---------------
+
+function inspectTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode, SELECTORLIST); 
+}
+
+function applyTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode); 
+}
+
+function updateUI()
+{
+  var curDiv = SELECTORLIST.getValue(); 
+  tagDialog.showOnlyThisLayer(curDiv,document.layers[0]); 
+}
+
+function initializeUI()
+{
+  SELECTORLIST = new ListControl("theselector"); 
+  theUIObjects = new Array(SELECTORLIST); 
+
+  tagDialog.populateDropDownList(SELECTORLIST, theSelPopVal, theSelPopVal, 0); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head> 
+<body onLoad="initializeUI();">
+
+<div name="常规"> 
+<br /> 
+操作: 
+<select name="theselector" class="selectorList" id="attr:cfpop:selector" onChange="updateUI();" attname="action" editable="false">
+</select>
+
+<hr width="100%" /> 
+  <div id="thegetall" style="position:absolute;width:350px;height:115px;z-index:1;visibility: inherit;left: 0px;top: 55px;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">查询名称: </td>
+        <td nowrap="nowrap">
+          <input name="thename" type="text" class="medTField" id="attr:cfpop:name" attname="name" required="true" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">消息数目: </td>
+        <td nowrap="nowrap">
+          <input name="themessagenumber" type="text" class="basicTextField" id="attr:cfpop:messagenumber" attname="messagenumber" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">起始行: </td>
+        <td nowrap="nowrap">
+          <input name="thestartrow" type="text" class="basicTextField" id="attr:cfpop:startrow" attname="startrow" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">最大行数: </td>
+        <td nowrap="nowrap">
+          <input name="themaxrows" type="text" class="basicTextField" id="attr:cfpop:maxrows" attname="maxrows" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">附件路径: </td>
+        <td nowrap="nowrap">
+          <input name="theattachmentpath" type="text" class="basicTextField" id="attr:cfpop:attachmentpath" attname="attachmentpath" />
+          <input type="submit" name="Submit" value="浏览..." onClick="tagDialog.browseFolder('theattachmentpath')">
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">&nbsp; </td>
+        <td nowrap="nowrap">
+          <input type="checkbox" id="attr:cfpop:generateuniquefilenames" name="thegenerateuniquefilenames" attname="generateuniquefilenames" truevalue="yes" falsevalue="" /> 
+          生成唯一文件名
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="thegetheaderonly" style="position:absolute;width:350px;height:115px;z-index:1;visibility:hidden;left: 0px;top: 55px;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">查询名称: </td>
+        <td nowrap="nowrap">
+          <input name="thename" type="text" class="medTField" id="attr:cfpop:name" attname="name" required="true" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">消息数目: </td>
+        <td nowrap="nowrap">
+          <input name="themessagenumber" type="text" class="basicTextField" id="attr:cfpop:messagenumber" attname="messagenumber" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">起始行: </td>
+        <td nowrap="nowrap">
+          <input name="thestartrow" type="text" class="basicTextField" id="attr:cfpop:startrow" attname="startrow" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">最大行数: </td>
+        <td nowrap="nowrap">
+          <input name="themaxrows" type="text" class="basicTextField" id="attr:cfpop:maxrows" attname="maxrows" />
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="thedelete" style="position:absolute;width:350px;height:115px;z-index:1;visibility:hidden;left: 0px;top: 55px;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">消息数目: </td>
+        <td nowrap="nowrap">
+          <input name="themessagenumber" type="text" class="basicTextField" id="attr:cfpop:messagenumber" attname="messagenumber" />
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div name="服务器信息"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">服务器: </td>
+      <td nowrap="nowrap">
+        <input name="theserver" type="text" class="basicTextField" id="attr:cfpop:server" attname="server" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">用户名: </td>
+      <td nowrap="nowrap">
+        <input name="theusername" type="text" class="medTField" id="attr:cfpop:username" attname="username" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">密码: </td>
+      <td nowrap="nowrap">
+        <input name="thepassword" type="text" class="medTField" id="attr:cfpop:password" attname="password" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">端口: </td>
+      <td nowrap="nowrap">
+        <input name="theport" type="text" class="medTField" id="attr:cfpop:port" attname="port" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">超时: </td>
+      <td nowrap="nowrap">
+        <input name="thetimeout" type="text" class="medTField" id="attr:cfpop:timeout" attname="timeout" /> （秒）
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
+

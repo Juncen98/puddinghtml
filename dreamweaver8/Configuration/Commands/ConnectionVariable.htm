@@ -1,0 +1,43 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<title>数据源名称变量</title>
+
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/CFDataSourceMenu.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<script src="ConnectionVariable.js"></script>
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="initializeUI()">
+<form>
+    <table border="0" cellpadding="2" cellspacing="4">
+      <tr>
+        <td align="left" colspan=2 valign="baseline" nowrap>请选择和变量关联的数据源</td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap>变量名:</td>
+        <td valign="baseline" nowrap>
+          <input name="theName" type="text" class="basicTextField">
+        </td>
+      </tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>数据源:</td>
+        <td colspan="2" nowrap>
+          <select name="ConnectionName" class="dataSourceList" onChange="updateUI('ConnectionName','onChange')">
+
+        </select>
+        &nbsp;
+        </TD>
+      </TR>
+    </table>
+
+</form>
+</body>
+</html>

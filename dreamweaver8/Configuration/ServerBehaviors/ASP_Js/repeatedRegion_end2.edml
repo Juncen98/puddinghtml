@@ -1,0 +1,20 @@
+<participant>
+     <quickSearch><![CDATA[__index++]]></quickSearch>
+     <insertText location="afterSelection">
+<![CDATA[
+<%
+  @@loopName@@__index++;
+  @@rsName@@.MoveNext();
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="loopName"><![CDATA[/\b(\w+)__index\+\+;/]]></searchPattern>
+       <searchPattern paramNames="rsName"><![CDATA[/\b(\w+)\.MoveNext\(\);/]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="loopName"><![CDATA[/(\b)\w+(__index)/]]></updatePattern>
+       <updatePattern paramName="rsName"><![CDATA[/(\b)\w+(\.MoveNext\(\))/]]></updatePattern>
+     </updatePatterns>
+</participant>

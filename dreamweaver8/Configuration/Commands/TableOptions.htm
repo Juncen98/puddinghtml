@@ -1,0 +1,47 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<title>表格的辅助功能选项</title>
+<script src="TableOptions.js"></script>
+<script language="javascript" src="../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="initializeUI()">
+<form name="theForm">
+  <table border="0" cellpadding="2" cellspacing="4">
+    <tr valign="baseline"> 
+      <td width="0" align="right" nowrap>标题:</td>
+      <td width="0" nowrap> <input name="Caption" type="text" class="largeTField" value=""></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td height="1" align="right" nowrap>对齐标题:</td>
+      <td align="left" nowrap><select name="alignCap" class="alignList">
+          <option value="default" selected>默认</option>
+          <option value="top">顶部</option>
+          <option value="bottom">底部</option>
+          <option value="left">左</option>
+          <option value="right">右</option>
+        </select></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td height="1" align="right" valign="top" nowrap>摘要:</td>
+      <td nowrap> <textarea name="Summary" wrap="virtual" style="width:250px;height:50px"></textarea></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap>标题: </td>
+      <td nowrap> <select name="Header" onChange="updateHeader()" class="oneWordOptionList">
+          <option value="none" selected>无</option>
+          <option value="col">列</option>
+          <option value="row">行</option>
+          <option value="both">两者</option>
+        </select> <img src="../Shared/MM/Images/tableHeaderNone.gif" alt="表格标题图标" name="tableImage" width="18" height="17" align="absmiddle"> 
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+

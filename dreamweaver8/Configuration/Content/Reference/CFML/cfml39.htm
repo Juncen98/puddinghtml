@@ -1,0 +1,506 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFFILE ACTION = &QUOT;UPLOAD&QUOT;</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFFILE ACTION = &QUOT;UPLOAD&QUOT;</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Copies a file to a directory on the server. 
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cffile 
+   action = &quot;upload&quot;
+   fileField = &quot;formfield&quot;
+   destination = &quot;full_path_name&quot;
+   nameConflict = &quot;behavior&quot;
+   accept = &quot;mime_type/file_type&quot;
+   mode = &quot;permission&quot;
+   attributes = &quot;file_attribute_or_list&quot;&gt;
+   result = &quot;result_name&quot;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfdirectory
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+See the History section of the main cffile tag page.
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+After a file upload is completed, you can get status information using file upload parameters. To refer to parameters, use either the cffile prefix or, if you specified an alternate name in the result attribute, the name you specified there. For example, if you did not specify a name in the result attribute, access the fileExisted parameter as #cffile.fileExisted#. If you set the result attribute to myResult, however, access fileExisted as #myResult.fileExisted#. 
+</p>
+
+<p>
+Status parameters can be used anywhere that other ColdFusion parameters can be used. 
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Tip: </strong></td>
+    <td>The result attribute allows functions or CFCs that get called from multiple pages at the same time to avoid overwriting the results of one call with another.</td>
+  </tr>
+</table><table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>The file prefix is deprecated, in favor of the cffile prefix. Do not use the file prefix in new applications.</td>
+  </tr>
+</table><table>
+  <tr valign="top">
+    <td width="30"><strong>Tip: </strong></td>
+    <td>If your page is uploading a file that was selected on a form or was otherwise sent to your page via a multipart/form-data HTTP message, you can determine the approximate size of the file by checking the value of the CGI.content_length variable. This variable includes the file length plus the length of any other request content.</td>
+  </tr>
+</table>
+<p>
+The following file upload status parameters are available after an upload:
+</p>
+
+<p>
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr align="center">    <th>&#160;</th>
+    <th>&#160;</th>
+</tr>
+  <tr align="left">    <td>
+<p>attemptedServerFile</p></td>
+    <td>
+<p>Initial name ColdFusion used when attempting to save a file</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>clientDirectory </p></td>
+    <td>
+<p>Directory location of the file uploaded from the client's system</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>clientFile </p></td>
+    <td>
+<p>Name of the file uploaded from the client's system</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>clientFileExt</p></td>
+    <td>
+<p>Extension of the uploaded file on the client system (without a period)</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>clientFileName</p></td>
+    <td>
+<p>Name of the uploaded file on the client system (without an extension)</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>contentSubType</p></td>
+    <td>
+<p>MIME content subtype of the saved file</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>contentType</p></td>
+    <td>
+<p>MIME content type of the saved file</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>dateLastAccessed </p></td>
+    <td>
+<p>Date and time the uploaded file was last accessed</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>fileExisted</p></td>
+    <td>
+<p>Whether the file already existed with the same path (yes or no)</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>fileSize </p></td>
+    <td>
+<p>Size of the uploaded file</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>fileWasAppended </p></td>
+    <td>
+<p>Whether ColdFusion appended uploaded file to a file (yes or no)</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>fileWasOverwritten</p></td>
+    <td>
+<p>Whether ColdFusion overwrote a file (yes or no)</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>fileWasRenamed </p></td>
+    <td>
+<p>Whether uploaded file renamed to avoid a name conflict (yes or no)</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>fileWasSaved </p></td>
+    <td>
+<p>Whether ColdFusion saves a file (yes or no)</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>oldFileSize</p></td>
+    <td>
+<p>Size of a file that was overwritten in the file upload operation</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>serverDirectory</p></td>
+    <td>
+<p>Directory of the file saved on the server</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>serverFile </p></td>
+    <td>
+<p>Filename of the file saved on the server</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>serverFileExt </p></td>
+    <td>
+<p>Extension of the uploaded file on the server (without a period)</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>serverFileName</p></td>
+    <td>
+<p>Name of the uploaded file on the server (without an extension)</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>timeCreated </p></td>
+    <td>
+<p>Time the uploaded file was created</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>timeLastModified</p></td>
+    <td>
+<p>Date and time of the last modification to the uploaded file</p></td>
+</tr>
+</table>
+</div>
+<p>
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>File status parameters are read-only. They are set to the results of the most recent cffile operation. If two cffile tags execute, the results of the second overwrite the first, unless you have specified a different result variable in the result attribute.</td>
+  </tr>
+</table>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+The following example creates a unique filename, if there is a name conflict when the file is uploaded on Windows: 
+</p>
+<pre>&lt;!--- Windows Example ---&gt;
+&lt;!--- Check to see if the Form variable exists. ---&gt;
+&lt;cfif isDefined(&quot;Form.FileContents&quot;) &gt;
+   &lt;!--- If TRUE, upload the file. ---&gt;
+   &lt;cffile action = &quot;upload&quot; 
+      fileField = &quot;FileContents&quot; 
+      destination = &quot;c:\files\upload\&quot; 
+      accept = &quot;text/html&quot; 
+      nameConflict = &quot;MakeUnique&quot;&gt;
+&lt;cfelse&gt;
+   &lt;!--- If FALSE, show the Form. ---&gt;
+   &lt;form method=&quot;post&quot; action=&lt;cfoutput&gt;#cgi.script_name#&lt;/cfoutput&gt; 
+      name=&quot;uploadForm&quot; enctype=&quot;multipart/form-data&quot;&gt;
+      &lt;input name=&quot;FileContents&quot; type=&quot;file&quot;&gt;
+      &lt;br&gt;
+      &lt;input name=&quot;submit&quot; type=&quot;submit&quot; value=&quot;Upload File&quot;&gt; 
+   &lt;/form&gt;
+&lt;/cfif&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="ACTION ">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ACTION </td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Type of file manipulation that the tag performs. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="FILEFIELD">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">FILEFIELD</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of form field used to select the file. </p>
+<p>Do not use number signs (#) to specify the field name. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DESTINATION">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DESTINATION</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Pathname of directory in which to upload the file. If not an absolute path (starting a with a drive letter and a colon, or a forward or backward slash), it is relative to the ColdFusion temporary directory, which is returned by the GetTempDirectory function.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="NAMECONFLICT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NAMECONFLICT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Error"
+
+
+<p>Action to take if filename is the same as that of a file in the directory.</p><ul>
+
+<li>Error: file is not saved. ColdFusion stops processing the page and returns an error.</li>
+
+<li>Skip: file is not saved. This option permits custom behavior based on file properties.</li>
+
+<li>Overwrite: replaces file.</li>
+
+<li>MakeUnique: forms a unique filename for the upload; name is stored in the file object variable serverFile. </li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ACCEPT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ACCEPT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Limits the MIME types to accept. Comma-delimited list. For example, to permit JPEG and Microsoft Word file uploads:</p>
+<p>accept = &quot;image/jpg, application/msword&quot;</p>
+<p>The browser uses file extension to determine file type.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="MODE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">MODE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Applies only to UNIX and Linux. Permissions. Octal values of chmod command. Assigned to owner, group, and other, respectively. For example:</p><ul>
+
+<li>644: assigns read/write permission to owner; read permission to group and other.</li>
+
+<li>777: assigns read/write/execute permission to all.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ATTRIBUTES">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ATTRIBUTES</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Applies to Windows. A comma-delimited list of attributes to set on the file.</p>
+<p>If omitted, the file&#39;s attributes are maintained.</p>
+<p>Each value must be specified explicitly. For example, if you specify attributes = &quot;readOnly&quot;, all other attributes are overwritten. </p><ul>
+
+<li>readOnly</li>
+
+<li>hidden</li>
+
+<li>normal (if you use this option with other attributes, it is overridden by them)</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="RESULT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">RESULT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Allows you to specify a name for the variable in which cffile returns the result (or status) parameters. If you do not specify a value for this attribute, cffile uses the prefix `cffile'. For more information, see the Usage section.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

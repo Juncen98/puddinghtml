@@ -1,0 +1,7 @@
+<participant version="4.0">
+	<insertText location="afterSelection"><![CDATA[<%= (@@RecordsetName@@.RecordCount == 0) ? 0 : (@@RecordsetName@@.StartRecord + 1) %>]]></insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="RecordsetName" isOptional="false" limitSearch="all"><![CDATA[/<%= \(([^\r\n]*?)\.RecordCount == 0\) \? 0 : \([^\r\n]*?\.StartRecord \+ 1\) %>/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>.RecordCount</quickSearch>
+</participant>

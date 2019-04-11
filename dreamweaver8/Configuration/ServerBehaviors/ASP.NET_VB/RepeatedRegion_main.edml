@@ -1,0 +1,8 @@
+<participant version="5.0">
+	<insertText location="wrapSelection"  nodeParamName="__tag"><![CDATA[<ASP:Repeater runat="server" DataSource='<%# @@RecordsetName@@.DefaultView %>'><ItemTemplate>]]></insertText>
+	<searchPatterns whereToSearch="tag+asp:repeater">
+		<searchPattern isOptional="false" limitSearch="all"></searchPattern>
+		<searchPattern paramNames="RecordsetName" isOptional="false" limitSearch="attribute+datasource"><![CDATA[/<%#\s*([^\.]+)\.DefaultView\s*%>/]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>ASP:Repeater</quickSearch>
+</participant>

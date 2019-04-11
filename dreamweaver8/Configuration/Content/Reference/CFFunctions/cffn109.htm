@@ -1,0 +1,162 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>GETLOCALE</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">GETLOCALE</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Gets the current ColdFusion MX geographic/language locale value. 
+</p>
+
+<p>
+To set the default display format of date, time, number, and currency values in a ColdFusion application session, you use the SetLocale function.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+The current locale value, as an English string. If a locale has a Java name and a name that ColdFusion MX used prior to the ColdFusion&#160;MX&#160;7 release (for example, en_US and English (US)), ColdFusion MX returns the ColdFusion name (for example, English (US)).
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Display and formatting functions, International functions, System functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>GetLocale()
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+GetLocaleDisplayName, SetLocale
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7: Added support for all Java locales and locale names. 
+</p>
+
+<p>
+ColdFusion&#160;MX: Changed behavior to that described in usage. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+This function returns the locale name as it is represented in ColdFusion MX; for example, Portuguese (Brazilian), or ca_ES. To get a locale name in the language of the locale, use the GetLocaleDisplayName function, which returns português (Brasil) and català (Espanya).
+</p>
+
+<p>
+This function determines whether a locale value is set for ColdFusion MX. (The value is set with the SetLocale function.)
+</p>
+<ul>
+
+<li>If the ColdFusion MX locale value is present, the function returns it.</li>
+
+<li>If the ColdFusion MX locale has not been explicitly set, ColdFusion now determines whether the default locale of the ColdFusion server computer operating system is among the locale values it supports. (The default locale is stored in the user environment variables user.language and user.region.)</li>
+
+<p>
+If the default locale value is not supported, the function returns English (US). ColdFusion sets the locale in the JVM to this value; it persists until the server is restarted or it is reset with the SetLocale function. 
+</p>
+    </td>
+  </tr></ul>
+
+<p>
+This function does not access a web browser's Accept-Language HTTP header setting.
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>When ColdFusion is started, it stores the supported locale values in the variable Server.ColdFusion.SupportedLocales. ColdFusion MX supports the locales supported by its Java runtime environment. The SupportedLocales value lists the Java names for the supported locales and the corresponding names that ColdFusion MX used prior to the ColdFusion&#160;MX&#160;7 release.</td>
+  </tr>
+</table>
+<p>
+For more information, see "Locales" in Chapter&#160;17, "Developing Globalized Applications," in ColdFusion MX Developer's Guide.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;Example: Using SetLocale and GetLocale&lt;/h3&gt;
+&lt;cfoutput&gt;
+   &lt;!--- For each new request, the locale gets reset to the JVM locale ---&gt;
+   Initial locale&#39;s ColdFusion name: #GetLocale()#&lt;br&gt;
+   &lt;br&gt;
+   &lt;!--- Do this only if the form was submitted. ---&gt;
+   &lt;cfif IsDefined(&quot;form.mylocale&quot;)&gt;
+      &lt;b&gt;Changing locale to #form.mylocale#&lt;/b&gt;&lt;br&gt;
+      &lt;br&gt;
+      &lt;!--- Set the locale to the submitted value and save the old ColdFusion 
+locale name.  ---&gt;
+      &lt;cfset oldlocale=SetLocale(&quot;#form.mylocale#&quot;)&gt;
+      &lt;!--- Get the current locale. It should have changed. ---&gt;
+      New locale: #GetLocale()#&lt;br&gt;
+   &lt;/cfif&gt;
+
+   &lt;!--- Self-submitting form to select the new locale. ---&gt;
+   &lt;cfform&gt;
+      &lt;h3&gt;Please select the new locale:&lt;/h3&gt;
+      &lt;cfselect name=&quot;mylocale&quot;&gt;
+         &lt;!--- The server.coldfusion.supportedlocales variable is a 
+               list of all supported locale names. Use a list cfloop tag 
+               to create an HTML option tag for each name in the list. ---&gt;
+         &lt;cfloop index=&quot;i&quot; list=&quot;#server.coldfusion.supportedlocales#&quot;&gt;
+            &lt;option value=&quot;#i#&quot;&gt;#i#&lt;/option&gt;
+         &lt;/cfloop&gt;
+      &lt;/cfselect&gt;&lt;br&gt;
+      &lt;br&gt;
+      &lt;cfinput type=&quot;submit&quot; name=&quot;submitit&quot; value=&quot;Change Locale&quot;&gt;
+   &lt;/cfform&gt;
+&lt;/cfoutput&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+
+  </body>
+</html>

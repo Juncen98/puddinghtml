@@ -1,0 +1,85 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFCOOKIE</title>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var CFCOOKIESECURELIST;
+var theUIObjects;
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+ 
+function initializeUI()
+{
+	CFCOOKIESECURELIST = new ListControl("theexpires"); 
+	theUIObjects = new Array(CFCOOKIESECURELIST); 
+
+  tagDialog.populateDropDownList(CFCOOKIESECURELIST, theExpiresCap, theExpiresVar, 1)
+}
+
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<div name="CFCOOKIE 标签"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap"><input name="thename" type="text" class="medTField" id="attr:cfcookie:name" attname="name" required="true" /></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">值: </td>
+      <td nowrap="nowrap">
+        <input name="thevalue" type="text" class="basicTextField" id="attr:cfcookie:value" attname="value" required="true" />
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">到期: </td>
+      <td nowrap="nowrap">
+        <select name="theexpires" class="oneWordOptionList" id="attr:cfcookie:expires" attname="expires" editable="true">
+           
+        </select>
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">路径: </td>
+      <td nowrap="nowrap">
+        <input name="thepath" type="text" class="basicTextField" id="attr:cfcookie:path" attname="path" />
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">域: </td>
+      <td nowrap="nowrap">
+        <input name="thedomain" type="text" class="basicTextField" id="attr:cfcookie:domain" attname="domain" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfcookie:secure" name="thesecure" attname="secure" truevalue="yes" falsevalue="" />
+        安全地传输 Cookie (SSL)</td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

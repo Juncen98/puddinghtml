@@ -1,0 +1,183 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>DATEPART</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">DATEPART</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Extracts a part from a date value.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+Part of a date, as an integer.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Date and time functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>DatePart(&quot;datepart&quot;, &quot;date&quot;)
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+DateAdd, DateConvert
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion MX&#160;6.1: Added the datepart character L or l to represent milliseconds.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+When passing a date/time object as a string, you must enclose it in quotation marks. Otherwise, it is interpreted as a numeric representation of a date/time object.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!--- This example shows information available from DatePart ---&gt;
+&lt;cfset todayDate = Now()&gt;
+&lt;h3&gt;DatePart Example&lt;/h3&gt;
+&lt;p&gt;Today's date is &lt;cfoutput&gt;#todayDate#&lt;/cfoutput&gt;.
+&lt;p&gt;Using datepart, we extract an integer representing the dateparts from that 
+value
+&lt;cfoutput&gt;
+&lt;ul&gt;
+   &lt;li&gt;year: #DatePart(&quot;yyyy&quot;, todayDate)#
+   &lt;li&gt;quarter: #DatePart(&quot;q&quot;, todayDate)#
+   &lt;li&gt;month: #DatePart(&quot;m&quot;, todayDate)#
+   &lt;li&gt;day of year: #DatePart(&quot;y&quot;, todayDate)#
+   &lt;li&gt;day: #DatePart(&quot;d&quot;, todayDate)#
+   &lt;li&gt;weekday: #DatePart(&quot;w&quot;, todayDate)#
+   &lt;li&gt;week: #DatePart(&quot;ww&quot;, todayDate)#
+   &lt;li&gt;hour: #DatePart(&quot;h&quot;, todayDate)#
+   &lt;li&gt;minute: #DatePart(&quot;n&quot;, todayDate)#
+   &lt;li&gt;second: #DatePart(&quot;s&quot;, todayDate)#
+&lt;/ul&gt;
+&lt;/cfoutput&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="DATEPART">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DATEPART</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>String:</p><ul>
+
+<li>yyyy: Year</li>
+
+<li>q: Quarter</li>
+
+<li>m: Month</li>
+
+<li>y: Day of year</li>
+
+<li>d: Day</li>
+
+<li>w: Weekday</li>
+
+<li>ww: Week</li>
+
+<li>h: Hour</li>
+
+<li>n: Minute</li>
+
+<li>s: Second</li>
+
+<li>l: Millisecond</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DATE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DATE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Date/time object, in the range 100 AD-9999 AD.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

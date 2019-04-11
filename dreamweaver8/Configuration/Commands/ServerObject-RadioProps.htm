@@ -1,0 +1,72 @@
+<!-- MENU-LOCATION=NONE -->
+
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<html>
+<head>
+<title>单选按钮组属性</title>
+
+<SCRIPT SRC="EditOpsCustomObjs.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/TreeControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/RadioGroup.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/RecordsetMenu.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/RecordsetFieldMenu.js"></SCRIPT>
+<SCRIPT SRC="ServerObject-RadioProps.js"></SCRIPT>
+
+<!-- Copyright 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onload="initializeUI()">
+
+  <form name="form1" method="post" action="">
+    
+  <table border=0 cellpadding="4" cellspacing="2">
+      <tr>
+        <td width="160" align="right" valign="baseline" nowrap>单选项:</td>
+        <td nowrap align="left">
+          <input type="image" name="elemAdd" src="../Shared/MM/Images/btnAdd.gif" onClick="addNewRow();focus(this)" >
+          <input type="image" name="elemDel" src="../Shared/MM/Images/btnDel.gif" onClick="delRow();focus(this);" >
+          <img src="../Shared/MM/Images/transparent.gif" height=8 width="155">
+          <input type="image" border="0" name="elemUp" src="../Shared/MM/Images/btnUp.gif"  onClick="moveRowUp();focus(this)">
+          <input type="image" border="0" name="elemDown" src="../Shared/MM/Images/btnDown.gif"  onClick="moveRowDown();focus(this)">
+        </td>
+      </tr>
+      <tr>
+        <td nowrap valign="top" align="right">&nbsp;</td>
+        <td nowrap align="left">
+          <mm:treecontrol style="width:248px;height:96px" name="MenuGrid" onChange="displayGridValues()">
+            <mm:treecolumn width="100"> <mm:treecolumn width="100">
+          </mm:treecontrol>
+        </td>
+      </tr>
+      <tr>
+        <td nowrap valign="baseline" align="right">标签:</td>
+        <td nowrap align="left">
+          <input name="MenuText" type="text" class="medTField" onBlur="updateGridRow()">
+        </td>
+      </tr>
+      <tr>
+        <td nowrap valign="baseline" align="right">值:</td>
+        <td nowrap align="left">
+          <input name="MenuValue" type="text" class="medTField" onBlur="updateGridRow()">
+        </td>
+      </tr>
+      <mmui>
+      
+    <tr valign="baseline">
+        
+      <td nowrap align="right">选取值等于: </td>
+        
+      <td align="left" nowrap>
+          <input name="DefaultValueManual" type="text" class="largeTField">
+          <input type="image" src="../Shared/UltraDev/Images/Boltup.gif" width="15" height="14" align="absbottom" onClick="displayDynamicDataDialog(_DefaultManual)">
+        </td>
+      </tr>
+      </mmui>
+    </table>
+  </form>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+<html>
+<head>
+<title>&lt;xsl:strip-space&gt;</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">&lt;xsl:strip-space&gt;</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+Defines the source-document elements for which whitespace should be removed.</td></tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Category</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>Top-level element</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Required Attributes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<dl>
+<dt>
+elements
+</dt>
+<dd>
+Contains a space-separated list of source document elements for which nonsignificant whitespace should be removed. Nonsignificant whitespace typically means text nodes that contain nothing but whitespace; whitespace that appears in and around text is preserved.
+<P></p>
+</dl>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Optional Attributes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>None.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Content</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>None.  <span class="LITERAL">&lt;xsl:strip-space&gt;</span> is an empty element.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Appears in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>
+<span class="LITERAL">&lt;xsl:strip-space&gt;</span> is a top-level element, and can only appear as a child of <link linkend="stylesheet-element">
+<span class="LITERAL">&lt;xsl:stylesheet&gt;</span>
+</link>.  </p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Defined in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>XSLT section 3.4, Whitespace Stripping.  </p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>We'll illustrate the <span class="LITERAL">&lt;xsl:strip-space&gt;</span> element with the following stylesheet:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+
+  &lt;xsl:output method="text"/&gt;
+  &lt;xsl:strip-space elements="listing"/&gt;
+
+  &lt;xsl:variable name="newline"&gt;
+&lt;xsl:text&gt;
+&lt;/xsl:text&gt;
+  &lt;/xsl:variable&gt;
+
+  &lt;xsl:template match="/"&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:value-of select="/code-sample/title"/&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:for-each select="/code-sample/listing"&gt;
+      &lt;xsl:value-of select="."/&gt;
+    &lt;/xsl:for-each&gt;
+  &lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</pre></span>
+<p>We'll use this stylesheet to process the following document:</p>
+      <span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;code-sample&gt;
+  &lt;title&gt;Conditional variable initialization&lt;/title&gt;
+  &lt;listing&gt;
+  &lt;type&gt;int&lt;/type&gt; &lt;variable&gt;y&lt;/variable&gt; = &lt;constant&gt;23&lt;/constant&gt;;
+  &lt;type&gt;int&lt;/type&gt; &lt;variable&gt;x&lt;/variable&gt;;
+<!--<?troff .Nd 10?>-->
+    &lt;keyword&gt;if&lt;/keyword&gt; (&lt;variable&gt;y&lt;/variable&gt; &gt; &lt;constant&gt;10&lt;/constant&gt;)
+    &lt;variable&gt;x&lt;/variable&gt; = &lt;constant&gt;5&lt;/constant&gt;;
+  &lt;keyword&gt;else&lt;/keyword&gt; 
+    &lt;keyword&gt;if&lt;/keyword&gt; (&lt;variable&gt;y&lt;/variable&gt; &gt; &lt;constant&gt;5&lt;/constant&gt;)
+      &lt;variable&gt;x&lt;/variable&gt; = &lt;constant&gt;3&lt;/constant&gt;;
+  &lt;keyword&gt;else&lt;/keyword&gt;
+    &lt;variable&gt;x&lt;/variable&gt; = &lt;constant&gt;1&lt;/constant&gt;;
+  &lt;/listing&gt;
+&lt;/code-sample&gt;</pre></span>
+<p>Here are the results:</p>
+<span class="PROGRAMLISTING"><pre>
+
+Conditional variable initialization
+inty = 23;
+  intx;
+    if (y &gt; 10)
+    x = 5;
+  elseif (y &gt; 5)
+      x = 3;
+  elsex = 1;</pre></span>
+<p>Notice that all the extra whitespace from the <span class="LITERAL">&lt;listing&gt;</span> element has been removed.  This includes the space between the various elements contained inside <span class="LITERAL">&lt;listing&gt;</span>, such as <span class="LITERAL">&lt;keyword&gt;</span>, <span class="LITERAL">&lt;constant&gt;</span>, and <span class="LITERAL">&lt;variable&gt;</span>.  Compare this example to the one for <link linkend="preserve-space-element">the <span class="LITERAL">&lt;preserve-space&gt;</span> element</link>.</p>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<participant>
+     <quickSearch><![CDATA[MM_moveFirst]]></quickSearch>
+     <insertText location="aboveHTML+92">
+<![CDATA[
+<%
+// *** Move To Record: set the strings for the first, last, next, and previous links
+
+String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
+{
+  String MM_keepMove = MM_keepBoth;  // keep both Form and URL parameters for moves
+  String MM_moveParam = "index=";
+
+  // if the page has a repeated region, remove 'offset' from the maintained parameters
+  if (MM_size > 1) {
+    MM_moveParam = "offset=";
+    int start = MM_keepMove.indexOf(MM_moveParam);
+    if (start != -1 && (start == 0 || MM_keepMove.charAt(start-1) == '&')) {
+      int stop = MM_keepMove.indexOf('&', start);
+      if (start == 0 && stop != -1) stop++;
+      if (stop == -1) stop = MM_keepMove.length();
+      if (start > 0) start--;
+      MM_keepMove = MM_keepMove.substring(0,start) + MM_keepMove.substring(stop);
+    }
+  }
+
+  // set the strings for the move to links
+  StringBuffer urlStr = new StringBuffer(request.getRequestURI()).append('?').append(MM_keepMove);
+  if (MM_keepMove.length() > 0) urlStr.append('&');
+  urlStr.append(MM_moveParam);
+  MM_moveFirst = urlStr + "0";
+  MM_moveLast  = urlStr + "-1";
+  MM_moveNext  = urlStr + Integer.toString(MM_offset+MM_size);
+  MM_movePrev  = urlStr + Integer.toString(Math.max(MM_offset-MM_size,0));
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern><![CDATA[/String\s*MM_moveFirst,MM_moveLast/]]></searchPattern>
+     </searchPatterns>
+</participant>

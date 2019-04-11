@@ -1,0 +1,215 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFSELECT</title>
+  <link rel="stylesheet" href="mmres://user_interface_dialog.css">
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../TagLibraries/Html/loc_strings.js"></script>
+<script src="../../TagLibraries/Html/strings.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var LANGUAGELIST; 
+var DIRLIST;
+var QUERYPOSITIONLIST;
+var theUIObjects; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj) {
+	tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj) {
+	tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function initializeUI() {
+	LANGUAGELIST = new ListControl("thelang"); 
+	DIRLIST = new ListControl("thedir"); 
+	QUERYPOSITIONLIST = new ListControl("theQueryPosition");
+
+	theUIObjects  = new Array(LANGUAGELIST,DIRLIST,QUERYPOSITIONLIST); 
+
+	tagDialog.populateDropDownList(LANGUAGELIST, theLanguagesCap, theLanguagesVal, 1); 
+	tagDialog.populateDropDownList(DIRLIST, theDirectionCap, theDirectionVal, 1); 
+	tagDialog.populateDropDownList(QUERYPOSITIONLIST, new Array("above", "below"), new Array("above", "below"), 1); 
+}
+</script>
+</head>
+
+<body onLoad="initializeUI()">
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input type="text" id="attr:select:name" name="thename" attname="name" style="width:200px" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">大小: </td>
+      <td nowrap="nowrap">
+        <input type="text" id="attr:select:size" name="thesize" attname="size" style="width:50px" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp; </td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="html:select:multiple" name="themultiple" attname="multiple" truevalue="yes" falsevalue="no" /> 
+        允许多选
+      </td> 
+    </tr> 
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp; </td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfselect:enabled" name="theenabled" attname="enabled" truevalue="Yes" falsevalue="No" /> 
+        已启用</td> 
+    </tr> 
+  </table>
+</div> 
+<div name="样式表/辅助功能"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类: </td>
+      <td nowrap="nowrap">
+        <input type="text" id="attr:select:class" name="theclass" attname="class" style="width:200px" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input type="text" id="attr:select:id" name="theid" attname="id" style="width:200px" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">样式: </td>
+      <td nowrap="nowrap">
+        <input type="text" id="attr:select:style" name="thestyle" attname="style" style="width:200px" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">Tab 键索引: </td>
+      <td nowrap="nowrap">
+        <input type="text" id="attr:select:tabindex" name="thetabindex" attname="tabindex" style="width:50px" />
+      </td>
+    </tr>
+  </table> 
+</div>
+<div name="语言"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">方向: </td>
+      <td nowrap="nowrap">
+        <select name="thedir" id="attr:select:dir" attname="dir" style="width:150px"> 
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" nowrap="nowrap"></td>
+      <td nowrap="nowrap"></td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">语言: </td>
+      <td nowrap="nowrap">
+        <select name="thelang" id="attr:select:lang" attname="lang" editable="true" style="width:150px"> 
+        </select>
+      </td>
+    </tr>
+  </table>
+</div>
+<div name="其他">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td align="right" nowrap>标签:</td>
+      <td><input type="text" id="theLabel" name="thelabel" attname="label" style="width:200px" /></td>
+    </tr>
+    <tr>
+	  <td align="right" nowrap>工具提示:</td>
+	  <td><input type="text" id="attr:select:tooltip" name="thetooltip" attname="tooltip" style="width:200px" /></td>
+	</tr>
+    <tr>
+      <td align="right" nowrap>可视: </td>
+      <td><input type="checkbox" id="cfml:cfselect:visible" name="thevisible" attname="visible" truevalue="yes" falsevalue="" /></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>必需: </td>
+      <td><input type="checkbox" id="html:select:required" name="therequired" attname="required" truevalue="yes" falsevalue="" /></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>消息:</td>
+      <td><input type="text" id="themessage" name="themessage" attname="message" style="width:200px" /></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>选定的:</td>
+      <td><input type="text" id="theSelected" name="theSelected" attname="selected" style="width:200px" /></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>高度:</td>
+      <td><input type="text" id="theHeight" name="theHeight" attname="height" style="width:100px" /></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>宽度:</td>
+      <td><input type="text" id="theWidth" name="theWidth" attname="width" style="width:100px" /></td>
+    </tr>
+  </table>
+</div>
+<div name="查询"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td align="right" nowrap>查询:</td>
+      <td><input type="text" id="thequery" name="thequery" attname="query" style="width:200px" /></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>值:</td>
+      <td><input type="text" id="thevalue" name="thevalue" attname="value" style="width:200px" /></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>显示:</td>
+      <td><input type="text" id="thedisplay" name="thedisplay" attname="display" style="width:200px" /></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>组:</td>
+      <td><input type="text" id="thegroup" name="thegroup" attname="group" style="width:200px" /></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>查询位置:</td>
+      <td><select name="theQueryPosition" id="theQueryPosition" attname="queryPosition" style="width:100px">
+      </select></td>
+    </tr>
+  </table>
+</div>
+<div name="事件"> 
+   <div name="onChange"> 
+    <textarea name="theonChange" attname="onChange" id="attr:select:onChange" class="PROGRAMLISTING" style="width:400px; height:100px;"  wrap="VIRTUAL"></textarea>
+  </div>
+  <div name="onError"> 
+    <textarea name="theonError" attname="onError" id="attr:select:onerror" class="PROGRAMLISTING" style="width:400px; height:100px;"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onKeyUp"> 
+    <textarea name="theonKeyUp" attname="onKeyUp" id="attr:select:onkeyup" class="PROGRAMLISTING" style="width:400px; height:100px;"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onKeyDown"> 
+    <textarea name="theonKeyDown" attname="onKeyDown" id="attr:select:onKeyDown" class="PROGRAMLISTING" style="width:400px; height:100px;"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseUp"> 
+    <textarea name="theonMouseUp" attname="onMouseUp" id="attr:select:onmouseup" class="PROGRAMLISTING" style="width:400px; height:100px;"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseDown"> 
+    <textarea name="theonMouseDown" attname="onMouseDown" id="attr:select:onmousedown" class="PROGRAMLISTING" style="width:400px; height:100px;"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onClick"> 
+    <textarea name="theonClick" attname="onClick" id="attr:select:onclick" class="PROGRAMLISTING" style="width:400px; height:100px;"  wrap="VIRTUAL"></textarea>
+  </div> 
+   
+</div>
+</body>
+</html>

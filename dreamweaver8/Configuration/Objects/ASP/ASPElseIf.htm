@@ -1,0 +1,42 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Copyright 2001 Macromedia, Inc. All rights reserved. -->
+<title><MMString:LoadString id="insertbar/asp/aspelseif" /></title>
+
+<script language="javascript">
+
+//---------------     API FUNCTIONS    ---------------
+
+function isDOMRequired() { 
+	// Return false, indicating that this object is available in code view.
+	return false;
+}
+
+function objectTag() {
+	// Manually insert tag, and then put IP inside it.
+	var dom = dw.getDocumentDOM();
+	var docType = dom.documentType;
+	var before,after;
+	if (docType == 'ASP-JS'){
+		before = '<% else if (';
+		after  = ') %>';
+	}else if (docType == 'ASP-VB'){
+		before = '<% ElseIf ';
+		after  = ' Then %>';
+	}
+		
+	dom.source.wrapSelection(before,after);
+
+  // Just return -- don't do anything else.
+  return;
+}
+
+</script>
+	
+</head>
+
+<body>
+</body>
+
+</html>

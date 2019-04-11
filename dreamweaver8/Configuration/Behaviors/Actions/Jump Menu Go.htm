@@ -1,0 +1,60 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- SAFE-IN-TEMPLATES -->
+<html>
+<head>
+<title>跳转菜单开始</title>
+<script src="Jump Menu Go.js"></script>
+<script src="MM_findObj.js"></script>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/docInfo.js"></SCRIPT>
+
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<script language="JavaScript">
+
+// Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved.
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var FILE_Name = "Jump Menu Go.htm";  //FILE_Name should match localized file name
+var MSG_Invalid_Document = "该动作只能用于当前文档或框架包含跳转菜单时。"
+var MSG_Correcting_Document = "要使用这个动作，请先选择「插入>表单对象>跳转菜单」。";
+var MSG_Menu_Not_Found = "错误: Dreamweaver 不能在当前文档中找到原来选定的跳转菜单。"
+var MSG_Why_Not_Found = "如果菜单被删除，重命名或移除时会发生该错误。"
+var MSG_No_Item_Selected = "请选择一个跳转菜单，或点击「取消」。";
+//--------------- END LOCALIZEABLE   ---------------
+
+</script>
+
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onload="initializeUI()">
+<form></form>
+<div id="mainLayer" style="position:absolute; width:400px; height:71px; z-index:1; left: 4px; top: 5px; visibility: hidden">
+  <table border="0" cellpadding="4" cellspacing="2">
+      <tr valign="baseline">
+
+      <td align="right" nowrap>选择跳转菜单:</td>
+        <td>
+          <select name="JumpMenuList" class="itemList">
+          </select>
+        </td>
+      </tr>
+</table>
+
+  <table border="0" width="100%">
+    <tr bgcolor="#dddddd">
+
+      <td>根据菜单所选择的索引转到 URL。</td>
+    </tr>
+</table>
+
+</div>
+<div id="emptyLayer" style="position:absolute; width:400px; height:71px; z-index:2; left: 4px; top: 5px">
+<img src="../../Shared/MM/Images/space.gif" width="400" height="71" alt="">
+</div>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<head><link href="../../fields.css" rel="stylesheet" type="text/css">
+<title>设置导航栏图像</title>
+<!--Copyright 2000-2002 Macromedia, Inc. All rights reserved.-->
+<SCRIPT LANGUAGE="javascript" SRC="Set Nav Bar Image.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="MM_preloadImages.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="MM_findObj.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/Class/TabControlClass.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/navBar.js"></script>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/preload.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/CMN/Handler.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/CMN/niceName.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/CMN/docInfo.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<SCRIPT LANGUAGE="Javascript">
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_MissingData = "请输入项目名称和状态图像，或点击「取消」。";
+
+var LABEL_unnamed   = "unnamed";
+var LABEL_getImage  = "选择图像源文件";
+var LABEL_getURL    = "选择HTML文件";
+var LABEL_Basic     = "基本";
+var LABEL_Advanced  = "高级";
+
+MENULIST_layout= new Array("水平","垂直");
+MENULIST_imageEvents= new Array("鼠标经过图像或点击时鼠标经过图像","点击图像");
+
+
+//--------------- END LOCALIZEABLE   ---------------
+
+
+</SCRIPT>
+<STYLE TYPE="text/css">
+<!--
+.wizPage       { position:absolute; left:4px; top:31px; width:550px; height:310px; z-index:1; visibility:hidden }
+.tabLayer      { position:absolute; top:10px; width:70px; height:20px; z-index:8; visibility:hidden }
+.tabInnerLayer { position:absolute; width:75px; height:23px; z-index:8; left: 0px; top: 0px; visibility:inherit }
+.tabLabelLayer { position:absolute; width:69px; height:1px; z-index:8; left: 0px; top: 5px; visibility:inherit; text-align:center }
+-->
+</STYLE>
+</head>
+
+<body onload="initializeUI();findObject('loading').visibility='hidden'">
+<!-- ---------------------------------------------------------------------- -->
+<!-- TAB DIVS -->
+
+<div class="wizPage" style="visibility: visible" id="sizeDialog">
+  <img name="tabBgWin" src="../../Shared/MM/Images/transparent.gif" width="550" height="310">
+</div>
+
+<div id="Tab0" class="tabLayer" style="left: 8px;">
+  <div class="tabInnerLayer"> <img src="../../Shared/MM/Images/tabBg.gif" width="70" height="22">
+  </div>
+  <div id="Tab0Sel" class="tabInnerLayer" style="visibility:hidden"> <img src="../../Shared/MM/Images/tabBgSel.gif" width="70" height="22">
+  </div>
+  <div name="Tab0Label" class="tabLabelLayer"></div>
+  <div class="tabInnerLayer">
+    <input type="image" src="../../Shared/MM/Images/transparent.gif" width="69" height="21" onClick="T.showPageNum(0)"> </div>
+</div>
+<div id="Tab1" class="tabLayer" style="left: 78px; top: 10px;">
+  <div class="tabInnerLayer"> <img src="../../Shared/MM/Images/tabBg.gif" width="70" height="22">
+  </div>
+  <div id="Tab1Sel" class="tabInnerLayer" style="visibility:hidden"> <img src="../../Shared/MM/Images/tabBgSel.gif" width="70" height="22">
+  </div>
+  <div name="Tab1Label" class="tabLabelLayer"></div>
+  <div class="tabInnerLayer">
+    <input type="image" src="../../Shared/MM/Images/transparent.gif" width="69" height="21" onClick="T.showPageNum(1);"> </div>
+</div>
+<div id="Tab2" class="tabLayer" style="left: 148px; top: 10px;">
+  <div class="tabInnerLayer"> <img src="../../Shared/MM/Images/tabBg.gif" width="70" height="22">
+  </div>
+  <div id="Tab2Sel" class="tabInnerLayer" style="visibility:hidden"> <img src="../../Shared/MM/Images/tabBgSel.gif" width="70" height="22">
+  </div>
+  <div name="Tab2Label" class="tabLabelLayer"></div>
+  <div class="tabInnerLayer">
+    <input type="image" src="../../Shared/MM/Images/transparent.gif" width="69" height="21" onClick="T.showPageNum(2);"> </div>
+</div>
+
+<!-- ---------------------------------------------------------------------- -->
+<!-- PAGE DIVS -->
+
+<div class="pageBg" id="loading" style="visibility:visible; left:4px; ">
+  <table width="475" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+  <td height="310" align="center"><p>
+  正在载入...
+  </p>
+  </td>
+  </tr>
+  </table>
+</div>
+
+<form>
+<div id="page1" class="wizPage" style="top:37px; left:12px">
+
+    <table border=0 cellpadding="0" cellspacing="2">
+    <tr>
+      <td align="right" valign="baseline" nowrap>项目名称:</td>
+      <td valign="baseline" nowrap colspan="2">
+        <input name="elemName" type="text" class="medTField" onBlur="T.update('elemName')">
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap>状态图像:</td>
+      <td valign="baseline" nowrap colspan="2">
+        <input name="upImg" type="text" class="largeTField" onBlur="T.update('upImg')">
+        <input type="button" onClick="browseFile('upImg',true);focus(this)" value="浏览...">
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap>鼠标经过图像:</td>
+      <td valign="baseline" nowrap colspan="2">
+        <input name="overImg" type="text" class="largeTField" onBlur="T.update('overImg')">
+        <input type="button" value="浏览..." onClick="browseFile('overImg',true);focus(this)">
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap>按下图像:</td>
+      <td valign="baseline" nowrap colspan="2">
+        <input name="downImg" type="text" class="largeTField" onBlur = "T.update('downImg')">
+        <input type="button" value="浏览..." onClick="browseFile('downImg',true);focus(this)">
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap>按下时鼠标经过图像:</td>
+      <td valign="baseline" nowrap colspan="2">
+        <input name="overDownImg" type="text" class="largeTField" onBlur = "T.update('overDownImg')">
+        <input type="button" value="浏览..." onClick="browseFile('overDownImg',true);focus(this)">
+        </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap>替换文本:</td>
+      <td valign="baseline" nowrap colspan="2">
+        <input name="theAltText" type="text" class="largeTField" onBlur="T.update('theAltText')">
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap>按下时，前往的 URL:</td>
+      <td valign="baseline" nowrap colspan="2">
+        <input name="theURL" type="text" class="medTField" onBlur = "T.update('theURL')"> <input type="button" value="浏览..." onClick="browseFile('theURL');focus(this)">
+         在
+          <select name="theTarget" class="targetList" onChange="T.update('theTarget')">
+            <option selected>主窗口</option>
+        </select>
+
+      </td>
+    </tr>
+    <tr>
+        <td></td>
+      </tr>
+    <tr>
+      <td nowrap align="right" valign="baseline">选项:</td>
+      <td nowrap valign="baseline" colspan="2">
+        <input type="checkbox" name="preloadImages" checked onClick="T.update('preloadImages')">
+        预先载入图像&nbsp;&nbsp;
+      </td>
+    </tr>
+    <tr>
+      <td nowrap align="right" valign="baseline">&nbsp;</td>
+      <td nowrap valign="baseline" colspan="2">
+        <input type="checkbox" name="isDown" onClick="T.update('isDown')">
+        最初显示“按下图像”
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div id="page2" class="wizPage" style="top:40px; left:12px">
+    <table border="0" cellpadding="0" cellspacing="2">
+      <tr>
+        <td align="right">当项目 </td>
+        <td align="left">"<span id="nameSpan">正在</span>" 正在显示:</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+        <select name="imgEvent" class="multiWordOptionList" onChange="T.update('imgEvent')">
+            <option selected>鼠标经过图像或按下时鼠标经过图像</option>
+            <option>按下图像</option>
+        </select>
+      </td>
+      <tr>
+        <td align="right" valign="top" nowrap>同时设置图像:</td>
+        <td valign="baseline"><select name="elemList" size="4" class="largeTField" onChange="T.update('elemList')">
+            <option selected></option>
+        </select></td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap>变成图像文件:</td>
+        <td valign="baseline" nowrap>
+        <input name="file0" type="text" class="largeTField" onBlur="T.update('file0')">
+        <input type="button" value="浏览..." onClick="browseFile('file0',true);focus(this)">
+      </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap>
+         <span id="downImgLabel">按下时，变成图像文件:</span></td>
+        <td valign="baseline" nowrap>
+        <span id="downImgInput">
+          <input name="file1" type="text" class="largeTField" onBlur="T.update('file1')">
+          <input type="button" value="浏览..." onClick="browseFile('file1',true);focus(this)">
+        </span>
+      </td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+    </table>
+  <div align="center">
+  <table border="0" bgcolor="#D3D3D3" width="85%">
+    <tr>
+      <td>
+      按下一个导航列项目将会让导航列中其他所有的项目都自动恢复成它们的一般状态图像。如果你需要更改其他的图像，请使用这个标签页。
+
+
+
+      </td>
+    </tr>
+  </table>
+  </div>
+</div>
+
+</form>
+
+</body>
+</html>

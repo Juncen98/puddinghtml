@@ -1,0 +1,164 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFIF</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFIF</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Creates simple and compound conditional statements in CFML. Tests an expression, variable, function return value, or string. Used, optionally, with the cfelse and cfelseif tags.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Flow-control tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfif expression&gt;
+   HTML and CFML tags
+&lt;cfelseif expression&gt;
+   HTML and CFML tags 
+&lt;cfelse&gt;
+   HTML and CFML tags
+&lt;/cfif&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfelse, cfelseif, cfabort, cfbreak, cfexecute, cfexit, cflocation, cfloop, cfswitch, cfthrow, cftry
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+If the value of the expression in the cfif tag is True, ColdFusion processes all the code that follows, up to any cfelseif or cfelse tag, and then skips to the cfif end tag. Otherwise, ColdFusion does not process the code that immediately follows the cfif tag, and continues processing at any cfelseif or cfelse tag, or with the code that follows the cfif end tag.
+</p>
+
+<p>
+When testing the return value of a function that returns a Boolean, you do not have to define the True condition explicitly. This example uses the IsArray function:
+</p>
+<pre>&lt;cfif IsArray(myarray)&gt;
+</pre>
+<p>
+If successful, IsArray evaluates to yes, the string equivalent of the Boolean True. This is preferred over explicitly defining the True condition this way:
+</p>
+<pre>&lt;cfif IsArray(myarray) IS True&gt;
+</pre>
+<p>
+This tag requires an end tag. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+In this example, variables are shown within number signs. This is not required. 
+</p>
+<pre>&lt;!--- This example shows the interaction of cfif, cfelse, and cfelseif. ---&gt;
+&lt;!----- First, perform a query to get some data. -----&gt; 
+&lt;cfquery name=&quot;getCenters&quot; datasource=&quot;cfdocexamples&quot;&gt; 
+   SELECT Center_ID, Name, Address1, Address2, City, State, Country, 
+      PostalCode, Phone, Contact 
+   FROM Centers 
+   ORDER by City, State, Name 
+&lt;/cfquery&gt; 
+&lt;p&gt;CFIF gives us the ability to perform conditional logic based on a condition 
+or set of conditions. 
+&lt;p&gt;For example, we can output the list of Centers from the snippets datasource 
+by group and only display them &lt;b&gt;IF&lt;/b&gt; City = San Diego. 
+&lt;hr&gt; 
+&lt;!---- Use CFIF to test a condition when outputting a query. -----&gt; 
+&lt;p&gt;The following centers are in San Diego: 
+&lt;cfoutput query=&quot;getCenters&quot;&gt; 
+      &lt;cfif Trim(City) is &quot;San Diego&quot;&gt; 
+         &lt;br&gt;&lt;b&gt;Name/Address:&lt;/b&gt;#Name#, #Address1#, #City#, #State#
+         &lt;br&gt;&lt;b&gt;Contact:&lt;/b&gt; #Contact#
+         &lt;br&gt; 
+      &lt;/cfif&gt; 
+&lt;/cfoutput&gt; 
+&lt;hr&gt; 
+&lt;p&gt;If we would like more than one condition to be the case, we can ask for 
+a list of the centers in San Diego &lt;b&gt;OR&lt;/b&gt; Santa Ana. If the center 
+does not follow this condition, we can use CFELSE to show only 
+the names and cities of the other centers. 
+&lt;p&gt;Notice how a nested CFIF is used to specify the location of 
+the featured site (Santa Ana or San Diego).
+&lt;!----- Use CFIF to specify a conditional choice for multiple options; 
+also note the nested CFIF. ---&gt; 
+&lt;p&gt;Complete information is shown for centers in San Diego or Santa Ana. 
+All other centers are listed in italics: 
+&lt;cfoutput query=&quot;getCenters&quot;&gt; 
+   &lt;cfif Trim(City) is &quot;San Diego&quot; OR Trim(City) is &quot;Santa Ana&quot;&gt; 
+      &lt;h4&gt;Featured Center in 
+         &lt;cfif Trim(City) is &quot;San Diego&quot;&gt; 
+            San Diego 
+         &lt;cfelse&gt; 
+            Santa Ana 
+         &lt;/cfif&gt; 
+         &lt;/h4&gt; &lt;b&gt;Name/Address:&lt;/b&gt;#Name#, #Address1#, #City#, #State#
+         &lt;br&gt;&lt;b&gt;Contact:&lt;/b&gt; #Contact#&lt;br&gt; 
+   &lt;cfelse&gt; 
+      &lt;br&gt;&lt;i&gt;#Name#, #City#&lt;/i&gt; 
+   &lt;/cfif&gt; 
+&lt;/cfoutput&gt; 
+&lt;hr&gt; 
+&lt;p&gt;Finally, we can use CFELSEIF to cycle through a number of conditions and 
+produce varying output. Note that you can use CFCASE and CFSWITCH for a more
+elegant representation of this behavior. 
+&lt;!--- Use CFIF in conjunction with CFELSEIF to specify more than one 
+   branch in a conditional situation. ---&gt; 
+&lt;cfoutput query=&quot;getCenters&quot;&gt; 
+   &lt;cfif Trim(City) is &quot;San Diego&quot; OR Trim(City) is &quot;Santa Ana&quot;&gt; 
+      &lt;br&gt;&lt;i&gt;#Name#, #City#&lt;/i&gt; (this one is in 
+            &lt;cfif Trim(City) is &quot;San Diego&quot;&gt;San Diego
+            &lt;cfelse&gt;Santa Ana
+            &lt;/cfif&gt;) 
+         &lt;cfelseif Trim(City) is &quot;San Francisco&quot;&gt; 
+            &lt;br&gt;&lt;i&gt;#Name#, #City#&lt;/i&gt; (this one is in San Francisco) 
+         &lt;cfelseif Trim(City) is &quot;Suisun&quot;&gt; 
+            &lt;br&gt;&lt;i&gt;#Name#, #City#&lt;/i&gt; (this one is in Suisun) 
+         &lt;cfelse&gt; &lt;br&gt;&lt;i&gt;#Name#&lt;/i&gt; 
+            &lt;b&gt;Not in a city we track&lt;/b&gt; 
+         &lt;/cfif&gt; 
+&lt;/cfoutput&gt; 
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+
+  </body>
+</html>

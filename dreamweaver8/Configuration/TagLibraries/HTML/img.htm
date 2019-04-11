@@ -1,0 +1,278 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>IMG</title>
+  
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var LANGUAGELIST; 
+var DIRLIST;
+var ALIGNLIST;
+var ALTLIST;
+var LOOPLIST;
+var STARTLIST;
+var theUIObjects;
+
+var TEXT_SRC;
+var TEXT_WIDTH;
+var TEXT_HEIGHT;
+var G_origsrc;
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+	G_origsrc = TEXT_SRC.value;
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function updateWidthAndHeight(fieldVal,calledFrom){
+	if ((calledFrom == "browse" && fieldVal != G_origsrc) || calledFrom == "recalc" || (calledFrom == "field" && dw.getDocumentDOM().URL != "")){
+    var fullPath = dwscripts.getAbsoluteURL(fieldVal);
+    if (fullPath){
+      if (dwscripts.isFile(fullPath)){
+        var dimensions = dw.getNaturalSize(fullPath);
+        if(dimensions && dimensions[0] && dimensions[1]){ 
+          TEXT_WIDTH.value = dimensions[0];
+          TEXT_HEIGHT.value = dimensions[1];        
+        }
+      } 
+    } 
+  }
+}
+
+function initializeUI()
+{
+	LANGUAGELIST = new ListControl("thelang"); 
+	DIRLIST = new ListControl("thedir"); 
+	ALIGNLIST = new ListControl("thealign"); 
+	ALTLIST = new ListControl("thealt");
+	LOOPLIST = new ListControl("theloop");
+	STARTLIST = new ListControl("thestart");
+	TEXT_SRC = dwscripts.findDOMObject("thesrc");
+	TEXT_WIDTH = dwscripts.findDOMObject("thewidth");
+	TEXT_HEIGHT = dwscripts.findDOMObject("theheight");
+
+
+	theUIObjects  = new Array(LANGUAGELIST,DIRLIST,ALIGNLIST,ALTLIST,LOOPLIST,STARTLIST); 
+
+  tagDialog.populateDropDownList(LANGUAGELIST, theLanguagesCap, theLanguagesVal, 1); 
+  tagDialog.populateDropDownList(DIRLIST, theDirectionCap, theDirectionVal, 1); 
+  tagDialog.populateDropDownList(ALIGNLIST, theAlignImgCap, theAlignImgVal, 1); 
+  tagDialog.populateDropDownList(ALTLIST, theImgAltCap, theImgAltVal, 1); 
+  tagDialog.populateDropDownList(LOOPLIST, theLoopsBGSoundCap, theLoopsBGSoundVal, 1); 
+  tagDialog.populateDropDownList(STARTLIST, theImgStartCap, theImgStartVal, 1); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">源: </td>
+      <td nowrap="nowrap">
+        <input name="thesrc" type="text" class="basicTextField" id="attr:img:src" onBlur="updateWidthAndHeight(this.value,'field')" attname="src" required="true" />&nbsp;
+				<!-- NOTE: Removed ";focus(this)" from the onClick handler because it prevents the text field from ever getting the onBlur event. While the button should technically retain focus after being clicked, I don't think it's tragic if it doesn't. :LMH -->
+        <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('thesrc');updateWidthAndHeight(TEXT_SRC.value,'browse');TEXT_SRC.focus();TEXT_SRC.select()">
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">替换文本: </td>
+      <td nowrap="nowrap">
+        <select name="thealt" class="multiWordOptionList" id="attr:img:alt" attname="alt" editable="true" />
+        
+        </select>
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:img:name" attname="name" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">宽度: </td>
+      <td nowrap="nowrap">
+        <input name="thewidth" type="text" class="smallNumOrChar" id="attr:img:width" attname="width" />&nbsp;&nbsp;&nbsp;高度: <input name="theheight" type="text" class="smallNumOrChar" id="attr:img:height" attname="height" />&nbsp;&nbsp;&nbsp;<input type="image" src="../../Shared/MM/Images/calc.gif" width="22" height="23" align="absmiddle" alt="重新计算图像大小" onClick="updateWidthAndHeight(dwscripts.findDOMObject('thesrc').value,'recalc')"/>
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">水平间距: </td>
+      <td nowrap="nowrap">
+        <input name="thehspace" type="text" class="smallNumOrChar" id="attr:img:hspace" attname="hspace" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">垂直间距: </td>
+      <td nowrap="nowrap">
+        <input name="thevspace" type="text" class="smallNumOrChar" id="attr:img:vspace" attname="vspace" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框: </td>
+      <td nowrap="nowrap">
+        <input name="theborder" type="text" class="smallNumOrChar" id="attr:img:border" attname="border" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">对齐: </td>
+      <td nowrap="nowrap">
+        <select name="thealign" class="alignList" id="attr:img:align" attname="align">
+        </select>
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">使用映射: </td>
+      <td nowrap="nowrap">
+        <input name="theusemap" type="text" class="basicTextField" id="attr:img:usemap" attname="usemap" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">低解析度源: </td>
+      <td nowrap="nowrap">
+        <input name="thelowsrc" type="text" class="basicTextField" id="attr:img:lowsrc" attname="lowsrc" />&nbsp;
+        <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('thelowsrc');focus(this)">&nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;4+&nbsp;<img src="../../Shared/MM/Images/Netscape.gif" alt="Netscape" align="absmiddle">&nbsp;1+
+      </td>
+    </tr>
+  </table> 
+</div> 
+<div name="动态"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">动态源: </td>
+      <td nowrap="nowrap">
+        <input name="thedynsrc" type="text" class="basicTextField" id="attr:img:dynsrc" attname="dynsrc" />&nbsp;
+        <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('thedynsrc');focus(this)">&nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;2+&nbsp;<img src="../../Shared/MM/Images/Opera.gif" alt="Opera" align="absmiddle">&nbsp;2.1+
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">循环: </td>
+      <td nowrap="nowrap">
+        <select name="theloop" class="smallNumOrCharList" id="attr:img:loop" attname="loop" editable="true" />
+        
+        </select>&nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;2+&nbsp;<img src="../../Shared/MM/Images/Opera.gif" alt="Opera" align="absmiddle">&nbsp;2.1+
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">开始: </td>
+      <td nowrap="nowrap">
+        <select name="thestart" class="oneWordOptionList" id="attr:img:start" attname="start" />
+        
+        </select>&nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;2+
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:img:controls" name="thecontrols" attname="controls" truevalue="true" falsevalue="" /> 控件&nbsp;&nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;2+
+      </td>
+    </tr>
+  </table> 
+</div> 
+<div name="样式表/辅助功能"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">类: </td>
+      <td nowrap="nowrap">
+        <input name="theclass" type="text" class="basicTextField" id="attr:img:class" attname="class" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="attr:img:id" attname="id" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">样式: </td>
+      <td nowrap="nowrap">
+        <input name="thestyle" type="text" class="basicTextField" id="attr:img:class" attname="style" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">标题: </td>
+      <td nowrap="nowrap">
+        <input name="thetitle" type="text" class="basicTextField" id="attr:img:title" attname="title" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">详细说明: </td>
+      <td nowrap="nowrap">
+        <input name="thelongdesc" type="text" class="basicTextField" id="attr:img:longdesc" attname="longdesc" />&nbsp;
+        <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('thelongdesc');focus(this)">
+      </td>
+    </tr>
+  </table> 
+</div>
+<div name="语言"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">方向: </td>
+      <td nowrap="nowrap">
+        <select name="thedir" class="dirLangList" id="attr:img:dir" attname="dir"> 
+        </select>
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap"></td>
+      <td nowrap="nowrap"></td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">语言: </td>
+      <td nowrap="nowrap">
+        <select name="thelang" class="dirLangList" id="attr:img:lang" attname="lang" editable="true"> 
+        </select>
+      </td>
+    </tr>
+  </table>
+</div>
+<div name="事件"> 
+  <div name="onClick"> 
+    <textarea name="theonClick" attname="onClick" id="attr:img:onclick" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onDblClick"> 
+    <textarea name="theonDblClick" attname="onDblClick" id="attr:img:ondblclick" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseDown"> 
+    <textarea name="theonMouseDown" attname="onMouseDown" id="attr:img:onmousedown" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseUp"> 
+    <textarea name="theonMouseUp" attname="onMouseUp" id="attr:img:onmouseup" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseOver"> 
+    <textarea name="theonMouseOver" attname="onMouseOver" id="attr:img:onmouseover" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseMove"> 
+    <textarea name="theonMouseMove" attname="onMouseMove" id="attr:img:onmousemove" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseOut"> 
+    <textarea name="theonMouseOut" attname="onMouseOut" id="attr:img:onmouseout" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onKeyPress"> 
+    <textarea name="theonKeyPress" attname="onKeyPress" id="attr:img:onkeypress" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onKeyDown"> 
+    <textarea name="theonKeyDown" attname="onKeyDown" id="attr:img:onkeydown" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onKeyUp"> 
+    <textarea name="theonKeyUp" attname="onKeyUp" id="attr:img:onkeyup" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+</div>
+</body>
+</html>

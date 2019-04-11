@@ -1,0 +1,248 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFREGISTRY ACTION = &QUOT;GETALL&QUOT;</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFREGISTRY ACTION = &QUOT;GETALL&QUOT;</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Returns all registry keys and values defined in a branch. You can access the values as you would any record set.
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfregistry 
+   action = &quot;getAll&quot;
+   branch = &quot;branch&quot;
+   type = &quot;data type&quot;
+   name = &quot;query name&quot; 
+   sort = &quot;criteria&quot;&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+Chapter&#160;15, "Using Persistent Data and Locking," in ColdFusion MX Developer's Guide
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+This tag returns #entry#, #type#, and #value# in a record set that you can access through tags such as cfoutput. To fully qualify these variables, use the record set name, as specified in the name attribute.
+</p>
+
+<p>
+If #type# is a key, #value# is an empty string.
+</p>
+
+<p>
+If you specify type= &quot;any&quot;, getAll also returns binary registry values. For binary values, the #type# variable contains UNSUPPORTED and #value# is blank.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!--- This example uses cfregistry with the getAll action. ---&gt;
+&lt;cfregistry action = &quot;getAll&quot;
+   branch = &quot;HKEY_LOCAL_MACHINE\Software\Microsoft\Java VM&quot; 
+   type = &quot;Any&quot; name = &quot;RegQuery&quot;&gt;
+&lt;p&gt;&lt;h1&gt;cfregistry action = &quot;getAll&quot;&lt;/h1&gt;
+&lt;cftable query = &quot;RegQuery&quot; colHeaders HTMLTable border = &quot;Yes&quot;&gt;
+&lt;cfcol header = &quot;&lt;b&gt;Entry&lt;/b&gt;&quot; width = &quot;35&quot; text = &quot;#RegQuery.Entry#&quot;&gt;
+&lt;cfcol header = &quot;&lt;b&gt;Type&lt;/b&gt;&quot; width = &quot;10&quot; text = &quot;#RegQuery.type#&quot;&gt;
+&lt;cfcol header = &quot;&lt;b&gt;Value&lt;/b&gt;&quot; width = &quot;35&quot; text = &quot;#RegQuery.Value#&quot;&gt;
+&lt;/cftable&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="ACTION">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ACTION</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Always getall.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="BRANCH">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">BRANCH</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of a registry branch.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TYPE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TYPE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "String"
+
+<ul>
+
+<li>string: returns string values.</li>
+
+<li>dWord: returns DWord values.</li>
+
+<li>key: returns keys.</li>
+
+<li>any: returns keys and values.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="NAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of record set to contain returned keys and values.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SORT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SORT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "ASC"
+
+
+<p>Sorts query column data (case-insensitive). Sorts on Entry, Type, and Value columns as text. Specify a combination of columns from query output, in a comma-delimited list. For example: </p><pre>sort = &quot;value desc, entry asc&quot;
+</pre><ul>
+
+<li>asc: ascending (a to z) sort order. </li>
+
+<li>desc: descending (z to a) sort order.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

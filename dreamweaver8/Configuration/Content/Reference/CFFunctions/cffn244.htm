@@ -1,0 +1,196 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>SENDGATEWAYMESSAGE</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">SENDGATEWAYMESSAGE</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Sends an outgoing message through a ColdFusion MX event gateway.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+String. The value returned depends on the gateway type.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Extensibility functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>SendGatewayMessage(gatewayID, data)
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+GetGatewayHelper; "IM gateway message sending commands", "SMS Gateway CFEvent structure and commands", "CFML event gateway SendGatewayMessage data parameter", and "Sending a message using the SendGatewayMessage function" in Chapter&#160;42, "Using Event Gateways," in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7: Added this function.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+The SendGatewayMessage function calls the specified gateway's outgoingMessage method. The value returned by the function depends on the gateway type. The following table describes the return values for standard ColdFusion MX gateway types: 
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+The following example uses an instance of the CFML gateway to log messages asynchronously to a file. To use this example, you must configure an instance of the CFML gateway with the name "Asynch Logger" in the ColdFusion MX Administrator. This gateway instance must use a CFC that takes the message and logs it. For sample CFC code, see "Using the CFML event gateway for asynchronous CFCs" in Chapter&#160;42, "Using Event Gateways," in ColdFusion MX Developer's Guide.
+</p>
+<pre>Sending an event to the CFML event gateway that is registered in the 
+   ColdFusion MX Administrator as Asynch Logger.&lt;br&gt;
+&lt;cfscript&gt;
+   status = false;
+   props = structNew();
+   props.message = &quot;Replace me with a variable with data to log&quot;;   
+   status = SendGatewayMessage(&quot;Asynch Logger&quot;, props);
+   if (status IS True) WriteOutput('Event Message &quot;#props.message#&quot; has been 
+sent.');
+&lt;/cfscript&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="GATEWAYID">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">GATEWAYID</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Identifier of the gateway to send the message. Must be the Gateway ID of one of the ColdFusion event gateway instances configured on the ColdFusion MX Administrator Event Gateways section's Gateways page.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DATA">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DATA</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A ColdFusion structure. The contents of the structure depend on the event gateway type, but typically include a MESSAGE field that contains the message to send and a field that contains the destination address.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+<p>Asynchronous CFML</p>
+
+<p>If the message was queued for delivery to the CFC, returns True; False, otherwise.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+<p>Lotus SameTime</p>
+
+<p>If the message or command was successful, returns OK.</p>
+<p>If an error occurred, returns a string indicating the cause. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+<p>SMS</p>
+
+<p>If the gateway is in asynchronous mode, returns the empty string immediately.</p>
+<p>If the gateway is in synchronous mode, the function waits for the gateway to return a response. If the message was succesfully sent to the short message service center (SMSC), returns the message ID from the SMSC. If an error occured, returns a string indicating the cause. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+<p>XMPP</p>
+
+<p>If the message or command was successful, returns OK</p>
+<p>If an error occured, returns a string indicating the cause. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

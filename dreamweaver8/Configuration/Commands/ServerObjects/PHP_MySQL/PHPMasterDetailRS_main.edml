@@ -1,0 +1,46 @@
+<participant VERSION="6.0">
+	<insertText location="aboveHTML+50"><![CDATA[<?php
+<@ if (@@PageSize@@) @>
+$maxRows_@@RecordsetName@@ = @@PageSize@@;
+$pageNum_@@RecordsetName@@ = @@StartRecord@@;
+if (isset($_GET['pageNum_@@RecordsetName@@'])) {
+  $pageNum_@@RecordsetName@@ = $_GET['pageNum_@@RecordsetName@@'];
+}
+$startRow_@@RecordsetName@@ = $pageNum_@@RecordsetName@@ * $maxRows_@@RecordsetName@@;
+
+<@ endif @>
+<@ loop (@@Variable@@, @@DefaultValue@@, @@RuntimeValue@@) @>
+$@@Variable@@_@@RecordsetName@@ = "@@DefaultValue@@";
+if (isset(@@RuntimeValue@@)) {
+  $@@Variable@@_@@RecordsetName@@ = (get_magic_quotes_gpc()) ? @@RuntimeValue@@ : addslashes(@@RuntimeValue@@);
+}
+<@ endloop @>
+mysql_select_db($database_@@ConnectionName@@, $@@ConnectionName@@);
+$recordID = $_GET['recordID'];
+$query_@@RecordsetName@@ = <@ if (@@SQLVariableList@@) @>sprintf(<@ endif @>"@@SQLStatement@@"<@ if (@@SQLVariableList@@) @>, @@SQLVariableList@@)<@ endif @>;
+<@ if (@@PageSize@@) @>
+$query_limit_@@RecordsetName@@ = sprintf("%s LIMIT %d, %d", $query_@@RecordsetName@@, $startRow_@@RecordsetName@@, $maxRows_@@RecordsetName@@);
+$@@RecordsetName@@ = mysql_query($query_limit_@@RecordsetName@@, $@@ConnectionName@@) or die(mysql_error());
+<@ else @>
+$@@RecordsetName@@ = mysql_query($query_@@RecordsetName@@, $@@ConnectionName@@) or die(mysql_error());
+<@ endif @>
+$row_@@RecordsetName@@ = mysql_fetch_assoc($@@RecordsetName@@);
+<@ if (@@PageSize@@) @>
+
+if (isset($_GET['totalRows_@@RecordsetName@@'])) {
+  $totalRows_@@RecordsetName@@ = $_GET['totalRows_@@RecordsetName@@'];
+} else {
+  $all_@@RecordsetName@@ = mysql_query($query_@@RecordsetName@@);
+  $totalRows_@@RecordsetName@@ = mysql_num_rows($all_@@RecordsetName@@);
+}
+$totalPages_@@RecordsetName@@ = ceil($totalRows_@@RecordsetName@@/$maxRows_@@RecordsetName@@)-1;
+<@ else @>
+$totalRows_@@RecordsetName@@ = mysql_num_rows($@@RecordsetName@@);
+<@ endif @>
+?>]]></insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="PageSize,StartRecord,MM_loop1,ConnectionName,RecordsetName,SQLStatement,SQLVariableList" isOptional="false" limitSearch="all"><![CDATA[/(?:\$maxRows_[^\r\n]*? = ([^\r\n]*?);(?:\r\n|\r(?!\n)|\n)[ \t]*\$pageNum_[^\r\n]*? = ([^\r\n]*?);(?:\r\n|\r(?!\n)|\n)[ \t]*if \(isset\(\$_GET\['pageNum_[^\r\n]*?'\]\)\) \{(?:\r\n|\r(?!\n)|\n)[ \t]*\$pageNum_[^\r\n]*? = \$_GET\['pageNum_[^\r\n]*?'\];(?:\r\n|\r(?!\n)|\n)[ \t]*\}(?:\r\n|\r(?!\n)|\n)[ \t]*\$startRow_[^\r\n]*? = \$pageNum_[^\r\n]*? \* \$maxRows_[^\r\n]*?;(?:\r\n|\r(?!\n)|\n)[ \t]*(?:\r\n|\r(?!\n)|\n)[ \t]*)?((?:\$[^\r\n]*_[^\r\n]* = "[^\r\n]*";(?:\r\n|\r(?!\n)|\n)[ \t]*if \(isset\([^\r\n]*\)\) \{(?:\r\n|\r(?!\n)|\n)[ \t]*\$[^\r\n]*_[^\r\n]* = \(get_magic_quotes_gpc\(\)\) \? [^\r\n]* : addslashes\([^\r\n]*\);(?:\r\n|\r(?!\n)|\n)[ \t]*\}(?:\r\n|\r(?!\n)|\n)[ \t]*)*?)mysql_select_db\(\$database_([^\r\n]*?), \$[^\r\n]*?\);(?:\r\n|\r(?!\n)|\n)[ \t]*\$query_([^\r\n]*?) = (?:sprintf\()?"([^\r\n]*?)"(?:, ([^\r\n]*?)\))?;(?:\r\n|\r(?!\n)|\n)[ \t]*(?:\$query_limit_[^\r\n]*? = sprintf\("%s LIMIT %d, %d", \$query_[^\r\n]*?, \$startRow_[^\r\n]*?, \$maxRows_[^\r\n]*?\);(?:\r\n|\r(?!\n)|\n)[ \t]*\$[^\r\n]*? = mysql_query\(\$query_limit_[^\r\n]*?, \$[^\r\n]*?\) or die\(mysql_error\(\)\);(?:\r\n|\r(?!\n)|\n)[ \t]*|\$[^\r\n]*? = mysql_query\(\$query_[^\r\n]*?, \$[^\r\n]*?\) or die\(mysql_error\(\)\);(?:\r\n|\r(?!\n)|\n)[ \t]*)\$row_[^\r\n]*? = mysql_fetch_assoc\(\$[^\r\n]*?\);(?:\r\n|\r(?!\n)|\n)[ \t]*(?:(?:\r\n|\r(?!\n)|\n)[ \t]*if \(isset\(\$_GET\['totalRows_[^\r\n]*?'\]\)\) \{(?:\r\n|\r(?!\n)|\n)[ \t]*\$totalRows_[^\r\n]*? = \$_GET\['totalRows_[^\r\n]*?'\];(?:\r\n|\r(?!\n)|\n)[ \t]*\} else \{(?:\r\n|\r(?!\n)|\n)[ \t]*\$all_[^\r\n]*? = mysql_query\(\$query_[^\r\n]*?\);(?:\r\n|\r(?!\n)|\n)[ \t]*\$totalRows_[^\r\n]*? = mysql_num_rows\(\$all_[^\r\n]*?\);(?:\r\n|\r(?!\n)|\n)[ \t]*\}(?:\r\n|\r(?!\n)|\n)[ \t]*\$totalPages_[^\r\n]* = (?:ceil|\(int\))\(\$totalRows_[^\r\n]*\/\$maxRows_[^\r\n]*\)(?:-1)?;|\$totalRows_[^\r\n]*? = mysql_num_rows\(\$[^\r\n]*?\);)(?=\r\n|\r|\n|\?>)/i]]></searchPattern>
+		<searchPattern paramNames="Variable,DefaultValue,RuntimeValue" limitSearch="@@MM_loop1@@" isOptional="true" searchType="multiple"><![CDATA[/\$([^\r\n]*?)_[^\r\n]*? = "([^\r\n]*?)";(?:\r\n|\r(?!\n)|\n)[ \t]*if \(isset\(([^\r\n]*?)\)\) \{(?:\r\n|\r(?!\n)|\n)[ \t]*\$[^\r\n]*?_[^\r\n]*? = \(get_magic_quotes_gpc\(\)\) \? [^\r\n]*? : addslashes\([^\r\n]*?\);(?:\r\n|\r(?!\n)|\n)[ \t]*\}(?:\r\n|\r(?!\n)|\n)[ \t]*/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>mysql_select_db($database_</quickSearch>
+</participant>

@@ -1,0 +1,61 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 6.0//pi">
+<!-- tag:META,attrName:http-equiv,attrValue:refresh,priority:6,selection:within, hline, vline -->
+<html>
+<head>
+<!-- Copyright 2000,2001 Macromedia, Inc. All rights reserved. -->
+<title>刷新属性检查器</title>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<SCRIPT LANGUAGE="javascript" SRC="_pi_common.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<script src="refresh.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+</head>
+<body>
+<span id="image" style="position:absolute; width:23px; height:17px; z-index:16; left: 3px; top: 2px"><img src="refresh.gif" width="36" height="36"></span><span id="label" style="position:absolute; width:23px; height:17px; z-index:16; left: 46px; top: 5px">刷新</span> 
+<span id="tButtonSpan" style="position:absolute; width:15px; height:15px; z-index:17; left: -1px; top: 21px"> 
+<input type="image" border="0" src="T4PI.gif" width="15" height="15" onClick="launchQuickTagEditor( true )" name="tButtonImage">
+</span>
+<div id="Layer2" style="position:absolute; left:115px; top:0px; width:422px; z-index:19"> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr> 
+      <td width="15%" height="23" align="right" valign="baseline" nowrap>URL&nbsp;</td>
+      <td width="46%" height="23" nowrap> 
+        <input type="radio" name="radioURL" value="radioURL" onClick="setMetaTag(0)"> 
+        <input type="text" name="fileURL" onBlur="setMetaTag(2)" style="width:140">
+        &nbsp; </td>
+      <td width="46%" nowrap>
+        <input name="image" type="image" onClick="browseForFile();setMetaTag(2)" src="../Shared/MM/Images/folder.gif" align="bottom" width="15" height="15" border="0"></td>
+    </tr>
+    <tr> 
+      <td width="15%" height="20" align="right" nowrap>动作&nbsp;</td>
+      <td nowrap>
+        <input type="radio" name="radioThisDoc" value="radioThisDoc" onClick="setMetaTag(1);clearField()">
+        刷新此文档</td>
+      <td nowrap>&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<div id="Layer1" style="position:absolute; left:115px; top:53px; width:423px; z-index:20"> 
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td width="15%" align="right" nowrap>延迟&nbsp;</td>
+      <td width="64%"> 
+        <input type="text" name="Delay" size="7" onBlur="setMetaTag(2)" style="width:40"></td>
+      <td width="10%">&nbsp;</td>
+      <td width="12%">&nbsp;</td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

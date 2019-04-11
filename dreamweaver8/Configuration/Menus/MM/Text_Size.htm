@@ -1,0 +1,197 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000-2003 Macromedia, Inc. All rights reserved. -->
+<TITLE>文本列表菜单</TITLE>
+<SCRIPT LANGUAGE="javascript">
+<!--
+
+function isDOMRequired()
+{
+  return false;
+}
+
+
+function receiveArguments()
+{
+  var what = arguments[0];
+  
+  if (dw.getFocus(true) == 'document') {
+    if (what == "default")
+      dw.getDocumentDOM().applyFontMarkup('size', '')
+    if (what == "+1")
+      dw.getDocumentDOM().applyFontMarkup('size', '+1')
+    if (what == "+2")
+      dw.getDocumentDOM().applyFontMarkup('size', '+2')
+    if (what == "+3")
+      dw.getDocumentDOM().applyFontMarkup('size', '+3')
+    if (what == "+4")
+      dw.getDocumentDOM().applyFontMarkup('size', '+4')
+    if (what == "+5")
+      dw.getDocumentDOM().applyFontMarkup('size', '+5')
+    if (what == "+6")
+      dw.getDocumentDOM().applyFontMarkup('size', '+6')
+    if (what == "+7")
+      dw.getDocumentDOM().applyFontMarkup('size', '+7')
+    if (what == "-1")
+      dw.getDocumentDOM().applyFontMarkup('size', '-1')
+    if (what == "-2")
+      dw.getDocumentDOM().applyFontMarkup('size', '-2')
+    if (what == "-3")
+      dw.getDocumentDOM().applyFontMarkup('size', '-3')
+    if (what == "-4")
+      dw.getDocumentDOM().applyFontMarkup('size', '-4')
+    if (what == "-5")
+      dw.getDocumentDOM().applyFontMarkup('size', '-5')
+    if (what == "-6")
+      dw.getDocumentDOM().applyFontMarkup('size', '-6')
+    if (what == "-7")
+      dw.getDocumentDOM().applyFontMarkup('size', '-7')
+    if (what == "1")
+      dw.getDocumentDOM().applyFontMarkup('size', '1')
+    if (what == "2")
+      dw.getDocumentDOM().applyFontMarkup('size', '2')
+    if (what == "3")
+      dw.getDocumentDOM().applyFontMarkup('size', '3')
+    if (what == "4")
+      dw.getDocumentDOM().applyFontMarkup('size', '4')
+    if (what == "5")
+      dw.getDocumentDOM().applyFontMarkup('size', '5')
+    if (what == "6")
+      dw.getDocumentDOM().applyFontMarkup('size', '6')
+    if (what == "7")
+      dw.getDocumentDOM().applyFontMarkup('size', '7')
+  } else {
+    if (what == "+1")
+      dw.getDocumentDOM().source.wrapSelection('<font size="+1">', '</font>')
+    if (what == "+2")
+      dw.getDocumentDOM().source.wrapSelection('<font size="+2">', '</font>')
+    if (what == "+3")
+      dw.getDocumentDOM().source.wrapSelection('<font size="+3">', '</font>')
+    if (what == "+4")
+      dw.getDocumentDOM().source.wrapSelection('<font size="+4">', '</font>')
+    if (what == "+5")
+      dw.getDocumentDOM().source.wrapSelection('<font size="+5">', '</font>')
+    if (what == "+6")
+      dw.getDocumentDOM().source.wrapSelection('<font size="+6">', '</font>')
+    if (what == "+7")
+      dw.getDocumentDOM().source.wrapSelection('<font size="+7">', '</font>')
+    if (what == "-1")
+      dw.getDocumentDOM().source.wrapSelection('<font size="-1">', '</font>')
+    if (what == "-2")
+      dw.getDocumentDOM().source.wrapSelection('<font size="-2">', '</font>')
+    if (what == "-3")
+      dw.getDocumentDOM().source.wrapSelection('<font size="-3">', '</font>')
+    if (what == "-4")
+      dw.getDocumentDOM().source.wrapSelection('<font size="-4">', '</font>')
+    if (what == "-5")
+      dw.getDocumentDOM().source.wrapSelection('<font size="-5">', '</font>')
+    if (what == "-6")
+      dw.getDocumentDOM().source.wrapSelection('<font size="-6">', '</font>')
+    if (what == "-7")
+      dw.getDocumentDOM().source.wrapSelection('<font size="-7">', '</font>')
+    if (what == "1")
+      dw.getDocumentDOM().source.wrapSelection('<font size="1">', '</font>')
+    if (what == "2")
+      dw.getDocumentDOM().source.wrapSelection('<font size="2">', '</font>')
+    if (what == "3")
+      dw.getDocumentDOM().source.wrapSelection('<font size="3">', '</font>')
+    if (what == "4")
+      dw.getDocumentDOM().source.wrapSelection('<font size="4">', '</font>')
+    if (what == "5")
+      dw.getDocumentDOM().source.wrapSelection('<font size="5">', '</font>')
+    if (what == "6")
+      dw.getDocumentDOM().source.wrapSelection('<font size="6">', '</font>')
+    if (what == "7")
+      dw.getDocumentDOM().source.wrapSelection('<font size="7">', '</font>')
+  }
+}
+
+function canAcceptCommand()
+{
+  // Make sure the focus is in the BODY of the document.
+  var retVal = false;
+  if (dw.getFocus() == 'document' && dw.getDocumentDOM().getFocus() == 'body') {
+    retVal = true;
+  } else if (dw.getFocus(true) == 'html' || dw.getFocus() == 'textView') {
+//    var what = arguments[0];
+//    if (what != "default")
+      retVal = true;
+  }
+  if (dw.getDocumentDOM() && dw.getDocumentDOM().getParseMode() != 'html') {
+      retVal = false;
+  }
+  
+  retVal = retVal && (!dw.getDocumentDOM().getUseCSS());
+
+  return retVal;
+}
+
+function isCommandChecked()
+{
+//  if (dw.getFocus(true) == 'html' || dw.getFocus() == 'textView')
+//    return false;
+    
+    
+  if (dw.getDocumentDOM() != null){
+    var textSize = dw.getDocumentDOM().getFontMarkup('size');
+    var what = arguments[0];
+
+    if (what == "default")
+      return (textSize  == '');
+    if (what == "+1")
+      return (textSize == "+1");
+    if (what == "+2")
+      return (textSize == "+2");
+    if (what == "+3")
+      return (textSize == "+3");
+    if (what == "+4")
+      return (textSize == "+4");
+    if (what == "+5")
+      return (textSize == "+5");
+    if (what == "+6")
+      return (textSize == "+6");
+    if (what == "+7")
+      return (textSize == "7+");
+    if (what == "-1")
+      return (textSize == "-1");
+    if (what == "-2")
+      return (textSize == "-2");
+    if (what == "-3")
+      return (textSize == "-3");
+    if (what == "-4")
+      return (textSize == "-4");
+    if (what == "-5")
+      return (textSize == "-5");
+    if (what == "-6")
+      return (textSize == "-6");
+    if (what == "-7")
+      return (textSize == "-7");
+    if (what == "1")
+      return (textSize == "1");
+    if (what == "2")
+      return (textSize == "2");
+    if (what == "3")
+      return (textSize == "3");
+    if (what == "4")
+      return (textSize == "4");
+    if (what == "5")
+      return (textSize == "5");
+    if (what == "6")
+      return (textSize == "6");
+    if (what == "7")
+      return (textSize == "7");
+    else
+      return false;
+  }
+  else
+  {
+    return false;
+  }  
+}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

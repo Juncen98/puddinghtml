@@ -1,0 +1,245 @@
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2000, 2001, 2002, 2003, 2004 Macromedia, Inc. All rights reserved. -->
+<HTML>
+	<HEAD>
+		<TITLE>Before Save</TITLE>
+		<SCRIPT LANGUAGE="javascript">
+
+//---------------    GLOBAL VARS   ---------------
+
+var LOCK_IND = 0;
+
+
+//---------------    LOCAL FUNCTIONS   ---------------
+
+
+// to allow for faster save, we defer synchronizing whenever possible
+function isDOMRequired() {
+  return false;
+}
+
+
+function beforeSave() {
+	updateDWDates();
+}
+
+
+//function: isDocumentOpen
+//description: compares dom to all open documents, returns true
+//  if document is open.
+
+function isDocumentOpen (docDOM) {
+  var rtnBool = false;
+  var docList = dw.getDocumentList();
+  for (var i = 0; i < docList.length; i++) {
+    if (docList[i] == docDOM) {
+      rtnBool = true;
+      break;
+    }
+  }
+  return rtnBool;
+}
+
+//function: updateDWDates
+//description: updates all of the last modified dates in the document
+
+function updateDWDates(){
+
+   //a little bullet proofing in case getDocumentDOM returns null
+   var curDOM = dreamweaver.getDocumentDOM();
+   if (curDOM == null) return;
+
+   // We need the full text of the document. At this point we are NOT
+   // guaranteed that the DOM is synchronized with the text view.  So, if
+   // "curDOM.source," which represents the text view, is defined (which
+   // it is for Dreamweaver but not for Contribute), then get the text of
+   // the document from there.
+   var allText;
+   var textFromDOM = (curDOM.source == "");
+   if (textFromDOM)
+     allText = curDOM.documentElement.outerHTML;
+   else
+     allText = curDOM.source.getText();
+
+   // Before proceeding with all the hard work, we're going to do a quick
+   // check to see if there's anything that looks like it MIGHT be a dynamic
+   // date.
+   if ( allText.indexOf("#BeginDate") == -1 )
+     return;
+
+   // It appears there may be at least one dynamic date in this document,
+   // so we must make sure the design view is synchronized with the
+   // text view.
+   curDOM.synchronizeDocument();
+   if (textFromDOM) // if we got the text from the DOM, then it's out of date
+     allText = docElement.outerHTML; // re-fetch
+
+   var docElement = curDOM.documentElement;
+   var currSel = null;
+   var dateFile = dreamweaver.getConfigurationPath() + "/Commands/Date.htm";
+   var dateWin = dreamweaver.getDocumentDOM(dateFile).parentWindow;
+   var now = new Date();
+   var locks = curDOM.getElementsByTagName("MM:BeginLock");
+
+   var currLock,lockParent,children,textNode;
+   var dateID,dateInfoArr,dateStr,origVal,newOrig, htmlStr;
+
+   if (isDocumentOpen(curDOM))
+     currSel = curDOM.getSelection();  //store current selection
+
+   for (var i=0;i<locks.length;i++){
+       curDOM = dw.getDocumentDOM();
+       locks = curDOM.getElementsByTagName("MM:BeginLock");
+       currLock = locks.item(LOCK_IND++);
+	   if (currLock.type && currLock.type == "mmdate"){ //date found
+	      var lockOffsets = dw.nodeToOffsets(currLock);
+          var lockHTML = allText.substring(lockOffsets[0],lockOffsets[1]);
+
+          // account for case where dynamic date is in non-editable
+          // section of a template
+          if (lockHTML != currLock.outerHTML){
+            var lockStr = currLock.outerHTML
+            var substringToSearch = allText.substring(lockOffsets[0],lockOffsets[1])
+            var dynDateInd = substringToSearch.search(lockStr);
+            if ( lockOffsets[0] == -1 ) continue; // cannot find dynamic date
+            lockOffsets[0] += dynDateInd;
+            lockOffsets[1] = lockOffsets[0] + lockStr.length;
+          }
+
+	      dateID = currLock.format;
+		  dateInfoArr = decipherDateID(dateID);
+
+		  //get new date
+		   //if selected a Japanese date format, concatenate in order of
+		  //date, day, time
+//if (dateInfoArr[1].indexOf("Japan") == 0 && (dreamweaver.appVersion && dreamweaver.appVersion.indexOf('ja') != -1)) {
+if ( (dateInfoArr[1].indexOf("Japan") == 0 ||dateInfoArr[1].indexOf("Korean") == 0 ||dateInfoArr[1].indexOf("Chinese") == 0) && (dreamweaver.appVersion && (dreamweaver.appVersion.indexOf('ja') != -1 || dreamweaver.appVersion.indexOf('ko') != -1 || dreamweaver.appVersion.indexOf('zh') != -1) ) ){
+
+			dateStr = dateWin.createDateStr(now,dateInfoArr[1],true);
+			dateStr += " " + dateWin.createDayStr(now,dateInfoArr[0],dateInfoArr[1],false,true);
+			// we don't want a comma at the end of Western days if it appears within an Asian date format
+			if ((dateStr.substring(dateStr.length-1, dateStr.length) != ")") && (dateInfoArr[0] == "WestFullDayComma" || dateInfoArr[0] == "WestAbbrDayComma" || dateInfoArr[0] == "FullDayComma" || dateInfoArr[0] == "AbbrDayComma"))
+				dateStr = dateStr.substring(0, dateStr.length-2);
+			dateStr += dateWin.createTimeStr(now,dateInfoArr[2]);
+		  }
+		  else {
+			dateStr =  dateWin.createDayStr(now,dateInfoArr[0],dateInfoArr[1],false,true);
+			dateStr += dateWin.createDateStr(now,dateInfoArr[1],true);
+			dateStr += dateWin.createTimeStr(now,dateInfoArr[2]);
+		  }
+
+//if (dateInfoArr[1].indexOf("Japan") == 0 && (dreamweaver.appVersion && dreamweaver.appVersion.indexOf('ja') != -1)) {
+if ( (dateInfoArr[1].indexOf("Japan") == 0 ||dateInfoArr[1].indexOf("Korean") == 0 ||dateInfoArr[1].indexOf("Chinese") == 0) && (dreamweaver.appVersion && (dreamweaver.appVersion.indexOf('ja') != -1 || dreamweaver.appVersion.indexOf('ko') != -1 || dreamweaver.appVersion.indexOf('zh') != -1) ) ){
+
+			htmlStr = dateWin.createDateStr(now,dateInfoArr[1],true);
+			htmlStr += " " + dateWin.createDayStr(now,dateInfoArr[0],dateInfoArr[1],false,true);
+			// we don't want a comma at the end of Western days if it appears within an Asian date format
+			if ((htmlStr.substring(htmlStr.length-1, htmlStr.length) != ")") && (dateInfoArr[0] == "WestFullDayComma" || dateInfoArr[0] == "WestAbbrDayComma" || dateInfoArr[0] == "FullDayComma" || dateInfoArr[0] == "AbbrDayComma"))
+				htmlStr = htmlStr.substring(0, htmlStr.length-2);
+			htmlStr += dateWin.createTimeStr(now,dateInfoArr[2]);
+		  }
+		  else {
+			// we don't want encode Japanese day format.
+			if (dreamweaver.appVersion && (dreamweaver.appVersion.indexOf('ja') != -1 || dreamweaver.appVersion.indexOf('ko') != -1) )
+				htmlStr =  dateWin.createDayStr(now,dateInfoArr[0],dateInfoArr[1],false,true);
+			else
+			htmlStr =  dateWin.createDayStr(now,dateInfoArr[0],dateInfoArr[1],false,false);
+			htmlStr += dateWin.createDateStr(now,dateInfoArr[1],false);
+			htmlStr += dateWin.createTimeStr(now,dateInfoArr[2]);
+		  }
+
+          // re-create document string
+          var newDateStr = '<!-- #BeginDate format:' + dateID + ' -->' +
+		                  htmlStr + '<!-- #EndDate -->'
+
+
+		  var allText = allText.substring(0,lockOffsets[0]) + newDateStr +
+		            allText.substring(lockOffsets[1]);
+		  docElement.outerHTML = allText;
+      }
+   }
+
+   // the selection is now maintaining itself without explicit JavaScript code to re-set it,
+   // and this code is sometimes causing a generic JS error if the selection is at
+   // the end of the document.
+   /*
+   //restore original selection
+    if (currSel)
+      dw.getDocumentDOM().setSelection(currSel[0], currSel[1]);
+   */
+
+    LOCK_IND = 0;
+}
+
+
+//function: decipherDateID
+//description: given a dateID, returns an array
+//of three items - the day format, date format, and time format
+//for instance, given fcAm1a, returns
+//"FullDayComma","American1",and"AMPMTime";
+
+function decipherDateID(dateID){
+   var dateIDs = new Array()
+   dateIDs["Am1"] = "American1";
+   dateIDs["Am2"] = "American2";
+   dateIDs["Am3"] = "American3";
+   dateIDs["IS1"] = "ISO8601";
+   dateIDs["En1"] = "English1";
+   dateIDs["En2"] = "English2";
+   dateIDs["Fr1"] = "French1";
+   dateIDs["Sp1"] = "Spanish1";
+   dateIDs["Ja1"] = "Japanese1";
+   dateIDs["Ja2"] = "Japanese2";
+   dateIDs["Ja3"] = "Japanese3";
+   dateIDs["Br1"] = "Brazilian1";
+   dateIDs["Sw1"] = "Swedish1";
+   dateIDs["It1"] = "Italian1";
+   dateIDs["Ge1"] = "German1";
+   dateIDs["Ko1"] = "Korean1";
+   dateIDs["Ko2"] = "Korean2";
+   dateIDs["Ko3"] = "Korean3";
+   dateIDs["Ko4"] = "Korean4";
+   dateIDs["Ko5"] = "Korean5";
+   dateIDs["Ko6"] = "Korean6";
+   dateIDs["Ko7"] = "Korean7";
+   dateIDs["Ch1"] = "Chinese1";
+   dateIDs["Ch2"] = "Chinese2";
+
+   var dayIDs = new Array()
+   dayIDs[""] = "NoDay";
+   dayIDs["f"] = "FullDay";
+   dayIDs["fc"] = "FullDayComma";
+   dayIDs["a"] = "AbbrDay";
+   dayIDs["ac"] = "AbbrDayComma";
+   dayIDs["la"] = "LowAbbrDay";
+   dayIDs["lac"] = "LowAbbrDayComma";
+   dayIDs["wfc"] = "WestFullDayComma";
+   dayIDs["wac"] = "WestAbbrDayComma";
+
+   var upperCasePattern = /[A-Z]/
+   var dateInd = dateID.search(upperCasePattern);
+
+   var dayStr = "";
+   var dateStr = "";
+   var timeStr = "";
+
+   //create dayStr
+   dayStr = dayIDs[  dateID.substring(0,dateInd)  ];
+
+   //create dateStr
+   dateStr = dateIDs[  dateID.substring(dateInd,dateInd+3)  ];
+
+   //create timeStr
+   if (dateID.length ==  dateInd+4)
+      timeStr = (dateID.charAt(dateInd+3)=="a") ?"AMPMTime":"MilitaryTime";
+
+   return new Array(dayStr,dateStr,timeStr);
+
+}
+
+		</SCRIPT>
+		<link href="../fields.css" rel="stylesheet" type="text/css">
+	</HEAD>
+	<BODY onLoad="beforeSave()">
+	</BODY>
+</HTML>

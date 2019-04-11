@@ -1,0 +1,512 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFCATCH</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFCATCH</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Used inside a cftry tag. Together, they catch and process exceptions in ColdFusion pages. Exceptions are events that disrupt the normal flow of instructions in a ColdFusion page, such as failed database operations, missing include files, and developer-specified events.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Exception handling tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfcatch type = &quot;exceptiontype&quot;&gt;
+   Exception processing code here
+&lt;/cfcatch&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cftry, cferror, cfrethrow, cfthrow, onError; Chapter&#160;14, "Handling Errors," in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX:
+</p>
+<ul>
+
+<li>Changed SQLSTATE value behavior: the SQLSTATE return value in a cfcatch tag depends on the database driver type:</li>
+<ul>
+
+<li>Type 1 (JDBC-ODBC bridge): the value is the same as in ColdFusion 5</li>
+
+<li>Type 4 (100% Java, no native methods): the value might be different</li>
+
+<p>
+If your application depends on SQLSTATE values for flow control, the application might produce unexpected behavior with ColdFusion&#160;MX. 
+</p>
+    </td>
+  </tr></ul>
+
+<li>Changed the behavior of this tag when type=&quot;any&quot;: it is not necessary, when you include a cfcatch tag with type=&quot;any&quot;, to do so in the last cfcatch tag in the block, to ensure that all other tests are executed before it. ColdFusion finds the best-match cfcatch block. </li>
+
+<li>Changed the behavior of the cfscript tag: it includes try and catch statements that are equivalent to the cftry and cfcatch tags.</li>
+
+<li>Changed object modification: you cannot modify the object returned by cfcatch. </li>
+
+<li>Changed thrown exceptions: the cfcollection, cfindex, and cfsearch tags can throw the SEARCHENGINE exception. In earlier releases, an error in processing these tags threw only an UNKNOWN exception.</li>
+</ul>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+You must code at least one cfcatch tag within a cftry block. Put cfcatch tags at the end of a cftry block. ColdFusion&#160;MX tests cfcatch tags in the order in which they appear. This tag requires an end tag.
+</p>
+
+<p>
+If type=&quot;any&quot;, ColdFusion&#160;MX catches exceptions from any CFML tag, data source, or external object. To get the exception type use code such as the following:
+</p>
+<pre>   #cfcatch.type#
+</pre>
+<p>
+Applications can use the cfthrow tag to throw developer-defined exceptions. Catch these exceptions with any of these type options:
+</p>
+<ul>
+
+<li>&quot;custom_type&quot;</li>
+
+<li>&quot;Application&quot;</li>
+
+<li>&quot;Any&quot;</li>
+</ul>
+
+<p>
+The custom_type type is a developer-defined type specified in a cfthrow tag. If you define a custom type as a series of strings concatenated by periods (for example, &quot;MyApp.BusinessRuleException.InvalidAccount&quot;), ColdFusion MX can catch the custom type by its character pattern. ColdFusion MX searches for a cfcatch tag in the cftry block with a matching exception type, starting with the most specific (the entire string), and ending with the least specific. 
+</p>
+
+<p>
+For example, you could define a type as follows:
+</p>
+<pre>&lt;cfthrow type = &quot;MyApp.BusinessRuleException.InvalidAccount&quot;&gt;
+</pre>
+<p>
+If you have the following cfcatch tag, it will handle the exception:
+</p>
+<pre>&lt;cfcatch type = &quot;MyApp.BusinessRuleException.InvalidAccount&quot;&gt; 
+</pre>
+<p>
+Otherwise, if you have the following cfcatch tag, it will handle the exception:
+</p>
+<pre>&lt;cfcatch type = &quot;MyApp.BusinessRuleException&quot;&gt; 
+</pre>
+<p>
+Finally, if you have the following cfcatch tag, it will handle the exception:
+</p>
+<pre>&lt;cfcatch type = &quot;MyApp&quot;&gt; 
+</pre>
+<p>
+You can code cfcatch tags in any order to catch a custom exception type.
+</p>
+
+<p>
+If you specify type = &quot;Application&quot;, the cfcatch tag catches only custom exceptions that have the Application type in the cfthrow tag that defines them.
+</p>
+
+<p>
+The cfinclude, cfmodule, and cferror tags throw an exception of type = &quot;template&quot;.
+</p>
+
+<p>
+An exception that is thrown within a cfcatch block cannot be handled by the cftry block that immediately encloses the cfcatch tag. However, you can rethrow the currently active exception with the cfrethrow tag.
+</p>
+
+<p>
+The cfcatch variables provide the following exception information: 
+</p>
+
+<p>
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr align="center">    <th>&#160;</th>
+    <th>&#160;</th>
+</tr>
+  <tr align="left">    <td><pre>cfcatch.type
+</pre></td>
+    <td>
+<p>Type: Exception type, as specified in cfcatch.</p></td>
+</tr>
+  <tr align="left">    <td><pre>cfcatch.message 
+</pre></td>
+    <td>
+<p>Message: Exception&#39;s diagnostic message, if provided; otherwise, an empty string; in the cfcatch.message variable.</p></td>
+</tr>
+  <tr align="left">    <td><pre>cfcatch.detail 
+</pre></td>
+    <td>
+<p>Detailed message from the CFML interpreter or specified in a cfthrow tag. When the exception is generated by ColdFusion (and not cfthrow), the message can contain HTML formatting and can help determine which tag threw the exception.</p></td>
+</tr>
+  <tr align="left">    <td><pre>cfcatch.tagcontext 
+</pre></td>
+    <td>
+<p>An array of tag context structures, each representing one level of the active tag context at the time of the exception.</p></td>
+</tr>
+  <tr align="left">    <td><pre>cfcatch.NativeErrorCode
+</pre></td>
+    <td>
+<p>Applies to type = &quot;database&quot;. Native error code associated with exception. Database drivers typically provide error codes to diagnose failing database operations. Default: -1. </p></td>
+</tr>
+  <tr align="left">    <td><pre>cfcatch.SQLState
+</pre></td>
+    <td>
+<p>Applies to type = &quot;database&quot;. SQLState associated with exception. Database drivers typically provide error codes to help diagnose failing database operations. Default: -1. </p></td>
+</tr>
+  <tr align="left">    <td><pre>cfcatch.Sql
+</pre></td>
+    <td>
+<p>Applies to type = &quot;database&quot;. The SQL statement sent to the data source.</p></td>
+</tr>
+  <tr align="left">    <td><pre>cfcatch.queryError
+</pre></td>
+    <td>
+<p>Applies to type =&quot;database&quot;. The error message as reported by the database driver.</p></td>
+</tr>
+  <tr align="left">    <td><pre>cfcatch.where
+</pre></td>
+    <td>
+<p>Applies to type = &quot;database&quot;. If the query uses the cfqueryparam tag, query parameter name-value pairs.</p></td>
+</tr>
+  <tr align="left">    <td><pre>cfcatch.ErrNumber
+</pre></td>
+    <td>
+<p>Applies to type = &quot;expression&quot;. Internal expression error number.</p></td>
+</tr>
+  <tr align="left">    <td><pre>cfcatch.MissingFileName 
+</pre></td>
+    <td>
+<p>Applies to type = &quot;missingInclude&quot;. Name of file that could not be included.</p></td>
+</tr>
+  <tr align="left">    <td><pre>cfcatch.LockName
+</pre></td>
+    <td>
+<p>Applies to type = &quot;lock&quot;. Name of affected lock (if the lock is unnamed, the value is &quot;anonymous&quot;).</p></td>
+</tr>
+  <tr align="left">    <td><pre>cfcatch.LockOperation
+</pre></td>
+    <td>
+<p>Applies to type = &quot;lock&quot;. Operation that failed (Timeout, Create Mutex, or Unknown).</p></td>
+</tr>
+  <tr align="left">    <td><pre>cfcatch.ErrorCode
+</pre></td>
+    <td>
+<p>Applies to type = &quot;custom&quot;. String error code.</p></td>
+</tr>
+  <tr align="left">    <td><pre>cfcatch.ExtendedInfo
+</pre></td>
+    <td>
+<p>Applies to type = &quot;application&quot; and &quot;custom&quot;. Custom error message; information that the default exception handler does not display.</p></td>
+</tr>
+</table>
+</div>
+<p>
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Advanced Exception types</span>
+<p>
+You can specify the following advanced exception types in the type attribute:
+</p>
+
+<p>
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr align="center">    <th>&#160;</th>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.CFEXECUTE.OutputError</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.CFEXECUTE.Timeout</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.FileException</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPAccepted</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPAuthFailure</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPBadGateway</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPBadRequest</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPCFHTTPRequestEntityTooLarge</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPCGIValueNotPassed</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPConflict</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPContentLengthRequired</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPContinue</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPCookieValueNotPassed</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPCreated</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPFailure</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPFileInvalidPath</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPFileNotFound</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPFileNotPassed</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPFileNotRenderable</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPForbidden</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPGatewayTimeout</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPGone</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPMethodNotAllowed</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPMovedPermanently</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPMovedTemporarily</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPMultipleChoices</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPNoContent</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPNonAuthoritativeInfo</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPNotAcceptable</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPNotFound</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPNotImplemented</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPNotModified</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPPartialContent</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPPaymentRequired</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPPreconditionFailed</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPProxyAuthenticationRequired</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPRequestURITooLarge</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPResetContent</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPSeeOther</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPServerError</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPServiceUnavailable</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPSwitchingProtocols</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPUnsupportedMediaType</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPUrlValueNotPassed</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPUseProxy</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.HTTPVersionNotSupported</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.POPAuthFailure</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.POPConnectionFailure</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.POPDeleteError</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.Request.Timeout</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COM.Allaire.ColdFusion.SERVLETJRunError</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>COMCOM.Allaire.ColdFusion.HTTPConnectionTimeout</p></td>
+</tr>
+</table>
+</div>
+<p>
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!--- cfcatch example, using TagContext to display the tag stack. ---&gt;
+&lt;h3&gt;cftry Example&lt;/h3&gt;
+&lt;!--- Open a cftry block. ---&gt;
+&lt;cftry&gt;
+   &lt;!--- Note misspelled tablename &quot;employees&quot; as &quot;employeeas&quot;. ---&gt;
+   &lt;cfquery name = &quot;TestQuery&quot; dataSource = &quot;cfdocexamples&quot;&gt;
+      SELECT *
+      FROM EMPLOYEEAS
+   &lt;/cfquery&gt;
+   &lt;!--- Other processing goes here. ---&gt;
+   &lt;!--- Specify the type of error for which we search. ---&gt;
+   &lt;cfcatch type = &quot;Database&quot;&gt;
+      &lt;!--- the message to display. ---&gt;
+      &lt;h3&gt;You&#39;ve Thrown a Database &lt;b&gt;Error&lt;/b&gt;&lt;/h3&gt;
+      &lt;cfoutput&gt;
+         &lt;!--- The diagnostic message from ColdFusion MX. ---&gt;
+         &lt;p&gt;#cfcatch.message#&lt;/p&gt;
+         &lt;p&gt;Caught an exception, type = #CFCATCH.TYPE# &lt;/p&gt;
+         &lt;p&gt;The contents of the tag stack are:&lt;/p&gt;
+         &lt;cfdump var=&quot;#cfcatch.tagcontext#&quot;&gt;
+      &lt;/cfoutput&gt;
+   &lt;/cfcatch&gt;
+&lt;/cftry&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="TYPE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TYPE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Any"
+
+<ul>
+
+<li>application: catches application exceptions</li>
+
+<li>database: catches database exceptions</li>
+
+<li>template: catches ColdFusion page exceptions</li>
+
+<li>security: catches security exceptions</li>
+
+<li>object: catches object exceptions</li>
+
+<li>missingInclude: catches missing include file exceptions</li>
+
+<li>expression: catches expression exceptions</li>
+
+<li>lock: catches lock exceptions</li>
+
+<li>custom_type: catches the specified custom exception type that is defined in a cfthrow tag</li>
+
+<li>searchengine: catches Verity search engine exceptions</li>
+
+<li>any: catches all exception types </li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

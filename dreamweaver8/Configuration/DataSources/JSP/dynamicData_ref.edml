@@ -1,0 +1,9 @@
+<participant>
+     <quickSearch><![CDATA[getObject]]></quickSearch>
+     <insertText location="replaceSelection">
+<![CDATA[<%=(((@@rsName@@_data = @@rsName@@.getObject("@@bindingName@@"))==null || @@rsName@@.wasNull())?"":@@rsName@@_data)%>]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName,bindingName"><![CDATA[/\(\(\((\w+)_data\s*=\s*\w+\.getObject\("(.*)"\)\)==null/]]></searchPattern>
+     </searchPatterns>
+</participant>

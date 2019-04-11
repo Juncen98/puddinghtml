@@ -1,0 +1,13 @@
+<participant name="transNotFirstRecord_end">
+  <translator>
+    <searchPatterns>
+      <searchPattern><![CDATA[/\} \/\/ Show if not first page (?=\r\n|\r|\n|\?>)/i]]></searchPattern>
+      <searchPattern paramNames="rs" requiredLocation="leading"><![CDATA[/if \(\$pageNum_([^\r\n]*?) >\s*0\) \{ \/\/ Show if not first page (?=\r\n|\r|\n|\?>)/i]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="directive" translationType="tabbed region end">
+        <closeTag>MM_HIDDENREGION</closeTag>
+      </translation>
+    </translations>
+  </translator>
+</participant>

@@ -1,0 +1,30 @@
+<participant version="5.0">
+<insertText location="afterSelection">
+<![CDATA[
+<table border="0" width="50%" align="center">
+<tr>
+<td width="23%" align="center">
+<?php if ($pageNum_@@RecordsetName@@ > 0) { // Show if not first page ?>    		  
+<a href="<?php printf("%s?pageNum_@@RecordsetName@@=%d%s", $currentPage, 0, $queryString_@@RecordsetName@@); ?>">@@FirstLinkText@@</a> 
+<?php } // Show if not first page ?>  	  
+</td>
+<td width="31%" align="center">
+<?php if ($pageNum_@@RecordsetName@@ > 0) { // Show if not first page ?>    		  
+<a href="<?php printf("%s?pageNum_@@RecordsetName@@=%d%s", $currentPage, max(0, $pageNum_@@RecordsetName@@ - 1), $queryString_@@RecordsetName@@); ?>">@@PrevLinkText@@</a> 
+<?php } // Show if not first page ?>  	  
+</td>
+<td width="23%" align="center">
+<?php if ($pageNum_@@RecordsetName@@ < $totalPages_@@RecordsetName@@) { // Show if not last page ?>
+<a href="<?php printf("%s?pageNum_@@RecordsetName@@=%d%s", $currentPage, min($totalPages_@@RecordsetName@@, $pageNum_@@RecordsetName@@ + 1), $queryString_@@RecordsetName@@); ?>">@@NextLinkText@@</a> 
+<?php } // Show if not last page ?>
+</td>
+<td width="23%" align="center">
+<?php if ($pageNum_@@RecordsetName@@ < $totalPages_@@RecordsetName@@) { // Show if not last page ?>
+<a href="<?php printf("%s?pageNum_@@RecordsetName@@=%d%s", $currentPage, $totalPages_@@RecordsetName@@, $queryString_@@RecordsetName@@); ?>">@@LastLinkText@@</a> 
+<?php } // Show if not last page ?>
+</td>
+</tr>
+</table>
+]]>
+</insertText>
+</participant>

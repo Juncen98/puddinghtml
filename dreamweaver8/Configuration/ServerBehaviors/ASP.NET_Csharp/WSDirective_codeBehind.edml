@@ -1,0 +1,9 @@
+<participant version="5.0">
+	<insertText location="aboveHTML+0"><![CDATA[<%@ WebService CodeBehind="@@ControlName@@" ContentType="text/html" %>
+]]></insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="file_codebehindtype,file_companionUrl" isOptional="false" limitSearch="all"><![CDATA[/@\s*webservice\s*.*\s*(src|codebehind)\s*=\s*(?:'|")([^\r\n]*?)(?:'|").*%>/ig]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>CodeBehind</quickSearch>
+	<delete deleteType="none" />
+</participant>

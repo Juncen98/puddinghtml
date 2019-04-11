@@ -1,0 +1,46 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<head>
+<title><MMString:LoadString id="insertbar/imagePlaceholder" /></title>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/flashObjects.js"></SCRIPT>
+<SCRIPT SRC="Image Placeholder.js"></SCRIPT>
+<script language="javascript" src="../../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<SCRIPT>
+// Copyright 2001-2002 Macromedia, Inc. All rights reserved.
+//--------------- LOCALIZEABLE GLOBALS---------------
+var MSG_InvalidColor = '"%s" 不是有效的颜色值。请输入一个十六进制值 (#RRGGBB) 或一个标准的颜色名称。';
+var MSG_InvalidName = "名称中只能包含较低的 ascii 字母或数字，并且不能以数字开头。";
+
+//--------------- END LOCALIZEABLE   ---------------
+</SCRIPT>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<form name="theForm">
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td><div align="right">名称:</div></td>
+      <td><input name="nameField" type="text" class="medTField"  onBlur="updateUI('nameField')"></td>
+    </tr>
+    <tr> 
+      <td height="25"> <div align="right">宽度:</div></td>
+      <td height="25" nowrap> <input name="widthField" type="text" class="xsmallTField" onBlur='updateUI("widthField")' value="32" maxlength="3"> 
+        <img src="../../Shared/MM/Images/transparent.gif" width="13" height="1">高度: 
+        <input name="heightField" type="text" class="xsmallTField" onBlur='updateUI("heightField")' value="32" maxlength="3"></td>
+    </tr>
+    <tr> 
+      <td><div align="right">颜色:</div></td>
+      <td> <input type="mmcolorbutton" name="colorPicker" value="" onChange='updateUI("colorPicker")'> 
+        <input type="text" name="colorField" style="width:100px" value="" maxlength="7" onBlur='updateUI("colorField")'> 
+      </td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>替换文本:</td>
+      <td><input name="altField" type="text" class="medTField" value=""></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

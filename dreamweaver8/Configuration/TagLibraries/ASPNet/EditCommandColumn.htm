@@ -1,0 +1,104 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>EditCommandColumn</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Controls/Scripts/MultiStateCheckBox.js"></script>
+<script>
+var theHeaderStyleWrapMultiStateCheckBox = new MultiStateCheckBox("theHeaderStyle-Wrap");
+var theItemStyleWrapMultiStateCheckBox = new MultiStateCheckBox("theItemStyle-Wrap");
+
+function initializeUI(){
+  theHeaderStyleWrapMultiStateCheckBox.initializeUI(); 
+  theItemStyleWrapMultiStateCheckBox.initializeUI(); 
+}  
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj); 
+}
+
+function updateUI(itemName)
+{
+  switch(itemName)
+  {
+    case "ItemStyle-Wrap":
+	{
+	  theItemStyleWrapMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+    case "HeaderStyle-Wrap":
+	{
+	  theHeaderStyleWrapMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+  }
+}
+
+</script>
+
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<div name="常规"> 
+<input type="hidden" name="therunat" attname="runat" value="server" required="true" /> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">数据字段: </td>
+      <td nowrap="nowrap">
+        <input name="theButtonType" TYPE="text" class="basicTextField" id="aspnet:boundcolumn:ButtonType" attname="ButtonType" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">取消文本: </td>
+      <td nowrap="nowrap">
+        <input name="theCancelText" TYPE="text" class="basicTextField" id="aspnet:boundcolumn:CancelText" attname="CancelText" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">编辑文本: </td>
+      <td nowrap="nowrap">
+        <input name="theEditText" TYPE="text" class="basicTextField" id="aspnet:boundcolumn:EditText" attname="EditText" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">更新文本: </td>
+      <td nowrap="nowrap">
+        <input name="theUpdateText" TYPE="text" class="basicTextField" id="aspnet:boundcolumn:UpdateText" attname="UpdateText" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">标题文本: </td>
+      <td nowrap="nowrap">
+        <input name="theHeaderText" TYPE="text" class="basicTextField" id="aspnet:boundcolumn:HeaderText" attname="HeaderText" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theItemStyle-Wrap" attname="ItemStyle-Wrap" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('ItemStyle-Wrap');" > 
+        项目样式换行
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theHeaderStyle-Wrap" attname="HeaderStyle-Wrap" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('HeaderStyle-Wrap');" > 
+        标题样式换行
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

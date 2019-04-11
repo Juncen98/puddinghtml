@@ -1,0 +1,67 @@
+<participant>
+     <quickSearch><![CDATA[MM_update]]></quickSearch>
+     <insertText location="aboveHTML+20">
+<![CDATA[
+<%
+// *** Update Record: set variables
+
+if (request.getParameter("MM_update") != null &&
+    request.getParameter("MM_update").toString().equals("@@formName@@") &&
+    request.getParameter("MM_recordId") != null) {
+
+  MM_editDriver     = MM_@@cname@@_DRIVER;
+  MM_editConnection = MM_@@cname@@_STRING;
+  MM_editUserName   = MM_@@cname@@_USERNAME;
+  MM_editPassword   = MM_@@cname@@_PASSWORD;
+  MM_editTable  = "@@table@@";
+  MM_editColumn = "@@col@@";
+  MM_recordId   = "@@colQuote@@" + request.getParameter("MM_recordId") + "@@colQuote@@";
+  MM_editRedirectUrl = "@@redirect__url@@";
+  String MM_fieldsStr = "@@fieldsStr@@";
+  String MM_columnsStr = "@@columnsStr@@";
+
+  // create the MM_fields and MM_columns arrays
+  java.util.StringTokenizer tokens = new java.util.StringTokenizer(MM_fieldsStr,"|");
+  MM_fields = new String[tokens.countTokens()];
+  for (int i=0; tokens.hasMoreTokens(); i++) MM_fields[i] = tokens.nextToken();
+
+  tokens = new java.util.StringTokenizer(MM_columnsStr,"|");
+  MM_columns = new String[tokens.countTokens()];
+  for (int i=0; tokens.hasMoreTokens(); i++) MM_columns[i] = tokens.nextToken();
+
+  // set the form values
+  for (int i=0; i+1 < MM_fields.length; i+=2) {
+    MM_fields[i+1] = ((request.getParameter(MM_fields[i])!=null)?(String)request.getParameter(MM_fields[i]):"");
+  }
+
+  // append the query string to the redirect URL
+  if (MM_editRedirectUrl.length() != 0 && request.getQueryString() != null) {
+    MM_editRedirectUrl += ((MM_editRedirectUrl.indexOf('?') == -1)?"?":"&") + request.getQueryString();
+  }
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern><![CDATA[/request\.getParameter\("MM_update"\)/]]></searchPattern>
+       <searchPattern paramNames="formName" isOptional="true"><![CDATA[/request.getParameter\("MM_update"\)\.toString\(\)\.equals\("([^"]*)"\)/]]></searchPattern>
+       <searchPattern paramNames="cname"><![CDATA[/MM_editConnection\s*=\s*MM_(\w+)_STRING/]]></searchPattern>
+       <searchPattern paramNames="table"><![CDATA[/MM_editTable\s*=\s*"([^"]*)";/]]></searchPattern>
+       <searchPattern paramNames="col"><![CDATA[/MM_editColumn\s*=\s*"([^"]*)";/]]></searchPattern>
+       <searchPattern paramNames="colQuote"><![CDATA[/MM_recordId\s*=\s*"([^"]*)"/]]></searchPattern>
+       <searchPattern paramNames="fieldsStr"><![CDATA[/MM_fieldsStr\s*=\s*"([^"]*)";/]]></searchPattern>
+       <searchPattern paramNames="columnsStr"><![CDATA[/MM_columnsStr\s*=\s*"([^"]*)";/]]></searchPattern>
+       <searchPattern paramNames="redirect__url"><![CDATA[/MM_editRedirectUrl\s*=\s*"([^\r\n]*)";/]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="cname"><![CDATA[/(MM_)\w+(_STRING|_USERNAME|_PASSWORD|_DRIVER)/g]]></updatePattern>
+       <updatePattern paramName="table"><![CDATA[/(MM_editTable\s*=\s*")[^"]*(";)/g]]></updatePattern>
+       <updatePattern paramName="col"><![CDATA[/(MM_editColumn\s*=\s*")[^"]*(";)/g]]></updatePattern>
+       <updatePattern paramName="colQuote"><![CDATA[/(MM_recordId\s*=\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="colQuote"><![CDATA[/(request\.getParameter\("MM_recordId"\)\s*\+\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="fieldsStr"><![CDATA[/(MM_fieldsStr\s*=\s*")[^"]*(";)/g]]></updatePattern>
+       <updatePattern paramName="columnsStr"><![CDATA[/(MM_columnsStr\s*=\s*")[^"]*(";)/g]]></updatePattern>
+       <updatePattern paramName="redirect__url"><![CDATA[/(MM_editRedirectUrl\s*=\s*")[^\r\n]*(";)/g]]></updatePattern>
+       <updatePattern paramName="formName"><![CDATA[/(request.getParameter\("MM_update"\)\.toString\(\)\.equals\(")[^"]*("\))/]]></updatePattern>
+     </updatePatterns>
+</participant>

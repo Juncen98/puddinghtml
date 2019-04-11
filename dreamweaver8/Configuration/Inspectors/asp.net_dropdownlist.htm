@@ -1,0 +1,70 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 6.0//pi">
+<!-- tag:asp:dropdownlist, priority:1, selection:within,hline,vline ,serverModel:ASP.NET -->
+<html>
+<head>
+<!-- Copyright 2002 Macromedia, Inc. All rights reserved. -->
+<title>ASP.NET DropDownList</title>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/TagEditClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dotNetUtils.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<script src="../Commands/EditOpsCustomObjs.js"></script>
+<script src="../TagLibraries/ASPNet/strings.js"></script>
+<script src="../TagLibraries/ASPNet/loc_strings.js"></script>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<script src="asp.net_dropdownlist.js"></script>
+<script language="JavaScript">
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+//--------------- END LOCALIZEABLE   ---------------
+</script>
+</head>
+
+<body marginwidth="0" marginheight="0">
+<span id="image" style="position:absolute; width:36px; height:36px; z-index:1; left: 5px; top: 9px"><img src="dropDownList.gif" width="36" height="36"></span>
+<div id="idBoxLayer" style="position:absolute; width:65px; height:38px; z-index:1; left: 44px; top: 9px; visibility: visible;"> 
+<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		  
+      <td height="16"></td>
+		  <td align="left" NOWRAP><span id="idLabel" style="font-size:85%">下拉列表</span></td>
+		</tr>
+		<tr>
+		  <td align="left" valign="baseline" nowrap colspan=2>
+
+        <input name="listID" type="text" id="listID" style="width:65px" onBlur="updateTag('id')">
+		  </td>
+		</tr>
+  </table>
+</div>
+<div id="topLayer" style="position:absolute; left:125px; top:2px; width:337px; height:38px; z-index:29; visibility: visible;">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="23%" align="right" nowrap>访问键&nbsp;</td>
+      <td width="16%" nowrap><input type="text" name="akey" id="akey" onBlur="updateTag('akey')" style="width:35px"></td>
+      <td width="12%" align="right" nowrap>宽&nbsp;</td>
+      <td width="20%" nowrap> <input type="text" name="widthField" id="widthField" onBlur="updateTag('width')" style="width:35px"> </td>
+      <td width="29%" align="left" nowrap><input type="checkbox" name="autopost" id="autopost" onClick="updateTag('autoPost')">自动回发</td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>Tab 键索引&nbsp;</td>
+      <td nowrap><input type="text" name="tabix" id="tabix" onBlur="updateTag('tabIndex')" style="width:35px"></td>
+      <td align="right" nowrap>高&nbsp;</td>
+      <td nowrap> <input type="text" name="heightField" id="heightField" onBlur="updateTag('height')" style="width:35px"> </td>
+      <td align="left" nowrap><input name="enabled" type="checkbox" id="enabled" onClick="updateTag('enabled')">已启用</td>
+    </tr>
+  </table>
+</div>
+<div id="bottomLayer" style="position:absolute; left:125px; top:55px; z-index:22; width: 337px; height: 38px;">
+    <table width="100%" border="0" cellpadding="1" cellspacing="0">
+      <tr>
+        <td align="right"><input name="listValues" type="button" id="listValues" value="列表项..." onClick="dotNetUtils.setListItems('asp:DropDownList',true)"></td>
+      </tr>
+      <tr>
+        <td align="right"><input type="image" src="tagDialog.gif" name="more" id="more" title="Display Tag Editor for asp:DropDownList" onClick="dotNetUtils.displayTagDialog()" alt="显示 asp:DropDownList 的标签编辑器"></td>
+      </tr>
+    </table>
+</div>
+</body>
+</html>

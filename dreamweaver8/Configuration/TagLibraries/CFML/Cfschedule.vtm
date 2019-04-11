@@ -1,0 +1,43 @@
+<tag name="CFSCHEDULE" endtag="no">
+<tagformat nlbeforetag="1" nlaftertag="1"/>
+<tagdialog file="cfschedule.htm" />
+  <attributes>
+    <attrib name="ACTION" type="ENUMERATED">
+      <attriboption value="UPDATE"/>
+      <attriboption value="DELETE"/>
+      <attriboption value="RUN"/>
+    </attrib>
+    <attrib name="TASK" type="TEXT"/>
+    <attrib name="OPERATION" type="ENUMERATED">
+      <attriboption value="HTTPRequest"/>
+    </attrib>
+    <attrib name="URL" type="TEXT"/>
+    <attrib name="STARTDATE" type="TEXT"/>
+    <attrib name="STARTTIME" type="TEXT"/>
+    <attrib name="ENDDATE" type="TEXT"/>
+    <attrib name="ENDTIME" type="TEXT"/>
+    <attrib name="USERNAME" type="TEXT"/>
+    <attrib name="PASSWORD" type="TEXT"/>
+    <attrib name="INTERVAL" type="TEXT"/>
+    <attrib name="REQUESTTIMEOUT" type="TEXT"/>
+    <attrib name="PROXYSERVER" type="TEXT"/>
+    <attrib name="RESOLVEURL" type="ENUMERATED">
+      <attriboption value="Yes"/>
+      <attriboption value="No"/>
+    </attrib>
+    <attrib name="PUBLISH" type="ENUMERATED">
+      <attriboption value="Yes"/>
+      <attriboption value="No"/>
+    </attrib>
+    <attrib name="FILE" type="FILENAME"/>
+    <attrib name="PATH" type="DIRECTORY"/>
+    <attrib name="PORT" type="TEXT"/>
+    <attrib name="PROXYPORT" type="TEXT"/>
+    <attrib name="PROXYUSER" type="TEXT"/>
+    <attrib name="PROXYPASSWORD" type="TEXT"/>
+   </attributes>
+	<attribcategories>
+		<attribgroup name="General" elements="task,url,action" />
+		<attribgroup name="Update" elements="startdate,enddate,starttime,endtime,username,password,interval,requesttimeout,file,path,proxyserver,proxyuser,proxypassword,port,proxyport,resolveurl,publish,operation" />
+	</attribcategories>
+</tag>

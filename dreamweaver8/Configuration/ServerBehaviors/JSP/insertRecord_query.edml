@@ -1,0 +1,63 @@
+<participant>
+     <quickSearch><![CDATA[MM_insert]]></quickSearch>
+     <insertText location="aboveHTML+30">
+<![CDATA[
+<%
+// *** Insert Record: construct a sql insert statement and execute it
+
+if (request.getParameter("MM_insert") != null) {
+
+  // create the insert sql statement
+  StringBuffer MM_tableValues = new StringBuffer(), MM_dbValues = new StringBuffer();
+  for (int i=0; i+1 < MM_fields.length; i+=2) {
+    String formVal = MM_fields[i+1];
+    String elem;
+    java.util.StringTokenizer tokens = new java.util.StringTokenizer(MM_columns[i+1],",");
+    String delim    = ((elem = (String)tokens.nextToken()) != null && elem.compareTo("none")!=0)?elem:"";
+    String altVal   = ((elem = (String)tokens.nextToken()) != null && elem.compareTo("none")!=0)?elem:"";
+    String emptyVal = ((elem = (String)tokens.nextToken()) != null && elem.compareTo("none")!=0)?elem:"";
+    if (formVal.length() == 0) {
+      formVal = emptyVal;
+    } else {
+      if (altVal.length() != 0) {
+        formVal = altVal;
+      } else if (delim.compareTo("'") == 0) {  // escape quotes
+        StringBuffer escQuotes = new StringBuffer(formVal);
+        for (int j=0; j < escQuotes.length(); j++)
+          if (escQuotes.charAt(j) == '\'') escQuotes.insert(j++,'\'');
+        formVal = "'" + escQuotes + "'";
+      } else {
+        formVal = delim + formVal + delim;
+      }
+    }
+    MM_tableValues.append((i!=0)?",":"").append(MM_columns[i]);
+    MM_dbValues.append((i!=0)?",":"").append(formVal);
+  }
+  MM_editQuery = new StringBuffer("insert into " + MM_editTable);
+  MM_editQuery.append(" (").append(MM_tableValues.toString()).append(") values (");
+  MM_editQuery.append(MM_dbValues.toString()).append(")");
+  
+  if (!MM_abortEdit) {
+    // finish the sql and execute it
+    Driver MM_driver = (Driver)Class.forName(MM_editDriver).newInstance();
+    Connection MM_connection = DriverManager.getConnection(MM_editConnection,MM_editUserName,MM_editPassword);
+    PreparedStatement MM_editStatement = MM_connection.prepareStatement(MM_editQuery.toString());
+    MM_editStatement.executeUpdate();
+    MM_connection.close();
+
+    // redirect with URL parameters
+    if (MM_editRedirectUrl.length() != 0) {
+      response.sendRedirect(response.encodeRedirectURL(MM_editRedirectUrl));
+      return;
+    }
+  }
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern><![CDATA[/request\.getParameter\("MM_insert"\)/]]></searchPattern>
+       <searchPattern><![CDATA[/if\s*\(!MM_abortEdit\)\s*\{/]]></searchPattern>
+       <searchPattern><![CDATA[/MM_editQuery\s*=\s*new\s+StringBuffer\s*\("insert into "/]]></searchPattern>
+     </searchPatterns>
+</participant>

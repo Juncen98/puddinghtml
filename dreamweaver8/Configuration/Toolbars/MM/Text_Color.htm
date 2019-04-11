@@ -1,0 +1,72 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>×ÖÌåÑÕÉ«</TITLE>
+
+// remove when preferences API is in place
+<SCRIPT LANGUAGE="JavaScript" SRC="../siteSettings_TEMP.js"></SCRIPT>
+
+
+<SCRIPT LANGUAGE="javascript">
+
+function receiveArguments(){
+	var color = arguments[0];
+	var dom = dw.getDocumentDOM();
+	if (getFontTag() == "font"){
+		// Clear any <span>-applied color in addition to adding or
+		// removing the <font> tag.
+		dom.removeFontMarkupAsStyle('color');
+		if (color == ""){
+			dom.removeFontMarkup('color');
+		}else{
+			dom.applyFontMarkup('color', color);
+		}
+	}else{
+		// Clear any <font>-applied color in addition to adding or
+		// removing the <span> tag.
+		dom.removeFontMarkup('color');
+		if (color == ""){
+			dom.removeFontMarkupAsStyle('color');
+		}else{
+			dom.applyFontMarkupAsStyle('color',color);
+		}
+	}
+}
+
+function canAcceptCommand(){
+    // Make sure the focus is in the document.
+	var dom = dw.getDocumentDOM();
+    var retVal = false;
+    if (dw.getFocus() == 'document')
+	{
+        retVal = true;
+	}
+
+	if (dom)
+	{
+		if (!isSelectionTextuallyModifiable(dom))
+		{
+			retVal = false;
+		}
+	}
+
+    return retVal;
+}
+
+function getCurrentValue(){
+	var textColor = '';
+	var dom = dw.getDocumentDOM();
+	if (dw.getFocus() == 'document')
+	{
+		textColor = dom.getCSSStyleProperties(true).color;
+	}
+	return textColor;
+}
+
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

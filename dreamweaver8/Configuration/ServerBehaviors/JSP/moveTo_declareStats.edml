@@ -1,0 +1,29 @@
+<participant>
+     <quickSearch><![CDATA[_total]]></quickSearch>
+     <insertText location="aboveHTML+70">
+<![CDATA[
+<%
+// *** Recordset Stats, Move To Record, and Go To Record: declare stats variables
+
+int @@rsName@@_first = 1;
+int @@rsName@@_last  = 1;
+int @@rsName@@_total = -1;
+
+if (@@rsName@@_isEmpty) {
+  @@rsName@@_total = @@rsName@@_first = @@rsName@@_last = 0;
+}
+
+//set the number of rows displayed on this page
+if (@@rsName@@_numRows == 0) {
+  @@rsName@@_numRows = 1;
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName"><![CDATA[/\b(\w+)_total\s*=\s*-1;/]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="rsName"><![CDATA[/(\W)\w+(_total|_first|_last|_numRows|_isEmpty)/g]]></updatePattern>
+     </updatePatterns>
+</participant>

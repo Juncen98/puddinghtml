@@ -1,0 +1,517 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>INPUT</title>
+  
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var VALIDATELIST;
+var SELECTORLIST;
+var LANGUAGELIST;
+var theUIObjects;
+var ALIGNLIST;
+var ALTLIST;
+var applyType = "dynamic"; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode, SELECTORLIST); 
+}
+
+function applyTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode); 
+}
+
+function updateUI()
+{
+  var curDiv = SELECTORLIST.getValue(); 
+
+  tagDialog.showOnlyThisLayer(curDiv,document.layers[0]); 
+}
+
+function initializeUI()
+{
+  SELECTORLIST = new ListControl("theselector"); 
+  ALIGNLIST = new ListControl("thealign"); 
+  ALTLIST = new ListControl("thealt");
+	LANGUAGELIST = new ListControl("thelang"); 
+	DIRLIST = new ListControl("thedir"); 
+  theUIObjects = new Array(LANGUAGELIST,DIRLIST,SELECTORLIST,ALIGNLIST,ALTLIST); 
+
+  tagDialog.populateDropDownList(LANGUAGELIST, theLanguagesCap, theLanguagesVal, 1); 
+  tagDialog.populateDropDownList(DIRLIST, theDirectionCap, theDirectionVal, 1); 
+  tagDialog.populateDropDownList(ALIGNLIST, theAlignImgCap, theAlignImgVal, 1); 
+  tagDialog.populateDropDownList(ALTLIST, theImgAltCap, theImgAltVal, 1);
+  tagDialog.populateDropDownList(SELECTORLIST, theInputTypesCap, theInputTypesVal, 0); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+<div name="常规"> 
+<br /> 
+类型: 
+<select name="theselector" class="selectorList" id="attr:input:selector" onChange="updateUI();" attname="type" editable="false">
+</select>
+<hr width="100%" /> 
+	<div id="thetext" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+		<table border="0" cellspacing="4">
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+				<td nowrap="nowrap">
+					<input name="thename" type="text" class="medTField" id="attr:input:name" attname="name" required="true" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">值: </td>
+				<td nowrap="nowrap">
+					<input name="thevalue" type="text" class="basicTextField" id="attr:input:value" attname="value" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">大小: </td>
+				<td nowrap="nowrap">
+					<input name="thesize" type="text" class="smallNumOrChar" id="attr:input:size" attname="size" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">最大长度: </td>
+				<td nowrap="nowrap">
+					<input name="themaxlength" type="text" class="smallNumOrChar" id="attr:input:maxlength" attname="maxlength" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+				<td nowrap="nowrap">
+					<input type="checkbox" id="attr:input:readonly" name="thereadonly" attname="readonly" truevalue="true" falsevalue="" />
+					只读
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+				<td nowrap="nowrap">
+					<input type="checkbox" id="attr:input:disabled" name="thedisabled" attname="disabled" truevalue="true" falsevalue="" />
+					已禁用
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="thepassword" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+		<table border="0" cellspacing="4">
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+				<td nowrap="nowrap">
+					<input name="thename" type="text" class="medTField" id="attr:input:passname" attname="name" required="true" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">值: </td>
+				<td nowrap="nowrap">
+					<input name="thevalue" type="text" class="basicTextField" id="attr:input:passvalue" attname="value" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">大小: </td>
+				<td nowrap="nowrap">
+					<input name="thesize" type="text" class="smallNumOrChar" id="attr:input:passsize" attname="size" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">最大长度: </td>
+				<td nowrap="nowrap">
+					<input name="themaxlength" type="text" class="smallNumOrChar" id="attr:input:passmaxlength" attname="maxlength" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+				<td nowrap="nowrap">
+					<input type="checkbox" id="attr:input:passreadonly" name="thereadonly" attname="readonly" truevalue="true" falsevalue="" />
+					只读
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+				<td nowrap="nowrap">
+					<input type="checkbox" id="attr:input:passdisabled" name="thedisabled" attname="disabled" truevalue="true" falsevalue="" />
+					已禁用
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="theradio" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+		<table border="0" cellspacing="4">
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+				<td nowrap="nowrap">
+					<input name="thename" type="text" class="medTField" id="attr:input:radioname" attname="name" required="true" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">值: </td>
+				<td nowrap="nowrap">
+					<input name="thevalue" type="text" class="basicTextField" id="attr:input:radiovalue" attname="value" required="true" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+				<td nowrap="nowrap">
+					<input type="checkbox" id="attr:input:radiochecked" name="thechecked" attname="checked" truevalue="checked" falsevalue="" />
+					已选中
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+				<td nowrap="nowrap">
+					<input type="checkbox" id="attr:input:radiodisabled" name="thedisabled" attname="disabled" truevalue="true" falsevalue="" />
+					已禁用
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="thecheckbox" style="position:absolute;width:200px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+		<table border="0" cellspacing="4">
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+				<td nowrap="nowrap">
+					<input name="thename" type="text" class="medTField" id="attr:input:checkboxname" attname="name" required="true" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">值: </td>
+				<td nowrap="nowrap">
+					<input name="thevalue" type="text" class="basicTextField" id="attr:input:checkboxvalue" attname="value" required="true" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+				<td nowrap="nowrap">
+					<input type="checkbox" id="attr:input:checkboxchecked" name="thechecked" attname="checked" truevalue="checked" falsevalue="" />
+					已选中
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+				<td nowrap="nowrap">
+					<input type="checkbox" id="attr:input:checkboxdisabled" name="thedisabled" attname="disabled" truevalue="true" falsevalue="" />
+					已禁用
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="theimage" style="position:absolute; width:200px; height:115px; z-index:2; left: 0px; top: 55px; visibility: hidden;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td width="0" align="right" valign="baseline" nowrap="nowrap">名称: </td>
+        <td width="0" colspan="4" nowrap="nowrap">
+					<input name="thename" type="text" class="medTField" id="attr:input:checkboxname" attname="name" required="true" />
+				</td>
+      </tr>
+      <tr>
+        <td valign="baseline" align="right" nowrap="nowrap">值: </td>
+        <td colspan="4" nowrap="nowrap">
+					<input name="thevalue" type="text" class="basicTextField" id="attr:input:checkboxvalue" attname="value" />
+				</td>
+      </tr>
+      <tr>
+        <td valign="baseline" align="right" nowrap="nowrap">源: </td>
+        <td colspan="4" nowrap="nowrap">
+	        <input name="thesrc" type="text" class="basicTextField" id="attr:input:src" attname="src" />
+      &nbsp;
+	        <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('thesrc');focus(this)" />
+	      </td>
+      </tr>
+      <tr>
+        <td valign="baseline" align="right" nowrap="nowrap">替换文本: </td>
+        <td colspan="4" nowrap="nowrap">
+    	    <select name="thealt" class="multiWordOptionList" id="attr:input:alt" attname="alt" editable="true">
+      	  </select>
+    	  </td>
+      </tr>
+      <tr>
+        <td valign="baseline" align="right" nowrap="nowrap">对齐: </td>
+        <td colspan="4" nowrap="nowrap">
+	        <select name="thealign" class="alignList" id="attr:input:align" attname="align">
+	        </select>
+	      </td>
+      </tr>
+      <tr>
+        <td valign="baseline" align="right" nowrap="nowrap">使用映射: </td>
+        <td colspan="4" nowrap="nowrap">
+          <input name="theusemap" type="text" class="basicTextField" id="attr:input:usemap" attname="usemap" />
+        </td>
+      </tr>
+      <tr>
+        <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+        <td colspan="4" nowrap="nowrap">
+					<input type="checkbox" id="attr:input:checkboxdisabled" name="thedisabled" attname="disabled" truevalue="true" falsevalue="" />
+					已禁用
+				</td>
+      </tr>
+      <tr>
+        <td valign="baseline" align="right" nowrap="nowrap">宽度: </td>
+        <td nowrap="nowrap">
+          <input name="thewidth" type="text" class="smallNumOrChar" id="attr:input:width" attname="width" />
+        </td>
+        <td nowrap="nowrap">高度:</td>
+        <td nowrap="nowrap">
+          <input name="theheight" type="text" class="smallNumOrChar" id="attr:input:height" attname="height" />
+        </td>
+        <td nowrap="nowrap">
+          <img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle" />&nbsp;4+&nbsp;<img src="../../Shared/MM/Images/Netscape.gif" alt="Netscape" align="absmiddle" />&nbsp;1.1+&nbsp;<img src="../../Shared/MM/Images/Opera.gif" alt="Opera" align="absmiddle" />&nbsp;4+
+        </td>
+      </tr>
+      <tr>
+        <td valign="baseline" align="right" nowrap="nowrap">水平间距: </td>
+        <td nowrap="nowrap">
+          <input name="thehspace" type="text" class="smallNumOrChar" id="attr:input:hspace" attname="hspace" />
+        </td>
+        <td nowrap="nowrap">垂直间距:</td>
+        <td nowrap="nowrap"><input name="thevspace" type="text" class="smallNumOrChar" id="attr:input:vspace" attname="vspace" />
+        </td>
+        <td nowrap="nowrap">
+          <img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle" />&nbsp;5+&nbsp;<img src="../../Shared/MM/Images/Netscape.gif" alt="Netscape" align="absmiddle" />&nbsp;4+</td>
+      </tr>
+      <tr>
+        <td valign="baseline" align="right" nowrap="nowrap">边框: </td>
+        <td colspan="4" nowrap="nowrap">
+          <input name="theborder" type="text" class="smallNumOrChar" id="attr:input:border" attname="border" />
+      &nbsp;<img src="../../Shared/MM/Images/Netscape.gif" alt="Netscape" align="absmiddle" />&nbsp;1+
+        </td>
+      </tr>
+    </table>
+	</div>
+	<div id="thefile" style="position:absolute; width:350px; height:115px; z-index:1; left: 0px; top: 55px; visibility: hidden;">
+		<table border="0" cellspacing="4">
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+				<td nowrap="nowrap">
+					<input name="thename" type="text" class="medTField" id="attr:input:filename" attname="name" required="true" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">大小: </td>
+				<td nowrap="nowrap">
+					<input name="thesize" type="text" class="smallNumOrChar" id="attr:input:filesize" attname="size" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+				<td nowrap="nowrap">
+					<input type="checkbox" id="attr:input:filedisabled" name="thedisabled" attname="disabled" truevalue="true" falsevalue="" />
+					已禁用
+				</td>
+			</tr>
+    </table>
+  </div>
+	<div id="thehidden" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+		<table border="0" cellspacing="4">
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+				<td nowrap="nowrap">
+					<input name="thename" type="text" class="medTField" id="attr:input:hiddenname" attname="name" required="true" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">值: </td>
+				<td nowrap="nowrap">
+					<input name="thevalue" type="text" class="basicTextField" id="attr:input:hiddenvalue" attname="value" required="true" />
+				</td>
+			</tr>
+    </table>
+  </div>
+	<div id="thebutton" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+		<table border="0" cellspacing="4">
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+				<td nowrap="nowrap">
+					<input name="thename" type="text" class="medTField" id="attr:input:buttonname" attname="name" required="true" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">值: </td>
+				<td nowrap="nowrap">
+					<input name="thevalue" type="text" class="basicTextField" id="attr:input:buttonvalue" attname="value" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+				<td nowrap="nowrap">
+					<input type="checkbox" id="attr:input:buttondisabled" name="thedisabled" attname="disabled" truevalue="true" falsevalue="" />
+					已禁用
+				</td>
+			</tr>
+    </table>
+  </div>
+	<div id="thesubmit" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+		<table border="0" cellspacing="4">
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+				<td nowrap="nowrap">
+					<input name="thename" type="text" class="medTField" id="attr:input:submitname" attname="name" required="true" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">值: </td>
+				<td nowrap="nowrap">
+					<input name="thevalue" type="text" class="basicTextField" id="attr:input:submitvalue" attname="value" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+				<td nowrap="nowrap">
+					<input type="checkbox" id="attr:input:submitdisabled" name="thedisabled" attname="disabled" truevalue="true" falsevalue="" />
+					已禁用
+				</td>
+			</tr>
+    </table>
+  </div>
+	<div id="thereset" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+		<table border="0" cellspacing="4">
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+				<td nowrap="nowrap">
+					<input name="thename" type="text" class="medTField" id="attr:input:resetname" attname="name" required="true" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">值: </td>
+				<td nowrap="nowrap">
+					<input name="thevalue" type="text" class="basicTextField" id="attr:input:resetvalue" attname="value" />
+				</td>
+			</tr>
+			<tr>
+				<td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+				<td nowrap="nowrap">
+					<input type="checkbox" id="attr:input:resetdisabled" name="thedisabled" attname="disabled" truevalue="true" falsevalue="" />
+					已禁用
+				</td>
+			</tr>
+    </table>
+  </div>
+</div>
+<div name="样式表/辅助功能"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类: </td>
+      <td nowrap="nowrap">
+        <input name="theclass" type="text" class="basicTextField" id="attr:input:class" attname="class" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="attr:input:id" attname="id" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">样式: </td>
+      <td nowrap="nowrap">
+        <input name="thestyle" type="text" class="basicTextField" id="attr:input:class" attname="style" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">标题: </td>
+      <td nowrap="nowrap">
+        <input name="thetitle" type="text" class="basicTextField" id="attr:input:title" attname="title" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">访问键: </td>
+      <td nowrap="nowrap">
+        <input name="theaccesskey" type="text" class="smallNumOrChar" id="attr:input:accesskey" maxlength="1" attname="accesskey" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">Tab 键索引: </td>
+      <td nowrap="nowrap">
+        <input name="thetabindex" type="text" class="smallNumOrChar" id="attr:input:tabindex" attname="tabindex" />
+      </td>
+    </tr>
+  </table> 
+</div>
+<div name="语言"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">方向: </td>
+      <td nowrap="nowrap">
+        <select name="thedir" class="dirLangList" id="attr:input:dir" attname="dir"> 
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" nowrap="nowrap"></td>
+      <td nowrap="nowrap"></td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">语言: </td>
+      <td nowrap="nowrap">
+        <select name="thelang" class="dirLangList" id="attr:input:lang" attname="lang" editable="true"> 
+        </select>
+      </td>
+    </tr>
+  </table>
+</div>
+<div name="事件"> 
+  <div name="onBlur"> 
+    <textarea name="theonBlur" attname="onBlur" id="attr:input:onblur" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onChange"> 
+    <textarea name="theonChange" attname="onChange" id="attr:input:onchange" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onClick"> 
+    <textarea name="theonClick" attname="onClick" id="attr:input:onclick" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onDblClick"> 
+    <textarea name="theonDblClick" attname="onDblClick" id="attr:input:ondblclick" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onFocus"> 
+    <textarea name="theonFocus" attname="onFocus" id="attr:input:onfocus" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseDown"> 
+    <textarea name="theonMouseDown" attname="onMouseDown" id="attr:input:onmousedown" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseUp"> 
+    <textarea name="theonMouseUp" attname="onMouseUp" id="attr:input:onmouseup" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseOver"> 
+    <textarea name="theonMouseOver" attname="onMouseOver" id="attr:input:onmouseover" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseMove"> 
+    <textarea name="theonMouseMove" attname="onMouseMove" id="attr:input:onmousemove" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseOut"> 
+    <textarea name="theonMouseOut" attname="onMouseOut" id="attr:input:onmouseout" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onKeyPress"> 
+    <textarea name="theonKeyPress" attname="onKeyPress" id="attr:input:onkeypress" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onKeyDown"> 
+    <textarea name="theonKeyDown" attname="onKeyDown" id="attr:input:onkeydown" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onKeyUp"> 
+    <textarea name="theonKeyUp" attname="onKeyUp" id="attr:input:onkeyup" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onSelect"> 
+    <textarea name="theonSelect" attname="onSelect" id="attr:input:onselect" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+</div>
+</body>
+</html>

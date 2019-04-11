@@ -1,0 +1,184 @@
+<html xmlns:un="http://usablenet.com/namespaces/508_rules">
+   <link rel="stylesheet" href="josh.css">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Detailed View for rule: Data tables should be defined by TABLE tag</title>
+      <!--
+  508/W3C Accessibility Suite OEM V2 for Macromedia Dreamweaver
+  (C) Copyright 2001-2005 UsableNet Inc. All rights reserved.
+  -->
+   </head>
+   <body bgcolor="#ffffff">
+      <div id="Description">
+         <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+            <tr>
+               <td valign="top" nowrap="true" class="name">Data tables should be defined by TABLE tag</td>
+               <td valign="top" nowrap="true" class="compatibility">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+            </tr>
+            <tr>
+               <td valign="top" align="right" nowrap="true" colspan="2" class="requirements">
+                  Section 508 1194.22(g); 
+                  
+                  WAI
+                  
+                  / 
+                  
+                  WCAG
+                  
+                  1.0 checkpoint 5.1
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Description</b><br>
+                  
+                  <p>
+                     The page includes a PRE tag with pre-formatted tabular
+                     data. If the PRE tag is used to present data, convert it to
+                     a TABLE tag.
+                     
+                  </p>
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>How to check</b>
+                  
+                  <p>
+                     If you're using the PRE tag to arrange and present data in
+                     a tabular format, format the data in a table using the
+                     TABLE, TR, TH, TD tags with appropriate attributes (ID,
+                     HEADERS, SCOPE).
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     In addition:
+                     
+                  </p>
+                  
+                  
+                  <ul>
+                     
+                     <li>
+                        TH tags should have an ID attribute for identification
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        TD tags should have a HEADERS attribute that refers to
+                        the appropriate TH tags
+                        
+                     </li>
+                     
+                  </ul>
+                  
+                  
+                  <p>
+                     Alternatively, the TH tag may have a SCOPE='col' or
+                     SCOPE='row' attribute, meaning that the header refers to
+                     the entire column or row, respectively.
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     It might be a good idea to use the ABBR attribute in the TH
+                     tag to provide a more concise description of the header to
+                     be repeated over and over by specialized browsers.
+                     
+                  </p>
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Explanation</b><br>
+                  
+                  <p>
+                     Data tables are used to convey information in a
+                     bidirectional medium, which often is not available for
+                     certain users. Consider the following examples:
+                     
+                  </p>
+                  
+                  
+                  <ul>
+                     
+                     <li>
+                        A textual browser may not align rows and columns
+                        correctly because, for example, the content of a cell wraps
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        A reading browser sequentially reads the content of the
+                        table
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        A braille reader also sequentially scans the table
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        A browser with a very small display (such as a PDA or a
+                        cellular phone) shows only a limited portion of the table
+                        
+                     </li>
+                     
+                  </ul>
+                  
+                  
+                  <p>
+                     In all these cases, the user has to mentally remember the
+                     context of the cell (which row and column does it refer
+                     to?). This requirement may be too strong, for example, when
+                     the table is large, when the user is under stress, or is
+                     impatient to find the needed information.
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     Consider also that in these situations, users might not be
+                     able to move directly from one cell of the table to any
+                     other. They are constrained to move sequentially, from one
+                     cell to its neighbors only (within the same row, for
+                     example).
+                     
+                  </p>
+                  
+               </td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

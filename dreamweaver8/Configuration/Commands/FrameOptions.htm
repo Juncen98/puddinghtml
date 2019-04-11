@@ -1,0 +1,51 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<script src="FrameOptions.js"></script>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<script src="../Shared/Common/Scripts/ListControlClass.js"></script>
+<script language="javascript" src="../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<script>
+//---------------  GLOBAL VARIABLES ---------------		
+var FRAME_LIST= new ListControl("frameName");
+</script>
+<!--Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved.-->
+<TITLE>框架标签辅助功能属性</TITLE>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+<form name="theForm" method="post" action="">
+  <table border="0" cellpadding="4" cellspacing="2">
+    <tr> 
+      <td colspan="2" nowrap>为每一框架指定一个标题。</td>
+    </tr>
+    <tr> 
+      <td align="right" nowrap> 框架:</td>
+      <td> 
+        <select name="frameName" class="namedObjectsList" style="width:150px" onChange="updateUI()">
+        </select>
+      </td>
+    </tr>
+    <tr> 
+      <td align="right" nowrap>标题:</td>
+      <td> 
+        <input name="frameTitle" type="text" class="medTField" onBlur="updateTitle()">
+      </td>
+    </tr>
+    <tr>
+       <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        如果在插入对象时不想输入此信息,
+        <a href="" onmousedown="dw.showPreferencesDialog('Accessibility')">请更改“辅助功能”首选参数。</a>
+       </td>
+     </tr>
+  </table>
+</form>
+</BODY>
+
+</HTML>
+

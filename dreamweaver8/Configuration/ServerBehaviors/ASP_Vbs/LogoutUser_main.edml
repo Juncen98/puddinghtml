@@ -1,0 +1,34 @@
+<participant>
+     <quickSearch><![CDATA[MM_Logoutnow]]></quickSearch>
+     <insertText location="aboveHTML+8">
+<![CDATA[
+<%
+' *** Logout the current user.
+MM_Logout = CStr(Request.ServerVariables("URL")) & "?MM_Logoutnow=1"
+If (CStr(Request("MM_Logoutnow")) = "1") Then
+  Session.Contents.Remove("@@MM_username@@")
+  Session.Contents.Remove("@@MM_userAuthorization@@")
+  MM_logoutRedirectPage = "@@redirectPage@@"
+  ' redirect with URL parameters (remove the "MM_Logoutnow" query param).
+  if (MM_logoutRedirectPage = "") Then MM_logoutRedirectPage = CStr(Request.ServerVariables("URL"))
+  If (InStr(1, UC_redirectPage, "?", vbTextCompare) = 0 And Request.QueryString <> "") Then
+    MM_newQS = "?"
+    For Each Item In Request.QueryString
+      If (Item <> "MM_Logoutnow") Then
+        If (Len(MM_newQS) > 1) Then MM_newQS = MM_newQS & "&"
+        MM_newQS = MM_newQS & Item & "=" & Server.URLencode(Request.QueryString(Item))
+      End If
+    Next
+    if (Len(MM_newQS) > 1) Then MM_logoutRedirectPage = MM_logoutRedirectPage & MM_newQS
+  End If
+  Response.Redirect(MM_logoutRedirectPage)
+End If
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="" limitSearch="all"><![CDATA[/\s*If\s+\(\s*CStr\s*\(\s*Request\s*\(\s*"MM_Logoutnow/]]></searchPattern>
+       <searchPattern paramNames="redirectPage" limitSearch="all"><![CDATA[/Session\.Contents\.Remove\("[^\r\n]*"\)\s*MM_logoutRedirectPage\s*=\s*"([^\r\n]*)"/]]></searchPattern>
+       <searchPattern paramNames="redirectPage_url" limitSearch="all"><![CDATA[/Session\.Contents\.Remove\("[^\r\n]*"\)\s*MM_logoutRedirectPage\s*=\s*"([^\r\n]*)"/]]></searchPattern>
+     </searchPatterns>
+</participant>

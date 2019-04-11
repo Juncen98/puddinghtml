@@ -1,0 +1,58 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Copyright 2001, 2002, 2003 Macromedia, Inc. All rights reserved. -->
+<title><MMString:LoadString id="insertbar/textBold" /></title>
+<script language="javascript">
+
+//---------------     API FUNCTIONS    ---------------
+
+function isDOMRequired() {
+	// Return false, indicating that this object is available in code view.
+	return false;
+}
+
+function objectTag() {
+	// Manually wrap tags around selection.
+	var dom = dw.getDocumentDOM();
+	if (dw.getFocus() == 'textView' || dw.getFocus(true) == 'html'){
+    var upCaseTag = (dw.getPreferenceString("Source Format", "Tags Upper Case", "") == 'TRUE');
+    var useStrongEm = (dw.getPreferenceString("General Preferences", "Avoid Bold and Italic", 'TRUE') == 'TRUE');
+  
+    // Manually wrap tags around selection.
+    if (upCaseTag){
+      if(useStrongEm){
+        dom.source.wrapSelection('<STRONG>','</STRONG>');
+      }else{
+        dom.source.wrapSelection('<B>','</B>');
+      }
+    }else{
+      if(useStrongEm){
+        dom.source.wrapSelection('<strong>','</strong>');
+      }else{
+        dom.source.wrapSelection('<b>','</b>');
+      }
+    }
+  }else if (dw.getFocus() == 'document'){
+	//  Normally, when we apply character (or font) markup, DW considers several
+	//  factors including whether or not the user has expressed a general preference
+	//  to use CSS over HTML.  In that is the case, then DW will try to use CSS
+	//  where possible and sensible.  In this case, however, we don't want CSS
+	//  used, regardless of the general preference that the user has stated.
+	//  Therefore, we temporarily force that preference to be "use HTML over CSS"
+	//  so this markup is implemented in HTML, not CSS.
+	var oldPrefUseCSS = dw.setPrefUseCSS(false);
+
+    dom.applyCharacterMarkup("b");
+	dw.setPrefUseCSS(oldPrefUseCSS);
+  }
+
+  // Just return -- don't do anything else.
+  return;
+}
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

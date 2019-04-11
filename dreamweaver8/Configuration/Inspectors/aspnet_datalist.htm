@@ -1,0 +1,63 @@
+<!-- tag:asp:datalist, priority:1, selection:e,hline,vline ,serverModel:ASP.NET-->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//pi">
+<html>
+<head>
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<title>数据列表</title>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/enableControl.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/helper.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssClasses.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<SCRIPT SRC="_pi_common.js"></SCRIPT>
+<SCRIPT src="aspnet_datalist.js"></SCRIPT>
+</head>
+
+<body onLoad="initializeUI()">
+<form name="theForm">
+
+<span id="image" style="position:absolute; width:23px; height:17px; z-index:16; left: 0px; top: 0px">
+  <img src="datalist.gif" width="36" height="36">
+</span>
+
+<div id="DataGridNameLayer" style="position:absolute; width:65px; height:15px; z-index:1; left: 40px; top: -2px">
+  <table border="0" cellpadding="0" cellspacing="4">
+    <tr>
+      <td nowrap>数据列表</td>
+    </tr>
+
+    <tr>
+      <td>
+        <input type="text" name="数据列表Name" style="width:65px" onBlur="updateTag('listName')">
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div id="mainLayer" style="position:absolute; width:150px; height:35px; z-index:1; left: 120px; top:0px">
+<table border="0">
+<tr><td>	
+  <table border=0>
+    <tr valign="baseline">
+	  <td nowrap><input type="checkbox" value="ShowColumnTitle" name="ShowColumnTitle" onClick="updateTag('title')"></td>
+	  <td nowrap>显示列标题</td>
+	</tr>
+	<tr valign="baseline">
+      <td nowrap><input type="checkbox" value="ShowColumnFooter" name="ShowColumnFooter" onClick="updateTag('footer')"></td>
+	  <td nowrap>显示列脚注</td>
+	</tr>
+  </table>
+</td>
+<td valign="top" align="left"> <input type="button" value="编辑列..." onClick="ColumnsButtonClicked()"> </td></tr>
+</table>
+</div>
+
+</form>
+</body>
+</html>
+

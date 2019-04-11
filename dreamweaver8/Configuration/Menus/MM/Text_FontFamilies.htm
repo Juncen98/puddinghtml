@@ -1,0 +1,109 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<TITLE>字体家族</TITLE>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+<!--
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MENU_Default = "默认(_D)";
+
+//--------------- END LOCALIZEABLE   ---------------
+
+function isDOMRequired()
+{
+  return false;
+}
+
+function receiveArguments()
+{
+	var fontFamily = arguments[0];
+
+	if (dw.getFocus(true) == 'document') {
+  		if (fontFamily == "0Font")
+  			dw.getDocumentDOM('document').applyFontMarkup('face','');
+  		else
+  			dw.getDocumentDOM('document').applyFontMarkup('face',fontFamily);
+    } else {
+      dw.getDocumentDOM().source.wrapSelection('<font face="' + fontFamily + '">', '</font>')
+    }
+}
+
+function canAcceptCommand()
+{
+  // Make sure the focus is in the BODY of the document.
+  var retVal = false;
+  if (dw.getFocus() == 'document' && dw.getDocumentDOM().getFocus() == 'body') {
+    retVal = true;
+  }
+  if (dw.getFocus(true) == 'html' || dw.getFocus() == 'textView') {
+//    var fontFamily = arguments[0];
+//    if (fontFamily != "0Font")
+      retVal = true;
+  }
+  if (dw.getDocumentDOM() && dw.getDocumentDOM().getParseMode() != 'html') {
+  	retVal = false;
+  }
+  
+	if(dw.getDocumentDOM() && dw.getDocumentDOM().documentType == "XSLT-fragment")
+	{
+		retVal = false;
+	}
+
+  return retVal;
+}
+
+	function isCommandChecked()
+	{
+//	  if (dw.getFocus(true) == 'html' || dw.getFocus() == 'textView')
+//	    return false;
+	    
+		var bChecked = false;
+		var fontFamily = arguments[0];
+	
+		if (dw.getDocumentDOM() == null) 
+			return false;
+
+		if (fontFamily == "0Font")
+		{
+			return dw.getDocumentDOM().getFontMarkup('face') == '';
+		}
+		else
+		{
+			return dw.getDocumentDOM().getFontMarkup('face') == fontFamily;
+		}
+
+		return bChecked;
+	}
+
+	// getDynamicContent returns the contents of a dynamically generated menu.
+	// returns an array of strings to be placed in the menu, with a unique
+	// identifier for each item separated from the menu string by a semicolon.
+	//
+	// return null from this routine to indicate that you are not adding any
+	// items to the menu
+	function getDynamicContent(itemID)
+	{
+		var fonts = null;
+		var i;
+		fonts = new Array();
+		fonts[0] = new String(MENU_Default + ";id='0Font'"); // start with the base "Default" font
+		var dwFnt = dw.getFontList();
+		if (dwFnt.length > 0)
+		{
+			for (i=1; i<=dwFnt.length; i++)
+			{
+				fonts[i] = new String(dwFnt[i-1]);
+				fonts[i] += ";id='"+escQuotes(dwFnt[i-1])+"'"; // each item needs an ID
+			}
+		}
+		return fonts;
+	}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

@@ -1,0 +1,269 @@
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2003 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<head>
+<title>插入 Flash 视频</title>
+
+<script src="../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../Shared/MM/Scripts/Class/ListControlClass.js"></script>
+<script src="../Shared/Controls/Scripts/CheckBox.js"></script>
+<script src="../Shared/Controls/Scripts/URLTextField.js"></script>
+<script src="FlashVideo.js"></script>
+<script src="../Shared/MM/Scripts/CMN/DOM.js"></script>
+<script src="../Shared/MM/Scripts/CMN/niceName.js"></script>
+<script src="../Shared/MM/Scripts/CMN/UI.js"></script>
+<script>
+//--------------- LOCALIZEABLE GLOBALS------------------
+var MSG_EnterValidURL = "请输入有效的 URL。";
+var MSG_EnterValidServerURI = "请输入有效的服务器 URI，格式为:\nrtmp://myserver/myapp/myinstance。";
+var MSG_SelectValidFile = "URL不可以包含特殊字符或空格。请重新输入有效的路径或文件名称。";
+var MSG_EnterStreamName = "URL不可以包含特殊字符或空格。请重新输入有效的路径或文件名称。";
+var MSG_EnterNumericValue = "请输入缓冲时间的数值。";
+var MSG_EnterNumericWidth = "请输入宽度的数值。";
+var MSG_EnterNumericHeight = "请输入高度的数值。";
+var MSG_MinSizeClearSkin = "对于 ";
+var MSG_MinSizeClearSkin1 = "，连同外观在内的总大小不可以小于 260 X 195。请输入有效的大小。";
+var MSG_MinSizeHaloSkin = "对于 ";
+var MSG_MinSizeHaloSkin1 = "，连同外观在内的总大小不可以小于 320 X 240。请输入有效的大小。";
+var MSG_MaxWidth = "允许的最大宽度值为 8192。请输入小于 8192 的值。";
+var MSG_MaxHeight = "允许的最大高度值为 8192。请输入小于 8192 的值。";
+var MSG_EnterValidBufferTime = "请输入有效的缓冲时间值.";
+var MSG_EnterValidWidth = "请输入有效的宽度数值。";
+var MSG_EnterValidHeight = "请输入有效的高度数值。";
+var MSG_CheckPermissions = "支持文件无法复制到您的站点的根目录下。请检查权限。";
+var MSG_SelectHaloSkinForVCS = "请为动态视频内容支持选择光晕外观。";
+var MSG_CopyStreamingFiles = "必须将以下文件上传到您的服务器上，Flash 视频才能正确显示:";
+var MSG_CopyStreamingFiles1 = "您将需要将以下文件上传到您的 Web 服务器上:" + "\n\n" + " FLVPlayer_Streaming.swf" + "\n" + " ";
+var MSG_CopyStreamingFiles2 = "\n\n" + "您需要将下列文件上传至 Flash Communication Server Applications 目录:" + "\n\n" + " main.asc";
+var MSG_CopyProgDwnladFiles = "必须将以下文件上传到您的 Web 服务器上，Flash 视频才能正确显示:";
+var MSG_CopyProgDwnladFiles1 = " FLVPlayer_Progressive.swf" + "\n ";
+var MSG_FailedToLoadPlayer = "swfloader 初始化失败";
+var MSG_UnableToDetectSize = "无法检测 Flash 视频文件的尺寸。请手动输入宽度和高度。";
+var MSG_RequiredFiles = '您还需要上传所需的文件。' + ' <a href="" onmousedown="requiredFiles()">' + '显示所需的文件...' + '</a>';
+var MSG_Detecting = '&nbsp;&nbsp;<strong>正在检测...</strong>';
+
+LABEL_VIDEO_TYPE= new Array("累进式下载视频","流视频");
+LABEL_VIDEO_TYPE_SSL= new Array("Flash Video Streaming Service Lite");
+
+var POS_progDownloadVideo_Layer_Height = "285";
+var POS_streamingVideo_Layer_Height = "355";
+var POS_information_Layer_Top1 = "461";	 // use in progressive download
+var POS_information_Layer_Top2 = "536";	 // use in streaming download
+
+var MIN_WIDTH = "最小宽度: %d";
+
+//--------------- END LOCALIZEABLE---------------
+</script>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+视频类型:
+<select name="theselector" style="WIDTH: 307px" onChange="updateUI('videoType');"><option>***选择视频类型***</option></select>
+<hr width="100%">
+<div id="theprogDownloadVideo" style="position:absolute; width:400px; height:285px; z-index:1; left: 5px; top: 60px; visibility: visible;">
+<form name="theprogDownloadVideo">
+<table border="0">
+    <tr>
+      <td width="18%" align="right" valign="baseline" nowrap><label>URL:</label></td>
+      <td colspan="3" valign="baseline" nowrap>
+        <input type="text" name="theprogDownloadVideo.url" style="WIDTH: 240px;HEIGHT:19px" onBlur="detectVideoInfoForProgressive()">
+        <input name="button" type="button" onClick="PROG_TF_URL.browseForFile();focus(this);detectVideoInfoForProgressive()" value="浏览...">
+      </td>
+    </tr>
+    <tr>
+      <td width="18%">&nbsp;</td>
+      <td colspan="3" valign="baseline" nowrap>
+        &nbsp;（输入 Flash 视频文件的相对或绝对路径）
+      </td>
+    </tr>
+    <tr>
+      <td><img src="../Shared/MM/Images/transparent.gif" height="10"></td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap><label>外观:</label></td>
+      <td colspan="3" align="left" vAlign=baseline noWrap>
+	    <select  name="theprogDownloadVideo.skinName" style="WIDTH: 307px" onChange="updateUI('theprogDownloadVideo.previewSkin')">
+	    </select>
+	  </td>
+	</tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="3"><img src="../Templates/images/Clear_Skin_1.png" id="theprogDownloadVideo.skinPreview"></td>
+	</tr>
+    <tr>
+      <td><img src="../Shared/MM/Images/transparent.gif" height="5"></td>
+    </tr>
+    <tr>
+      <td width="18%" align="right" valign="middle" nowrap><label>宽度:</label></td>
+      <td width="15%" align="left" valign=baseline nowrap>
+        <input type="text" name="theprogDownloadVideo.width" value="" style="WIDTH: 50px;HEIGHT:19px" maxlength="5" onBlur="if (this.value) { updateUI('theprogDownloadVideo.videoWidth'); }">
+      </td>
+      <td width="25%" valign="baseline" nowrap>
+        <input name="theprogDownloadVideo.constrain" type="checkbox" checked onClick="updateUI('theprogDownloadVideo.videoMaintainAR')">限制高宽比
+      </td>
+      <td valign=baseline nowrap>
+	    <input name="theprogDownloadVideo.videoDetectSize" type="button" onClick="detectSizeForProgressive();" value="检测大小">
+      </td>
+    </tr>
+    <tr>
+      <td width="18%" align="right" valign="middle" nowrap><label>高度:</label></td>
+      <td width="15%" align="left" valign=baseline nowrap>
+        <input type="text" name="theprogDownloadVideo.height" value="" style="WIDTH: 50px;HEIGHT:19px" maxlength="5" onBlur="if (this.value) { updateUI('theprogDownloadVideo.videoHeight'); }">
+      </td>
+      <td colspan="2" nowrap>
+        包括外观: <span id="theprogDownloadVideo.videoTotalDim"></span>
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="3" valign="baseline" nowrap>
+        <input type="checkbox" name="theprogDownloadVideo.autoPlay">自动播放
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="3" valign="baseline" nowrap>
+        <input type="checkbox" name="theprogDownloadVideo.autoRewind">自动重新播放
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="3" valign="baseline" nowrap><input name="theprogDownloadVideo.addDetection" type="checkbox" checked onClick="setFieldState(PROG_CB_ADD_DET,PROG_TEXT_DET_MSG)">
+      如果必要，提示用户下载 Flash Player  </td>
+    </tr>
+    <tr>
+      <td align="right" valign="top">消息:</td>
+      <td colspan="3" valign="baseline" nowrap><textarea name="theprogDownloadVideo.detectionMsg" wrap="virtual" class="largeTField" style="height:50px">本页内容需要使用较新的 Macromedia Flash Player 版本。是否现在下载它？</textarea></td>
+    </tr>
+</table>
+</form>
+</div>
+<div id="thestreamingVideo" style="position:absolute; width:400px; height:305px; z-index:1; left: 5px; top: 60px; visibility: hidden;">
+<form name="thestreamingVideo">
+<table>
+    <tr>
+      <td width="18%" align="right" valign="baseline" nowrap><label>服务器 URI:</label></td>
+      <td colspan="3" valign="baseline" nowrap>
+        <input type="text" name="thestreamingVideo.serverURI" style="WIDTH: 307px;HEIGHT:19px" value="rtmp://">      </td>
+    </tr>
+    <tr>
+      <td width="18%">&nbsp;</td>
+      <td colspan="3" valign="baseline" nowrap>
+        &nbsp;（输入服务器名称、应用程序名称和实例名称<br>&nbsp;例如，rtmp://myserver/myapp/myinstance）      </td>
+    </tr>
+    <tr>
+      <td><img src="../Shared/MM/Images/transparent.gif" height="10"></td>
+    </tr>
+    <tr>
+      <td width="18%" align="right" valign="baseline" nowrap><label>流名称:</label></td>
+      <td colspan="3" valign="baseline" nowrap>
+        <input type="text" name="thestreamingVideo.streamName" style="WIDTH: 307px;HEIGHT:19px" onBlur="detectVideoInfoForStreaming()">      </td>
+    </tr>
+    <tr>
+      <td width="18%" align="right" valign="baseline" nowrap><label>外观:</label></td>
+      <td colspan="3" align="left" vAlign=baseline noWrap>
+	    <select  name="thestreamingVideo.skinName" style="WIDTH: 307px" onChange="updateUI('thestreamingVideo.previewSkin')">
+	    </select>	  </td>
+	</tr>
+    <tr height="1">
+      <td></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="3"><img src="../Templates/images/Clear_Skin_1.png" id="thestreamingVideo.skinPreview"></td>
+	</tr>
+    <tr>
+      <td><img src="../Shared/MM/Images/transparent.gif" height="5"></td>
+    </tr>
+    <tr>
+      <td width="18%" align="right" valign="middle" nowrap><label>宽度:</label></td>
+      <td width="15%" align="left" valign=baseline nowrap>
+        <input type="text" name="thestreamingVideo.width" value="" style="WIDTH: 50px;HEIGHT:19px" maxlength="5" onBlur="if (this.value) { updateUI('thestreamingVideo.videoWidth'); }">      </td>
+      <td width="25%" valign=baseline nowrap>
+        <input name="thestreamingVideo.constrain" type="checkbox" checked onClick="updateUI('thestreamingVideo.videoMaintainAR')">限制高宽比      </td>
+      <td valign=baseline>
+        <input name="thestreamingVideo.videoDetectSize" type="button" onClick="detectSizeForStreaming();" value="检测大小">      </td>
+    </tr>
+    <tr>
+      <td width="18%" align="right" valign="middle" nowrap><label>高度:</label></td>
+      <td width="15%" align="left" valign=baseline nowrap>
+        <input type="text" name="thestreamingVideo.height" value="" style="WIDTH: 50px;HEIGHT:19px" maxlength="5" onBlur="if (this.value) { updateUI('thestreamingVideo.videoHeight'); }">      </td>
+      <td colspan="2" nowrap>
+        包括外观: <span id="thestreamingVideo.videoTotalDim"></span>	  </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="3" valign="baseline" nowrap>
+        <input type="checkbox" name="thestreamingVideo.isLive" onClick="isValidSkin('isLive')">实时视频输入      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="3" valign="baseline" nowrap>
+        <input type="checkbox" name="thestreamingVideo.autoPlay">自动播放      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="3" valign="baseline" nowrap>
+        <input type="checkbox" name="thestreamingVideo.autoRewind">自动重新播放      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap><label>缓冲时间:</label></td>
+      <td colspan="3" valign="baseline" nowrap>
+        <input type="text" name="thestreamingVideo.tf_bufferTime" value="0" maxlength="5" style="WIDTH: 50px;HEIGHT:19px">&nbsp;秒</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="3" valign="baseline" nowrap><input name="thestreamingVideo.addDetection" type="checkbox" checked onClick="setFieldState(STREAM_CB_ADD_DET,STREAM_TEXT_DET_MSG)">
+      如果必要，提示用户下载 Flash Player  </td>
+    </tr>
+    <tr>
+      <td align="right" valign="top">消息:</td>
+      <td colspan="3" valign="baseline" nowrap><textarea name="thestreamingVideo.detectionMsg" wrap="virtual" class="largeTField" style="height:50px">本页内容需要使用较新的 Macromedia Flash Player 版本。是否现在下载它？</textarea></td>
+    </tr>
+</table>
+</form>
+</div>
+<div id="theflaVideoStreamServiceLite" style="position:absolute; width:394px; height:285px; z-index:1; left: 5px; top: 60px; visibility: hidden;">
+<form name="theflaVideoStreamServiceLite">
+<table>
+  <tr>
+    <td>
+       <a href="" target="_blank" onMouseDown="dw.browseDocument('http://www.macromedia.com/go/fvsslitelogin');">登录</a> 到您的 Flash Video Streaming Service Lite 帐户，或者单击 <a href="" target="_blank" onMouseDown="dw.browseDocument('http://www.macromedia.com/go/fvsslite');">此处</a> 获取更多信息并注册 15 天试用版。
+    </td>
+  </tr>
+  <tr height=1>
+    <td></td>
+  </tr>
+  <tr>
+    <td nowrap>
+	将您的 Flash Video Streaming Service 嵌入代码粘贴在下方:
+    </td>
+  </tr>
+  <tr>
+    <td>
+	<textarea rows="15" cols="55" name="theflaVideoStreamServiceLite.code"></textarea>
+    </td>
+  </tr>
+</table>
+</form>
+</div>
+<div id="information" style="position:absolute; width:400px; height:20px; z-index:1; left: 5px; top: 430px; visibility: visible;">
+  <table width="100%">
+    <tr>
+      <td colspan="3"><hr>
+      </td>
+    </tr>
+    <tr>
+      <td align="right">
+        <span id="infoIcon"><img src="../Shared/MM/Images/P_InfoPC_Lg_N.png"></span>
+      </td>
+      <td>&nbsp;</td>
+      <td align="left" nowrap>要观看视频，请在浏览器中预览页面。<br>
+       <span id="requiredFiles">&nbsp;</span></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

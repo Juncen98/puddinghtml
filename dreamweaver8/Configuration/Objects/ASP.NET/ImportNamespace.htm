@@ -1,0 +1,32 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Copyright 2001 Macromedia, Inc. All rights reserved. -->
+<title><MMString:LoadString id="insertbar/aspnet/importNamespace" /></title>
+
+<script language="javascript">
+
+//---------------     API FUNCTIONS    ---------------
+
+function isDOMRequired() { 
+	// Return false, indicating that this object is available in code view.
+	return false;
+}
+
+function objectTag() {
+	// Manually insert code, and then put IP inside it.
+	var dom = dw.getDocumentDOM();
+	dom.source.wrapSelection('<%@ Import Namespace="','" %>');
+
+  // Just return -- don't do anything else.
+  return;
+}
+
+</script>
+	
+</head>
+
+<body>
+</body>
+
+</html>

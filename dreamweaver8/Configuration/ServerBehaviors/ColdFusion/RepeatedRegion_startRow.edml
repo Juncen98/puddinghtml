@@ -1,0 +1,7 @@
+<participant version="5.0">
+	<insertText location="aboveHTML+60"><![CDATA[<@ if (@@PageSize@@) @><cfset StartRow_@@RecordsetName@@=Min((PageNum_@@RecordsetName@@-1)*MaxRows_@@RecordsetName@@+1,Max(@@RecordsetName@@.RecordCount,1))><@ endif @>]]></insertText>
+	<searchPatterns whereToSearch="tag+CFSET">
+		<searchPattern paramNames="RecordsetName" isOptional="false" limitSearch="all"><![CDATA[/(?:\s*<cfset StartRow_([^\r\n]*?)=Min\(\(PageNum_[^\r\n]*?-1\)\*MaxRows_[^\r\n]*?\+1,Max\([^\r\n]*?\.RecordCount,1\)\)>\s*)/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>=Min((PageNum_</quickSearch>
+</participant>

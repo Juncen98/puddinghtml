@@ -1,0 +1,33 @@
+<tag name="CFOBJECT" endtag="no">
+<tagformat nlbeforetag="1" nlaftertag="1"/>
+<tagdialog file="cfobject.htm" />
+  <attributes>
+    <attrib name="TYPE" type="ENUMERATED">
+      <attriboption value="COM"/>
+      <attriboption value="CORBA"/>
+      <attriboption value="JAVA"/>
+    </attrib>
+    <attrib name="NAME" type="TEXT"/>
+    <attrib name="COMPONENT" type="TEXT"/>
+    <attrib name="CLASS" type="TEXT"/>
+    <attrib name="SERVER" type="TEXT"/>
+    <attrib name="ACTION" type="ENUMERATED">
+      <attriboption value="CREATE"/>
+      <attriboption value="CONNECT"/>
+    </attrib>
+    <attrib name="CONTEXT" type="ENUMERATED">
+      <attriboption value="INPROC"/>
+      <attriboption value="IOR"/>
+      <attriboption value="LOCAL"/>
+      <attriboption value="NAMESERVICE"/>
+      <attriboption value="REMOTE"/>
+    </attrib>
+    <attrib name="LOCALE" type="TEXT"/>
+  </attributes>
+  <attribcategories>
+    <attribgroup name="General" elements="name,class,action,type" />
+    <attribgroup name="Component" elements="component" />
+    <attribgroup name="Com" elements="server" />
+    <attribgroup name="Corba" elements="locale,context" />
+  </attribcategories>
+</tag>

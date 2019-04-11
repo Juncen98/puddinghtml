@@ -1,0 +1,49 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>HTML ÑשÊ½</TITLE>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+<!--
+	function receiveArguments()
+	{
+		var htmlStyle = arguments[0];
+		dw.getDocumentDOM('document').applyHTMLStyle(htmlStyle);
+	}
+
+	function canAcceptCommand()
+	{
+		return ((dw.getFocus() == 'document' && dw.getDocumentDOM().getFocus() == 'body') || dw.getFocus() == 'textView' || dw.getFocus() == 'html') && dw.getDocumentDOM() && dw.getDocumentDOM().getParseMode() == 'html';
+	}
+
+	// getDynamicContent returns the contents of a dynamically generated menu.
+	// returns an array of strings to be placed in the menu, with a unique
+	// identifier for each item separated from the menu string by a semicolon.
+	//
+	// return null from this routine to indicate that you are not adding any
+	// items to the menu
+	function getDynamicContent(itemID)
+	{
+		var htmlStyles = null;
+		if (typeof dw["htmlStylePalette"] == 'undefined')
+			return new Array(); 
+			
+		htmlStyles = dw.htmlStylePalette.getStyles();
+		var i;
+
+		if (htmlStyles.length > 0)
+		{
+			for (i=0; i<htmlStyles.length; i++)
+			{
+				htmlStyles[i] += ";id='"+escQuotes(htmlStyles[i])+"'"; // each item needs an ID
+			}
+		}
+		return htmlStyles;
+	}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

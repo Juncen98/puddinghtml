@@ -1,0 +1,87 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>文本列表菜单</TITLE>
+<SCRIPT LANGUAGE="javascript">
+<!--
+
+function isDOMRequired() 
+{
+  return false;
+}
+
+function receiveArguments()
+{
+  var what = arguments[0];
+
+  if (dw.getFocus(true) == 'document') {
+    if (what == "None")
+      dw.getDocumentDOM().setListTag('')
+    if (what == "UL")
+      dw.getDocumentDOM().setListTag('ul')
+    if (what == "OL")
+      dw.getDocumentDOM().setListTag('ol')
+    if (what == "DL")
+      dw.getDocumentDOM().setListTag('dl')
+  } else {
+    if (what == "UL")
+      dw.getDocumentDOM().source.wrapSelection("<ul>", "</ul>")
+    if (what == "OL")
+      dw.getDocumentDOM().source.wrapSelection("<ol>", "</ol>")
+    if (what == "DL")
+      dw.getDocumentDOM().source.wrapSelection("<dl>", "</dl>")
+  }
+}
+
+function canAcceptCommand()
+{
+	var dom = dw.getDocumentDOM();
+  // Make sure the focus is in the BODY of the document.
+  var retVal = false;
+  if (dw.getFocus() == 'document' && dw.getDocumentDOM().getFocus() == 'body') {
+    retVal = true;
+  }
+  if (dw.getFocus(true) == 'html' || dw.getFocus() == 'textView') {
+//    var what = arguments[0];
+//    if (what != "None")
+      retVal = true;
+  }  
+ if (dom && dom.getParseMode() != 'html') {
+     retVal = false;
+ }
+
+  return retVal;
+}
+
+function isCommandChecked()
+{
+//  if (dw.getFocus(true) == 'html' || dw.getFocus() == 'textView' && dw.getDocumentDOM().isDesignViewUpdated())
+//    return false;
+
+  if (dw.getDocumentDOM() != null){
+    var textList = dw.getDocumentDOM().getListTag();
+    var what = arguments[0];
+
+    if (what == "None")
+      return (textList == "");
+    if (what == "UL")
+      return (textList == "ul");
+    if (what == "OL")
+      return (textList == "ol");
+    if (what == "DL")
+      return (textList == "dl");
+    else
+      return false;
+  }
+  else
+  {
+    return false;
+  }  
+}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

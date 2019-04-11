@@ -1,0 +1,48 @@
+<participant>
+     <quickSearch><![CDATA[MM_rsCount]]></quickSearch>
+     <insertText location="aboveHTML+84">
+<![CDATA[
+<%
+// *** Move To Record: if we dont know the record count, check the display range
+
+if (MM_rsCount == -1) {
+
+  // walk to the end of the display range for this page
+  for (var i=MM_offset; !MM_rs.EOF && (MM_size < 0 || i < MM_offset + MM_size); i++) {
+    MM_rs.MoveNext();
+  }
+
+  // if we walked off the end of the recordset, set MM_rsCount and MM_size
+  if (MM_rs.EOF) {
+    MM_rsCount = i;
+    if (MM_size < 0 || MM_size > MM_rsCount) MM_size = MM_rsCount;
+  }
+
+  // if we walked off the end, set the offset based on page size
+  if (MM_rs.EOF && !MM_paramIsDefined) {
+    if ((MM_rsCount % MM_size) != 0) {  // last page not a full repeat region
+      MM_offset = MM_rsCount - (MM_rsCount % MM_size);
+    } else {
+      MM_offset = MM_rsCount - MM_size;
+    }
+  }
+
+  // reset the cursor to the beginning
+  if (MM_rs.CursorType > 0) {
+    if (!MM_rs.BOF) MM_rs.MoveFirst();
+  } else {
+    MM_rs.Requery();
+  }
+
+  // move the cursor to the selected record
+  for (var i=0; !MM_rs.EOF && i < MM_offset; i++) {
+    MM_rs.MoveNext();
+  }
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern><![CDATA[/MM_rsCount\s*=\s*i/]]></searchPattern>
+     </searchPatterns>
+</participant>

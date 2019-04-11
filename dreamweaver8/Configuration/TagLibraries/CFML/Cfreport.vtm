@@ -1,0 +1,54 @@
+<tag name="CFREPORT" endtag="yes">
+<tagformat nlbeforetag="1" nlbeforecontents="1" nlaftercontents="1" nlaftertag="1" indentcontents="yes"/>
+<tagdialog file="cfreport.htm" />
+  <attributes>
+	<attrib name="TEMPLATE" type="FILEPATH"/>
+    <attrib name="FORMAT" type="ENUMERATED">
+      <attriboption value="FLASHPAPER"/>
+      <attriboption value="PDF"/>
+    </attrib>
+    <attrib name="NAME" type="TEXT"/>
+    <attrib name="FILENAME" type="FILEPATH"/>
+    <attrib name="QUERY" type="TEXT"/>
+    <attrib name="OVERWRITE" type="ENUMERATED">
+      <attriboption value="YES"/>
+      <attriboption value="NO"/>
+    </attrib>	
+	
+	<attrib name="DATASOURCE" type="TEXT"/>
+    <attrib name="TYPE" type="ENUMERATED">
+      <attriboption value="NETSCAPE"/>
+      <attriboption value="MICROSOFT"/>
+    </attrib>
+    <attrib name="TIMEOUT" type="TEXT"/>
+    <attrib name="REPORT" type="FILEPATH"/>
+    <attrib name="ORDERBY" type="TEXT"/>
+    <attrib name="USERNAME" type="TEXT"/>
+    <attrib name="PASSWORD" type="TEXT"/>
+    <attrib name="FORMULA" type="TEXT"/>
+    <attrib name="$$TagBody"/>
+   </attributes>
+   <attrib name="ENCRYPTION" type="ENUMERATED">
+   	   <attriboption value="none"/>
+      <attriboption value="128-bit"/>
+      <attriboption value="40-bit"/>
+   </attrib> 
+   <attrib name="PERMISSIONS" type="ENUMERATED">
+   	   <attriboption value="ALLOWPRINTING"/>
+      <attriboption value="ALLOWMODIFYCONTENTS"/>
+      <attriboption value="ALLOWCOPY"/>
+	  <attriboption value="ALLOWMODIFYANNOTATIONS"/>
+	  <attriboption value="ALLOWFILLIN"/>
+	  <attriboption value="ALLOWSCREENREADERS"/>
+	  <attriboption value="ALLOWASSEMBLY"/>
+	  <attriboption value="ALLOWDEGRADEDPRINTING"/>
+   </attrib> 
+   	<attrib name="OWNERPASSWORD" type="TEXT"/>
+	<attrib name="USERPASSWORD" type="TEXT"/>
+   
+   <attribcategories>
+      <attribgroup name="General" elements="template,format,name,filename,query,overwrite" />
+      <attribgroup name="PDF" elements=""
+	  <attribgroup name="Crystal" elements="report,orderby,type,datasource,username,password,timeout,formula" />
+   </attribcategories>
+</tag>

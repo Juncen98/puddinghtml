@@ -1,0 +1,98 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>CFAPPLET</title>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var CFAPPLETALIGNLIST;
+var theUIObjects;
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function initializeUI()
+{
+	CFAPPLETALIGNLIST = new ListControl("thealign"); 
+	theUIObjects = new Array(CFAPPLETALIGNLIST); 
+
+  tagDialog.populateDropDownList(CFAPPLETALIGNLIST, theVericalAlignmentsCap, theVericalAlignmentsVal, 1)
+}
+
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+<div name="CFAPPLET 标签"> 
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">Applet: </td>
+      <td nowrap="nowrap"> 
+        <input name="theappletsource" type="text" class="basicTextField" id="attr:cfapplet:appletsource" attname="appletsource" required="true" />&nbsp;
+        <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('theappletsource');focus(this)" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">存档: </td>
+      <td nowrap="nowrap">
+        <input name="thearchive" type="text" class="basicTextField" id="attr:cfapplet:archive" attname="archive" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:cfapplet:name" attname="name" required="true" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">对齐: </td>
+      <td nowrap="nowrap">
+	    <select name="thealign" class="alignList" id="attr:cfapplet:align" attname="align"> 
+        </select>
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">高度: </td>
+      <td nowrap="nowrap">
+        <input name="theheight" type="text" class="smallNumOrChar" id="attr:cfapplet:height" attname="height" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">宽度: </td>
+      <td nowrap="nowrap">
+        <input name="thewidth" type="text" class="smallNumOrChar" id="attr:cfapplet:width" attname="width" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">垂直间距: </td>
+      <td nowrap="nowrap">
+        <input name="thevspace" type="text" class="smallNumOrChar" id="attr:cfapplet:vspace" attname="vspace" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">水平间距: </td>
+      <td nowrap="nowrap">
+        <input name="thehspace" type="text" class="smallNumOrChar" id="attr:cfapplet:hspace" attname="hspace" />
+      </td>
+    </tr>
+  </table>
+</div> 
+</body>
+</html>

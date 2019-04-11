@@ -1,0 +1,12 @@
+<participant>
+     <quickSearch><![CDATA[MM_recordId]]></quickSearch>
+     <insertText location="lastChildOfNode" nodeParamName="formNode">
+<![CDATA[
+<input type="hidden" name="MM_recordId" value="<%= @@rs@@.Fields.Item("@@col@@").Value %>">
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="tag+INPUT">
+       <searchPattern><![CDATA[/name="MM_recordId"/i]]></searchPattern>
+       <searchPattern paramNames="rs,col"><![CDATA[/(\w+)\.Fields\.Item\("(\w+)"\)\.Value/]]></searchPattern>
+     </searchPatterns>
+</participant>

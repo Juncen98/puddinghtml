@@ -1,0 +1,219 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">&lt;!DOCTYPE&gt;</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">all</span> IE <span class="emphasis">all</span> HTML <span class="emphasis">3.2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">&lt;!DOCTYPE...&gt;</p>
+					</td><td valign="top" nowrap class="requirements">HTML End Tag: Forbidden&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The <span class="literal">DOCTYPE</span> element is not an HTML element, but
+rather a comment in the Standard Generalized Markup Language (SGML)
+format (as are so-called HTML comments in the <span class="literal">&lt;!-- ...
+--&gt;</span> style). This element must be the first element in a
+document, except as noted below for XHTML documents, and must always
+precede the <span class="literal">&lt;HTML&gt;</span> tag element. It advises
+the browser as to the document type definition (DTD) that the HTML
+source code is designed to follow. All browsers have a default
+document type that defines which elements and element attributes the
+browser supports (and that the browser has the internal programming
+to supportbuggy or otherwise). Specifying a document type for
+a more modern DTD does not empower an older browser to support
+elements and attributes for which it is not coded. Conversely,
+specifying a constricted DTD does not prevent a browser from
+recognizing and supporting backward-compatible or proprietary
+elements and attributes.
+</p><p>A <span class="literal">DOCTYPE</span> element contains several unlabeled
+attribute values that specify such details as the name for the
+outermost document tag (<span class="literal">html</span> for our purposes),
+the organization responsible for the DTD, the address of the actual
+DTD file (called a <span class="emphasis">system identifier</span>), a
+plain-language name for the definition (including version number, if
+necessary), and the like. For example, the following
+<span class="literal">DOCTYPE</span> refers to an HTML 4.01 DTD that includes
+all deprecated elements and attributes:
+</p><p>The next example points to the XHTML 1.1 DTD, which does not include
+deprecated items nor frames:
+</p><p>Additionally, if you specify an XHTML DTD, you should include one of
+the following SGML-processing instruction tags prior to the
+<span class="literal">DOCTYPE</span> declaration:
+</p><p>The latter version includes a setting for character set encoding,
+which may alternatively be set in a <span class="literal">&lt;META&gt;</span>
+tag. The W3C HTML and XHTML validators encourage documents to declare
+their character-encoding type in one way or the other.
+</p><p>For the most part, web authors include a <span class="literal">DOCTYPE</span>
+element to facilitate validation of the HTML source code prior to
+publication on the Web. But some modern browsers behave slightly
+differently based on the details of the <span class="literal">DOCTYPE</span>
+comment at the start of the document. Both IE 6 and Netscape 6
+operate in one of two "modes,"
+depending on the details of the <span class="literal">DOCTYPE</span> attribute
+values. One mode points to backward compatibility with
+implementations that came before, and diverge from, the W3C
+standards; the other mode causes the browser to behave more in
+keeping with W3C recommendations. The differences between the two
+modes lay primarily in fine layout details that are more carefully
+defined in modern-day CSS and DOM specifications. For simple layouts,
+you probably won't notice the difference in modes.
+But if your pages rely upon style sheets or backgrounds for tables,
+form control alignment (especially in tables), precise font sizing or
+spacing, and, in IE, pixel-perfect CSS positioning with respect to
+the document edges and positioned element sizes, you need to pay
+attention to the <span class="literal">DOCTYPE</span> details in your
+documents.
+</p><p>It is difficult to guide you through every compatibility detail, but
+a couple of broad recommendations should keep you on track. First, if
+you are pleased with the layouts of your current pages or templates,
+you will probably be best served by continuing to use
+<span class="literal">DOCTYPE</span> settings that keep you in
+backward-compatible mode (the Mozilla engineers call it
+"quirks" mode; Microsoft has no
+particular name for the mode). But if you are generating new content,
+especially for the newer browsers (ideally, Version 6 or later), you
+should gravitate toward the
+"strict" (Navigator) or
+"standards-compatible" (IE) mode
+settings.
+</p><p>The number of <span class="literal">DOCTYPE</span> attribute values in common
+use today is mind boggling, and the rules that govern which
+attributes force each browser into a particular mode are not 100% in
+sync across browsers. But here are a few of the more common
+<span class="literal">DOCTYPE</span> tags that force Version 6 browsers into
+backward-compatible mode, regardless of browser:
+</p><p>A couple of points worth noting. First, all of the above examples
+declare HTML DTDs no later than HTML 4.01, and none are XHTML.
+Second, none of the above examples includes a system identifier URI
+to a reference <span class="emphasis">.dtd</span> file. Also, if you omit the
+<span class="literal">DOCTYPE</span> element entirely, the browser applies the
+equivalent of the old internal DTDs.
+</p><p>Now here are common <span class="literal">DOCTYPE</span> tags that force
+Version 6 browsers into the modern, standards-based mode:
+</p><p>All HTML 4.x/strict and XHTML DTDs switch on standards-compatible
+mode, with or without the URLs. Including the URL with HTML 4.x
+transitional and frameset DTDs invokes the standards-compatible mode.
+</p><p>To learn more about the impact of the DTD choice on DOM and CSS
+features in the latest browsers, see Chapter 9 (<span class="literal">client</span>- and
+<span class="literal">offset</span>- properties, the <span class="literal">body</span>
+object, the <span class="literal">document.compatMode</span> property) and
+Chapter 10 (<span class="literal">height</span> and
+<span class="literal">width</span> attributes). Appendix E
+shows which HTML 4 elements and attributes are supported by each of
+the most popular HTML 4.01 and XHTML 1.0 DTDs for validation
+purposes.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.firstChild</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Element-Specific Attributes</span></td>
+				</tr>
+				<tr>
+					<td><p>Attributes are unlabeled.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Element-Specific Event Handler Attributes</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="lang">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">lang</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal">lang="<span class="replaceable">languageCode</span>"</p>
+							</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>The language being used for the element's attribute
+		values and content. A browser can use this information to assist in
+		proper rendering of content with respect to details such as treatment
+		of ligatures (when supported by a particular font or required by a
+		written language), quotation marks, and hyphenation. Other
+		applications and search engines might use this information to aid the
+		selection of spell-checking dictionaries and the creation of indices.
+		</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>&lt;SPAN lang="de"&gt;Deutsche Bundesbahn&lt;/SPAN&gt;</pre>
+								</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+						</tr>
+						<tr>
+							<td><p>Case-insensitive language code.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+						</tr>
+						<tr>
+							<td><p>Browser default.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID).</span>lang</pre>
+								</span></td>
+						</tr>
+					</table>
+		</div>
+</body>
+</html>

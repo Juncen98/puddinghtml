@@ -1,0 +1,26 @@
+<participant>
+     <quickSearch><![CDATA[MM_editAction]]></quickSearch>
+     <insertText location="aboveHTML+15">
+<![CDATA[
+<%
+// *** Edit Operations: declare variables
+
+// set the form action variable
+var MM_editAction = Request.ServerVariables("SCRIPT_NAME");
+if (Request.QueryString) {
+  MM_editAction += "?" + Server.HTMLEncode(Request.QueryString);
+}
+
+// boolean to abort record edit
+var MM_abortEdit = false;
+
+// query string to execute
+var MM_editQuery = "";
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern><![CDATA[/var\s+MM_editAction\s*=\s*Request\.ServerVariables\("(?:URL|SCRIPT_NAME)"\);/]]></searchPattern>
+       <searchPattern><![CDATA[/var\s+MM_editQuery\s*=\s*"";/]]></searchPattern>
+     </searchPatterns>
+  </participant>

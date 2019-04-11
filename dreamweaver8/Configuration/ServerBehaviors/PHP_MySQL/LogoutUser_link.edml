@@ -1,0 +1,10 @@
+<participant>
+     <quickSearch><![CDATA[logoutAction]]></quickSearch>
+     <insertText location="nodeAttribute+href" nodeParamName="linkTag">
+<![CDATA[<?php echo $logoutAction ?>]]>
+     </insertText>
+     <searchPatterns whereToSearch="tag+a">
+       <searchPattern limitSearch="attribute+href"><![CDATA[/\s*<\?php echo \$logoutAction \?>/i]]></searchPattern>
+       </searchPatterns>
+       <delete deleteType="tagOnly" />
+</participant>

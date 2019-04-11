@@ -1,0 +1,9 @@
+<participant version="6.0">
+  <insertText location="nodeAttribute+action" nodeParamName="form__tag">
+    <![CDATA[<cfoutput>#CurrentPage#@@ActionQueryString@@</cfoutput>]]>
+  </insertText>
+  <searchPatterns whereToSearch="tag+FORM">
+    <searchPattern paramNames=",ActionQueryString," limitSearch="attribute+ACTION" isOptional="false"><![CDATA[/(<cfoutput>)?#CurrentPage#([^<]*)(<\/cfoutput>)?/i]]></searchPattern>
+  </searchPatterns>
+  <quickSearch>#CurrentPage#</quickSearch>
+</participant>

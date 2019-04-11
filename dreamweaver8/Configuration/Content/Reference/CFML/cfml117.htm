@@ -1,0 +1,1135 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFSELECT</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFSELECT</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Constructs a drop-down list box form control. Used within a cfform tag. You can populate the list from a query, or by using the HTML option tag. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Forms tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfselect 
+   name = &quot;name&quot;
+label = &quot;label&quot;
+style = &quot;style specification&quot;
+   size = &quot;integer&quot;
+   required = &quot;yes&quot; or &quot;no&quot;
+   message = &quot;text&quot;
+   onError = &quot;text&quot;
+   multiple = &quot;yes&quot; or &quot;no&quot;
+   query = &quot;queryname&quot;
+   value = &quot;text&quot;
+   display = &quot;text&quot;&gt;
+   group = &quot;query column name
+   queryPosition = &quot;above&quot; or &quot;below&quot;
+   selected = &quot;value or list&quot;
+onKeyUp = &quot;JavaScript or ActionScript&quot;
+onKeyDown = &quot;JavaScript or ActionScript&quot;
+onMouseUp = &quot;JavaScript or ActionScript&quot;
+onMouseDown = &quot;JavaScript or ActionScript&quot;
+onChange = &quot;JavaScript or ActionScript&quot;
+onClick = &quot;JavaScript or ActionScript&quot;
+visible = &quot;Yes&quot; or &quot;No&quot;
+enabled = &quot;Yes&quot; or &quot;No&quot;
+tooltip = &quot;tip text&quot;
+height = &quot;number of pixels&quot; <i>Flash only
+</i>width = &quot;number of pixels&quot; <i>Flash only
+&gt;
+</i>zero or more HTML option tags
+&lt;/cfselect&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfapplet, cfcalendar, cfform, cfformgroup, cfformitem, cfgrid, cfinput, cfslider, cftextarea, cftree; Chapter&#160;26, "Introduction to Retrieving and Formatting Data," in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7:
+</p>
+<ul>
+
+<li>Added support for specifying multiple values to the selected attribute.</li>
+
+<li>Deprecated the passthrough attribute. The tag now supports all HTML select tag attributes directly.</li>
+
+<li>Added on-prefixed attributes.</li>
+
+<li>Added enabled, group, height, label, queryPosition, tooltip, visible, and width attributes.</li>
+</ul>
+
+<p>
+The following table lists attributes that ColdFusion uses directly. The tag also supports all HTML select tag attributes that are not on this list, and passes them directly to the browser.
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>Attributes that are marked as Flash only are not handled by the skins provided with ColdFusion&#160;MX. They are, however, included in the generated XML.</td>
+  </tr>
+</table>
+<p>
+
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>Attributes that are marked as Flash only are not handled by the skins provided with ColdFusion MX. They are, however, included in the generated XML.</td>
+  </tr>
+</table>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+This tag requires an end tag and can include HTML option and optgroup child tags. 
+</p>
+
+<p>
+To ensure that a selected list box item persists across postbacks, use the cfform preserveData attribute with a list generated from a query. (This strategy works only with data that is populated from a query.)
+</p>
+
+<p>
+If the cfform preserveData attribute is true and the form posts back to the same page, and if the control is populated by a query, the posted selection(s) for the cfselect control are used instead of the Selected attribute. For controls that are populated with regular HTML option tags, the developer must dynamically add the Selected attribute to the appropriate option tag(s).
+</p>
+
+<p>
+The group option generates a query using SQL GROUP BY syntax and places the value column entries from each group in an indented list under the group column's field value. This option generates an HTML optgroup tag for each entry in the group column.
+</p>
+
+<p>
+Close each HTML option tag in the cfselect tag body with a &lt;/option&gt; end tag. If you do not do so, and you specify queryPosition=&quot;below&quot;, the first item from the query might not appear in the list.
+</p>
+
+<p>
+For this tag to work properly. the browser must be JavaScript-enabled. 
+</p>
+
+<p>
+For more information, see the cfform tag entry. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+The following example lets you select one or more employee names from a list of all employees, grouped by departments, and displays the selected names and the employee's email addresses. It includes an option to get data for all employees.
+</p>
+<pre>&lt;!--- Get the employee names from the database. ---&gt;
+&lt;!--- Use SQL to create a Name field with first and last names. ---&gt;
+&lt;cfquery name = &quot;GetAllEmployees&quot; dataSource = &quot;cfdocexamples&quot;
+      cachedwithin=&quot;#createTimeSpan(0,1,0,0)#&quot;&gt;
+   SELECT Emp_ID, EMail, Phone, Department, FirstName, LastName, FirstName +&#39; &#39;
+      +lastName as Name
+   FROM   Employees 
+   GROUP BY Department, Emp_ID, EMail, Phone, FirstName, LastName, FirstName
+&lt;/cfquery&gt;
+
+
+&lt;h2&gt;cfselect Example&lt;/h2&gt;
+&lt;!-- The cfif statement is true if the form was submitted.
+   Show the selected names. ---&gt;
+&lt;cfif IsDefined(&quot;form.employeeid&quot;)&gt;
+   &lt;!--- The form was submitted. ---&gt;
+   &lt;h4&gt;You Selected the following employees&lt;/h3&gt;
+   &lt;cfif form.employeeid IS &quot;&quot;&gt;
+      &lt;!--- Select All option was selected. Show all employees. ---&gt;
+      &lt;cfoutput query=&quot;GetAllEmployees&quot;&gt;
+         #name#&lt;br&gt;
+         Email: #email#&lt;br&gt;&lt;br&gt;
+      &lt;/cfoutput&gt;
+   &lt;cfelse&gt;
+      &lt;!--- Use a query of queries to get the data for the selected users. 
+         Form.employeeid is a comma-delimited list of selected employee IDs. ---&gt;
+      &lt;cfquery name = &quot;GetSelectedEmployees&quot; dbtype=&quot;query&quot;&gt;
+         SELECT Emp_ID, EMail, Phone, Department, FirstName, LastName, FirstName
+            +&#39; &#39; +lastName as Name
+         FROM   GetAllEmployees
+         WHERE Emp_ID in (#form.employeeid#)
+      &lt;/cfquery&gt;   
+      &lt;!--- Display the names and e-mail addresses from the query. ---&gt;
+      &lt;cfoutput query=&quot;GetSelectedEmployees&quot;&gt;
+         #firstName# #lastName#&lt;br&gt;
+         Email: #email#&lt;br&gt;
+         &lt;br&gt;
+      &lt;/cfoutput&gt;
+   &lt;/cfif&gt; 
+&lt;/cfif&gt;
+
+&lt;!--- The cfform tag posts back to the current page. ---&gt;
+&lt;h3&gt;Select one or more employees&lt;/h3&gt;
+&lt;cfform action = &quot;#CGI.SCRIPT_NAME#&quot;&gt;
+   &lt;!--- Use cfselect to present the query's LastName column, grouped by 
+department. 
+      Allow Multiple selections.---&gt;
+   &lt;cfselect 
+      name = &quot;employeeid&quot; 
+      size = &quot;15&quot; 
+      multiple=&quot;yes&quot; 
+      required = &quot;Yes&quot;
+      message = &quot;Select one or more employee names&quot; 
+      query = &quot;GetAllEmployees&quot; 
+      group=&quot;Department&quot;
+      display =&quot;name&quot; 
+      value =&quot;emp_id&quot; 
+      queryPosition=&quot;Below&quot;&gt;
+      &lt;!--- Add an option to select all employees. ---&gt;
+      &lt;option value = &quot;&quot;&gt;Select All&lt;/option&gt;
+   &lt;/cfselect&gt;&lt;br&gt;&lt;br&gt;
+   &lt;input type=&quot;Submit&quot;&gt;
+&lt;/cfform&gt; 
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="NAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of the select form element.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="LABEL">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">LABEL</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Flash and XML</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Label to put next to the control on a Flash or XML-format form.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="STYLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STYLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>In HTML or XML format forms, ColdFusion passes the style attribute to the browser or XML.</p>
+<p>In Flash format, must be a style specification in CSS format, with the same syntax and contents as used in Macromedia Flex for the corresponding Flash element. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SIZE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SIZE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "1"
+
+
+<p>Number of entries to display at one time. The default, 1, displays a drop-down list. Any other value displays a list box with size number of entries visible at one time.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="REQUIRED">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">REQUIRED</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "No"
+
+<ul>
+
+<li>Yes: a list element must be selected when the form is submitted.</li>
+</ul>
+
+<p><b><i>Note: </i></b>This attribute has no effect if you omit the size attribute or set it to 1, because the browser always submits the displayed item. You can work around this issue: format forms by having an initial option tag with value=&quot; &quot; (note the space character between the quotation marks).</p><ul>
+
+<li>No</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="MESSAGE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">MESSAGE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Message to display if required = &quot;Yes&quot; and no selection is made.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ONERROR">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ONERROR</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">HTML and XML</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Custom JavaScript function to execute if validation fails.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="MULTIPLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">MULTIPLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "No"
+
+<ul>
+
+<li>Yes: allows selecting multiple elements in drop-down list.</li>
+
+<li>No</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="QUERY">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">QUERY</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of query to populate drop-down list.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="VALUE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">VALUE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Query column to use for the value of each list element. Used with the query attribute.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DISPLAY">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DISPLAY</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Value of value attribute"
+
+
+<p>Query column to use for the display label of each list element. Used with the query attribute.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="GROUP">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">GROUP</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; HTML and XML</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Query column to use to group the items in the drop-down list into a two-level hierarchical list.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="QUERYPOSITION">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">QUERYPOSITION</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "above"
+
+
+<p>If you populate the options list with a query and use HTML option child tags to specify additional entries, determines the location of the items from the query relative to the items from the option tags:</p><ul>
+
+<li>above: puts the query items above the options items.</li>
+
+<li>below: puts the query items below the options items.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SELECTED">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SELECTED</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>One or more option values to preselect in the selection list. To specify multiple values, use a comma-delimited list. This attribute applies only if selection list items are generated from a query. The cfform preservedata attribute value can override this value.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ONKEYUP">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ONKEYUP</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<strong>Default value:</strong> "JavaScript (HTML/XML) or ActionScript (Flash) to run when the user releases a keyboard key in the control."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ONKEYDOWN">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ONKEYDOWN</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<strong>Default value:</strong> "JavaScript (HTML/XML) or ActionScript (Flash) ActionScript to run when the user presses a keyboard key in the control."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ONMOUSEUP">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ONMOUSEUP</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<strong>Default value:</strong> "JavaScript (HTML/XML) or ActionScript (Flash) to run when the user presses a mouse button in the control."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ONMOUSEDOWN">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ONMOUSEDOWN</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<strong>Default value:</strong> "JavaScript (HTML/XML) or ActionScript (Flash) to run when the user releases a mouse button in the control."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ONCHANGE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ONCHANGE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<strong>Default value:</strong> "JavaScript (HTML/XML) or ActionScript (Flash) to run when the control changes due to user action."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ONCLICK">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ONCLICK</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; HTML and XML</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<strong>Default value:</strong> "JavaScript to run when the user clicks the control."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ENABLED">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ENABLED</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; Flash</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Yes"
+
+<strong>Default value:</strong> "Boolean value specifying whether the control is enabled. A disabled control appears in light gray. The inverse of the disabled attribute."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="VISIBLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">VISIBLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; Flash</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Yes"
+
+<strong>Default value:</strong> "Boolean value specifying whether to show the control. Space that would be occupied by an invisible control is blank."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TOOLTIP">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TOOLTIP</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; Flash</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<strong>Default value:</strong> "Text to display when the mouse pointer hovers over the control."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="HEIGHT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">HEIGHT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; Flash</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">The height of the control, in pixels.</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="WIDTH">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">WIDTH</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; Flash</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">The width of the control, in pixels.</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

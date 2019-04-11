@@ -1,0 +1,69 @@
+<participant>
+     <quickSearch><![CDATA[MM_removeList]]></quickSearch>
+     <insertText location="aboveHTML+90">
+<![CDATA[
+<%
+// *** Go To Record and Move To Record: create strings for maintaining URL and Form parameters
+
+String MM_keepBoth,MM_keepURL="",MM_keepForm="",MM_keepNone="";
+String[] MM_removeList = { "index", MM_paramName };
+
+// create the MM_keepURL string
+if (request.getQueryString() != null) {
+  MM_keepURL = '&' + request.getQueryString();
+  for (int i=0; i < MM_removeList.length && MM_removeList[i].length() != 0; i++) {
+  int start = MM_keepURL.indexOf(MM_removeList[i]) - 1;
+    if (start >= 0 && MM_keepURL.charAt(start) == '&' &&
+        MM_keepURL.charAt(start + MM_removeList[i].length() + 1) == '=') {
+      int stop = MM_keepURL.indexOf('&', start + 1);
+      if (stop == -1) stop = MM_keepURL.length();
+      MM_keepURL = MM_keepURL.substring(0,start) + MM_keepURL.substring(stop);
+    }
+  }
+}
+
+// add the Form variables to the MM_keepForm string
+if (request.getParameterNames().hasMoreElements()) {
+  java.util.Enumeration items = request.getParameterNames();
+  while (items.hasMoreElements()) {
+    String nextItem = (String)items.nextElement();
+    boolean found = false;
+    for (int i=0; !found && i < MM_removeList.length; i++) {
+      if (MM_removeList[i].equals(nextItem)) found = true;
+    }
+    if (!found && MM_keepURL.indexOf('&' + nextItem + '=') == -1) {
+      MM_keepForm = MM_keepForm + '&' + nextItem + '=' + java.net.URLEncoder.encode(request.getParameter(nextItem));
+    }
+  }
+}
+
+String tempStr = "";
+for (int i=0; i < MM_keepURL.length(); i++) {
+  if (MM_keepURL.charAt(i) == '<') tempStr = tempStr + "&lt;";
+  else if (MM_keepURL.charAt(i) == '>') tempStr = tempStr + "&gt;";
+  else if (MM_keepURL.charAt(i) == '"') tempStr = tempStr +  "&quot;";
+  else tempStr = tempStr + MM_keepURL.charAt(i);
+}
+MM_keepURL = tempStr;
+
+tempStr = "";
+for (int i=0; i < MM_keepForm.length(); i++) {
+  if (MM_keepForm.charAt(i) == '<') tempStr = tempStr + "&lt;";
+  else if (MM_keepForm.charAt(i) == '>') tempStr = tempStr + "&gt;";
+  else if (MM_keepForm.charAt(i) == '"') tempStr = tempStr +  "&quot;";
+  else tempStr = tempStr + MM_keepForm.charAt(i);
+}
+MM_keepForm = tempStr;
+
+// create the Form + URL string and remove the intial '&' from each of the strings
+MM_keepBoth = MM_keepURL + MM_keepForm;
+if (MM_keepBoth.length() > 0) MM_keepBoth = MM_keepBoth.substring(1);
+if (MM_keepURL.length() > 0)  MM_keepURL = MM_keepURL.substring(1);
+if (MM_keepForm.length() > 0) MM_keepForm = MM_keepForm.substring(1);
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern><![CDATA[/String\[\]\s+MM_removeList\s*=\s*\{/]]></searchPattern>
+     </searchPatterns>
+</participant>

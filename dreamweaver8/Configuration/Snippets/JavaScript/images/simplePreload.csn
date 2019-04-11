@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "简单预先载入" description = "用于预先载入一组图像的简单代码。" preview="code" type="block">
+<insertText location="beforeSelection">
+<![CDATA[// Example:
+// simplePreload( '01.gif', '02.gif' ); 
+function simplePreload()
+{ 
+  var args = simplePreload.arguments;
+  document.imageArray = new Array(args.length);
+  for(var i=0; i<args.length; i++)
+  {
+    document.imageArray[i] = new Image;
+    document.imageArray[i].src = args[i];
+  }
+}
+]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

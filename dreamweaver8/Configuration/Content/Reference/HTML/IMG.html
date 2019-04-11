@@ -1,0 +1,1733 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">&lt;IMG&gt;</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">all</span> IE <span class="emphasis">all</span> HTML <span class="emphasis">all</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">&lt;IMG&gt;</p>
+					</td><td valign="top" nowrap class="requirements">HTML End Tag: Forbidden&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The <span class="literal">img</span> element displays a graphical image in
+whatever MIME types the browser is equipped to handle. Common image
+types are GIF and JPEG, but modern browsers are frequently capable of
+decoding bitmapped images in PNG and BMP formats (unless helper
+application settings reroute those file types to external
+applications). <span class="literal">img</span> elements are inline elements,
+appearing anywhere in the document you specify, including in the
+middle of a line of text. A large number of attributes affecting
+visual presentation of the element are deprecated in HTML 4 in favor
+of style sheet rules. You will be able to use the attributes safely
+for many browser generations to come, however, because of the need to
+be backward compatible with the large collection of image-laden
+documents already on the Web. Note, too, that if you intend to use
+style sheets for <span class="literal">img</span> element borders and margins
+in Navigator 4, you must wrap the <span class="literal">img</span> element
+inside <span class="literal">div</span> or <span class="literal">span</span> elements and
+assign the style sheets to the surrounding element. This workaround
+works with all other CSS-aware browsers, so you can use style sheets
+in cross-browser deployment.
+</p><p>If you want to make an entire image a clickable link, wrap the
+<span class="literal">img</span> element inside an <span class="literal">a</span>
+element. To eliminate the typical link border around the image, set
+the <span class="literal">border</span> attribute to <span class="literal">0</span>. And
+for image maps (where different segments of an image link to
+different destinations), the HTML recommendation encourages the use
+of client-side image maps (via the <span class="literal">usemap</span>
+attribute) over the server-side image map (<span class="literal">ismap</span>).
+For nonlinking action, you can assign an <span class="literal">onclick</span>
+event handler to an image in IE 4 and later and Netscape 6. The
+downside is that you'll have to control the cursor
+style with other events because the <span class="literal">:hover</span>
+pseudo-class works reliably (if at all) only on <span class="literal">a</span>
+elements.
+</p><p>To be backward compatible with earlier scriptable browsers, it is
+advisable to include <span class="literal">height</span> and
+<span class="literal">width</span> attribute assignments in all
+<span class="literal">img</span> element tags. When values are assigned to
+these attributes, the browser renders pages more quickly because it
+doesn't have to wait for the image to load in order
+to determine its size and organize other content on the page.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;IMG src="mtRushmore.jpg" height="90" width="120" alt="Mount Rushmore"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.<span class="replaceable">imageName</span>
+[window.]document.images[i]
+[window.]document.getElementById(<span class="replaceable">elementID)</span></pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Element-Specific Attributes</span></td>
+				</tr>
+				<tr>
+      <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+    </tr><tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">align</span></td><td><span class="literal">alt</span></td><td><span class="literal">border</span></td><td><span class="literal">datafld</span></td><td><span class="literal">datasrc</span></td>
+								</tr>
+								<tr><td><span class="literal">dynsrc</span></td><td><span class="literal">galleryimage</span></td><td><span class="literal">height</span></td><td><span class="literal">hspace</span></td><td><span class="literal">ismap</span></td>
+								</tr>
+								<tr><td><span class="literal">longdesc</span></td><td><span class="literal">loop</span></td><td><span class="literal">lowsrc</span></td><td><span class="literal">name</span></td><td><span class="literal">src</span></td>
+								</tr>
+								<tr><td><span class="literal">start</span></td><td><span class="literal">suppress</span></td><td><span class="literal">usemap</span></td><td><span class="literal">vspace</span></td><td><span class="literal">width</span></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Element-Specific Event Handler Attributes</span></td>
+				</tr>
+				<tr>
+      <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+    </tr><tr>
+					<td>
+						<table border="1"><tbody><th>Handler</th><th>NN</th><th>IE</th><th>HTML</th><tr><td>onabort</td><td>3</td><td>4</td><td>n/a</td>
+								</tr>
+								<tr><td>onerror</td><td>3</td><td>4</td><td>n/a</td>
+								</tr>
+								<tr><td>onload</td><td>3</td><td>4</td><td>n/a</td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+			</table>
+		</div><div id="align">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">align</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">all</span> IE <span class="emphasis">all</span> HTML <span class="emphasis">all</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">align="<span class="replaceable">where</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Determines how the <span class="literal">img</span> element is rendered in
+physical relation to the element's next outermost
+container and surrounding content. Some settings also let you
+"float" the image to the left or
+right margin and let surrounding text wrap around the image (but no
+wrapping with a centered image).
+</p><p>Most of the rules for alignment-constant values cited at the
+beginning of this chapter apply to the <span class="literal">img</span>
+element. Typically, <span class="literal">align</span> attributes are
+deprecated in HTML 4 in favor of the style sheet attributes. But if
+you require backward compatibility for your document, stick with the
+<span class="literal">align</span> attribute.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;IMG src="surferDude.gif" align="right" alt="Surfer" height="100" width="200"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Each browser defines a different set of values for this attribute.
+Although the <span class="literal">align</span> attribute has a long heritage,
+not all values do. The more esoteric values, such as
+<span class="literal">absmiddle</span> and <span class="literal">baseline</span>, were
+added to browser offerings in Navigator 3 and Internet Explorer 4,
+but not added to the W3C repertoire. Assigning different values to
+multiple images in the same vicinity on the page can result in
+unpredictable rendering and positioning of the images and surrounding
+content. Select value(s) from the following table that work for your
+deployment.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">bottom</span></p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.<span class="replaceable">imageName</span>.align
+[window.]document.images[i].align
+[window.]document.getElementById(<span class="replaceable">elementID).</span>align</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="alt">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">alt</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">all</span> IE <span class="emphasis">all</span> HTML <span class="emphasis">all</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">alt="<span class="replaceable">textMessage</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Required&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>In a world littered with graphical browsers, it is often hard to
+remember that not every browser downloads images or that not every
+web surfer can see the images. Aside from those using VT100 terminals
+with browsers such as Lynx, pocket computers often offer better
+performance when images don't have to be downloaded
+and rendered. Vision impaired users may not be able to see an image,
+but could benefit by knowing what an image is about. Text-only
+browsers display the text assigned to an <span class="literal">img</span>
+element's <span class="literal">alt</span> attribute where the
+<span class="literal">img</span> element appears on the page. Browsers that
+speak the page's text also speak the
+<span class="literal">alt</span> text. The <span class="literal">alt</span> attribute
+should contain a brief description of what the image is (or an empty
+string for images used as space fillers). The HTML recommendation
+considers this capability so important that it calls the
+<span class="literal">alt</span> attribute a requirement for the
+<span class="literal">img</span> element.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;IMG src="navbar.gif" usemap="#nav" alt="Navigation Bar" width="400" height="50"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Any quoted string of characters.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.<span class="replaceable">imageName</span>.alt
+[window.]document.images[i].alt
+[window.]document.getElementById(<span class="replaceable">elementID).</span>alt</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="border">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">border</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">all</span> IE <span class="emphasis">all</span> HTML <span class="emphasis">3.2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">border="<span class="replaceable">pixels"</span></p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Controls the thickness of a border around an <span class="literal">img</span>
+element. Default rendering of the border is in black, but if the
+<span class="literal">img</span> element is wrapped inside an
+<span class="literal">a</span> element, the border takes on the
+document's various link colors (depending on link
+state). If you want a different color for a plain border, use style
+sheets (with the appropriate <span class="literal">div</span> or
+<span class="literal">span</span> wrapper for Navigator 4). When a link
+surrounds the image, you can eliminate the colored border altogether
+by setting the <span class="literal">border</span> attribute value to zero.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;IMG src="surferDude.gif" alt="Surfer" border="3" height="100" width="200"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Any integer pixel value.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">0</span></p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.<span class="replaceable">imageName</span>.border
+[window.]document.images[i].border
+[window.]document.getElementById(<span class="replaceable">elementID).</span>border</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="datafld">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">datafld</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">datafld="<span class="replaceable">columnName</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Used with IE data binding to associate a remote data source column
+name with the <span class="literal">src</span> attribute URL of an
+<span class="literal">img</span> element. A <span class="literal">datasrc</span>
+attribute must also be set for the <span class="literal">img</span> element.
+Works only with text file data sources in IE 5/Mac.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;IMG datasrc="DBSRC3" alt="Current Radar" datafld="img3URL" height="100" width="150"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-sensitive identifier.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.<span class="replaceable">imageName</span>.dataFld
+[window.]document.images[i].dataFld
+[window.]document.getElementById(<span class="replaceable">elementID).</span>dataFld</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="datasrc">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">datasrc</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">datasrc="<span class="replaceable">dataSourceName</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Used with IE data binding to specify the ID of the
+page's <span class="literal">object</span> element that loads
+the data source object for remote data access. Content from the data
+source is specified via the <span class="literal">datafld</span> attribute.
+Works only with text file data sources in IE 5/Mac.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;IMG datasrc="DBSRC3" alt="Current Radar" datafld="img3URL" height="100" width="150"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-sensitive identifier.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.<span class="replaceable">imageName</span>.dataSrc
+[window.]document.images[i].dataSrc
+[window.]document.getElementById(<span class="replaceable">elementID).</span>dataSrc</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="dynsrc">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">dynsrc</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">dynsrc="<span class="replaceable">URL</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Internet Explorer 4 and later allows video clips (and VRML) to be
+displayed via the <span class="literal">img</span> element (as an alternate to
+the <span class="literal">embed</span> or <span class="literal">object</span> element).
+To help the browser differentiate between a dynamic and static image
+source, you use the <span class="literal">dynsrc</span> attribute in place of
+the <span class="literal">src</span> attribute to load the video clip. All
+other visual aspects of the <span class="literal">img</span> element are
+therefore immediately applicable to the rectangular region devoted to
+playing the video clip. See also the <span class="literal">loop</span>
+attribute for controlling the frequency of clip play and the
+<span class="literal">start</span> attribute.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;IMG dynsrc="snowman.avi" loop="3" height="100" width="150"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Any valid URL, including complete and relative URLs.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.images[i].dynsrc
+[window.]document.<span class="replaceable">imageName</span>.dynsrc
+[window.]document.getElementById(<span class="replaceable">elementID).</span>dynsrc</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="galleryimg">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">galleryimg</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">6</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">dynsrc="<span class="replaceable">featureSwitch</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Sets whether images that are at least 130 pixels high and wide
+display the Windows OS "My
+Pictures" toolbar during mouse rollovers. This tool
+bar provides quick-click shortcuts to save, print, or email the
+image. You cannot control which buttons appear in the toolbar.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;IMG src="rushmore.jpg" alt="Mount Rushmore" height="240" width="550" galleryimg="no"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Constant value: <span class="literal">yes</span> | <span class="literal">true</span> |
+<span class="literal">no</span> | <span class="literal">false</span>.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">yes</span> </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.images[i].galleryImg
+[window.]document.<span class="replaceable">imageName</span>.galleryImg
+[window.]document.getElementById(<span class="replaceable">elementID).</span>galleryImg</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="height, width">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">height, width</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">all</span> IE <span class="emphasis">all</span> HTML <span class="emphasis">3.2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">height="<span class="replaceable">length</span>"
+width="<span class="replaceable">length</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Define the dimensions for the space on the page reserved for the
+image, regardless of the actual size of the image. For best
+performance (and backward script compatibility), you should set these
+attributes to the actual pixel height and width of the source image.
+If you supply a different measure, the browser scales the image (not
+very well) to fit the space defined by these attributes.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;IMG src="surferDude.gif" alt="Surfer" height="100" width="200"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Positive integer values (optionally quoted) or percentage values
+(quoted).
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>Actual size of source image.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.<span class="replaceable">imageName</span>.height
+[window.]document.images[i].height
+[window.]document.getElementById(<span class="replaceable">elementID).</span>height
+[window.]document.<span class="replaceable">imageName</span>.width
+[window.]document.images[i].width
+[window.]document.getElementById(<span class="replaceable">elementID).</span>width</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="hspace, vspace">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">hspace, vspace</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">all</span> IE <span class="emphasis">all</span> HTML <span class="emphasis">3.2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">hspace="<span class="replaceable">pixelCount"</span>
+vspace="<span class="replaceable">pixelCount"</span></p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Define a margin that acts as whitespace padding around the visual
+content of the <span class="literal">img</span> element. The
+<span class="literal">hspace</span> establishes a margin on the left and right
+sides of the image rectangle; the <span class="literal">vspace</span>
+establishes a margin on the top and bottom sides of the image
+rectangle. Both attributes are deprecated in HTML 4 in favor of the
+margin- or padding-related CSS attributes.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;IMG src="desk3.gif" alt="My Desktop" vspace="10" hspace="10"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Integer representing the number of pixels for the width of the margin
+on the relevant sides of the <span class="literal">img</span>
+element's rectangle.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">0</span></p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.<span class="replaceable">imageName</span>.hspace
+[window.]document.images[i].hspace
+[window.]document.getElementById(<span class="replaceable">elementID).</span>hspace
+[window.]document.<span class="replaceable">imageName</span>.vspace
+[window.]document.images[i].vspace
+[window.]document.getElementById(<span class="replaceable">elementID).</span>vspace</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div>
+		<div id="id">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">id</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal">id="<span class="replaceable">elementIdentifier</span>"</p>
+							</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>A unique identifier that distinguishes this element from all the rest
+		in the document. Can be used to associate a single element with a
+		style rule naming this attribute value as an ID selector. An element
+		can have an ID assigned for uniqueness as well as a class for
+		inclusion within a group. See Chapter 3.
+		</p><p>IE 4 and later and Netscape 6 allow <span class="literal">id</span> attributes
+		for nonrenderable elements, but if your code requires validation, be
+		aware that the W3C HTML 4 and XHTML DTDs do not. Because all W3C DOM
+		elements have an <span class="literal">id</span> property, it is natural to
+		assign an <span class="literal">id</span> attribute to non-renderable elements
+		if scripts must reference those elements. Or, your scripts may use
+		other ways (e.g., the array returned by
+		<span class="literal">document.getElementsByTagName( )</span>) to reference
+		such elements.
+		</p><p>Assign identifiers to <span class="literal">id</span> attributes in order to
+		duplicate values previously only assigned to <span class="literal">name</span>
+		attributes in elements that feature the <span class="literal">name</span>
+		attribute. Current browser form controls still require
+		<span class="literal">name</span> attributes for name/value pairs to be
+		submitted with the form, and a elements acting as anchors still need
+		name attributes. Be sure to assign an identifier to the
+		<span class="literal">id</span> attribute of any element you intend to
+		reference by script.
+		</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>&lt;H2 id="sect3Head"&gt;Section Three&lt;/H2&gt;</pre>
+								</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+						</tr>
+						<tr>
+							<td><p>Case-sensitive identifier.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+						</tr>
+						<tr>
+							<td><p>None.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID).</span>id</pre>
+								</span></td>
+						</tr>
+					</table>
+		</div>
+		<div id="ismap">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">ismap</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">all</span> IE <span class="emphasis">all</span> HTML <span class="emphasis">all</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">ismap</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The Boolean <span class="literal">ismap</span> attribute tells the browser that
+the <span class="literal">img</span> element is acting as a server-side image
+map. To turn an image into a server-side image map, wrap the
+<span class="literal">img</span> element with an <span class="literal">a</span> element
+whose <span class="literal">href</span> attribute points to the URL of the CGI
+program that knows how to interpret the click coordinate information.
+The browser appends coordinate information about the click to the URL
+like a <span class="literal">GET</span> form method appends form element data
+to the <span class="literal">action</span> attribute URL. In the following
+example, if a user clicks at the coordinate point 50, 25, the browser
+sends
+<span class="literal">"http://www.giantco.com/cgi-bin/nav.pl?50,25"</span> to
+the server. A server CGI program named <span class="literal">nav.pl</span>
+might examine the region in which the coordinate point appears and
+send the relevant HTML back to the client.
+</p><p>More recent browsers allow client-side image maps (see the
+<span class="literal">usemap</span> attribute), which operate more quickly for
+the user because there is no communication with the server to carry
+out the examination of the click coordinate point.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;A href="http://www.giantco.com/cgi-bin/nav" target="main"&gt;
+&lt;IMG src="navbar.gif" alt="Navigation Bar" ismap height="90" width="120"&gt;
+&lt;/A&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>The presence of the attribute turns the feature on.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>Off.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.<span class="replaceable">imageName</span>.isMap
+[window.]document.images[i].isMap
+[window.]document.getElementById(<span class="replaceable">elementID).</span>isMap</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div>
+		<div id="lang">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">lang</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal">lang="<span class="replaceable">languageCode</span>"</p>
+							</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>The language being used for the element's attribute
+		values and content. A browser can use this information to assist in
+		proper rendering of content with respect to details such as treatment
+		of ligatures (when supported by a particular font or required by a
+		written language), quotation marks, and hyphenation. Other
+		applications and search engines might use this information to aid the
+		selection of spell-checking dictionaries and the creation of indices.
+		</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>&lt;SPAN lang="de"&gt;Deutsche Bundesbahn&lt;/SPAN&gt;</pre>
+								</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+						</tr>
+						<tr>
+							<td><p>Case-insensitive language code.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+						</tr>
+						<tr>
+							<td><p>Browser default.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID).</span>lang</pre>
+								</span></td>
+						</tr>
+					</table>
+		</div>
+		<div id="longdesc">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">longdesc</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">6</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">longdesc="<span class="replaceable">URL</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Specifies a URL of a document that contains a longer description of
+the element than what the content of the <span class="literal">alt</span> or
+<span class="literal">title</span> attributes reveal. One application of this
+attribute in future browsers is to retrieve an annotated description
+of the element for users who cannot read the browser screen. The
+<span class="emphasis">Properties</span> choice for Netscape
+6's context menu for this element displays a small
+window that includes an active link to the URL assigned to the
+attribute. Version 6 browsers provide no other functionality for this
+attribute.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;IMG longdesc="navDesc.html" alt="Navigation Bar" src="navbar.jpg"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Any valid URL, including complete and relative URLs.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None. </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.<span class="replaceable">imageName</span>.longDesc
+[window.]document.images[i].longDesc
+[window.]document.getElementById(<span class="replaceable">elementID).</span>longDesc</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="loop">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">loop</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">3</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">loop="<span class="replaceable">loopCount</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>If you specify a video clip with the <span class="literal">dynsrc</span>
+attribute, the <span class="literal">loop</span> attribute controls how many
+times the clip should play ("loop")
+after it loads. If you set the value to zero, the clip loads but does
+not play initially. Video clips that are not currently running play
+when the user double-clicks on the image, but you may need to provide
+instructions for that on the page because there are no other obvious
+controls. This attribute does not control animated
+<span class="emphasis">.gif</span> playback.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;IMG dynsrc="snowman.avi" alt="Snowman Movie"loop="3" height="100" width="150"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Any positive integer or zero.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">1</span></p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.<span class="replaceable">imageName</span>.loop
+[window.]document.images[i].loop
+[window.]document.getElementById(<span class="replaceable">elementID).</span>loop</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="lowsrc">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">lowsrc</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">lowsrc="<span class="replaceable">URL</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Both Navigator and Internet Explorer recognize the fact that not
+everyone has a fast Internet connection and that high-resolution
+images can take a long time to download to the client. To fill the
+void, the <span class="literal">lowsrc</span> attribute lets the author specify
+a URL of a lower-resolution (or alternate) image to download into the
+document space first. The <span class="literal">lowsrc</span> image should be
+the same pixel size as the primary <span class="literal">src</span> image.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;IMG src="navbar.jpg" alt="Navigation Bar" lowsrc="navbarBW.jpg" height="60" width="300"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Any valid URL, including complete and relative URLs.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.<span class="replaceable">imageName</span>.lowsrc
+[window.]document.images[i].lowsrc
+[window.]document.getElementById(<span class="replaceable">elementID).</span>lowsrc</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="name">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">name</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">name="<span class="replaceable">elementIdentifier</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>If you are scripting an image (especially swapping precached images),
+backward-compatible scripting utilizes the <span class="literal">name</span>
+attribute value to reference the <span class="literal">img</span> object
+because the <span class="literal">id</span> attribute did not exist. References
+by name are more reliable than by numeric index within the
+<span class="literal">document.images</span> array because you can rearrange or
+delete images at any time and still maintain references to the
+remaining named images. For modern browsers only, you can use the
+<span class="literal">id</span> attribute value in place of the
+<span class="literal">name</span> attribute.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;IMG name="mugshot" id="mugshot" alt="My face" src="janem.jpg" height="90" width="80"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-sensitive identifier.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.images[i].name
+[window.]document.<span class="replaceable">imageName</span>.name
+[window.]document.getElementById(<span class="replaceable">elementID).</span>name</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="src">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">src</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">all</span> IE <span class="emphasis">all</span> HTML <span class="emphasis">all</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">src="<span class="replaceable">URL</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Required&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>URL to a file containing image data that is displayed through the
+<span class="literal">img</span> element. With the exception of specifying a
+<span class="literal">dynsrc</span> attribute in Internet Explorer for video
+clips or <span class="literal">datasrc</span> for IE data binding, the
+<span class="literal">src</span> attribute is required if you want to see any
+image in the <span class="literal">img</span> element space. The browser must
+be equipped to handle the image MIME type. On the World Wide Web, the
+most common image formats are GIF and JPEG. HTML or XHTML validation,
+of course, requires the <span class="literal">src</span> attribute and
+doesn't accept the IE attribute alternatives.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;IMG src="surferDude.gif" alt="Surfer" height="100" width="200"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>A complete or relative URL.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.images[i].src
+[window.]document.<span class="replaceable">imageName</span>.src
+[window.]document.getElementById(<span class="replaceable">elementID).</span>src</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="start">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">start</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">start="<span class="replaceable">videoStartType</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Whenever you set the <span class="literal">dynsrc</span> attribute of an
+<span class="literal">img</span> to display a video clip in Internet Explorer,
+you can direct the element to start playing the video immediately
+after the video file loads or when the user rolls the cursor over the
+image. The <span class="literal">start</span> attribute lets you decide the
+best user interface for your page.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;IMG dynsrc="snowman.avi" loop="1" start="mouseover" height="100" width="150"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>One of the two case-insensitive constant values:
+<span class="literal">fileopen</span> | <span class="literal">mouseover</span>.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">fileopen</span></p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.images[i].start
+[window.]document.<span class="replaceable">imageName</span>.start
+[window.]document.getElementById(<span class="replaceable">elementID).</span>start</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div>
+		<div id="style">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">style</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal">style="<span class="replaceable">styleSheetProperties</span>"</p>
+							</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>This attribute lets you set one or more style sheet rule property
+		assignments for the current element. You may use the CSS or (for
+		Navigator 4 only) JavaScript syntax for assigning style attributes.
+		Use the <span class="literal">style</span> attribute only with visible
+		(renderable) elements.
+		</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>&lt;SPAN style="color:green; font-size:18px"&gt;Big, green, and bold&lt;/SPAN&gt;</pre>
+								</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+						</tr>
+						<tr>
+							<td><p>An entire CSS-syntax style sheet rule is enclosed in quotes. Multiple
+		style attribute settings are separated by semicolons. Style sheet
+		attributes are detailed in Chapter 11.
+		</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+						</tr>
+						<tr>
+							<td><p>None.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID).</span>style</pre>
+								</span></td>
+						</tr>
+					</table>
+		</div>
+		<div id="suppress">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">suppress</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">|4|</span> IE <span class="emphasis">n/a</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">suppress="<span class="replaceable">featureSwitch</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>When engaged, this attribute prevents Navigator 4 from displaying the
+generic image icon, <span class="literal">alt</span> text, and raised image
+area while the image is downloading. If the image fails to load, the
+artifacts appear in the image space as if the attribute were not
+turned on.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;IMG src="surferDude.gif" alt="Surfer" height="150" width="250" suppress="true"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Boolean string value: <span class="literal">true</span> |
+<span class="literal">false</span>.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">false</span></p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="usemap">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">usemap</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">all</span> IE <span class="emphasis">all</span> HTML <span class="emphasis">3.2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">usemap="<span class="replaceable">mapURL</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>You can define a client-side image map with the help of the
+<span class="literal">map</span> and <span class="literal">area</span> elements. The
+<span class="literal">map</span> element is a named container for one or more
+<span class="literal">area</span> elements. Each <span class="literal">area</span>
+element sets a "hot" area on an
+image and assigns a link destination (and other settings) for a
+response to the user clicking in that region. The purpose of the
+<span class="literal">usemap</span> attribute is to establish a connection
+between the <span class="literal">img</span> element and a named
+<span class="literal">map</span> element in the same document. In some
+respects, the <span class="literal">map</span> element's name
+is treated like an anchor in that the
+"address" of the
+<span class="literal">map</span> element is the element's name
+preceded by a <span class="literal">#</span> symbol.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;IMG src="navbar.gif" alt="Navigation Bar" usemap="#navigation"
+height="90" width="120"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>A URL to the <span class="literal">map</span> element in the same document (a
+hash symbol plus the <span class="literal">map</span> name).
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.<span class="replaceable">imageName</span>.useMap
+[window.]document.images[i].useMap
+[window.]document.getElementById(<span class="replaceable">elementID).</span>useMap</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="vspace">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">vspace</td><td valign="top" nowrap class="compatibility">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>See hspace.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="width">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">width</td><td valign="top" nowrap class="compatibility">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>See height.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">bgsound</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>A <span class="literal">bgsound</span> element defines a sound file that is to
+play in the background while the user visits the page. Set properties
+to control the volume and how many times the sound track plays even
+after the sound file has loaded. A few properties, such as
+<span class="literal">innerHTML</span> and <span class="literal">innerText</span>, are
+exposed in the Windows version, but they don't apply
+to an element that does not have an end tag.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="htmlequivalent"><span class="title">HTML Equivalent</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;bgsound&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById("<span class="replaceable">elementID</span>")</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificproperties"><span class="title">Object-Specific Properties</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">balance</span></td><td><span class="literal">loop</span></td><td><span class="literal">src</span></td><td><span class="literal">volume</span></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificmethods"><span class="title">Object-Specific Methods</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificeventhandlerproperties"><span class="title">Object-Specific Event Handler Properties</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="balance">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">balance</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Specifies how the audio is divided between the left and right
+speakers. Once this attribute value is set in the element, its value
+cannot be changed by script control.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var currBal = document.getElementsByTagName("bgsound")[0].balance;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			A signed integer between -10,000 and +10,000. A value of
+<span class="literal">0</span> is equally balanced on both sides. A negative
+value means the left side is dominant; a positive value means the
+right side is dominant.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">0</span></p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="loop">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">loop</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Specifies the number of times the sound plays. Assigning a value of
+-1 means the sound plays continuously until the page is unloaded.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>document.getElementById("mySound").loop = 3;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">1</span></p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="src">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">src</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Provides the URL of the sound file to be played. Change tunes by
+assigning a new URL to the property. The new tune plays according to
+the <span class="literal">loop</span> property setting.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>document.getElementById("tunes").src = "sounds/blues.aif";</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Complete or relative URL as a string.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="volume">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">volume</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Specifies how loud the background sound plays relative to the maximum
+sound output level as adjusted by user preferences in the client
+computer. Maximum volumea setting of zerois only as
+loud as the user has set the <span class="emphasis">Sound</span>
+control panel. Attribute adjustments are negative values as low as
+-10,000 (although most users lose the sound at values much higher
+than that value).
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var currVolume = document.getElementById("themeSong").volume;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Varies with operating system and sound settings. </p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+</body>
+</html>

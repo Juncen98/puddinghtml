@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>Characters</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">Characters</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+
+<p>XML documents are inherently text documents, which are composed of
+characters. To ensure that documents
+are portable across disparate computer systems and can contain
+content in as many written human languages as possible, XML parsers
+are required to implement the
+Unicode standard.
+This does not mean that all XML documents must be saved and edited in
+Unicode, but it does mean that the XML parser must be able to convert
+your document from its native character encoding to Unicode. All XML
+parsers are required to support (as a minimum) either UTF-8 or UTF-16
+as input encoding formats. For more information on encoding formats
+and Unicode, see <link linkend="xmlnut3-CHP-27">Chapter 27</link>.</p>
+
+<tip id="xmlnut3-CHP-21-NOTE-131" role="ora">
+<p>One of the primary differences between XML 1.0 and XML 1.1 is the
+definition of which Unicode characters are valid within an XML
+document. In XML 1.0, many of the ASCII control characters (such as
+BEL and NAK) were explicitly disallowed within XML documents. XML 1.1
+permits any Unicode character these 60 control characters (except for
+null, <span class="LITERAL">x0000</span>) as long as they're
+escaped with numeric character references. XML 1.1 also requires that
+the C1 controls between <span class="LITERAL">0x0080</span> and
+<span class="LITERAL">0x009F</span> be escaped with numeric character
+references, which XML 1.0 does not require.</p>
+</tip>
+</td></tr>
+</table>
+</div>
+</body>
+</html>

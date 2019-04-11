@@ -1,0 +1,100 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- SAFE-IN-TEMPLATES -->
+<HTML>
+<HEAD>
+<SCRIPT LANGUAGE="javascript" SRC="Check Browser.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/file.js"></SCRIPT>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<SCRIPT LANGUAGE="javascript">
+// Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved.
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_InvalidVersionNumbers = "请输入正确的版本号。";
+var MSG_NoURL = "请输入一个 URL，或点击「取消」。";
+var MSG_NoAltURL = "请输入一个替代 URL，或点击「取消」。";
+//--------------- END LOCALIZEABLE   ---------------
+//---------------    END JAVASCRIPT    ---------------
+</SCRIPT>
+<TITLE>检查浏览器</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm" ACTION="">
+   <DIV ALIGN="center">
+     
+    <TABLE BORDER=0 cellpadding="4" cellspacing="2">
+       <TR>
+
+        <TD ALIGN="right" nowrap>Netscape Navigator:</TD>
+         <TD VALIGN="top"><INPUT TYPE="text" NAME="NSversion" VALUE="4.0" class="smallNumOrChar"></TD>
+         <TD nowrap>或更新的版本，</TD>
+         <TD VALIGN="middle">
+           <SELECT NAME="NSpassTest" class="actionList" onChange="">
+            <option>留在此页</option>
+            <option selected>转到 URL </option>
+            <option>前往替代 URL </option>
+          </select></TD>
+         <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+       </TR><TR>
+         
+        <TD ALIGN="right" COLSPAN=3 nowrap>否则，</TD>
+         <TD VALIGN="top">
+           <SELECT NAME="NSnoPassTest" class="actionList" onChange="">
+            <option>留在此页 </option>
+            <option>转到 URL </option>
+            <option selected>前往替代 URL </option>
+          </select></TD>
+         <TD></TD>
+       </TR><TR>
+
+        <TD ALIGN="right" nowrap>Internet Explorer:</TD>
+         <TD VALIGN="top"><INPUT TYPE="text" NAME="IEversion" VALUE="4.0" class="smallNumOrChar"></TD>
+         <TD nowrap>或更新的版本，</TD>
+         <TD VALIGN="middle">
+           <SELECT NAME="IEpassTest" class="actionList" onChange="">
+            <option>留在此页 </option>
+            <option selected>转到 URL </option>
+            <option>前往替代 URL </option>
+          </select></TD>
+         <TD></TD>
+       </TR><TR>
+         
+        <TD ALIGN="right" COLSPAN=3 nowrap>否则，</TD>
+         <TD VALIGN="top">
+           <SELECT NAME="IEnoPassTest" class="actionList" onChange="">
+            <option>留在此页 </option>
+            <option>转到 URL </option>
+            <option selected>前往替代 URL </option>
+          </select></TD>
+         <TD></TD>
+       </TR><TR>
+         
+        <TD ALIGN="right" nowrap>其他浏览器</TD>
+         <TD VALIGN="top" COLSPAN=3>
+           <SELECT NAME="OBpassTest" class="actionList" onChange="">
+            <option>留在此页 </option>
+            <option>转到 URL </option>
+            <option selected>前往替代 URL </option>
+          </select></TD>
+       </TR><TR>
+         
+        <TD ALIGN="right" nowrap>URL:</TD>
+         <TD ALIGN="left" VALIGN="top" COLSPAN=4 nowrap><INPUT TYPE="text" NAME="theURL" class="medTField">
+           <INPUT TYPE="button" value="浏览..." onClick="browseFile(document.theForm.theURL);focus(this)"></TD>
+       </TR><TR>
+         
+        <TD ALIGN="right" nowrap>替代 URL:</TD>
+         <TD ALIGN="left" VALIGN="top" COLSPAN=4 nowrap><INPUT NAME="theAltURL" TYPE="text" class="medTField" SIZE="26">
+           <INPUT TYPE="button" value="浏览..." onClick="browseFile(document.theForm.theAltURL);focus(this)"></TD>
+       </TR>
+     </TABLE>
+   </DIV>
+  </FORM>
+</BODY>
+</HTML>

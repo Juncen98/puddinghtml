@@ -1,0 +1,42 @@
+<participant name="DynamicData">
+  <translator priority=450>
+    <searchPatterns>
+      <searchPattern><![CDATA[/<%#/]]></searchPattern>
+      <searchPattern paramNames="source"><![CDATA[/<%#\s*(.*)%>/]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="directive" translationType="dynamic data">
+        <openTag>MM_DYNAMIC_CONTENT</openTag>
+        <attributes>
+          <attribute><![CDATA[SOURCE="@@escape(source)@@"]]></attribute>
+        </attributes>
+        <display><![CDATA[{@@MM.LABEL_DynamicExpression@@}]]></display>
+        <closeTag>MM_DYNAMIC_CONTENT</closeTag>
+      </translation>
+      <translation whereToSearch="tag+INPUT" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="@@attr@@={@@MM.LABEL_DynamicExpression@@}"]]></attribute>
+        </attributes>
+      </translation>
+      <translation whereToSearch="tag+OPTION" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="@@attr@@={@@MM.LABEL_DynamicExpression@@}"]]></attribute>
+        </attributes>
+      </translation>
+      <translation whereToSearch="tag+SELECT" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="@@attr@@={@@MM.LABEL_DynamicExpression@@}"]]></attribute>
+        </attributes>
+      </translation>
+      <translation whereToSearch="tag+TEXTAREA" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="@@attr@@={@@MM.LABEL_DynamicExpression@@}"]]></attribute>
+        </attributes>
+      </translation>
+      <translation whereToSearch="tag+IMG" limitSearch="attribute+SRC" translationType="dynamic image">
+      </translation>
+      <translation whereToSearch="tag+*" limitSearch="attribute+*" translationType="dynamic data">
+      </translation>
+    </translations>
+  </translator>
+</participant>

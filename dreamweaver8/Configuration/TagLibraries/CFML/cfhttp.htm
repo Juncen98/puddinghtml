@@ -1,0 +1,210 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFHTTP</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var CHARSETLIST;
+var GETASBINARYLIST;
+var METHODLIST;
+var theUIObjects;
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects);
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects);
+}
+
+function initializeUI()
+{
+  CHARSETLIST = new ListControl("thecharset");
+  METHODLIST = new ListControl("themethod");
+  GETASBINARYLIST = new ListControl("thegetasbinary");
+  DELIMETERLIST = new ListControl("thedelimeter");
+  theUIObjects = new Array(DELIMETERLIST,CHARSETLIST,METHODLIST,GETASBINARYLIST);
+
+  tagDialog.populateDropDownList(CHARSETLIST, theCharSetCap, theCharSetVal, 1);
+  tagDialog.populateDropDownList(METHODLIST, theHTTPMethodCap, theHTTPMethodVal, 0);
+  tagDialog.populateDropDownList(GETASBINARYLIST, theGetAsBinaryCap, theGetAsBinaryVal, 0);
+  tagDialog.populateDropDownList(DELIMETERLIST, theDelimeterCap, theDelimeterVal, 0);
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="initializeUI();">
+<div name="常规">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">URL: </td>
+      <td nowrap="nowrap">
+        <input name="theurl" type="text" class="basicTextField" id="attr:cfhttp:url" attname="url" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">方法: </td>
+      <td nowrap="nowrap">
+        <select name="themethod" class="oneWordOptionList" id="attr:cfhttp:method" attname="method" editable="false">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">字符集: </td>
+      <td nowrap="nowrap">
+	    <select name="thecharset" class="oneWordOptionList" id="attr:cfhttp:charset" attname="charset" editable="true">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">端口: </td>
+      <td nowrap="nowrap">
+        <input name="theport" type="text" class="basicTextField" id="attr:cfhttp:port" attname="port" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">代理服务器: </td>
+      <td nowrap="nowrap">
+        <input name="theproxyserver" type="text" class="basicTextField" id="attr:cfhttp:proxyserver" attname="proxyserver" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">路径: </td>
+      <td nowrap="nowrap">
+        <input name="thepath" type="text" class="basicTextField" id="attr:cfhttp:path" attname="path" />&nbsp;
+		<input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFolder('thepath',null,true);focus(this)" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">文件: </td>
+      <td nowrap="nowrap">
+        <input name="thefile" type="text" class="basicTextField" id="attr:cfhttp:file" attname="file" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">用户名: </td>
+      <td nowrap="nowrap">
+        <input name="username" type="text" class="medTField" id="attr:cfhttp:username" attname="username" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">密码: </td>
+      <td nowrap="nowrap">
+        <input name="thepassword" type="text" class="medTField" id="attr:cfhttp:password" attname="password" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">代理端口: </td>
+      <td nowrap="nowrap">
+        <input name="theproxyport" type="text" class="medTField" id="attr:cfhttp:proxyport" attname="proxyport" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">代理用户: </td>
+      <td nowrap="nowrap">
+        <input name="theproxyuser" type="text" class="medTField" id="attr:cfhttp:proxyuser" attname="proxyuser" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">代理密码: </td>
+      <td nowrap="nowrap">
+        <input name="theproxypassword" type="text" class="medTField" id="attr:cfhttp:proxypassword" attname="proxypassword" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">超时: </td>
+      <td nowrap="nowrap">
+        <input name="thetimeout" type="text" class="medTField" id="attr:cfhttp:timeout" attname="timeout" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">用户代理: </td>
+      <td nowrap="nowrap">
+        <input name="theuseragent" type="text" class="medTField" id="attr:cfhttp:useragent" attname="useragent" />
+      </td>
+    </tr>
+	<tr>
+      <td valign="baseline" align="right" nowrap="nowrap">结果: </td>
+      <td nowrap="nowrap">
+        <input name="theresult" type="text" class="medTField" id="attr:cfhttp:result" attname="result" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">作为二进制获取: </td>
+      <td nowrap="nowrap">
+        <select name="thegetasbinary" class="oneWordOptionList" id="attr:cfhttp:getasbinary" attname="getasbinary" editable="false">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfhttp:resolveurl" name="theresolveurl" attname="resolveurl" truevalue="yes" falsevalue="no" />
+        解析 URL</td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfhttp:throwonerror" name="thethrowonerror" attname="throwonerror"  truevalue="yes" falsevalue=""  />
+        出错时引发</td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfhttp:redirect" name="theredirect" attname="redirect"  truevalue="yes" falsevalue=""  />
+        重定向 </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfhttp:multipart" name="themultipart" attname="multipart"  truevalue="yes" falsevalue=""  />
+        多部分 </td>
+    </tr>
+	
+  </table>
+</div>
+<div name="创建查询">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:cfhttp:name" attname="name" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">列: </td>
+      <td nowrap="nowrap">
+        <input name="thecolumns" type="text" class="basicTextField" id="attr:cfhttp:columns" attname="columns" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">定界符: </td>
+      <td nowrap="nowrap">
+        <select name="thedelimeter" class="oneWordOptionList" id="attr:cfhttp:delimiter" attname="delimiter" >
+		</select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">文本限定符: </td>
+      <td nowrap="nowrap">
+        <input name="thetextqualifier" type="text" class="basicTextField" id="attr:cfhttp:textqualifier" attname="textqualifier" />
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

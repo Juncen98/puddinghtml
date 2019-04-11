@@ -1,0 +1,10 @@
+<participant>
+     <insertText location="beforeSelection">
+<![CDATA[
+<% If @@rsName@@.EOF And @@rsName@@.BOF Then %>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName"><![CDATA[/<%\s*If\s+(\w+)\.EOF\s+And\s+\w+\.BOF\s+Then\s*%>/i]]></searchPattern>
+     </searchPatterns>
+</participant>

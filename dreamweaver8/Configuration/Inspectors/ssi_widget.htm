@@ -1,0 +1,74 @@
+<!-- tag:*COMMENT*, priority:5, selection:within,vline,hline -->
+<html>
+<head>
+<!-- Copyright 2000 Macromedia, Inc. All rights reserved. -->
+<title>测试注释 SSI 检查器</title>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<SCRIPT LANGUAGE="javascript" SRC="_pi_common.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="ssi_common.js"></SCRIPT>
+<script src="ssi_widget.js"></script>
+</head>
+<body>
+
+
+<div id="Edit" style="position:absolute; left:365px; top:-7; width:65px; height:32px; z-index:17">
+  <input type="button" name="edit" value="编辑" onClick="editInclude()">
+</div>
+
+<div id="browse" style="position:absolute; left:326px; top:3px; width:30px; height:14px; z-index:18">
+  <input type="image" width="15" height="13" onClick="browseFile()" name="browseButton" src="../Shared/MM/Images/folder.gif"></div>
+  <span id="image" style="position:absolute; width:23px; height:17px; z-index:16; left: 3px; top: 2px"><img src="ssi.gif" width="36" height="36"></span><span id="label" style="position:absolute; width:23px; height:17px; z-index:16; left: 44px; top: 4px">SSI</span>
+
+<div id="topLayer" style="position:absolute; width:234px; height:28px; z-index:19; left: 112px; top: -4px">
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="right" valign="baseline" width="60">文件名称</td>
+      <td align="left" valign="baseline"><span class="PIText">
+        <input type="text" name="editField" onBlur="setComment(0)" size="30" style="width:150">
+        </span></td>
+    </tr>
+  </table>
+</div>
+<div id="typeLayer" style="position:absolute; width:76px; height:20px; z-index:20; left: 112px; top: 21px">
+  <table width="60" border="0" cellpadding="0" cellspacing="0">
+    <tr align="right" valign="middle">
+      <td width="60" height="20">类型</td>
+    </tr>
+  </table>
+</div>
+<div id="vR" style="position:absolute; width:55px; height:17px; z-index:21; left: 174px; top: 21px">
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr valign="middle">
+      <td height="20">
+        <input type="radio" name="radioVirtual" value="radioVirtual" checked onClick="setComment(1)">
+         </td>
+    </tr>
+  </table>
+</div>
+<div id="fR" style="position:absolute; width:33px; height:15px; z-index:22; left: 231px; top: 21px">
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr valign="middle">
+      <td height="20">
+        <input type="radio" name="radioFile" value="radioFile" onClick="setComment(2)">
+         </td>
+    </tr>
+  </table>
+</div>
+<div id="fileLayer" style="position:absolute; width:31px; height:18px; z-index:23; left: 252px; top: 21px">
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr valign="middle" align="left">
+      <td height="20"><span class="PIText"> 文件</span></td>
+    </tr>
+  </table>
+</div>
+<div id="virLayer" style="position:absolute; width:78px; height:17px; z-index:24; left: 194px; top: 21px">
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr align="left" valign="middle">
+      <td width="55" height="20">虚拟</td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,476 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFCOMPONENT</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFCOMPONENT</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Creates and defines a component object; encloses functionality that you build in CFML and enclose within cffunction tags. This tag contains one or more cffunction tags that define methods. Code within the body of this tag, other than cffunction tags, is executed when the component is instantiated.
+</p>
+
+<p>
+A component file has the extension CFC and is stored in any directory of an application.
+</p>
+
+<p>
+A component method is invoked in the following ways:
+</p>
+<ul>
+
+<li>Within the cfinvoke tag in a ColdFusion page</li>
+
+<li>Within a URL that calls a CFC file and passes a method name as a URL parameter</li>
+
+<li>Within the cfscript tag</li>
+
+<li>As a web service</li>
+
+<li>From Flash code </li>
+</ul>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Extensibility tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfcomponent
+   extends =&quot;anotherComponent&quot;
+   output = &quot;yes&quot; or &quot;no&quot;
+   style = &quot;rpc&quot; or &quot;document&quot;
+   namespace = &quot;default service namespace&quot;
+   serviceportname = &quot;port element name&quot;
+   porttypename = &quot;porttype element name&quot;
+   bindingname = &quot;binding element name&quot;
+   wsdlfile = &quot;path to hard-coded wsdl file&quot;
+   displayname = &quot;text string&quot;&gt;
+   hint = &quot;text string&quot;&gt;
+   variable declarations
+   &lt;cffunction ...&gt;
+      ...
+   &lt;/cffunction&gt; 
+
+   &lt;cffunction ...&gt;
+      ...
+   &lt;/cffunction&gt; 
+&lt;/cfcomponent&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfargument, cffunction, cfinvoke, cfinvokeargument, cfobject, cfproperty, cfreturn, Chapter&#160;10, "Building and Using ColdFusion Components" in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7:
+</p>
+<ul>
+
+<li>Added support for publishing document-literal style web services.</li>
+
+<li>Added the style, namespace, serviceportname, porttypename, wsdlfile, and bindingname attributes.</li>
+
+<li>Extended functionality for the hint and displayname attributes when publishing document-literal style web services.</li>
+</ul>
+
+<p>
+ColdFusion&#160;MX: Added this tag.
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+If you specify the extends attribute, the data and methods of the parent component are available to CFC methods as if they were parts of the current component. If the managerCFC component extends the employeeCFC component, and the employeeCFC component has a getEmployeeName method, you can call this method using the managerCFC, as follows:
+</p>
+<pre>&lt;cfinvoke component=&quot;managerCFC&quot; method=&quot;getEmployeeName&quot; 
+returnVariable=&quot;managerName&quot; EmployeeID=#EmpID#&gt;
+</pre>
+<p>
+This tag requires an end tag.
+</p>
+
+<p>
+If you specify style=&quot;document&quot;, ColdFusion&#160;MX publishes the CFC as a document-literal style web service. For more information, see "Publishing document-literal style web services" in Chapter&#160;36, "Using Web Services" in ColdFusion MX Developer's Guide.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;cfcomponent&gt;
+   &lt;cffunction name=&quot;getEmp&quot;&gt;
+       &lt;cfquery name=&quot;empQuery&quot; datasource=&quot;cfdocexamples&quot; &gt;
+          SELECT FIRSTNAME, LASTNAME, EMAIL
+          FROM tblEmployees
+       &lt;/cfquery&gt;
+       &lt;cfreturn empQuery&gt;
+   &lt;/cffunction&gt;
+
+   &lt;cffunction name=&quot;getDept&quot;&gt;
+      &lt;cfquery name=&quot;deptQuery&quot; datasource=&quot;cfdocexamples&quot; &gt;
+          SELECT *
+          FROM tblDepartments
+       &lt;/cfquery&gt;
+       &lt;cfreturn deptQuery&gt;
+   &lt;/cffunction&gt;
+&lt;/cfcomponent&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="EXTENDS">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">EXTENDS</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of parent component from which to inherit methods and properties. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="OUTPUT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">OUTPUT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Component body displayable text is processed as standard CFML"
+
+
+<p>Specifies whether constructor code in the component can generate HTML output; does not affect output in the body of cffunction tags in the component.</p><ul>
+
+<li>yes: Constructor code is processed as if it were within a cfoutput tag. Variable names surrounded by number signs (#) are automatically replaced with their values.</li>
+
+<li>no: Constructor code is processed as if it were within a cfsilent tag.</li>
+
+<li>If you do not specify this attribute, constructor code is processed as standard CFML. Any variables must be in cfoutput tags.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="STYLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STYLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "rpc"
+
+
+<p>Specifies whether a CFC used for web services uses RPC-encoded style or document-literal style:</p><ul>
+
+<li>rpc: RPC-encoded style</li>
+
+<li>document: document-literal style</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="NAMESPACE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NAMESPACE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "classname"
+
+
+<p>Specifies the namespace used in the WSDL when using the CFC as a document-literal style web service. If you don't specify this attribute, ColdFusion&#160;MX derives the value from the CFC class name.</p>
+<p>&#160;</p>
+<p>This attribute applies only when style=&quot;document&quot;.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SERVICEPORTNAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SERVICEPORTNAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Specifies the name attribute of the port element in the WSDL. If you don't specify this attribute, ColdFusion&#160;MX derives the value from the CFC class name.</p>
+<p>&#160;</p>
+<p>This attribute applies only when style=&quot;document&quot;.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="PORTTYPENAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PORTTYPENAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Specifies the name attribute of the porttype element in the WSDL. If you don't specify this attribute, ColdFusion&#160;MX derives the value from the CFC class name.</p>
+<p>&#160;</p>
+<p>This attribute applies only when style=&quot;document&quot;.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="BINDINGNAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">BINDINGNAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Specifies the binding attribute of the port element in the WSDL. If you don't specify this attribute, ColdFusion&#160;MX derives the value from the CFC class name.</p>
+<p>&#160;</p>
+<p>This attribute applies only when style=&quot;document&quot;.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="WSDLFILE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">WSDLFILE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>A properly formatted WSDL file to be used instead of WSDL generated by ColdFusion&#160;MX.</p>
+<p>&#160;</p>
+<p>This attribute applies only when style=&quot;document&quot;.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DISPLAYNAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DISPLAYNAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>A string to be displayed when using introspection to show information about the CFC. The information appears on the heading, following the component name.</p>
+<p>&#160;</p>
+<p>If the style attribute is set to document, ColdFusion&#160;MX uses the displayname attribute as the name attribute of the service element in the WSDL. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="HINT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">HINT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Text to be displayed when using introspection to show information about the CFC. The hint attribute value appears below the component name heading. This attribute can be useful for describing the purpose of the parameter.</p>
+<p>&#160;</p>
+<p>If the style attribute is set to document, ColdFusion&#160;MX uses the hint attribute as the content of the documentation element of the service in the WSDL.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

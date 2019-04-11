@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<title>±íµ¥</TITLE>
+
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/CMN/docInfo.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+
+function isDOMRequired() { 
+	// Return false, indicating that this object is available in code view.
+	return false;
+}
+
+function objectTag() {
+	var nameValStr = makeUniqueName('form','form');
+	var nameStr ='';
+	var dom = dw.getDocumentDOM();
+	if (dom && dom.getIsXHTMLStrictDocument())
+		nameStr = ' id="' + nameValStr + '"';
+	else if (dom && dom.getIsXHTMLDocument())
+		nameStr = ' id="'+ nameValStr + '" name="' + nameValStr + '"';
+	else 
+		nameStr = ' name="' + nameValStr + '"';
+
+	return '<form' + nameStr + ' method="post" action=""></form>';
+}
+
+</SCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF">
+</BODY>
+
+</HTML>

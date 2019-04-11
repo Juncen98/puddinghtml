@@ -1,0 +1,177 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFOBJECT</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var ACTIONLIST;
+var COMCONTEXTLIST;
+var CORBACONTEXTLIST;
+var SELECTORLIST;
+var theUIObjects;
+var applyType = "dynamic"; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode, SELECTORLIST); 
+}
+
+function applyTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode); 
+}
+
+function updateUI()
+{
+  var curDiv = SELECTORLIST.getValue(); 
+  tagDialog.showOnlyThisLayer(curDiv); 
+}
+
+function initializeUI()
+{
+	ACTIONLIST = new ListControl("thecomaction"); 
+	COMCONTEXTLIST = new ListControl("thecomcontext"); 
+	CORBACONTEXTLIST = new ListControl("thecorbacontext"); 
+	SELECTORLIST = new ListControl("theselector"); 
+
+	theUIObjects = new Array(ACTIONLIST,COMCONTEXTLIST,CORBACONTEXTLIST,SELECTORLIST); 
+
+  tagDialog.populateDropDownList(ACTIONLIST, theObjectActionCap, theObjectActionVal, 0); 
+  tagDialog.populateDropDownList(COMCONTEXTLIST, theObjectCOMContextCap, theObjectCOMContextVal, 1); 
+  tagDialog.populateDropDownList(CORBACONTEXTLIST, theObjectCORBAContextCap, theObjectCORBAContextVal, 0); 
+  tagDialog.populateDropDownList(SELECTORLIST, theSelObjectCap, theSelObjectVal, 0); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+
+<div name="常规"> 
+<br /> 
+操作: 
+<select name="theselector" class="selectorList" id="attr:cfobject:selector" onChange="updateUI();" attname="type" editable="false">
+</select>
+<hr width="100%"> 
+<div id="thecomponent" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 50px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:cfobject:name" attname="name" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">组件: </td>
+      <td nowrap="nowrap">
+        <input name="thecomponent" type="text" class="basicTextField" id="attr:cfobject:component" attname="component" required="true" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="thecom" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 50px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:cfobject:name" attname="name" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类: </td>
+      <td nowrap="nowrap">
+        <input name="theclass" type="text" class="basicTextField" id="attr:cfobject:class" attname="class" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">服务器: </td>
+      <td nowrap="nowrap">
+        <input name="theserver" type="text" class="basicTextField" id="attr:cfobject:server" attname="server" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">操作: </td>
+      <td nowrap="nowrap">
+        <select name="thecomaction" class="oneWordOptionList" id="attr:cfobject:comaction" attname="action" editable="false">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">上下文: </td>
+      <td nowrap="nowrap">
+        <select name="thecomcontext" class="oneWordOptionList" id="attr:cfobject:context" attname="context" editable="false">
+        </select>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="thecorba" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 50px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">上下文: </td>
+      <td nowrap="nowrap">
+        <select name="thecorbacontext" class="oneWordOptionList" id="attr:cfobject:context" attname="context">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类: </td>
+      <td nowrap="nowrap">
+        <input name="theclass" type="text" class="basicTextField" id="attr:cfobject:class" attname="class" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:cfobject:name" attname="name" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">区域设置: </td>
+      <td nowrap="nowrap">
+        <input name="thelocale" type="text" class="basicTextField" id="attr:cfobject:locale" attname="locale" required="true" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="thejava" style="position:absolute;width:200px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 50px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类: </td>
+      <td nowrap="nowrap">
+        <input name="theclass" type="text" class="basicTextField" id="attr:cfobject:class" attname="class" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:cfobject:name" attname="name" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="hidden" id="attr:cfobject:javaaction" name="thejavaaction" attname="action" style="width:200px" value="create" />
+      </td>
+    </tr>		
+  </table>
+</div>
+</div>
+</html>

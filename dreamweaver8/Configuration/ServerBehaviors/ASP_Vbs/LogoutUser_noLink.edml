@@ -1,0 +1,19 @@
+<participant>
+     <quickSearch><![CDATA[MM_logoutRedirectPage]]></quickSearch>
+     <insertText location="aboveHTML+8">
+<![CDATA[
+<%
+' *** Logout the current user.
+MM_logoutRedirectPage = "@@redirectPage@@"
+Session.Contents.Remove("@@MM_username@@")
+Session.Contents.Remove("@@MM_userAuthorization@@")
+If (MM_logoutRedirectPage <> "") Then Response.Redirect(MM_logoutRedirectPage)
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="redirectPage" limitSearch="all"><![CDATA[/MM_logoutRedirectPage\s*=\s*"([^\r\n]*)"/]]></searchPattern>
+       <searchPattern paramNames="" limitSearch="all"><![CDATA[/If\s*\(MM_logoutRedirectPage\s*<>\s*""\)\s*Then\s*Response\.Redirect\(MM_logoutRedirectPage\)/]]></searchPattern>
+       <searchPattern paramNames="redirectPage_url" limitSearch="all"><![CDATA[/MM_logoutRedirectPage\s*=\s*"([^\r\n]*)"/]]></searchPattern>
+     </searchPatterns>
+</participant>

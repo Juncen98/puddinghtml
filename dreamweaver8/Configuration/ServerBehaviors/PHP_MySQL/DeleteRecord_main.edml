@@ -1,0 +1,24 @@
+<participant version="6.0">
+	<insertText location="aboveHTML+30"><![CDATA[<?php
+if ((isset(@@PrimaryKeyParameter@@)) && (@@PrimaryKeyParameter@@ != "")<@ if (@@DeleteIfDefined@@ && (@@PrimaryKeyParameter@@ != @@DeleteIfDefined@@)) @> && (isset(@@DeleteIfDefined@@))<@ endif @>) {
+  $deleteSQL = sprintf("@@SQLStatement@@",
+                       @@SQLVariableList@@);
+
+  mysql_select_db($database_@@ConnectionName@@, $@@ConnectionName@@);
+  $Result1 = mysql_query($deleteSQL, $@@ConnectionName@@) or die(mysql_error());
+<@ if (@@Redirect_url@@) @>
+
+  $deleteGoTo = "@@Redirect_url@@";
+  if (isset($_SERVER['QUERY_STRING'])) {
+    $deleteGoTo .= (strpos($deleteGoTo, '?')) ? "&" : "?";
+    $deleteGoTo .= $_SERVER['QUERY_STRING'];
+  }
+  header(sprintf("Location: %s", $deleteGoTo));
+<@ endif @>
+}
+?>]]></insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="PrimaryKeyParameter,DeleteIfDefined,SQLStatement,SQLVariableList,ConnectionName,Redirect_url" isOptional="false" limitSearch="all"><![CDATA[/if \(\(isset\(([^\r\n]*?)\)\) && \([^\r\n]*? != ""\)(?: && \(isset\(([^\r\n]*?)\)\))?\) \{(?:\r\n|\r(?!\n)|\n)[ \t]*\$deleteSQL = sprintf\("([^\r\n]*?)",(?:\r\n|\r(?!\n)|\n)[ \t]*([\s\S]*?)\);(?:\r\n|\r(?!\n)|\n)[ \t]*(?:\r\n|\r(?!\n)|\n)[ \t]*mysql_select_db\(\$database_([^\r\n]*?), \$[^\r\n]*?\);(?:\r\n|\r(?!\n)|\n)[ \t]*\$Result1 = mysql_query\(\$deleteSQL, \$[^\r\n]*?\) or die\(mysql_error\(\)\);(?:\r\n|\r(?!\n)|\n)[ \t]*(?:(?:\r\n|\r(?!\n)|\n)[ \t]*\$deleteGoTo = "([^\r\n]*?)";(?:\r\n|\r(?!\n)|\n)[ \t]*if \(isset\(\$(?:HTTP)?_SERVER(?:_VARS)?\['QUERY_STRING'\]\)\) \{(?:\r\n|\r(?!\n)|\n)[ \t]*\$deleteGoTo \.= \(strpos\(\$deleteGoTo, '\?'\)\) \? "&" : "\?";(?:\r\n|\r(?!\n)|\n)[ \t]*\$deleteGoTo \.= \$(?:HTTP)?_SERVER(?:_VARS)?\['QUERY_STRING'\];(?:\r\n|\r(?!\n)|\n)[ \t]*\}(?:\r\n|\r(?!\n)|\n)[ \t]*header\(sprintf\("Location: %s", \$deleteGoTo\)\);(?:\r\n|\r(?!\n)|\n)[ \t]*)?\}(?=\r\n|\r|\n|\?>)/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>mysql_select_db($database_</quickSearch>
+</participant>

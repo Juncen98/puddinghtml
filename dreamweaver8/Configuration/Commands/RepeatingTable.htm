@@ -1,0 +1,68 @@
+<!doctype HTML PUBLIC "-//Macromedia//DWExtension layout-engine 5">
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<title>插入重复表格</title>
+<script src="../Shared/MM/Scripts/CMN/TemplateUtils.js"></script>
+<script src="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+
+<script src="RepeatingTable.js"></script>
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+<body onLoad="initializeUI()">
+<form name="theForm">
+  <table border="0">
+    <tr> 
+    <td align="right" valign="baseline">行数:</td>
+    <td valign="baseline"> <input name="Rows" type="text" class="smallNumOrChar" value="3"> 
+    </td>
+    <td align="right" valign="baseline" nowrap>单元格边距:</td>
+    <td valign="baseline"> <input name="Cellpad" type="text" class="smallNumOrChar" value="0"> 
+    </td>
+    </tr>
+    <tr> 
+    <td align="right" valign="baseline">列数:</td>
+    <td valign="baseline"> <input name="Cols" type="text" class="smallNumOrChar" value="3"> 
+    </td>
+    <td align="right" valign="baseline" nowrap>单元格间距:</td>
+    <td valign="baseline"> <input name="Cellspace" type="text" class="smallNumOrChar" value="0"> 
+    </td>
+    </tr>
+    <tr> 
+    <td align="right" valign="baseline">宽度:</td>
+    <td valign="baseline" nowrap colspan="3"> <input name="Width" type="text" class="smallNumOrChar" value="75" > 
+    <select name="Units" class="unitList">
+      <option value="percent" selected name="percent">百分比</option>
+      <option value="pixels" name="pixels" nowrap>像素</option>
+    </select> </td>
+    </tr>
+    <tr> 
+    <td align="right" valign="baseline" nowrap>边框:</td>
+    <td valign="baseline" nowrap> <input name="Border" type="text" class="smallNumOrChar" value="3"> 
+    </td>
+    <td colspan="2" nowrap>&nbsp; </td>
+    </tr>
+    <tr> 
+    <td align="right" valign="baseline" colspan="3">重复表格行:</td>
+    <td valign="baseline" nowrap> 
+    </tr>
+    <tr> 
+    <td align="right" valign="baseline" nowrap>起始行:</td>
+    <td valign="baseline"> <input name="startingRow" type="text" class="smallNumOrChar" value="1"> 
+    </td>
+    <td align="right" valign="baseline" nowrap>结束行:</td>
+    <td valign="baseline"> <input name="endingRow" type="text" class="smallNumOrChar" value="1"> 
+    </td>
+    </tr>
+    <tr> 
+    <td align="right" valign="baseline" nowrap>区域名称:</td>
+    <td valign="baseline" colspan=3> <input name="repeatName" type="text" class="medTField" value=""> 
+    </td>
+    </tr>
+  </table>
+</form>
+</body>
+</HTML>
+

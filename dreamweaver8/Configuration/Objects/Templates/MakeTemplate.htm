@@ -1,0 +1,45 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Copyright 2002 Macromedia, Inc. All rights reserved. -->
+<title><MMString:LoadString id="insertbar/makeTemplate" /></title> 
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<script language="javascript" src="../../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<script language="javascript" src="../../Shared/MM/Scripts/CMN/TemplateUtils.js"></script>
+<!-- End removal area. -->
+
+<script language="javascript" >
+
+function isDOMRequired() 
+	{ // Return true, indicating that this object is available in code view.
+	return true;
+	}
+
+function objectTag()
+	{	
+	var canSave =  (dw.getFocus() == 'textView' || dw.getFocus(true) == 'html' || dw.getFocus() == 'document') && dw.canSaveDocumentAsTemplate(dw.getDocumentDOM()) && dw.getDocumentDOM() && dw.getDocumentDOM().getParseMode() == 'html' && dw.getDocumentDOM().getFocus() != 'frameset';
+		
+	if (!canSave)
+		alert(MM.CantSaveAsTemplateMessage);
+	else
+		{
+		var dom = dw.getDocumentDOM();
+
+		//Always check if we are saving as template
+		if (dom)
+			{
+			if (dom.checkTemplateSyntax())
+				CheckFunkyTemplateNesting();
+			}
+
+		dw.saveDocumentAsTemplate(dw.getDocumentDOM());
+		}
+		
+   	return "";
+	}
+</script>
+</head>
+
+<body>
+</body>
+</html>

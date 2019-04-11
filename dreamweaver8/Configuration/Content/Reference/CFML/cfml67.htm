@@ -1,0 +1,1054 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFINVOKE</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFINVOKE</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Does either of the following:
+</p>
+<ul>
+
+<li>Invokes a component method from within a ColdFusion page or component. </li>
+
+<li>Invokes a web service. </li>
+</ul>
+
+<p>
+This tag works as follows:
+</p>
+<ul>
+
+<li>Transiently instantiates a component or web service and invokes a method on it.</li>
+
+<li>Invokes a method on an instantiated component or web service.</li>
+</ul>
+
+<p>
+This tag can pass parameters to a method in the following ways:
+</p>
+<ul>
+
+<li>With the cfinvokeargument tag</li>
+
+<li>As named attribute-value pairs, one attribute per parameter</li>
+
+<li>As a structure, in the argumentCollection attribute</li>
+</ul>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Extensibility tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span>
+<p>
+<b>Syntax 1</b>
+</p>
+<pre>&lt;!--- This syntax invokes a method of a component. ---&gt;
+&lt;cfinvoke
+   component = &quot;component name or reference&quot;
+   method = &quot;method name&quot;
+   returnVariable = &quot;variable name&quot;
+   argumentCollection = &quot;argument collection&quot;
+   ...&gt;
+OR
+</pre>
+<p>
+<b>Syntax 2</b>
+</p>
+<pre>&lt;!--- This syntax can invoke a method of a component only
+   from within the component. ---&gt;
+&lt;cfinvoke
+   method = &quot;method name&quot;
+   returnVariable = &quot;variable name&quot;
+   argumentCollection = &quot;argument collection&quot;
+   ...
+&gt;
+OR
+</pre>
+<p>
+<b>Syntax 3</b>
+</p>
+<pre>&lt;!--- This syntax invokes a web service. ---&gt;
+&lt;cfinvoke 
+   webservice = &quot;URLtoWSDL_location&quot; 
+   method = &quot;operation_name&quot;
+   username = user name&quot;
+   password = &quot;password&quot;
+   timeout = &quot;request timeout in seconds&quot;
+   proxyServer = &quot;WSDL proxy server URL
+   proxyPort = &quot;port on proxy server&quot;
+   proxyUser = &quot;user id for proxy server&quot;
+   proxyPassword = &quot;password for proxy server&quot;
+   servicePort = &quot;WSDL port name&quot;
+   inputParam1 = &quot;value1&quot;
+   inputParam2 = &quot;value2&quot;
+   ...
+   returnVariable = &quot;var_name&quot;    
+   ...&gt;
+OR
+</pre>
+<p>
+<b>Syntax 4A</b>
+</p>
+<pre>&lt;!--- This syntax invokes a component.
+This syntax shows instantiation with the cfobject tag. 
+This cfinvoke syntax applies to instantiating a component 
+with the cfobject tag and to instantiating a component 
+with the CreateObject function. ---&gt;
+&lt;cfobject
+   component = &quot;component name&quot;
+   name = &quot;mystringname for instantiated object&quot;&gt;
+&lt;cfinvoke 
+   &lt;!--- value is object name, within number signs. ---&gt;
+   component = &quot;#mystringname for instantiated component#&quot;
+   method = &quot;method name&quot;
+   returnVariable = &quot;variable name&quot;
+   argumentCollection = &quot;argument collection&quot;
+   ...
+&gt;
+OR
+<b>Syntax 4B
+</b>&lt;!--- This syntax invokes a web service.
+This syntax shows instantiation with the cfobject tag. 
+This cfinvoke syntax applies to instantiating a web service
+with the cfobject tag and to instantiating a web service
+with the CreateObject function. ---&gt;
+&lt;cfobject
+   webservice = &quot;web service name&quot;
+   name = &quot;mystringname for instantiated object&quot;
+   method = &quot;operation_name&quot;&gt;
+&lt;cfinvoke 
+   &lt;!--- value is object name, within number signs. ---&gt;
+   webservice = &quot;#my stringname for instantiated web service#&quot; 
+   timeout = &quot;request timeout in seconds&quot;
+   proxyServer = &quot;WSDL proxy server url
+   proxyPort = &quot;numeric port on proxy server&quot;
+   proxyUser = &quot;string user id for proxy server&quot;
+   servicePort = &quot;WSDL port name&quot;
+   proxyPassword = &quot;string user password for proxy server&quot;
+&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfargument, cfcomponent, cffunction, cfinvokeargument, cfobject, cfproperty, cfreturn
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7: Added the servicePort attribute.
+</p>
+
+<p>
+ColdFusion MX&#160;6.1: Added the following attributes: timeout, proxyServer, proxyPort, proxyUser, and proxyPassword.
+</p>
+
+<p>
+ColdFusion&#160;MX: Added this tag.
+</p>
+
+<p>
+
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>If you do not specify any the proxy attributes, and a corresponding system property is set (typically in the JVM startup arguments) ColdFusion uses the system property value.</td>
+  </tr>
+</table>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+The following table shows when you can use each attribute:
+</p>
+
+<p>
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr align="center">    <th colspan="1" rowspan="2">&#160;</th>
+    <th colspan="5" rowspan="1">&#160;</th>
+</tr>
+  <tr align="center">    <th>&#160;</th>
+    <th>&#160;</th>
+    <th>&#160;</th>
+    <th>&#160;</th>
+    <th>&#160;</th>
+</tr>
+  <tr align="left">    <td>&#160;</td>
+    <td>
+<p>Required</p></td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Invalid</p></td>
+    <td>
+<p>Required</p></td>
+    <td>
+<p>Invalid</p></td>
+</tr>
+  <tr align="left">    <td>&#160;</td>
+    <td>
+<p>Required</p></td>
+    <td>
+<p>Required</p></td>
+    <td>
+<p>Required</p></td>
+    <td>
+<p>Required</p></td>
+    <td>
+<p>Required</p></td>
+</tr>
+  <tr align="left">    <td>&#160;</td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Optional</p></td>
+</tr>
+  <tr align="left">    <td>&#160;</td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Optional</p></td>
+</tr>
+  <tr align="left">    <td>&#160;</td>
+    <td>
+<p>Ignored</p></td>
+    <td>
+<p>Ignored</p></td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Ignored</p></td>
+    <td>
+<p>Optional</p></td>
+</tr>
+  <tr align="left">    <td>&#160;</td>
+    <td>
+<p>Ignored</p></td>
+    <td>
+<p>Ignored</p></td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Ignored</p></td>
+    <td>
+<p>Optional</p></td>
+</tr>
+  <tr align="left">    <td>&#160;</td>
+    <td>
+<p>Ignored</p></td>
+    <td>
+<p>Ignored</p></td>
+    <td>
+<p>Required</p></td>
+    <td>
+<p>Ignored</p></td>
+    <td>
+<p>Required</p></td>
+</tr>
+  <tr align="left">    <td>&#160;</td>
+    <td>
+<p>Invalid</p></td>
+    <td>
+<p>Invalid</p></td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Invalid</p></td>
+    <td>
+<p>Optional</p></td>
+</tr>
+  <tr align="left">    <td>&#160;</td>
+    <td>
+<p>Invalid</p></td>
+    <td>
+<p>Invalid</p></td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Invalid</p></td>
+    <td>
+<p>Optional</p></td>
+</tr>
+  <tr align="left">    <td>&#160;</td>
+    <td>
+<p>Invalid</p></td>
+    <td>
+<p>Invalid</p></td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Invalid</p></td>
+    <td>
+<p>Optional</p></td>
+</tr>
+  <tr align="left">    <td>&#160;</td>
+    <td>
+<p>Invalid</p></td>
+    <td>
+<p>Invalid</p></td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Invalid</p></td>
+    <td>
+<p>Optional</p></td>
+</tr>
+  <tr align="left">    <td>&#160;</td>
+    <td>
+<p>Invalid</p></td>
+    <td>
+<p>Invalid</p></td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Invalid</p></td>
+    <td>
+<p>Optional</p></td>
+</tr>
+  <tr align="left">    <td>&#160;</td>
+    <td>
+<p>Invalid</p></td>
+    <td>
+<p>Invalid</p></td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Invalid</p></td>
+    <td>
+<p>Optional</p></td>
+</tr>
+  <tr align="left">    <td>&#160;</td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Optional</p></td>
+    <td>
+<p>Optional</p></td>
+</tr>
+</table>
+</div>
+<p>
+</p>
+
+<p>
+If the component attribute specifies a component name, the component with the corresponding name is instantiated, the requested method is invoked, and then the component instance is immediately destroyed. If the attribute contains a reference to an instantiated component object, no instantiation or destruction of the component occurs.
+</p>
+
+<p>
+On UNIX systems, ColdFusion searches first for a file with a name that matches the specified component name, but is all lower case. If it does not find the file, it looks for a file name that matches the component name exactly, with the identical character casing.
+</p>
+
+<p>
+Method arguments can be passed in any of the following ways. If an argument is passed in more than one way with the same name, this order of precedence applies:
+</p>
+<ol type="1">
+
+<li>Using the cfinvokeargument tag</li>
+
+<li>Passing directly as attributes of the cfinvoke tag (they cannot have the same name as a registered cfinvoke attribute: method, component, webservice, returnVariable)</li>
+
+<li>Passing as struct keys, using the argumentCollection attribute</li>
+</ol>
+
+<p>
+For example, the params struct contains three keys: a=1, b=1, c=1. The following call is evaluated as if the arguments were passed to the method in the order a=3, b=2, c=1:
+</p>
+<pre>&lt;cfinvoke ... a=2 b=2 argumentCollection=params&gt;
+      &lt;cfinvokeargument name=&quot;a&quot; value=&quot;3&quot;&gt;
+   &lt;/cfinvoke&gt;
+</pre><table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>The following cfinvoke tag attribute names are reserved; they cannot be used for argument names: component, method, argumentCollection, and result.</td>
+  </tr>
+</table>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+This example uses Syntax 1.
+</p>
+<pre>&lt;!--- Immediate instantiation and destruction. ---&gt;
+&lt;cfinvoke 
+   component=&quot;nasdaq.quote&quot; 
+   method=&quot;getLastTradePrice&quot; 
+   returnVariable=&quot;res&quot;&gt;
+   &lt;cfinvokeargument 
+      name=&quot;symbol&quot; 
+      value=&quot;macr&quot;&gt;
+&lt;/cfinvoke&gt;
+&lt;cfoutput&gt;#res#&lt;/cfoutput&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+This example uses Syntax 1.
+</p>
+<pre>&lt;!--- Passing the arguments using argumentCollection. ---&gt;
+&lt;cfset args = StructNew()&gt;
+&lt;cfset args.symbol = &quot;macr&quot;&gt;
+&lt;cfinvoke 
+   component=&quot;nasdaq.quote&quot; 
+   method=&quot;getLastTradePrice&quot; 
+   argumentCollection=&quot;#args#&quot; 
+   returnVariable=&quot;res&quot;&gt;
+&lt;cfoutput&gt;#res#&lt;/cfoutput&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+This example uses Syntax 2.
+</p>
+<pre>&lt;!--- Called only from within a component, MyComponent.---&gt;
+&lt;cfinvoke
+   method = &quot;a method name of MyComponent&quot;
+   returnVariable = &quot;variable name&quot;&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+This example uses Syntax 3.
+</p>
+<pre>&lt;!--- Using cfinvoke to consume a web service using a ColdFusion component.---&gt;
+&lt;cfinvoke 
+  webservice=&quot;http://www.xmethods.net/sd/2001/TemperatureService.wsdl&quot;
+  method=&quot;getTemp&quot;
+  returnvariable=&quot;aTemp&quot;&gt;
+    &lt;cfinvokeargument name=&quot;zipcode&quot; value=&quot;55987&quot;/&gt;
+&lt;/cfinvoke&gt;
+&lt;cfoutput&gt;The temperature at zip code 55987 is #aTemp#&lt;/cfoutput&gt;
+</pre>
+<p>
+For more information on web services, see Chapter&#160;36, "Using Web Services" in ColdFusion MX Developer's Guide.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+This example uses Syntax 4A.
+</p>
+<pre>&lt;!--- Separate instantiation and method invocation; useful for 
+   multiple invocations using different methods or values. ---&gt;
+&lt;cfobject 
+   name=&quot;quoteService&quot; 
+   component=&quot;nasdaq.quote&quot;&gt;
+&lt;cfinvoke 
+   component=&quot;#quoteService#&quot; 
+   method=&quot;getLastTradePrice&quot; 
+   symbol=&quot;macr&quot; 
+   returnVariable=&quot;res_macr&quot;&gt;
+&lt;cfoutput&gt;#res#&lt;/cfoutput&gt;
+&lt;cfinvoke 
+   component=&quot;#quoteService#&quot; 
+   method=&quot;getLastTradePrice&quot; 
+   symbol=&quot;mot&quot; 
+   returnVariable=&quot;res_mot&quot;&gt;
+&lt;cfoutput&gt;#res#&lt;/cfoutput&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="COMPONENT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">COMPONENT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">See Usage.</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>String or component object; a reference to a component, or component to instantiate.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="METHOD">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">METHOD</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">See Usage.</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of a method. For a web service, the name of an operation.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="RETURNVARIABLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">RETURNVARIABLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of a variable for the invocation result.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ARGUMENTCOLLECTION">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ARGUMENTCOLLECTION</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of a structure; associative array of arguments to pass to the method.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="USERNAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">USERNAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Overrides username specified in Administrator &gt; Web Services.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="PASSWORD">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PASSWORD</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Overrides password specified in Administrator &gt; Web Services.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="WEBSERVICE ">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">WEBSERVICE </td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>The URL of the WSDL file for the web service.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TIMEOUT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TIMEOUT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>The timeout for the web service request, in seconds</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="PROXYSERVER">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PROXYSERVER</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "http.proxyHost system property, if any."
+
+
+<p>The proxy server required to access the webservice URL.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="PROXYPORT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PROXYPORT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "http.proxyPort system property, if any."
+
+
+<p>The port to use on The proxy server.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="PROXYUSER">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PROXYUSER</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "http.proxyUser system property, if any"
+
+
+<p>The user ID to send to the proxy server.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="PROXYPASSWORD">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PROXYPASSWORD</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "http.proxyPassword system property, if any"
+
+
+<p>The user's password on the proxy server.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SERVICEPORT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SERVICEPORT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "First port found in the WSDL"
+
+
+<p>The port name for the web service. This value is case-sensitive and corresponds to the port element's name attribute under the service element.</p>
+<p>&#160;</p>
+<p>Specify this attribute if the web service contains multiple ports. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="<I>INPUT_PARAMS </I>...">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name"><I>INPUT_PARAMS </I>...</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">&#160;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Input parameters. For each named input parameter specify paramName=paramValue.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="COMPONENT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">COMPONENT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+<div id="METHOD">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">METHOD</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+<div id="RETURNVARIABLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">RETURNVARIABLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+<div id="ARGUMENTCOLLECTION">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ARGUMENTCOLLECTION</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+<div id="USERNAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">USERNAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+<div id="PASSWORD">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PASSWORD</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+<div id="WEBSERVICE ">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">WEBSERVICE </td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+<div id="TIMEOUT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TIMEOUT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+<div id="PROXYSERVER">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PROXYSERVER</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+<div id="PROXYPORT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PROXYPORT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+<div id="PROXYUSER">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PROXYUSER</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+<div id="PROXYPASSWORD">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PROXYPASSWORD</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+<div id="SERVICEPORT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SERVICEPORT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+<div id="INPUT_PARAMS ...">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">INPUT_PARAMS ...</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  </body>
+</html>

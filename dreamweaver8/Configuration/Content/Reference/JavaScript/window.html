@@ -1,0 +1,4418 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">window</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>The <span class="literal">window</span> object represents the browser window or
+frame in which document content is displayed. The
+<span class="literal">window</span> object plays a vital role in scripting when
+scripts must communicate with document objects located in other
+frames or subwindows. Managing multiple windows can be tricky
+business because of the transient nature of cross-window references.
+Strict interpretation of HTML and XHTML standards frowns upon
+multiple windows, and many confused users may agree.
+</p>
+							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			Although the W3C DOM Level 2 does not provide in-depth specifications
+for the <span class="literal">window</span> object (a window, after all, is
+outside the scope of document markup), it nevertheless indicates
+possible future hooks through what it calls
+"view" objects. Thus, the Netscape
+6 <span class="literal">document.defaultView</span> property returns the
+document's window; the Netscape 6
+<span class="literal">window</span> object also takes on the method of the
+<span class="literal">ViewCSS</span> object to gain the DOM's
+<span class="literal">getComputedStyle( )</span> method.
+</p>
+							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			The <span class="literal">window</span> object has been scriptable since the
+beginning and bears a considerable legacy of properties and methods.
+Many of these features are browser-specific, so observe compatibility
+ratings carefully before adopting a particular object feature.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>window
+self
+top
+parent</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificeventhandlerproperties"><span class="title">Object-Specific Event Handler Properties</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><th>Handler</th><th>NN</th><th>IE/Windows</th><th>IE/Mac</th><th>DOM</th><tr><td><span class="literal">onafterprint</span></td><td>n/a</td><td>5</td><td>n/a</td><td>n/a</td>
+								</tr>
+								<tr><td><span class="literal">onbeforeprint</span></td><td>n/a</td><td>5</td><td>n/a</td><td>n/a</td>
+								</tr>
+								<tr><td><span class="literal">onbeforeunload</span></td><td>n/a</td><td>4</td><td>4</td><td>n/a</td>
+								</tr>
+								<tr><td><span class="literal">onblur</span></td><td>3</td><td>4</td><td>4</td><td>n/a</td>
+								</tr>
+								<tr><td><span class="literal">ondragdrop</span></td><td>4</td><td>n/a</td><td>n/a</td><td>n/a</td>
+								</tr>
+								<tr><td><span class="literal">onerror</span></td><td>3</td><td>4</td><td>4</td><td>n/a</td>
+								</tr>
+								<tr><td><span class="literal">onfocus</span></td><td>3</td><td>4</td><td>4</td><td>n/a</td>
+								</tr>
+								<tr><td><span class="literal">onhelp</span></td><td>n/a</td><td>4</td><td>4</td><td>n/a</td>
+								</tr>
+								<tr><td><span class="literal">onload</span></td><td>2</td><td>3</td><td>3.01</td><td>n/a</td>
+								</tr>
+								<tr><td><span class="literal">onmove</span></td><td>4</td><td>5.5</td><td>n/a</td><td>n/a</td>
+								</tr>
+								<tr><td><span class="literal">onresize</span></td><td>4</td><td>4</td><td>4</td><td>n/a</td>
+								</tr>
+								<tr><td><span class="literal">onscroll</span></td><td>n/a</td><td>4</td><td>4</td><td>n/a</td>
+								</tr>
+								<tr><td><span class="literal">onunload</span></td><td>2</td><td>4</td><td>4</td><td>n/a</td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+			</table>
+		</div><div id="appCore, Components, content, controllers, prompter, sidebar">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">appCore, Components, content, controllers, prompter, sidebar</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>These properties are associated with the proprietary Mozilla
+xpconnect ("cross-platform"
+connect) services. These services allow scripts that have the correct
+security clearance to work with XPCOM (decidedly not MS COM) objects
+to extend the functionality of the application that uses the Mozilla
+engine (such as the Netscape 6 browser). Access to these services
+requires enabling security privileges (typically via signed scripts),
+as follows:
+</p>
+<span class="PROGRAMLISTING"><pre>netscape.security.PrivilegeManager.enablePrivilege(&quot;UniversalXPConnect&quot;);
+// your xpconnect access code here
+netscape.security.PrivilegeManager.revertPrivilege(&quot;UniversalXPConnect&quot;);</pre></span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			For more details on this mechanism, visit http://www.mozilla.org/scriptable/.
+</p>
+												</td>
+</tr>
+			</table>
+		</div><div id="clientInformation">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">clientInformation</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns the <span class="literal">navigator</span> object. The
+<span class="literal">navigator</span> object is named after a specific browser
+brand; the <span class="literal">clientInformation</span> property is a
+nondenominational way of accessing important environment variables
+that have historically been available through properties and methods
+of the <span class="literal">navigator</span> object (discussed separately
+earlier in this chapter as its own object). In Internet Explorer, you
+can substitute <span class="literal">window.clientInformation</span> for any
+reference that begins with <span class="literal">navigator</span>.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>if (parseInt(window.clientInformation.appVersion) &gt;= 4) {
+    // process code for IE 4 or later
+}</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			The <span class="literal">navigator</span> object.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			The <span class="literal">navigator</span> object.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="clipboardData">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">clipboardData</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns the <span class="literal">clipboardData</span> object, discussed
+separately earlier in this chapter as its own object. The object
+(accessible as a property of a <span class="literal">window</span> or
+<span class="literal">frame</span> object) is a temporary container that
+scripts in IE 5 and later for Windows can use to transfer text data,
+particularly during script-controlled operations that simulate
+cutting, copying, and pasting, or that control dragging.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var rng = document.selection.createRange( );
+clipboardData.setData("Text",rng.text);</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			The <span class="literal">clipboardData</span> object.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			The <span class="literal">clipboardData</span> object.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="closed">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">closed</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>This is the Boolean value that says whether the referenced window is
+closed. A value of <span class="literal">true</span> means the window is no
+longer available for referencing its objects or script components.
+This is used most often to check whether a user has closed a
+subwindow generated by the <span class="literal">window.open( )</span> method.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>if (!newWindow.closed) {
+    newWindow.document.close( );
+}</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Boolean value: <span class="literal">true</span> | <span class="literal">false</span>.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="Components, content, controllers">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">Components, content, controllers</td><td valign="top" nowrap class="compatibility">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>See appCore.</p>
+												</td>
+</tr>
+			</table>
+		</div><div id="crypto, pkcs11">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">crypto, pkcs11</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Return references to objects associated with Mozilla public-key
+cryptography internals. For more details on this subject, visit
+http://www.mozilla.org/projects/security/.
+</p>
+												</td>
+</tr>
+			</table>
+		</div><div id="defaultStatus">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">defaultStatus</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Specifies the default message displayed in the browser
+window's status bar when no browser loading activity
+is occurring. To temporarily change the message (during mouse
+rollovers, for example), set the window's
+<span class="literal">status</span> property. Most scriptable browsers and
+versions have difficulty managing the setting of the
+<span class="literal">defaultStatus</span> property. Expect odd behavior.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>window.defaultStatus = "Make it a great day!";</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Any string value.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="dialogArguments">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">dialogArguments</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>This is the string or other data type passed as extra arguments to a
+modal dialog window created with the <span class="literal">window.showModalDialog(
+)</span> or (in IE 5 and later for Windows only)
+<span class="literal">window.showModelessDialog( )</span> methods. This
+property is best accessed by a script in the document displayed in
+the dialog window in order to retrieve whatever data is passed to the
+new window as arguments. It is up to your script to parse the data if
+you include more than one argument nugget separated by whatever
+argument delimiter you choose.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>// in dialog window
+var allArgs = window.dialogArguments;
+var firstArg = allArgs.substring(0, allArgs.indexOf(";"));</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			String, number, array, or object.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="dialogHeight, dialogWidth">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">dialogHeight, dialogWidth</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Specify the height and width values of a modal dialog window created
+with the <span class="literal">showModalDialog( )</span> and
+<span class="literal">showModelessDialog( )</span> methods. Although Internet
+Explorer does not balk at modifying these properties (in a script
+running in the modal dialog window), the changed values are generally
+not reflected in a resized dialog window. Initial values are set as
+parameters to the dialog-opening methods.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var outerWidth = window.dialogWidth;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			String, including the unit value (e.g., <span class="literal">520px</span>).</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="dialogLeft, dialogTop">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">dialogLeft, dialogTop</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Indicate the offset distance of the left and top edges of a modal
+dialog window (created with the <span class="literal">showModalDialog( )</span>
+and <span class="literal">showModelessDialog( )</span> methods) relative to the
+top-left corner of the video screen. Although Internet Explorer does
+not balk at modifying these properties (in a script running in the
+modal dialog window), the changed values are generally not reflected
+in a repositioned dialog window. Initial values are set as parameters
+to the dialog methods.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var outerLeft = window.dialogLeft;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			String, including the unit value (e.g., <span class="literal">80px</span>).</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="directories, locationbar, menubar, personalbar, scrollbars, statusbar, toolbar">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">directories, locationbar, menubar, personalbar, scrollbars, statusbar, toolbar</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Return references to the Navigator browser window feature (the
+<span class="literal">directories</span> property is new for Netscape 6). See
+the discussion of the <span class="literal">directories</span> (et al.) objects
+earlier in this chapter for how to control the visibility of these
+window features with signed scripts.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserWrite")
+window.statusbar.visible = "false";
+netscape.security.PrivilegeManager.revertrivilege("UniversalBrowserWrite")</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Respective object references.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="document">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">document</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a reference to the <span class="literal">document</span> object
+contained by the window. In browsers that offer W3C DOM document tree
+support, this property points more specifically to the root
+<span class="literal">HTMLDocument</span> node for the document tree loaded in
+the window. The W3C DOM even describes this property as a member of
+one of its <span class="literal">View</span> objects (analogous to a browser
+window). This is the property that lets scripts references to
+document methods and content begin with the word
+<span class="literal">document</span>.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var oneElem = document.getElementById("myP");</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to the root <span class="literal">document</span> object.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to the root <span class="literal">document</span> object.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="event">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">event</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Internet Explorer's event model generates an
+<span class="literal">event</span> object for each user or system event. This
+<span class="literal">event</span> object is a property of the
+<span class="literal">window</span> object. For details about the IE event
+object, see Chapter 6 and the listing of the
+<span class="literal">event</span> object in this chapter.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>if (event.altKey) {
+    // handle case of Alt key down
+}</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">event</span> object reference.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="external">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">external</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a reference to the <span class="literal">external</span> object, which
+provides access to lower-level functionality of the browser engine
+(security permissions willing). See the discussion of the
+<span class="literal">external</span> object earlier in this chapter.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>external.AddFavorite("http://www.dannyg.com", "Danny Home Page");</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">external</span> object reference.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">external</span> object reference.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="frameElement">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">frameElement</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5.5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>If the current window is a member of a frameset or is an iframe, the
+<span class="literal">frameElement</span> property returns a reference to the
+<span class="literal">frame</span> or <span class="literal">iframe</span> element object
+(distinct from the frame-as-window object). Security restrictions,
+however, can impede script access to this property.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var frameID = window.frameElement.id;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">frame</span> or <span class="literal">iframe</span> object
+reference; or <span class="literal">null</span>.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">null</span>.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="frames[ ]">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">frames[ ]</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a collection (array) of <span class="literal">window</span> objects
+that are implemented as frames or iframes in the current window. For
+a frameset's <span class="literal">parent</span> or
+<span class="literal">top</span> window, the array contains references to
+first-generation <span class="literal">frame</span> windows. Index values can
+be zero-based integers (in source code order) or the identifier
+assigned to the <span class="literal">name</span> attribute of the
+<span class="literal">frame</span> element.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>parent.frames[1].myFunc( );</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Array of <span class="literal">frame</span> (<span class="literal">window</span>) object
+references.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Array of length zero.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="history">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">history</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Contains the <span class="literal">history</span> object for the current window
+or frame. For details, see the discussion of the
+<span class="literal">history</span> object.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>if (self.history.length &gt; 4) {
+    ...
+}</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">history</span> object reference.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Current <span class="literal">history</span> object. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="innerHeight, innerWidth">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">innerHeight, innerWidth</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Specify the pixel measure of the height and width of the content
+region of a browser window or frame. This area is where the document
+content appears, exclusive of all window
+"chrome." For comparable values in
+IE, see the <span class="literal">body</span> element object.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>window.innerWidth = 600;
+window.innerHeight = 400;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="length">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">length</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Specifies the number of frames (if any) nested within the current
+window. This value is the same as that returned by
+<span class="literal">window.frames.length</span>. When no frames are defined
+for the window, the value is zero.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>if (window.length &gt; 0) {
+    ...
+}</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">0</span></p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="location">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">location</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a <span class="literal">location</span> object containing URL details
+of the document currently loaded in the window or frame. To navigate
+to another page, you assign a URL to the
+<span class="literal">location.href</span> property (or see the
+<span class="literal">navigate( )</span> method for an IE-only alternative).
+See the <span class="literal">location</span> object.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>top.location.href = "index.html";</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			A full or relative URL as a string.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Current <span class="literal">location</span> object.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="locationbar">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">locationbar</td><td valign="top" nowrap class="compatibility">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>See directories.</p>
+												</td>
+</tr>
+			</table>
+		</div><div id="menubar">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">menubar</td><td valign="top" nowrap class="compatibility">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>See directories.</p>
+												</td>
+</tr>
+			</table>
+		</div><div id="name">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">name</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>This is the identifier associated with a frame or subwindow for use
+as the value assigned to <span class="literal">target</span> attributes or as
+script references to the frame/subwindow. For a frame, the value is
+usually assigned via the <span class="literal">name</span> attribute of the
+<span class="literal">frame</span> tag, but it can be modified by a script if
+necessary. The name of a subwindow is assigned as a parameter to the
+<span class="literal">window.open( )</span> method. The primary browser window
+does not have a name by default, but you can assign one via script if
+you need a subwindow to target a link or form back to the main
+window.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>if (parent.frames[1].name == "main") {
+    ...
+}</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Case-sensitive identifier that follows the rules of identifier
+naming: it may contain no whitespace, cannot begin with a numeral,
+and should avoid punctuation except for the underscore character.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="navigator">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">navigator</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a reference to the <span class="literal">navigator</span> object. Since
+the <span class="literal">window</span> reference is optional, syntax without
+the <span class="literal">window</span> reference works on all scriptable
+versions of Internet Explorer and Navigator. See the
+<span class="literal">navigator</span> object.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var theBrowser = navigator.appName;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">navigator</span> object reference.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">navigator</span> object. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="offscreenBuffering">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">offscreenBuffering</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Indicates whether the browser should use offscreen buffering to
+improve path animation performance. Although the property is
+implemented in IE 5 for Macintosh, it is unclear that it offers any
+functionality. Recent versions of IE for Windows connect this
+property to the DirectX ActiveX control. When the document loads, the
+property is set to <span class="literal">auto</span>. After that, a script may
+turn buffering on and off by assigning a Boolean value to this
+property.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>window.offscreenBuffering = "true";</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Boolean value: <span class="literal">true</span> | <span class="literal">false</span>.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">auto</span></p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="opener">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">opener</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">3</span>  DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>This is an object reference to the window (or frame) that used a
+<span class="literal">window.open( )</span> method to generate the current
+window. This property allows subwindows to assemble references to
+objects, variables, and functions in the originating window. To
+access document objects in the creating window, a reference can begin
+with <span class="literal">opener</span> and work its way through the regular
+document object hierarchy from there, as shown in the left side of
+the following example statement. The relationship between the opening
+window and the opened window is not strictly parent-child. The term
+"parent" has other connotations in
+scripted window and frame references. IE's dialog
+windows (the <span class="literal">showModalDialog( )</span> and
+<span class="literal">showModelessDialog( )</span> windows) do not support this
+property. Values between the main and dialog windows must be passed
+at creation time and via the dialog window's
+<span class="literal">returnValue</span> property upon closing.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>opener.document.forms[0].importedData.value = document.forms[0].entry.value;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">window</span> object reference.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="outerHeight, outerWidth">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">outerHeight, outerWidth</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Specify the pixel measure of the height and width of the browser
+window or frame, including (for the top window) all tool bars, scoll
+bars, and other visible window
+"chrome." IE offers no equivalent
+properties.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>window.outerWidth = 80;
+window.outerHeight = 600;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="pageXOffset, pageYOffset">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">pageXOffset, pageYOffset</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Specify the pixel measure of the amount of the
+page's content that has been scrolled upward and/or
+to the left. For example, if a document has been scrolled so that the
+topmost 100 pixels of the document (the
+"page") are not visible because the
+window is scrolled, the <span class="literal">pageYOffset</span> value for the
+window is 100. When a document is not scrolled, both values are zero.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var vertScroll = self.pageYOffset;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">0</span></p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="parent">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">parent</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a reference to the parent <span class="literal">window</span> object
+whose document defined the frameset in which the current frame is
+specified. Use <span class="literal">parent</span> in building a reference from
+one child frame to variables or methods in the parent document or to
+variables, methods, and objects in another child frame. For example,
+if a script in one child frame must reference the content of a text
+input form element in the other child frame (named
+"content"), the reference would be:
+</p>
+<span class="PROGRAMLISTING"><pre>parent.content.document.forms[0].entryField.value</pre></span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			For more deeply nested frames, you can access the parent of a parent
+with syntax such as: <span class="literal">parent.parent.frameName</span>.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>parent.frames[1].document.forms[0].companyName.value = "MegaCorp";</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">window</span> object reference.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Current <span class="literal">window</span> object reference.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="personalbar">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">personalbar</td><td valign="top" nowrap class="compatibility">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>See directories.</p>
+												</td>
+</tr>
+			</table>
+		</div><div id="pkcs11">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">pkcs11</td><td valign="top" nowrap class="compatibility">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>See crypto.</p>
+												</td>
+</tr>
+			</table>
+		</div><div id="prompter">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">prompter</td><td valign="top" nowrap class="compatibility">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>See appCore.</p>
+												</td>
+</tr>
+			</table>
+		</div><div id="returnValue">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">returnValue</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4(Win)/5(Mac)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>A value to be returned to the main window when an IE dialog window
+(generated by <span class="literal">showModalDialog( )</span> method only)
+closes. The value assigned to this property in a script running in
+the dialog window becomes the value returned by the
+<span class="literal">showModalDialog( )</span> method in the main window. For
+example, the document in the modal dialog window may have a statement
+that sets the <span class="literal">returnValue</span> property with
+information from the dialog:
+</p>
+<span class="PROGRAMLISTING"><pre>window.returnValue = window.document.forms[0].userName.value;</pre></span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			The dialog is created in the main document with a statement like the
+following:
+</p>
+<span class="PROGRAMLISTING"><pre>var userName = showModalDialog(&quot;userNamePrompt.html&quot;);</pre></span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Whatever value is assigned to <span class="literal">returnValue</span> in the
+dialog is then assigned to the <span class="literal">userName</span> variable
+when the dialog box closes and script execution continues.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Any scriptable data type.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="screen">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">screen</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a reference to the <span class="literal">screen</span> object. Since
+the <span class="literal">window</span> reference is optional, syntax without
+the <span class="literal">window</span> reference works on all scriptable
+versions of Internet Explorer and Navigator.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var howHigh = screen.availHeight;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">screen</span> object reference.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">screen</span> object. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="screenLeft, screenTop">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">screenLeft, screenTop</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Return pixel coordinates of the top-left corner of the browser
+content area relative to the top-left corner of the screen. A
+maximized browser window returns a <span class="literal">screenLeft</span>
+value of <span class="literal">0</span>, but the <span class="literal">screenTop</span>
+value varies with the complement of toolbars the user chooses to
+display. Use <span class="literal">window.moveTo( )</span> to change the window
+position.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var fromTheTop = window.screenTop;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			User-dependent </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="screenX, screenY">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">screenX, screenY</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Return pixel coordinates of the top-left corner of the entire browser
+window (including "chrome")
+relative to the top-left corner of the screen. A browser window
+maximized under Windows returns <span class="literal">screenX</span> and
+<span class="literal">screenY</span> values of <span class="literal">-4</span> because
+the chrome extends slightly beyond the screen display. You can adjust
+the window location through these properties or the
+<span class="literal">window.moveTo( )</span> method.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var fromTheTop = window.screenY;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			User-dependent. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="scrollX, scrollY">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">scrollX, scrollY</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Return the pixel distance the window is scrolled along the horizontal
+(<span class="literal">scrollX</span>) and vertical
+(<span class="literal">scrollY</span>) axes. To determine these values in IE,
+you must take into account compatibility mode settings in IE 6 (see
+the <span class="literal">DOCTYPE</span> element in Chapter 8). In backward compatibility mode and in
+IE for Macintosh, use the <span class="literal">document.body.scrollLeft</span>
+and <span class="literal">document.body.scrollTop</span> properties. In IE 6
+standards compatibility mode (where
+<span class="literal">document.compatMode</span> <span class="literal">==</span>
+<span class="literal">"CSS1Compat"</span>), use
+<span class="literal">document.body.parentNode.scrollLeft</span> and
+<span class="literal">document.body.parentNode.scrollTop</span> to get the
+scroll values of the html element.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var scrolledDown = window.scrollY;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">0</span> </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="scrollbars">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">scrollbars</td><td valign="top" nowrap class="compatibility">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>See directories.</p>
+												</td>
+</tr>
+			</table>
+		</div><div id="self">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">self</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>This is a reference to the current window or frame. This property is
+synonymous with <span class="literal">window</span>, but is sometimes used to
+improve clarity in a complex script that refers to many windows or
+frames. Never use the reference <span class="literal">window.self</span> to
+refer to the current window or frame because some browser versions
+get confused with the reference.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>self.focus( );</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">window</span> object reference.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Current window. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="sidebar">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">sidebar</td><td valign="top" nowrap class="compatibility">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>See appCore.</p>
+												</td>
+</tr>
+			</table>
+		</div><div id="status">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">status</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Specifies the text of the status bar of the browser window. Setting
+the status bar to some message is recommended only for temporary
+messages, such as for mouse rollovers atop images, areas, or links.
+Double or single quotes in the message must be escaped
+(<span class="literal">\'</span>). Many users don't notice
+incidental text in the status bar, so avoid putting mission-critical
+information there. Temporary messages conflict with browser-driven
+use of the status bar for loading progress and other purposes. To set
+the default status bar message (when all is at rest), see the
+<span class="literal">defaultStatus</span> property.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;...onmouseover="window.status='Table of Contents';return true"
+onmouseout = "window.status = '';return true"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			String.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Empty string.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="statusbar">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">statusbar</td><td valign="top" nowrap class="compatibility">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>See directories.</p>
+												</td>
+</tr>
+			</table>
+		</div><div id="toolbar">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">toolbar</td><td valign="top" nowrap class="compatibility">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>See directories.</p>
+												</td>
+</tr>
+			</table>
+		</div><div id="top">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">top</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>This is an object reference to the browser window. Script statements
+from inside nested frames can refer to the browser window properties
+and methods or to variables or functions stored in the document
+loaded in the topmost position. Do not begin a reference with
+<span class="literal">window.top</span>, just <span class="literal">top</span>. To
+replace a frameset with a new document that occupies the entire
+browser window, assign a URL to the
+<span class="literal">top.location.href</span> property.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>top.location.href = "tableOfContents.html";</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">window</span> object reference.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Browser window.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="window">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">window</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span>  DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>This is an object reference to the browser window.</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>if (window == top) {
+    // load a frameset
+    location.href = "mainFrameset.html";
+}</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">window</span> object reference.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Browser window.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="addEventListener( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">addEventListener( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">addEventListener("<span class="replaceable">eventType</span>",
+<span class="replaceable">listenerFunction</span>,
+<span class="replaceable">useCapture</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Although the <span class="literal">window</span> object as we know it is not
+officially part of the W3C DOM, Netscape 6 implements this W3C DOM
+event model method for the <span class="literal">window</span> object. See the
+<span class="literal">addEventListener( )</span> method discussion among the
+shared methods described earlier in this chapter.
+</p>
+												</td>
+</tr>
+			</table>
+		</div><div id="alert( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">alert( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">alert("<span class="replaceable">message</span>")</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Displays an alert dialog box with a message of your choice. Script
+execution halts while the dialog box appears. A single button lets
+the user close the dialog. The title bar of the window (and the
+"JavaScript Alert" legend in
+earlier browser versions) cannot be altered by script.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Any string. </li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="attachEvent( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">attachEvent( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">attachEvent("<span class="replaceable">eventName</span>",
+<span class="replaceable">functionReference</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>This IE event model method, shared among all element objects, is also
+a member of the <span class="literal">window</span> object. See the
+<span class="literal">attachEvent( )</span> method discussion among the shared
+methods described earlier in this chapter.
+</p>
+												</td>
+</tr>
+			</table>
+		</div><div id="back( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">back( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Navigates one step backward through the history list of the window or
+frame. You may prefer the cross-browser <span class="literal">history.back(
+)</span> method.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="blur( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">blur( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Removes focus from the window and fires an <span class="literal">onBlur</span>
+event (in IE). No other element necessarily receives focus as a
+result, but if another IE window is open at the time, the current
+window moves to the rear of the stack.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="captureEvents( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">captureEvents( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">captureEvents(<span class="replaceable">eventTypeList</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Instructs the browser to grab events of a specific type before they
+reach their intended target objects. The object invoking this method
+must then have event handlers defined for the given event types to
+process the event. Although this method is part of the Navigator 4
+event model, it continues to be supported in Netscape 6, creating the
+equivalent of a W3C DOM capture-mode event listener for the document
+object. Continue to use this method if you must support Navigator 4,
+but migrate new code to the W3C DOM event listener syntax as
+described in Chapter 6.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+<dl>
+<dt><var class="replaceable">eventTypeList</var></dt>
+<dd>
+<p>A comma-separated list of case-sensitive event types as derived from
+the available <span class="LITERAL">Event</span> object constants, such as
+<span class="LITERAL">Event.CLICK</span> or <span class="LITERAL">Event.MOUSEMOVE</span>.
+</p>
+</dd>
+</dl>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="clearInterval( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">clearInterval( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">clearInterval(<span class="replaceable">intervalID</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Turns off the interval looping action referenced by the
+<span class="replaceable">intervalID</span> parameter. See
+<span class="literal">setInterval( )</span> for how to initiate such a loop.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>An integer created as the return value of a <span class="literal">setInterval(
+)</span> method.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="clearTimeout( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">clearTimeout( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">clearTimeout(<span class="replaceable">timeoutID</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Turns off the timeout delay counter referenced by the
+<span class="replaceable">timeoutID</span> parameter. See
+<span class="literal">setTimeout( )</span> for how to initiate such a delay.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>An integer created as the return value of a <span class="literal">setTimeout(
+)</span> method.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="close( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">close( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Closes the current window. A script in a subwindow cannot close the
+main window without receiving the user's explicit
+permission from a security dialog box. A window can close itself
+(i.e., from a script running in the same window) or a window it
+generated via the <span class="literal">window.open( )</span> method.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="confirm( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">confirm( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">confirm("<span class="replaceable">message</span>")</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Displays a dialog box with a message and two clickable buttons.
+Script execution halts while the dialog box appears. One button
+indicates a <span class="emphasis">Cancel</span> operation; the
+other button indicates the user's approval
+(<span class="emphasis">OK</span> or <span class="emphasis">Yes</span>). The text of the buttons is not
+scriptable. The message should ask a question to which either button
+would be a logical reply. A click of the <span class="emphasis">Cancel</span> button returns a value of
+<span class="literal">false</span>; a click of the <span class="emphasis">OK</span> button returns a value of
+<span class="literal">true</span>.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Because this method returns a Boolean value, you can use this method
+inside a condition expression:
+</p>
+<span class="PROGRAMLISTING"><pre>if (confirm(&quot;Reset the entire form?&quot;)) {
+    document.forms[0].reset( );
+}</pre></span>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Any string, usually in the form of a question. </li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Boolean value: <span class="literal">true</span> | <span class="literal">false</span>.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="createPopup( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">createPopup( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5.5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Opens a blank popup rectangular space that can be populated with HTML
+content, yet the space can extend across frame boundaries and even
+window borders. Scripts must assign content (not an external URL) to
+the <span class="literal">popup</span> object returned by the method. See the
+<span class="literal">popup</span> object for more details and an example of
+usage.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">popup</span> object reference.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="detachEvent( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">detachEvent( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">detachEvent("<span class="replaceable">eventName</span>",
+<span class="replaceable">functionReference</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>This IE event model method, shared among all element objects, is also
+a member of the <span class="literal">window</span> object. See the
+<span class="literal">detachEvent( )</span> method discussion among the shared
+methods described earlier in this chapter.
+</p>
+												</td>
+</tr>
+			</table>
+		</div><div id="disableExternalCapture( ), enableExternalCapture( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">disableExternalCapture( ), enableExternalCapture( )</td><td valign="top" nowrap class="compatibility">NN |<span class="emphasis">4|</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>With signed scripts and the user's permission, a
+script can capture events in other windows or frames that come from
+domains other than the one that served the document with
+event-capturing scripts. Navigator 4 only.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="dispatchEvent( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">dispatchEvent( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">dispatchEvent(<span class="replaceable">eventObjectReference</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Although the <span class="literal">window</span> object is not officially part
+of the W3C DOM, Netscape 6 implements this W3C DOM event model method
+for the <span class="literal">window</span> object. See the
+<span class="literal">dispatchEvent( )</span> method discussion among the
+shared methods described earlier in this chapter.
+</p>
+												</td>
+</tr>
+			</table>
+		</div><div id="execScript( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">execScript( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">execScript(<span class="replaceable">expressionList</span> [,
+<span class="replaceable">language</span>])</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Evaluates one or more script expressions in any scripting language
+embedded in the browser. Expressions must be contained within a
+single string; multiple expressions are delimited with semicolons:
+</p>
+<span class="PROGRAMLISTING"><pre>window.execScript(&quot;var x = 3; alert(x * 3)&quot;)</pre></span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			The default script language is JavaScript. If you need to see results
+of the script execution, provide for the display of resulting data in
+the script expressions, as shown in the example. The
+<span class="literal">execScript( )</span> method itself returns no value.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>String value of one or more semicolon-delimited script expressions.</li><li><span class="literal"></span>String value for a scripting language: <span class="literal">JavaScript</span>
+| <span class="literal">JScript</span> | <span class="literal">VBS</span> |
+<span class="literal">VBScript</span>.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="find( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">find( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">find("<span class="replaceable">searchString</span>"[,
+<span class="replaceable">matchCase</span>[,
+<span class="replaceable">searchUpward</span>]])</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Searches the document body text for a string and selects the first
+matching string. Optionally, you can specify whether the search
+should be case-sensitive or should search upward in the document.
+With the found text selected in Navigator 4, you can then use the
+<span class="literal">document.getSelection( )</span> method to grab a copy of
+the found text. You don't, however, have nearly the
+dynamic content abilities afforded by Internet Explorer
+4's <span class="literal">TextRange</span> object (for Win32).
+This method is disconnected in Netscape 6 (it always returns
+<span class="literal">false</span>), but is reconnected in Netscape 7.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>String for which to search the document.</li><li><span class="literal"></span>Boolean value: <span class="literal">true</span> to allow only exact,
+case-sensitive matches; <span class="literal">false</span> (default) to use
+case-insensitive search.
+</li><li><span class="literal"></span>Boolean value: <span class="literal">true</span> to search from the current
+selection position upward through the document;
+<span class="literal">false</span> (default) to search forward from the current
+selection position.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Boolean value: <span class="literal">true</span> if a match was found;
+<span class="literal">false</span> if not or Netscape 6 only.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="focus( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">focus( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Brings the window to the front of all regular browser windows and
+fires the <span class="literal">onFocus</span> event (in IE). If another window
+had focus at the time, that other window receives an
+<span class="literal">onBlur</span> event.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="forward( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">forward( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Navigates one step forward through the history list of the window or
+frame. If the forward history has no entries, no action takes place.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="GetAttention( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">GetAttention( )</td><td valign="top" nowrap class="compatibility">NN |<span class="emphasis">6|</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Mistakenly exposed to scripters, this method calls upon the operating
+system's way of alerting a user that the application
+needs attention. In Windows, the Taskbar box for the browser window
+flashes; in the Mac OS, a beep sounds, and a bullet appears next to
+the application in the <span class="emphasis">Application</span>
+menu. If the browser window is already at the front, no user signal
+appears. Removed for Netscape 7.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="getComputedStyle( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">getComputedStyle( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">getComputedStyle(<span class="replaceable">elementNodeReference</span>,
+"<span class="replaceable">pseudoElementName</span>")</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a style object (specifically, a
+<span class="literal">CSSStyleDeclaration</span> object in the W3C DOM
+terminology) showing the net cascade of style settings that affect
+the element passed as the first parameter. To retrieve a particular
+style attribute value (including a value inherited from the default
+browser style sheet), use the <span class="literal">getPropertyValue( )</span>
+method of the style object returned from this method:
+</p>
+<span class="PROGRAMLISTING"><pre>var compStyle = getComputedStyle(document.getElementById(&quot;myP&quot;), &quot;&quot;);
+var pBGColor = compStyle.getPropertyValue(&quot;background-color&quot;);</pre></span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			See the <span class="literal">style</span> object for additional details.</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Reference to an element node in the document tree that becomes the
+selection.
+</li><li><span class="literal"></span>String name of a pseudo-element (e.g.,
+<span class="literal">:first-line</span>) or an empty string.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">style</span> (<span class="literal">CSSStyleDeclaration</span>)
+object reference.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="getSelection( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">getSelection( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a <span class="literal">selection</span> object, which can then be
+turned into a W3C DOM Range object. This method takes the place of
+the old <span class="literal">document.getSelection( )</span> method, which is
+deprecated in Netscape 6. The corresponding IE operation is the
+<span class="literal">document.selection</span> property. See the
+<span class="literal">selection</span> object for details on working with a
+selection.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">selection</span> object reference.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="home( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">home( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Navigates to the URL designated as the home page for the browser.
+This is the same as the user clicking on the <span class="emphasis">Home</span> button.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="moveBy( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">moveBy( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">moveBy(<span class="replaceable">deltaX</span>,
+<span class="replaceable">deltaY</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>This is a convenience method that shifts the location of the window
+by specified pixel amounts along both axes. To shift along only one
+axis, set the other value to zero. Positive values for
+<span class="replaceable">deltaX</span> shift the window to the right;
+negative values to the left. Positive values for
+<span class="replaceable">deltaY</span> shift the window downward; negative
+values upward.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Positive or negative pixel count of the change in horizontal
+direction of the window.
+</li><li><span class="literal"></span>Positive or negative pixel count of the change in vertical direction
+of the window.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="moveTo( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">moveTo( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">moveTo(<span class="replaceable">x</span>, <span class="replaceable">y</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>This is a convenience method that shifts the location of the current
+window to a specific coordinate point. The <span class="literal">moveTo(
+)</span> method uses the screen coordinate system.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Positive or negative pixel count relative to the top of the screen.</li><li><span class="literal"></span>Positive or negative pixel count relative to the left edge of the
+screen.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="navigate( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">navigate( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">navigate(<span class="replaceable">URL</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Loads a new document into the window or frame. This is the
+IE-specific way of assigning a value to the
+<span class="literal">window.location.href</span> property.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>A complete or relative URL as a string. </li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="open( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">open( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">open("<span class="replaceable">URL</span>", "<span class="replaceable">windowName</span>"[, "<span class="replaceable">windowFeatures</span>"])
+open("<span class="replaceable">URL</span>", "<span class="replaceable">windowName</span>"[, "<span class="replaceable">windowFeatures</span>"][, <span class="replaceable">replaceFlag</span>])</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Opens a new window (without closing the original one). You can
+specify a URL to load into the new window or set that parameter to an
+empty string to allow scripts to <span class="literal">document.write( )</span>
+into that new window. The <span class="replaceable">windowName</span>
+parameter lets you assign a name that can be used by
+<span class="literal">target</span> attributes of <span class="literal">link</span> and
+<span class="literal">form</span> elements. This name is not to be used in
+script references as frame names are. Instead, a script reference to
+a subwindow must be to the <span class="literal">window</span> object returned
+by the <span class="literal">window.open( )</span> method. Therefore, if your
+scripts must communicate with a window opened in this manner, it is
+best to save the returned value as a global variable so that future
+statements can use it.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			A potential problem with subwindows is that they can be buried under
+the main window if the user clicks on the main window (or a script
+gives it focus). Any script that opens a subwindow should also
+include a <span class="literal">focus( )</span> method for the subwindow (in
+Navigator 3 and later, and in IE 4 and later) to make sure it comes
+to the front in case it is already open. Subsequent invocations of
+the <span class="literal">window.open( )</span> method in which the
+<span class="replaceable">windowName</span> parameter is the same as an
+earlier call automatically address the previously opened window, even
+if it is underneath the main window (and thus without bringing the
+window to the front).
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			The optional third parameter gives you control over various physical
+attributes of the subwindow. The
+<span class="replaceable">windowFeatures</span> parameter is a single
+string consisting of a comma-delimited list (without spaces between
+items) of attribute/value pairs:
+</p>
+<span class="PROGRAMLISTING"><pre>newWindow = window.open(&quot;someDoc.html&quot;,&quot;subWind&quot;,
+&quot;status,menubar,height=400,width=300&quot;);
+newWindow.focus( );</pre></span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			By default, all window attributes are turned on and the subwindow
+opens to the same size that the browser would use to open a new
+window from the <span class="emphasis">File</span> menu. But if
+your script specifies even one attribute, all settings are turned
+off. Therefore, use the <span class="replaceable">windowFeatures</span>
+parameter to specify those features that you want turned on.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			If you encounter problems referencing a subwindow immediately after
+it is created, the problem is most likely a timing issue (affecting
+IE for Windows more than others). Script statements seem to want to
+reference the window before it exists completely. To work around the
+problem, place the code that works with the subwindow in a separate
+function, and invoke that function via the <span class="literal">setTimeout(
+)</span> method, usually with no more than 50 milliseconds needed.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Managing multiple windows through scripts can be difficult. Security
+restrictions across domains frequently foil the best intentions.
+Users aren't always fond of windows appearing and
+hiding on their own. If your audience uses newer browsers, consider
+simulating windows with positioned elements.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><th>Attribute</th><th>NN</th><th>IE</th><th>Description</th><tr><td><span class="literal">alwaysLowered</span></td><td>4</td><td>n/a</td><td>Always behind all other browser windows. Signed script required.</td>
+								</tr>
+								<tr><td><span class="literal">alwaysRaised</span></td><td>4</td><td>n/a</td><td>Always in front of all other browser windows. Signed script required.</td>
+								</tr>
+								<tr><td><span class="literal">channelMode</span></td><td>n/a</td><td>4</td><td>Show in theater mode with channel band.</td>
+								</tr>
+								<tr><td><span class="literal">copyhistory</span></td><td>2</td><td>3</td><td>Copy history listing from opening window to new window.</td>
+								</tr>
+								<tr><td><span class="literal">dependent</span></td><td>4</td><td>n/a</td><td>Subwindow closes if the window that opened it closes.</td>
+								</tr>
+								<tr><td><span class="literal">directories</span></td><td>2</td><td>3</td><td>Display directory buttons.</td>
+								</tr>
+								<tr><td><span class="literal">fullscreen</span></td><td>n/a</td><td>4</td><td>Display no titlebar or menus</td>
+								</tr>
+								<tr><td><span class="literal">height</span></td><td>2</td><td>3</td><td>Window height in pixels.</td>
+								</tr>
+								<tr><td><span class="literal">hotkeys</span></td><td>4</td><td>n/a</td><td>Disables menu keyboard shortcuts (except Quit and Security Info).</td>
+								</tr>
+								<tr><td><span class="literal">innerHeight</span></td><td>4</td><td>n/a</td><td>Content region height. Signed script required for very small measures.</td>
+								</tr>
+								<tr><td><span class="literal">innerWidth</span></td><td>4</td><td>n/a</td><td>Content region width. Signed script required for very small measures.</td>
+								</tr>
+								<tr><td><span class="literal">left</span></td><td>6</td><td>4</td><td>Offset of window's left edge from left edge of
+screen.
+</td>
+								</tr>
+								<tr><td><span class="literal">location</span></td><td>2</td><td>3</td><td>Display Location (or Address) text field.</td>
+								</tr>
+								<tr><td><span class="literal">menubar</span></td><td>2</td><td>3</td><td>Display menubar (a menubar is always visible on Mac).</td>
+								</tr>
+								<tr><td><span class="literal">outerHeight</span></td><td>4</td><td>n/a</td><td>Total window height. Signed script required for very small measures.</td>
+								</tr>
+								<tr><td><span class="literal">outerWidth</span></td><td>4</td><td>n/a</td><td>Total window width. Signed script required for very small measures.</td>
+								</tr>
+								<tr><td><span class="literal">resizable</span></td><td>2</td><td>3</td><td>Allow window resizing (always allowed on Mac).</td>
+								</tr>
+								<tr><td><span class="literal">screenX</span></td><td>4</td><td>n/a</td><td>Offset of window's left edge from left edge of
+screen. Signed script required to move window offscreen.
+</td>
+								</tr>
+								<tr><td><span class="literal">screenY</span></td><td>4</td><td>n/a</td><td>Offset of window's top edge from top edge of screen.
+Signed script required to move window offscreen.
+</td>
+								</tr>
+								<tr><td><span class="literal">scrollbars</span></td><td>2</td><td>3</td><td>Display scrollbars if document is too large for window.</td>
+								</tr>
+								<tr><td><span class="literal">status</span></td><td>2</td><td>3</td><td>Display status bar.</td>
+								</tr>
+								<tr><td><span class="literal">titlebar</span></td><td>4</td><td>n/a</td><td>Displays titlebar. Set this value to <span class="literal">no</span> to hide
+the titlebar. Signed script required.
+</td>
+								</tr>
+								<tr><td><span class="literal">toolbar</span></td><td>2</td><td>3</td><td>Display toolbar (with <span class="emphasis">Back</span>,
+<span class="emphasis">Forward</span>, and other buttons).
+</td>
+								</tr>
+								<tr><td><span class="literal">top</span></td><td>6</td><td>4</td><td>Offset of window's top edge from top edge of screen.</td>
+								</tr>
+								<tr><td><span class="literal">width</span></td><td>2</td><td>3</td><td>Window width in pixels.</td>
+								</tr>
+								<tr><td><span class="literal">z-lock</span></td><td>4</td><td>n/a</td><td>New window is fixed below browser windows. Signed script required.</td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>A complete or relative URL as a string. If an empty string, no
+document loads into the window.
+</li><li><span class="literal"></span>An identifier for the window to be used by <span class="literal">target</span>
+attributes. This is different from the <span class="literal">title</span>
+attribute of the document that loads into the window.
+</li><li><span class="literal"></span>A string of comma-delimited features to be turned on in the new
+window. Do not put spaces after the comma delimiters. The list of
+possible features is long, but a number of them are specific to
+Navigator 4 or later and require signed scripts because they are
+potentially a privacy and security concern to unsuspecting users. The
+features are listed as follows. To turn on a window feature, simply
+include its case-insensitive name in the comma-separated list. Only
+attributes specifying dimensions require values be assigned.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Boolean value (for IE only) that controls the effect of the new
+window's URL on the global history of the browser.
+Set to <span class="literal">true</span> to replace the current page with the
+new window's URL (so that the current page
+won't be accessed through the <span class="emphasis">Back</span> button); set to <span class="literal">false</span>
+to add the new window's URL to the history, as
+normal.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Window object reference.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="print( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">print( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">5</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Starts the printing process for the window or frame. A user must
+still confirm the print dialog box to send the document to the
+printer. This method is the same as clicking the
+browser's <span class="emphasis">Print</span>
+button or selecting <span class="emphasis">Print</span> from the
+<span class="emphasis">File</span> menu.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="prompt( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">prompt( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">prompt("<span class="replaceable">message</span>",
+"<span class="replaceable">defaultReply</span>")</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Displays a dialog box with a message, a one-line text entry field,
+and two clickable buttons. Script execution halts while the dialog
+box appears. The message should urge the user to enter a specific
+kind of answer. One button indicates a <span class="emphasis">Cancel</span> operation; the other button indicates
+the user's approval of the text entered into the
+field (<span class="emphasis">OK</span> or <span class="emphasis">Yes</span>). The text of the buttons is not
+scriptable. A click of the <span class="emphasis">Cancel</span>
+button returns a value of <span class="literal">null</span>; a click of the
+<span class="emphasis">OK</span> button returns a string of
+whatever is in the text entry field at the time (including the
+possibility of an empty string). It is up to your scripts to test for
+the type of response (if any) supplied by the user.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Any string.</li><li><span class="literal"></span>Any string that suggests an answer. Always supply a value, even if an
+empty string.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			When clicking the <span class="emphasis">OK</span> button, a
+string of the text entry field; when clicking <span class="emphasis">Cancel</span>, <span class="literal">null</span>.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="releaseEvents( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">releaseEvents( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">releaseEvents(<span class="replaceable">eventTypeList</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>The opposite of <span class="literal">window.captureEvents( )</span>, this
+method turns off event capture at the window level for one or more
+specific events named in the parameter list. Although this method is
+part of the Navigator 4 event model, it continues to be supported in
+Netscape 6, creating the equivalent of a W3C DOM capture-mode event
+listener for the document object. Continue to use this method if you
+must support Navigator 4, but migrate new code to the W3C DOM event
+listener syntax as described in Chapter 6.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+<dl>
+<dt><var class="replaceable">eventTypeList</var></dt>
+<dd>
+<p>A comma-separated list of case-sensitive event types as derived from
+the available <span class="LITERAL">Event</span> object constants, such as
+<span class="LITERAL">Event.CLICK</span> or <span class="LITERAL">Event.MOUSEMOVE</span>.
+</p>
+</dd>
+</dl>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="removeEventListener( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">removeEventListener( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">removeEventListener("<span class="replaceable">eventType</span>",
+<span class="replaceable">listenerFunction</span>,
+<span class="replaceable">useCapture</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Although the <span class="literal">window</span> object as we know it is not
+officially part of the W3C DOM, Netscape 6 implements this W3C DOM
+event model method for the <span class="literal">window</span> object. See the
+<span class="literal">removeEventListener( )</span> method discussion among the
+shared methods described earlier in this chapter.
+</p>
+												</td>
+</tr>
+			</table>
+		</div><div id="resizeBy( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">resizeBy( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">resizeBy(<span class="replaceable">deltaX</span>,
+<span class="replaceable">deltaY</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>This is a convenience method that shifts the width and height of the
+window by specified pixel amounts. To adjust along only one axis, set
+the other value to zero. Positive values for
+<span class="replaceable">deltaX</span> make the window wider; negative
+values make the window narrower. Positive values for
+<span class="replaceable">deltaY</span> make the window taller; negative
+values make the window shorter. The top and left edges remain fixed;
+only the right and bottom edges are moved.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Positive or negative pixel count of the change in horizontal
+dimension of the window.
+</li><li><span class="literal"></span>Positive or negative pixel count of the change in vertical dimension
+of the window.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="resizeTo( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">resizeTo( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">resizeTo(<span class="replaceable">x</span>, <span class="replaceable">y</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>This is a convenience method that adjusts the height and width of the
+window to specific pixel sizes. The top and left edges of the window
+remain fixed, while the bottom and right edges move in response to
+this method.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Width in pixels of the window.</li><li><span class="literal"></span>Height in pixels of the window. </li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="routeEvent( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">routeEvent( )</td><td valign="top" nowrap class="compatibility">NN |<span class="emphasis">4|</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">routeEvent(<span class="replaceable">event</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Used inside an event handler function, this method directs Navigator
+4 (only) to let the event pass to its intended target object.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>A Navigator 4 <span class="literal">event</span> object. </li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="scroll( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">scroll( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">scroll(<span class="replaceable">x</span>, <span class="replaceable">y</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Sets the scrolled position of the document inside the current window
+or frame. To return the document to its unscrolled position, set both
+parameters to zero.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Horizontal measure of scrolling within the window.</li><li><span class="literal"></span>Vertical measure of scrolling within the window. </li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="scrollBy( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">scrollBy( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">scrollBy(<span class="replaceable">deltaX</span>,
+<span class="replaceable">deltaY</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Scrolls the document in the window by specified pixel amounts along
+both axes. To adjust along only one axis, set the other value to
+zero. Positive values for <span class="replaceable">deltaX</span> scroll
+the document to the left (so the user sees content to the right in
+the document); negative values scroll the document to the right.
+Positive values for <span class="replaceable">deltaY</span> scroll the
+document upward (so the user sees content lower in the document);
+negative values scroll the document downward. Scrolling does not
+continue past the zero coordinate points (except in Navigator 4 for
+the Macintosh).
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Positive or negative pixel count of the change in horizontal scroll
+position.
+</li><li><span class="literal"></span>Positive or negative pixel count of the change in vertical scroll
+position.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="scrollByLines( ), scrollByPages( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">scrollByLines( ), scrollByPages( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">scrollByLines(<span class="replaceable">intervalCount</span>)
+scrollByPages(<span class="replaceable">intervalCount</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Scroll the document in the window downward (positive value) or upward
+(negative value) by the increment of lines or pages. The methods
+perform the same actions as the user clicking on the arrow and
+"page" regions of the vertical
+scrollbar, respectively.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Positive or negative count of the change in vertical scroll position.
+Units are governed by the method choice (lines or pages).
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="scrollTo( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">scrollTo( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">scrollTo(<span class="replaceable">x</span>, <span class="replaceable">y</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Scrolls the document in the window to a specific scrolled pixel
+position.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Horizontal position in pixels of the window.</li><li><span class="literal"></span>Vertical position in pixels of the window. </li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="setCursor( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">setCursor( )</td><td valign="top" nowrap class="compatibility">NN |<span class="emphasis">6|</span>  IE <span class="emphasis">n/a</span>  DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">setCursor("<span class="replaceable">cursorType</span>")</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Changes the cursor to a desired type. This method is an alternate to
+the style sheet cursor attribute. Starting with Netscape 6.2, a
+cursor changed with this method maintains its shape until explicitly
+changed to another shape or the default <span class="literal">auto</span>
+style. Precise cursor shape is determined by the operating system
+repertoire. Removed from Netscape 7.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">alias</span></td><td><span class="literal">auto</span></td><td><span class="literal">cell</span></td><td><span class="literal">context-menu</span></td>
+								</tr>
+								<tr><td><span class="literal">copy</span></td><td><span class="literal">count-down</span></td><td><span class="literal">count-up</span></td><td><span class="literal">count-up-down</span></td>
+								</tr>
+								<tr><td><span class="literal">crosshair</span></td><td><span class="literal">default</span></td><td><span class="literal">e-resize</span></td><td><span class="literal">grab</span></td>
+								</tr>
+								<tr><td><span class="literal">grabbing</span></td><td><span class="literal">help</span></td><td><span class="literal">move</span></td><td><span class="literal">n-resize</span></td>
+								</tr>
+								<tr><td><span class="literal">ne-resize</span></td><td><span class="literal">nw-resize</span></td><td><span class="literal">pointer</span></td><td><span class="literal">s-resize</span></td>
+								</tr>
+								<tr><td><span class="literal">se-resize</span></td><td><span class="literal">spinning</span></td><td><span class="literal">sw-resize</span></td><td><span class="literal">text</span></td>
+								</tr>
+								<tr><td><span class="literal">w-resize</span></td><td><span class="literal">wait</span></td><td></td><td></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>String name of a cursor style such as:</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="setInterval( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">setInterval( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">setInterval("<span class="replaceable">scriptExpression</span>", <span class="replaceable">msecs</span>[, <span class="replaceable">language</span>])
+setInterval(<span class="replaceable">functionReference</span>, <span class="replaceable">msecs</span>[, <span class="replaceable">arg1</span>, ..., <span class="replaceable">argN</span>])</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Starts a timer that continually invokes the
+<span class="replaceable">expression</span> every
+<span class="replaceable">msecs</span>. Other scripts can run in the time
+between calls to <span class="replaceable">expression</span>. This method
+is useful for starting animation sequences that must reposition an
+element along a path at a fixed rate of speed. A repetitive call to
+an animation function would look like the following:
+</p>
+<span class="PROGRAMLISTING"><pre>intervalID = setInterval(&quot;advanceAnimation( )&quot;, 500);</pre></span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			The parameter situation can be confusing. The simplest, most
+cross-browser approach is to invoke a script function (as a string),
+with the interval time (in milliseconds) as the second parameter. Any
+script expression will execute, but the expression is evaluated at
+the time the <span class="literal">setInterval( )</span> method is invoked.
+Therefore, if you concatenate variables into this expression, their
+values must be ready when the <span class="literal">setInterval( )</span>
+method runs, even though the variables won't be used
+until some milliseconds later.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			IE permits a third parameter to specify a different scripting
+language in which the expression is to run. Unless it is a VBScript
+expression, you can omit this parameter. Navigator, however, lets you
+substitute a function reference (not a string) as the first
+parameter, and pass a comma-delimited list of parameters that go to
+the function call. These parameters go after the
+<span class="replaceable">msecs</span> time, and they can be any data
+types.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			This method returns an ID that should be saved as a global variable
+and be available as the parameter for the <span class="literal">clearInterval(
+)</span> method to stop the looping timer. Unless you explicitly
+clear the interval process, it will continue to execute until the
+page unloads.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Any script expression as a string, but most commonly a function. The
+function name with parentheses is placed inside the
+parameter's quoted string.
+</li><li><span class="literal"></span>Nonstring function reference (function name without the parentheses).</li><li><span class="literal"></span>The time in milliseconds between invocations of the
+<span class="replaceable">expression</span> or
+<span class="replaceable">functionReference</span>.
+</li><li><span class="literal"></span>An optional comma-delimited list of parameters to be passed to a
+function used as the <span class="replaceable">functionReference</span>
+parameter. Navigator only.
+</li><li><span class="literal"></span>An optional scripting language specification of the
+<span class="replaceable">expression</span> parameter (default is
+<span class="literal">JavaScript</span>). IE for Windows only.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer acting as an identifier for this repetitive process.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="setTimeout( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">setTimeout( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">setTimeout("<span class="replaceable">scriptExpression</span>", <span class="replaceable">msecs</span>[, <span class="replaceable">language</span>])
+setTimeout(<span class="replaceable">functionReference</span>, <span class="replaceable">msecs</span>[, <span class="replaceable">arg1</span>, ..., <span class="replaceable">argN</span>])</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Starts a one-time timer that invokes the
+<span class="replaceable">scriptExpression</span> or
+<span class="replaceable">functionReference</span> after a delay of
+<span class="replaceable">msecs</span>. Other scripts can run while the
+browser waits to invoke the <span class="replaceable">expression</span>. A
+statement that sets the timer would look like the following:
+</p>
+<span class="PROGRAMLISTING"><pre>timeoutID = setTimeout(&quot;finishWindow( )&quot;, 50);</pre></span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			The parameter situation can be confusing. The simplest, most
+cross-browser approach is to invoke a script function (as a string),
+with the interval time (in milliseconds) as the second parameter. Any
+script expression will execute, but the expression is evaluated at
+the time the <span class="literal">setTimeout( )</span> method is invoked.
+Therefore, if you concatenate variables into this expression, their
+values must be ready when the <span class="literal">setTimeout( )</span> method
+runs, even though the variables won't be used until
+some milliseconds later.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			IE permits a third parameter to specify a different scripting
+language in which the expression is to run. Unless it is a VBScript
+expression, you can omit this parameter. Navigator, however, lets you
+substitute a function reference (not a string) as the first
+parameter, and pass a comma-delimited list of parameters that go to
+the function call. These parameters go after the
+<span class="replaceable">msecs</span> time, and they can be any data
+types.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			This method returns an ID that should be saved as a global variable
+and be available as the parameter for the <span class="literal">clearTimeout(
+)</span> method to stop the timer before it expires and invokes
+the delayed action.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			The <span class="literal">setTimeout( )</span> method can be made to behave
+like the <span class="literal">setInterval( )</span> method in some
+constructions. If you place a <span class="literal">setTimeout( )</span> method
+as the last statement of a function and direct the method to invoke
+the very same function, you can create looping execution with a timed
+delay between executions. This is how earlier browsers (before the
+<span class="literal">setInterval( )</span> method was available) scripted
+repetitive tasks, such as displaying updated digital clock displays
+in form fields or the status bar.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+<dl>
+<dt><var class="replaceable">scriptExpression</var></dt>
+<dd>
+<p>Any script expression as a string, but most commonly a function. The
+function name with parentheses is placed inside the
+parameter's quoted string.
+</p>
+</dd>
+<dt><var class="replaceable">functionReference</var></dt>
+<dd>
+<p>Nonstring function reference (function name without the parentheses).</p>
+</dd>
+<dt><var class="replaceable">msecs</var></dt>
+<dd>
+<p>The time in milliseconds between invocations of the
+<var class="replaceable">expression</var> or
+<var class="replaceable">functionReference</var>.
+</p>
+</dd>
+<dt><var class="replaceable">args</var></dt>
+<dd>
+<p>An optional comma-delimited list of parameters to be passed to a
+function used as the <var class="replaceable">functionReference</var>
+parameter. Navigator only.
+</p>
+</dd>
+<dt><var class="replaceable">language</var></dt>
+<dd>
+<p>An optional scripting language specification of the
+<var class="replaceable">expression</var> parameter (default is
+<span class="LITERAL">JavaScript</span>). IE for Windows only.
+</p>
+</dd>
+</dl>					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer acting as an identifier.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="showHelp( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">showHelp( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">showHelp("<span class="replaceable">URL</span>")</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Displays a <span class="emphasis">WinHelp</span> window with the
+<span class="emphasis">.hlp</span> document specified with the
+<span class="replaceable">URL</span> parameter.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>A complete or relative URL to a WinHelp formatted file as a string. </li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="showModalDialog( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">showModalDialog( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">showModalDialog("<span class="replaceable">URL</span>"[,
+<span class="replaceable">arguments</span>[,
+"<span class="replaceable">features</span>"]])</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Displays a special window that remains atop all browser windows until
+the user explicitly closes the dialog window. This kind of window is
+different from the browser windows generated with the
+<span class="literal">window.open( )</span> method. A modal dialog has no
+scriptable relationship with its opening window once the dialog
+window is opened. All values necessary for displaying content must be
+in the HTML document that loads into the window or be passed as
+parameters. The modal dialog may then have a script set its
+<span class="literal">returnValue</span> property, which becomes the value
+returned to the original script statement that opened the modal
+dialog box as the returned value of the <span class="literal">showModalDialog(
+)</span> method.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			You can pass arguments to the modal dialog by creating a data
+structure that best suits the data. For a single value, a string will
+do. For multiple values, you can create a string with a unique
+delimiter between values, or create an array and specify the array as
+the second parameter for the <span class="literal">showModalDialog( )</span>
+method. A script in the document loaded into the modal dialog can
+then examine the <span class="literal">window.dialogArguments</span> property
+and parse the arguments as needed for its scripting purposes. See the
+<span class="literal">dialogArguments</span> property for an example.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			The third optional parameter lets you set physical characteristics of
+the dialog window. These characteristics are specified in a CSS-style
+syntax. Dimensions for <span class="literal">dialogWidth</span>,
+<span class="literal">dialogHeight</span>, <span class="literal">dialogLeft</span>, and
+<span class="literal">dialogTop</span> should be specified in pixels. An
+example of a call to a modal dialog is as follows:
+</p>
+<span class="PROGRAMLISTING"><pre>var answer = window.showModalDialog(&quot;subDoc.html&quot;,argsVariable, 
+&quot;dialogWidth:300px; dialogHeight:200px; center:yes&quot;);</pre></span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			None of the third parameter characteristics are recognized by the
+Macintosh version of Internet Explorer 4, which creates a full-size
+modal dialog.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Modal dialogs can present problems for scripts if the window loads a
+frameset. A script in one of the frames will likely not be able to
+reference the parent or top window to gain access to either the
+window's <span class="literal">close( )</span> method or
+content in another frame.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><th>Feature</th><th>Value</th><th>Description</th><tr><td><span class="literal">center</span></td><td><span class="literal">yes</span> | <span class="literal">no</span> | <span class="literal">1</span>
+| <span class="literal">0</span> | <span class="literal">on</span> |
+<span class="literal">off</span>
+</td><td>Center the dialog</td>
+								</tr>
+								<tr><td><span class="literal">dialogHeight</span></td><td>Length/units</td><td>Outer height of dialog</td>
+								</tr>
+								<tr><td><span class="literal">dialogLeft</span></td><td>Integer</td><td>Left pixel offset (overrides center)</td>
+								</tr>
+								<tr><td><span class="literal">dialogTop</span></td><td>Integer</td><td>Top pixel offset (overrides center)</td>
+								</tr>
+								<tr><td><span class="literal">dialogWidth</span></td><td>Length/units</td><td>Outer width of dialog</td>
+								</tr>
+								<tr><td><span class="literal">edge</span></td><td><span class="literal">raised</span> | <span class="literal">sunken</span></td><td>Transition style between border and content area</td>
+								</tr>
+								<tr><td><span class="literal">help</span></td><td><span class="literal">yes</span> | <span class="literal">no</span> | <span class="literal">1</span>
+| <span class="literal">0</span> | <span class="literal">on</span> |
+<span class="literal">off</span>
+</td><td>Display help icon in titlebar</td>
+								</tr>
+								<tr><td><span class="literal">resizable</span></td><td><span class="literal">yes</span> | <span class="literal">no</span> | <span class="literal">1</span>
+| <span class="literal">0</span> | <span class="literal">on</span> |
+<span class="literal">off</span>
+</td><td>Dialog is resizable</td>
+								</tr>
+								<tr><td><span class="literal">status</span></td><td><span class="literal">yes</span> | <span class="literal">no</span> | <span class="literal">1</span>
+| <span class="literal">0</span> | <span class="literal">on</span> |
+<span class="literal">off</span>
+</td><td>Display status bar</td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>A complete or relative URL as a string.</li><li><span class="literal"></span>Data as a number, string, or array to be passed to the scripts in the
+document loaded into the modal dialog.
+</li><li><span class="literal"></span>A string of semicolon-delimited style attributes and values to set
+the physical characteristics of the modal dialog. Available
+attributes are as shown in the following table.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			The value (if any) assigned to the
+<span class="literal">window.returnValue</span> property in the document loaded
+into the modal dialog window.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="showModelessDialog( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">showModelessDialog( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">showModelessDialog("<span class="replaceable">URL</span>"[,
+<span class="replaceable">arguments</span>[,
+"<span class="replaceable">features</span>"]])</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Displays a special window that remains atop all browser windows, yet
+allows the user to interact with other open windows and their
+content. Other than browser versions that support it, this method has
+the same parameters and characteristics as the
+<span class="literal">showModalDialog( )</span> method. See that method for
+details.
+</p>
+												</td>
+</tr>
+			</table>
+		</div><div id="sizeToContent( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">sizeToContent( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Lets the browser determine the optimum window size to display the
+window's content. Suitable for subwindows that
+display a limited amount of information.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="stop( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">stop( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Halts the download of external data of any kind. This method is the
+same as clicking the browser's <span class="emphasis">Stop</span> button.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+<div id="handleEvent[ ]">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">handleEvent[ ]</td><td valign="top" nowrap class="compatibility">NN |<span class="emphasis">4|</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">handleEvent(<span class="replaceable">event</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Instructs the object to accept and process the event whose
+specifications are passed as the parameter to the method. The object
+must have an event handler for the event type to process the event.
+Navigator 4 only.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>A Navigator 4 <span class="literal">event</span> object. </li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>PARAM</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var VALUETYPELIST; 
+var TYPELIST; 
+
+var theUIObjects; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj,theUIObjects); 
+  
+  // enable type dropdown list if 'valuetype' attribute is set to 'ref' 
+  var curValueType = tagNodeObj.getAttribute("valuetype"); 
+  if (curValueType)
+  {
+    if (curValueType.toLowerCase() == "ref")
+    {
+      dwscripts.findDOMObject("thetype").removeAttribute('disabled');
+    } 
+  }
+}
+  
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj,theUIObjects); 
+}
+
+function enableType(){
+  if (VALUETYPELIST.getValue() == 'ref'){
+    dwscripts.findDOMObject("thetype").removeAttribute('disabled');
+  }else{
+    TYPELIST.setIndex(0);
+    dwscripts.findDOMObject("thetype").setAttribute('disabled','true');
+  }
+}
+
+function initializeUI()
+{
+  VALUETYPELIST = new ListControl("thevaluetype"); 
+	TYPELIST = new ListControl("thetype"); 
+
+	theUIObjects  = new Array(VALUETYPELIST,TYPELIST); 
+
+  tagDialog.populateDropDownList(VALUETYPELIST, theValueTypesParamCap, theValueTypesParamVal, 1); 
+  tagDialog.populateDropDownList(TYPELIST, theTypesParamCap, theTypesParamVal, 1); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:param:name" attname="name" />
+      </td> 
+    </tr> 
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">值: </td>
+      <td nowrap="nowrap">
+        <input name="thevalue" type="text" class="basicTextField" id="attr:param:value" attname="value" />
+      </td> 
+    </tr>
+  </table>
+</div> 
+<div name="HTML 4.0"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">值类型: </td>
+      <td nowrap="nowrap">
+        <select name="thevaluetype" class="mimeTypesList" id="attr:param:valuetype" onChange="enableType()" attname="valuetype" editable="false">
+        </select>
+      </td> 
+    </tr> 
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类型: </td>
+      <td nowrap="nowrap">
+        <select name="thetype" disabled="true" class="mimeTypesList" id="attr:param:type" attname="type" editable="false">
+        </select>
+      </td> 
+    </tr>
+  </table>
+</div> 
+<div name="样式表/辅助功能"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="attr:param:id" attname="id" />
+      </td>
+    </tr>
+  </table> 
+</div>
+</body>
+</html>

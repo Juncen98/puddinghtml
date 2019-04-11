@@ -1,0 +1,75 @@
+<!-- search:"jsp:useBean" -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+<TITLE>Java Bean 集合</TITLE>
+<SCRIPT>
+// Copyright 2000, 2001, 2002, 2003 Macromedia, Inc. All rights reserved.
+var PROP_type = "JavaBean";
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+BeanTypes= new Array("页","请求","阶段","应用程序");
+
+//--------------- END LOCALIZEABLE   ---------------
+</SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/TextField.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/sbManager.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/docInfo.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/niceName.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssClasses.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/DBTreeControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/PlusMinusButton.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/Class/GridControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/Class/classCheckbox.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/CMN/helper.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="JavaBeanIndexed.js"></script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm" ACTION="">
+  <table border=0>
+    <tr valign="baseline">
+        <td align="right" valign="baseline" nowrap>集合类:</td>
+		<td valing="baseline" nowrap>
+        <select name="CollectionClass" class="classList" onChange="GetIndexedProperties()">
+		  </select>
+	    <div id="browseButtonSpan" style="position:absolute;visibility:hidden;">		
+		 <input type="button" value="浏览..." onClick="GetClassesFromPackageUsingDialog();focus(this)" name="button">
+	    </div>      
+	  </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>索引属性:</td>
+      <td nowrap>
+        <select name="Id" class="propertyList" onChange="GetItemClassName()">
+		</select>
+	  </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" valign="baseline" nowrap>项类:</td>
+  	  <td  valign="baseline" nowrap>
+          <input name="ItemClass" type="text" class="basicTextField" >
+	  </td>
+    </tr>
+    <tr valign="baseline">
+	  <td align="right" nowrap>范围:</td>
+	  <td nowrap>
+		<select name="Scope" class="propertyList">
+		</select>
+	  </td>
+    </tr>
+  </table>
+</form>
+</BODY>
+</HTML>
+

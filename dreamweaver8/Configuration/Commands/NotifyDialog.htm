@@ -1,0 +1,62 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<script language="Javascript" src="../Shared/MM/Scripts/CMN/UI.js"></script>
+<SCRIPT LANGUAGE="Javascript">
+// Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved.
+
+
+function isDOMRequired() {
+	// Return false, indicating that this object is available in code view.
+	return false;
+}
+
+function commandButtons()
+	{
+  	return new Array();
+	}
+
+
+var msgString = ""; 
+var iconString = "../Shared/MM/Images/infoIconWin.gif"; 
+
+function receiveArguments()
+	{
+	msgString = arguments[0]; 
+	if (arguments.length > 1)
+		iconString = arguments[1]; 	
+	} //receiveArguments
+
+function initialize()
+	{
+	findObject("msg").innerHTML = msgString; 
+	findObject("icon").src = iconString;
+	}
+	
+</SCRIPT>
+<TITLE>Dreamweaver</TITLE>
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initialize()">
+<form name="theForm">
+   <table border=0 width="300">
+     <tr>
+       <td > <img name="icon" src="../Shared/MM/Images/infoIconWin.gif" align="middle" ></td>
+       <td valign="middle"></td>
+<td valign="middle" width="247"> <span name="msg" style="">在此处显示消息</span> </td>
+
+
+     </tr>
+   </table>
+   <TABLE BORDER=0 WIDTH="300">
+     <TR>
+       <TD ALIGN="right" VALIGN="baseline" nowrap><span name="btns">
+         <input type="button" value="       确定       " onClick="window.close()" name="button2">
+         </span></TD>
+     </TR>
+   </TABLE>
+</form>
+</BODY>
+</HTML>

@@ -1,0 +1,187 @@
+<!-- MENU-LOCATION=NONE -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<head>
+<title>格式化表格</title>
+<!--  Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></script>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/localText.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/docInfo.js"></SCRIPT>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<script src="tableFormats.js"></script>
+<script src="Format Table.js"></script>
+<script>
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+//Note: Table format names must be localized by hand in the tableFormats.js file.
+
+OPTIONS_Align= new Array("无","左对齐","居中对齐","右对齐");
+OPTIONS_Text_Style= new Array("常规","粗体","斜体","加粗斜体");
+OPTIONS_Row_Limit= new Array("<不要交错>","每一行","每两行","每三行","每四行");
+var MSG_IsInvalidTable = "格式化表格命令不能应用到该表格."+
+		"<p>检查TABLE标签是否只包含 TR 标签,并且是否每个TR标签只包含TD或TH标签.";
+var MSG_CaptionIsPresent = "「格式化表格」命令无法应用至有表格标题 (Caption) 的表格。";
+//--------------- END LOCALIZEABLE   ---------------
+</script>
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onload="initializeUI()">
+
+<div id="mainLayer" style="position:absolute; z-index:1; left: 5px; top: 0; width: 420px; height: 393px">
+  <table>
+    <tr>
+      <td align="left" nowrap valign="bottom">
+        <form name="formatNames">
+                
+          <select name="presetNames" size="10" class="itemList" onChange="updatePreviewTable(this.selectedIndex)">
+            <option>*************************</option>
+          </select>
+        </form>
+      </td>
+      <td nowrap valign="middle" align="left">
+
+
+        <table width="180">
+          <tr>
+            <td><b></b></td>
+            <td align="center"><b>Jim</b></td>
+            <td>Sue</td>
+            <td>Pat</td>
+            <td>Total</td>
+          </tr>
+          <tr>
+            <td>Jan</td>
+            <td>4</td>
+            <td>4</td>
+            <td>3</td>
+            <td>11</td>
+          </tr>
+          <tr>
+            <td>Feb</td>
+            <td>2</td>
+            <td>2</td>
+            <td>4</td>
+            <td>8</td>
+          </tr>
+          <tr>
+            <td>Mar</td>
+            <td>4</td>
+            <td>1</td>
+            <td>5</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>Apr</td>
+            <td>5</td>
+            <td>3</td>
+            <td>1</td>
+            <td>9</td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <td>15</td>
+            <td>10</td>
+            <td>13</td>
+            <td>38</td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+
+  </table>
+  <table width="100%" border="0" cellspacing="4">
+    <tr valign="baseline"> 
+      <td colspan="5" align="right" nowrap><img src="../Shared/MM/Images/transparent.gif" width="10" height="2" alt=""></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap>行颜色:</td>
+      <td align="right" nowrap>第一种:</td>
+      <td nowrap> <input type="mmcolorbutton" name="firstRow" value="#000000" onChange="dwscripts.findDOMObject('firstRowColor').value=this.value;updatePreview()"> 
+        <input name="firstRowColor" type="text" class="smallTField" onBlur="dwscripts.findDOMObject('firstRow').value=this.value;updatePreview()" value=""></td>
+      <td align="right" nowrap>第二种:</td>
+      <td nowrap> <input type="mmcolorbutton" name="secondRow" value="#000000" onChange="dwscripts.findDOMObject('secondRowColor').value=this.value;updatePreview()"> 
+        <input name="secondRowColor" type="text" class="smallTField" onBlur="dwscripts.findDOMObject('secondRow').value=this.value;updatePreview()" value=""></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap>&nbsp;</td>
+      <td align="right" nowrap>交错:</td>
+      <td nowrap><select name="rowLimit" class="oneWordOptionList" onChange="updatePreview()">
+        </select></td>
+      <td align="right" nowrap>&nbsp;</td>
+      <td nowrap>&nbsp;</td>
+    </tr>
+    <tr valign="baseline"> 
+      <td colspan="5" align="right" nowrap><img src="../Shared/MM/Images/transparent.gif" width="10" height="6"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap>第一行:</td>
+      <td align="right" nowrap>对齐:</td>
+      <td nowrap><select name="topRowAlign" class="alignList" onChange="updatePreview()">
+          <option value="None">***********</option>
+          <option value="left"></option>
+          <option value="center"></option>
+          <option value="right"></option>
+        </select></td>
+      <td align="right" nowrap>文字样式:</td>
+      <td nowrap><select name="topRowTextStyle" class="oneWordOptionList" onChange="updatePreview()">
+          <option value="None">***********</option>
+          <option value="1"> </option>
+          <option value="2"></option>
+          <option value="3"></option>
+        </select></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap>&nbsp;</td>
+      <td align="right" nowrap>背景色:</td>
+      <td nowrap><input type="mmcolorbutton" name="topRow" value="#000000" onChange="dwscripts.findDOMObject('topRowColor').value=this.value;updatePreview()"> 
+        <input name="topRowColor" type="text" class="smallTField" onBlur="dwscripts.findDOMObject('topRow').value=this.value;updatePreview()" value=""></td>
+      <td align="right" nowrap>文本颜色:</td>
+      <td nowrap><input type="mmcolorbutton" name="topRowText" value="#000000" onChange="dwscripts.findDOMObject('topRowTextColor').value=this.value;updatePreview()"> 
+        <input name="topRowTextColor" type="text" class="smallTField" onBlur="dwscripts.findDOMObject('topRowText').value=this.value;updatePreview()" value=""></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td colspan="5" align="right" nowrap><img src="../Shared/MM/Images/transparent.gif" width="10" height="6"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap>最左列:</td>
+      <td align="right" nowrap>对齐:</td>
+      <td nowrap> <select name="leftColAlign" class="alignList" onChange="updatePreview()">
+          <option value="None">***********</option>
+          <option value="left"></option>
+          <option value="center"></option>
+          <option value="right"></option>
+        </select></td>
+      <td align="right" nowrap>文字样式:</td>
+      <td nowrap><select name="leftColTextStyle" class="oneWordOptionList" onChange="updatePreview()">
+          <option value="None">***********</option>
+          <option value="1"> '</option>
+          <option value="2"></option>
+          <option value="3"></option>
+        </select></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td colspan="5" align="right" nowrap><img src="../Shared/MM/Images/transparent.gif" width="10" height="6"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap>表格: </td>
+      <td align="right" nowrap>边框:</td>
+      <td nowrap><input name="borderSize" type="text" class="smallNumOrChar" onBlur="updatePreview()"></td>
+      <td align="right" nowrap>&nbsp;</td>
+      <td nowrap>&nbsp;</td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap>&nbsp;</td>
+      <td align="right" nowrap>&nbsp;</td>
+      <td colspan="3" nowrap><input type="checkbox" name="useTD" value="checkbox" onBlur="updatePreview()">
+        将所有属性套用至 TD 标注而不是 TR 标签</td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

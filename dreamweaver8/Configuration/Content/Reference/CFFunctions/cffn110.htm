@@ -1,0 +1,188 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>GETLOCALEDISPLAYNAME</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">GETLOCALEDISPLAYNAME</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Gets a locale value and displays the name in a manner that is appropriate to a specific locale. By default, gets the current locale in the current locale's language.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+The localized display name of the locale, in the language of the specified locale.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Display and formatting functions, International functions, System functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>GetLocaleDisplayName([locale[, inLocale]])
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+GetLocale, SetLocale
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7: Added this function.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+The following example expands on the GetLocale example to show the use of the GetLocaleDisplayName function to display locale names in the current locale and in other locales. It lets you select a locale from all supported locales, changes the ColdFusion MX locale to the selected locales, and displays the old and new locale names.
+</p>
+<pre>&lt;html&gt;
+&lt;head&gt;
+   &lt;title&gt;Displaying locales&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;h3&gt;Example: Changing and Displaying Locales&lt;/h3&gt;
+&lt;cfoutput&gt;
+   &lt;!--- For each new request, the locale gets reset to the JVM locale ---&gt;
+   Initial locale&#39;s ColdFusion name: #GetLocale()#&lt;br&gt;
+   Initial locale&#39;s display name: #GetLocaleDisplayName()#&lt;br&gt;
+   &lt;br&gt;
+   &lt;!--- Do this only if the form was submitted. ---&gt;
+   &lt;cfif IsDefined(&quot;form.mylocale&quot;)&gt;
+      &lt;b&gt;Changing locale to #form.mylocale#&lt;/b&gt;&lt;br&gt;
+      &lt;br&gt;
+      &lt;!--- Set the locale to the submitted value.
+         SetLocale returns the old ColdFusion locale name.  ---&gt;
+      &lt;cfset oldlocale=SetLocale(&quot;#form.mylocale#&quot;)&gt;
+      &lt;!--- Get the current locale&#39;s ColdFusion name.
+         It should have changed. ---&gt;
+      &lt;cfset newlocale=GetLocale()&gt;
+      New locale&#39;s ColdFusion name: #newlocale#&lt;br&gt;
+      New locale&#39;s display name in current locale: #GetLocaleDisplayName()#&lt;br&gt;
+      New locale&#39;s display name in old locale:  
+         #GetLocaleDisplayName(newlocale, oldlocale)#&lt;br&gt;
+      New locale&#39;s display name in en_US:  
+         #GetLocaleDisplayName(newlocale, &quot;en_US&quot;)#&lt;br&gt;
+      &lt;br&gt;
+      Old locale&#39;s display name in current locale:
+         #GetLocaleDisplayName(oldlocale)#&lt;br&gt;
+      Old locale&#39;s display name in en_US:  
+         #GetLocaleDisplayName(oldlocale, &quot;en_US&quot;)#&lt;br&gt;
+   &lt;/cfif&gt;
+
+   &lt;!--- Self-submitting form to select the new locale. ---&gt;
+   &lt;cfform&gt;
+      &lt;h3&gt;Please select the new locale:&lt;/h3&gt;
+      &lt;cfselect name=&quot;mylocale&quot;&gt;
+         &lt;!--- The server.coldfusion.supportedlocales variable is a 
+               list of all supported locale names. Use a list cfloop tag 
+               to create an HTML option tag for each name in the list. ---&gt;
+         &lt;cfloop index=&quot;i&quot; list=&quot;#server.coldfusion.supportedlocales#&quot;&gt;
+         &lt;!--- In the select box, we use the US English display names for 
+               the locales. You can change en_US to your prefered locale. ---&gt;
+            &lt;option value=&quot;#i#&quot;&gt;#GetLocaleDisplayName(i, &quot;en_US&quot;)#&lt;/option&gt;
+         &lt;/cfloop&gt;
+      &lt;/cfselect&gt;&lt;br&gt;
+      &lt;br&gt;
+      &lt;cfinput type=&quot;submit&quot; name=&quot;submitit&quot; value=&quot;Change Locale&quot;&gt;
+   &lt;/cfform&gt;
+&lt;/cfoutput&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="LOCALE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">LOCALE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>The locale whose name you want. The default is the current ColdFusion locale, or if no ColdFusion locale has been set, the JVM locale.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="INLOCALE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">INLOCALE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>The locale in which to return the name. The default is the current ColdFusion locale, or if no ColdFusion locale has been set, the JVM locale.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<participant version="7.0.1">
+	<insertText location="afterSelection"><![CDATA[<%
+<@ loop (@@paramID@@, @@paramShortVal@@, @@paramDefault@@) @>
+string @@paramID@@ = "@@paramDefault@@";
+if (@@paramShortVal@@!=null && @@paramShortVal@@.ToString().Length > 0) {
+	@@paramID@@ = @@paramShortVal@@;
+}
+<@ endloop @>
+MM.XSLTransform @@transName@@ = new MM.XSLTransform();
+@@transName@@.setXML(<@ if (@@mapURL@@) @>Server.MapPath(<@ endif @>"@@xmlFile@@"<@ if (@@mapURL@@) @>)<@ endif @>);
+@@transName@@.setXSL(Server.MapPath("@@xslFile@@"));
+<@ loop (@@paramNames@@, @@paramValues@@) @>
+@@transName@@.addParameter("@@paramNames@@", @@paramValues@@);
+<@ endloop @>
+Response.Write(@@transName@@.Transform());
+%>]]></insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="MM_loop1,transName,xmlFile,xslFile,MM_loop2" isOptional="false" limitSearch="all"><![CDATA[/((?:string [^\r\n]* = "[^\r\n]*";(?:\r\n|\r(?!\n)|\n)[ \t]*if \([^\r\n]*!=null && [^\r\n]*\.ToString\(\)\.Length >\s*0\) \{(?:\r\n|\r(?!\n)|\n)[ \t]*[^\r\n]* = [^\r\n]*;(?:\r\n|\r(?!\n)|\n)[ \t]*\}(?:\r\n|\r(?!\n)|\n)[ \t]*)*?)MM\.XSLTransform ([^\r\n]*?) = new MM\.XSLTransform\(\);(?:\r\n|\r(?!\n)|\n)[ \t]*[^\r\n]*?\.setXML\((?:Server\.MapPath\()?"([^\r\n]*?)"(?:\))?\);(?:\r\n|\r(?!\n)|\n)[ \t]*[^\r\n]*?\.setXSL\(Server\.MapPath\("([^\r\n]*?)"\)\);(?:\r\n|\r(?!\n)|\n)[ \t]*((?:[^\r\n]*\.addParameter\("[^\r\n]*", [^\r\n]*\);(?:\r\n|\r(?!\n)|\n)[ \t]*)*?)Response\.Write\([^\r\n]*?\.Transform\(\)\);(?=\r\n|\r|\n|%>)/i]]></searchPattern>
+		<searchPattern paramNames="paramID,paramDefault,paramShortVal" limitSearch="@@MM_loop1@@" isOptional="true" searchType="multiple"><![CDATA[/string ([^\r\n]*?) = "([^\r\n]*?)";(?:\r\n|\r(?!\n)|\n)[ \t]*if \(([^\r\n]*?)!=null && [^\r\n]*?\.ToString\(\)\.Length >\s*0\) \{(?:\r\n|\r(?!\n)|\n)[ \t]*[^\r\n]*? = [^\r\n]*?;(?:\r\n|\r(?!\n)|\n)[ \t]*\}(?:\r\n|\r(?!\n)|\n)[ \t]*/i]]></searchPattern>
+		<searchPattern paramNames="paramNames,paramValues" limitSearch="@@MM_loop2@@" isOptional="true" searchType="multiple"><![CDATA[/[^\r\n]*?\.addParameter\("([^\r\n]*?)", ([^\r\n]*?)\);(?:\r\n|\r(?!\n)|\n)[ \t]*/i]]></searchPattern>
+		<searchPattern paramNames="xmlFileNETVB_url" isOptional="true" limitSearch="all"><![CDATA[/[^\r\n]*?\.setXML\(Server\.MapPath\("([^\r\n]*?)"\)\)/i]]></searchPattern>
+		<searchPattern paramNames="xslFileNETVB_url" isOptional="true" limitSearch="all"><![CDATA[/[^\r\n]*?\.setXSL\(Server\.MapPath\("([^\r\n]*?)"\)\)/i]]></searchPattern>
+		<searchPattern paramNames="xmlFileNETCS_url" isOptional="true" limitSearch="all"><![CDATA[/[^\r\n]*?\.setXML\(Server\.MapPath\("([^\r\n]*?)"\)\);/i]]></searchPattern>
+		<searchPattern paramNames="xslFileNETCS_url" isOptional="true" limitSearch="all"><![CDATA[/[^\r\n]*?\.setXSL\(Server\.MapPath\("([^\r\n]*?)"\)\);/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>.setXSL(Server.MapPath("</quickSearch>
+</participant>

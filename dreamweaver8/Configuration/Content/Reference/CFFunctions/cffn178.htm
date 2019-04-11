@@ -1,0 +1,176 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>LISTGETAT</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">LISTGETAT</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Gets a list element at a specified position.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+Index of the list element at position position.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+List functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>ListGetAt(list, position [, delimiters ])
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+ListFirst, ListLast, ListQualify, ListSetAt; "Lists" in Chapter&#160;3, "Using ColdFusion Variables," in ColdFusion MX Developer's Guide 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+If you use list functions on strings that are delimited by a delimiter character and a space, a returned list element might contain a leading space; you use the trim function to remove such spaces from a returned element. For example, consider this list:
+</p>
+<pre>&lt;cfset myList = &quot;one hundred, two hundred, three hundred&quot;&gt;
+</pre>
+<p>
+To get a value from this list, use the trim function to remove the space before the returned value:
+</p>
+<pre>&lt;cfset MyValue = #trim(listGetAt(myList, 2))#&gt;
+</pre>
+<p>
+With this usage, MyValue = &quot;two hundred&quot;, not &quot; two hundred&quot;, and spaces within a list element are preserved. 
+</p>
+
+<p>
+ColdFusion ignores empty list elements; thus, the list &quot;a,b,c,,,d&quot; has four elements.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;ListGetAt Example&lt;/h3&gt;
+&lt;!--- Find a list of users who wrote messages ---&gt;
+&lt;cfquery name = &quot;GetMessageUser&quot; datasource = &quot;cfdocexamples&quot;&gt;
+   SELECT Username, Subject, Posted
+   FROM  Messages
+&lt;/cfquery&gt;
+&lt;cfset temp = ValueList(GetMessageUser.Username)&gt;
+&lt;!--- loop through the list and show it with ListGetAt ---&gt;
+&lt;h3&gt;This list of usernames who have posted messages numbers
+&lt;cfoutput&gt;#ListLen(temp)#&lt;/cfoutput&gt; users.&lt;/h3&gt;
+&lt;ul&gt;
+&lt;cfloop From = &quot;1&quot; To = &quot;#ListLen(temp)#&quot; index = &quot;Counter&quot;&gt;
+   &lt;cfoutput&gt;&lt;li&gt;Username #Counter#: #ListGetAt(temp, Counter)# &lt;/cfoutput&gt;
+&lt;/cfloop&gt;
+&lt;/ul&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="LIST">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">LIST</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A list or a variable that contains one.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="POSITION">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">POSITION</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A positive integer or a variable that contains one. Position at which to get element. The first list position is 1.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DELIMITERS">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DELIMITERS</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A string or a variable that contains one. Character(s) that separate list elements. The default value is comma. </p>
+<p>If this parameter contains more than one character, ColdFusion processes each occurrence of each character as a delimiter. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

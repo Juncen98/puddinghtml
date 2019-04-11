@@ -1,0 +1,14 @@
+<participant name="transLastRecord_bgn">
+  <translator>
+    <searchPatterns>
+      <searchPattern><![CDATA[/if \(\$pageNum_([^\r\n]*?) >= \$totalPages_[^\r\n]*?\) \{ \/\/ Show if last page (?=\r\n|\r|\n|\?>)/i]]></searchPattern>
+      <searchPattern requiredLocation="trailing"><![CDATA[/\} \/\/ Show if last page (?=\r\n|\r|\n|\?>)/i]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="directive" translationType="tabbed region start">
+        <openTag>MM_HIDDENREGION</openTag>
+        <display>MM.LABEL_HideTabbedOutlineLabel</display>
+      </translation>
+    </translations>
+  </translator>
+</participant>

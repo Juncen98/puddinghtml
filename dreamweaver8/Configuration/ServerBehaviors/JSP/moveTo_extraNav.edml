@@ -1,0 +1,57 @@
+<participant>
+     <quickSearch><![CDATA[MM_rsCount]]></quickSearch>
+     <insertText location="aboveHTML+84">
+<![CDATA[
+<%
+// *** Move To Record: if we dont know the record count, check the display range
+
+if (MM_rsCount == -1) {
+
+  // walk to the end of the display range for this page
+  int i;
+  for (i=MM_offset; @@rsName@@_hasData && (MM_size < 0 || i < MM_offset + MM_size); i++) {
+    @@rsName@@_hasData = MM_rs.next();
+  }
+
+  // if we walked off the end of the recordset, set MM_rsCount and MM_size
+  if (!@@rsName@@_hasData) {
+    MM_rsCount = i;
+    if (MM_size < 0 || MM_size > MM_rsCount) MM_size = MM_rsCount;
+  }
+
+  // if we walked off the end, set the offset based on page size
+  if (!@@rsName@@_hasData && !MM_paramIsDefined) {
+    if (MM_offset > MM_rsCount - MM_size || MM_offset == -1) { //check if past end or last
+      if (MM_rsCount % MM_size != 0)  //last page has less records than MM_size
+        MM_offset = MM_rsCount - MM_rsCount % MM_size;
+      else
+        MM_offset = MM_rsCount - MM_size;
+    }
+  }
+
+  // reset the cursor to the beginning
+  @@rsName@@.close();
+  @@resetRecordsetCall@@
+  @@rsName@@_hasData = @@rsName@@.next();
+  MM_rs = @@rsName@@;
+
+  // move the cursor to the selected record
+  for (i=0; @@rsName@@_hasData && i < MM_offset; i++) {
+    @@rsName@@_hasData = MM_rs.next();
+  }
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern><![CDATA[/MM_rsCount\s*=\s*i/]]></searchPattern>
+       <searchPattern paramNames="rsName"><![CDATA[/\b(\w+)_hasData/]]></searchPattern>
+       <searchPattern paramNames="callableName" isOptional="true"><![CDATA[/\b(\w+)\.execute\(\);/]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="rsName"><![CDATA[/(\W)\w+(_hasData|\.close\(|\.next\()/g]]></updatePattern>
+       <updatePattern paramName="rsName"><![CDATA[/(MM_rs\s*=\s*)\w+(;)/g]]></updatePattern>       
+       <updatePattern paramName="rsName"><![CDATA[/(\W)\w+(\s*=\s*MM_rs;)/g]]></updatePattern>
+       <updatePattern paramName="resetRecordsetCall"><![CDATA[/(\.close\(\);[ \t]*[\r\n]*[ \t]*)[^\r\n]*([\r\n])/g]]></updatePattern>       
+     </updatePatterns>
+</participant>

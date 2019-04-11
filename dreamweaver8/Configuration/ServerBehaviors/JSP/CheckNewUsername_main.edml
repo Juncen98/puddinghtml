@@ -1,0 +1,36 @@
+<participant>
+     <quickSearch><![CDATA[MM_dupKeyRedirect]]></quickSearch>
+     <insertText location="aboveHTML+18">
+<![CDATA[
+<%
+// *** Redirect if username exists
+String MM_flag="MM_insert";
+if (request.getParameter(MM_flag) != null) {
+  String MM_dupKeyRedirect="@@dupKeyRedirect@@";
+  String MM_rsKeyConnection=MM_@@connName@@_STRING;
+  String MM_dupKeyUsernameValue = request.getParameter("@@frmUsername@@");
+  String MM_dupKeySQL = "SELECT @@fldUsername@@ FROM @@tableName@@ WHERE @@fldUsername@@='" + MM_dupKeyUsernameValue + "'";
+  Driver MM_rsKeyDriver = (Driver)Class.forName(MM_@@connName@@_DRIVER).newInstance();
+  Connection MM_rsKeyConn = DriverManager.getConnection(MM_rsKeyConnection,MM_@@connName@@_USERNAME,MM_@@connName@@_PASSWORD);
+  PreparedStatement MM_rsKeyStatement = MM_rsKeyConn.prepareStatement(MM_dupKeySQL);
+  ResultSet MM_rsKey = MM_rsKeyStatement.executeQuery();
+  boolean MM_rsKey_isEmpty = !MM_rsKey.next();
+  MM_rsKey.close(); // Close the recordset - we have all the info we need.
+  MM_rsKeyConn.close();
+  if (!MM_rsKey_isEmpty) {
+    // the username was found - can not add the requested username
+    String MM_qsChar = "?";
+    if (MM_dupKeyRedirect.indexOf("?") >= 0) MM_qsChar = "&";
+    MM_dupKeyRedirect = MM_dupKeyRedirect + MM_qsChar + "requsername=" + MM_dupKeyUsernameValue;
+    response.sendRedirect(response.encodeRedirectURL(MM_dupKeyRedirect));
+    return;
+  }
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="dupKeyRedirect,connName,frmUsername,fldUsername,tableName" limitSearch="all"><![CDATA[/[\r\n]\s*String\s+MM_dupKeyRedirect\s*=\s*"([^\r\n]*)"[\w\W]*[\r\n]\s*String\s+MM_rsKeyConnection\s*=\s*MM_([^\r\n]*)_STRING[\w\W]*[\r\n]\s*String\s+MM_dupKeyUsernameValue\s*=\s*request\.getParameter\s*\(\s*"([^\r\n]*)"[\w\W]*[\r\n]\s*String\s+MM_dupKeySQL\s*=\s*"SELECT\s+([^\r\n]*)\s+FROM\s+([^\r\n]*)\s+WHERE\s+/]]></searchPattern>
+       <searchPattern paramNames="dupKeyRedirect_url" limitSearch="all"><![CDATA[/String\s+MM_dupKeyRedirect\s*=\s*"([^\r\n]*?)"/]]></searchPattern>
+     </searchPatterns>
+</participant>

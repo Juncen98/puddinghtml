@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>NOTATION Attribute Type</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">NOTATION Attribute Type</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+<span class="PROGRAMLISTING"><pre><strong class="userinput">... NOTATION (</strong><var class="replaceable">notation</var> <var class="replaceable">[</var><strong class="userinput">|</strong> <var class="replaceable">notation]</var><strong class="userinput">*)</strong> ...</pre></span>
+<p>The <span class="LITERAL">NOTATION</span>  attribute mechanism lets XML document
+authors indicate that the character content of some elements obey the
+rules of some formal language other than XML. The following short
+sample document shows how notations might be used to specify the type
+of programming language stored in the
+<span class="LITERAL">code_fragment</span> element:</p>
+
+<span class="PROGRAMLISTING"><pre>&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE code_fragment
+[
+&lt;!NOTATION java_code PUBLIC "Java source code"&gt;
+&lt;!NOTATION c_code PUBLIC "C source code"&gt;
+&lt;!NOTATION perl_code PUBLIC "Perl source code"&gt;
+&lt;!ELEMENT code_fragment (#PCDATA)&gt;
+&lt;!ATTLIST code_fragment
+          code_lang NOTATION (java_code | c_code | perl_code) #REQUIRED&gt;
+     
+]&gt;
+&lt;code_fragment code_lang="c_code"&gt;
+    main( ) { printf("Hello, world."); }
+&lt;/code_fragment&gt;</pre></span></td></tr>
+</table>
+</div>
+</body>
+</html>

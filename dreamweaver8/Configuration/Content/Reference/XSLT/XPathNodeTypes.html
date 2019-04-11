@@ -1,0 +1,217 @@
+<html>
+<head>
+<title>XPath Node Types</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME" colspan="2">XPath Node Types</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+
+    <p>
+<!--<primary>nodes</primary>
+  <secondary>types and (XPath)</secondary>-->
+<!--<primary>XPath</primary>
+  <secondary>node types</secondary>-->
+
+There are seven types of nodes in XPath. We'll stick to the reference material here; for more information on the different node types, see our earlier discussion of <link linkend="xslt-CHP-3-SECT-1">the XPath data model</link>.</p>
+</td></tr>
+</table>
+</div>
+<div id="TheRootNode">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+The Root Node</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+      <p>
+<!--<primary>root node (XPath)</primary>-->
+
+The root node is the root of the tree. Unlike all other nodes, it does not have a parent. Its children are the element node for the document, along with any comments or processing instructions that appear outside the document element. The root node does not have an expanded name. </p>
+    </td>
+</tr>
+</table>
+</div>
+<div id="ElementNodes">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Element Nodes</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<!--<?troff .hw namespace?>-->
+      <p>
+<!--<primary>element nodes (XPath)</primary>-->
+
+Each element in the original XML document is represented by an element node. The expanded name of the element is its local name, combined with any namespace that is in effect for the element. You can access the different parts of the element name with the <span class="LITERAL">name()</span>, <span class="LITERAL">local-name()</span>, and <span class="LITERAL">namespace-uri()</span> functions.<!--<?troff .ne 10?>--> Here is an element from an XML document:</p>
+      <span class="PROGRAMLISTING"><pre>
+&lt;xyz:report xmlns:xyz="http://www.xyz.com/"&gt;</pre></span>
+      <p>The values of the three functions for this element node are:</p>
+      <dl>
+<dt>
+<span class="LITERAL">
+name()
+</span>
+</dt>
+<dd>
+<span class="LITERAL">
+xyz:report
+</span>
+<P></p>
+<dt>
+<span class="LITERAL">
+local-name()
+</span>
+</dt>
+<dd>
+<span class="LITERAL">
+report
+</span>
+<P></p>
+<dt>
+<span class="LITERAL">
+namespace-uri()
+</span>
+</dt>
+<dd>
+<span class="LITERAL">
+http://www.xyz.com/
+</span>
+<P></p>
+</dl>
+</td>
+</tr>
+</table>
+</div>
+<div id="AttributeNodes">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Attribute Nodes</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+      <p>
+<!--<primary>attribute nodes (XPath)</primary>-->
+
+Attributes of elements in the XML document become XPath attribute nodes. An attribute has an expanded name, just as an element node has. The attribute nodes of a given element node are the attributes explicitly coded on the XML element and any attributes defined with default values in the DTD. </p>
+      <p>Taking a different approach from the Document Object Model, an element node is the parent of its attributes, although the attributes are not the children of the element. In other words, selecting all the children of an element node does not select any attribute nodes that the element node might have. </p>
+    </td>
+</tr>
+</table>
+</div>
+<div id="TextNodes">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Text Nodes</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+      <p>
+<!--<primary>text nodes (XPath)</primary>-->
+
+Text nodes simply contain text from an element. If the original text in the XML document contained character or entity references, they are resolved before the XPath text node is created. Similarly, any existing CDATA sections appear as text nodes. You have no way of knowing if a given portion of a text node was originally a character or entity reference or a CDATA section. </p>
+    </td>
+</tr>
+</table>
+</div>
+<div id="CommentNodes">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Comment Nodes</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+      <p>
+<!--<primary>comment nodes (XPath)</primary>-->
+
+A comment node is also very simple; it contains some text. Every comment in the source document (except for any comments in the DTD) becomes a comment node. The text of the comment node (returned with the <span class="LITERAL">text()</span> node test) contains everything inside the comment except the opening <span class="LITERAL">&lt;!--</span> and the closing <span class="LITERAL">--&gt;</span>.</p>
+    </td>
+</tr>
+</table>
+</div>
+<div id="ProcessingInstructionNodes">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Processing-Instruction Nodes</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+      <p>
+<!--<primary>processing instruction nodes (XPath)</primary>-->
+
+A processing-instruction node has two parts: a name (returned by the <span class="LITERAL">name()</span> function) and a string value. The string value is everything after the name, including the whitespace, but not including the <span class="LITERAL">?&gt;</span> that closes the processing instruction.</p>
+    </td>
+</tr>
+</table>
+</div>
+<div id="NamespaceNodes">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Namespace Nodes</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+      <p>
+<!--<primary>namespace nodes (XPath)</primary>-->
+
+Namespace nodes are almost never used in XSLT stylesheets; they exist primarily for the XSLT processor's benefit. One thing to keep in mind is that the declaration of a namespace (such as <span class="LITERAL">xmlns:auth="http://www.authors.net"</span>), even though it is technically an attribute in the XML source, becomes a namespace node and not an attribute node. Namespace nodes exist for both the namespace prefixes that are defined and any default namespaces.
+
+
+
+
+</p>
+    </td>
+</tr>
+</table>
+</div>
+</body>
+</html>

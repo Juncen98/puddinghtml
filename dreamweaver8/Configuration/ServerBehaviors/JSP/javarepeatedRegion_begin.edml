@@ -1,0 +1,29 @@
+<participant>
+     <quickSearch><![CDATA[_coll]]></quickSearch>
+     <insertText location="beforeSelection">
+<![CDATA[
+<% for(int @@rsName@@_i=0; @@rsName@@_i < @@rsName@@_coll.get@@rsName@@Size();) { 
+	    @@rsName@@_item = @@rsName@@_coll.get@@rsName@@(@@rsName@@_i);	
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName"><![CDATA[/<%\s*for\s*\(\s*int\s*(\w+)_i\s*=\s*0;\s*\1_i\s*<\s*\1_coll\.get\1Size\(\);\s*\)\s*\{\s*\1_item\s*=\s*\1_coll\.get\1\(\1_i\);\s*%>/]]></searchPattern>
+     </searchPatterns>
+     <translator>
+       <searchPatterns>
+	 <searchPattern paramNames="rsName,rr"><![CDATA[/<%\s*for\s*\(\s*int\s*(\w+)_i\s*=\s*0;\s*(\w+)_i\s*<\s*\1_coll\.get\1Size\(\);\s*\)\s*\{\s*\1_item\s*=\s*\1_coll\.get\1\(\1_i\);\s*%>/]]></searchPattern>
+	 <searchPattern requiredLocation="trailing"><![CDATA[/\b(\w+)_i\+\+;/]]></searchPattern>
+       </searchPatterns>
+       <translations>
+	 <translation whereToSearch="directive" translationType="tabbed region start">
+	   <openTag>MM_REPEATEDREGION</openTag>
+	   <attributes>
+	     <attribute><![CDATA[NAME="@@rr@@"]]></attribute>
+	     <attribute><![CDATA[SOURCE="@@rsName@@"]]></attribute>
+	   </attributes>
+	   <display><![CDATA[Repeat:@@rsName@@]]></display>
+	 </translation>
+       </translations>
+     </translator>
+</participant>

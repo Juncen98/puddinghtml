@@ -1,0 +1,22 @@
+<participant>
+     <quickSearch><![CDATA[MoveNext]]></quickSearch>
+     <insertText location="lastChildOfNode" nodeParamName="selectNode">
+<![CDATA[
+<%
+  @@rsName@@.MoveNext()
+Wend
+If (@@rsName@@.CursorType > 0) Then
+  @@rsName@@.MoveFirst
+Else
+  @@rsName@@.Requery
+End If
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName"><![CDATA[/<%\s*\b(\w+)\.MoveNext\(\)\s*Wend/i]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="rsName"><![CDATA[/(\b)\w+(\.MoveNext|\.CursorType|\.MoveFirst|\.Requery)/i]]></updatePattern>
+     </updatePatterns>	 
+</participant>

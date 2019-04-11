@@ -1,0 +1,155 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>INSERT</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">INSERT</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Inserts a substring in a string after a specified character position. If position = 0, prefixes the substring to the string.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+A string.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+String functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>Insert(substring, string, position)
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+RemoveChars, Len
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;Insert Example&lt;/h3&gt;
+
+&lt;cfif IsDefined(&quot;FORM.myString&quot;)&gt;
+   &lt;!--- if the position is longer than the length of the string, err ---&gt;
+   &lt;cfif FORM.insertPosition GT Len(MyString)&gt;
+      &lt;cfoutput&gt;
+      &lt;p&gt;This string only has #Len(MyString)# characters; therefore, 
+you cannot insert the substring       #FORM.mySubString# at position
+#FORM.insertPosition#.
+      &lt;/cfoutput&gt;
+   &lt;/cfif&gt;
+&lt;cfelse&gt;
+   &lt;cfoutput&gt;
+   &lt;p&gt;You inserted the substring #FORM.MySubstring# into the string
+#FORM.MyString#, resulting in the following string:
+&lt;br&gt;#Insert(FORM.MySubString, FORM.myString,
+FORM.insertposition)#
+   &lt;/cfoutput&gt;
+&lt;/cfif&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="SUBSTRING">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SUBSTRING</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A string or a variable that contains one. String to insert.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="STRING">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STRING</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A string or a variable that contains one. String into which to insert substring.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="POSITION">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">POSITION</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Integer or variable; position in string after which to insert substring.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

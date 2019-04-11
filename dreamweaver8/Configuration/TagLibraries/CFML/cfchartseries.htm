@@ -1,0 +1,147 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFCHARTSERIES</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var TYPELIST; 
+var PAINTSTYLELIST; 
+var MARKERSTYLELIST; 
+var theUIObjects; 
+
+// Color control elements
+var COLORP_SERIES;  
+var TEXT_SERIES;  
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+  updateColors();
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function updateUI(itemName)
+{
+  switch(itemName)
+  {
+    case "seriesColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_SERIES,TEXT_SERIES,true);
+      break;
+    }
+    case "seriescolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_SERIES,TEXT_SERIES,true);
+      break;
+    }
+  }
+}
+
+function updateColors()
+{
+  tagDialog.updateColorPicker("colorField",COLORP_SERIES,TEXT_SERIES);
+}
+
+function initializeUI()
+{
+	TYPELIST = new ListControl("thetype"); 
+  PAINTSTYLELIST = new ListControl("thepaintstyle"); 
+  MARKERSTYLELIST = new ListControl("themarkerstyle"); 
+  
+	theUIObjects  = new Array(TYPELIST,PAINTSTYLELIST,MARKERSTYLELIST); 
+
+  COLORP_SERIES = dwscripts.findDOMObject("seriesColorPicker");  
+  TEXT_SERIES = dwscripts.findDOMObject("theseriescolor");
+
+  updateColors(); 
+  
+  tagDialog.populateDropDownList(TYPELIST, theChartSeriesTypeCap, theChartSeriesTypeVal, 0); 
+  tagDialog.populateDropDownList(PAINTSTYLELIST, theChartSeriesPaintStyleCap, theChartSeriesPaintStyleVal, 1); 
+  tagDialog.populateDropDownList(MARKERSTYLELIST, theChartSeriesMarkerStyleVal, theChartSeriesMarkerStyleVal, 1); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">类型: </td>
+      <td nowrap="nowrap">
+        <select name="thetype" class="chartTypeList" id="attr:cfchartseries:type" attname="type">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">查询: </td>
+      <td nowrap="nowrap">
+        <input name="thequery" type="text" class="basicTextField" id="attr:cfchartseries:query" attname="query" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">项目列: </td>
+      <td nowrap="nowrap">
+        <input name="theitemcolumn" type="text" class="basicTextField" id="attr:cfchartseries:itemcolumn" attname="itemcolumn" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">值列: </td>
+      <td nowrap="nowrap">
+        <input name="thevaluecolumn" type="text" class="basicTextField" id="attr:cfchartseries:valuecolumn" attname="valuecolumn" />
+      </td>
+    </tr>    
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">图画样式: </td>
+      <td nowrap="nowrap">
+        <select name="thepaintstyle" class="oneWordOptionList" id="attr:cfchartseries:paintstyle"  attname="paintstyle">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">标记样式: </td>
+      <td nowrap="nowrap">
+        <select name="themarkerstyle" class="oneWordOptionList" id="attr:cfchartseries:paintstyle"  attname="markerstyle">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">颜色列表: </td>
+      <td nowrap="nowrap">
+        <input name="thecolorlist" type="text" class="basicTextField" id="attr:cfchartseries:colorlist" attname="colorlist" />
+      </td>
+    </tr>  
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">序列标签: </td>
+      <td nowrap="nowrap">
+        <input name="theserieslabel" type="text" class="basicTextField" id="attr:cfchartseries:serieslabel" attname="serieslabel" />
+      </td>
+    </tr>  
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">序列颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="seriesColorPicker" value="" onChange="updateUI('seriesColorPicker')"> 
+        <input name="theseriescolor" type="text" class="smallTField" id="attr:cfchartseries:seriescolor" onBlur="updateUI('seriescolor')" value="" attname="seriescolor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+  </table> 
+</div> 
+</body>
+</html>

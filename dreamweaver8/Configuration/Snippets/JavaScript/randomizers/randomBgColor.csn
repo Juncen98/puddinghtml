@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "随机背景色" description = "将浏览器窗口的背景色更改为随机颜色。" preview="code" type="block">
+<insertText location="beforeSelection">
+<![CDATA[// * Dependencies * 
+// this function requires the following snippets:
+// JavaScript/Randomizers/randomNumber
+// JavaScript/conversions/base_conversion/decToHex
+function randomBgColor()
+{
+  var r,g,b;
+  r = decToHex(randomNumber(256)-1);
+  g = decToHex(randomNumber(256)-1);
+  b = decToHex(randomNumber(256)-1);
+  document.bgColor = "#" + r + g + b;
+}
+]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

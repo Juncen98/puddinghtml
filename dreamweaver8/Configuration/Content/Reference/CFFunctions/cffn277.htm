@@ -1,0 +1,202 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>TOSTRING</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">TOSTRING</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Converts a value to a string.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+A string.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Conversion functions, String functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>ToString(value[, encoding])
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+ToBase64, ToBinary, CharsetEncode; Chapter&#160;35, "Using XML and WDDX," in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX: 
+</p>
+<ul>
+
+<li>Changed Unicode support: ColdFusion supports the Java UCS-2 representation of Unicode character values 0-65535. (ColdFusion 5 and earlier releases supported ASCII values 1-255.) </li>
+
+<li>Added the encoding parameter. </li>
+
+<li>Added ability to convert an XML document object to a string.</li>
+</ul>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+This function can convert simple values and binary values that do not contain Byte zero. If this function cannot convert a value, it throws an exception. This function can also convert an XML document object to a string XML representation.
+</p>
+
+<p>
+Macromedia recommends that you use the CharsetEncode function to convert binary data to a string.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;ToString Example&lt;/h3&gt;
+&lt;!---- Initialize data. ------&gt;
+&lt;cfset charData = &quot;&quot;&gt;
+&lt;!----- Create string of ASCII characters (32-255) and concatenate them. ----&gt;
+&lt;cfloop index = &quot;data&quot; from = &quot;32&quot; to = &quot;255&quot;&gt;
+   &lt;cfset ch = chr(data)&gt;
+   &lt;cfset charData = charData &amp; ch&gt;
+&lt;/cfloop&gt;
+&lt;p&gt;The following string is the concatenation of characters (32 to 255) 
+from the ASCII table.&lt;br&gt;
+&lt;cfoutput&gt;#charData#&lt;/cfoutput&gt;&lt;/p&gt;
+
+&lt;!------ Create a Base64 representation of this string. ----&gt;
+&lt;cfset data64 = toBase64(#charData#)&gt;
+&lt;p&gt;
+The following string is the Base64 representation of the string.&lt;br&gt;
+&lt;cfoutput&gt;#data64#&lt;/cfoutput&gt;&lt;/p&gt;
+&lt;!---- Create a binary representation of Base64 data. ---&gt;
+&lt;cfset dataBinary = toBinary(data64)&gt;
+
+&lt;!---- Create the string representation of the binary data. -----&gt;
+&lt;cfset dataString = ToString(dataBinary)&gt;
+&lt;p&gt;The following is the string representation of the binary data.&lt;br&gt;
+&lt;cfoutput&gt;#dataString#&lt;/cfoutput&gt;&lt;/p&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="VALUE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">VALUE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Value to convert to a string; can be a simple value such as an integer, a binary object, or an XML document object.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ENCODING ">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ENCODING </td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>The character encoding (character set) of the string. Optional for binary data, Generates an error if used for a simple value or XML document object.</p>
+<p>The following list includes commonly used values:</p><ul>
+
+<li>utf-8</li>
+
+<li>iso-8859-1 </li>
+
+<li>windows-1252</li>
+
+<li>us-ascii</li>
+
+<li>shift_jis</li>
+
+<li>iso-2022-jp </li>
+
+<li>euc-jp</li>
+
+<li>euc-kr</li>
+
+<li>big5</li>
+
+<li>euc-cn</li>
+
+<li>utf-16</li>
+</ul>
+
+<p>For more information on character encoding, see:www.w3.org/International/O-charset.html</a>. </p>
+<p>The default value is the encoding of the page on which the function is called. See cfcontent.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

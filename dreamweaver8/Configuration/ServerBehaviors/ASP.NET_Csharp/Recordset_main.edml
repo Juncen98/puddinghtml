@@ -1,0 +1,63 @@
+<participant version="5.0">
+	<insertText location="aboveHTML+50">
+	<![CDATA[<MM:DataSet 
+id="@@RecordsetName@@"
+runat="Server"
+IsStoredProcedure="false"
+ConnectionString='<%# System.Configuration.ConfigurationSettings.AppSettings["MM_CONNECTION_STRING_@@ConnectionName@@"] %>'
+DatabaseType='<%# System.Configuration.ConfigurationSettings.AppSettings["MM_CONNECTION_DATABASETYPE_@@ConnectionName@@"] %>'
+CommandText='<%# @@CommandText@@ %>'
+<@ if (@@Expression@@) @>Expression='<%# @@Expression@@ %>'
+<@ endif @><@ if (@@CurrentPage@@) @>CurrentPage='<%# @@CurrentPage@@ %>'
+<@ endif @><@ if (@@PageSize@@) @>PageSize="@@PageSize@@"
+<@ endif @><@ if (@@SuccessURL@@) @>SuccessURL='<%# @@SuccessURL@@ %>'
+<@ endif @><@ if (@@FailureURL@@) @>FailureURL='<%# @@FailureURL@@ %>'
+<@ endif @><@ if (@@Debug@@) @>Debug="@@Debug@@"
+<@ endif @><@ if (@@ProcessOnPostBack@@) @>ProcessOnPostBack="@@ProcessOnPostBack@@"
+<@ endif @><@ if (@@CreateDataSet@@) @>CreateDataSet="@@CreateDataSet@@"
+<@ endif @><@ if (@@TableName@@) @>TableName="@@TableName@@"
+<@ endif @><@ if (@@MaxRecords@@) @>MaxRecords="@@MaxRecords@@"
+<@ endif @><@ if (@@StartRecord@@) @>StartRecord="@@StartRecord@@"
+<@ endif @><@ if (@@GetRecordCount@@) @>GetRecordCount="@@GetRecordCount@@"
+<@ endif @><@ if (@@RecordCountCommandText@@) @>RecordCountCommandText="@@RecordCountCommandText@@"
+<@ endif @>
+>
+<@ if (@@SqlVarRuntime@@) @>
+<Parameters>
+<@ loop (@@SqlVarName@@,@@SqlVarRuntime@@,@@SqlVarType@@,@@SqlVarSize@@,@@SqlVarDirection@@) @>
+<Parameter <@ if (@@SqlVarName@@) @> Name="@@SqlVarName@@"<@ endif @> <@ if (@@SqlVarRuntime@@) @> Value='<%# @@SqlVarRuntime@@ %>'<@ endif @> <@ if (@@SqlVarType@@) @> Type="@@SqlVarType@@"<@ endif @> <@ if (@@SqlVarSize@@) @> Size="@@SqlVarSize@@"<@ endif @> <@ if (@@SqlVarDirection@@) @> Direction="@@SqlVarDirection@@"<@ endif @> />
+<@ endloop @>
+</Parameters><@ endif @>
+<@ if (@@EditOpTable@@) @>
+<EditOps>
+<EditOpsTable Name="@@EditOpTable@@" />
+<@ loop (@@EditOpParamName@@,@@EditOpParamType@@,@@EditOpParamIsPrimary@@) @>
+<Parameter Name="@@EditOpParamName@@" Type="@@EditOpParamType@@" IsPrimary="@@EditOpParamIsPrimary@@" />
+<@ endloop @>
+</EditOps><@ endif @>
+</MM:DataSet>]]></insertText>
+  <searchPatterns whereToSearch="tag+mm:dataset">
+    <searchPattern isOptional="false" limitSearch="all"><![CDATA[/([\s\S]+)/]]></searchPattern>
+    <searchPattern paramNames="RecordsetName" isOptional="false" limitSearch="attribute+id"><![CDATA[/([\s\S]+)/]]></searchPattern>
+    <searchPattern paramNames="IsStoredProcedure" isOptional="false" limitSearch="attribute+isstoredprocedure"><![CDATA[/false/]]></searchPattern>
+    <searchPattern paramNames="ConnectionString" isOptional="false" limitSearch="attribute+connectionstring"><![CDATA[/([\s\S]+)/]]></searchPattern>
+    <searchPattern paramNames="ConnectionName" isOptional="false" limitSearch="attribute+connectionstring"><![CDATA[/<%#\s*System\.Configuration\.ConfigurationSettings\.AppSettings\[\"MM_CONNECTION_STRING_([^\r\n]*?)\"\]\s*%>/]]></searchPattern>
+    <searchPattern paramNames="CommandText" isOptional="false" limitSearch="attribute+commandtext"><![CDATA[/<%#\s*([\s\S]+)\s*%>/]]></searchPattern>
+    <searchPattern paramNames="CurrentPage" isOptional="true" limitSearch="attribute+currentpage"><![CDATA[/<%#\s*([\s\S]+)\s*%>/]]></searchPattern>
+    <searchPattern paramNames="PageSize" isOptional="true" limitSearch="attribute+pagesize"><![CDATA[/([\s\S]+)/]]></searchPattern>
+    <searchPattern paramNames="Expression" isOptional="true" limitSearch="attribute+expression"><![CDATA[/<%#\s*([\s\S]+)\s*%>/]]></searchPattern>
+    <searchPattern paramNames="SuccessURL" isOptional="true" limitSearch="attribute+successurl"><![CDATA[/<%#\s*([\s\S]+)\s*%>/]]></searchPattern>
+    <searchPattern paramNames="FailureURL" isOptional="true" limitSearch="attribute+failureurl"><![CDATA[/<%#\s*([\s\S]+)\s*%>/]]></searchPattern>
+    <searchPattern paramNames="Debug" isOptional="true" limitSearch="attribute+debug"><![CDATA[/([\s\S]+)/]]></searchPattern>
+    <searchPattern paramNames="ProcessOnPostBack" isOptional="true" limitSearch="attribute+processonpostback"><![CDATA[/([\s\S]+)/]]></searchPattern>
+    <searchPattern paramNames="CreateDataSet" isOptional="true" limitSearch="attribute+createdataset"><![CDATA[/([\s\S]+)/]]></searchPattern>
+    <searchPattern paramNames="TableName" isOptional="true" limitSearch="attribute+tablename"><![CDATA[/([\s\S]+)/]]></searchPattern>
+    <searchPattern paramNames="MaxRecords" isOptional="true" limitSearch="attribute+maxrecords"><![CDATA[/([\s\S]+)/]]></searchPattern>
+    <searchPattern paramNames="StartRecord" isOptional="true" limitSearch="attribute+startrecord"><![CDATA[/([\s\S]+)/]]></searchPattern>
+    <searchPattern paramNames="GetRecordCount" isOptional="true" limitSearch="attribute+getrecordcount"><![CDATA[/([\s\S]+)/]]></searchPattern>
+    <searchPattern paramNames="RecordCountCommandText" isOptional="true" limitSearch="attribute+recordcountcommandtext"><![CDATA[/([\s\S]+)/]]></searchPattern>
+    <searchPattern paramNames="success_url" isOptional="true" limitSearch="attribute+successurl" />
+    <searchPattern paramNames="failure_url" isOptional="true" limitSearch="attribute+failureurl" />
+  </searchPatterns>
+  <quickSearch>MM:DataSet</quickSearch>
+</participant>

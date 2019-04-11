@@ -1,0 +1,77 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<HTML>
+<HEAD>
+<!--  Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<TITLE>数据源名称 (DSN)</TITLE>
+
+<SCRIPT SRC="../../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/UltraDev/Scripts/connectionCmn.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/UltraDev/Scripts/sbManager.js"></SCRIPT>
+<SCRIPT SRC="../Connection_odbc_conn_dsn.js"></SCRIPT>
+
+<link href="../../../fields.css" rel="stylesheet" type="text/css"></HEAD>
+
+
+<BODY onLoad="initializeUI()">
+
+<form NAME="theForm" ACTION="">
+  <table border=0>
+    <tr>
+      <td align="right" valign="baseline" nowrap>连接名称: </td>
+      <td align="left">
+<input name="ConnectionName" type="text" class="basicTextField">        
+      </td>
+      <td></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap>数据源名称 (DSN): </td>
+      <td align="left" valign="baseline" nowrap>
+        <div id="dsnLayer">
+          <select name="dsn" class="dataSourceList">
+          </select>
+        </div>
+      </td>
+      <td align="left" valign="baseline" nowrap>
+        <div id="btnLayer">
+          <input type="button" name="ODBC_button" value="定义..." onClick="clickedODBC()">
+        </div>
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap>用户名:</td>
+      <td align="left" valign="baseline">
+        <input name="UserName" type="text" class="medTField">
+      </td>
+      <td></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap>密码:</td>
+      <td align="left" valign="baseline">
+        <input name="Password" type="password" class="medTField">
+      </td>
+      <td></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap>Dreamweaver 应连接: </td>
+      <td colspan=2 align="left" valign="baseline" nowrap>
+        <input type="radio" name="connectType" value="webserver" onclick="makeEditControlVisible()">使用测试服务器上的 DSN
+      </td>
+       <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td colspan=2 align="left" nowrap>
+        <input type="radio" name="connectType" value="machine" onclick="makeSelectControlVisible()">使用本地 DSN
+      </td>
+      <td></td>
+    </tr>
+  </table>
+</form>
+</BODY>
+</HTML>

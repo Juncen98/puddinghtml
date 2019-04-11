@@ -1,0 +1,17 @@
+<participant version="5.0">
+	<insertText location="aboveHTML+50"><![CDATA[
+<cfquery name="@@RecordsetName@@" datasource="@@ConnectionName@@"<@ if (@@UserName@@) @> username="@@UserName@@"<@ endif @><@ if (@@Password@@) @> password="@@Password@@"<@ endif @>>
+@@SQLStatement@@ 
+</cfquery>
+]]>
+  </insertText>
+	<searchPatterns whereToSearch="tag+cfquery">
+    <searchPattern limitSearch="all" isOptional="false"><![CDATA[/[\S\s]+/i]]></searchPattern>
+    <searchPattern paramNames="RecordsetName" limitSearch="attribute+NAME" isOptional="false"><![CDATA[/([\S\s]+)/i]]></searchPattern>
+    <searchPattern paramNames="ConnectionName" limitSearch="attribute+DATASOURCE" isOptional="false"><![CDATA[/([\S\s]+)/i]]></searchPattern>
+    <searchPattern paramNames="SQLPrefix,SQLStatement" limitSearch="innerOnly" isOptional="false"><![CDATA[/^([ \t]*(?:\r\n|\r(?!\n)|\n))?([\s\S]+)/i]]></searchPattern>
+    <searchPattern paramNames="UserName" limitSearch="attribute+USERNAME" isOptional="true"><![CDATA[/([\S\s]+)/i]]></searchPattern>
+    <searchPattern paramNames="Password" limitSearch="attribute+PASSWORD" isOptional="true"><![CDATA[/([\S\s]+)/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>/cfquery</quickSearch>
+</participant>

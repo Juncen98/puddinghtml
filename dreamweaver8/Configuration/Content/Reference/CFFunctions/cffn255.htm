@@ -1,0 +1,201 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>STRUCTAPPEND</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">STRUCTAPPEND</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Appends one structure to another.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+True, upon successful completion; False, otherwise.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Structure functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>StructAppend(struct1, struct2, overwriteFlag)
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+Structure functions; "Modifying a ColdFusion XML object" in Chapter&#160;35, "Using XML and WDDX," in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX: Changed behavior: this function can be used on XML objects.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+This function appends the fields and values of struct2 to struct1; struct2 is not modified. If struct1 already contains a field of struct2, overwriteFlag determines whether the value in struct2 overwrites it. 
+</p>
+
+<p>
+A structure's keys are unordered. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;html&gt;
+&lt;body&gt;
+&lt;!---- Create a Name structure ---&gt;
+&lt;cfset nameCLK=StructNew()&gt;
+&lt;cfset nameCLK.first=&quot;Chris&quot;&gt;
+&lt;cfset nameCLK.middle=&quot;Lloyd&quot;&gt;
+&lt;cfset nameCLK.last=&quot;Gilson&quot;&gt;
+&lt;!--- Create an address struct ---&gt;
+&lt;cfset addrCLK=StructNew()&gt;
+&lt;cfset addrCLK.street=&quot;17 Gigantic Rd&quot;&gt;
+&lt;cfset addrCLK.city=&quot;Watertown&quot;&gt;
+&lt;cfset addrCLK.state=&quot;MA&quot;&gt;
+&lt;cfset addrCLK.zip=&quot;02472&quot;&gt;
+&lt;!---- Create a Person structure ---&gt;
+&lt;cfset personCLK=StructNew()&gt;
+&lt;cfset personCLK.name=#nameCLK#&gt;
+&lt;cfset personCLK.addr=#addrCLK#&gt;
+&lt;!--- Display the contents of the person struct before the Append ---&gt;
+&lt;p&gt;
+The person struct &lt;b&gt;before&lt;/b&gt; the Append call:&lt;br&gt;
+&lt;cfloop collection=#personCLK# item=&quot;myItem&quot;&gt;
+&lt;cfoutput&gt;
+#myItem#&lt;br&gt;
+&lt;/cfoutput&gt;
+&lt;/cfloop&gt;
+&lt;!--- Merge the address struct into the top-level person struct ---&gt;
+&lt;cfset bSuccess = StructAppend( personCLK, addrCLK )&gt;
+
+&lt;!--- Display the contents of the person struct, after the Append ---&gt;
+&lt;p&gt;
+The person struct &lt;b&gt;after&lt;/b&gt; the Append call:&lt;br&gt;
+&lt;cfloop collection=#personCLK# item=&quot;myItem&quot;&gt;
+   &lt;cfoutput&gt;
+      #myItem#&lt;br&gt;
+   &lt;/cfoutput&gt;
+&lt;/cfloop&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="STRUCT1">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STRUCT1</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Structure to which struct2 is appended.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="STRUCT2">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STRUCT2</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Structure that contains the data to append to struct1</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="OVERWRITEFLAG">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">OVERWRITEFLAG</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+<ul>
+
+<li>True or &quot;Yes&quot;: values in struct2 overwrite corresponding values in struct1. Default.</li>
+
+<li>False or &quot;No&quot;: values in struct2 do not overwrite corresponding values in struct1.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

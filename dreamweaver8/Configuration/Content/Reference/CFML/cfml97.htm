@@ -1,0 +1,785 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFPOP</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFPOP</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Retrieves or deletes e-mail messages from a POP mail server.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Internet Protocol tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfpop 
+   server = &quot;servername&quot;
+   port = &quot;port_number&quot;
+   username = &quot;username&quot;
+   password = &quot;password&quot;
+   action = &quot;action&quot;
+   name = &quot;queryname&quot;
+   messageNumber = &quot;number&quot;
+   uid = &quot;number&quot; 
+   attachmentPath = &quot;path&quot;
+   timeout = &quot;seconds&quot;
+   maxRows = &quot;number&quot;
+   startRow = &quot;number&quot;
+   generateUniqueFilenames = &quot;yes&quot; or &quot;no&quot;
+   debug = &quot;yes&quot; or &quot;no&quot;&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfftp, cfhttp, cfldap, cfmail, cfmailparam, SetLocale; Chapter&#160;39, "Sending and Receiving E-Mail" in ColdFusion MX Developer's Guide.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion MX&#160;6.1: 
+</p>
+<ul>
+
+<li>Added support for multipart mail messages with Text and HTML parts.</li>
+
+<li>Changed the attachment name separator: the TAB character is now the separator between attachment names in the attachments and attachmentfiles query fields if a message has multiple attachments. This behavior is identical to ColdFusion 5 and earlier versions.</li>
+</ul>
+
+<p>
+ColdFusion MX: Changed the attachment name separator: the comma separates names in the attachments and attachmentfiles query fields if a message has multiple attachments. 
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+The cfpop tag retrieves one or more mail messages from a POP server and populates a ColdFusion query object with the resulting messages, one message per row. Alternatively, it deletes one or more messages from the POP server.
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>When the cfpop tag encounters malformed mail messages, it does not generate errors; instead, it returns empty fields.</td>
+  </tr>
+</table>
+<p>
+To optimize performance, two retrieve options are available. Message header information is typically short, and therefore quick to transfer. Message text and attachments can be very long, and therefore take longer to process.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">cfpop query variables</span>
+<p>
+The following table describes the variables that provide information about the query that is returned by cfpop: 
+</p>
+
+<p>
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr align="center">    <th>&#160;</th>
+    <th>&#160;</th>
+</tr>
+  <tr align="left">    <td>
+<p>queryname.recordCount</p></td>
+    <td>
+<p>Number of records returned by query</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>queryname.currentRow</p></td>
+    <td>
+<p>Current row that cfoutput is processing</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>queryname.columnList</p></td>
+    <td>
+<p>List of column names in query</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>queryname.UID</p></td>
+    <td>
+<p>Unique identifier for the e-mail message file</p></td>
+</tr>
+</table>
+</div>
+<p>
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Query message header and body columns</span>
+<p>
+The following table lists the message header and body columns that are returned if action = &quot;getHeaderOnly&quot; or &quot;getAll&quot;: 
+</p>
+
+<p>
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr align="center">    <th>&#160;</th>
+    <th>&#160;</th>
+    <th>&#160;</th>
+</tr>
+  <tr align="left">    <td>
+<p>queryname.date</p></td>
+    <td>
+<p>yes</p></td>
+    <td>
+<p>yes</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>queryname.from</p></td>
+    <td>
+<p>yes</p></td>
+    <td>
+<p>yes</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>queryname.messagenumber</p></td>
+    <td>
+<p>yes</p></td>
+    <td>
+<p>yes</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>queryname.messageid</p></td>
+    <td>
+<p>yes</p></td>
+    <td>
+<p>yes</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>queryname.replyto</p></td>
+    <td>
+<p>yes</p></td>
+    <td>
+<p>yes</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>queryname.subject</p></td>
+    <td>
+<p>yes</p></td>
+    <td>
+<p>yes</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>queryname.cc</p></td>
+    <td>
+<p>yes</p></td>
+    <td>
+<p>yes</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>queryname.to</p></td>
+    <td>
+<p>yes</p></td>
+    <td>
+<p>yes</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>queryname.body</p></td>
+    <td>
+<p>no</p></td>
+    <td>
+<p>yes</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>queryname.textBody</p></td>
+    <td>
+<p>no</p></td>
+    <td>
+<p>yes</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>queryname.HTMLBody</p></td>
+    <td>
+<p>no</p></td>
+    <td>
+<p>yes</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>queryname.header</p></td>
+    <td>
+<p>yes</p></td>
+    <td>
+<p>yes</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>queryname.attachments</p></td>
+    <td>
+<p>no</p></td>
+    <td>
+<p>yes</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>queryname.attachmentfiles</p></td>
+    <td>
+<p>no</p></td>
+    <td>
+<p>yes</p></td>
+</tr>
+</table>
+</div>
+<p>
+</p>
+
+<p>
+If the mail message includes a part with a Content-Type of text/plain, the queryname.textBody column contains the part's message content. If the mail message includes a part with a Content-Type of text/HTML, the queryname.HTMLBody column contains the part's message content. If no Content-Type matches these types, the columns are empty. The queryname.Body column always contains the first message body found.
+</p>
+
+<p>
+The queryname.attachments column contains a tab-separated list of all the attachment names. The queryname.attachmentfiles column contains a tab-separated list of the locations of the attachment files. Use the cffile tag to delete these temporary files when you have processed them.
+</p>
+
+<p>
+To create a ColdFusion date/time object from the date-time string that is extracted from a mail message in the queryname.date column, use the following table:
+</p>
+
+<p>
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr align="center">    <th>&#160;</th>
+    <th>&#160;</th>
+</tr>
+  <tr align="left">    <td>
+<p>English (US) </p></td>
+    <td>
+<p>Use the ParseDateTime function. If you specify the pop-conversion attribute, the function adjusts the date/time object to UTC.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Other</p></td>
+    <td>
+<p>Extract the date part of string; pass it to the LSParseDateTime function.</p></td>
+</tr>
+</table>
+</div>
+<p>
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>To set the default display format of date, time, number, and currency values, use the SetLocale function. </td>
+  </tr>
+</table>
+<p>
+For more information on cfpop, see Chapter&#160;39, "Sending and Receiving E-Mail" in ColdFusion MX Developer's Guide.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!--- This view-only example shows the use of cfpop. ---&gt;
+&lt;h3&gt;cfpop Example&lt;/h3&gt;
+&lt;p&gt;cfpop lets you retrieve and manipulate mail in a POP3 mailbox. 
+This view-only example shows how to create one feature of 
+a mail client, to display the mail headers in a POP3 mailbox.
+&lt;p&gt;To execute this, un-comment this code and run with a mail-enabled CF Server.
+&lt;!--- 
+&lt;cfif IsDefined(&quot;form.server &quot;)&gt;
+   &lt;!--- Make sure server, username are not empty. ---&gt;
+   &lt;cfif form.server is not &quot;&quot; and form.username is not &quot;&quot;&gt;
+      &lt;cfpop server = &quot;#form.popserver# &quot; username = #form.username# password = 
+#form.pwd#
+      action = &quot;getHeaderOnly&quot; name = &quot;GetHeaders &quot;&gt;
+      &lt;h3&gt;Message Headers in Your Inbox&lt;/h3&gt;
+      &lt;p&gt;Number of Records: 
+      &lt;cfoutput&gt;#GetHeaders.recordCount#&lt;/cfoutput&gt;&lt;/p&gt;
+
+      &lt;ul&gt;
+         &lt;cfoutput query = &quot;GetHeaders&quot;&gt;
+         &lt;li&gt;Row: #currentRow#: From: #From# -- Subject: #Subject#
+         &lt;/cfoutput&gt;
+      &lt;/ul&gt;
+   &lt;/cfif&gt;
+&lt;/cfif&gt;
+
+&lt;form action = &quot;cfpop.cfm &quot; method = &quot;post&quot;&gt;
+   &lt;p&gt;Enter your mail server:
+   &lt;p&gt;&lt;input type = &quot;Text&quot; name = &quot;popserver&quot;&gt;
+   &lt;p&gt;Enter your username:
+   &lt;p&gt;&lt;input type = &quot;Text&quot; name = &quot;username&quot;&gt;
+   &lt;p&gt;Enter your password:
+   &lt;p&gt;&lt;input type = &quot;password&quot; name = &quot;pwd&quot;&gt;
+   &lt;input type = &quot;Submit&quot; name = &quot;get message headers&quot;&gt;
+&lt;/form&gt; 
+---&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="SERVER">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SERVER</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>POP server identifier:</p><ul>
+
+<li>A host name; for example, &quot;biff.upperlip.com&quot;.</li>
+
+<li>An IP address; for example, &quot;192.1.2.225&quot;.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="PORT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PORT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "110"
+
+
+<p>POP port.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="USERNAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">USERNAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>A user name.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="PASSWORD">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PASSWORD</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Password that corresponds to username.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ACTION">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ACTION</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "getHeaderOnly"
+
+<ul>
+
+<li>getHeaderOnly: returns message header information only</li>
+
+<li>getAll: returns message header information, message text, and attachments if attachmentPath is specified</li>
+
+<li>delete: deletes messages on POP server </li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="NAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required if action = &quot;getAll&quot; or &quot;getHeaderOnly&quot;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name for query object that contains the retrieved message information.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="MESSAGENUMBER">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">MESSAGENUMBER</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">&#160;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Message number or comma-delimited list of message numbers to get or delete. Invalid message numbers are ignored.</p>
+<p>Ignored if uid is specified.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="UID">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">UID</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">&#160;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>UID or a comma-delimited list of UIDs to get or delete. Invalid UIDs are ignored.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ATTACHMENTPATH">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ATTACHMENTPATH</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>If action=&quot;getAll&quot;, specifies a directory in which to save any attachments. If the directory does not exist, ColdFusion creates it.</p>
+<p>If you omit this attribute, ColdFusion does not save any attachments. If you specify a relative path, the path root is the ColdFusion temporary directory, which is returned by the GetTempDirectory function.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TIMEOUT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TIMEOUT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "60"
+
+
+<p>Maximum time, in seconds, to wait for mail processing.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="MAXROWS">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">MAXROWS</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "retrieves all available rows"
+
+
+<p>Number of messages to return or delete, starting with the number in startRow. Ignored if messageNumber or uid is specified.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="STARTROW">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STARTROW</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "1"
+
+
+<p>First row number to get or delete. Ignored if messageNumber or uid is specified.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="GENERATEUNIQUEFILENAMES">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">GENERATEUNIQUEFILENAMES</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "No"
+
+<ul>
+
+<li>Yes: generate unique filenames for files attached to an e-mail message, to avoid naming conflicts when files are saved.</li>
+
+<li>No</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DEBUG">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DEBUG</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "No"
+
+<ul>
+
+<li>Yes: sends debugging output to standard output. By default, if the console window is unavailable on server configurations, ColdFusion sends output to <i>cf_root</i>/runtime/logs/coldfusion-out.log. On J2EE configurations, with JRun, the default location is jrun_home/logs/servername-out.log. Caution: If you set this option to Yes, ColdFusion MX writes detailed debugging information to the log, including all retrieved message contents, and can generate large logs quickly.</li>
+
+<li>No: does not generate debugging output.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "冒泡排序" description = "用于对数组进行排序的函数，按照字母顺序和/或根据数值以递增顺序进行排序。" preview="code" type="block">
+<insertText location="beforeSelection">
+<![CDATA[function bubbleSort(theArray)
+{
+  var i, j;
+  for (i = theArray.length - 1; i >= 0; i--)
+  {
+    for (j = 0; j <= i; j++)
+    {
+      if (theArray[j+1] < theArray[j])
+      {
+        var temp = theArray[j];
+        theArray[j] = theArray[j+1];
+        theArray[j+1] = temp;
+      }
+    }
+  }
+  return theArray;
+}
+]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<panelset>
+
+	<!-- default to App and Document maximized, but don't hard code sizes (code will compute) -->
+  <application maximize="true"/>
+  <document maximize="true"/>
+
+	<!-- TOP - InsertBar -->
+	<panelframe dock="top">
+		<panelcontainer>
+			<panel id="objects"/>
+		</panelcontainer>
+	</panelframe>
+
+	<!-- BOTTOM - Property Inspector, Timeline (hidden), results (hidden) -->
+	<panelframe dock="bottom">
+		<panelcontainer>
+			<panel id="properties"/>
+		</panelcontainer>
+		<panelcontainer title="Results" visible="false">
+      		<panel id="search"/>
+ 			<panel id="reference"/>
+     		<panel id="validation"/>
+      		<panel id="btc"/>
+      		<panel id="linkchecker"/>
+      		<panel id="reports"/>
+      		<panel id="ftp log"/>
+      		<panel id="server debug"/>
+		</panelcontainer>
+		<panelcontainer visible="false">
+			<panel id="timelines"/>
+		</panelcontainer>
+	</panelframe>
+
+	<!-- RIGHT - CSS, Code, Application, Tag Inspector, Files, Frames (hidden), History (hidden) -->
+	<panelframe dock="right">
+		<panelcontainer expanded="false" title="CSS" >
+      		<panel id="css styles"/>
+      		<panel id="layers"/>
+		</panelcontainer>
+		<panelcontainer expanded="false" title="Application" >
+      		<panel id="database"/>
+      		<panel id="data sources"/>
+      		<panel id="server scripts"/>
+      		<panel id="server components"/>
+		</panelcontainer>
+		<panelcontainer expanded="false" >
+			<panel id="tag inspector"/>
+		</panelcontainer>
+		<panelcontainer title="Files" >
+			<panel id="site"/>
+			<panel id="assets"/>
+			<panel id="snippets"/>
+		</panelcontainer>
+		<panelcontainer visible="false" >
+			<panel id="frames"/>
+		</panelcontainer>
+		<panelcontainer visible="false" >
+			<panel id="history"/>
+		</panelcontainer>
+	</panelframe>
+
+	<!-- FLOATING, individuals don't need to be listed - default behavior...-->
+</panelset>

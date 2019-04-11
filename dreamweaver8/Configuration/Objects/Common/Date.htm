@@ -1,0 +1,26 @@
+<html>
+<head>
+<!-- Copyright 2000,2001 Macromedia, Inc. All rights reserved. -->
+
+<title><MMString:LoadString id="insertbar/date" /></title>
+
+<script>
+
+function isDOMRequired() { // Return false, indicating that this object is available in code view.
+	return true;
+}
+
+function objectTag(){
+   var cmdFile = dreamweaver.getConfigurationPath() + "/Commands/Date.htm";
+   var cmdDOM = dreamweaver.getDocumentDOM(cmdFile);
+   
+   dreamweaver.popupCommand("Date.htm");
+   return (cmdDOM.parentWindow.getDateStr());
+}
+
+</script>
+</head>
+<body>
+</body>
+
+</html>

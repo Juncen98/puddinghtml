@@ -1,0 +1,1025 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFFORM</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFFORM</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Builds a form with CFML custom control tags; these provide more functionality than standard HTML form input elements. You can include the resulting form on the client page as HTML or Flash content, and generate the form using XML and XSLT.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Forms tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfform 
+   name = &quot;name&quot;
+   action = &quot;form_action&quot;
+   method = &quot;POST&quot; or &quot;GET&quot;
+   format = &quot;HTML&quot; or &quot;Flash&quot; or &quot;XML&quot;
+   skin = &quot;Flash or XSL skin&quot;
+   style = &quot;style specification&quot;
+   preserveData = &quot;yes&quot; or &quot;no&quot;
+   onSubmit = &quot;javascript&quot; 
+   scriptSrc = &quot;path&quot;
+   codeBase = &quot;URL&quot;
+   archive = &quot;URL&quot;
+The following attributes are supported in Flash and XML only
+width = &quot;pixels or percent&quot;
+height = &quot;pixels or percent&quot;
+The following attributes are supported in Flash only
+onError = &quot;ActionScript code&quot;
+wMode = &quot;window&quot; or &quot;transparent&quot; or &quot;opaque&quot;
+accessible = &quot;yes&quot; or &quot;no&quot;
+preloader = &quot;yes&quot; or &quot;no&quot;
+timeout = &quot;seconds&quot;
+The following attributes are supported in HTML and XML only
+class = &quot;form class&quot;
+enctype = &quot;Internet media type&quot;
+id = &quot;HTML id&quot;
+onload = &quot;load event script&quot;
+onreset = &quot;reset event script&quot;
+target = &quot;target window or frame&quot;&gt;
+...
+&lt;/cfform&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfapplet, cfcalendar, cfformgroup, cfformitem, cfgrid, cfinput, cfselect, cfslider, cftextarea, cftree; Part V, "Requesting and Presenting Information" in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7: 
+</p>
+<ul>
+
+<li>Added ability to set the default value of the scriptSrc attribute in the ColdFusion MX Administrator.</li>
+
+<li>Deprecated the passthrough attribute. The tag now supports all HTML form tag attributes directly.</li>
+
+<li>Added the method attribute and support for the GET method.</li>
+
+<li>Added support for Flash and XML output, including the format, height, width, preloader, timeout, wMode, accessible, and skin attributes.</li>
+
+<li>Added cfformgroup, cfformitem, and cftextarea child tags.</li>
+</ul>
+
+<p>
+ColdFusion&#160;MX:
+</p>
+<ul>
+
+<li>Deprecated the enableCAB attribute. It might not work, and might cause an error, in later releases. </li>
+
+<li>Changed the name and action attributes to optional.</li>
+
+<li>Changed integer validation to require an integer value. In previous releases it would convert a floating point value to an integer.</li>
+</ul>
+
+<p>
+The following table lists attributes that ColdFusion uses directly. For HTML format forms, this tag also supports the standard HTML form tag attributes that are not on this list, and passes them directly to the browser. ColdFusion also includes all supported HTML attributes in the XML. 
+</p>
+
+<p>
+
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>Attributes that are not marked as supported in XML are not handled by the skins provided with ColdFusion MX. They are, however, included in the generated XML as html namespace attributes to the form tag.</td>
+  </tr>
+</table>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+This tag requires an end tag.
+</p>
+
+<p>
+You can use the following ColdFusion form control tags within the cfform tag:
+</p>
+<ul>
+
+<li>cfapplet Used in HTML and XML format only; embeds a registered Java applet.</li>
+
+<li>cfformgroup Used in Flash and XML format only; groups and arranges child controls.</li>
+
+<li>cfformitem Used in Flash and XML format only; adds horizontal rules, vertical rules, and text to the form.</li>
+
+<li>cfgrid Creates a grid control to display tabular data.</li>
+
+<li>cfinput Creates and an input element.</li>
+
+<li>cfselect Creates a drop-down list box.</li>
+
+<li>cfslider Used in HTML and XML format only; creates a slider control.</li>
+
+<li>cftextarea Creates a multi-line text input box.</li>
+
+<li>cftree&#160;Creates a tree control.</li>
+</ul>
+
+<p>
+In HTML format, all tags, and in Flash format the cftree and cfgrid tags, require JavaScript support on the browser. The cfapplet tag and applet format cfgrid, cfslider, and cftree tags require the client to download a Java applet. 
+</p>
+
+<p>
+If you specify Flash format in the cfform tag, ColdFusion ignores any HTML in the form body. You must use ColdFusion tags, such as cfinput, for all form controls. You can include individual Flash format cfgrid and cftree controls in an HTML format cfform tag.
+</p>
+
+<p>
+In Flash format, if your forms do not request sensitive data (such as credit card numbers), consider setting the timeout attribute. This can prevent users from getting &quot;The form data has expired, Please reload this page in your browser&quot; errors if they use the browser back button to return to the form. For more information, see "Caching data in Flash forms" in Chapter&#160;29, "Caching data in Flash forms,"in ColdFusion MX Developer's Guide.
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>In Flash format, if you do not specify height and width attributes, Flash reserves browser space equal to the area of the browser window. If any other output follows the form, users must scroll to see it. Therefore, if you follow a Flash form with additional output, specify the height and width values.</td>
+  </tr>
+</table>
+<p>
+If attribute value text must include quotation marks, escape them by doubling them.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Using the onError attribute in Flash forms</span>
+<p>
+If you use onSubmit or onBlur validation, the onError attribute lets you specify ActionScript code to execute if the user tries to submit a Flash form with validation errors, as follows:
+</p>
+<ul>
+
+<li>If you specify one or more valid Flash expressions, Flash executes the expressions. </li>
+
+<li>If you omit the attribute, Flash displays a dialog box with all applicable error messages.</li>
+
+<li>If you specify onError=&quot;&quot; (an empty string) Flash does not display any message, but does not submit the form.</li>
+</ul>
+
+<p>
+Your ActionScript can use the errors variable to determine the fields and errors. The errors object has the following fields:
+</p>
+
+<p>
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr align="center">    <th>&#160;</th>
+    <th>&#160;</th>
+</tr>
+  <tr align="left">    <td>
+<p>name </p></td>
+    <td>
+<p>The name attribute of the control's CFML tag.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>field </p></td>
+    <td>
+<p>The internal name used by Flash for the field. name (for example, _level0.field1)</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>value </p></td>
+    <td>
+<p>The value in the field.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>message </p></td>
+    <td>
+<p>The message attribute of the control's CFML tag.</p></td>
+</tr>
+</table>
+</div>
+<p>
+</p>
+
+<p>
+The following example shows cfform tags with an onError attribute that selects the tab in an accordion or tabnavigator that contains a lastName field with an invalid entry:
+</p>
+<pre>&lt;cfform name=&quot;form1&quot; format=&quot;flash&quot; width=&quot;800&quot; height=&quot;500&quot; 
+      onError=&quot;if (errors[&#39;lastName&#39;] != undefined
+         ){tabA.selectedIndex=0; _root.lastName.setFocus();}&quot;&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">&lt;Incorporating HTML form tags and attributes</span>
+<p>
+In HTML format, the cfform tag lets you incorporate the following standard HTML elements. They are not available in Flash format:
+</p>
+<ul>
+
+<li>Standard HTML form tag attributes and values. The attributes and values are included in the form tag that cfform outputs in the page. For example, you can use form tag attributes like target or onMouseOver with cfform.</li>
+
+<li>HTML tags that can ordinarily be put within the HTML form tag. For example, you can use the HTML input tag to create a submit button in a cfform, without the other features of cfinput:</li>
+<pre>&lt;cfform&gt;
+   &lt;input type = &quot;Submit&quot; value = &quot; update... &quot;&gt;
+&lt;/cfform&gt;
+</pre></ul>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;cfform Example&lt;/h3&gt;
+&lt;!--- If Form.oncethrough exists, the form has been submitted. ---&gt;
+&lt;cfif IsDefined(&quot;Form.oncethrough&quot;)&gt;
+   &lt;cfif IsDefined(&quot;Form.testVal1&quot;)&gt;
+      &lt;h3&gt;Results of Radio Button Test&lt;/h3&gt;
+      &lt;cfif Form.testVal1&gt;Your radio button answer was yes
+      &lt;cfelse&gt;Your radio button answer was no
+      &lt;/cfif&gt;
+   &lt;/cfif&gt;
+   &lt;h3&gt;Results of Checkbox Test&lt;/h3&gt;
+   &lt;cfif IsDefined(&quot;Form.chkTest2&quot;)&gt;
+      Your checkbox answer was yes
+   &lt;cfelse&gt;
+      Your checkbox answer was no
+   &lt;/cfif&gt;
+   &lt;cfif IsDefined(&quot;Form.textSample&quot;) AND Form.textSample is not &quot;&quot;&gt;
+      &lt;h3&gt;Results of Credit Card Input&lt;/h3&gt;
+      Your credit card number, &lt;cfoutput&gt;#Form.textSample#&lt;/cfoutput&gt;, 
+      was valid under the MOD 10 algorithm.
+   &lt;/cfif&gt;
+   &lt;cfif IsDefined(&quot;Form.sampleSlider&quot;)&gt;
+      &lt;cfoutput&gt;
+         &lt;h3&gt;You gave this page a rating of #Form.sampleSlider#&lt;/h3&gt;
+      &lt;/cfoutput&gt;
+   &lt;/cfif&gt;
+   &lt;hr noshade=&quot;True&quot;&gt;
+&lt;/cfif&gt;
+
+&lt;!--- Begin by calling the cfform tag. ---&gt;
+&lt;cfform name=&quot;cfformexample&quot;&gt;
+   &lt;h4&gt;This example displays radio button input type for cfinput.&lt;/h4&gt;
+   Yes &lt;cfinput type = &quot;Radio&quot; name = &quot;TestVal1&quot; value = &quot;Yes&quot; checked&gt;
+   No &lt;cfinput type = &quot;Radio&quot; name = &quot;TestVal1&quot; value = &quot;No&quot;&gt;
+   &lt;h4&gt;This example displays checkbox input type for cfinput.&lt;/h4&gt;
+   &lt;cfinput type = &quot;Checkbox&quot; name = &quot;ChkTest2&quot; value = &quot;Yes&quot;&gt;
+   &lt;h4&gt;This shows client-side validation for cfinput text boxes.&lt;/h4&gt;
+   (&lt;i&gt;This item is optional&lt;/i&gt;)&lt;br&gt;
+   Please enter a credit card number:
+   &lt;cfinput type = &quot;Text&quot; name = &quot;TextSample&quot; 
+      message = &quot;Please enter a Credit Card Number&quot; 
+      validate = &quot;creditcard&quot; required = &quot;No&quot;&gt;
+   &lt;h4&gt;This example shows the use of the cfslider tag.&lt;/h4&gt;
+   Rate your approval of this example from 1 to 10 by sliding control.&lt;br&gt;
+   1 &lt;cfslider name = &quot;sampleSlider&quot; width=&quot;100&quot;
+         label = &quot;Page Value: &quot; range = &quot;1,10&quot;
+         message = &quot;Please enter a value from 1 to 10&quot;&gt; 10
+   &lt;p&gt;&lt;cfinput type = &quot;submit&quot; name = &quot;submit&quot; value = &quot;show me the result&quot;&gt;
+   &lt;cfinput type = &quot;hidden&quot; name = &quot;oncethrough&quot; value = &quot;Yes&quot;&gt;&lt;/p&gt;
+&lt;/cfform&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">A Simple XML form</span>
+<p>
+The following example shows a simple XML-format form. It uses the default.xsl transform that is supplied with ColdFusion to generate the HTML output for display:
+</p>
+<pre>&lt;cfform name=&quot;testXForm&quot; format=&quot;XML&quot; skin=&quot;basic&quot;&gt;
+  &lt;!--- Use cfformgroup to put the first and last names on a single line. ---&gt;
+  &lt;cfformgroup type=&quot;horizontal&quot;&gt;
+     &lt;cfinput type=&quot;text&quot; name=&quot;firstname&quot; label=&quot;First Name:&quot; value=&quot;Robert&quot;&gt;
+     &lt;cfinput type=&quot;text&quot; name=&quot;lastname&quot; label=&quot;Last Name:&quot; value=&quot;Smith&quot;&gt;
+  &lt;/cfformgroup&gt;
+  &lt;cfinput type=&quot;password&quot; name=&quot;password&quot; label=&quot;Password:&quot; value=&quot;&quot;&gt;
+  &lt;cfinput type=&quot;hidden&quot; name=&quot;hidden&quot; label=&quot;hidden:&quot; value=&quot;&quot;&gt;
+  &lt;cfselect name=&quot;state&quot; style=&quot;width:200&quot; label=&quot;State&quot;&gt;
+    &lt;option&gt;California&lt;/option&gt;
+    &lt;option selected&gt;Utah&lt;/option&gt;
+    &lt;option&gt;Iowa&lt;/option&gt;
+    &lt;option selected&gt;New York&lt;/option&gt;
+   &lt;/cfselect&gt;
+   &lt;cftextarea name=&quot;description&quot; label=&quot;Description:&quot; rows=&quot;5&quot; cols=&quot;40&quot;&gt;this 
+is sample text.&lt;/cftextarea&gt;
+&lt;/cfform&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="NAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Opt</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "CFForm_n"
+
+
+<p>A name for the form. </p>
+<p>In HTML format, if you omit this attribute and specify an id attribute, ColdFusion does not include a name attribute in the HTML sent to the browser; this behavior lets you use the cfform tag to create XHTML-compliant forms. If you omit the name attribute and the id attribute, ColdFusion generates a name of the form CFForm_n where n is a number that assigned serially to the forms on a page.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ACTION">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ACTION</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Opt</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "See Description"
+
+
+<p>Name of ColdFusion page to execute when the form is submitted for processing.</p>
+<p>If you omit this attribute, the form posts to the page identified by the CGI.SCRIPT_NAME variable, the requested page that resulted in displaying the form.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="METHOD">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">METHOD</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Opt</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "post"
+
+
+<p>The method the browser uses to send the form data to the server:</p><ul>
+
+<li>post: sends the data using the HTTP post method, This method sends the data in a separate message to the server.</li>
+
+<li>get: sends the data using the HTTP get method, which puts the form field contents in the URL query string.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="FORMAT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">FORMAT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Opt</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "HTML"
+
+<ul>
+
+<li>HTML: generates an HTML form and send it to the client. cfgrid and cftree child controls can be in Flash or applet format.</li>
+
+<li>Flash: generates a Flash form and send it to the client. All controls are in Flash format.</li>
+
+<li>XML: generates XForms-compliant XML and save the results in a variable specified by the name attribute. By default, ColdFusion also applies an XSL skin and displays the result. For more information, see the skin attribute.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SKIN">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SKIN</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Opt</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Flash: haloGreen"
+<strong>Default value:</strong> "XML:"
+<strong>Default value:</strong> "default.xsl"
+
+
+<p>Flash:&#160;Use a Macromedia halo color to stylize the output. The skin determines the color used for highlighted and selected elements.</p><ul>
+
+<li>haloSilver</li>
+
+<li>haloBlue</li>
+
+<li>haloGreen</li>
+
+<li>haloOrange</li>
+</ul>
+
+<p>XML:&#160;Specfies whether to apply an XSL skin and display the resulting HTML to the client. Can be any of the following:</p><ul>
+
+<li>ColdFusion MX skin name: applies the specified skin.</li>
+
+<li>XSL file name: applies the skin located in the specified path.</li>
+
+<li>"none": does not apply an XSL skin. Your CFML page must process the XML that ColdFusion saves in the variable specified by the name attribute and display any results.</li>
+
+<li>(omitted) or "default": uses the ColdFusion MX default skin.</li>
+</ul>
+
+<p>You can specify the following ColdFusion MX skins (located in the cf_webroot\CFIDE\scripts\xsl directory):</p><ul>
+
+<li>basic</li>
+
+<li>basiccss</li>
+
+<li>beige</li>
+
+<li>blue</li>
+
+<li>bluegray</li>
+
+<li>lightgray</li>
+
+<li>red</li>
+
+<li>silver</li>
+</ul>
+
+<p>A filename can be any of the following: </p><ul>
+
+<li>absolute URL</li>
+
+<li>URL relative to the web root</li>
+
+<li>absolute file path</li>
+
+<li>name of a file in the scripts folder or a subdirectory of the cf_webroot\CFIDE\scripts directory. In this case, do not specify the .xsl suffix. </li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="STYLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STYLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Opt</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Styles to apply to the form. In HTML or XML format, ColdFusion passes the style attribute to the browser or XML.</p>
+<p>In Flash format, must be a style specification in CSS format. For detailed information on specifying Flash styles, see Chapter&#160;29, "Creating Forms in Macromedia Flash" in ColdFusion MX Developer's Guide.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="PRESERVEDATA">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PRESERVEDATA</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Opt</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+
+<p>When the cfform action attribute posts back to the page that contains the form, this determines whether to override the control values with the submitted values. </p><ul>
+
+<li>false: uses values specified in the control tag attributes.</li>
+
+<li>true: uses corresponding submitted values.</li>
+</ul>
+
+<p>Applies to these controls:</p><ul>
+
+<li>cfinput, cfslider, cftextinput: overrides the value attribute value.</li>
+
+<li>cfselect controls that are populated from queries: Overrides the selected attribute. See cfselect.</li>
+
+<li>cftree controls: overrides the cftreeitem expand attribute. If true, expands previously-selected elements. The cftree completePath attribute must be set to yes.</li>
+
+<li>cfgrid controls: has no effect. (This avoids confusion as to whether data has been resubmitted to the database by the control.)</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ONLOAD">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ONLOAD</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Opt</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<strong>Default value:</strong> "JavaScript to execute when the form loads."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ONRESET">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ONRESET</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Opt</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<strong>Default value:</strong> "JavaScript to execute when the user clicks a reset button."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ONSUBMIT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ONSUBMIT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Opt</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>JavaScript or ActionScript function to execute to preprocess data before form is submitted. See ColdFusion MX Developer's Guide. If any child tags specify onSubmit field validation, ColdFusion does the validation before executing this JavaScript.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SCRIPTSRC">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SCRIPTSRC</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Opt</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "See Description"
+
+<strong>Default value:</strong> "If the Administrator has an empty default value, ColdFusion looks for the script in the directory that contains the ColdFusion page."
+
+<p>Specifies the URL, relative to the web root, of the directory that contains the cfform.js file with the client-side JavaScript used by this tag and its child tags. For XML format forms, this directory is also the default directory for XSLT skins. </p>
+<p>This attribute is useful if the file is not in the default location. This attribute may be required in some hosting environments and configurations that block access to the /CFIDE directory.</p>
+<p>The default location is set in the ColdFusion MX Administrator; by default, it is /CFIDE/scripts/cfform.js.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="CODEBASE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">CODEBASE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Opt</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "See Description"
+
+
+<p>URL of downloadable JRE plug-in for Internet Explorer; used for cfgrid, cfslider, and cftree Java applet controls.</p>
+<p>Default: /CFIDE/classes/cf-j2re-win.cab</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ARCHIVE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ARCHIVE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Opt</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "See Description"
+
+<strong>Default value:</strong> "URL of downloadable Java classes for cfgrid, cfslider, and cftree applet controls."
+<strong>Default value:</strong> "Default: /CFIDE/classes/cfapplets.jar"
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="HEIGHT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">HEIGHT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Opt</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "100%"
+
+<strong>Default value:</strong> "The height of the form. Use a number to specify pixels, In Flash, you can use a percentage value, such as &quot;height=60%&quot; to specify a percentage of the available width. The displayed height might be less than the specified size."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="WIDTH">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">WIDTH</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Opt</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "100%"
+
+<strong>Default value:</strong> "The width of the form. Use a number to specify pixels, In Flash, you can use a percentage value, such as &quot;width=60%&quot; to specify a percentage of the available width.."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ONERROR">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ONERROR</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Opt</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<strong>Default value:</strong> "Applies only for onSubmit or onBlur validation; has no effect for onServer validation. "
+<strong>Default value:</strong> "An ActionScript expression or expressions to execute if the user submits a form with one or more validation errors."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="WMODE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">WMODE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Opt</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Window"
+
+<strong>Default value:</strong> "Specifies how the Flash form appears relative to other displayable content that occupies the same space on an HTML page."
+<ul>
+
+<li>window: the Flash form is the topmost layer on the page and obscures anything that would share the space, such as drop-down dynamic HTML lists.</li>
+
+<li>transparent: the Flash form honors the z-index of dhtml so you can float items above it. If the Flash form is above any item, transparent regions in the form show the content that is below it.</li>
+
+<li>opaque: the Flash form honors the z-index of dhtml so you can float items above it. If the Flash form is above any item, it blocks any content that is below it.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ACCESSIBLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ACCESSIBLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Opt</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "No"
+
+<strong>Default value:</strong> "Specifies whether to include support screen readers in the Flash form. Screen reader support adds approximately 80KB to the SWF file sent to the client."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="PRELOADER">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PRELOADER</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Opt</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "true"
+
+<strong>Default value:</strong> "Specifies whether to display a progress bar when loading the Flash form."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TIMEOUT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TIMEOUT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Opt</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "0"
+
+<strong>Default value:</strong> "Integer number of seconds for which to keep the form data in the Flash cache on the server. A value of 0 prevents the data from being cached. For more information, see "Caching data in Flash forms" in ColdFusion MX Developer's Guide."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

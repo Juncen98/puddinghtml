@@ -1,0 +1,11 @@
+<participant>
+     <quickSearch><![CDATA[BOF]]></quickSearch>
+     <insertText location="beforeSelection">
+<![CDATA[
+<% if (@@rsName@@.EOF && @@rsName@@.BOF) { %>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName"><![CDATA[/<%\s*if\s*\(\s*(\w+)\.EOF\s*&&\s*\w+\.BOF\s*\)\s*\{\s*%>/]]></searchPattern>
+     </searchPatterns>
+</participant>

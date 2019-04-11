@@ -1,0 +1,360 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFFILE</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var APPENDCHARSETLIST;
+var MOVECHARSETLIST;
+var READCHARSETLIST;
+var WRITECHARSETLIST;
+var NAMECONFLICTLIST;
+var SELECTORLIST;
+var theUIObjects;
+var applyType = "dynamic"; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode, SELECTORLIST); 
+}
+
+function applyTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode); 
+}
+
+function updateUI()
+{
+  var curDiv = SELECTORLIST.getValue(); 
+  tagDialog.showOnlyThisLayer(curDiv); 
+}
+
+function initializeUI()
+{
+	APPENDCHARSETLIST = new ListControl("theappendcharset");
+	MOVECHARSETLIST = new ListControl("themovecharset");
+	READCHARSETLIST = new ListControl("thereadcharset");
+	WRITECHARSETLIST = new ListControl("thewritecharset");
+	NAMECONFLICTLIST = new ListControl("thenameconflict"); 
+	SELECTORLIST = new ListControl("theselector"); 
+	theUIObjects = new Array(APPENDCHARSETLIST,MOVECHARSETLIST,READCHARSETLIST,WRITECHARSETLIST,NAMECONFLICTLIST); 
+
+  tagDialog.populateDropDownList(APPENDCHARSETLIST, theCharSetCap, theCharSetVal, 1);
+  tagDialog.populateDropDownList(MOVECHARSETLIST, theCharSetCap, theCharSetVal, 1);
+  tagDialog.populateDropDownList(READCHARSETLIST, theCharSetCap, theCharSetVal, 1);
+  tagDialog.populateDropDownList(WRITECHARSETLIST, theCharSetCap, theCharSetVal, 1);
+  tagDialog.populateDropDownList(NAMECONFLICTLIST, theFileNameConflictCap, theFileNameConflictVal, 1); 
+  tagDialog.populateDropDownList(SELECTORLIST, theSelFileCap, theSelFileVal, 0); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+
+<div name="常规"> 
+<br /> 
+操作: 
+<select name="theselector" class="selectorList" id="attr:cfcollection:selector" onChange="updateUI();" attname="action" editable="false">
+</select>
+<hr width="100%"> 
+<div id="theupload" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">文件字段: </td>
+      <td nowrap="nowrap"> 
+        <input name="thefilefield" type="text" class="basicTextField" id="attr:cffile:filefield" attname="filefield" required="true" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">目标路径: </td>
+      <td nowrap="nowrap">
+        <input name="theuploaddestination" type="text" class="basicTextField" id="attr:cffile:uploaddestination" attname="destination" required="true" />&nbsp;
+				<input type="button" name="browseBtn1" value="浏览..." onClick="tagDialog.browseFolder('theuploaddestination',document.layers[0].document.layers['theupload'],true)" />      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">接受文件: </td>
+      <td nowrap="nowrap">
+        <input name="theaccept" type="text" class="medTField" id="attr:cffile:accept" attname="accept" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">结果:</td>
+      <td nowrap="nowrap"><input name="theresult" type="text" class="medTField" id="attr:cffile:result" attname="result" /></td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">属性: </td>
+      <td nowrap="nowrap">
+        <input name="theattributes" type="text" class="medTField" id="attr:cffile:attributes" attname="attributes" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">模式: </td>
+      <td nowrap="nowrap">
+        <input name="themode" type="text" class="medTField" id="attr:cffile:mode" attname="mode" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">文件名解析: </td>
+      <td nowrap="nowrap">
+        <select name="thenameconflict" class="oneWordOptionList" id="attr:cffile:nameconflict" attname="nameconflict" editable="false">
+        </select>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="thecopy" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">复制文件: </td>
+      <td nowrap="nowrap"> 
+        <input name="thesource" type="text" class="basicTextField" id="attr:cffile:source" attname="source" required="true" />&nbsp;
+				<input type="button" name="browseBtn2" value="浏览..." onClick="tagDialog.browseFile('thesource',document.layers[0].document.layers['thecopy'],true)" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">目标路径: </td>
+      <td nowrap="nowrap">
+        <input name="thecopydestination" type="text" class="basicTextField" id="attr:cffile:copydestination" attname="destination" required="true" />&nbsp;
+				<input type="button" name="browseBtn3" value="浏览..." onClick="tagDialog.browseFolder('thecopydestination',document.layers[0].document.layers['thecopy'],true)" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">属性: </td>
+      <td nowrap="nowrap">
+        <input name="theattributes" type="text" class="medTField" id="attr:cffile:attributes" attname="attributes" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">模式: </td>
+      <td nowrap="nowrap">
+        <input name="themode" type="text" class="medTField" id="attr:cffile:mode" attname="mode" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="themove" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">移动文件: </td>
+      <td nowrap="nowrap"> 
+        <input name="thesource" type="text" class="basicTextField" id="attr:cffile:source" attname="source" required="true" />&nbsp;
+				<input type="button" name="browseBtn4" value="浏览..." onClick="tagDialog.browseFile('thesource',document.layers[0].document.layers['themove'],true)" />      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">目标路径: </td>
+      <td nowrap="nowrap">
+        <input name="themovedestination" type="text" class="basicTextField" id="attr:cffile:movedestination" attname="destination" required="true" />&nbsp;
+				<input type="button" name="browseBtn5" value="浏览..." onClick="tagDialog.browseFolder('themovedestination',document.layers[0].document.layers['themove'],true)" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">属性: </td>
+      <td nowrap="nowrap">
+        <input name="theattributes" type="text" class="medTField" id="attr:cffile:attributes" attname="attributes" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">模式: </td>
+      <td nowrap="nowrap">
+        <input name="themode" type="text" class="medTField" id="attr:cffile:mode" attname="mode" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">字符集: </td>
+      <td nowrap="nowrap">
+	    <select name="themovecharset" class="oneWordOptionList" id="attr:cffile:movecharset" attname="charset" editable="true">
+        </select>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="therename" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">重命名文件: </td>
+      <td nowrap="nowrap"> 
+        <input name="therenamesource" type="text" class="basicTextField" id="attr:cffile:source" attname="source" required="true" />&nbsp;
+				<input type="button" name="browseBtn6" value="浏览..." onClick="tagDialog.browseFile('therenamesource',document.layers[0].document.layers['therename'],true)" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">重命名为: </td>
+      <td nowrap="nowrap">
+        <input name="therenamedestination" type="text" class="basicTextField" id="attr:cffile:renamedestination" attname="destination" required="true" />&nbsp;
+				<input type="button" name="browseBtn7" value="浏览..." onClick="tagDialog.browseFile('therenamedestination',document.layers[0].document.layers['therename'],true)" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">属性: </td>
+      <td nowrap="nowrap">
+        <input name="theattributes" type="text" class="medTField" id="attr:cffile:attributes" attname="attributes" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">模式: </td>
+      <td nowrap="nowrap">
+        <input name="themode" type="text" class="medTField" id="attr:cffile:mode" attname="mode" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="thedelete" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">删除文件: </td>
+      <td nowrap="nowrap">
+        <input name="thedeletefile" type="text" class="basicTextField" id="attr:cffile:deletefile" attname="file" required="true" />&nbsp;
+				<input type="button" name="browseBtn8" value="浏览..." onClick="tagDialog.browseFolder('thedeletefile',document.layers[0].document.layers['thedelete'],true)" />            
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="theappend" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">附加到文件: </td>
+      <td colspan="2" nowrap="nowrap">
+        <input name="theappendfile" type="text" class="basicTextField" id="attr:cffile:appendfile" attname="file" required="true" />&nbsp;
+				<input type="button" name="browseBtn9" value="浏览..." onClick="tagDialog.browseFile('theappendfile',document.layers[0].document.layers['theappend'],true)" />      
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">属性: </td>
+      <td colspan="2" nowrap="nowrap">
+        <input name="theattributes" type="text" class="medTField" id="attr:cffile:attributes" attname="attributes" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">模式: </td>
+      <td colspan="2" nowrap="nowrap">
+        <input name="themode" type="text" class="medTField" id="attr:cffile:mode" attname="mode" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">字符集: </td>
+      <td colspan="2" nowrap="nowrap">
+	    <select name="theappendcharset" class="oneWordOptionList" id="attr:cffile:appendcharset" attname="charset" editable="true">
+        </select>
+      </td>
+    </tr>
+    <tr> 
+      <td align="right" valign="top" nowrap="nowrap"><br />输出字符串: </td>
+      <td colspan="2" nowrap="nowrap">
+        <textarea name="theoutput" wrap="OFF" class="stringOrMsgField" id="attr:cffile:output" attname="output" required="true" ></textarea>      
+      </td> 
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cffile:addnewline" name="thenewline" attname="addnewline" truevalue="yes" falsevalue="no" checked="true" />
+      添加新行</td>
+	   <td colspan="2" nowrap="nowrap">
+        <input type="checkbox" id="attr:cffile:addfixnewline" name="thefixnewline" attname="fixnewline" truevalue="yes" falsevalue="no" />
+      修正新行</td>
+      </tr>
+  </table>
+</div> 
+<div id="thewrite" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">写入文件: </td>
+      <td colspan="2" nowrap="nowrap">
+        <input name="thewritefile" type="text" class="basicTextField" id="attr:cffile:writefile" attname="file" required="true" />&nbsp;
+				<input type="button" name="browseBtn10" value="浏览..." onClick="tagDialog.browseFile('thewritefile',document.layers[0].document.layers['thewrite'],true)" />      
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">属性: </td>
+      <td colspan="2" nowrap="nowrap">
+        <input name="theattributes" type="text" class="medTField" id="attr:cffile:attributes" attname="attributes" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">模式: </td>
+      <td colspan="2" nowrap="nowrap">
+        <input name="themode" type="text" class="medTField" id="attr:cffile:mode" attname="mode" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">字符集: </td>
+      <td colspan="2" nowrap="nowrap">
+	    <select name="thewritecharset" class="oneWordOptionList" id="attr:cffile:writecharset" attname="charset" editable="true">
+        </select>
+      </td>
+    </tr>
+    <tr> 
+      <td valign="top" align="right" nowrap="nowrap"><br />输出字符串: </td>
+      <td colspan="2" nowrap="nowrap">
+        <textarea name="theoutput" style="width:220px;height:100px;font-size:10px;"  wrap="OFF" attname="output" required="true"></textarea>      
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cffile:addnewline" name="thenewline" attname="addnewline" truevalue="yes" falsevalue="no" checked="true" />
+      添加新行</td>
+	  	   <td nowrap="nowrap"><input type="checkbox" id="attr:cffile:addfixnewline" name="thefixnewline" attname="fixnewline" truevalue="yes" falsevalue="no" />
+修正新行</td>
+    </tr>
+  </table>
+</div> 
+<div id="theread" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">从文件读取: </td>
+      <td nowrap="nowrap">
+        <input name="thereadfile" type="text" class="basicTextField" id="attr:cffile:readfile" attname="file" required="true" />&nbsp;
+				<input type="button" name="browseBtn11" value="浏览..." onClick="tagDialog.browseFile('thereadfile',document.layers[0].document.layers['theread'],true)" />      
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">变量名: </td>
+      <td nowrap="nowrap">
+        <input name="thevariable" type="text" class="basicTextField" id="attr:cffile:variable" attname="variable" required="true"/>      
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">字符集: </td>
+      <td nowrap="nowrap">
+	    <select name="thereadcharset" class="oneWordOptionList" id="attr:cffile:readcharset" attname="charset" editable="true">
+        </select>
+      </td>
+    </tr>
+  </table>
+</div> 
+<div id="thereadbinary" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">从二进制文件读取: </td>
+      <td nowrap="nowrap">
+        <input name="thereadbinfile" type="text" class="basicTextField" id="attr:cffile:readbinfile" attname="file" required="true" />&nbsp;
+				<input type="button" name="browseBtn12" value="浏览..." onClick="tagDialog.browseFile('thereadbinfile',document.layers[0].document.layers['thereadbinary'],true)" />      
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">变量名: </td>
+      <td nowrap="nowrap">
+        <input name="thevariable" type="text" class="basicTextField" id="attr:cffile:variable" attname="variable" required="true" />      
+      </td>
+    </tr>
+  </table>
+</div> 
+</div>
+</html>

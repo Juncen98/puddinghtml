@@ -1,0 +1,28 @@
+<tag name="CFDIRECTORY" endtag="no">
+<tagformat nlbeforetag="1" nlaftertag="1"/>
+<tagdialog file="cfdirectory.htm" />
+  <attributes>
+    <attrib name="DIRECTORY" type="DIRECTORY"/>
+    <attrib name="ACTION" type="ENUMERATED">
+      <attriboption value="LIST"/>
+      <attriboption value="CREATE"/>
+      <attriboption value="DELETE"/>
+      <attriboption value="RENAME"/>
+    </attrib>
+    <attrib name="NAME" type="TEXT"/>
+    <attrib name="FILTER" type="TEXT"/>
+    <attrib name="SORT" type="TEXT"/>
+    <attrib name="MODE" type="TEXT"/>
+    <attrib name="NEWDIRECTORY" type="TEXT"/>
+    <attrib name="RECURSE" type="ENUMERATED"/>
+      <attriboption value="yes"/>
+      <attriboption value="no"/>
+    </attrib>
+   </attributes>
+  <attribcategories>
+    <attribgroup name="General" elements="directory,action" />
+    <attribgroup name="List" elements="name,filter,sort" />
+    <attribgroup name="Create" elements="mode" />
+    <attribgroup name="Rename" elements="newdirectory" />
+  </attribcategories>
+</tag>

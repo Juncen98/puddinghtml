@@ -1,0 +1,80 @@
+<tag name="CFHTTP" endtag="yes">
+<tagformat nlbeforetag="1" nlbeforecontents="1" nlaftercontents="1" nlaftertag="1" indentcontents="yes"/>
+<tagdialog file="cfhttp.htm" />
+  <attributes>
+    <attrib name="URL" type="TEXT"/>
+    <attrib name="PORT" type="TEXT"/>
+    <attrib name="USERNAME" type="TEXT"/>
+    <attrib name="PASSWORD" type="TEXT"/>
+    <attrib name="NAME" type="TEXT"/>
+    <attrib name="COLUMNS" type="TEXT"/>
+    <attrib name="PATH" type="DIRECTORY"/>
+    <attrib name="FILE" type="FILENAME"/>
+    <attrib name="METHOD" type="ENUMERATED">
+      <attriboption value="GET"/>
+      <attriboption value="POST"/>
+      <attriboption value="HEAD"/>
+      <attriboption value="PUT"/>
+      <attriboption value="DELETE"/>
+      <attriboption value="OPTIONS"/>
+      <attriboption value="TRACE"/>
+    </attrib>
+    <attrib name="TEXTQUALIFIER" type="TEXT"/>
+    <attrib name="DELIMITER" type="TEXT"/>
+    <attrib name="PROXYSERVER" type="TEXT"/>
+    <attrib name="PROXYUSER" type="TEXT"/>
+    <attrib name="PROXYPASSWORD" type="TEXT"/>
+	<attrib name="RESULT" type="TEXT"/>
+    <attrib name="RESOLVEURL" type="ENUMERATED">
+      <attriboption value="Yes"/>
+      <attriboption value="No"/>
+    </attrib>
+    <attrib name="THROWONERROR" type="ENUMERATED">
+      <attriboption value="Yes"/>
+      <attriboption value="No"/>
+	  </attrib>
+    <attrib name="REDIRECT" type="ENUMERATED">
+      <attriboption value="Yes"/>
+      <attriboption value="No"/>
+	  </attrib>
+    <attrib name="MULTIPART" type="ENUMERATED">
+      <attriboption value="Yes"/>
+      <attriboption value="No"/>
+    </attrib>
+    <attrib name="PROXYPORT" type="TEXT"/>
+    <attrib name="USERAGENT" type="TEXT"/>
+    <attrib name="TIMEOUT" type="TEXT"/>
+    <attrib name="CHARSET" type="enumerated">
+      <attriboption value="big5" caption="big5"/>
+      <attriboption value="euc-cn" caption="euc-cn"/>
+      <attriboption value="euc-jp" caption="euc-jp"/>
+      <attriboption value="euc-kr" caption="euc-kr"/>
+      <attriboption value="hz-gb-2312" caption="hz-gb-2312"/>
+      <attriboption value="iso-2022-jp" caption="iso-2022-jp"/>
+      <attriboption value="iso-2022-kr" caption="iso-2022-kr"/>
+      <attriboption value="iso-8859-1" caption="iso-8859-1"/>
+      <attriboption value="iso-8859-2" caption="iso-8859-2"/>
+      <attriboption value="iso-8859-3" caption="iso-8859-3"/>
+      <attriboption value="iso-8859-4" caption="iso-8859-4"/>
+      <attriboption value="iso-8859-5" caption="iso-8859-5"/>
+      <attriboption value="iso-8859-6" caption="iso-8859-6"/>
+      <attriboption value="iso-8859-7" caption="iso-8859-7"/>
+      <attriboption value="iso-8859-8" caption="iso-8859-8"/>
+      <attriboption value="iso-8859-9" caption="iso-8859-9"/>
+      <attriboption value="shift_jis" caption="shift_jis"/>
+      <attriboption value="us-ascii" caption="us-ascii"/>
+      <attriboption value="utf-16" caption="utf-16"/>
+      <attriboption value="utf-8" caption="utf-8"/>
+      <attriboption value="windows-1252" caption="windows-1252"/>
+    </attrib>
+    <attrib name="GETASBINARY" type="ENUMERATED">
+      <attriboption value="No"/>
+      <attriboption value="Yes"/>
+      <attriboption value="Auto"/>
+    </attrib>    
+   </attributes>
+	<attribcategories>
+		<attribgroup name="General" elements="result,url,port,proxyserver,path,file,username,password,proxyport,timeout,useragent,resolveurl,throwonerror,redirect,method,charset,multipart,getasbinary,proxyuser,proxypassword" />
+		<attribgroup name="Create Query" elements="name,columns,delimiter,textqualifier" />
+	</attribcategories>
+</tag>

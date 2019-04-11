@@ -1,0 +1,70 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<title>≤Â»Îø…±‡º≠«¯”Ú</title>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<script language="javascript" src="../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<script language="javascript" src="../Shared/MM/Scripts/CMN/string.js"></script>
+<script language="javascript" src="../Shared/MM/Scripts/CMN/TemplateUtils.js"></script>
+<!-- End removal area. -->
+
+<script language="javascript" src="InsertEditableRegion.js">
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+//--------------- END LOCALIZEABLE   ---------------
+
+// Copyright 2001 Macromedia, Inc. All rights reserved.
+
+//---------------   GLOBAL VARIABLES   ---------------
+
+var targetDom = null;
+var abortCommand = false; //Set to true if the user cancels out of the 'save as template' dialog
+
+var selectedEditableNode = null; 
+
+//---------------     API FUNCTIONS    ---------------
+
+
+
+function isDOMRequired() {
+	return true;
+}
+
+function receiveArguments()
+	{
+	var targetDom = null; 
+	if (arguments.length > 0) 
+		targetDom = arguments[1]; 
+		
+	if (targetDom == null)
+		targetDom = dw.getDocumentDOM(); 
+
+	deleteSelectedEditableRegion(targetDom);
+	} //receiveArguments
+
+
+function canAcceptCommand()
+	{
+	var targetDom = null; 
+	if (arguments.length > 0) 
+		targetDom = arguments[1]; 
+	if (targetDom == null)
+		targetDom = dw.getDocumentDOM(); 
+	
+	return canDeleteEditableRegion(targetDom);
+	} //canAcceptCommand
+
+	
+	
+//---------------    LOCAL FUNCTIONS   ---------------
+
+
+</script>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body >
+</body>
+</html>
+

@@ -1,0 +1,93 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 6.0//pi">
+<!-- tag:cftextarea, priority:1, selection:exact, vline, serverModel:Cold Fusion -->
+<!-- Copyright 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<html>
+<head>
+<title>Cftextarea</title>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/TagEditClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<script src="../TagLibraries/CFML/strings.js"></script>
+<script src="../TagLibraries/CFML/loc_strings.js"></script>
+<script src="../TagLibraries/Html/loc_strings.js"></script>
+<script src="../TagLibraries/Html/strings.js"></script>
+<script src="cf_textarea.js"></script>
+<link href="_pi_common.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="piBody">
+<img id="piImage" name="piImage" src="Img/input_textbox.gif"> 
+
+<div id="idBoxLayer"> 
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="left" height="17" NOWRAP>Cftextarea</td>
+    </tr>
+    <tr>
+      <td align="left" nowrap>
+        <input name="theName" type="text" id="theName" onBlur="updateTag('name')">
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div id="topLayer" style="width:220px;">
+  <table width="100%" border="0" cellpadding="1" cellspacing="0">
+    <tr>
+      <td width="26%" align="right" nowrap>&nbsp;&nbsp;字符宽度&nbsp;</td>
+      <td width="16%" nowrap><input name="theCharWidth" type="text" id="theCharWidth" style="width:30px;" onBlur="updateTag('cols')"> </td>
+      <td width="26%" align="right" nowrap>&nbsp;&nbsp;换行&nbsp;</td>
+      <td width="32%" nowrap><select name="theWrap" id="theWrap" style="width:70px" onChange="updateTag('wrap')"></select></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>&nbsp;&nbsp;行数&nbsp;</td>
+      <td nowrap><input name="theNumLines" type="text" id="theNumLines" style="width:30px;" onBlur="updateTag('rows')">
+</td>
+      <td align="right" nowrap>&nbsp;&nbsp;&nbsp;</td>
+      <td nowrap><input type="checkbox" name="theRequired" id="theRequired" onClick="updateTag('required')"> 必需的</td>
+    </tr>
+  </table>
+</div>
+
+
+<div id="bottomLayer" style="width: 320px;">
+  <table width="100%" border="0" cellpadding="1" cellspacing="0">
+    <tr>
+      <td align="right" nowrap>&nbsp;&nbsp;验证&nbsp;</td>
+      <td align="left" valign="middle" nowrap><select name="validateMenu" id="validateMenu" onChange="updateTag('validate')" style="width:80px" editable="true">
+      </select></td>
+      <td align="right" valign="middle" nowrap>&nbsp;&nbsp;标签&nbsp;</td>
+      <td align="left" valign="middle" nowrap><input name="theLabel" type="text" id="theLabel" style="width:80px" onBlur="updateTag('label')"></td>
+      <td align="right" nowrap>&nbsp;&nbsp;高度&nbsp;</td>
+      <td nowrap><input name="theHeight" type="text" id="theHeight" style="width:30px" onBlur="updateTag('height')"></td>
+      <td nowrap>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>&nbsp;&nbsp;验证于&nbsp;</td>
+      <td align="left" valign="middle" nowrap><select name="theValidateAt" id="theValidateAt" onChange="updateTag('validateAt')" style="width:80px" editable="true">
+      </select></td>
+      <td align="right" valign="middle" nowrap>&nbsp;&nbsp;样式&nbsp;</td>
+      <td align="left" valign="middle" nowrap><input name="theStyle" type="text" id="theStyle" style="width:80px" onBlur="updateTag('style')"></td>
+      <td align="right" nowrap>&nbsp;&nbsp;宽度&nbsp;</td>
+      <td nowrap><input name="theWidth" type="text" id="theWidth" style="width:30px" onBlur="updateTag('width')"></td>
+      <td nowrap><input name="more" type="image" id="more2"  style="margin-left:20px;" title="Display Tag Editor for cfinput" onClick="displayTagDialog()" src="Img/tagDialog.gif" alt="为 cfinput 显示标签编辑器"></td>
+    </tr>
+  </table>
+</div>
+
+<div id="initialValue" style="position:absolute; left:360px; width: 150px; height:90px; margin-top:3px;">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+    <tr>
+	  <td align="right" valign="top" nowrap>&nbsp;&nbsp;初始值&nbsp;</td>
+	  <td rowspan="2" align="left" valign="top"><textarea name="theValue" id="theValue" style="height:90px" onBlur="updateTag('value')"></textarea></td>
+    </tr>
+    <tr>
+      <td align="right" valign="top" nowrap>&nbsp;</td>
+    </tr>
+  </table>
+</div>
+
+</body>
+</html>

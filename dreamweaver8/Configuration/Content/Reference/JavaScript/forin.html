@@ -1,0 +1,49 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">for/in</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> ECMA <span class="emphasis">1</span></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements"></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>This is a variation of the regular <span class="literal">for</span> loop that
+can extract the property names and values of an object. Only
+properties (and, in Netscape 6, methods) that are set to be
+enumerable by the browser internals appear in the output of this
+construction. Opera 6 supports this construction only for custom
+script-generated objects.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>function showProps( ) {
+    objName = "image";
+    obj = document.images[0];
+    var msg = "";
+    for (var i in obj) {
+        msg += objName + "." + i + "=" + obj[i] + "\n";
+    }
+    alert(msg);
+}</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div>
+
+</body>
+</html>

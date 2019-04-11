@@ -1,0 +1,32 @@
+<participant version="5.0">
+<insertText location="afterSelection">
+<![CDATA[
+<table border="0" width="50%" align="center">
+  <cfoutput>
+    <tr>
+      <td width="23%" align="center">
+        <cfif PageNum_@@RecordsetName@@ GT 1>
+    		  <a href="#CurrentPage#?PageNum_@@RecordsetName@@=1<@ if (@@AddQueryString@@) @>#QueryString_@@RecordsetName@@#<@ endif @>">@@FirstLinkText@@</a> 
+  		  </cfif>
+  	  </td>
+      <td width="31%" align="center">
+		    <cfif PageNum_@@RecordsetName@@ GT 1>
+			    <a href="#CurrentPage#?PageNum_@@RecordsetName@@=#Max(DecrementValue(PageNum_@@RecordsetName@@),1)#<@ if (@@AddQueryString@@) @>#QueryString_@@RecordsetName@@#<@ endif @>">@@PrevLinkText@@</a> 
+		    </cfif>    
+      </td>
+      <td width="23%" align="center">
+	      <cfif PageNum_@@RecordsetName@@ LT TotalPages_@@RecordsetName@@>
+	      	  <a href="#CurrentPage#?PageNum_@@RecordsetName@@=#Min(IncrementValue(PageNum_@@RecordsetName@@),TotalPages_@@RecordsetName@@)#<@ if (@@AddQueryString@@) @>#QueryString_@@RecordsetName@@#<@ endif @>">@@NextLinkText@@</a> 
+	      </cfif>    
+      </td>
+      <td width="23%" align="center">
+	      <cfif PageNum_@@RecordsetName@@ LT TotalPages_@@RecordsetName@@>
+	    	  <a href="#CurrentPage#?PageNum_@@RecordsetName@@=#TotalPages_@@RecordsetName@@#<@ if (@@AddQueryString@@) @>#QueryString_@@RecordsetName@@#<@ endif @>">@@LastLinkText@@</a> 
+	      </cfif>    
+      </td>
+    </tr>
+  </cfoutput>
+</table>
+]]>
+</insertText>
+</participant>

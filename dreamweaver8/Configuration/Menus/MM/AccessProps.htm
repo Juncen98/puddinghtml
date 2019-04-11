@@ -1,0 +1,125 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<head>
+<!-- Copyright 1999, 2000, 2001, 2002, 2003, 2004,2005 Macromedia, Inc. All rights reserved. -->
+<title>文件访问属性</title>
+<script src="AccessProps.js" language="JavaScript"></script>
+<script language="javascript">
+//--------------- LOCALIZEABLE GLOBALS---------------
+var MSG_BadValue = "必须输入一个介于 0 和 777 之间的值。";
+var MSG_AllOK = "所有文件的权限均已正确设置。";
+var MSG_SomeNotSet = "无法设置某些文件的权限。";
+var MSG_NoneSet = "无法设置任何文件的权限。";
+var MSG_NotFTPSite = "只有在 FTP 站点上才支持设置访问属性。";
+var MSG_AccessPropsFailed = "设置访问属性失败，原因:\n\n";
+var MSG_CheckLogStr = "\n\n有关其他信息，请查看 FTP 日志。";
+
+//--------------- END LOCALIZEABLE   ---------------
+</script>
+</head>
+<body onLoad="initializeUI()">
+<form name="theForm"><table width="280px" border="0" bordercolorlight="#000000" bordercolordark="#000000">
+    <tr> 
+      <td width="40%"> 
+        <div align="right"></div>
+      </td>
+      <td width="20%"> 
+        <div align="center">读取</div>
+      </td>
+      <td width="20%"> 
+        <div align="center">写入</div>
+      </td>
+      <td width="20%"> 
+        <div align="center">执行</div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="40%"> 
+        <div align="right">所有者</div>
+      </td>
+      <td width="20%"> 
+        <div align="center"> 
+          <input type="checkbox" name="OwnerRead" value="checkbox" onClick="setPermissions('OwnerRead')">
+        </div>
+      </td>
+      <td width="20%"> 
+        <div align="center"> 
+          <input type="checkbox" name="OwnerWrite" value="checkbox" onClick="setPermissions('OwnerWrite')">
+        </div>
+      </td>
+      <td width="20%"> 
+        <div align="center"> 
+          <input type="checkbox" name="OwnerExecute" value="checkbox" onClick="setPermissions('OwnerExecute')">
+        </div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="40%"> 
+        <div align="right">用户/组</div>
+      </td>
+      <td width="20%"> 
+        <div align="center"> 
+          <input type="checkbox" name="UserRead" value="checkbox" onClick="setPermissions('UserRead')">
+        </div>
+      </td>
+      <td width="20%"> 
+        <div align="center"> 
+          <input type="checkbox" name="UserWrite" value="checkbox" onClick="setPermissions('UserWrite')">
+        </div>
+      </td>
+      <td width="20%"> 
+        <div align="center"> 
+          <input type="checkbox" name="UserExecute" value="checkbox" onClick="setPermissions('UserExecute')">
+        </div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="40%"> 
+        <div align="right">所有人</div>
+      </td>
+      <td width="20%"> 
+        <div align="center"> 
+          <input type="checkbox" name="EveryRead" value="checkbox" onClick="setPermissions('EveryRead')">
+        </div>
+      </td>
+      <td width="20%"> 
+        <div align="center"> 
+          <input type="checkbox" name="EveryWrite" value="checkbox" onClick="setPermissions('EveryWrite')">
+        </div>
+      </td>
+      <td width="20%"> 
+        <div align="center"> 
+          <input type="checkbox" name="EveryExecute" value="checkbox" onClick="setPermissions('EveryExecute')">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td width="25%">&nbsp;</td>
+      <td width="25%">&nbsp;</td>
+      <td width="25%"> 
+        <div align="center">
+          <input type="text" name="Permissions" maxlength="3" size="8" value="0" onBlur="valueChanged(false)">
+        </div>
+      </td>
+      <td width="25%">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><div align="center">
+        <input type="submit" name="ReadAll" value="读取全部"  onClick="setPermissions('AllRead')">
+      </div></td>
+      <td><div align="center">
+        <input type="submit" name="WriteAll" value="全写" onClick="setPermissions('AllWrite')">
+      </div></td>
+      <td><div align="center">
+        <input type="submit" name="ExecuteAll" value="执行全部" onClick="setPermissions('AllExecute')">
+      </div></td>
+    </tr>
+    <tr>
+<td colspan="4"><div align="left"><b>此命令可能无法用于某些服务器。</b></div></td>
+
+
+    </tr>
+  </table></form>
+</body>
+</html>

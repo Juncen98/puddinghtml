@@ -1,0 +1,13 @@
+<participant name="transParamExists_end">
+  <translator>
+    <searchPatterns>
+      <searchPattern><![CDATA[/\} (?=\r\n|\r|\n|\?>)/i]]></searchPattern>
+      <searchPattern requiredLocation="leading"><![CDATA[/if \(!?isset\(([^\r\n]*?)\)\) \{ (?=\r\n|\r|\n|\?>)/i]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="directive" translationType="tabbed region end">
+        <closeTag>MM_HIDDENREGION</closeTag>
+      </translation>
+    </translations>
+  </translator>
+</participant>

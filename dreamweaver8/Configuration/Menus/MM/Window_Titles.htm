@@ -1,0 +1,50 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>´°¿Ú</TITLE>
+<SCRIPT LANGUAGE="javascript">
+<!--
+function receiveArguments()
+{
+	var i=0;
+	var theWindow = arguments[0];
+	i=parseInt(theWindow);
+	dw.setActiveWindow(dw.getDocumentList()[i]);
+}
+
+function canAcceptCommand()
+{
+	var winlist = dw.getDocumentList();
+	return winlist.length > 0;
+}
+
+// getDynamicContent returns the contents of a dynamically generated menu.
+// returns an array of strings to be placed in the menu, with a unique
+// identifier for each item separated from the menu string by a semicolon.
+//
+// return null from this routine to indicate that you are not adding any
+// items to the menu
+function getDynamicContent(itemID)
+{
+	var windowList = null;
+	var i;
+	windowList = new Array();
+	var dwWindowNames = dw.getDocumentList();
+	if (dwWindowNames.length > 0)
+	{
+		for (i=0; i<dwWindowNames.length; i++)
+		{
+			windowList[i] = new String(dwWindowNames[i].getWindowTitle());
+			windowList[i] += ";id='"+i+"'"; // each item needs an ID
+			windowList[i] = windowList[i].replace(/_/g,"%_");
+		}
+	}
+	return windowList;
+}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

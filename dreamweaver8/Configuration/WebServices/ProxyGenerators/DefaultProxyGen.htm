@@ -1,0 +1,65 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<HTML>
+<HEAD>
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/TempURL.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/file.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Ultradev/Scripts/proxyCmn.js"></SCRIPT>
+<SCRIPT SRC="../Introspectors/IntrospectorCommon.js"></SCRIPT>
+<SCRIPT SRC="../../Components/Common/WebServices/WebServicesCommon.js"></SCRIPT>
+<SCRIPT SRC="../../Components/Common/SignatureBuilder.js"></SCRIPT>
+<SCRIPT SRC="WSDLCallback.js"></SCRIPT>
+<SCRIPT SRC="DefaultProxyGen.js"></SCRIPT>
+<TITLE>默认代理生成器</TITLE>
+</HEAD>
+
+<body onLoad="initializeUI()">
+<form name="theForm">
+  <table border="0" cellpadding="1" cellspacing="4">
+    <tr valign="baseline"> 
+      <td width="34" align="left" nowrap>名称:</td>
+      <td width="361" align="left" nowrap> 
+        <input type="text" name="proxygenname"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td colspan="2" align="left" nowrap>支持的服务器模型:</td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap>&nbsp;</td>
+      <td nowrap><input type="image" name="plusButton" src="../../Shared/UltraDev/Images/PlusButton.gif" value="+"  onClick="AddServerModel();"> 
+        <input type="image" name="minusButton" src="../../Shared/UltraDev/Images/MinusButtonEnabled.gif" value="-" onClick="DeleteServerModel();"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="left" nowrap>&nbsp;</td>
+      <td align="left" nowrap><select name="servermodels" size="8" style="width:200">
+        </select></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td colspan="2" align="left" nowrap>生成代理命令:<br> <input type="text" name="genproxycommand" style="width:400px"> 
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td colspan="2" align="left" nowrap>编译代理命令:<br> <input type="text" name="compproxycommand" style="width:400px"> 
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td colspan="2" align="left" nowrap>对编译的代理进行内部检查:<br> <select name="introspectorslist" style="width:200">
+        </select> </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td colspan="2" align="left" nowrap>目标文件夹:<br> <input type="text" name="destfolder" style="width:300px"> 
+        <input type="button" value="浏览..." onClick="OnBrowse();focus(this)" name="browse"> 
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</HTML>
+

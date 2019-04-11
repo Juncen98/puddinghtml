@@ -1,0 +1,502 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>CFFTP</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var GET_TRANSFERMODELIST;
+var PUT_TRANSFERMODELIST;
+var SELECTORLIST;
+var theUIObjects;
+var applyType = "dynamic";
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue();
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode, SELECTORLIST);
+}
+
+function applyTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue();
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode);
+}
+
+function updateUI()
+{
+  var curDiv = SELECTORLIST.getValue();
+  tagDialog.showOnlyThisLayer(curDiv,document.layers[0]);
+}
+
+function initializeUI()
+{
+  GET_TRANSFERMODELIST = new ListControl("thegettransfermode");
+  PUT_TRANSFERMODELIST = new ListControl("theputtransfermode");
+  SELECTORLIST = new ListControl("theselector");
+  theUIObjects = new Array(GET_TRANSFERMODELIST, PUT_TRANSFERMODELIST, SELECTORLIST);
+
+  tagDialog.populateDropDownList(GET_TRANSFERMODELIST, theCFFTPTransferModeVal, theCFFTPTransferModeVal, 0);
+  tagDialog.populateDropDownList(PUT_TRANSFERMODELIST, theCFFTPTransferModeVal, theCFFTPTransferModeVal, 0);
+  tagDialog.populateDropDownList(SELECTORLIST, theSelCFFTPVal, theSelCFFTPVal, 0);
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="initializeUI();">
+<div name="常规">
+<br />
+操作:
+<select name="theselector" class="selectorList" id="attr:cfftp:selector" onChange="updateUI();" attname="action" editable="false">
+</select>
+<hr width="100%" />
+  <div id="thelistdir" style="position:absolute;width:350px;height:115px;z-index:1;visibility: inherit;left: 0px;top: 55px;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">查询名称: </td>
+        <td nowrap="nowrap">
+          <input name="thename" type="text" class="medTField" id="attr:cfftp:name" attname="name" required="true" />
+        </td>
+      </tr>
+      <tr>
+         <td align="right" valign="baseline" nowrap="nowrap">连接: </td>
+          <td nowrap="nowrap">
+        <input name="theconnection" type="text" class="basicTextField" id="attr:cfftp:connection" attname="connection" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">目录: </td>
+        <td nowrap="nowrap">
+          <input name="thedirectory" type="text" class="basicTextField" id="attr:cfftp:directory" attname="directory" required="true" />
+        </td>
+      </tr>
+	  <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">结果: </td>
+        <td nowrap="nowrap">
+          <input name="theresult" type="text" class="basicTextField" id="attr:cfftp:result" attname="result" />
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="thegetfile" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">本地文件: </td>
+        <td nowrap="nowrap">
+          <input name="thelocalfile" type="text" class="basicTextField" id="attr:cfftp:localfile" attname="localfile" required="true" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">远程文件: </td>
+        <td nowrap="nowrap">
+          <input name="theremotefile" type="text" class="basicTextField" id="attr:cfftp:remotefile" attname="remotefile" required="true" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">连接: </td>
+        <td nowrap="nowrap">
+          <input name="theconnection" type="text" class="basicTextField" id="attr:cfftp:connection" attname="connection" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">扩展名: </td>
+        <td nowrap="nowrap">
+          <input name="theasciiextensionlist" type="text" class="basicTextField" id="attr:cfftp:asciiextensionlist" attname="asciiextensionlist" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">传输模式: </td>
+        <td nowrap="nowrap">
+          <select name="thegettransfermode" class="oneWordOptionList" id="attr:cfftp:gettransfermode" attname="transfermode" editable="false">
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">属性: </td>
+        <td nowrap="nowrap">
+          <input name="attributes" type="text" class="medTField" id="attr:cfftp:attributes" attname="attributes" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">&nbsp;</td>
+        <td nowrap="nowrap">
+          <input type="checkbox" id="attr:cfftp:failifexists" name="thefailifexists" attname="failifexists" truevalue="yes" falsevalue="no" checked="true" /> 如果存在则失败
+        </td>
+      </tr>
+	  <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">结果: </td>
+        <td nowrap="nowrap">
+          <input name="theresult" type="text" class="basicTextField" id="attr:cfftp:result" attname="result" />
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="theputfile" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">本地文件: </td>
+        <td nowrap="nowrap">
+          <input name="thelocalfile" type="text" class="basicTextField" id="attr:cfftp:localfile" attname="localfile" required="true" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">远程文件: </td>
+        <td nowrap="nowrap">
+          <input name="theremotefile" type="text" class="basicTextField" id="attr:cfftp:remotefile" attname="remotefile" required="true" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">连接: </td>
+        <td nowrap="nowrap">
+          <input name="theconnection" type="text" class="basicTextField" id="attr:cfftp:connection" attname="connection" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">传输模式: </td>
+        <td nowrap="nowrap">
+          <select name="theputtransfermode" class="oneWordOptionList" id="attr:cfftp:puttransfermode" attname="transfermode" editable="false">
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">扩展名: </td>
+        <td nowrap="nowrap">
+          <input name="theasciiextensionlist" type="text" class="basicTextField" id="attr:cfftp:asciiextensionlist" attname="asciiextensionlist" />
+        </td>
+      </tr>
+	  <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">结果: </td>
+        <td nowrap="nowrap">
+          <input name="theresult" type="text" class="basicTextField" id="attr:cfftp:result" attname="result" />
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="theopen" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">连接: </td>
+        <td nowrap="nowrap">
+          <input name="theconnection" type="text" class="basicTextField" id="attr:cfftp:connection" attname="connection" />
+        </td>
+      </tr>
+	  <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">结果: </td>
+        <td nowrap="nowrap">
+          <input name="theresult" type="text" class="basicTextField" id="attr:cfftp:result" attname="result" />
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="theclose" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">连接: </td>
+        <td nowrap="nowrap">
+          <input name="theconnection" type="text" class="basicTextField" id="attr:cfftp:connection" attname="connection" />
+        </td>
+      </tr>
+	  <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">结果: </td>
+        <td nowrap="nowrap">
+          <input name="theresult" type="text" class="basicTextField" id="attr:cfftp:result" attname="result" />
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="thechangedir" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">目录: </td>
+        <td nowrap="nowrap">
+          <input name="thedirectory" type="text" class="basicTextField" id="attr:cfftp:directory" attname="directory" required="true" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">连接: </td>
+        <td nowrap="nowrap">
+          <input name="theconnection" type="text" class="basicTextField" id="attr:cfftp:connection" attname="connection" />
+        </td>
+      </tr>
+	  <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">结果: </td>
+        <td nowrap="nowrap">
+          <input name="theresult" type="text" class="basicTextField" id="attr:cfftp:result" attname="result" />
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="thecreatedir" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">目录: </td>
+        <td nowrap="nowrap">
+          <input name="thedirectory" type="text" class="basicTextField" id="attr:cfftp:directory" attname="directory" required="true" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">连接: </td>
+        <td nowrap="nowrap">
+          <input name="theconnection" type="text" class="basicTextField" id="attr:cfftp:connection" attname="connection" />
+        </td>
+      </tr>
+	  <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">结果: </td>
+        <td nowrap="nowrap">
+          <input name="theresult" type="text" class="basicTextField" id="attr:cfftp:result" attname="result" />
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="therename" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">现有的: </td>
+        <td nowrap="nowrap">
+          <input name="theexisting" type="text" class="basicTextField" id="attr:cfftp:existing" attname="existing" required="true" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">新的: </td>
+        <td nowrap="nowrap">
+          <input name="thenew" type="text" class="basicTextField" id="attr:cfftp:new" attname="new" required="true" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">连接: </td>
+        <td nowrap="nowrap">
+          <input name="theconnection" type="text" class="basicTextField" id="attr:cfftp:connection" attname="connection" />
+        </td>
+      </tr>
+	  <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">结果: </td>
+        <td nowrap="nowrap">
+          <input name="theresult" type="text" class="basicTextField" id="attr:cfftp:result" attname="result" />
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="theremove" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">项: </td>
+        <td nowrap="nowrap">
+          <input name="theitem" type="text" class="basicTextField" id="attr:cfftp:item" attname="item" required="true" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">连接: </td>
+        <td nowrap="nowrap">
+          <input name="theconnection" type="text" class="basicTextField" id="attr:cfftp:connection" attname="connection" />
+        </td>
+      </tr>
+	  <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">结果: </td>
+        <td nowrap="nowrap">
+          <input name="theresult" type="text" class="basicTextField" id="attr:cfftp:result" attname="result" />
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="thegetcurrentdir" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">连接: </td>
+        <td nowrap="nowrap">
+          <input name="theconnection" type="text" class="basicTextField" id="attr:cfftp:connection" attname="connection" />
+        </td>
+      </tr>
+	  <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">结果: </td>
+        <td nowrap="nowrap">
+          <input name="theresult" type="text" class="basicTextField" id="attr:cfftp:result" attname="result" />
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="thegetcurrenturl" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">连接: </td>
+        <td nowrap="nowrap">
+          <input name="theconnection" type="text" class="basicTextField" id="attr:cfftp:connection" attname="connection" />
+        </td>
+      </tr>
+	  <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">结果: </td>
+        <td nowrap="nowrap">
+          <input name="theresult" type="text" class="basicTextField" id="attr:cfftp:result" attname="result" />
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="theexists" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">项: </td>
+        <td nowrap="nowrap">
+          <input name="theitem" type="text" class="basicTextField" id="attr:cfftp:item" attname="item" required="true" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">连接: </td>
+        <td nowrap="nowrap">
+          <input name="theconnection" type="text" class="basicTextField" id="attr:cfftp:connection" attname="connection" />
+        </td>
+      </tr>
+	  <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">结果: </td>
+        <td nowrap="nowrap">
+          <input name="theresult" type="text" class="basicTextField" id="attr:cfftp:result" attname="result" />
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="theexistsdir" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">目录: </td>
+        <td nowrap="nowrap">
+          <input name="thedirectory" type="text" class="basicTextField" id="attr:cfftp:directory" attname="directory" required="true" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">连接: </td>
+        <td nowrap="nowrap">
+          <input name="theconnection" type="text" class="basicTextField" id="attr:cfftp:connection" attname="connection" />
+        </td>
+      </tr>
+	  <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">结果: </td>
+        <td nowrap="nowrap">
+          <input name="theresult" type="text" class="basicTextField" id="attr:cfftp:result" attname="result" />
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="theexistsfile" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">远程文件: </td>
+        <td nowrap="nowrap">
+          <input name="theremotefile" type="text" class="basicTextField" id="attr:cfftp:remotefile" attname="remotefile" required="true" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">连接: </td>
+        <td nowrap="nowrap">
+          <input name="theconnection" type="text" class="basicTextField" id="attr:cfftp:connection" attname="connection" />
+        </td>
+      </tr>
+	  <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">结果: </td>
+        <td nowrap="nowrap">
+          <input name="theresult" type="text" class="basicTextField" id="attr:cfftp:result" attname="result" />
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="theremovedir" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">目录: </td>
+        <td nowrap="nowrap">
+          <input name="thedirectory" type="text" class="basicTextField" id="attr:cfftp:directory" attname="directory" required="true" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">连接: </td>
+        <td nowrap="nowrap">
+          <input name="theconnection" type="text" class="basicTextField" id="attr:cfftp:connection" attname="connection" />
+        </td>
+      </tr>
+	  <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">结果: </td>
+        <td nowrap="nowrap">
+          <input name="theresult" type="text" class="basicTextField" id="attr:cfftp:result" attname="result" />
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div name="服务器信息">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">代理服务器: </td>
+      <td nowrap="nowrap">
+        <input name="theproxyserver" type="text" class="basicTextField" id="attr:cfftp:proxyserver" attname="proxyserver" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">服务器: </td>
+      <td nowrap="nowrap">
+        <input name="theserver" type="text" class="basicTextField" id="attr:cfftp:server" attname="server" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">用户名: </td>
+      <td nowrap="nowrap">
+        <input name="theusername" type="text" class="medTField" id="attr:cfftp:username" attname="username" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">密码: </td>
+      <td nowrap="nowrap">
+        <input name="thepassword" type="text" class="medTField" id="attr:cfftp:password" attname="password" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">端口: </td>
+      <td nowrap="nowrap">
+        <input name="theport" type="text" class="medTField" id="attr:cfftp:port" attname="port" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">超时: </td>
+      <td nowrap="nowrap">
+        <input name="thetimeout" type="text" class="medTField" id="attr:cfftp:timeout" attname="timeout" /> （秒）
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">重试计数: </td>
+      <td nowrap="nowrap">
+        <input name="theretrycount" type="text" class="medTField" id="attr:cfftp:retrycount" attname="retrycount" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">&nbsp; </td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfftp:stoponerror" name="thestoponerror" attname="stoponerror" truevalue="yes" falsevalue="no" checked="true"/>
+        出错时停止
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">&nbsp; </td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfftp:passive" name="thepassive" attname="passive" truevalue="yes" falsevalue="" />
+        被动方式
+      </td>
+    </tr>
+	<tr>
+        <td align="right" valign="baseline" nowrap="nowrap">结果: </td>
+        <td nowrap="nowrap">
+          <input name="theresult" type="text" class="basicTextField" id="attr:cfftp:result" attname="result" />
+        </td>
+      </tr>
+  </table>
+</div>
+</body>
+</html>

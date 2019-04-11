@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "删除尾随字符" description = "如果某个给定的字符（如空格）出现在指定字符串的结尾处，则删除该字符。" preview="code" type="block">
+<insertText location="beforeSelection">
+<![CDATA[function removeTrailingChar (inputString, removeChar)
+{
+	var returnString=inputString;
+	if (removeChar.length)
+	{
+    while(''+returnString.charAt(returnString.length-1)==removeChar)
+	  {
+	    returnString=returnString.substring(0,returnString.length-1);
+	  }
+	}
+	return returnString;
+}]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

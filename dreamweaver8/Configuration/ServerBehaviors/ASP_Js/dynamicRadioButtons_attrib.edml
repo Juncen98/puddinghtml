@@ -1,0 +1,10 @@
+<participant>
+     <quickSearch><![CDATA[)?"]]></quickSearch>
+     <insertText location="nodeAttribute" nodeParamName="radioNode">
+<![CDATA[<%=((@@expression1@@ == @@expression2@@)?"@@checked@@":"")%>]]>
+     </insertText>
+     <searchPatterns whereToSearch="tag+input/radio">
+       <searchPattern paramNames="theName" limitSearch="attribute+name"></searchPattern>
+       <searchPattern paramNames="expression1,expression2,checked"><![CDATA[/<%=\(\((.*)==(.*)\)\?"(.*?)"\:""\)%>/]]></searchPattern>
+     </searchPatterns>
+</participant>

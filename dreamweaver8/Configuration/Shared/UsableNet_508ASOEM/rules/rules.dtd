@@ -1,0 +1,77 @@
+<!--
+  505/W3C Accessibility Suite OEM V2 for Macromedia Dreamweaver
+  (C) Copyright 2001-2005 UsableNet Inc. All rights reserved.
+-->
+<!-- $Id: rules.dtd,v 1.4 2005/03/17 15:56:30 malex Exp $ -->
+
+<!ELEMENT a ( #PCDATA ) >
+<!ATTLIST a href CDATA #REQUIRED >
+<!ATTLIST a target NMTOKEN #IMPLIED >
+
+<!ELEMENT blockquote ( #PCDATA | p | pre | ul )* >
+
+<!ELEMENT br EMPTY >
+
+<!ELEMENT code ( #PCDATA ) >
+
+<!ELEMENT em ( #PCDATA ) >
+
+<!ELEMENT li ( #PCDATA | a | code | em | strong | tt | abbr )* >
+
+<!ELEMENT ol ( li+ ) >
+
+<!ELEMENT p ( #PCDATA | a | br | code | em | strong | tt | pre | abbr )* >
+
+<!ELEMENT pre ( #PCDATA )* >
+
+<!ELEMENT strong ( #PCDATA | br )* >
+
+<!ELEMENT tt ( #PCDATA ) >
+
+<!ELEMENT ul ( li+ ) >
+
+<!ELEMENT un:category ( un:categoryTitle, un:categoryDescription ) >
+
+<!ELEMENT un:categoryDescription ( #PCDATA | a | strong | p )* >
+
+<!ELEMENT un:categoryTitle ( #PCDATA ) >
+
+<!ELEMENT un:pbmCorrection ( code | ol | p | strong | ul | pre )* >
+
+<!ELEMENT un:pbmDescription ( em | p | strong | ul )* >
+
+<!ELEMENT un:pbmExplanation ( a | blockquote | em | ol | p |
+strong | ul | pre )* >
+
+<!ELEMENT un:pbmLearnMore ( #PCDATA | a | ul )* >
+
+<!ELEMENT un:pbmMessage ( #PCDATA | strong )* >
+<!ATTLIST un:pbmMessage name NMTOKEN #REQUIRED >
+<!ATTLIST un:pbmMessage title CDATA #IMPLIED >
+
+<!ELEMENT un:rule ( un:ruleTitle, un:ruleID, un:severity?, un:guideline,
+un:ruleCategory+,  un:pbmDescription,
+un:pbmMessage*, un:pbmExplanation,  un:pbmCorrection ) >
+<!ATTLIST un:rule enabled (true|false) #REQUIRED >
+<!ATTLIST un:rule manual (true|false) #REQUIRED >
+
+<!ELEMENT un:ruleCategory ( #PCDATA ) >
+
+<!ELEMENT un:ruleDescription ( #PCDATA | a | em | p | strong )* >
+
+<!ELEMENT un:ruleID ( #PCDATA ) >
+
+<!ELEMENT un:ruleTitle ( #PCDATA ) >
+
+<!ELEMENT un:rules ( un:category+, un:rule+ ) >
+<!ATTLIST un:rules xmlns:un CDATA #FIXED "http://usablenet.com/namespaces/508_rules">
+<!ELEMENT un:severity ( #PCDATA ) >
+
+<!ELEMENT un:guideline ( #PCDATA | abbr )* >
+<!ATTLIST un:guideline abbr CDATA #REQUIRED >
+
+<!ELEMENT abbr ( #PCDATA ) >
+<!ATTLIST abbr title CDATA #REQUIRED >
+
+<!ELEMENT un:allrules ( un:rules+ ) >
+<!ATTLIST un:allrules xmlns:un CDATA #FIXED "http://usablenet.com/namespaces/508_rules">

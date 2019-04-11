@@ -1,0 +1,16 @@
+<participant VERSION="5.0">
+<insertText location="afterSelection">
+<![CDATA[
+		
+<table border="1" align="center">
+  
+  <@loop (@@DetailPageFields@@) @><tr>
+    <td>@@DetailPageFields@@</td>
+    <td><?php echo $row_@@RecordsetName@@['@@DetailPageFields@@']; ?> </td>
+  </tr>
+  <@endloop@>
+  
+</table>
+]]>
+</insertText>
+</participant>

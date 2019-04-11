@@ -1,0 +1,9 @@
+<participant>
+     <quickSearch><![CDATA[Request]]></quickSearch>
+     <insertText location="replaceSelection">
+<![CDATA[<%= Request.@@rsName@@("@@bindingName@@") %>]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName,bindingName"><![CDATA[/\bRequest\.(Cookies|QueryString|Form|ServerVariables|ClientCertificate)\(\s*"(\w+)"\s*\)/i]]></searchPattern>
+     </searchPatterns>
+</participant>

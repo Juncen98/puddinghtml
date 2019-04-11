@@ -1,0 +1,97 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<html>
+<head>
+<title>导入表格式数据</title>
+<script src="../Shared/MM/Scripts/CMN/UI.js"></script>
+<script src="../Shared/MM/Scripts/CMN/file.js"></script>
+<script src="Tabular Data.js"></script>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<script language="JavaScript">
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var ERROR_No_File = "请选择含有表格式数据的文档，或点击「取消」。";
+var ERROR_Incorrect_File_Path = "输入的文件路径不正确。";
+var ERROR_No_Delimiter = "请输入自定义的分隔符，或点击「取消」。";
+var ERROR_Incorrect_Delimiter = "分隔符只能是单个字符";
+var ERROR_Unsupported_Format = "Dreamweaver不能直接分析.xls 格式。"
+var ERROR_Supported_Formats = "Dreamweaver可以分析分隔过的文本文件。请选择一个可支持的文件或点击取消。"
+
+OPTIONS_Delimiters= new Array("Tab","逗点","分号","引号","其他");
+OPTIONS_Formatting= new Array("[无格式]","粗体","斜体","加粗斜体");
+
+OPTIONS_Units= new Array("百分比","像素");
+
+//Note: If editing order of select widget options or adding
+//new options, also edit:
+//OPTIONS_Delimiters - edit setDelimiter() and getDelimiter()
+//OPTIONS_Formatting- edit getFormtTags()
+//--------------- END LOCALIZEABLE   ---------------
+</script>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onload="initializeUI()">
+<form name="">
+  <table border="0" cellpadding="2" cellspacing="0">
+    <tr>
+      <td nowrap align="right" valign="baseline">数据文件:</td>
+      <td colspan="4" valign="baseline" nowrap>
+        <input name="DataFile" type="text" class="basicTextField" onBlur="setDelimiter(this.value)">
+        <input type="button" name="Button" value="浏览..." onClick="setTableFileToImport();focus(this)">      </td>
+    </tr>
+    <tr>
+      <td nowrap align="right" valign="baseline">定界符:</td>
+      <td colspan="3" valign="baseline">
+        <select name="Delimiter" class="oneWordOptionList" onChange="toggleCustomField(this.options[this.selectedIndex].text)">
+        </select>
+        <input name="text" type="text" size="7"></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="right" valign="baseline" nowrap><hr size="1" noshade></td>
+    </tr>
+    <tr>
+      <td nowrap align="right" valign="baseline"> 表格宽度:</td>
+      <td colspan="4" valign="baseline" nowrap>
+        <input type="radio" name="Width" value="radiobutton" checked onClick="enableBuddy('true');focus()">
+        匹配内容</td>
+    </tr>
+    <tr>
+      <td nowrap align="right" valign="baseline" >&nbsp;</td>
+      <td valign="baseline" colspan="3" >
+        <input type="radio" name="Width" value="radiobutton" onClick="enableBuddy('false');focus()">
+        设置为：
+        <input name="WidthValue" type="text" class="smallNumOrChar">
+      <select name="WidthUnit" class="unitList">
+        <option>百分比</option>
+      </select></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="right" valign="baseline" nowrap><hr size="1" noshade></td>
+    </tr>
+    <tr>
+      <td nowrap align="right" valign="baseline">单元格边距:</td>
+      <td valign="baseline">
+        <input name="CellPadding" type="text" class="smallNumOrChar">      </td>
+      <td nowrap align="right" valign="baseline">格式化首行:</td>
+      <td colspan="2" valign="baseline">
+        <select name="FormatTopRow" class="oneWordOptionList">
+          <option>[无格式]</option>
+        </select>      </td>
+    </tr>
+    <tr>
+      <td nowrap align="right" valign="baseline">单元格间距:</td>
+      <td valign="baseline">
+        <input name="CellSpacing" type="text" class="smallNumOrChar">      </td>
+      <td valign="baseline" align="right">边框:</td>
+      <td valign="baseline" colspan="2">
+        <input name="Border" type="text" class="smallNumOrChar" value="1">      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

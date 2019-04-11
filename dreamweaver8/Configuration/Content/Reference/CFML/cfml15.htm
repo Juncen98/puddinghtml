@@ -1,0 +1,249 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFCOL</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFCOL</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Defines table column header, width, alignment, and text. Used within a cftable tag.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Data output tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfcol 
+   header = &quot;column_header_text&quot;
+   width = &quot;number_indicating_width_of_column&quot;
+   align = &quot;left&quot; or &quot;right&quot; or &quot;center&quot;
+   text = &quot;column_text&quot;&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfcontent, cfoutput, cftable; "Performing file operations with cfftp" in Chapter&#160;40, "Interacting with Remote Servers," in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX: Added the ability to construct dynamic cfcol statements. 
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+At least one cfcol tag is required within the cftable tag. You must put cfcol and cftable tags adjacent in a page. The only tag that you can nest within the cftable tag is the cfcol tag. You cannot nest cftable tags.
+</p>
+
+<p>
+To display the cfcol header text, you must specify the cfcol header and the cftable colHeader attribute. If you specify either attribute without the other, the header does not display. No error is thrown.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!--- This example shows the use of cfcol and cftable to align 
+information returned from a query. ---&gt;
+&lt;!--- query selects information from cfdocexamples data source. ---&gt;
+&lt;cfquery name = &quot;GetEmployees&quot; dataSource = &quot;cfdocexamples&quot;&gt;
+   SELECT Emp_ID, FirstName, LastName, EMail, Phone, Department
+   FROM Employees
+&lt;/cfquery&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;h3&gt;cfcol Example&lt;/h3&gt;
+&lt;!--- Uses the HTMLTable attribute to display cftable as an HTML 
+table, rather than PRE formatted information ---&gt;
+&lt;cftable 
+   query = &quot;GetEmployees&quot; 
+   startRow = &quot;1&quot; colSpacing = &quot;3&quot; 
+   HTMLTable colheaders&gt;
+&lt;!--- Each cfcol tag sets the width of a column in the table, 
+the header information, and the text/CFML for the cell. ---&gt;
+   &lt;cfcol header = &quot;&lt;b&gt;ID&lt;/b&gt;&quot;
+      align = &quot;Left&quot;
+      width = 2
+      text  = &quot;#Emp_ID#&quot;&gt;
+   &lt;cfcol header = &quot;&lt;b&gt;Name/Email&lt;/b&gt;&quot;   
+      align = &quot;Left&quot;
+      width = 15
+      text  = &quot;&lt;a href = 'mailto:#Email#'&gt;#FirstName# #LastName#&lt;/A&gt;&quot;&gt;
+   &lt;cfcol header = &quot;&lt;b&gt;Phone Number&lt;/b&gt;&quot;
+      align = &quot;Center&quot;
+      width = 15
+      text  = &quot;#Phone#&quot;&gt;
+&lt;/cftable&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="HEADER">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">HEADER</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Column header text. To use this attribute, you must also use the cftable colHeaders attribute. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="WIDTH">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">WIDTH</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "20"
+
+
+<p>Column width. If the length of data displayed exceeds this value, data is truncated to fit. To avoid this, use an HTML table tag.</p>
+<p>If the surrounding cftable tag includes the htmltable attribute, width specifies the percent of the table width and it does not truncate text; otherwise, width specifies the number of characters. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ALIGN">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ALIGN</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "left"
+
+
+<p>Column alignment:</p><ul>
+
+<li>left</li>
+
+<li>right</li>
+
+<li>center </li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TEXT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TEXT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Double-quotation mark-delimited text; determines what to display. Rules: same as for cfoutput sections. You can embed hyperlinks, image references, and input controls.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

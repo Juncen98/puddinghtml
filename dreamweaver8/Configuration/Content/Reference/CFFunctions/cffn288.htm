@@ -1,0 +1,185 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>XMLCHILDPOS</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">XMLCHILDPOS</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Gets the position of a child element within an XML document object.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+The position, in an XmlChildren array, of the Nth child that has the specified name.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+XML functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>XmlChildPos(elem, childName, N) 
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+IsXmlElem, XmlElemNew, XmlSearch, XmlTransform; Chapter&#160;35, "Using XML and WDDX" in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX: Added this function.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+You can use the returned index in the ArrayInsertAt and ArrayDeleteAt functions to change XML document objects. If the specified child is not found, the function returns -1.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+The following example searches XML document element, xmlobject.employee.name[1], for its second Status element child and uses the position in an ArrayDeleteAt function to remove the element:
+</p>
+<pre>&lt;!--- Create an XML document object ---&gt;
+&lt;cfxml variable=&quot;xmlobject&quot;&gt;
+&lt;employee&gt;
+   &lt;!-- A list of employees --&gt;
+   &lt;name EmpType=&quot;Regular&quot;&gt;
+      &lt;first&gt;Almanzo&lt;/first&gt;
+      &lt;last&gt;Wilder&lt;/last&gt;
+      &lt;Status&gt;Medical Absence&lt;/Status&gt;
+      &lt;Status&gt;Extended Leave&lt;/Status&gt;
+   &lt;/name&gt;
+   &lt;name EmpType=&quot;Contract&quot;&gt;
+      &lt;first&gt;Laura&lt;/first&gt;
+      &lt;last&gt;Ingalls&lt;/last&gt;
+   &lt;/name&gt;
+&lt;/employee&gt;
+&lt;/cfxml&gt;
+
+&lt;!--- Find the second Status child of the first employee.name element ---&gt;
+&lt;cfscript&gt;
+elempos=XMLChildPos(xmlobject.employee.name[1], &quot;Status&quot;, 2);
+ArrayDeleteAt(xmlobject.employee.name[1].XmlChildren, elempos);
+&lt;/cfscript&gt;
+
+&lt;!--- Dump the resulting document object to confirm the deletion ---&gt;
+&lt;cfdump var=&quot;#xmlobject#&quot;&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="ELEM">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ELEM</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>XML element within which to search.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="CHILDNAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">CHILDNAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>XML child element for which to search. Must be an immediate child of the elem parameter. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="N">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">N</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Index of XMLchild element for which to search.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

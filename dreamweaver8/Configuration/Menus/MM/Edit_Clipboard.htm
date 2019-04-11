@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>¼ôÌù°åº¯Êý</TITLE>
+<SCRIPT LANGUAGE="javascript">
+
+function isDOMRequired()
+{
+	// return false, indicating that this is available in the code view.
+	return false;
+}
+
+function receiveArguments()
+{
+	if (arguments.length != 1) return;
+
+	var whatToDo = arguments[0];
+	if (whatToDo == "undo" && dw.canUndo())
+	{
+		dw.undo();
+	}
+	else if (whatToDo == "redo" && dw.canRedo())
+	{
+		dw.redo();
+	}
+}
+
+function canAcceptCommand()
+{
+	var selarray;
+	if (arguments.length != 1) return false;
+	var bResult = false;
+
+	var whatToDo = arguments[0];
+	if (whatToDo == "undo")
+	{
+		bResult = dw.canUndo();
+	}
+	else if (whatToDo == "redo")
+	{
+		bResult = dw.canRedo();
+	}
+	return bResult;
+}
+
+function setMenuText()
+{
+	if (arguments.length != 1) return "";
+
+	var whatToDo = arguments[0];
+	if (whatToDo == "undo")
+		return dw.getUndoText();
+	else if (whatToDo == "redo")
+		return dw.getRedoText();
+	else return "";
+}
+
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

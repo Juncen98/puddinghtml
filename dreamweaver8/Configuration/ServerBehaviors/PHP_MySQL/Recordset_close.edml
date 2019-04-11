@@ -1,0 +1,9 @@
+<participant version="6.0">
+	<insertText location="belowHTML+50"><![CDATA[<?php
+mysql_free_result($@@RecordsetName@@);
+?>]]></insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="RecordsetName" isOptional="false" limitSearch="all"><![CDATA[/mysql_free_result\(\$([^\r\n]*?)\);(?=\r\n|\r|\n|\?>)/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>mysql_free_result($</quickSearch>
+</participant>

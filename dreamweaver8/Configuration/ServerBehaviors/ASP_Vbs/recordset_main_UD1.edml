@@ -1,0 +1,25 @@
+<participant>
+     <quickSearch><![CDATA[ADODB.Recordset]]></quickSearch>
+     <insertText location="aboveHTML+50">
+<![CDATA[
+<%
+set @@rsName@@ = Server.CreateObject("ADODB.Recordset")
+@@rsName@@.ActiveConnection = "@@connection@@"
+@@rsName@@.Source = "@@encodedSQL@@"
+@@rsName@@.CursorType = @@cursorType@@
+@@rsName@@.CursorLocation = @@cursorLocation@@
+@@rsName@@.LockType = @@lockType@@
+@@rsName@@.Open()
+@@rsName@@_numRows = 0
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName"><![CDATA[/set\s+\b(\w+)\s*=\s*Server\.CreateObject\("ADODB.Recordset"\)/]]></searchPattern>
+       <searchPattern paramNames="connection"><![CDATA[/\.ActiveConnection\s*=\s*"([^"]*)"/]]></searchPattern>
+       <searchPattern paramNames="encodedSQL"><![CDATA[/\.Source\s*=\s*"([^\r\n]*)"[ \t]*[\r\n]/]]></searchPattern>
+       <searchPattern paramNames="cursorType"><![CDATA[/\.CursorType\s*=\s*(\d+)/]]></searchPattern>
+       <searchPattern paramNames="cursorLocation"><![CDATA[/\.CursorLocation\s*=\s*(\d+)/]]></searchPattern>
+       <searchPattern paramNames="lockType"><![CDATA[/\.LockType\s*=\s*(\d+)/]]></searchPattern>
+     </searchPatterns>
+</participant>

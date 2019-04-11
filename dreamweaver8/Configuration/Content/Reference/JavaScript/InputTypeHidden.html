@@ -1,0 +1,527 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">input (type="hidden")</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span>  IE <span class="emphasis">4</span>  DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>The <span class="literal">hidden</span> object is a form control generated with
+an <span class="literal">input</span> element that has its
+<span class="literal">type</span> attribute is set to
+<span class="literal">"hidden"</span>. This element has no event handlers,
+because users do not interact directly with the element. Be aware
+that any values assigned to a <span class="literal">hidden</span> object are
+removed if the user reloads the page. In other words, it does not
+function as a persistent store. Internet Explorer for Windows and
+Netscape 6 expose many more properties than are listed below. Most of
+these are included in the internal object definition for consistency
+across other text-oriented form controls, but have no practical
+significance for a <span class="literal">hidden</span> object.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="htmlequivalent"><span class="title">HTML Equivalent</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;input type="hidden"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.<span class="replaceable">formName</span>.<span class="replaceable">elementName</span>
+[window.]document.forms[<span class="replaceable">i</span>].elements[<span class="replaceable">i</span>]
+[window.]document.getElementById("<span class="replaceable">elementID</span>")</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificproperties"><span class="title">Object-Specific Properties</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">dataFld</span></td><td><span class="literal">dataSrc</span></td><td><span class="literal">defaultValue</span></td><td><span class="literal">form</span></td><td><span class="literal">name</span></td><td><span class="literal">type</span></td><td><span class="literal">value</span></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificmethods"><span class="title">Object-Specific Methods</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">createTextRange( )</span></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificeventhandlerproperties"><span class="title">Object-Specific Event Handler Properties</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="dataFld">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">dataFld</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span>  DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Used with IE data binding to associate a remote data source column
+name with the element's value. A
+<span class="literal">datasrc</span> attribute must also be set for the
+element. Setting both the <span class="literal">dataFld</span> and
+<span class="literal">dataSrc</span> properties to empty strings breaks the
+binding between element and data source. Works only with text file
+data sources in IE 5/Mac.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>document.myForm.price.dataFld = "price";</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Case-sensitive identifier of the data source column.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="dataSrc">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">dataSrc</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span>  DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Used with IE data binding to specify the ID of the
+page's <span class="literal">object</span> element that loads
+the data source object for remote data access. Setting both the
+<span class="literal">dataFld</span> and <span class="literal">dataSrc</span> properties
+to empty strings breaks the binding between element and data source.
+Works only with text file data sources in IE 5/Mac.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>document.myForm.price.dataSrc = "DBSRC3";</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Case-sensitive identifier of the data source.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="defaultValue">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">defaultValue</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span>  DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns the string assigned to the <span class="literal">value</span> attribute
+of the element in the source code. You can use this value to reassign
+the original value to the element if scripts have altered the
+<span class="literal">value</span> property during other processing.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>document.entryForm.sessionID.value = document.entryForm.sessionID.defaultValue;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			String.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="form">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">form</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span>  IE <span class="emphasis">3</span>  DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a reference to the <span class="literal">form</span> element that
+contains the current element (if any). When processing an event from
+this element, the event handler function automatically has access to
+the <span class="literal">input</span> element (as the event
+object's <span class="literal">target</span> or
+<span class="literal">srcElement</span> property). By reading the
+<span class="literal">form</span> property, the script can easily access other
+controls within the same form.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var theForm = evt.srcElement.form;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">form</span> element object reference.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="name">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">name</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span>  IE <span class="emphasis">3</span>  DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>This is the identifier associated with the form control. The value of
+this property is submitted as one-half of the name/value pair when
+the form is submitted to the server. Names are hidden from user view,
+since control labels are assigned via other means, depending on the
+control type. Form control names may also be used by script
+references to the objects. Despite the modern
+standards' preference for the <span class="literal">id</span>
+attribute, many browsers still require that a form control be
+assigned a <span class="literal">name</span> attribute to allow the
+control's value to be submitted.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>document.orderForm.compName.name = "company";</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Case-sensitive string identifier that follows the rules of identifier
+naming: it may contain no whitespace, cannot begin with a numeral,
+and should avoid punctuation except for the underscore character.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="type">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">type</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span>  IE <span class="emphasis">4</span>  DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns the type of form control element. The value is returned in
+all lowercase letters. It may be necessary to cycle through all form
+elements in search of specific types to do some processing on (e.g.,
+emptying all form controls of type <span class="literal">"text"</span> while
+leaving other controls untouched).
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>if (document.forms[0].elements[3].type == "hidden") {
+    // process hidden input type here
+}</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Any of the following constants (as a string):
+<span class="literal">button</span> | <span class="literal">checkbox</span> |
+<span class="literal">file</span> | <span class="literal">hidden</span> |
+<span class="literal">image</span> | <span class="literal">password</span> |
+<span class="literal">radio</span> | <span class="literal">reset</span> |
+<span class="literal">select-multiple</span> | <span class="literal">select-one</span> |
+<span class="literal">submit</span> | <span class="literal">text</span> |
+<span class="literal">textarea</span>.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">hidden</span></p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="value">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">value</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span>  IE <span class="emphasis">3</span>  DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Indicates the current value associated with the form control that is
+submitted with the name/value pair for the element. All values are
+strings, but they may represent other kinds of data, including
+Boolean and numeric values.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>document.forms[0].price.value = "33.95";</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			String.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="createTextRange( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">createTextRange( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4(Win)</span>  DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Creates a <span class="literal">TextRange</span> object containing the hidden
+field's string value. See the
+<span class="literal">TextRange</span> object for details.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">TextRange</span> object.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+</body>
+</html>

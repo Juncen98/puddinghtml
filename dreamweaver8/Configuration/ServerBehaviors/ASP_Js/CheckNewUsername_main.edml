@@ -1,0 +1,37 @@
+<participant>
+     <quickSearch><![CDATA[MM_dupKeyRedirect]]></quickSearch>
+     <insertText location="aboveHTML+18">
+<![CDATA[
+<%
+// *** Redirect if username exists
+var MM_flag="MM_insert";
+if (String(Request(MM_flag)) != "undefined") {
+  var MM_dupKeyRedirect="@@dupKeyRedirect@@";
+  var MM_rsKeyConnection=MM_@@connName@@_STRING;
+  var MM_dupKeyUsernameValue = String(Request.Form("@@frmUsername@@"));
+  var MM_dupKeySQL = "SELECT @@fldUsername@@ FROM @@tableName@@ WHERE @@fldUsername@@='" + MM_dupKeyUsernameValue.replace(/'/g, "''") + "'"
+  var MM_adodbRecordset = "ADODB.Recordset";
+  var MM_rsKey = Server.CreateObject(MM_adodbRecordset);
+  MM_rsKey.ActiveConnection = MM_rsKeyConnection;
+  MM_rsKey.Source = MM_dupKeySQL;
+  MM_rsKey.CursorType=0;
+  MM_rsKey.CursorLocation=2;
+  MM_rsKey.LockType=3;
+  MM_rsKey.Open();
+  if (!MM_rsKey.EOF || !MM_rsKey.BOF) {
+    // the username was found - can not add the requested username
+    var MM_qsChar = "?";
+    if (MM_dupKeyRedirect.indexOf("?") >= 0) MM_qsChar = "&";
+    MM_dupKeyRedirect = MM_dupKeyRedirect + MM_qsChar + "requsername=" + MM_dupKeyUsernameValue;
+    Response.Redirect(MM_dupKeyRedirect);
+  }
+  MM_rsKey.Close();
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="dupKeyRedirect,connName,frmUsername,fldUsername,tableName" limitSearch="all"><![CDATA[/[\r\n]\s*var\s+MM_dupKeyRedirect\s*=\s*"([^\r\n]*)"[\w\W]*[\r\n]\s*var\s+MM_rsKeyConnection\s*=\s*MM_([^\r\n]*)_STRING[\w\W]*[\r\n]\s*var\s+MM_dupKeyUsernameValue\s*=\s*String\s*\(\s*Request\.Form\s*\(\s*"([^\r\n]*)"[\w\W]*[\r\n]\s*var\s+MM_dupKeySQL\s*=\s*"SELECT\s+([^\r\n]*)\s+FROM\s+([^\r\n]*)\s+WHERE\s+/]]></searchPattern>
+       <searchPattern paramNames="dupKeyRedirect_url" limitSearch="all"><![CDATA[/var\s+MM_dupKeyRedirect\s*=\s*"([^\r\n]*?)"/]]></searchPattern>
+     </searchPatterns>
+</participant>

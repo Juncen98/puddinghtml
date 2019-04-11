@@ -1,0 +1,21 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<TITLE>&quot;布局表格&quot;</TITLE>
+<SCRIPT LANGUAGE="javascript">
+function doCreate()
+{
+    if (MM.layoutBoxArgsWidth == 0 && MM.layoutBoxArgsHeight == 0)
+	    return;
+
+    var doc = dw.getDocumentDOM();
+    if (doc)
+        doc.createLayoutTable(MM.layoutBoxArgsLeft, MM.layoutBoxArgsTop, MM.layoutBoxArgsWidth, MM.layoutBoxArgsHeight);
+}
+</SCRIPT>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY onLoad="doCreate()">
+</BODY>
+</HTML>

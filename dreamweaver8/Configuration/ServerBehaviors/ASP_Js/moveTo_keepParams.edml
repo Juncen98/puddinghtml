@@ -1,0 +1,40 @@
+<participant>
+     <quickSearch><![CDATA[MM_removeList]]></quickSearch>
+     <insertText location="aboveHTML+90">
+<![CDATA[
+<%
+// *** Go To Record and Move To Record: create strings for maintaining URL and Form parameters
+
+// create the list of parameters which should not be maintained
+var MM_removeList = "&index=";
+if (MM_paramName != "") MM_removeList += "&" + MM_paramName.toLowerCase() + "=";
+var MM_keepURL="",MM_keepForm="",MM_keepBoth="",MM_keepNone="";
+
+// add the URL parameters to the MM_keepURL string
+for (var items=new Enumerator(Request.QueryString); !items.atEnd(); items.moveNext()) {
+  var nextItem = "&" + items.item().toLowerCase() + "=";
+  if (MM_removeList.indexOf(nextItem) == -1) {
+    MM_keepURL += "&" + items.item() + "=" + Server.URLencode(Request.QueryString(items.item()));
+  }
+}
+
+// add the Form variables to the MM_keepForm string
+for (var items=new Enumerator(Request.Form); !items.atEnd(); items.moveNext()) {
+  var nextItem = "&" + items.item().toLowerCase() + "=";
+  if (MM_removeList.indexOf(nextItem) == -1) {
+    MM_keepForm += "&" + items.item() + "=" + Server.URLencode(Request.Form(items.item()));
+  }
+}
+
+// create the Form + URL string and remove the intial '&' from each of the strings
+MM_keepBoth = MM_keepURL + MM_keepForm;
+if (MM_keepBoth.length > 0) MM_keepBoth = MM_keepBoth.substring(1);
+if (MM_keepURL.length > 0)  MM_keepURL = MM_keepURL.substring(1);
+if (MM_keepForm.length > 0) MM_keepForm = MM_keepForm.substring(1);
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern><![CDATA[/var\s+MM_removeList\s*=\s*"/]]></searchPattern>
+     </searchPatterns>
+</participant>

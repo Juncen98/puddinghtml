@@ -1,0 +1,9 @@
+<participant version="6.0">
+     <quickSearch><![CDATA[CHECKED]]></quickSearch>
+     <insertText location="nodeAttribute" nodeParamName="chbxNode">
+<![CDATA[ <%If (@@expression1@@ = @@expression2@@) Then Response.Write("CHECKED") : Response.Write("")%>]]>
+     </insertText>
+     <searchPatterns whereToSearch="tag+input/checkbox">
+       <searchPattern paramNames="expression1,expression2"><![CDATA[/\s*<%\s*If\s*\((.*)\s*=\s*(.*)\)\s+Then\s+Response\.Write\("CHECKED"\)\s*\:\s*Response\.Write\(""\)\s*%>/i]]></searchPattern>
+     </searchPatterns>
+</participant>

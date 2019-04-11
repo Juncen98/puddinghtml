@@ -1,0 +1,93 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>CFQUERYPARAM</title>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var CFSQLTYPELIST;
+var theUIObjects;
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function initializeUI()
+{
+	CFSQLTYPELIST = new ListControl("thecfsqltype"); 
+	theUIObjects = new Array(CFSQLTYPELIST); 
+
+  tagDialog.populateDropDownList(CFSQLTYPELIST, theQueryParamTypeVal, theQueryParamTypeVal, 1)
+}
+
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">值: </td>
+      <td nowrap="nowrap">
+        <input name="thevalue" type="text" class="basicTextField" id="attr:cfqueryparam:value" attname="value" required="true" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">CFSQL 类型: </td>
+      <td nowrap="nowrap">
+	    <select name="thecfsqltype" class="sqlTypeList" id="attr:cfqueryparam:cfsqltype" attname="cfsqltype"> 
+        </select>
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">最大长度: </td>
+      <td nowrap="nowrap">
+        <input name="themaxlength" type="text" class="basicTextField" id="attr:cfqueryparam:maxlength" attname="maxlength" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">小数位数: </td>
+      <td nowrap="nowrap">
+        <input name="thescale" type="text" class="basicTextField" id="attr:cfqueryparam:scale" attname="scale" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">分隔符: </td>
+      <td nowrap="nowrap">
+        <input name="theseparator" type="text" class="medTField" id="attr:cfqueryparam:separator" attname="separator" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfqueryparam:null" name="thenull" attname="null" truevalue="yes" falsevalue="" />
+        空
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfqueryparam:list" name="thelist" attname="list" truevalue="yes" falsevalue="" />
+        列表
+      </td>
+    </tr>
+  </table>
+</div> 
+</body>
+</html>

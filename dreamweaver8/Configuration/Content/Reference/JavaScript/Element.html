@@ -1,0 +1,2674 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">Element</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span>  IE <span class="emphasis">n/a</span>  DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>The W3C DOM <span class="literal">Element</span> object is from the Core module
+and represents the kind of element object you find in true XML
+documents. This node type inherits properties and methods from the
+root <span class="literal">Node</span> object and adds capabilities that let it
+act as a container of other nodes. Elements in HTML documents are of
+the <span class="literal">HTMLDocument</span> type, which inherits form the
+<span class="literal">Element</span> object. All properties and methods of the
+<span class="literal">Element</span> object are shared among all HTML element
+objects, as described at the beginning of this chapter.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre><span class="replaceable">elementNodeReference</span></pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificproperties"><span class="title">Object-Specific Properties</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificmethods"><span class="title">Object-Specific Methods</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificeventhandlerproperties"><span class="title">Object-Specific Event Handler Properties</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="addBehavior( )">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">addBehavior( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal">addBehavior("<span class="replaceable">URL</span>")</p>
+							</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>			Attaches an internal or external IE behavior to the current element.
+		After a script attaches the behavior, the element responds to events
+		defined for the behavior (if any), and provides access to properties
+		and methods associated with the behavior. An external behavior file
+		must be served from the same domain (and protocol) as the current
+		page. For more information on applying IE/Windows behaviors, visit
+		http://msdn.microsoft.com/workshop/author/behaviors/overview.asp.
+		</p>
+									</td>
+	</tr>
+												
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>
+								<ul><li><span class="literal"></span>For external behaviors, a relative or absolute URL to the
+		<span class="emphasis">.htc</span> file on the server. For internal behaviors,
+		a special format as described in the next item.
+		</li></ul>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Integer serial number usable as a parameter for the
+		<span class="literal">removeBehavior( )</span> method.
+		</p>
+							</td>
+						</tr>
+					</table>
+		</div>
+		<div id="all[ ]">
+		<TABLE class=main cellSpacing=0 cellPadding=0 width="100%" border=0>
+		  <TBODY>
+		  <tr>
+		    <td valign="top" class="name">all[ ]</td>
+		    <td valign="top" nowrap class="compatibility">NN <SPAN
+		      class=emphasis>n/a</SPAN> IE <SPAN class=emphasis>4</SPAN> DOM <SPAN
+		      class=emphasis>n/a</SPAN>&nbsp;&nbsp;</td></tr>
+		  <tr>
+		    <td class=usage vAlign=top noWrap>
+		      <P class=literal></P></td>
+		    <td valign="top" nowrap class="requirements"><SPAN
+		      class=emphasis>Read-only</SPAN>&nbsp;&nbsp;</td></tr>
+		  <tr>
+		    <td class=description vAlign=top colSpan=2>
+		  <tr>
+		    <td>
+		      <P>Returns an array of all HTML element objects contained by the current
+		      element. Items in this array are indexed (zero-based) in source code
+		      order. The collection transcends generations of nested elements such that
+		      <SPAN class=literal>document.all[ ]</SPAN> exposes every element in the
+		      entire document. See the <SPAN class=literal>all</SPAN> object for a list
+		      of this property value's own set of properties and methods. </P></td></tr>
+		  <tr>
+		    <td>
+		      <P>As with all collections in Internet Explorer, you may use the
+		      traditional JavaScript array syntax (with square brackets around the index
+		      value) or IE's JScript alternative (with parentheses around the index
+		      value). If you are aiming for cross-browser deployment for collections
+		      that are available on both platforms, use the square brackets. </P></td></tr>
+		  <tr>
+		    <td>
+		      <P>Unless you develop strictly for IE browsers, consider migrating to W3C
+		      DOM references via <SPAN class=literal>document.getElementById( )</SPAN>,
+		      implemented in IE 5 and later and Netscape 6. </P></td></tr></td></tr>
+		  <tr>
+		    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+		  <tr>
+		    <td class=example vAlign=top colSpan=2><SPAN
+		  class=title>Example</SPAN></td></tr>
+		  <tr>
+		    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+		  <tr>
+		    <td><SPAN class=programlisting><PRE>var inpVal = document.all.first_name.value;</PRE></SPAN></td></tr>
+		  <tr>
+		    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+		  <tr>
+		    <td class=value vAlign=top colSpan=2><SPAN class=title>Value</SPAN></td></tr>
+		  <tr>
+		    <td>
+		      <P>Array (collection) of element object references in HTML source code
+		      order. </P></td></tr>
+		  <tr>
+		    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+		  <tr>
+		    <td class=default vAlign=top noWrap colSpan=2><SPAN
+		      class=title>Default</SPAN></td></tr>
+		  <tr>
+		    <td>
+		      <P>Current document's model. </P></td></tr></TBODY></TABLE>
+</div>
+
+		<div id="applyElement( )">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">applyElement( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal">applyElement(<span class="replaceable">elementObject</span>[,
+		<span class="replaceable">type</span>])</p>
+							</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>			Inserts a new element as either a child element of the current object
+		or as the new parent of the current object, depending on the value of
+		the second parameter. The default behavior is to wrap the current
+		object with the new element. But you may also choose to insert the
+		new element as a child element. In this case, if the current object
+		is in the document tree (as opposed to simply floating in memory
+		after being created with <span class="literal">document.createElement(
+		)</span>) and already has child elements nested inside it, the
+		newly applied element is inserted in such a way that the previous
+		children become children of the inserted element (i.e., grandchildren
+		of the current object). This wrapping behavior is unique among IE
+		element insertion methods and can have significant impact on the
+		document tree. Use with caution.
+		</p>
+									</td>
+	</tr>
+												
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>
+								<ul><li><span class="literal"></span>Reference to any dynamically-generated or existing element object
+		from the document tree.
+		</li><li><span class="literal"></span>Optional string value: <span class="literal">inside</span> (the new element
+		becomes the sole, first child of the current object);
+		<span class="literal">outside</span> (the new element becomes the parent of the
+		current object). The default is <span class="literal">outside</span>.
+		</li></ul>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Reference to the newly added element object.</p>
+							</td>
+						</tr>
+					</table>
+		</div>
+
+				<div id="attachEvent( )">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">attachEvent( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal">attachEvent("<span class="replaceable">eventName</span>",
+		<span class="replaceable">functionReference</span>)</p>
+							</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>			Binds an event handler function to an element object for a particular
+		event type. Similar in operation to the W3C DOM
+		<span class="literal">addEventListener( )</span> method, the IE
+		<span class="literal">attachEvent( )</span> method is used primarily for IE
+		behaviors. Binding events through element object event handler
+		properties is a better cross-browser approach for regular HTML pages.
+		If you bind an event handler through the <span class="literal">attachEvent(
+		)</span> method, you can disengage the binding via the
+		<span class="literal">detachEvent( )</span> method.
+		</p>
+									</td>
+	</tr>
+												
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>
+								<ul><li><span class="literal"></span>String version of the event name, including the
+		"on" prefix. Applicable event types
+		include any event from IE/Windows extensive list of shared event
+		types shown later in this section. Although not case-sensitive,
+		all-lowercase values are recommended.
+		</li><li><span class="literal"></span>A reference to the function to execute when the element receives the
+		event either as the event target or through event propagation. As
+		this is a reference to a function object, do not surround the name in
+		quotes, nor include the parentheses of the function. No parameters
+		may be passed to the function.
+		</li></ul>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Boolean value <span class="literal">true</span> if the binding is successful.</p>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+		<div id="behaviorUrns[ ]">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">behaviorUrns[ ]</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements"><span class="emphasis">Read-only</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Provides an array of Uniform Resource Names for all external
+behaviors (<span class="emphasis">.htc</span> files) associated with the
+element through style sheet syntax. Perhaps for security reasons, the
+strings entries of this array are always empty.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var htcCount = document.getElementById(<span class="replaceable">elementID</span>).behaviorUrns.length;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Array of (empty) strings.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Array of length 0. </p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="canHaveChildren">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">canHaveChildren</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements"><span class="emphasis">Read-only</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Specifies whether the current element may act as a container of other
+elements. The property value is based on IE for Windows built-in HTML
+DTDs, which define several elements (such as
+<span class="literal">&lt;br&gt;</span>) that may not have child nodes inserted
+into them.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>if (<span class="replaceable">elementRef</span>.canHaveChildren) {
+    // statements to insert or append child elements
+}</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Boolean value: <span class="literal">true</span> | <span class="literal">false</span>.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Element-specific. </p>
+					</td>
+				</tr>
+			</table>
+		</div>
+	  <div id="children[ ]">
+<TABLE class=main cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <tr>
+    <td valign="top" class="name">children[ ]</td>
+    <td valign="top" nowrap class="compatibility">NN <SPAN
+      class=emphasis>n/a</SPAN> IE <SPAN class=emphasis>4</SPAN> DOM <SPAN
+      class=emphasis>n/a</SPAN>&nbsp;&nbsp;</td></tr>
+  <tr>
+    <td class=usage vAlign=top noWrap>
+      <P class=literal></P></td>
+    <td valign="top" nowrap class="requirements"><SPAN
+      class=emphasis>Read-only</SPAN>&nbsp;&nbsp;</td></tr>
+  <tr>
+    <td class=description vAlign=top colSpan=2>
+  <tr>
+    <td>
+      <P>Returns an array of all first-level HTML element objects contained by
+      the current element. This collection differs from the <SPAN
+      class=literal>all[ ]</SPAN> collection in that it contains references only
+      to the immediate children of the current element (whereas the <SPAN
+      class=literal>all[ ]</SPAN> collection transcends generations). For
+      example, <SPAN class=literal>document.body.children[ ]</SPAN> might
+      contain a form, but no reference to form elements nested inside the form.
+      Items in this array are indexed (zero-based) in source code order. In
+      contrast to the <SPAN class=literal>childNodes[ ]</SPAN> array, the scope
+      of this property is the element, not the node. See the <SPAN
+      class=literal>children</SPAN> object. </P></td></tr></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=example vAlign=top colSpan=2><SPAN
+  class=title>Example</SPAN></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td><SPAN class=programlisting><PRE>for (var i = 0; i &lt; elementRef.children.length; i++) {
+    if (elementRef.children[i].tagName == "FORM") {
+        // operate on a form element
+    }
+}</PRE></SPAN></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=value vAlign=top colSpan=2><SPAN class=title>Value</SPAN></td></tr>
+  <tr>
+    <td>
+      <P>Array of element object references.</P></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=default vAlign=top noWrap colSpan=2><SPAN
+      class=title>Default</SPAN></td></tr>
+  <tr>
+    <td>
+      <P>Array of length zero. </P></td></tr></TBODY></TABLE>
+
+</div>
+	  <div id="className">
+<TABLE class=main cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <tr>
+    <td valign="top" class="name">className</td>
+    <td valign="top" nowrap class="compatibility">NN <SPAN class=emphasis>6</SPAN>
+      IE <SPAN class=emphasis>4</SPAN> DOM <SPAN class=emphasis>1</SPAN>&nbsp;&nbsp;</td></tr>
+  <tr>
+    <td class=usage vAlign=top noWrap>
+      <P class=literal></P></td>
+    <td valign="top" nowrap class="requirements"><SPAN
+      class=emphasis>Read/Write</SPAN>&nbsp;&nbsp;</td></tr>
+  <tr>
+    <td class=description vAlign=top colSpan=2>
+  <tr>
+    <td>
+      <P>This is an identifier generally used to associate an element with a
+      style sheet rule defined for a class selector. You can alter the class
+      association for an element by script. If the document includes an
+      alternate class selector and style rule, adjusting the element's <SPAN
+      class=literal>className</SPAN> property can provide a shortcut for
+      adjusting many style properties at once. </P></td></tr></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=example vAlign=top colSpan=2><SPAN
+  class=title>Example</SPAN></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td><SPAN class=programlisting><PRE>document.getElementById("<SPAN class=replaceable>elementID</SPAN>").className = "altHighlighted";</PRE></SPAN></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=value vAlign=top colSpan=2><SPAN class=title>Value</SPAN></td></tr>
+  <tr>
+    <td>
+      <P>Case-sensitive string. Multiple class names are space-delimited within
+      the string. </P></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=default vAlign=top noWrap colSpan=2><SPAN
+      class=title>Default</SPAN></td></tr>
+  <tr>
+    <td>
+      <P>Empty string. </P></td></tr></TBODY></TABLE></div>
+<div id="clearAttributes( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">clearAttributes( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Removes all attributes from the current element except for the
+<span class="literal">id</span> and <span class="literal">name</span> attributes (if
+specified). Any rendering characteristics influenced by the
+element's attributes that are removed also no longer
+apply to the element.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+<div id="click( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">click( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Simulates the click action of a user on the element. Fires an
+<span class="literal">onclick</span> event in Internet Explorer 4 and later and
+Navigator 4 and later. Note in browsers prior to IE 4 and Netscape 6,
+not all elements are capable of the <span class="literal">click( )</span>
+method (or <span class="literal">onclick</span> event). Also,
+don't expect all elements that normally change their
+graphical state when clicked by the user to simulate the same state
+change during the scripted click. For example, some Macintosh browser
+versions fail to change the checked state of a checkbox when a script
+invokes a <span class="literal">click( )</span> method on the checkbox. In this
+case, invoke the <span class="literal">click( )</span> method only if an
+<span class="literal">onclick</span> event handler executes some code; but also
+set the <span class="literal">checked</span> property of the checkbox as
+desired.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+<div id="getAttribute( )">
+<TABLE class=main cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <tr>
+    <td valign="top" class="name">getAttribute( )</td>
+    <td valign="top" nowrap class="compatibility">NN <SPAN class=emphasis>6</SPAN>
+      IE <SPAN class=emphasis>4</SPAN> DOM <SPAN class=emphasis>1</SPAN>&nbsp;&nbsp;</td></tr>
+  <tr>
+    <td class=usage vAlign=top noWrap>
+      <P class=literal>getAttribute(<SPAN
+      class=replaceable>attributeName</SPAN>) getAttribute(<SPAN
+      class=replaceable>attributeName</SPAN>[,<SPAN
+      class=replaceable>caseSensitivity</SPAN>])</P></td>
+    <td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td></tr>
+  <tr>
+    <td class=description vAlign=top colSpan=2>
+  <tr>
+    <td>
+      <P>Returns the value of the named attribute within the current element. If
+      the attribute is reflected in the object model as a property, this method
+      returns the same value as when reading the object's property. This is the
+      preferred method for reading an element object attribute (i.e., property)
+      value under the W3C DOM. </P></td></tr>
+  <tr>
+    <td>
+      <P>The attribute name you pass as a parameter is not case-sensitive in
+      current browsers. IE, however, provides an optional second parameter that
+      lets you force case-sensitivity in the attribute naming. This might
+      encourage the reuse of the same attribute name but with different case
+      lettersan ill-advised practice. </P></td></tr>
+  <tr>
+    <td>
+      <P>See the <SPAN class=literal>setAttribute( )</SPAN> method for assigning
+      values to attributes and creating new attribute/value pairs.
+  </P></td></tr></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=parameters vAlign=top colSpan=2><SPAN
+      class=title>Parameters</SPAN></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td>
+      <UL>
+        <LI><SPAN class=literal></SPAN>The (case-insensitive by default)
+        attribute name used in the HTML tag (not including the <SPAN
+        class=literal>=</SPAN> symbol). While IE lets you switch between
+        case-sensitivity settings, Netscape 6 does not demand case-sensitivity.
+        But given the trend toward case-sensitive XHTML, it is best to get into
+        the case-sensitive habit.
+        <LI><SPAN class=literal></SPAN>An optional integer value for IE only.
+        Default value is <SPAN class=literal>0</SPAN> (not case-sensitive). If
+        <SPAN class=literal>1</SPAN>, the attribute in the HTML tag must match
+        the case of the <SPAN class=replaceable>attributeName</SPAN> parameter
+        exactly for its value to be returned. </LI></UL></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=returnedvalue vAlign=top colSpan=2><SPAN class=title>Returned
+      Value</SPAN></td></tr>
+  <tr>
+    <td>
+      <P>The W3C DOM and Netscape 6 maintain attribute values exclusively as
+      string data types. IE, however may return an attribute value as a string,
+      number, or Boolean. </P></td></tr></TBODY></TABLE></div>
+
+
+		<div id="getAttributeNode( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">getAttributeNode( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">6</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">getAttributeNode(<span class="replaceable">attributeName</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a reference to the attribute node (<span class="literal">Attr</span>
+object) associated with the name. This type of node is the same kind
+that populates the array returned by an element's
+<span class="literal">attributes</span> property, but the
+<span class="literal">getAttributeNode( )</span> method gives you direct access
+to the <span class="literal">Attr</span> node object by name. More helpful in
+XML documents, where an attribute can convey important data
+associated with the element. See the <span class="literal">Attr</span> object
+for details about that node type.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>The attribute name used in the tag (not including the
+<span class="literal">=</span> symbol). Neither IE nor Navigator demands
+case-sensitivity. But given the trend toward case-sensitive XHTML, it
+is best to get into the case-sensitive habit.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to an <span class="literal">Attr</span> object.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+<div id="getAttributeNS( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">getAttributeNS( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">getAttributeNS("<span class="replaceable">namespaceURI</span>",
+"<span class="replaceable">localName</span>")</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns the value of the local-named attribute with a matching
+namespace URI within the current element. This method works like
+<span class="literal">getAttribute( )</span> but accommodates attributes for
+XML documents that are labeled according to a namespace
+specification. The following simple XML document uses a namespace for
+an attribute of the <span class="literal">libBook:title</span> element:
+</p>
+<span class="PROGRAMLISTING"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;&gt;
+&lt;results xmlns:libBook=&quot;http://catalog.umv.edu/schema&quot;&gt;
+&lt;libBook:title libBook:rareBooks=&quot;true&quot;&gt;De Principia&lt;/libBook:title&gt;
+&lt;/results&gt;?</pre></span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			To retrieve the value of the <span class="literal">libBook:rareBooks</span>
+attribute, the method for the element would include the
+<span class="literal">getAttributeNS( )</span> method call with the following
+parameters:
+</p>
+<span class="PROGRAMLISTING"><pre>getAttributeNS(&quot;http://catalog.umv.edu/schema&quot;, &quot;rareBooks&quot;)</pre></span>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>URI string matching a URI assigned to a label earlier in the document.</li><li><span class="literal"></span>The local name portion of the attribute. </li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			The W3C DOM and Netscape 6 maintain attribute values exclusively as
+string data types.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="getElementsByTagName( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">getElementsByTagName( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">5</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">getElementsByTagName("<span class="replaceable">tagName</span>")</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns an array of all descendant elements of the current element
+whose tag name matches the parameter of the method. Elements in the
+array include children, grandchildren, and so on, and are in the
+source code order. The current element is not included in the array.
+If there are no matches, the array has a length of zero.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Netscape 6, IE 5/Macintosh, and IE 6/Windows let you specify the
+quoted asterisk wildcard character as a parameter to return an array
+of all descendant elements, regardless of tag name. Be aware,
+however, that different browsers may have slight differences in their
+document tree structures that result in wildcard parameter array
+lengths that don't match each other.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>The (case-insensitive by default) tag name for desired elements. Or
+an asterisk that acts as a wildcard character to signify all tag
+names.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Array of zero or more element references.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="getElementsByTagNameNS( )">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">getElementsByTagNameNS( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal">getElementsByTagNameNS("<span class="replaceable">namespaceURI</span>",
+		"<span class="replaceable">localName</span>")</p>
+							</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>			Returns an array of all descendant elements of the current element
+		which have a local name that matches the second parameter of the
+		method, and a namespace URI (assigned elsewhere in the document as a
+		namespace declaration) that matches the first method parameter.
+		Elements in the array include children, grandchildren, and so on, and
+		are in the source code order. The current element is not included in
+		the array. If there are no matches, the array has a length of zero.
+		Applies primarily to XML documents.
+		</p>
+									</td>
+	</tr>
+												
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>
+								<ul><li><span class="literal"></span>URI string matching a URI assigned to a label earlier in the document.</li><li><span class="literal"></span>The local name portion of the tag name. </li></ul>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Array of zero or more element references.</p>
+							</td>
+						</tr>
+					</table>
+		</div>
+
+		<div id="hasAttribute( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">hasAttribute( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">hasAttribute("<span class="replaceable">attributeName</span>")</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a Boolean value <span class="literal">true</span> if the current
+element has an attribute whose name matches the method parameter.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>The case-sensitive attribute name to search for.</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Boolean value: <span class="literal">true</span> | <span class="literal">false</span>.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="hasAttributeNS( )">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">hasAttributeNS( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal">hasAttributeNS("<span class="replaceable">namespaceURI</span>",
+		"<span class="replaceable">localName</span>")</p>
+							</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>			Returns a Boolean value <span class="literal">true</span> if the current
+		element has an attribute with a local name that matches the
+		method's second parameter, and a namespace URI
+		(assigned elsewhere in the document as a namespace declaration) that
+		matches the first method parameter.
+		</p>
+									</td>
+	</tr>
+												
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>
+								<ul><li><span class="literal"></span>URI string matching a URI assigned to a label earlier in the document.</li><li><span class="literal"></span>The local name portion of the attribute name. </li></ul>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Boolean value: <span class="literal">true</span> | <span class="literal">false</span>.</p>
+							</td>
+						</tr>
+					</table>
+		</div>
+
+		<div id="hideFocus">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">hideFocus</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5.5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements"><span class="emphasis">Read/Write</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Specifies whether the browser should display a dotted focus rectangle
+around the element if it has focus. The element continues to be able
+to receive focus if it is focusable by default or has the
+<span class="literal">tabindex</span> attribute set. When this property is set
+to <span class="literal">true</span>, there is no visual clue about the focus
+state.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>document.getElementById("<span class="replaceable">elementID</span>").hideFocus = true;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Boolean value: <span class="literal">true</span> | <span class="literal">false</span>.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">false</span></p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="id">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">id</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements"><span class="emphasis">Read/Write</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Specifies a unique identifier that distinguishes this element from
+all the rest in the document. The value of this property is most
+often used to assemble references to elements, but you can loop
+through all elements to see if there is a match of an
+<span class="literal">id</span> value. It is generally not a good idea to
+change this property's value for an element already
+in the document tree. But if a script creates a new element object
+(via the <span class="literal">document.createElement( )</span> method, for
+instance), it can assign a unique identifier to this
+object's <span class="literal">id</span> property, and then
+add the element to the document tree.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var headID = document.getElementsByTagName("head")[0].id;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			String.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Empty string. </p>
+					</td>
+				</tr>
+			</table>
+		</div>
+<div id="innerText">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">innerText</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements"><span class="emphasis">Read/Write</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Indicates the rendered text (but not any tags) of the current
+element. If you want the rendered text as well as any nested HTML
+tags, see <span class="literal">innerHTML</span>. Any changes to this property
+are not rendered through the HTML parser, meaning that any HTML tags
+you include are treated as displayable text content only. You may
+change this property only after the document has fully loaded.
+Changes to the <span class="literal">innerText</span> property are not
+reflected in the source code when you view the source in the browser.
+This property is not supported in many objects in the Macintosh
+version of IE 4.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>document.getElementById("<span class="replaceable">elementID</span>").innerText = "How now brown cow?";</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			String.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Empty string.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="insertAdjacentElement( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">insertAdjacentElement( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">insertAdjacentElement("<span class="replaceable">where</span>",
+<span class="replaceable">elementObjectReference</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Inserts an element object into the designated position relative to
+the current element. Typically, the element object about to be
+inserted is created separately (for example, via
+<span class="literal">document.createElement( )</span>) or it may be a
+reference to an object already in the document tree, and the method
+essentially moves the object to its new location with the help of the
+<span class="literal">insertAdjacentElement( )</span> method.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			The destination is governed by the first attribute, which consists of
+one of four values that determine where the insertion occurs, as
+follows.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Although the effects on the document element tree are well-defined,
+the rendered result varies with the combination of inline and block
+elements you use as the current and inserted element objects.
+Inserting a block-level element (such as a <span class="literal">div</span> or
+<span class="literal">p</span> element) causes that element to render on the
+next line and at the left edge of the block-level positioning context
+(such as the <span class="literal">body</span> or <span class="literal">td</span>
+element). Applying the W3C DOM <span class="literal">appendChild( )</span>
+method on elements is the equivalent of the
+<span class="literal">insertAdjacentElement( )</span> method with the
+<span class="literal">beforeEnd</span> position parameter.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>
+								<table border="1"><tbody><tr><th>Position</th><th>Insert new element</th></tr>
+										<tr><td><span class="literal">BeforeBegin</span></td><td>Before start tag of current element, as a previous sibling</td>
+										</tr>
+										<tr><td><span class="literal">AfterBegin</span></td><td>Immediately after current element's start tag, as a
+first child element
+</td>
+										</tr>
+										<tr><td><span class="literal">BeforeEnd</span></td><td>Immediately before current element's end tag, as a
+last child element
+</td>
+										</tr>
+										<tr><td><span class="literal">AfterEnd</span></td><td>After end tag of current element, as a next sibling</td>
+										</tr>
+									</tbody></table>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>String value of one of the following case-insensitive constants:
+<span class="literal">BeforeBegin</span> | <span class="literal">AfterBegin</span> |
+<span class="literal">BeforeEnd</span> | <span class="literal">AfterEnd</span>. The first
+and last locations are outside the HTML tags of the current element;
+the middle two locations are between the tags and element content.
+</li><li><span class="literal"></span>Reference to any valid element object either existing in the document
+tree or created dynamically.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to the inserted element object.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="insertAdjacentHTML( )">
+		<TABLE class=main cellSpacing=0 cellPadding=0 width="100%" border=0>
+		  <TBODY>
+		  <tr>
+		    <td valign="top" class="name">insertAdjacentHTML( )</td>
+		    <td valign="top" nowrap class="compatibility">NN <SPAN
+		      class=emphasis>n/a</SPAN> IE <SPAN class=emphasis>4</SPAN> DOM <SPAN
+		      class=emphasis>n/a</SPAN>&nbsp;&nbsp;</td></tr>
+		  <tr>
+		    <td class=usage vAlign=top noWrap>
+		      <P class=literal>insertAdjacentHTML("<SPAN
+		      class=replaceable>where</SPAN>", <SPAN
+		      class=replaceable>HTMLText</SPAN>)</P></td>
+		    <td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td></tr>
+		  <tr>
+		    <td class=description vAlign=top colSpan=2>
+		  <tr>
+		    <td>
+		      <P>Inserts a text string into the designated position relative to the
+		      element's existing HTML. If HTML tags are part of the text to be inserted,
+		      the browser interprets the tags and performs the desired rendering. This
+		      method is not supported in many objects in the Macintosh version of IE 4.
+		      </P></td></tr></td></tr>
+		  <tr>
+		    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+		  <tr>
+		    <td class=parameters vAlign=top colSpan=2><SPAN
+		      class=title>Parameters</SPAN></td></tr>
+		  <tr>
+		    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+		  <tr>
+		    <td>
+		      <UL>
+		        <LI><SPAN class=literal></SPAN>String value of one of the following
+		        constants: <SPAN class=literal>BeforeBegin</SPAN> | <SPAN
+		        class=literal>AfterBegin</SPAN> | <SPAN class=literal>BeforeEnd</SPAN> |
+		        <SPAN class=literal>AfterEnd</SPAN>. The first and last locations are
+		        outside the HTML tags of the current element; the middle two locations
+		        are between the tags and element content.
+		        <LI><SPAN class=literal></SPAN>String value of the text and/or HTML to
+		        be inserted in the desired location. </LI></UL></td></tr>
+		  <tr>
+		    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+		  <tr>
+		    <td class=returnedvalue vAlign=top colSpan=2><SPAN class=title>Returned
+		      Value</SPAN></td></tr>
+		  <tr>
+		    <td>
+		      <P>None.</P></td></tr></TBODY></TABLE></div>
+
+
+			  <div id="insertAdjacentText( )">
+		<TABLE class=main cellSpacing=0 cellPadding=0 width="100%" border=0>
+		  <TBODY>
+		  <tr>
+		    <td valign="top" class="name">insertAdjacentText( )</td>
+		    <td valign="top" nowrap class="compatibility">NN <SPAN
+		      class=emphasis>n/a</SPAN> IE <SPAN class=emphasis>4</SPAN> DOM <SPAN
+		      class=emphasis>n/a</SPAN>&nbsp;&nbsp;</td></tr>
+		  <tr>
+		    <td class=usage vAlign=top noWrap>
+		      <P class=literal>insertAdjacentText("<SPAN
+		      class=replaceable>where</SPAN>", <SPAN
+		    class=replaceable>text</SPAN>)</P></td>
+		    <td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td></tr>
+		  <tr>
+		    <td class=description vAlign=top colSpan=2>
+		  <tr>
+		    <td>
+		      <P>Inserts text into the designated position relative to the element's
+		      existing HTML. If HTML tags are part of the text to be inserted, the tags
+		      are shown literally on the page. This method is not supported in many
+		      objects in the Macintosh version of IE 4. </P></td></tr></td></tr>
+		  <tr>
+		    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+		  <tr>
+		    <td class=parameters vAlign=top colSpan=2><SPAN
+		      class=title>Parameters</SPAN></td></tr>
+		  <tr>
+		    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+		  <tr>
+		    <td>
+		      <UL>
+		        <LI><SPAN class=literal></SPAN>String value of one of the following
+		        constants: <SPAN class=literal>BeforeBegin</SPAN> | <SPAN
+		        class=literal>AfterBegin</SPAN> | <SPAN class=literal>BeforeEnd</SPAN> |
+		        <SPAN class=literal>AfterEnd</SPAN>. The first and last locations are
+		        outside the HTML tags of the current element; the middle two locations
+		        are between the tags and element content.
+		        <LI><SPAN class=literal></SPAN>String value of the text to be inserted
+		        in the desired location. </LI></UL></td></tr>
+		  <tr>
+		    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+		  <tr>
+		    <td class=returnedvalue vAlign=top colSpan=2><SPAN class=title>Returned
+		      Value</SPAN></td></tr>
+		  <tr>
+		    <td>
+		      <P>None.</P></td></tr></TBODY></TABLE></div>
+
+		<div id="isContentEditable">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">isContentEditable</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5.5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements"><span class="emphasis">Read-only</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Specifies whether the current element has IE/Windows user editing
+engaged. Reveals the actual editing state as either explicitly set
+for the element or inherited from its ancestor tree.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>if (document.getElementById("<span class="replaceable">elementID</span>").isContentEditable) {
+    // process the editable element
+}</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Boolean value: <span class="literal">true</span> | <span class="literal">false</span>.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">false</span></p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="IsMultiLine">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">isMultiLine</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5.5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements"><span class="emphasis">Read-only</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Specifies whether the current element allows content to extend across
+multiple lines. Most text containers allow multiple lines, but other
+kinds of elements, such as a text input element are restricted to
+single line rendering.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>if (document.getElementById("<span class="replaceable">elementID</span>").isMultiLine) {
+    // process the element as a potential multiple-line element
+}</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Boolean value: <span class="literal">true</span> | <span class="literal">false</span>.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Element default.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="mergeAttributes( )">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">mergeAttributes( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal">mergeAttributes(<span class="replaceable">modelElementReference</span>[,
+		<span class="replaceable">preserveIDs</span>])</p>
+							</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>			Copies attribute name/value pairs from the element specified as a
+		parameter to the current element. This is helpful for copying a large
+		set of attributes from an existing element to a newly created
+		element. By default, the copy does not include the
+		<span class="literal">id</span> or <span class="literal">name</span> attributes so that
+		the two elements maintain separate identifiers for scripting and form
+		purposes. Starting with IE 5.5/Windows, an optional Boolean second
+		parameter, when set to <span class="literal">false</span>, duplicates
+		<span class="literal">id</span> and <span class="literal">name</span> attributes as well.
+		</p>
+									</td>
+	</tr>
+												
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>
+								<ul><li><span class="literal"></span>Reference to an existing element that serves as a model for attribute
+		name/value pairs to be copied to the current element.
+		</li><li><span class="literal"></span>An optional Boolean value. If <span class="literal">false</span>, the
+		<span class="literal">id</span> and <span class="literal">name</span> attributes from the
+		model element are not copied to the current element. The default for
+		this parameter is <span class="literal">true</span>.
+		</li></ul>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			None.</p>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+<div id="offsetHeight, offsetWidth">
+<TABLE class=main cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <tr>
+    <td valign="top" class="name">offsetHeight, offsetWidth</td>
+    <td valign="top" nowrap class="compatibility">NN <SPAN class=emphasis>6</SPAN>
+      IE <SPAN class=emphasis>4</SPAN> DOM <SPAN class=emphasis>n/a</SPAN>&nbsp;&nbsp;</td></tr>
+  <tr>
+    <td class=usage vAlign=top noWrap>
+      <P class=literal></P></td>
+    <td valign="top" nowrap class="requirements"><SPAN
+      class=emphasis>Read-only</SPAN>&nbsp;&nbsp;</td></tr>
+  <tr>
+    <td class=description vAlign=top colSpan=2>
+  <tr>
+    <td>
+      <P>Broadly speaking, provide the height and width of the element's
+      content, but with minor variations with respect to element borders and
+      padding among various operating system versions of IE and compatibility
+      modes controlled by the <SPAN class=literal>DOCTYPE</SPAN> declaration.
+      The trend is to include the measure of borders and padding, but not
+      margins in these values. Implemented in Netscape 6 as a convenience, even
+      though not part of the W3C DOM. See the Section 9.2 at the beginning of
+      this chapter for details. </P></td></tr></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=example vAlign=top colSpan=2><SPAN
+  class=title>Example</SPAN></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td><SPAN class=programlisting><PRE>var midpoint = document.getElementById("<SPAN class=replaceable>elementID</SPAN>").offsetWidth/2;</PRE></SPAN></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=value vAlign=top colSpan=2><SPAN class=title>Value</SPAN></td></tr>
+  <tr>
+    <td>
+      <P>Integer pixel count.</P></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=default vAlign=top noWrap colSpan=2><SPAN
+      class=title>Default</SPAN></td></tr>
+  <tr>
+    <td>
+      <P>Element-specific. </P></td></tr></TBODY></TABLE></div>
+
+
+	  <div id="offsetLeft, offsetTop">
+<TABLE class=main cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <tr>
+    <td valign="top" class="name">offsetLeft, offsetTop</td>
+    <td valign="top" nowrap class="compatibility">NN <SPAN class=emphasis>6</SPAN>
+      IE <SPAN class=emphasis>4</SPAN> DOM <SPAN class=emphasis>n/a</SPAN>&nbsp;&nbsp;</td></tr>
+  <tr>
+    <td class=usage vAlign=top noWrap>
+      <P class=literal></P></td>
+    <td valign="top" nowrap class="requirements"><SPAN
+      class=emphasis>Read-only</SPAN>&nbsp;&nbsp;</td></tr>
+  <tr>
+    <td class=description vAlign=top colSpan=2>
+  <tr>
+    <td>
+      <P>Broadly speaking, provide the left and top coordinates of the element's
+      box, but with minor variations with respect to the coordinate system
+      context (vis--vis the <SPAN class=literal>offsetParent</SPAN> element)
+      influenced by various operating system versions of IE and compatibility
+      modes controlled by the <SPAN class=literal>DOCTYPE</SPAN> declaration.
+      Implemented in Netscape 6 as a convenience, even though not part of the
+      W3C DOM. See the Section 9.2 at the beginning of this chapter for details.
+      For positioned elements, you should rely more on the element's <SPAN
+      class=literal>style</SPAN> properties that control location in the
+      document or browser viewing space. </P></td></tr></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=example vAlign=top colSpan=2><SPAN
+  class=title>Example</SPAN></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td><SPAN class=programlisting><PRE>if (document.getElementById("<SPAN class=replaceable>elementID</SPAN>").offsetLeft &lt;= 20 &amp;&amp;
+document.getElementById("<SPAN class=replaceable>elementID</SPAN>").offsetTop &lt;=40) {
+    ...
+}</PRE></SPAN></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=value vAlign=top colSpan=2><SPAN class=title>Value</SPAN></td></tr>
+  <tr>
+    <td>
+      <P>Integer pixel count.</P></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=default vAlign=top noWrap colSpan=2><SPAN
+      class=title>Default</SPAN></td></tr>
+  <tr>
+    <td>
+      <P>Element-specific. </P></td></tr></TBODY></TABLE></div>
+
+
+<div id="offsetParent">
+<TABLE class=main cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <tr>
+    <td valign="top" class="name">offsetParent</td>
+    <td valign="top" nowrap class="compatibility">NN <SPAN class=emphasis>6</SPAN>
+      IE <SPAN class=emphasis>4</SPAN> DOM <SPAN class=emphasis>n/a</SPAN>&nbsp;&nbsp;</td></tr>
+  <tr>
+    <td class=usage vAlign=top noWrap>
+      <P class=literal></P></td>
+    <td valign="top" nowrap class="requirements"><SPAN
+      class=emphasis>Read-only</SPAN>&nbsp;&nbsp;</td></tr>
+  <tr>
+    <td class=description vAlign=top colSpan=2>
+  <tr>
+    <td>
+      <P>Returns a reference to the object that is the current element's offset
+      positioning context. For most elements on an IE page and all elements in a
+      Netscape 6 page, this is the <SPAN class=literal>body</SPAN> object. But
+      elements in IE that are wrapped in <SPAN class=literal>div</SPAN> elements
+      or are cells of a table have other parents. Moreover, for complex nested
+      elements, you will find wide variations in the object returned by this
+      property, depending on browser version. For example, the <SPAN
+      class=literal>offsetParent</SPAN> property of a <SPAN
+      class=literal>td</SPAN> element is the next outermost <SPAN
+      class=literal>tr</SPAN> element in IE 4 for Windows, and the <SPAN
+      class=literal>table</SPAN> element for later versions of IE for Windows
+      and all versions of IE for the Macintosh. Netscape 6 still regards the
+      <SPAN class=literal>body</SPAN> element as the <SPAN
+      class=literal>offsetParent</SPAN> of the <SPAN class=literal>td</SPAN>
+      element. See the Section 9.2 at the beginning of this chapter for an
+      example of using this property to calculate the precise position of an
+      inline element. </P></td></tr></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=example vAlign=top colSpan=2><SPAN
+  class=title>Example</SPAN></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td><SPAN class=programlisting><PRE>var containerLeft = document.getElementById("<SPAN class=replaceable>elementID</SPAN>")offsetParent.offsetLeft;</PRE></SPAN></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=value vAlign=top colSpan=2><SPAN class=title>Value</SPAN></td></tr>
+  <tr>
+    <td>
+      <P>Object reference.</P></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=default vAlign=top noWrap colSpan=2><SPAN
+      class=title>Default</SPAN></td></tr>
+  <tr>
+    <td>
+      <P><SPAN class=literal>body</SPAN> object.
+</P></td></tr></TBODY></TABLE></div>
+
+<div id="outerHTML">
+<TABLE class=main cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <tr>
+    <td valign="top" class="name">outerHTML</td>
+    <td valign="top" nowrap class="compatibility">NN <SPAN
+      class=emphasis>n/a</SPAN> IE <SPAN class=emphasis>4</SPAN> DOM <SPAN
+      class=emphasis>n/a</SPAN>&nbsp;&nbsp;</td></tr>
+  <tr>
+    <td class=usage vAlign=top noWrap>
+      <P class=literal></P></td>
+    <td valign="top" nowrap class="requirements"><SPAN
+      class=emphasis>Read/Write</SPAN>&nbsp;&nbsp;</td></tr>
+  <tr>
+    <td class=description vAlign=top colSpan=2>
+  <tr>
+    <td>
+      <P>Indicates the rendered text and HTML tags (i.e., all source code),
+      including the start and end tags, of the current element. If you want only
+      the rendered text, see <SPAN class=literal>outerText</SPAN>. For the
+      source code that excludes the current element's tags, see <SPAN
+      class=literal>innerHTML</SPAN>. A change to this property that includes
+      HTML tags is rendered through the HTML parser, as if the new value were
+      part of the original source code. You may change this property only after
+      the document has fully loaded, and, in the process, you can even change
+      the type of element it is or replace the element with straight text
+      content. Changes to the <SPAN class=literal>outerHTML</SPAN> property are
+      not reflected in the source code when you view the source in the browser.
+      To add to existing HTML, see the <SPAN class=literal>insertAdjacentHTML(
+      )</SPAN> method. This property is not supported in many objects in the
+      Macintosh version of IE 4. The W3C DOM equivalent requires extensive
+      manipulation of node-level objects, as shown in Chapter 5.
+  </P></td></tr></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=example vAlign=top colSpan=2><SPAN
+  class=title>Example</SPAN></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td><SPAN class=programlisting><PRE>document.getElementById("<SPAN class=replaceable>elementID</SPAN>").outerHTML =
+    "&lt;acronym id="quotes"&gt;NI&lt;i&gt;M&lt;/i&gt;BY&lt;/acronym&gt;";</PRE></SPAN></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=value vAlign=top colSpan=2><SPAN class=title>Value</SPAN></td></tr>
+  <tr>
+    <td>
+      <P>String that may or may not include HTML tags.</P></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=default vAlign=top noWrap colSpan=2><SPAN
+      class=title>Default</SPAN></td></tr>
+  <tr>
+    <td>
+      <P>Empty string. </P></td></tr></TBODY></TABLE></div>
+
+	  <div id="outerText">
+<TABLE class=main cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <tr>
+    <td valign="top" class="name">outerText</td>
+    <td valign="top" nowrap class="compatibility">NN <SPAN
+      class=emphasis>n/a</SPAN> IE <SPAN class=emphasis>4</SPAN> DOM <SPAN
+      class=emphasis>n/a</SPAN>&nbsp;&nbsp;</td></tr>
+  <tr>
+    <td class=usage vAlign=top noWrap>
+      <P class=literal></P></td>
+    <td valign="top" nowrap class="requirements"><SPAN
+      class=emphasis>Read/Write</SPAN>&nbsp;&nbsp;</td></tr>
+  <tr>
+    <td class=description vAlign=top colSpan=2>
+  <tr>
+    <td>
+      <P>Indicates the rendered text (but not any tags) of the current element.
+      If you want the rendered text as well as the element's HTML tags, see
+      <SPAN class=literal>outerHTML</SPAN>. Any changes to this property are not
+      rendered through the HTML parser, meaning that any HTML tags you include
+      are treated as displayable text content only. You may change this property
+      only after the document has fully loaded. Changes to the <SPAN
+      class=literal>outerText</SPAN> property are not reflected in the source
+      code when you view the source in the browser. This property is not
+      supported in many objects in the Macintosh version of IE 4.
+  </P></td></tr></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=example vAlign=top colSpan=2><SPAN
+  class=title>Example</SPAN></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td><SPAN class=programlisting><PRE>document.getElementById("<SPAN class=replaceable>elementID</SPAN>").outerText = "UNESCO";</PRE></SPAN></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=value vAlign=top colSpan=2><SPAN class=title>Value</SPAN></td></tr>
+  <tr>
+    <td>
+      <P>String.</P></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=default vAlign=top noWrap colSpan=2><SPAN
+      class=title>Default</SPAN></td></tr>
+  <tr>
+    <td>
+      <P>Empty string. </P></td></tr></TBODY></TABLE></div>
+
+
+	  <div id="parentElement">
+<TABLE class=main cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <tr>
+    <td valign="top" class="name">parentElement</td>
+    <td valign="top" nowrap class="compatibility">NN <SPAN
+      class=emphasis>n/a</SPAN> IE <SPAN class=emphasis>4</SPAN> DOM <SPAN
+      class=emphasis>n/a</SPAN>&nbsp;&nbsp;</td></tr>
+  <tr>
+    <td class=usage vAlign=top noWrap>
+      <P class=literal></P></td>
+    <td valign="top" nowrap class="requirements"><SPAN
+      class=emphasis>Read-only</SPAN>&nbsp;&nbsp;</td></tr>
+  <tr>
+    <td class=description vAlign=top colSpan=2>
+  <tr>
+    <td>
+      <P>Returns a reference to the next outermost element in the HTML
+      containment hierarchy. An element's HTML parent is not necessarily the
+      same as the object returned by the <SPAN class=literal>offsetParent</SPAN>
+      property. The <SPAN class=literal>parentElement</SPAN> concerns itself
+      strictly with source code containment, while the <SPAN
+      class=literal>offsetParent</SPAN> property looks to the next outermost
+      element that is used as the coordinate system for measuring the location
+      of the current element. For example, if the main document contains a <SPAN
+      class=literal>p</SPAN> element with an <SPAN class=literal>em</SPAN>
+      element nested inside, the <SPAN class=literal>em</SPAN> element has two
+      parents. The <SPAN class=literal>p</SPAN> element is the returned <SPAN
+      class=literal>parentElement</SPAN> value (due to the HTML source code
+      containment), while the <SPAN class=literal>body</SPAN> element is the
+      returned <SPAN class=literal>offsetParent</SPAN> value (due to coordinate
+      space containment). </P></td></tr>
+  <tr>
+    <td>
+      <P>You can jump multiple parent levels by cascading <SPAN
+      class=literal>parentElement</SPAN> properties, as in: </P>
+	  <span class="PROGRAMLISTING"><pre>document.getElementById(&quot;<var class="replaceable">elementID</var>&quot;).parentElement.parentElement;</pre></span></td></tr>
+  <tr>
+    <td>
+      <P>You can then use references to access a parent element's properties or
+      methods. </P></td></tr>
+  <tr>
+    <td>
+      <P>The corresponding property for the W3C DOM is <SPAN
+      class=literal>parentNode</SPAN>. </P></td></tr></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=example vAlign=top colSpan=2><SPAN
+  class=title>Example</SPAN></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td><SPAN class=programlisting><PRE>document.getElementById("<SPAN class=replaceable>elementID</SPAN>").parentElement.style.fontSize = "14pt";</PRE></SPAN></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=value vAlign=top colSpan=2><SPAN class=title>Value</SPAN></td></tr>
+  <tr>
+    <td>
+      <P>Element object reference.</P></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=default vAlign=top noWrap colSpan=2><SPAN
+      class=title>Default</SPAN></td></tr>
+  <tr>
+    <td>
+      <P>Element-specific. </P></td></tr></TBODY></TABLE></div>
+<div id="removeAttribute( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">removeAttribute( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">removeAttribute("<span class="replaceable">attributeName</span>")
+
+removeAttribute("<span class="replaceable">attributeName</span>"[, <span class="replaceable">caseSensitivity</span>])</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Removes the named attribute from the current element. An IE 4
+requirement that limited attribute removal to attributes that had
+been added with the <span class="literal">setAttribute( )</span> method is not
+applicable in IE 5 and later or Netscape 6. Removing an attribute
+does not change the source code when viewed through the browser, but
+does affect how the browser renders the element. The attribute value
+or node is also no longer available after removal.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>The (case-insensitive by default) attribute name used in the HTML tag
+(not including the <span class="literal">=</span> symbol). While IE lets you
+switch between case-sensitivity settings, Netscape 6 does not demand
+case-sensitivity. But given the trend toward case-sensitive XHTML, it
+is best to get into the case-sensitive habit.
+</li><li><span class="literal"></span>An optional integer value for IE only. Default value is
+<span class="literal">0</span> (not case-sensitive). If <span class="literal">1</span>,
+the attribute in the HTML tag must match the case of the
+<span class="replaceable">attributeName</span> parameter exactly for its
+value to be returned.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			In IE, Boolean <span class="literal">true</span> if successful;
+<span class="literal">false</span> if the attribute doesn't
+exist. No returned value in Netscape 6 (or W3C DOM specification).
+</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="removeAttributeNode( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">removeAttributeNode( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">6</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">removeAttributeNode(<span class="replaceable">attrObjectReference</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Removes the attribute from the current element indicated by the
+parameter reference to an existing <span class="literal">Attr</span> node
+object. This provides an alternate way to remove an attribute from an
+element if the script has only a reference to the
+<span class="literal">Attr</span> node object, rather than its name. Removing
+an attribute node does not change the source code when viewed through
+the browser, but does affect how the browser renders the element. The
+attribute value or node is no longer available after removal.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>A reference to an <span class="literal">Attr</span> node object associated with
+the current element.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to the removed <span class="literal">Attr</span> object, which is no
+longer part of the document tree, but may now be inserted elsewhere
+in the document tree.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="removeAttributeNS( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">removeAttributeNS( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">removeAttributeNS("<span class="replaceable">namespaceURI</span>",
+"<span class="replaceable">localName</span>")</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Removes the local-named attribute with a matching namespace URI from
+the current element. This method works like <span class="literal">removeAttribute(
+)</span> but accommodates attributes for XML documents that are
+labeled according to a namespace specification. The following simple
+XML document uses a namespace for an attribute of the
+<span class="literal">libBook:title</span> element:
+</p>
+<span class="PROGRAMLISTING"><pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;&gt;
+&lt;results xmlns:libBook=&quot;http://catalog.umv.edu/schema&quot;&gt;
+&lt;libBook:title libBook:rareBooks=&quot;true&quot;&gt;De Principia&lt;/libBook:title&gt;
+&lt;/results&gt;?</pre></span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			To remove the value of the <span class="literal">libBook:rareBooks</span>
+attribute, the method for the element would include the
+<span class="literal">removeAttributeNS( )</span> method call with the
+following parameters:
+</p>
+<span class="PROGRAMLISTING"><pre>removeAttributeNS(&quot;http://catalog.umv.edu/schema&quot;, &quot;rareBooks&quot;)</pre></span>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>URI string matching a URI assigned to a label earlier in the document.</li><li><span class="literal"></span>The local name portion of the attribute. </li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="removeBehavior( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">removeBehavior( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">removeBehavior(<span class="replaceable">behaviorID</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Disconnects the association between the current element and a
+behavior that had been made earlier via the <span class="literal">addBehavior(
+)</span> method. The parameter is the value that had been returned
+by the <span class="literal">addBehavior( )</span> method, which you must
+preserve as a variable between invocation of the two methods.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Integer serial number initially generated by the
+<span class="literal">addBehavior( )</span> method for the current element and
+behavior type.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Boolean value <span class="literal">true</span> if the removal is successful;
+otherwise <span class="literal">false</span>.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="scopeName, tagUrn">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">scopeName, tagUrn</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal"></p>
+							</td><td valign="top" nowrap class="requirements"><span class="emphasis">Read-only</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>			For custom elements employing XML namespaces, the
+		<span class="literal">scopeName</span> property returns the identifier that
+		associates the tag name with a namespace that is defined elsewhere in
+		the document via the <span class="literal">xmlns</span> attribute. All plain
+		HTML elements return a value of <span class="literal">HTML</span> for this
+		property. The <span class="literal">tagUrn</span> property returns the URI
+		specified for the namespace. The corresponding properties in the W3C
+		DOM are <span class="literal">prefix</span> and
+		<span class="literal">namespaceURI</span>.
+		</p>
+									</td>
+	</tr>
+												
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>var allTitles = document.getElementsByTagName("title");
+		for (var i = 0; i &lt; allTitles.length; i++) {
+		    if (allTitles[i].scopeName == "libBook" &amp;&amp;
+		        allTitles[i].tagUrn.indexOf("catalog.umv.edu") != -1) {
+		        // process title elements from the desired namespace here
+		    }
+		}</pre>
+								</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Strings.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			<span class="literal">HTML</span> for <span class="literal">scopeName</span>; empty
+		string for <span class="literal">tagUrn</span>.
+		</p>
+							</td>
+						</tr>
+					</table>
+		</div>
+
+		<div id="sourceIndex">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">sourceIndex</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal"></p>
+							</td><td valign="top" nowrap class="requirements"><span class="emphasis">Read-only</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>			Returns the zero-based index of the element among all elements in the
+		document. Elements are numbered according to their source code order,
+		with the first element given a <span class="literal">sourceIndex</span> of
+		zero.
+		</p>
+									</td>
+	</tr>
+												
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>var whichElement = document.getElementById("<span class="replaceable">elementID</span>").sourceIndex;</pre>
+								</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Positive integer or zero.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Element-specific. </p>
+							</td>
+						</tr>
+					</table>
+		</div>
+<div id="scrollIntoView( )">
+<TABLE class=main cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <tr>
+    <td valign="top" class="name">scrollIntoView( )</td>
+    <td valign="top" nowrap class="compatibility">NN <SPAN class=emphasis>7</SPAN>
+      IE <SPAN class=emphasis>4</SPAN> DOM <SPAN class=emphasis>n/a</SPAN>&nbsp;&nbsp;</td></tr>
+  <tr>
+    <td class=usage vAlign=top noWrap>
+      <P class=literal>scrollIntoView([<SPAN
+      class=replaceable>showAtTop</SPAN>])</P></td>
+    <td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td></tr>
+  <tr>
+    <td class=description vAlign=top colSpan=2>
+  <tr>
+    <td>
+      <P>Scrolls the content holding the current element so that the element is
+      brought into view. The default behavior is to display the element so that
+      its top is at the top of the scroll space. But you may also align the
+      element at the bottom of the scroll space, if you prefer.
+  </P></td></tr></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=parameters vAlign=top colSpan=2><SPAN
+      class=title>Parameters</SPAN></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td>
+      <UL>
+        <LI><SPAN class=literal></SPAN>An optional Boolean value. If <SPAN
+        class=literal>true</SPAN> (the default), the top of the content is
+        positioned at the top of the scroll space; if <SPAN
+        class=literal>false</SPAN>, the bottom of the content is positioned at
+        the bottom of the scroll space. </LI></UL></td></tr>
+  <tr>
+    <td class=CLEARSEPARATION vAlign=top colSpan=2>&nbsp;</td></tr>
+  <tr>
+    <td class=returnedvalue vAlign=top colSpan=2><SPAN class=title>Returned
+      Value</SPAN></td></tr>
+  <tr>
+    <td>
+      <P>None.</P></td></tr></TBODY></TABLE></div>
+<div id="setActive( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">setActive( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5.5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Makes the current element the active element without scrolling the
+page to bring the active element into view. Nor does the method
+change focus between windows or frames if the method is invoked
+across window object boundaries. The element, however, receives an
+<span class="literal">onfocus</span> event when the method is invoked.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+
+		<div id="setAttribute( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">setAttribute( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">setAttribute("<span class="replaceable">attributeName</span>", <span class="replaceable">value</span>)
+setAttribute("<span class="replaceable">attributeName</span>", <span class="replaceable">value</span>[, <span class="replaceable">caseSensitivity</span>])</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Sets the value of the named attribute within the current element. If
+the attribute is reflected in the object model as a property, this
+method acts the same as assigning a value to the
+object's property. Even so, the W3C DOM declares the
+<span class="literal">setAttribute( )</span> method as the preferred way to
+adjust an attribute value (and the <span class="literal">getAttribute( )</span>
+method for reading the value).
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			If the attribute does not yet exist in the element, the
+<span class="literal">setAttribute( )</span> method adds the attribute as a
+name/value pair to the element (except in IE 4 through 5.5, the newly
+added attribute is not reported as part of the
+element's <span class="literal">attributes</span> collection).
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			IE treats the attribute names more as object property names.
+Therefore, when a discrepancy exists between the attribute and
+corresponding property names (e.g., <span class="literal">class</span> versus
+<span class="literal">className</span>), IE requires the property name version.
+To assign a new value to the <span class="literal">class</span> attribute of an
+element for both IE and Navigator, you should branch the code to
+invoke the method only once per browser to avoid adding an unused
+<span class="literal">className</span> attribute to the Navigator element. For
+purposes of object detection, a browser that supports the W3C DOM
+approach returns a string value type for the
+element's <span class="literal">getAttribute("class")</span>
+method.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Values you assign to an attribute must be all strings for Netscape 6
+(the W3C DOM specification). IE allows other data types (such as
+Number and Boolean), but if you assign, say, a numeric value in
+string form, the data type gets converted so that
+<span class="literal">getAttribute( )</span> returns the value in
+IE's preferred data type. In Netscape 6, all
+attribute values are strings.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Attribute names in Netscape 6 are not case-sensitive, but you should
+get in the habit of using all lowercase attribute names (in the
+direction of XHTML). IE is case-sensitive about attribute names for
+this method by default. An optional third parameter lets you control
+whether the attribute name should be treated in a case-sensitive
+manner. Avoid playing case-sensitivity tricks with attribute names
+(two different attributes with the same spelling but different case
+characteristics). If you use all lowercase attribute names for all
+your code, you can omit the third IE parameter while staying W3C DOM
+compliant.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>The attribute name used in the HTML tag (except as noted above for
+IE).
+</li><li><span class="literal"></span>For Netscape 6, the attribute value as a string data type. For IE,
+the attribute value as a string, number, or Boolean, as dictated by
+the attribute's data type. Strings are safe for all
+values, although IE internally converts the data types as necessary.
+</li><li><span class="literal"></span>An optional integer value for IE only. If <span class="literal">1</span> (the
+default), the attribute in the HTML tag must match the case of the
+<span class="replaceable">attributeName</span> parameter exactly for its
+value to be set (allowing for multiple attribute names with the same
+spelling but different cases to coexist). If <span class="literal">0</span>,
+the <span class="replaceable">attributeName</span> parameter aligns itself
+with the first attribute with the same name, regardless of case.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="setAttributeNS( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">setAttributeNS( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">setAttributeNS("<span class="replaceable">namespaceURI</span>",
+"<span class="replaceable">qualifiedName</span>",
+"<span class="replaceable">value</span>")</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Inserts or replaces an attribute in the current element. If a match
+exists among the element's attributes for both the
+namespace URI and the qualified name passed as parameters, the new
+value is assigned to the existing attribute. If there is no match,
+the attribute is added to the element.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>URI string matching a URI assigned to a label earlier in the document.</li><li><span class="literal"></span>The full name for the attribute, consisting of the local name prefix
+(if any), a colon, and the local name.
+</li><li><span class="literal"></span>The string value for the attribute.</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="setAttributeNode( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">setAttributeNode( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">6</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">setAttributeNode(<span class="replaceable">attrObjectReference</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Inserts or replaces an attribute in the current element. The
+parameter is a reference to an <span class="literal">Attr</span> node object
+that is either created anew or references from another element in the
+document tree. When the <span class="literal">setAttributeNode( )</span> method
+is invoked, the browser first looks for a match between the new
+attribute's name and existing attribute names. If
+there is a match, the new attribute replaces the original one;
+otherwise, the new attribute is added to the attributes of the
+element. Adding an attribute node does not change the source code
+when viewed through the browser, but may affect how the browser
+renders the element if the attribute affects the visual
+representation of the element. The value of the new attribute may be
+retrieved via the <span class="literal">getAttribute( )</span> method.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>A reference to an <span class="literal">Attr</span> node object created through
+<span class="literal">document.createAttribute( )</span> or an
+<span class="literal">Attr</span> node from another element in the document
+tree.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to a replaced <span class="literal">Attr</span> object (which is no
+longer part of the document tree) or <span class="literal">null</span> for an
+insertion.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="setAttributeNodeNS( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">setAttributeNodeNS( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">setAttributeNodeNS(<span class="replaceable">attrObjectReference</span>)</p>
+					</td><td valign="top" nowrap class="requirements"></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Inserts or replaces an attribute in the current element. The
+parameter is a reference to an <span class="literal">Attr</span> node object
+that is either created anew or references from another element in the
+document tree. When the <span class="literal">setAttributeNodeNS( )</span>
+method is invoked, the browser first looks for a match between the
+new attribute's pairing of local name and namespace
+URI and existing attribute local names and namespace URIs. If there
+is a match, the new attribute replaces the original one; otherwise,
+the new attribute is added to the attributes of the element. Adding
+an attribute node does not change the source code when viewed through
+the browser, but may affect how the browser renders the element if
+the attribute affects the visual representation of the element. The
+value of the new attribute may be retrieved via the
+<span class="literal">getAttributeNS( )</span> method.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>A reference to an <span class="literal">Attr</span> node object created through
+<span class="literal">document.createAttributeNS( )</span> or an
+<span class="literal">Attr</span> node from another element in the document
+tree.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to a replaced <span class="literal">Attr</span> object (which is no
+longer part of the document tree) or <span class="literal">null</span> for an
+insertion.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+<div id="tagName">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">tagName</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements"><span class="emphasis">Read-only</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns the name of the tag of the current element. Tag names are
+always returned in all uppercase letters for purposes of string
+comparisons, regardless of source code style or
+<span class="literal">DOCTYPE</span> declaration.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var theTag = document.getElementById("<span class="replaceable">elementID</span>").tagName;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			String.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Element-specific.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+<div id="uniqueID">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">uniqueID</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements"><span class="emphasis">Read-only</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns an identifier string that is unique among all object
+identifiers on the page. Used primarily to assign an ID to newly
+created elements when you don't mind the browser
+using its own naming scheme to invent the name. Most commonly used as
+a property of the <span class="literal">document</span> object, but it is
+accessible through any existing element object reference. The
+identifier is perfectly valid for use as string a parameter to
+methods that require an element ID.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var newElem = document.createElement("p");
+newElem.id = document.uniqueID;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			String.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Browser-generated. </p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!-- Copyright 2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>链接</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var LANGUAGELIST; 
+var DIRLIST;
+var HREFLANGLIST;
+var CHARSETLIST;
+var TYPELIST;
+var theUIObjects; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function initializeUI()
+{
+	LANGUAGELIST = new ListControl("thelang"); 
+	HREFLANGLIST = new ListControl("thehreflang"); 
+	DIRLIST = new ListControl("thedir"); 
+  CHARSETLIST = new ListControl("thecharset");
+	TYPELIST = new ListControl("thetype");
+
+	theUIObjects  = new Array(LANGUAGELIST,DIRLIST,HREFLANGLIST,CHARSETLIST,TYPELIST); 
+
+  tagDialog.populateDropDownList(LANGUAGELIST, theLanguagesCap, theLanguagesVal, 1); 
+  tagDialog.populateDropDownList(HREFLANGLIST, theLanguagesCap, theLanguagesVal, 1); 
+  tagDialog.populateDropDownList(CHARSETLIST, theCharsetsVal, theCharsetsVal, 1); 
+  tagDialog.populateDropDownList(DIRLIST, theDirectionCap, theDirectionVal, 1); 
+  tagDialog.populateDropDownList(TYPELIST, theLinkTypesVal, theLinkTypesVal, 1); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">HREF: </td>
+      <td nowrap="nowrap"> 
+        <input name="thehref" type="text" class="basicTextField" id="attr:link:href" attname="href" />&nbsp;
+        <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('thehref');focus(this)" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">Href 语言: </td>
+      <td nowrap="nowrap">
+        <select name="thehreflang" class="dirLangList" id="attr:link:hreflang" attname="hreflang" editable="true">
+           
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">前进链接类型: </td>
+      <td nowrap="nowrap">
+        <input name="therel" type="text" class="basicTextField" id="attr:link:rel" attname="rel"> 
+        </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">后退链接类型: </td>
+      <td nowrap="nowrap">
+        <input name="therev" type="text" class="basicTextField" id="attr:link:rev" attname="rev"> 
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">标题: </td>
+      <td nowrap="nowrap">
+        <input name="thetitle" type="text" class="basicTextField" id="attr:link:title" attname="title" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">字符集: </td>
+      <td nowrap="nowrap">
+        <select name="thecharset" class="charsetList" id="attr:link:charset" attname="charset" editable="true">
+           
+        </select>
+      </td>
+    </tr>
+  </table>
+</div> 
+<div name="HTML 4.0"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类型:</td>
+      <td nowrap="nowrap">
+        <select name="thetype" class="smallNumOrCharList" id="attr:link:type" attname="type" editable="true">
+           
+        </select>
+      </td> 
+    </tr> 
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">媒体: </td>
+      <td nowrap="nowrap">
+        <input name="themedia" type="text" class="basicTextField" id="attr:link:media" attname="media" />
+      </td>
+    </tr>
+  </table>
+</div> 
+<div name="样式表/辅助功能"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类: </td>
+      <td nowrap="nowrap">
+        <input name="theclass" type="text" class="basicTextField" id="attr:link:class" attname="class" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="attr:link:id" attname="id" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">样式: </td>
+      <td nowrap="nowrap">
+        <input name="thestyle" type="text" class="basicTextField" id="attr:link:class" attname="style" />
+      </td>
+    </tr>
+  	<tr>
+      <td valign="baseline" align="right" nowrap="nowrap">标签: </td>
+      <td nowrap="nowrap">
+        <input name="thelabel" type="text" class="basicTextField" id="attr:link:label" attname="label" />
+      </td>
+    </tr>
+  </table> 
+</div>
+<div name="语言"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">方向: </td>
+      <td nowrap="nowrap">
+        <select name="thedir" class="dirLangList" id="attr:link:dir" attname="dir"> 
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" nowrap="nowrap"></td>
+      <td nowrap="nowrap"></td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">语言: </td>
+      <td nowrap="nowrap">
+        <select name="thelang" class="dirLangList" id="attr:link:lang" attname="lang" editable="true"> 
+        </select>
+      </td>
+    </tr>
+  </table>
+</div>
+<div name="事件"> 
+  <div name="onClick"> 
+    <textarea name="theonClick"  wrap="VIRTUAL" class="contentsField" id="attr:link:onclick" attname="onClick"></textarea>
+  </div> 
+  <div name="onDblClick"> 
+    <textarea name="theonDblClick"  wrap="VIRTUAL" class="contentsField" id="attr:link:ondblclick" attname="onDblClick"></textarea>
+  </div> 
+  <div name="onMouseDown"> 
+    <textarea name="theonMouseDown"  wrap="VIRTUAL" class="contentsField" id="attr:link:onmousedown" attname="onMouseDown"></textarea>
+  </div> 
+  <div name="onMouseUp"> 
+    <textarea name="theonMouseUp"  wrap="VIRTUAL" class="contentsField" id="attr:link:onmouseup" attname="onMouseUp"></textarea>
+  </div> 
+  <div name="onMouseOver"> 
+    <textarea name="theonMouseOver"  wrap="VIRTUAL" class="contentsField" id="attr:link:onmouseover" attname="onMouseOver"></textarea>
+  </div> 
+  <div name="onMouseMove"> 
+    <textarea name="theonMouseMove"  wrap="VIRTUAL" class="contentsField" id="attr:link:onmousemove" attname="onMouseMove"></textarea>
+  </div> 
+  <div name="onMouseOut"> 
+    <textarea name="theonMouseOut"  wrap="VIRTUAL" class="contentsField" id="attr:link:onmouseout" attname="onMouseOut"></textarea>
+  </div> 
+  <div name="onKeyPress"> 
+    <textarea name="theonKeyPress"  wrap="VIRTUAL" class="contentsField" id="attr:link:onkeypress" attname="onKeyPress"></textarea>
+  </div> 
+  <div name="onKeyDown"> 
+    <textarea name="theonKeyDown"  wrap="VIRTUAL" class="contentsField" id="attr:link:onkeydown" attname="onKeyDown"></textarea>
+  </div> 
+  <div name="onKeyUp"> 
+    <textarea name="theonKeyUp"  wrap="VIRTUAL" class="contentsField" id="attr:link:onkeyup" attname="onKeyUp"></textarea>
+  </div> 
+</div>
+</body>
+</html>

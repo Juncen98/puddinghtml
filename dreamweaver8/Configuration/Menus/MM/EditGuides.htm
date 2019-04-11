@@ -1,0 +1,49 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
+<TITLE>辅助线</TITLE>
+<script src="EditGuides.js"></script>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY onLoad="initUI()" onUnload="takeDownUI()">
+<form>
+<table border="0" cellpadding="4">
+<tr>
+<td nowrap><div align="right">辅助线颜色:</div></td>
+<td nowrap><input type="mmcolorbutton" name="guideColor" value="#00FF00" onChange="onGuideColorChanged()">
+	<input name="guideColorText" type="text" onBlur="onGuideColorBlur()" value="#00FF00" size="11" maxlength="7"> </td>
+</tr>
+<tr>
+<td nowrap><div align="right">距离颜色：</div></td>
+<td nowrap><input type="mmcolorbutton" name="distanceColor" value="#0000FF" onChange="onDistanceColorChanged()">
+	<input name="distanceColorText" type="text" onBlur="onDistanceColorBlur()" value="#0000FF" size="11" maxlength="7"> </td>
+</tr>
+<tr>
+<td nowrap>&nbsp;</td>
+<td nowrap><label><input type="checkbox" name="showGuides" value="showGuides">显示辅助线</label></td>
+</tr>
+<tr>
+<td nowrap>&nbsp;</td>
+<td nowrap><label><input type="checkbox" name="guidesDoSnap" value="guidesDoSnap">靠齐辅助线</label></td>
+</tr>
+<tr>
+<td nowrap>&nbsp;</td>
+<td nowrap><label><input type="checkbox" name="lockGuides" value="lockGuides">锁定辅助线</label></td>
+</tr>
+<tr>
+<td nowrap>&nbsp;</td>
+<td nowrap><label><input type="checkbox" name="elementsTheGuidesSnapTo" value="elementsTheGuidesSnapTo">辅助线靠齐元素</label></td>
+</tr>
+<tr>
+<td nowrap>&nbsp;</td>
+<td nowrap><input type="button" name="clearAll" value="清除全部" onClick="onClearAllGuides();focus(this)"></td>
+</tr>
+
+</table>
+</form>
+</BODY>
+</HTML>

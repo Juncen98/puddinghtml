@@ -1,0 +1,172 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<html>
+<head>
+
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<script src="../../Shared/UltraDev/Scripts/ssClasses.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/DBTreeControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/enableControl.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/RecordsetMenu.js"></SCRIPT>
+
+<SCRIPT src="../Shared/ASP.Net/DataGridDataList.js"></script>
+<SCRIPT src="../Shared/ASP.Net/DataList.js"></script>
+
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onload="initializeUI()">
+
+<form name="theForm">
+  <table border=0>
+    <tr valign="baseline">
+      <td align="right">ID:</td>
+      <td nowrap colspan="3">
+        <input name="IdEdit" type="text" class="basicTextField">
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td align="right">数据集:</td>
+      <td nowrap align="left" colspan=3>
+        <select name="RecordsetSelect" class="rsNameList" wrap="virtual" onSelect="recordsetSelectChanged()">
+        </select>
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>显示: </td>
+      <td nowrap colspan=3>
+        <input type="radio" name="RecordCount" value="Repeat" onClick="pagingTypeChanged('number')" checked>
+        <input name="RecordCountEdit" type="text" class="smallNumOrChar" value="10" maxlength="5">
+        记录
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td align="right" nowrap></td>
+      <td nowrap colspan=3>
+        <input type="radio" name="RecordCount" value="All" onClick="pagingTypeChanged('all')">
+        所有记录
+      </td>
+    </tr>
+<!--
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>Organize Items:</td>
+      <td align="left" nowrap colspan=3>
+        <input type="radio" name="OrganizeRadio" value="lineBreaks" CHECKED  onClick="organizeCheckClicked()">
+        Use Line Breaks
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td align="right" nowrap></td>
+      <td align="left" nowrap colspan=3>
+        <input type="radio" name="OrganizeRadio" value="table" onClick="organizeCheckClicked()">
+        Use a Table:
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td>&nbsp;</td>
+      <td align="right" nowrap>Columns:</td>
+      <td align="left" colspan=2>
+        <select style="width:45px" editable="true" name="NumberOfColumnsSelect" onBlur="numberOfColumnSelectChange()" onChange="numberOfColumnSelectChange()">
+        </select>
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td>&nbsp;</td>
+      <td align="right" nowrap>Cell Fill Order:</td>
+      <td align="left" nowrap colspan=2>
+        <input type="radio" value="topToBottom" CHECKED name="FillOrderRadio">
+        Wrap Top to Bottom
+        <img src="../../Shared/MM/Images/transparent.gif" height="1" width="5">
+        <input type="radio" value="leftToRight" name="FillOrderRadio">
+        Wrap Left to Right
+      </td>
+    </tr>
+-->
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td align="right" valign="top">模板:</td>
+      <td nowrap align="left" colspan=3>
+        <select name="TemplateSelect" size="7" class="templateList" onChange="columnListSelectionChanged()">
+          <option SELECTED>页眉</option>
+          <option>项目</option>
+          <option>交替项</option>
+          <option>编辑项</option>
+          <option>选定项</option>
+          <option>分隔线</option>
+          <option>脚注</option>
+        </select>
+        <input type="button" name="AddDataFieldButton" style="width:170px" value="将数据字段添加到内容" onClick="AddDataFieldButtonClicked()">
+     </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td align="right" valign="top">内容:</td>
+      <td align="left" colspan=3>
+        <textarea name="ContentsTextArea" class="contentsField" onBlur="contentsTextAreaBlur()">
+	      </textarea>
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>组织项: </td>
+      <td align="left" nowrap colspan=3>
+        <input type="radio" name="OrganizeRadio" value="lineBreaks" CHECKED  onClick="organizeCheckClicked()">
+        使用换行符
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td align="right" nowrap></td>
+      <td align="left" nowrap colspan=3>
+        <input type="radio" name="OrganizeRadio" value="table" onClick="organizeCheckClicked()">
+        使用表:
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td>&nbsp;</td>
+      <td align="right" nowrap>表列:</td>
+      <td align="left" colspan=2>
+        <select name="NumberOfColumnsSelect" class="smallNumOrCharList" onBlur="numberOfColumnSelectChange()" onChange="numberOfColumnSelectChange()" editable="true">
+        </select>
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td>&nbsp;</td>
+      <td align="right" nowrap>表格单元格填充顺序: </td>
+      <td align="left" nowrap colspan=2>
+        <input type="radio" value="topToBottom" CHECKED name="FillOrderRadio">
+        自上而下换行
+        <img src="../../Shared/MM/Images/transparent.gif" height="1" width="5">
+        <input type="radio" value="leftToRight" name="FillOrderRadio">
+        从左到右换行
+      </td>
+    </tr>
+ <!--
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan=3 align="left"><input type="button" name="AddDataFieldButton" value="Add Data Field to Contents" onClick="AddDataFieldButtonClicked()">
+      </td>
+    </tr>
+ -->
+  </table>
+</form>
+
+</body>
+</html>

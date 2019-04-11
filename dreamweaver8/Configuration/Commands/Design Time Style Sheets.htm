@@ -1,0 +1,69 @@
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2001, 2002 Macromedia, Inc. All rights reserved. -->
+
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<head>
+<title>设计时间样式表</title>
+<script src="../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="Design Time Style Sheets.js"></script>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<script src="../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<!-- End removal area. -->
+<SCRIPT LANGUAGE="javascript">
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_ALREADY_THERE = "该样式表已经在列表中。";
+
+//--------------- END LOCALIZEABLE   ---------------
+
+</SCRIPT>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY onLoad="initUI()">
+<form name="form1" >
+  
+  
+<table border="0" cellspacing="4" cellpadding="0">
+    
+<tr>
+<td valign="top" nowrap>&nbsp;</td>
+<td nowrap><INPUT TYPE="image" onClick="addSS(LIST_INCLUDED);focus(this)" SRC="../Shared/MM/Images/btnAdd.gif" alt="添加项" width="20" height="18">
+&nbsp;
+<INPUT TYPE="image"
+                   onClick="removeSS(LIST_INCLUDED);focus(this)" SRC="../Shared/MM/Images/btnDel.gif" alt= "移除项" width="20" height="18">
+ </td>
+</tr>
+<tr>
+			
+<td valign="top" nowrap align="right">只在设计时显示:</td>
+<td nowrap>
+        <select name="included" size="4" class="multiWordOptionList">
+        </select>
+      </td>
+</tr>
+    
+<tr>
+<td valign="top" colspan="2" height="5"><img src="../Shared/MM/Images/transparent.gif" width="1" height="5"></td>
+</tr>
+
+<tr>
+<td valign="top" nowrap>&nbsp;</td>
+<td nowrap><INPUT TYPE="image" onClick="addSS(LIST_EXCLUDED);focus(this)" SRC="../Shared/MM/Images/btnAdd.gif" alt="添加项" width="20" height="18">
+ &nbsp;
+<INPUT TYPE="image"
+                   onClick="removeSS(LIST_EXCLUDED);focus(this)" SRC="../Shared/MM/Images/btnDel.gif" alt= "移除项" width="20" height="18"></td>
+</tr>
+<tr>
+      
+<td valign="top" nowrap align="right">设计时隐藏:</td>
+<td nowrap>
+        <select name="excluded" size="4" class="multiWordOptionList">
+        </select>
+      </td>
+</tr>
+  
+</table>
+</form>
+</BODY>
+</HTML>

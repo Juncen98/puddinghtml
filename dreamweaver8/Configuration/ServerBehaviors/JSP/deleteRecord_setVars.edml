@@ -1,0 +1,47 @@
+<participant>
+     <quickSearch><![CDATA[MM_delete]]></quickSearch>
+     <insertText location="aboveHTML+20">
+<![CDATA[
+<%
+// *** Delete Record: construct a sql delete statement and execute it
+
+if (request.getParameter("MM_delete") != null &&
+    request.getParameter("MM_delete").toString().equals("@@formName@@") &&
+    request.getParameter("MM_recordId") != null) {
+
+  MM_editDriver     = MM_@@cname@@_DRIVER;
+  MM_editConnection = MM_@@cname@@_STRING;
+  MM_editUserName   = MM_@@cname@@_USERNAME;
+  MM_editPassword   = MM_@@cname@@_PASSWORD;
+  MM_editTable = "@@table@@";
+  MM_editColumn = "@@col@@";
+  MM_recordId = "@@colQuote@@" + request.getParameter("MM_recordId") + "@@colQuote@@";
+  MM_editRedirectUrl = "@@redirect__url@@";
+
+  // append the query string to the redirect URL
+  if (MM_editRedirectUrl.length() != 0 && request.getQueryString() != null) {
+    MM_editRedirectUrl += ((MM_editRedirectUrl.indexOf('?') == -1)?"?":"&") + request.getQueryString();
+  }
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern><![CDATA[/request\.getParameter\("MM_delete"\)/]]></searchPattern>
+       <searchPattern paramNames="formName" isOptional="true"><![CDATA[/request.getParameter\("MM_delete"\)\.toString\(\)\.equals\("([^"]*)"\)/]]></searchPattern>
+       <searchPattern paramNames="cname"><![CDATA[/MM_editConnection\s*=\s*MM_(\w+)_STRING/]]></searchPattern>
+       <searchPattern paramNames="table"><![CDATA[/MM_editTable\s*=\s*"([^"]*)";/]]></searchPattern>
+       <searchPattern paramNames="col"><![CDATA[/MM_editColumn\s*=\s*"([^"]*)";/]]></searchPattern>
+       <searchPattern paramNames="colQuote"><![CDATA[/MM_recordId\s*=\s*"([^"]*)"/]]></searchPattern>
+       <searchPattern paramNames="redirect__url"><![CDATA[/MM_editRedirectUrl\s*=\s*"([^\r\n]*)";/]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="cname"><![CDATA[/(MM_)\w+(_STRING|_USERNAME|_PASSWORD|_DRIVER)/g]]></updatePattern>
+       <updatePattern paramName="table"><![CDATA[/(MM_editTable\s*=\s*")[^"]*(";)/g]]></updatePattern>
+       <updatePattern paramName="col"><![CDATA[/(MM_editColumn\s*=\s*")[^"]*(";)/g]]></updatePattern>
+       <updatePattern paramName="colQuote"><![CDATA[/(MM_recordId\s*=\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="colQuote"><![CDATA[/(request\.getParameter\("MM_recordId"\)\s*\+\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="redirect__url"><![CDATA[/(MM_editRedirectUrl\s*=\s*")[^\r\n]*(";)/g]]></updatePattern>
+       <updatePattern paramName="formName"><![CDATA[/(request.getParameter\("MM_delete"\)\.toString\(\)\.equals\(")[^"]*("\))/]]></updatePattern>
+     </updatePatterns>
+</participant>

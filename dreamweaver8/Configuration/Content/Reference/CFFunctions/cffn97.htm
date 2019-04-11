@@ -1,0 +1,110 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>GETCONTEXTROOT</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">GETCONTEXTROOT</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Returns path to the J2EE server context root for the current request.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+The path from the web root to the context root for the current page. The path starts with a forward slash character (/) but does not end with a forward slash character (/). For applications in the default (root) context, returns the empty string.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+System functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7: Added this function.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>GetContextRoot()
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+GetPageContext
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+This function is equivalent to calling GetPageContext().GetRequest().GetContextPath(). On J2EE configurations, it returns the path from the Web root to the J2EE context root of the ColdFusion MX J2EE application. On server configurations, it returns the empty string, because the context root is at the web root.
+</p>
+
+<p>
+This function is useful in applications that might be installed at varying J2EE context roots.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+The ColdFusion MX Administrator uses the following line to get the location of the administrator directory: 
+</p>
+<pre>&lt;cfset request.thisURL = &quot;#getContextRoot()#/CFIDE/administrator/&quot;&gt;
+</pre>
+<p>
+The Administrator uses the returned value in places where it uses a URL to access Administrator resources, such as images, as in the following line:
+</p>
+<pre>&lt;a href=&quot;index.cfm&quot;&gt;&lt;img src=&quot;#request.thisURL#images/back.gif&quot; width=&quot;16&quot;
+         height=&quot;16&quot; border=&quot;0&quot; alt=&quot; &quot;&gt;&lt;/a&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+
+  </body>
+</html>

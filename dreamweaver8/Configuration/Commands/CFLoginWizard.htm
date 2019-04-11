@@ -1,0 +1,321 @@
+﻿﻿<!-- MENU-LOCATION=NONE -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!---
+* Copyright (c) 2005 Macromedia.  All Rights Reserved.
+* DO NOT REDISTRIBUTE THIS SOFTWARE IN ANY WAY WITHOUT THE EXPRESSED
+* WRITTEN PERMISSION OF MACROMEDIA.
+--->
+<html>
+<head>
+<title>ColdFusion 登录向导</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script language="javascript" src="../Shared/Common/Scripts/dwscripts.js"></script>
+<script language="javascript" src="CFLoginWizard.js"></script>
+<script language="JavaScript">
+//--------------- LOCALIZEABLE GLOBALS---------------
+var AppName_select_path_in_site = "请浏览到您当前所选文件的所在站点中的一个目录。";
+var Succes_page_Invalid_message = "请为成功页面输入一个有效的位置。";
+var Failure_page_Invalid_message = "请为失败页面输入一个有效位置。";
+var Ldap_server_argsmissing_message ="某一个必填字段（服务器、端口、用户名、密码或 startstring）为空。请重新输入并重试。";
+var Ldap_server_incorrect_message = "LDAP 配置不正确。继续前请验证您的设置。";
+var NeedToMakeApplicationCFCEditable = "本向导需要为此应用程序向 Application.cfc 文件写入信息，但是该文件是只读的。请退出本向导，使 Application.cfc 文件可编辑或者选择不同的应用程序进行保护";
+var noDWsite_message = "ڻ您必须在活动的 Dreamweaver 站点上，登录向导才能正常使用。";
+var noFocus_message = "本地视图必须具有焦点才能执行同步。";
+var emptyDomain_message = "您必须指定一个有效的域名。";
+var emptyUserPwd_message = "用户名和密码字段不能为空。";
+var noSynch_message = "Dreamweaver 已测定此时不需要为此站点同步任何文件。";
+var NotImplemented = "尚未实现此功能。";
+var remoteSiteNotValid_message = "Dreamweaver 已测定定义的远程站点无效。检查设置。";
+var not200_message = "ColdFusion 服务器不在远程站点上运行。请验证服务器是否运行，然后重试向导。";
+var willNowclose_message = "现在登录向导将会退出。";
+var no_queryString_message = "查询字符串不能为空。";
+var MSG_CHOOSEFOLDER = "请选择一个文件夹";
+var MSG_verificationSuccessful = "验证成功";
+var MSG_verificationFailed = "验证失败";
+//--------------- END LOCALIZEABLE   ---------------
+var HELP_DOC = MM.HELP_CFLoginWizard_cmd;
+</script>
+<style type="text/css">
+.mainWizardPanel {
+	position:absolute;
+	height:350px;
+	z-index:2;
+	left: 10px;
+	top: 8px;
+	visibility: hidden;
+}
+.mainWizardPanel, .mainWizardButtons {
+	width:650px;
+}
+p {
+	margin-right: 8px; 
+}
+.leftWizardButtons, .rightWizardButtons {
+	bottom: 5px;
+	display: inline;
+	position:absolute;
+}
+.leftWizardButtons {
+	left: 5px;
+}
+.rightWizardButtons {
+	right: 5px;
+}
+.navButtonCancel{
+	margin-left: 20px;
+}
+.navButtonBack, .navButtonNext, .navButtonCancel, .navButtonHelp{
+	width:72px;
+}
+h1 {
+	text-align:left;
+	font-weight: normal;
+	font-size: x-small;
+	margin-bottom: 4px;
+}
+label.radioButton {
+	display:block;
+}
+code {font-size: 8.5pt}
+</style>
+</head>
+<body onLoad="initializeUI()">
+<div id="AppName" class="mainWizardPanel" style="visibility:visible;">
+	<form name="appname">
+		<img src="BNR_ColdFusionLoginWizard.png" alt="Macromedia ColdFusion MX7 Login Wizard" width="642" height="73">
+		<h1>欢迎使用登录向导</h1>
+		<p>此向导帮助您控制对现有应用程序的访问。要获得对应用程序的文件夹的访问，必须运行 ColdFusion 并正确配置活动站点。</p>
+		<p>请指定您要保护的目录的完整路径。该路径必须也在您的当前站点中。</p>
+		<p>
+			<input name="apppath" type="text"  size="50" ID="Text1">
+			<input type="button" name="BrowseButton" value="浏览..." onClick="browseFile('apppath');focus(this)">
+		</p>
+		<div id="AppNameButtons" class="mainWizardButtons">
+			<div class="leftWizardButtons">
+				<input type="submit" class="navButtonHelp" name="appname_help" value="帮助" onclick="dwscripts.displayDWHelp(HELP_DOC);" >
+			</div>
+			<div class="rightWizardButtons">
+				<input type="submit" class="navButtonBack" name="appname_back" value="后退" disabled>
+				<input type="submit" class="navButtonNext" name="appname_next" value="下一个" onclick="GoToAuthType();" >
+				<input type="submit" class="navButtonCancel" name="appname_cancel" value="取消" onclick="window.close();" >
+			</div>
+		</div>
+	</form>
+</div>
+<div id="AuthType" class="mainWizardPanel" style=""> <img src="BNR_ColdFusionLoginWizard.png" alt="Macromedia ColdFusion MX7 Login Wizard" width="642" height="73">
+	<h1>验证类型</h1>
+	<form name="authtypeform">
+		<table width="100%"  border="0" cellpadding="1" cellspacing="1">
+			<tr>
+				<td colspan="2" valign="baseline">选择一个验证方法:</td>
+			</tr>
+			<tr>
+				<td valign="baseline"><input name="authenticationtype" type="radio" value="Simple" checked ></td>
+				<td width="100%" valign="baseline"><p style="margin-bottom:8px;">简单验证: 通过单一的用户名和密码保证应用程序的安全。</p></td>
+			</tr>
+			<tr valign="baseline">
+				<td><input name="authenticationtype" type="radio" value="NT" ></td>
+				<td><p style="margin-bottom:8px;">Windows NT 验证: 使用 Windows NT 用户名和密码保护您的应用程序。</p></td>
+			</tr>
+			<tr valign="baseline">
+				<td><input name="authenticationtype" type="radio" value="LDAP" ></td>
+				<td><p style="margin-bottom:8px;">LDAP 验证: 使用存储在 LDAP 服务器中的用户名和密码保护您的应用程序。</p></td>
+			</tr>
+		</table>
+		<br>
+		<table width="100%"  border="0" cellpadding="1" cellspacing="1">
+			<tr valign="baseline">
+				<td colspan="2">选择用户进行验证的方法:</td>
+			</tr>
+			<tr valign="baseline">
+				<td><input type="radio" name="basicAuthlogin" value="CFlogin" checked></td>
+				<td width="100%">使用 ColdFusion 登录页面。</td>
+			</tr>
+			<tr>
+				<td><input type="radio" name="basicAuthlogin"  value="challenge"></td>
+				<td valign="baseline">使用弹出式对话框。</td>
+			</tr>
+		</table>
+		<div id="AuthTypeButtons" class="mainWizardButtons">
+			<div class="leftWizardButtons">
+				<input type="submit" class="navButtonHelp" name="authtypeform_help" value="帮助" onclick="dwscripts.displayDWHelp(HELP_DOC);" >
+			</div>
+			<div class="rightWizardButtons">
+				<input type="submit" class="navButtonBack" name="authtypeform_back" value="后退" onclick="BeginWizard();">
+				<input type="submit" class="navButtonNext" name="authtypeform_next" value="下一个" onClick="selectAuthType();" >
+				<input type="submit" class="navButtonCancel" name="authtypeform_cancel" value="取消" onclick="window.close();" >
+			</div>
+		</div>
+	</form>
+</div>
+<div id="NTAuth" class="mainWizardPanel">
+	<form name="NTauth">
+		<img src="BNR_ColdFusionLoginWizard.png" alt="Macromedia ColdFusion MX7 Login Wizard" width="642" height="73">
+		<h1>Windows NT 域验证</h1>
+		<p>输入一个用于验证用户的有效 Windows NT 域:</p>
+		<p>
+			<input name="domainname" type="Text" size="30" style="width:250px;">
+		</p>
+		<div id="NTAuthButtons" class="mainWizardButtons">
+			<div class="leftWizardButtons">
+				<input type="submit" class="navButtonHelp" name="NTauth_help" value="帮助" onclick="dwscripts.displayDWHelp(HELP_DOC);" >
+			</div>
+			<div class="rightWizardButtons">
+				<input type="submit" class="navButtonBack" name="NTauth_back" value="后退" onclick="displayAuthType();">
+				<input type="submit" class="navButtonNext" name="NTauth_next" value="下一个" onclick="callCodeGen('NT');">
+				<input type="submit" class="navButtonCancel" name="NTauth_cancel" value="取消" onclick="window.close();" >
+			</div>
+		</div>
+	</form>
+</div>
+<div id="LDAPAuth" class="mainWizardPanel">
+	<form name="LDAPauth">
+		<img src="BNR_ColdFusionLoginWizard.png" alt="Macromedia ColdFusion MX7 Login Wizard" width="642" height="73">
+		<h1>LDAP 验证</h1>
+		<table border="0" cellpadding="0" cellspacing="2" width="100%" align="center">
+			<tr>
+				<td colspan="3">输入必需的信息以连接到并查询 LDAP 服务器。如果需要此信息，请向 LDAP 服务器管理员核实。</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td width="150">&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr valign="baseline">
+				<td align="right">服务器名称:</td>
+				<td width="150"><input name="ldapserver" type="Text"  size="40" style="width:150px;" required="yes">
+				</td>
+				<td>服务器名称或 IP 地址 </td>
+			</tr>
+			<tr valign="baseline">
+				<td align="right">端口:</td>
+				<td width="150"><input name="ldapport" type="Text"  value="389" size="40" style="width:150px;">
+				</td>
+				<td>服务器连接端口</td>
+			</tr>
+			<tr valign="baseline">
+				<td align="right">起始字符串:</td>
+				<td width="150"><input name="ldapstart" type="Text" style="width:150px;"   size="50" required="yes">
+				</td>
+				<td>(	服务器起始字符串（ַ<code>o=airius.com</code>) </td>
+			</tr>
+			<tr valign="baseline">
+				<td align="right">用户名:</td>
+				<td width="150"><input name="ldapusername" type="Text"   size="50" style="width:150px;" required="yes">
+				</td>
+				<td>(	连接用户名（<code>cn=Directory Manager</code>)</td>
+			</tr>
+			<tr valign="baseline">
+				<td align="right">密码:</td>
+				<td width="150"><input name="ldappassword" type="password" size="50" style="width:150px;" required="yes">
+				</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td width="150"><input type="submit" name="LDAPauth_verify" value="验证 LDAP 服务器" onClick="verifyldapserver();">
+					<span id="ldapvalidated">&nbsp;</span> </td>
+				<td>&nbsp;</td>
+			</tr>
+		</table>
+		<div id="LDAPAuthButtons" class="mainWizardButtons">
+			<div class="leftWizardButtons">
+				<input type="submit" class="navButtonHelp" name="LDAPauth_help" value="帮助" onclick="dwscripts.displayDWHelp(HELP_DOC);" >
+			</div>
+			<div class="rightWizardButtons">
+				<input type="submit" class="navButtonBack" name="LDAPauth_back" value="后退" onclick="displayAuthType();">
+				<!--- force the user to validate the LDAP against the server before they continue --->
+				<input type="submit" class="navButtonNext" name="LDAPauth_next" value="下一个" onclick="ldapauthquerystring();">
+				<input type="submit" class="navButtonCancel" name="LDAPauth_cancel" value="取消" onclick="window.close();" >
+			</div>
+		</div>
+	</form>
+</div>
+<div id="LDAPAuthQueryString" class="mainWizardPanel" style="">
+	<form name="LDAPquery">
+		<img src="BNR_ColdFusionLoginWizard.png" alt="Macromedia ColdFusion MX7 Login Wizard" width="642" height="73">
+		<h1>LDAP 验证查询字符串ַ</h1>
+		<p>为使验证正常工作，请输入 LDAP 服务器需要用于用户名的查询字符串。例如，如果 LDAP 服务器要求字符串 <code>cn=jsmith,o=xyz.com</code> <code>cn={username},o=xyz.com</code></p>
+		<p>ѯַʽ:
+			<input name="querystring" type="text" size="40" style="width:300px;">
+		</p>
+		<!-- Commenting out retrieve query string button. This will be implemented as part of "B" features -->
+		<!--  <input type="submit" name="LDAPquery_retrieve" value="Retrieve Query String From Server" onclick="getLDAPQueryString();"> -->
+		<div id="LDAPAuthQueryStringButtons" class="mainWizardButtons">
+			<div class="leftWizardButtons">
+				<input type="submit" class="navButtonHelp" name="LDAPquery_help" value="帮助" onclick="dwscripts.displayDWHelp(HELP_DOC);" >
+			</div>
+			<div class="rightWizardButtons">
+				<input type="submit" class="navButtonBack" name="LDAPquery_back" value="后退" onclick="selectAuthType();">
+				<input type="submit" class="navButtonNext" name="LDAPquery_next" value="下一个" onclick="callCodeGen('LDAP');">
+				<input type="submit" class="navButtonCancel" name="LDAPquery_cancel" value="取消" onclick="window.close();" >
+			</div>
+		</div>
+	</form>
+</div>
+<div id="SimpleAuth" class="mainWizardPanel" style="">
+	<form name="SMPLauth">
+		<img src="BNR_ColdFusionLoginWizard.png" alt="Macromedia ColdFusion MX7 Login Wizard" width="642" height="73">
+		<h1>简单验证</h1>
+		<p>创建用户名和密码访问此应用程序。</p>
+		<table border="0" width="600" align="center">
+			<tr>
+				<td align="right" valign="baseline">用户名:</td>
+				<td align="left" valign="baseline"><input name="simpleusername" type="Text"  size="40" style="width:300px;"></td>
+			</tr>
+			<tr>
+				<td align="right" valign="baseline">密码:</td>
+				<td align="left" valign="baseline"><input name="simplepassword" type="password" size="40" style="width:300px;"></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+		</table>
+		<div id="SimpleAuthButtons" class="mainWizardButtons">
+			<div class="leftWizardButtons">
+				<input type="submit" class="navButtonHelp" name="SMPLauth_help" value="帮助" onclick="dwscripts.displayDWHelp(HELP_DOC);" >
+			</div>
+			<div class="rightWizardButtons">
+				<input type="submit" class="navButtonBack" name="SMPLauth_back" value="后退" onclick="displayAuthType();">
+				<input type="submit" class="navButtonNext" name="SMPLauth_next" value="下一个" onclick="callCodeGen('Simple');">
+				<input type="submit" class="navButtonCancel" name="SMPLauth_cancel" value="取消" onclick="window.close();" >
+			</div>
+		</div>
+	</form>
+</div>
+<!--this is used when the wizard is being run for the first time-->
+<div id="CodeComplete" class="mainWizardPanel" style="">
+	<form name="CODEcomplete">
+		<img src="BNR_ColdFusionLoginWizard.png" alt="Macromedia ColdFusion MX7 Login Wizard" width="642" height="73">
+		<h1>向导已完成</h1>
+		<p>验证已添加至应用程序，但在验证用户之前，需要将以下文件放到远程站点:</p>
+		<ul style="text-indent:-15px;">
+			<li>Application.cfc</li>
+			<li>mm_wizard_application_include.cfm</li>
+			<li>mm_wizard_login.cfm</li>
+			<li>mm_wizard_authenticate.cfc </li>
+		</ul>
+		<!--<input type="checkbox" name="put1" onclick="Put_site();">&nbsp;Put the Login Wizard files onto the remote machine <br><br>-->
+		<div id="CodeCompleteButtons" class="mainWizardButtons">
+			<div class="rightWizardButtons">
+				<input type="submit" class="navButtonNext" name="CODEcomplete_complete" value="完成" onclick="window.close();">
+			</div>
+		</div>
+	</form>
+</div>
+<!-- this is used when the wizard has already been run - this is the 2nd time through  -->
+<div id="CodeComplete2x" class="mainWizardPanel" style="">
+	<form name="CODEcomplete2x">
+		<img src="BNR_ColdFusionLoginWizard.png" alt="Macromedia ColdFusion MX7 Login Wizard" width="642" height="73">
+		<h1>向导已完成</h1>
+		<p>您已经成功地将验证添加到应用程序。</p>
+		<p> <code>mm_wizard_application_include.cfm</code> 和 <code>Application.cfc</code> 文件已更新。</p>
+		<div id="CodeComplete2xButtons" class="mainWizardButtons">
+			<div class="rightWizardButtons">
+				<input type="submit" class="navButtonNext" name="CODEcomplete_complete" value="́完成" onclick="window.close();">
+			</div>
+		</div>
+	</form>
+</div>
+</body>
+</html>

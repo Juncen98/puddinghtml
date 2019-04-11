@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "数字到字符串" description = "将给定的十进制数转换为指定进制的数字，然后将结果转换为字符串。" preview="code" type="wrap">
+<insertText location="beforeSelection">
+<![CDATA[function numberToString(inputNumber,base)
+{
+  var prefix = '';
+  if (!base) base = 10;
+  if (base=8) prefix = '0';
+	if (base=16) prefix = '0x'
+  return (prefix + inputNumber.toString(base));
+}]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

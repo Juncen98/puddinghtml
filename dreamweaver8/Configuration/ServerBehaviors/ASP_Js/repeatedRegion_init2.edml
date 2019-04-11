@@ -1,0 +1,21 @@
+<participant>
+     <quickSearch><![CDATA[__numRows]]></quickSearch>
+     <insertText location="aboveHTML+60">
+<![CDATA[
+<%
+var @@loopName@@__numRows = @@numRows@@;
+var @@loopName@@__index = 0;
+@@rsName@@_numRows += @@loopName@@__numRows;
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="loopName,numRows"><![CDATA[/var\s*\b(\w+)__numRows\s*=\s*(-*\d+);/]]></searchPattern>
+       <searchPattern paramNames="rsName"><![CDATA[/\b(\w+)_numRows\s*\+=\s*\w+__numRows/]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="loopName"><![CDATA[/(\b)\w+(__numRows|__index)/]]></updatePattern>
+       <updatePattern paramName="numRows"><![CDATA[/(var\s*\b\w+__numRows\s*=\s*)-*\d+(\b)/]]></updatePattern>
+       <updatePattern paramName="rsName"><![CDATA[/(\b)\w+(_numRows\s*\+=\s*\w+__numRows;)/]]></updatePattern>
+     </updatePatterns>
+</participant>

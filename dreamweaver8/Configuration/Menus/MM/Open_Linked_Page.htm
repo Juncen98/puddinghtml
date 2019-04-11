@@ -1,0 +1,49 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<TITLE>Open Linked File</TITLE>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/CMN/file.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+<!--
+
+function openLinkedFile()
+{
+  var dom = dw.getDocumentDOM(); 
+  
+  if (typeof dom["getLinkHref"] != 'undefined') //CONTRIBUTE ALERT: NEED TO ACTIVATE THIS COMMAND
+  {
+    var bLinkHref = getFullPath(dw.getDocumentDOM().getLinkHref());
+	if ((bLinkHref != null) && (bLinkHref.length > 0))
+	{
+  		dw.openDocument(getFullPath(dw.getDocumentDOM().getLinkHref()));
+	}
+	else
+	{
+		alert(dwscripts.sprintf(MM.MSG_UnableToEdit,dw.getDocumentDOM().getLinkHref()));
+	}
+  }
+}
+
+function canAcceptCommand(){
+  var dom = dw.getDocumentDOM(); 
+
+  if (dom == null)
+	 return false; 
+		
+  if (typeof dom["getLinkHref"] == 'undefined') //CONTRIBUTE ALERT: NEED TO ACTIVATE THIS COMMAND
+  	return false; 
+
+  if (arguments[0] == 'needFocus'){
+    return (dw.getFocus() == "document" && dw.getDocumentDOM().getLinkHref().length > 0);
+  }else{
+    return (dw.getDocumentDOM().getLinkHref().length > 0);
+  }
+}
+
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY onLoad="openLinkedFile()">
+</BODY>
+</HTML>

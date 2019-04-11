@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>ÐÞ¸Ä Flash °´Å¥</title>
+<!--Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved.-->
+<script src="../../Shared/MM/Scripts/Class/FileClass.js"></script>
+<script src="../../Shared/MM/Scripts/CMN/DOM.js"></script>
+<SCRIPT LANGUAGE="Javascript">
+
+//var SWF_FILE_TYPE = "dwButton";
+var SWF_FILE_PATH;
+
+function init() 
+{
+	  dw.getDocumentDOM().editAttribute('SRC');
+}
+
+function canAcceptCommand() 
+{
+  var retVal = false;
+  SWF_FILE_PATH = getNodeSourcePath();
+  if (SWF_FILE_PATH)
+    retVal = SWFFile.getObjectType(SWF_FILE_PATH);
+//    retVal = (SWFFile.getObjectType(SWF_FILE_PATH) == SWF_FILE_TYPE); 
+  retVal = (retVal) ? false : true; 
+  return retVal;
+}
+
+function getNodeSourcePath()
+{
+  var docDOM = dw.getDocumentDOM('document');
+  var selectedNode, retVal, srcAttr;
+  var theFile;
+  if (docDOM)
+  {
+    selectedNode = docDOM.getSelectedNode();
+	if (selectedNode.nodeType!=Node.ELEMENT_NODE) return retVal;
+//	embedTag = selectedNode.getElementsByTagName("EMBED");
+    srcAttr = getButtonAttribute("PARAM","MOVIE",selectedNode);
+	if (!srcAttr)
+	  srcAttr = getButtonAttribute("EMBED","SRC",selectedNode);
+	if (srcAttr)
+	{
+	  retVal =File.getFullUrl(srcAttr, docDOM.URL);
+	}
+  }
+  return retVal;
+}
+
+
+function getButtonAttribute(tagType,attr,selection)
+{
+  var retVal="";
+  var paramNodeArray = new Array();
+  var embedNodeArray = new Array();
+  var objectNode;
+  var found=false;
+  if (selection.tagName == "OBJECT")
+    objectNode = selection;
+  else if (selection.tagName == "EMBED")
+    embedNodeArray.push(selection);
+  if (objectNode && objectNode.hasChildNodes())
+  {
+    paramNodeArray = selection.getElementsByTagName("PARAM");
+	embedNodeArray = selection.getElementsByTagName("EMBED");
+  }
+  if (tagType=="EMBED" || tagType=="OBJECT")
+  {
+    if (tagType=="EMBED" && (embedNodeArray[0] && embedNodeArray[0].nodeType==Node.ELEMENT_NODE))
+	  retVal = embedNodeArray[0].getAttribute(attr);
+	else if (objectNode && objectNode.nodeType==Node.ELEMENT_NODE && tagType=="OBJECT")
+	  retVal = objectNode.getAttribute(attr);
+  }
+  else   // paramenter tag
+  {
+    for(var i=0; i < paramNodeArray.length; i++)
+	{
+	  if (paramNodeArray[i].getAttribute("NAME").toLowerCase()==attr.toLowerCase())
+	  {
+	    retVal= paramNodeArray[i].getAttribute("VALUE");
+		found=true;
+		break;
+	  }
+	}
+  }
+  return retVal;
+}
+
+</SCRIPT>
+</HEAD>
+
+<BODY onLoad="init()">
+</BODY>
+</HTML>

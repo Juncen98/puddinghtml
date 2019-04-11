@@ -1,0 +1,13 @@
+<participant name="SimpleOutputWithDataR">
+  <translator priority=450 type="renderer">
+    <searchPatterns>
+      <searchPattern requiredLocation="openTag"><![CDATA[/^<cfoutput\s*>$/i]]></searchPattern>
+      <searchPattern requiredLocation="innerHTML" useTranslatedSource="true" paramNames="source"><![CDATA[/^<mm:beginlock[^>]*>\s*<mm_dynamic_content[^>]*>\s*(<mm:decoration[^>]*>.*<\/mm:decoration>)\s*<\/mm_dynamic_content>\s*<mm:endlock\s*>$/gi]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="tag+cfoutput" limitSearch="all" translationType="as is">
+		<display>@@source@@</display>
+      </translation>
+    </translations>
+  </translator>
+</participant>

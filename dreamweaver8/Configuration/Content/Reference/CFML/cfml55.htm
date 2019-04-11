@@ -1,0 +1,359 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFGRIDUPDATE</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFGRIDUPDATE</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Used within a cfgrid tag. Updates data sources directly from edited grid data. This tag provides a direct interface with your data source.
+</p>
+
+<p>
+This tag applies delete row actions first, then insert row actions, then update row actions. If it encounters an error, it stops processing rows. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Forms tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfgridupdate 
+   grid = &quot;gridname&quot;
+   dataSource = &quot;data source name&quot;
+   tableName = &quot;table name&quot;
+   username = &quot;data source username&quot;
+   password = &quot;data source password&quot;
+   tableOwner = &quot;table owner&quot;
+   tableQualifier = &quot;qualifier&quot;
+   keyOnly = &quot;yes&quot; or &quot;no&quot;&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfgrid, cfgridcolumn, cfgridrow, cfform, cfapplet, cfinput, cfselect, cfslider, cftextinput, cftree
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX: Deprecated the connectString, dbName, dbServer, dbtype, provider, and providerDSN attributes. They do not work, and might cause an error, in releases later than ColdFusion 5. 
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+The following example lets you update a database by using a cfgrid tag to add and delete entire records or to update the data in individual cells. The cfgridupdate tag processes the data from the submitted form and updates the database.
+</p>
+<pre>&lt;!--- If the gridEntered form field exists, the form was submitted.
+      Perform gridupdate. ---&gt;
+&lt;cfif IsDefined(&quot;form.gridEntered&quot;) is True&gt;
+   &lt;cfgridupdate grid = &quot;FirstGrid&quot; dataSource = &quot;cfdocexamples&quot; Keyonly=&quot;true&quot;
+      tableName = &quot;CourseList&quot;&gt;
+ &lt;/cfif&gt;
+
+&lt;!--- Query the database to fill up the grid. ---&gt;
+&lt;cfquery name = &quot;GetCourses&quot; dataSource = &quot;cfdocexamples&quot;&gt;
+SELECT Course_ID, Dept_ID, CorNumber,
+     CorName, CorLevel, CorDesc
+FROM CourseList
+ORDER by Dept_ID ASC, CorNumber ASC
+&lt;/cfquery&gt;
+
+&lt;h3&gt;cfgrid Example&lt;/h3&gt;
+&lt;I&gt;Try adding a course to the database, and then deleting it.&lt;/i&gt;
+&lt;cfform&gt;
+&lt;cfgrid name = &quot;FirstGrid&quot; width = &quot;450&quot; 
+   query = &quot;GetCourses&quot; insert = &quot;Yes&quot; delete = &quot;Yes&quot;
+   font = &quot;Tahoma&quot; rowHeaders = &quot;No&quot; 
+   colHeaderBold = &quot;Yes&quot; 
+   selectMode = &quot;EDIT&quot;
+   insertButton = &quot;Insert a Row&quot; deleteButton = &quot;Delete selected row&quot; &gt;
+&lt;/cfgrid&gt;&lt;br&gt;
+&lt;cfinput type=&quot;submit&quot; name=&quot;gridEntered&quot;&gt;
+&lt;/cfform&gt;...
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="GRID">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">GRID</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of the cfgrid form element that is the source for the update action. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DATASOURCE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DATASOURCE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of the data source for the update action. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TABLENAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TABLENAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of the table to update.</p>
+<p>For ORACLE drivers, entry must be upper-case.</p>
+<p>For Sybase driver, entry is case-sensitive; must be same case as used when table was created.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="USERNAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">USERNAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Overrides username value specified in ODBC setup.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="PASSWORD">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PASSWORD</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Overrides password value specified in ODBC setup.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TABLEOWNER">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TABLEOWNER</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Table owner, if supported.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TABLEQUALIFIER">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TABLEQUALIFIER</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Table qualifier, if supported. Purpose:</p><ul>
+
+<li>SQL Server and Oracle driver: name of database that contains the table.</li>
+
+<li>Intersolv dBASE driver: directory of DBF files.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="KEYONLY">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">KEYONLY</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">&#160;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no "
+
+
+<p>Applies to the update action:</p><ul>
+
+<li>yes: the WHERE criteria are limited to the key values.</li>
+
+<li>no: the WHERE criteria include key values and the original values of changed fields.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

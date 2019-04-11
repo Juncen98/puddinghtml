@@ -1,0 +1,158 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>COMPARENOCASE</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">COMPARENOCASE</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Performs a case-insensitive comparison of two strings. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+An indicator of the difference:
+</p>
+<ul>
+
+<li>A negative number, if string1 is less than string2 </li>
+
+<li>0, if string1 is equal to string2</li>
+
+<li>A positive number, if string1 is greater than string2</li>
+</ul>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+String functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>CompareNoCase(string1, string2)
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+Compare, FindNoCase; "Ambiguous type expressions and strings" in Chapter&#160;3, "Using ColdFusion Variables," in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;H3&gt;CompareNoCase Example&lt;/H3&gt;
+&lt;P&gt;This function performs a &lt;I&gt;case-insensitive&lt;/I&gt; comparison of two strings.
+&lt;CFIF IsDefined(&quot;form.string1&quot;)&gt;
+&lt;CFSET comparison = Comparenocase(form.string1, form.string2)&gt;
+&lt;!--- switch on the variable to give various responses ---&gt;
+&lt;CFSWITCH EXPRESSION=#comparison#&gt;
+   &lt;CFCASE value=&quot;-1&quot;&gt;
+      &lt;H3&gt;String 1 is less than String 2&lt;/H3&gt;
+      &lt;I&gt;The strings are not equal&lt;/I&gt;
+   &lt;/CFCASE&gt;
+   &lt;CFCASE value=&quot;0&quot;&gt;
+      &lt;H3&gt;String 1 is equal to String 2&lt;/H3&gt;
+      &lt;I&gt;The strings are equal!&lt;/I&gt;
+   &lt;/CFCASE&gt;
+   &lt;CFCASE value=&quot;1&quot;&gt;
+      &lt;H3&gt;String 1 is greater than String 2&lt;/H3&gt;
+      &lt;I&gt;The strings are not equal&lt;/I&gt;
+   &lt;/CFCASE&gt;
+   &lt;CFDEFAULTCASE&gt;
+      &lt;H3&gt;This is the default case&lt;/H3&gt;
+   &lt;/CFDEFAULTCASE&gt;
+&lt;/CFSWITCH&gt;
+&lt;/CFIF&gt;
+&lt;FORM ACTION=&quot;comparenocase.cfm&quot; METHOD=&quot;POST&quot;&gt;
+&lt;P&gt;String 1
+&lt;BR&gt;&lt;INPUT TYPE=&quot;Text&quot; NAME=&quot;string1&quot;&gt;
+&lt;P&gt;String 2
+&lt;BR&gt;&lt;INPUT TYPE=&quot;Text&quot; NAME=&quot;string2&quot;&gt;
+&lt;P&gt;&lt;INPUT TYPE=&quot;Submit&quot; VALUE=&quot;Compare these Strings&quot; NAME=&quot;&quot;&gt; 
+&lt;INPUT TYPE=&quot;RESET&quot;&gt;
+&lt;/FORM&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="STRING1">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STRING1</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A string or a variable that contains one </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="STRING2">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STRING2</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A string or a variable that contains one </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

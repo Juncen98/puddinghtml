@@ -1,0 +1,134 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Include the UI helper functions -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<!-- Include DOM functions -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<script src="../Shared/MM/Scripts/Cmn/string.js"></script>
+<script src="../Shared/Common/Scripts/ListControlClass.js"></script>
+<SCRIPT src="../Shared/Common/Scripts/ImageButtonClass.js"></SCRIPT>
+<script src="../Shared/MM/Scripts/Class/FileClass.js"></script>
+<script src="ShortcutClass.js"></script> 
+<script src="../Shared/MM/Scripts/keyCodes.js"></script> 
+<script src="TemplateParams.js"></script>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT>
+<!--Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved.-->
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var LABEL_NameCol 	= "名称";
+var LABEL_ValueCol 	= "值";
+var LABEL_NoParams	= "没有可用的模板属性。";
+var LABEL_TRUE 		= "真";
+var LABEL_FALSE 		= "假";
+
+var LABEL_Show 		= "显示 %s";
+var LABEL_Passthrough	= "（通过）";
+
+var MSG_mustChoose = "您必须将每一不匹配的区域名称与新区域名称进行匹配。";
+var MSG_CantRun = "无法设置模板属性。";
+var MSG_isNAN = "您必须输入一个数字。";
+
+//--------------- END LOCALIZEABLE   ---------------
+
+
+//---------------    END JAVASCRIPT    ---------------
+
+</SCRIPT>
+
+<style type="text/css">
+<!--
+.controls      {
+	position:absolute;
+	left:10px;
+	top:50px;
+	width:330px;
+	height:100px;
+	z-index:8;
+	visibility: hidden;
+}
+-->
+</style>
+
+
+<title>模板属性</title>
+
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+
+<form name="theForm">
+
+  <table border="0" cellpadding="4" cellspacing="0" id="mainTable">
+    <tr> 
+    <td colspan=4>
+    </td>
+    </tr>
+   
+    <tr> 
+      <td valign="top"></td>
+      <td  valign="top" colspan="2">
+		<mm:treecontrol name= "theTreeControl" style="width:353px;" size="10" onChange="updateUI('theTreeControl');focus()">
+          <mm:treecolumn name="Name" value="名称" width="200"> </mm:treecolumn> 
+          <mm:treecolumn name="Value" value="值" width="130"> </mm:treecolumn> 
+          <!--
+          <mm:treenode  value="bool field|true|true" 		paramName="bool Field" valueType="boolean" ></mm:treenode> 
+          <mm:treenode  value="number field|10|10" 			paramName="number Field" valueType="number" ></mm:treenode> 
+          <mm:treenode  value="color field|#FFFFFF|#FFFFFF" 	paramName="color Field" valueType="color" ></mm:treenode>  
+          <mm:treenode  value="text field|| " 	paramName="text Field" valueType="text" ></mm:treenode>  
+          <mm:treenode  value = "link Field|http://www.yahoo.com" 	paramName="link Field" valueType="link" ></mm:treenode>  
+          -->
+      </mm:treecontrol>
+      </td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+    
+    <tr>
+    <td colspan="4" height="5"></td>
+    </tr>
+        
+    <tr> 
+      <td> 
+       </td>
+      <td  valign="top" colspan="2"> 
+      <span class="controls" name="booleanControls" >
+<INPUT TYPE="checkbox" NAME="booleanCheck" VALUE="true"  onClick="updateUI('boolCheck')"> <span name="propLabel">属性值</span> </span>
+      <span class="controls" name="numberControls" ><span name="propLabel">属性值</span>: <INPUT TYPE="text" NAME="numberField" VALUE="" SIZE=30 onBlur="updateUI('numberField')"></span>
+      <span class="controls" name="colorControls" ><span name="propLabel">属性值</span>: <input type="mmcolorbutton"  name="colorPicker" value="" onChange='updateUI("colorPicker")'>
+        <input name="colorField" type="text" class="smallTField" onBlur="updateUI('colorField')" value=""  maxlength="16">
+ </span>
+      <span class="controls" name="textControls" ><span name="propLabel">属性值</span>: 
+        <INPUT NAME="textField" TYPE="text" class="medTField" onBlur="updateUI('textField')" VALUE="">
+        </span>
+      <span class="controls" name="linkControls" ><span name="propLabel">属性值</span>: 
+        <INPUT NAME="linkField" TYPE="text" class="medTField" onBlur="updateUI('linkField')" VALUE=""> <input type="image" name="browseBtn" src="../Shared/MM/Images/folder.gif" width="16" height="16" onClick="dwscripts.browseFile(document.theForm.linkField);updateUI('linkField')">
+        </span>
+      <span class="controls" name="noControls" >未选取任何项。</span>
+      
+      <span name="visibleSpan">属性值:  
+        <INPUT NAME="textField" TYPE="text" class="medTField" VALUE="">
+        </span>
+      <BR> 
+      <span name="passthroughSpan"> <INPUT TYPE="checkbox" NAME="passthroughCheck" VALUE="true" onClick="updateUI('passthroughCheck')"> 允许嵌套模板以控制此</span>
+      </td>
+      <td></td>
+    </tr>
+    
+    <tr> 
+      <td height="5" colspan="4"></td>
+    </tr>
+    
+    <tr> 
+      <td  colspan="4">&nbsp; 
+        
+      </td>
+    </tr>
+  </table>
+        </form>
+</body>
+</html>

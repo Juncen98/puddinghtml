@@ -1,0 +1,76 @@
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<head>
+
+<title>编辑、更新、取消按钮列</title>
+
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ImageButtonClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/DBTreeControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/SSClasses.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/enableControl.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/SBDatabaseCallClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/Checkbox.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/TextField.js"></SCRIPT>
+
+<SCRIPT SRC="DataGridColumn.js"></SCRIPT>
+<SCRIPT SRC="DataGridEdit.js"></SCRIPT>
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onload="initializeUI()">
+<form name="theForm">
+  <table border=0>
+	<tr><td height="1"></td></tr>
+	<tr>
+		<td align="right" nowrap>标题:</td>
+		
+      <td colspan=3>
+			<input name="Title" type="text" class="basicTextField" >
+		</td>
+	</tr>
+	<tr valign="baseline">
+		<td align="right" nowrap>按钮类型:</td>
+		
+      <td nowrap>
+			<select name="ButtonType" class="dataTypeList" >
+			</select>
+		</td>
+	</tr>
+	<tr valign="baseline">
+		<td align="right" nowrap>更新表格:</td>
+		
+      <td nowrap>
+			<select name="UpdateTable" class="columnNameList"  onChange="onUpdateTableChanged()">
+        </select>
+		</td>
+	</tr>
+	<tr valign="baseline">
+		<td align="right" nowrap>主键:</td>	
+		
+      <td nowrap>
+			<select name="PrimaryKey" class="columnNameList"  onChange="onPrimaryKeyChanged()">
+        </select>
+		</td>
+	</tr>
+	<tr valign="baseline">
+		<td align="right" nowrap>提交为: </td>
+		
+      <td nowrap>
+			<select name="SubmitAs" class="dataTypeList" >
+        </select>
+		</td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

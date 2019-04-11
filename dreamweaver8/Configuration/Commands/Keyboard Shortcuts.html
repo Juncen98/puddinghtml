@@ -1,0 +1,150 @@
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<head>
+<!-- Include the UI helper functions -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<!-- Include DOM functions -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<script src="../Shared/MM/Scripts/Cmn/string.js"></script>
+<script src="../Shared/Common/Scripts/ListControlClass.js"></script>
+<SCRIPT src="../Shared/Common/Scripts/ImageButtonClass.js"></SCRIPT>
+<script src="../Shared/MM/Scripts/Class/FileClass.js"></script>
+<script src="ShortcutClass.js"></script>
+<script src="../Shared/MM/Scripts/keyCodes.js"></script>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/localText.js"></SCRIPT>
+<script src="Keyboard Shortcuts.js"></script>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT>
+var DW_VERSION = "Macromedia Dreamweaver MX";
+//--------------- LOCALIZEABLE GLOBALS---------------
+var cssfontStr = 'Verdana, Arial, Helvetica, sans-serif';
+var LABEL_MainMenu = "菜单命令";
+var LABEL_SiteMenu = "站点菜单命令";
+var LABEL_HTMLWindow = "代码编辑";
+var LABEL_MainWindow = "文档编辑";
+var LABEL_SiteWindow = "站点窗口";
+var LABEL_SitePanel = "站点面板";
+var LABEL_Snippets = "代码片断";
+var LABEL_SaveAsHTML = "另存为 HTML文件";
+var LABEL_MacromediaStandard = "Macromedia 标准";
+var MSG_CannotRenameFactorySet = "不能删除厂方设置"
+var MSG_ReassignShortcut = '该快捷键正被 "%s"命令使用.你要重新指定"%s" 命令的快捷键吗?';
+var MSG_LetterShortcutMustHaveCtrl = "字母或数字快捷键必须包含%s键.";
+var MSG_ShortcutAssigned = "该快捷键已经指定给“%s”";
+var MSG_SaveShortcutSet = "你试图改变快捷键设置.点击确定保存你对当前设置所做的改变."
+var MSG_FactorySetCannotBeModified = "当前厂方设置不能修改.若要修改,请首先创建可修改设置,点击确定重制当前设置."
+var MSG_ReadOnlyFile = "%s是一个已锁定文件,请解锁该文件";
+//--------------- END LOCALIZEABLE   ---------------
+
+var g_menuItem = "";
+function receiveArguments()
+{
+	g_menuItem = arguments[0];
+}
+
+//---------------    END JAVASCRIPT    ---------------
+</SCRIPT>
+<title>快捷键</title>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="setTimeout('initializeUI()',10);">
+
+<form name="theForm">
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td align="right" nowrap> 
+        当前设置:
+      </td>
+      <td> 
+        <select name="selectCurrentSet" class="multiWordOptionList" onChange="updateUI('selectCurrentSet')">
+          <option></option>
+        </select>
+      </td>
+      <td align="left" nowrap
+         ><input type="image" name="duplicateBtn" alt="复制副本" width="22" height="19" src="../Shared/MM/Images/duplicate.gif" onClick="updateUI('duplicateBtn')"
+         ><input type="image" name="renameBtn" alt="重命名设置" width="22" height="19" src="../Shared/MM/Images/rename.gif" onClick="updateUI('renameBtn')"
+         ><input type="image" name="saveAsTextBtn" alt="将集合导出为 HTML" width="22" height="19" src="../Shared/MM/Images/saveAsText.gif" onClick="cmdSaveAsText();focus(this);"
+         ><input type="image" name="deleteBtn" alt="删除设置" width="22" height="19" src="../Shared/MM/Images/delete.gif" onClick="updateUI('deleteBtn')"
+      ></td>
+      <td></td>
+    </tr>
+    <tr> 
+      <td colspan="4"  valign="top"> 
+        <hr size="2">
+      </td>
+    </tr>
+    <tr> 
+      <td align="right"> 
+        命令:
+      </td>
+      <td colspan="2"> 
+        <select name="commandsList" class="multiWordOptionList" onChange="updateUI('commandsList');">
+          <option selected></option>
+        </select>
+      </td>
+      <td></td>
+    </tr>
+    <tr> 
+      <td valign="bottom"></td>
+      <td  valign="bottom" colspan="2">
+<mm:treecontrol name= "theTreeControl" style="width:380px; " size="10" onChange="updateUI('theTreeControl');" noheaders>
+          <mm:treecolumn name="" value = "" width="200"> <mm:treenode selected value="加载快捷键..."> 
+          </mm:treenode> 
+        </mm:treecontrol>
+      </td>
+      <td valign="top"><img src="../Shared/MM/Images/transparent.gif" width="20" height="7"></td>
+    </tr>
+    <tr> 
+      <td height="10"></td>
+      <td colspan="2"></td>
+      <td></td>
+    </tr>
+    <tr> 
+      <td align="right" height="22" nowrap> 
+        快捷键:
+      </td>
+      <td colspan="2"
+        ><img src="../Shared/MM/Images/transparent.gif" width="5" height="1"
+        ><input type="image" name="addBtn" alt="添加项" src="../Shared/MM/Images/btnAdd.gif" onClick="updateUI('addBtn');"
+        ><img src="../Shared/MM/Images/transparent.gif" width="5" height="1"
+        ><input type="image" name="minusBtn" alt="删除项" src="../Shared/MM/Images/btnDel.gif" onClick="updateUI('minusBtn');focus();"
+     ></td>
+      <td></td>
+    </tr>
+    <tr> 
+      <td> 
+      </td>
+      <td colspan="2"> 
+        <select name="itemList" size="3" style="width:380px">
+          <option selected></option>
+        </select>
+      </td>
+      <td></td>
+    </tr>
+    <tr> 
+      <td align="right" nowrap>按键:</td>
+      <td> 
+        <input name="newShortcutEntry" type="text" class="xlargeTField" onKeyDown="getPressedKeys();" onKeyUp="updateUI('newShortcutEntry');" value="">
+	  </td>
+	  <td>
+        <input type="button"  name="applyButton" value="更改" style="width:75px" onClick="updateUI('applyButton');" >
+      </td>
+    </tr>
+    <tr> 
+      <td height="7"></td>
+      <td colspan="2"></td>
+      <td></td>
+    </tr>
+    <tr> 
+      <td></td>
+      <td valign="top" colspan="2" width="300" height="20" name="warningMessage"></td>
+      <td valign="top"></td>
+    </tr>
+  </table>
+        </form>
+</body>
+</html>

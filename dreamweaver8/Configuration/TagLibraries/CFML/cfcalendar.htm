@@ -1,0 +1,138 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog"> <!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<html>
+	<head>
+		<title>CFCALENDAR</title>
+		<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+		<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+		<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+		<script src="loc_strings.js"></script>
+		<script src="strings.js"></script>
+		<script>
+/************************* GLOBAL VARS **************************/
+
+var SELECTORLIST;
+var theUIObjects;
+var applyType = "dynamic"; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.inspectTagCommon(tagNodeObj, null, applyType, activeDisplayNode, SELECTORLIST); 
+}
+
+function applyTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.applyTagCommon(tagNodeObj, null, applyType, activeDisplayNode); 
+}
+
+function updateUI()
+{
+  var curDiv = SELECTORLIST.getValue(); 
+
+  tagDialog.showOnlyThisLayer(curDiv); 
+}
+
+function initializeUI()
+{
+	SELECTORLIST = new ListControl("theselector"); 
+	theUIObjects = new Array(SELECTORLIST);
+
+  tagDialog.populateDropDownList(SELECTORLIST, theSelCalendarCap, theSelCalendarVal, 0); 
+}
+
+		</script>
+		<link href="../../fields.css" rel="stylesheet" type="text/css">
+	</head>
+	<body onLoad="initializeUI();">
+		<div name="General"><FONT face="宋体"></FONT>
+			<br>
+			属性类别:
+			<select name="theselector" class="selectorList" id="attr:cfcalendar:selector" onChange="updateUI();"
+				attname="" editable="false">
+			</select>
+			<hr width="100%">
+			<div id="thegeneral" style="Z-INDEX:1;LEFT:0px;VISIBILITY:hidden;WIDTH:350px;POSITION:absolute;TOP:55px;HEIGHT:115px">
+				<table border="0" cellspacing="4">
+					<tr>
+						<td width="72" align="right" valign="baseline" nowrap>名称:
+						</td>
+						<td colspan="2" nowrap>
+							<input name="thename" type="text" class="basicTextField" id="attr:cfcalendar:name" attname="name"
+								required="true">
+						</td>
+					</tr>
+					<tr>
+						<td nowrap align="right" valign="baseline">宽度:</td>
+						<td nowrap><input name="thewidth" type="text" class="basicTextField" id="attr:cfcalendar:width" attname="width"></td>
+					</tr>
+					<tr>
+						<td valign="baseline" align="right" nowrap>高度:</td>
+						<td nowrap><input name="theheight" type="text" class="basicTextField" id="attr:cfcalendar:height"
+								attname="height"></td>
+					</tr>
+					<tr>
+						<td valign="baseline" align="right" nowrap>起始范围:</td>
+						<td nowrap><input name="thestartrange" type="text" class="basicTextField" id="attr:cfcalendar:startrange"
+								attname="startrange"></td>
+					</tr>
+					<tr>
+						<td valign="baseline" align="right" nowrap>结束范围:
+						</td>
+						<td colspan="2" nowrap><input name="theendrange" type="text" class="basicTextField" id="attr:cfcalendar:endrange"
+								attname="endrange"></td>
+					</tr>
+					<tr>
+						<td valign="baseline" align="right" nowrap>日期名称:
+						</td>
+						<td colspan="2" nowrap><input name="thedaynames" type="text" class="basicTextField" id="attr:cfcalendar:daynames"
+								attname="daynames"></td>
+					</tr>
+					<tr>
+						<td valign="baseline" align="right" nowrap>月份名称:</td>
+						<td colspan="2" nowrap><input name="themonthnames" type="text" class="basicTextField" id="attr:cfcalendar:monthnames"
+								attname="monthnames"></td>
+					</tr>
+					<tr>
+						<td valign="baseline" align="right" nowrap>样式:</td>
+						<td colspan="2" nowrap><input name="thestyle" type="text" class="basicTextField" id="attr:cfcalendar:style" attname="style"></td>
+					</tr>
+					<tr>
+						<td valign="baseline" align="right" nowrap>蒙版:
+						</td>
+						<td colspan="2" nowrap><input name="themask" type="text" class="basicTextField" id="attr:cfcalendar:mask" attname="mask">
+						</td>
+					</tr>
+					<tr>
+						<td valign="baseline" align="right" nowrap>所选日期:</td>
+						<td colspan="2" nowrap><input name="theselecteddate" type="text" class="basicTextField" id="attr:cfcalendar:selecteddate"
+								attname="selecteddate"></td>
+					</tr>
+					<tr>
+						<td valign="baseline" align="right" nowrap>&nbsp;</td>
+						<td colspan="2" nowrap>
+							<input type="checkbox" id="attr:cfcalendar:required" name="thecheckrequired" attname="required"
+								truevalue="yes"> 必需</td>
+					</tr>
+				</table>
+			</div>
+			<div id="theevents" style="Z-INDEX:2;LEFT:0px;VISIBILITY:hidden;WIDTH:350px;POSITION:absolute;TOP:55px;HEIGHT:115px">
+				<table border="0" cellspacing="4">
+					<tr>
+						<td valign="baseline" align="right" nowrap>OnChange:
+						</td>
+						<td nowrap>
+							<input name="theevents" type="text" class="basicTextField" id="attr:cfcalendar:events"
+								attname="events">
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,412 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">userProfile</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>The <span class="literal">userProfile</span> object reflects numerous pieces of
+information stored in the browser's user profile for
+the current user. This object has four methods that:
+</p>
+<ul><li>
+<p>Let you queue requests for individual fields of the profile (items
+such as name, mailing address, phone numbers, and so on)
+</p>
+</li>
+<li>
+<p>Display the request dialog that lets users see what
+you're asking for and disallow specific items or the
+whole thing
+</p>
+</li>
+<li>
+<p>Grab the information</p>
+</li>
+<li>
+<p>Clear the request queue</p>
+</li></ul>							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			Once the information is retrieved (with the user's
+permission), it can be slipped into form elements (visible or hidden)
+for submission to the server. Compatibility listings here indicate
+support in IE for Windows only. While IE for Macintosh accepts the
+method calls without error, there is no functionality attached to
+those methods. Further details on the user profile are available from
+Microsoft at http://msdn.microsoft.com/workshop/management/profile/profile_assistant.asp.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>navigator.userProfile.addReadRequest("vcard.displayname");
+navigator.userProfile.doReadRequest("3", "MegaCorp Customer Service");
+var custName = navigator.userProfile.getAttribute("vcard.displayname");
+navigator.userProfile.clearRequest( );
+if (custName) {
+    ...
+}</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>navigator.userProfile</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificproperties"><span class="title">Object-Specific Properties</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificmethods"><span class="title">Object-Specific Methods</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">addReadRequest( )</span></td><td><span class="literal">clearRequest( )</span></td><td><span class="literal">doReadRequest( )</span></td><td><span class="literal">getAttribute( )</span></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificeventhandlerproperties"><span class="title">Object-Specific Event Handler Properties</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="addReadRequest( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">addReadRequest( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">addReadRequest("<span class="replaceable">attributeName</span>")</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Adds a request to inspect a particular user profile attribute to a
+queue that must be executed separately (via the
+<span class="literal">doReadRequest( )</span> and <span class="literal">getAttribute(
+)</span> methods). Items added to the queue are displayed to the
+user to select which item(s) can be submitted to a server. For
+multiple attributes, use multiple invocations of the
+<span class="literal">addReadRequest( )</span> method.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">vCard.Business.City</span></td><td><span class="literal">vCard.Business.Country</span></td>
+								</tr>
+								<tr><td><span class="literal">vCard.Business.Fax</span></td><td><span class="literal">vCard.Business.Phone</span></td>
+								</tr>
+								<tr><td><span class="literal">vCard.Business.State</span></td><td><span class="literal">vCard.Business.StreetAddress</span></td>
+								</tr>
+								<tr><td><span class="literal">vCard.Business.URL</span></td><td><span class="literal">vCard.Business.Zipcode</span></td>
+								</tr>
+								<tr><td><span class="literal">vCard.Cellular</span></td><td><span class="literal">vCard.Company</span></td>
+								</tr>
+								<tr><td><span class="literal">vCard.Department</span></td><td><span class="literal">vCard.DisplayName</span></td>
+								</tr>
+								<tr><td><span class="literal">vCard.Email</span></td><td><span class="literal">vCard.FirstName</span></td>
+								</tr>
+								<tr><td><span class="literal">vCard.Gender</span></td><td><span class="literal">vCard.Home.City</span></td>
+								</tr>
+								<tr><td><span class="literal">vCard.Home.Country</span></td><td><span class="literal">vCard.Home.Fax</span></td>
+								</tr>
+								<tr><td><span class="literal">vCard.Home.Phone</span></td><td><span class="literal">vCard.Home.State</span></td>
+								</tr>
+								<tr><td><span class="literal">vCard.Home.StreetAddress</span></td><td><span class="literal">vCard.Home.Zipcode</span></td>
+								</tr>
+								<tr><td><span class="literal">vCard.Homepage</span></td><td><span class="literal">vCard.JobTitle</span></td>
+								</tr>
+								<tr><td><span class="literal">vCard.LastName</span></td><td><span class="literal">vCard.MiddleName</span></td>
+								</tr>
+								<tr><td><span class="literal">vCard.Notes</span></td><td><span class="literal">vCard.Office</span></td>
+								</tr>
+								<tr><td><span class="literal">vCard.Pager</span></td><td></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>One of the following case-insensitive attribute names as a string: </li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Boolean value: <span class="literal">true</span> (if successful) |
+<span class="literal">false</span> (if unsuccessful).
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="clearRequest( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">clearRequest( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Empties the queue of attribute names to be retrieved. Use this after
+your script has successfully retrieved the required information. This
+prepares the queue for the next list.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="doReadRequest( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">doReadRequest( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">doReadRequest(<span class="replaceable">usageCode</span>[,
+"<span class="replaceable">friendlyName</span>"[,
+"<span class="replaceable">domain</span>"[,
+"<span class="replaceable">path</span>"[,
+"<span class="replaceable">expiration</span>"]]]])</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Based on the items in the queue, this method inspects the browser to
+see whether the user has given permission to inspect these attributes
+in the past. If not (for some or all), the method displays a dialog
+box (the Profile Assistant window) that lets users turn off the items
+that should not be exposed to the server. Parameters provide
+information for the dialog and for maintenance of the permission
+(similar to the ways that cookies are managed). Only one
+<span class="literal">doReadRequest( )</span> method is required, regardless of
+the number of attributes in the queue.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><th>Code</th><th>Meaning</th><tr><td>0</td><td>Used for system administration.</td>
+								</tr>
+								<tr><td>1</td><td>Used for research and/or product development.</td>
+								</tr>
+								<tr><td>2</td><td>Used for completion and support of current transaction.</td>
+								</tr>
+								<tr><td>3</td><td>Used to customize the content and design of a site.</td>
+								</tr>
+								<tr><td>4</td><td>Used to improve the content of the site, including advertisements.</td>
+								</tr>
+								<tr><td>5</td><td>Used for notifying visitors about updates to the site.</td>
+								</tr>
+								<tr><td>6</td><td>Used for contacting visitors for marketing of services or products.</td>
+								</tr>
+								<tr><td>7</td><td>Used for linking other collected information.</td>
+								</tr>
+								<tr><td>8</td><td>Used by site for other purposes.</td>
+								</tr>
+								<tr><td>9</td><td>Disclosed to others for customization or improvement of the content
+and design of the site.
+</td>
+								</tr>
+								<tr><td>10</td><td>Disclosed to others who may contact you for marketing of services
+and/or products.
+</td>
+								</tr>
+								<tr><td>11</td><td>Disclosed to others who may contact you for marketing of services
+and/or products, but you have the opportunity to ask a site not to do
+this.
+</td>
+								</tr>
+								<tr><td>12</td><td>Disclosed to others for any other purpose.</td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>One of the following code integers that display human-readable
+messages defined by the Internet Privacy Working Group, as shown in
+the following table.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>An optional string containing an identifiable name (and URL) that the
+user recognizes as the source of the request. This may be a corporate
+identity.
+</li><li><span class="literal"></span>An optional string containing the domain of the server making the
+request. If an expiration date is set, this information is stored
+with the requested attributes to prevent future requests from this
+domain from interrupting the user with the Profile Assistant dialog
+box.
+</li><li><span class="literal"></span>An optional string containing the path of the server document making
+the request. If an expiration date is set, this information is stored
+with the requested attributes to prevent future requests from this
+domain from interrupting the user with the Profile Assistant dialog
+box.
+</li><li><span class="literal"></span>An optional string containing the date on which the
+user's permissions settings expire. Not recognized
+in Internet Explorer 4.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			In Windows, the method returns no value, regardless of how the user
+responds to the Profile Assistant dialog box. On the Macintosh (which
+does not support this object fully), the method does not display the
+Profile Assistant dialog box and returns <span class="literal">false</span>.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="getAttribute( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">getAttribute( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">getAttribute("<span class="replaceable">attributeName</span>")</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns the value of the attribute, provided the user has given
+permission to do so. If that permission was denied, the method
+returns <span class="literal">null</span>. Use one <span class="literal">getAttribute(
+)</span> method for each attribute value being retrieved.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>One of the <span class="literal">vCard</span> attribute names listed in the
+<span class="literal">addReadRequest( )</span> method description.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			String value or <span class="literal">null</span></p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+</body>
+</html>

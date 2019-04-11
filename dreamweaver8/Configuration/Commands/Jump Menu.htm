@@ -1,0 +1,103 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<script src="Jump Menu.js"></script>
+<script src="../Shared/MM/Scripts/jumpMenuUI.js"></script>
+<script src="../Shared/MM/Scripts/CMN/docInfo.js"></script>
+<script src="../Shared/MM/Scripts/CMN/string.js"></script>
+<script src="../Shared/MM/Scripts/CMN/form.js"></script>
+<script src="../Shared/MM/Scripts/CMN/file.js"></script>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<SCRIPT LANGUAGE="javascript">
+
+// Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved.
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+//Initial UI Values
+var TEXT_defaultItemText = "unnamed";
+
+//Text for Go Button
+var BTN_Go = "前往";
+//--------------- END LOCALIZEABLE   ---------------
+</SCRIPT>
+<title>插入跳转菜单</title>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY onload="initializeUI()">
+<form name="">
+  <table border=0 cellpadding="2" cellspacing="4">
+    <tr>
+      <td nowrap valign="baseline" align="right"></td>
+      <td nowrap align="left">
+        <input type="image" alt="添加项" src="../Shared/MM/Images/btnAdd.gif" onclick="addOption();focus(this)" name="image" >
+        <input type="image" alt="移除项" src="../Shared/MM/Images/btnDel.gif" onClick="deleteOption();focus(this)" name="image2" >
+        <img src="../Shared/MM/Images/transparent.gif" height=1 width="85">
+        <input type="image" border="0" name="imageField" alt="在列表中上移项" src="../Shared/MM/Images/btnUp.gif"  onClick="moveOptionUp();focus(this)">
+        <input type="image" border="0" name="imageField2" alt="在列表中下移项" src="../Shared/MM/Images/btnDown.gif"  onClick="moveOptionDown();focus(this)">
+      </td>
+    </tr>
+    <tr>
+      <td nowrap valign="top" align="right">菜单项: </td>
+      <td nowrap valign="baseline">
+<select name="MenuOptions" size=4 class="itemList" onChange="showOption()">
+          <option></option>
+        </select>        
+      </td>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+      <td nowrap valign="baseline" align="right">文本:</td>
+      <td nowrap valign="baseline">
+<input name="Label" type="text" class="basicTextField" onBlur="updateOption(this.name)">        
+      </td>
+    </tr>
+    <tr>
+      <td nowrap valign="baseline" align="right">选择时，转到 URL:</td>
+      <td nowrap valign="baseline">
+        <input name="fileURL" type="text" class="basicTextField" onBlur="updateOption(this.name)">
+        <input type="button" value="浏览..." onClick="browseClicked();focus(this)">
+      </td>
+    </tr>
+    <tr>
+      <td nowrap valign="baseline" align="right" colspan="2">
+        <hr>
+      </td>
+    </tr>
+    <tr>
+      <td nowrap valign="baseline" align="right"></td>
+      <td nowrap valign="baseline"></td>
+    </tr>
+    <tr>
+      <td nowrap valign="baseline" align="right">打开 URL 于: </td>
+      <td nowrap valign="baseline">
+        <select name="Target" class="targetList" style="width:200px">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td nowrap valign="baseline" align="right">菜单名称:</td>
+      <td nowrap valign="baseline">
+        <input name="Name" type="text" class="basicTextField">
+      </td>
+    </tr>
+    <tr>
+      <td nowrap valign="baseline" align="right">选项:</td>
+      <td nowrap valign="baseline">
+        <input type="checkbox" name="Go" value="checkbox">
+        菜单之后插入前往按钮</td>
+    </tr>
+    <tr>
+      <td nowrap valign="baseline" align="right"></td>
+      <td nowrap valign="baseline">
+        <input type="checkbox" name="Restore" value="checkbox">
+        更改 URL 后选择第一个项目 </td>
+    </tr>
+  </table>
+</form>
+</BODY>
+</HTML>

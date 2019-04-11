@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+<!-- Copyright 2000,2001 Macromedia, Inc. All rights reserved. -->
+<title><MMString:LoadString id="insertbar/formsFileField" /></TITLE>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/CMN/docInfo.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="formInsert.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+
+function isDOMRequired() { 
+	// Return false, indicating that this object is available in code view.
+	return false;
+}
+
+function objectTag() {
+  var inputTag = returnFormTag(document.body.innerHTML);
+  
+  if (dw.getFocus(true) == "document") {
+	  var theNode = dw.getDocumentDOM().getSelectedNode();
+
+	  if (selectionInsideTag('form')){
+	    if (theNode.nodeType == Node.TEXT_NODE) {
+	      theNode = theNode.parentNode;
+	    }
+	    while (theNode.nodeType == Node.ELEMENT_NODE) {
+	      if (theNode.tagName.toUpperCase() == 'FORM') {
+	        theNode.setAttribute('ENCTYPE','multipart/form-data');
+	        break;
+	      }
+	      theNode = theNode.parentNode;
+	    }
+	  }
+  }
+  return inputTag;
+}
+
+</SCRIPT>
+</HEAD>
+
+<BODY>
+<INPUT TYPE="file" NAME="file">
+</BODY>
+
+</HTML>

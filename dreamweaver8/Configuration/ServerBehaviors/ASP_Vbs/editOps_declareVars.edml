@@ -1,0 +1,47 @@
+<participant>
+     <quickSearch><![CDATA[MM_editAction]]></quickSearch>
+     <insertText location="aboveHTML+15">
+<![CDATA[
+<%
+' *** Edit Operations: declare variables
+
+Dim MM_editAction
+Dim MM_abortEdit
+Dim MM_editQuery
+Dim MM_editCmd
+
+Dim MM_editConnection
+Dim MM_editTable
+Dim MM_editRedirectUrl
+Dim MM_editColumn
+Dim MM_recordId
+
+Dim MM_fieldsStr
+Dim MM_columnsStr
+Dim MM_fields
+Dim MM_columns
+Dim MM_typeArray
+Dim MM_formVal
+Dim MM_delim
+Dim MM_altVal
+Dim MM_emptyVal
+Dim MM_i
+
+MM_editAction = CStr(Request.ServerVariables("SCRIPT_NAME"))
+If (Request.QueryString <> "") Then
+  MM_editAction = MM_editAction & "?" & Server.HTMLEncode(Request.QueryString)
+End If
+
+' boolean to abort record edit
+MM_abortEdit = false
+
+' query string to execute
+MM_editQuery = ""
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern><![CDATA[/MM_editAction\s*=\s*CStr\((?:Request\("URL"\)|Request\.ServerVariables\("SCRIPT_NAME"\))\)/i]]></searchPattern>
+       <searchPattern><![CDATA[/MM_editQuery\s*=\s*""/i]]></searchPattern>
+     </searchPatterns>
+  </participant>

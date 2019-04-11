@@ -1,0 +1,3573 @@
+<html>
+<head>
+<title>Response Object</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">Response Object</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+
+
+
+
+
+
+
+<p>Just as the Request object allows you to retrieve and manipulate
+information sent by the client browser in its HTTP request, the
+Response object gives you a great deal of control over the HTTP
+response to the client. This control comes in three broad
+categories:<!--<primary>Response object</primary>-->
+<!--<primary>HTTP
+(Hypertext Transfer
+Protocol)</primary><secondary>responses</secondary>-->
+<!--<primary>responses, HTTP</primary>--></p>
+
+
+
+
+<ul><dd><p>Control over what data and data types are sent to the client in the
+headers of the HTTP response</p></dd><dd><p>Control over what data and data types are sent to the client in the
+body of the HTTP response</p></dd><dd><p>	Control over when and how that data is sent</p></dd></ul>
+<p>Control over the HTTP response <!--<primary>headers,
+HTTP</primary><secondary>responses</secondary>-->
+<!--<primary>responses,
+HTTP</primary><secondary>headers</secondary>-->
+<!--<primary>HTTP (Hypertext Transfer
+Protocol)</primary><secondary>responses</secondary><tertiary>headers</tertiary>-->headers
+includes setting cookies on the client machine, setting various
+preexisting HTTP header values (such as the content type and
+expiration information for a given page), and, finally, adding your
+own custom headers to the HTTP response.</p>
+
+
+
+
+<p>You control the HTTP response body directly through the Write and
+BinaryWrite methods. As you might infer from the names, these methods
+of the Response object allow you to write information directly to the
+response body, which will be received by the client just like any
+other information received in an HTML request response.</p>
+
+
+
+
+<p>Finally, the Response object allows you to control how and when the
+response is sent to the client. For example, using the properties and
+methods involved in buffering the response, you can determine whether
+to send the HTTP response as a single unit to the client or to send
+the results of the request piecemeal. You can dynamically determine
+whether the client is still connected to your web site. You can
+redirect her request as though she requested something else. Finally,
+you can use the Response object to write entries into the web server
+log.</p>
+
+
+
+
+<!--
+<p class="TITLE">Response Object Summary</p>
+
+
+
+
+<dl>
+<dt>Properties</dt>
+<dd><p>Buffer</p>
+
+
+
+
+
+
+<p>CacheControl</p>
+
+
+
+
+<p>Charset</p>
+
+
+
+
+<p>ContentType</p>
+
+
+
+
+<p>Expires</p>
+
+
+
+
+<p>ExpiresAbsolute</p>
+
+
+
+
+<p>IsClientConnected</p>
+
+
+
+
+<p>PICS</p>
+
+
+
+
+<p>Status</p>
+</dd>
+
+
+
+
+
+<dt>Collections</dt>
+<dd><p>Cookies</p></dd>
+
+
+
+
+<dt>Methods</dt>
+<dd><p>AddHeader</p>
+
+
+
+
+
+
+<p>AppendToLog</p>
+
+
+
+
+<p>BinaryWrite</p>
+
+
+
+
+<p>Clear</p>
+
+
+
+
+<p>End</p>
+
+
+
+
+<p>Flush</p>
+
+
+
+
+<p>Redirect</p>
+
+
+
+
+<p>Write</p>
+</dd>
+
+
+
+
+
+<dt>Events</dt>
+<dd><p>None</p></dd>
+
+</dl>
+
+
+
+-->
+</td></tr>
+</table>
+</div>
+<div id="Buffer">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Buffer</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Response.Buffer[=</span><var class="replaceable">blnSetting</var><span class="LITERAL">]</span>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>The <!--<primary>Buffer property
+(Response)</primary>--> <!--<primary>Response
+object</primary><secondary>properties
+reference</secondary>--> <!--<primary>web
+pages</primary><secondary>buffering downloads</secondary>-->
+<!--<primary>responses,
+HTTP</primary><secondary>buffering</secondary>--> <!--<primary>HTTP (Hypertext
+Transfer
+Protocol)</primary><secondary>responses</secondary><tertiary>buffering</tertiary>-->Buffer
+property determines whether the content created by your script is
+delivered to the client browser as a whole or sent immediately to the
+client browser as each line is created and entered into the HTML
+stream. If set to <span class="LITERAL">True</span>, then all scripts on the
+page are run before the results of that script are sent to the client
+browser.</p>
+
+
+
+
+<p>The default value for the Buffer property is <span class="LITERAL">False</span>
+unless you set
+<span class="LITERAL">ASPBufferingOn</span><!--<primary>ASPBufferingOn
+setting</primary>--> in the metabase (through a Windows
+Scripting Host script or through the Microsoft Management Console for
+your web site). If set in the metabase, the value there can be
+overridden using the Buffer property on a page. For example, if you
+set <span class="LITERAL">ASPBufferingOn</span> to <span class="LITERAL">True</span>, you
+could later use the Buffer property to override this behavior and
+force IIS not to buffer the page.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">blnSetting</var></dt>
+<dd><p>Specifies whether the HTTP response that results from the web
+server's processing of your script is buffered and then sent to
+the client or sent to the client as it is created:</p></dd>
+
+
+
+
+<dt><span class="LITERAL">True</span></dt>
+<dd><p>Causes the web server to buffer all results of your script until all
+processing is complete or until the Flush or End method of the
+Response object is invoked. Note that even if buffering is set to
+<span class="LITERAL">True</span>, if you call the End method, the contents of
+the buffer are sent to the client and all subsequent results from the
+processing of your script are <em>not</em> sent to the
+client.</p></dd>
+
+
+
+
+<dt><span class="LITERAL">False</span></dt>
+<dd><p>Instructs the web server to send information to the client as your
+script is processed, instead of waiting until all processing is
+complete. Note that if Buffer is set to <span class="LITERAL">False</span>, any
+call to the Clear, End, or Flush methods of the Response object will
+result in a runtime error.</p></dd>
+
+</dl>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>Consider the following example. Note that we haven't set the
+Buffer property of the Response object explicitly, so it's
+<span class="LITERAL">False</span>:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%@ LANGUAGE="VBScript" %&gt;
+&lt;HTML&gt;
+
+&lt;%
+CODE THAT RETRIEVES A FIELD VALUE FROM A DATABASE
+%&gt;</pre></span>
+
+
+
+
+<p><!--<primary>errors</primary><secondary>response buffers
+and</secondary>-->The response is not buffered before it is
+sent to the requesting browser. For this reason, if the previous
+database action results in an error, the user will see half a page
+ending in an error notice. Now examine the second code example:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%@ LANGUAGE="VBScript" %&gt;
+&lt;%Response.Buffer = True %&gt;
+&lt;HTML&gt;
+
+&lt;%
+On Error Resume Next
+' CODE THAT RETRIEVES A FIELD VALUE FROM A DATABASE
+If Err.Number &lt;&gt; 0 Then
+   Response.Clear
+   Response.Write "There has been an error. Here is the SQL"
+   Response.Write "statement that caused the problem: "
+   Response.Write strSQL
+   Response.End
+End If
+%&gt;</pre></span>
+
+
+
+
+<p>In this second example, the response is buffered first and completed
+before it is sent to the requesting browser. For this reason, we have
+the opportunity to clear the buffer and place a simple error notice
+in it that provides more information than does the unbuffered example
+shown earlier. The code here doesn't provide much interaction,
+but you get the idea.</p>
+
+
+
+
+<p>If the response is not buffered, the client will receive the HTTP
+response to its request as it is built—even if that building
+results in errors.</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>The first thing to remember is that the Buffer property must be set
+before the <span class="LITERAL">&lt;HTML&gt;</span> tag is generated for the
+HTTP response. Attempting to set the Buffer property after the
+<span class="LITERAL">&lt;HTML&gt;</span> tag will result in a runtime error.</p>
+
+
+
+
+<p>If your script includes a preprocessing directive setting the
+language for the page, for example, this directive must be placed
+<em>before</em> you attempt to set the Buffer
+property's value. If you attempt to set the language for the
+page after setting the value for the Buffer property, you will
+experience an error.</p>
+
+
+
+
+<p>If the Buffer property is set to <span class="LITERAL">True</span> and your
+script does not call the <!--<primary>Flush
+method</primary><secondary>Response
+object</secondary><tertiary>Response.Buffer property
+and</tertiary>-->Flush method anywhere, then the web server
+will honor <!--<primary>Keep-Alive header, buffering response
+content</primary>-->
+<!--<primary>expiring</primary><secondary>response
+buffering</secondary>-->Keep-Alive requests sent by the
+client. Keep-Alive requests from the browser inform the server that
+it should maintain a connection between itself and the client. If the
+client's Keep-Alive request is honored on the server, it is not
+forced to reestablish the connection each time it makes an HTTP
+request. It is, in effect, already connected. This saves the client
+from having to resolve the URL again.</p>
+
+
+
+
+<p>If the Buffer property is set to <span class="LITERAL">False</span> or if you
+use the Flush method somewhere in your script, the server will be
+forced to create a new connection to the client in response to each
+request.</p>
+
+
+
+
+<p>When should you buffer your scripts? The answer to this question
+depends on two things: how long is too long for your clients to wait,
+and how complex your scripts are.</p>
+
+
+
+
+<p>If your clients are introductory-level users of the Internet, their
+patience is typically fairly low; these clients need immediate action
+upon clicking the Submit button in your forms. More experienced users
+understand more about the back end of Internet applications and are,
+perhaps, more understanding of lag times in script results.</p>
+
+
+
+
+<p>More important than this is how important it is for you to present
+the response as a single unit. For scripts that do a great deal of
+iterative processing, where each loop is directly affected by the
+loop before, it may be important to present the final result as a
+single unit. However, if your script consists of several definable
+sections, each of which is easily capable of being displayed on its
+own, then buffering may be less important.</p>
+
+
+
+
+<p>One strategy for dealing with the lag times for complex scripts whose
+results are required in a single unit is to provide a
+<!--<primary sortas="please wait pages">please wait
+pages</primary>--> <!--<primary>web
+pages</primary><secondary sortas="please wait pages">please wait
+pages</secondary>-->"please wait" page in some
+form. This interim page informs the user that his request was
+received and that the script is processing.</p>
+
+
+
+
+<p>For example, suppose the client browser requests an ASP script that
+retrieves and formats data from a very complex query requiring a long
+load time (30 seconds, for example). Rather than forcing the client
+to click on a link and have nothing happen for 30 seconds (in which
+time the inexperienced web user might very well click on the same
+link or button repeatedly), you might first display a page like the
+following:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Please Wait&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY LANGUAGE = "VBScript" OnLoad = "WinLoad( )"&gt;
+Your request is being processed, please wait...
+&lt;SCRIPT LANGUAGE = "VBScript"&gt;
+Sub WinLoad( )
+   Parent.Location.HREF = "/Reports/Longreport.asp"
+End Sub
+&lt;/SCRIPT&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;</pre></span>
+
+
+
+
+<p>The short page will take very little time to load, and when it does,
+the user will see a "please wait" message until the next
+script has been processed and the report is ready for viewing, at
+which time the "please wait" page is unloaded and the
+report is loaded.</p>
+
+
+
+
+<p>Finally, if you find that most of your scripts require buffering, you
+might consider setting the metabase <span class="LITERAL">ASPBufferingOn</span>
+(using the App Options Configuration page for your virtual directory;
+see <link linkend="appd-1-fm2xml">Appendix D</link> ) so that all scripts are buffered
+by default.    </p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="CacheControl">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+CacheControl</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Response.CacheControl[=</span><var class="replaceable">ProxyCacheControlSetting</var><span class="LITERAL">]</span>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>The <!--<primary>CacheControl property
+(Response)</primary>--> <!--<primary>caching web
+pages</primary>--> <!--<primary>web
+pages</primary><secondary>caching</secondary>-->
+<!--<primary>proxy servers, caching web pages
+and</primary>--> <!--<primary>web
+servers</primary><secondary>caching web
+pages</secondary>-->CacheControl allows you to set whether
+proxy servers serving your pages can cache your page. If your
+page's content is large and doesn't change often, you
+might want to allow proxy servers to cache the page and thus serve it
+faster to requesting client browsers.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">ProxyCacheControlSetting</var></dt>
+<dd><p>Determines whether proxy servers used to access your web site can
+cache your pages. The default for this property is
+<span class="LITERAL">Private</span>, indicating that the proxy servers cannot
+cache your page. If this value is <span class="LITERAL">Public</span>, however,
+proxy servers can cache the page. Note that
+<span class="LITERAL">Private</span> and <span class="LITERAL">Public</span> are string
+values.</p></dd>
+
+</dl>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>Setting this property is a simple affair, as the following code
+demonstrates. You may be asking yourself if there is any way to
+determine if the client is accessing the web page through a proxy
+server. Although there is, if you know ahead of time of the existence
+of the possible proxy servers, this is problematic and cumbersome.
+Furthermore, there is no need to determine this before setting this
+property. Either the client request is being handled by a proxy
+server and this property will affect the caching of the page, or this
+property is completely ignored.</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;% 
+
+' The following code sets the HTTP cache control header so 
+' that this page can be cached by the proxy servers being 
+' used to access the page.
+Response.CacheControl = "Public"
+%&gt;
+&lt;HTML&gt;
+&lt;%
+' Note that the CacheControl property was set BEFORE the 
+' &lt;HTML&gt; tag was constructed.
+%&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>Clearly, if the proxy server can cache your page, then the
+client's access times when accessing the page though a proxy
+server will be decreased. However, this is less useful if the page
+changes frequently. Also note that just because you set the value of
+the CacheControl property to <span class="LITERAL">Public</span>, the proxy
+server is not required to cache your page(s). This must be configured
+on the proxy server.</p>
+
+
+
+
+<p>Setting a value for CacheControl alters the value in the cache
+control HTTP header sent to the client upon a request.</p>
+
+
+
+
+<p>If you use this property, you must do so before sending any response
+to the client (i.e., <em>before</em> the
+<span class="LITERAL">&lt;HTML&gt;</span> tag is generated for your page). If
+you attempt to set the value for this (or any other HTTP header)
+after the <span class="LITERAL">&lt;HTML&gt;</span> tag has already been sent
+to the client, an error will result unless the response is buffered.</p>
+
+
+
+
+<p>Keep in mind that setting this property does not guarantee caching on
+the proxy server. The proxy server itself must be configured to cache
+these pages before this property will have any effect.</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Charset">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Charset</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Response.Charset(</span><var class="replaceable">strCharsetName</var><span class="LITERAL">)</span>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>The <!--<primary>Charset property</primary><secondary>Response
+object</secondary>--> <!--<primary>HTTP (Hypertext
+Transfer
+Protocol)</primary><secondary>responses</secondary><tertiary>character
+sets for</tertiary>--> <!--<primary>responses,
+HTTP</primary><secondary>characters sets for</secondary>-->
+<!--<primary>character sets for HTTP
+responses</primary>--> <!--<primary>Content-Type
+header</primary>-->Charset allows you to specify a character
+set for the HTTP response content. The name of this character set is
+added to the end of the Content-Type header/value pair in the HTTP
+response headers.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">strCharsetName</var></dt>
+<dd><p>The <var class="replaceable">strCharsetName</var> is a string
+corresponding to a character set. The default character set is
+ISO-LATIN-1.</p></dd>
+
+</dl>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>If you do not set the Charset property, the Content-Type HTTP
+response header looks like the following:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>content-type:text/html</pre></span>
+
+
+
+
+<p>If you set the Charset property, as in the following line of code:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%
+Response.Charset("ISO-LATIN-7")
+%&gt;</pre></span>
+
+
+
+
+<p>the value you use to set the Charset property value (the string
+"ISO-LATIN-7" in the preceding code) is appended to the
+end of the Content-Type HTTP response header value:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>content-type:text/html;charset=ISO-LATIN-7</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>Although Charset is referred to in both this book and the Microsoft
+documentation as a property, it is really a method that takes a
+string argument representing the name of the charset to be added to
+the end of the Content-Type HTTP response header. For this reason, if
+you attempt to set the value of the Charset "property" as
+you would any other Response object property, you will receive an
+error:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%
+' Next line will NOT work:
+Response.Charset = "ISO-LATIN-7"
+%&gt;</pre></span>
+
+
+
+
+<p>If the value you set for the Charset property does not represent a
+valid character set, this value is ignored by the client's
+browser, and the default character set is used instead.</p>
+
+
+
+
+<p>Note that you can append the name of only one character set to the
+end of the Content-Type header/value pair. Each subsequent change of
+the Charset property's value simply replaces the last setting.
+For example, the following code:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%
+Response.Charset("ISO-LATIN-7")
+Response.Charset("ISO-LATIN-3")
+%&gt;</pre></span>
+
+
+
+
+<p>results in the following Content-Type HTTP response header/value pair:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>content-type:text/html;charset=ISO-LATIN-3</pre></span>
+
+
+
+
+<p>Also note that if your content type is exclusively nontext (image
+data, for example), the character set value is ignored by the
+browser.</p>
+
+
+
+
+<p>Finally, the default character set for the Apple Macintosh and
+compatibles is not ISO-LATIN-1, as it is for IBM PCs and compatibles.
+If you do not set the Charset property, all
+<!--<primary>Macintosh character
+sets</primary>-->Macintosh browsers will interpret requested
+pages to be in the Macintosh character set. Microsoft's
+Personal Web Server for Macintosh automatically converts the
+character set of the requested content to ISO-LATIN-1 and will ignore
+any other Charset property settings you provide in your script.</p>
+
+
+
+
+<p>Like other properties that result in a change to the HTTP response
+header values, the Charset property must be set before the server
+sends the <span class="LITERAL">&lt;HTML&gt;</span> tag to the client unless
+the response is buffered.</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="ContentType">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+ContentType</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Response.ContentType[=</span><var class="replaceable">strContentType</var><span class="LITERAL">]</span> 
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>The <!--<primary>ContentType property
+(Response)</primary>-->ContentType allows you to set the
+value for the Content-Type setting in the HTTP response header. This
+value defines the type of data being sent in the Response body. The
+client browser uses this information to determine how to interpret
+downloaded HTTP response content.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">strContentType</var></dt>
+<dd><p>Represents the content type. This string is in a type/subtype format.
+The type portion of the value represents the general content category
+and the subtype represents the specific type of content.</p></dd>
+
+</dl>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;% 
+
+' The following code sets the value of the Content-Type
+' HTTP response header according to the value of a
+' local variable.
+If strData = "jpg" Then
+   Response.ContentType = "image/JPEG"
+Else
+   Response.ContentType = "text/plain"
+End If
+
+%&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>Some of the possible values for ContentType type/subtype pairs are
+listed in <link linkend="ch08-34245">Table 8.1</link>.</p>
+
+
+
+
+<table id="ch08-34245" label="8.1">
+
+<p class="TITLE">Available Content-Type HTTP Header Values</p>
+
+
+
+
+
+
+
+<thead>
+<tr valign="top">
+<td>
+<p>Type</p></td>
+<td>
+<p>SubType</p></td>
+<td>
+<p>Description</p></td>
+</tr>
+
+
+
+</thead>
+
+
+
+<tbody>
+<tr valign="top">
+<td>
+<p>Text</p></td>
+<td>
+<p>Plain, RichText</p></td>
+<td>
+<p>Textual information</p></td>
+</tr>
+
+
+
+<tr valign="top">
+<td>
+<p>Multipart</p></td>
+<td>
+<p>Mixed, Alternative, Parallel, Digest</p></td>
+<td>
+<p>Data in response consists of multiple parts of independent data</p></td>
+</tr>
+
+
+
+<tr valign="top">
+<td>
+<p>Message</p></td>
+<td>
+<p>Partial, External-body</p></td>
+<td>
+<p>An encapsulated message</p></td>
+</tr>
+
+
+
+<tr valign="top">
+<td>
+<p>Image</p></td>
+<td>
+<p>JPEG, GIF</p></td>
+<td>
+<p>Image data</p></td>
+</tr>
+
+
+
+<tr valign="top">
+<td>
+<p>Audio</p></td>
+<td>
+<p>Basic</p></td>
+<td>
+<p>Audio data</p></td>
+</tr>
+
+
+
+<tr valign="top">
+<td>
+<p>Video</p></td>
+<td>
+<p>MPEG</p></td>
+<td>
+<p>Video data</p></td>
+</tr>
+
+
+
+<tr valign="top">
+<td>
+<p>Application</p></td>
+<td>
+<p>ODA, PostScript, Active</p></td>
+<td>
+<p>Typically uninterpreted binary data or data to be processed by a
+mail-based application</p></td>
+</tr>
+
+
+
+</tbody>
+
+</table>
+
+
+
+
+<p>The number of subtypes is expected to grow significantly over time.
+The best reference for the available subtypes is the latest MIME RFC
+(RFC 2231 as of this writing). Many of the new subtypes are expected
+to come from industry. For example, Microsoft has already added the
+<span class="LITERAL">x-cdf</span> subtype to the application type for its
+Channel Definition Format.</p>
+
+
+
+
+<p>Like other properties that result in a change to the HTTP response
+header values, the ContentType property must be set before the server
+sends the <span class="LITERAL">&lt;HTML&gt;</span> tag to the client unless
+the response is buffered.</p>
+
+
+
+
+<p>As another example of the ContentType property, see the code example
+for the Response object's BinaryWrite method later in this
+chapter.</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Expires">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Expires</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Response.Expires[</span>=<var class="replaceable">intNumMinutes</var><span class="LITERAL">]</span>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>The <!--<primary>Expires property</primary><secondary>Response
+object</secondary>--> <!--<primary>expiring</primary><secondary>cached
+web page data</secondary>--> <!--<primary>caching web
+pages</primary><secondary>expiring cache</secondary>-->
+<!--<primary>web
+pages</primary><secondary>caching</secondary><tertiary>expiring
+cached data</tertiary>--> <!--<primary>web
+servers</primary><secondary>caching</secondary><tertiary>expiring
+cache</tertiary>-->Expires property specifies the length of
+time (in minutes) that the client machine will cache the current
+page. If the user returns to the page within the amount of time set
+for the Expires property, the user will view the cached version of
+the page. If the Expires property is not set, content expiration set
+for the virtual directory (through the Properties page for the
+virtual directory on the Microsoft Management Console) will be used.
+Its default is 24 hours.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">intNumMinutes</var></dt>
+<dd><p>The number of minutes you wish the client's browser to cache
+the current page</p></dd>
+
+</dl>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>If you wish to prevent the client's browser from caching the
+page, use a value of
+for <var class="replaceable">intNumMinutes</var>. Doing so will force the
+client to rerequest the page from the web server every time the
+client navigates to the page.</p>
+
+
+
+
+<p>If you attempt to set the Expires property more than once in a
+script, the shortest setting is used. For example, the page that
+includes the following script will result in the client caching the
+page for five minutes, even though the last setting of the Expires
+property is 20 minutes:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;% 
+
+Response.Expires = 10
+Response.Expires = 5
+Response.Expires = 20
+
+%&gt;</pre></span>
+
+
+
+
+<p>Like other properties that result in a change to the HTTP response
+header values, the Expires property must be set before the server
+sends the <span class="LITERAL">&lt;HTML&gt;</span> tag to the client unless
+the response is buffered.</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="ExpiresAbsolute">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+ExpiresAbsolute</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Response.ExpiresAbsolute[=[</span> <var class="replaceable">Date</var> <span class="LITERAL">] [</span> <var class="replaceable">Time</var> <span class="LITERAL">] ]</span>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p><!--<primary>ExpiresAbsolute property
+(Response)</primary>-->Specifies a date and time on which
+the content of the current page will cease being cached on the client
+machine. If no time is specified when setting the ExpiresAbsolute
+property, the time is taken to be midnight on the date specified.
+Before the date specified in the ExpiresAbsolute property, the client
+will display the cached version of the current page if the user
+navigates to it.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">Date</var></dt>
+<dd><p>A calendar date after which the current page will no longer remain
+cached. The date value you use should be in the standard
+month/day/year format. However, the value sent in the Response header
+will conform in format to the RFC 1123 date format.</p></dd>
+
+
+
+
+<dt><var class="replaceable">Time</var></dt>
+<dd><p>Specifies the exact time on <var class="replaceable">Date</var> after
+which the current page will no longer be cached on the user machine.
+If no date is specified, the client browser will expire the page at
+midnight of the current day. The web server converts the time you use
+to GMT before sending this header to the client.</p></dd>
+
+</dl>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;% 
+' The following code sets the current page's caching on the 
+' client machine to end at 9 P.M. on 7 May 1998 GMT. NOTE 
+' the use of the "#" to designate the date and time.
+Response.ExpiresAbsolute=#May 7, 1998 21:00:00#
+%&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>As the example demonstrates, you must use the pound character (#) to
+designate the date and time used in the ExpiresAbsolute property
+value.</p>
+
+
+
+
+<p>Like the Expires property, setting this property multiple times
+results in the current page's caching ending on the earliest
+date and time specified in the script.</p>
+
+
+
+
+<p>Like other properties that result in a change to the HTTP response
+header values, the ExpiresAbsolute property must be set before the
+server sends the <span class="LITERAL">&lt;HTML&gt;</span> tag to the client
+unless the response is buffered.   </p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="IsClientConnected">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+IsClientConnected</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Response.IsClientConnected</span><!--<primary>IsClientConnected property (Response)</primary>-->
+<!--<primary>web servers</primary><secondary>checking connection to</secondary>-->
+<!--<primary>connection, checking</primary>-->
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>A read-only property that evaluates to <span class="LITERAL">True</span> if the
+client is still connected to the web server since the last use of the
+Response object's Write method and returns
+<span class="LITERAL">False</span> otherwise.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>None</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;% 
+' The following code determines whether the client
+' is still connected to the server. If it is still
+' connected, then the SessionID (see <link linkend="ch10-1-fm2xml">Chapter 10</link>) will be 
+' used to retrieve the user information from a database.
+If Response.IsClientConnected Then
+   strUserName = fn_strGetUserName(Session.SessionId)
+End If
+%&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>The IsClientConnected property gives you the ability to determine
+whether the client has disconnected. This is very important if the
+current script is long. If the client is no longer connected, it may
+be important to discontinue processing a script.</p>
+
+
+
+
+<p>The following example demonstrates checking for the client connection
+before continuing in a long script. If the client is no longer
+connected, the easiest way to stop all processing is to use the
+Response object's End method.</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%Response.Buffer = True%&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;One Long Script&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;% 
+
+' The following code is the first of two segments
+' in this script that will take a long time to process:
+[SOME LONG CODE]
+
+' Now before performing the second half of this long script,
+' check to see if the client is still connected.
+If Response.IsClientConnected Then
+   [SECOND LONG CODE SEGMENT]
+Else
+   ' The client is no longer connected, end the script's
+   ' processing.
+   Response.End
+End If
+%&gt;
+&lt;/BODY&gt;&lt;/HTML&gt;</pre></span>
+
+
+
+
+<p>This property is useful only for those clients using HTTP 1.1. If the
+browser uses HTTP 1.0, IIS tracks the session using individual HTTP
+requests and Keep-Alive requests by the client, not a constant
+connection that is only consistent with the later (1.1+) version of
+HTTP.</p>
+
+
+
+
+<p>If your ASP file in which you use IsClientConnected is running under
+IIS 4.0, then the property value is only accurate if the file sends
+content to the client (i.e., if it is a file containing only
+server-side code, the resulting value of IsClientConnected is not
+correct). However, in IIS 5.0, IsClientConnected works regardless of
+whether or not the current file sends content to the client.</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="PICS">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+PICS</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Response.PICS(</span><var class="replaceable">strPICSLabel</var><span class="LITERAL">)</span>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>Adds a <!--<primary>PICS property
+(Response)</primary>--> <!--<primary>headers, HTTP</primary><secondary>PICS
+system for</secondary>--> <!--<primary>PICS rating
+system</primary>--> <!--<primary>rating web pages</primary>-->
+<!--<primary>web
+pages</primary><secondary>rating (PICS
+system)</secondary>-->PICS (Platform for Internet Content
+Selection) label to the HTTP response header. This PICS system labels
+your web content to enable rating services (such as the Recreational
+Software Advisory Council (RSAC) and SafeSurf, a parents'
+organization) to rate that content according to various criteria set
+by content control software such as NetNanny and CyberWatch.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">strPICSLabel</var></dt>
+<dd><p>A string value that contains the entire contents of the PICS label
+you wish to add. A PICS label consists of the following parts:</p></dd>
+
+</dl>
+
+
+
+
+<ul><dd><p>		The URL of the rating service that produced the label.</p></dd><dd><p>The set of PICS-defined (and extensible) attribute/value pairs that
+contains information about the rating of the content itself, such as
+the date it was assigned and an expiration date for the rating.</p></dd><dd><p>A set of attribute/value pairs designed by the rating service that
+represents the rating given the content. For example, the RSAC has
+four attributes for which they rate software: violence, sexual
+content, language, and nudity. These four attributes and their
+corresponding values would appear similar to the following: (V 0
+S 1 L 3 N 0).</p></dd></ul>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;% 
+' The following piece of code sets a PICS label for the 
+' content of this page corresponding to the rating discussed
+' earlier.
+Dim strPicsLabel 
+
+strPicsLabel = _
+       "(PICS-1.1 &lt;HTTP://www.rsac.org/ratingsv01.html&gt; "
+strPicsLabel = strPicsLabel &amp; "labels on " &amp; Chr(34)
+strPicsLabel = strPicsLabel &amp; "2000.07.20T06:00-0000" &amp; _
+               Chr(34)
+strPicsLabel = strPicsLabel &amp; " until " &amp; Chr(34)
+strPicsLabel = strPicsLabel &amp; "2000.12.31T23:59-0000" &amp; _
+               Chr(34)
+strPicsLabel = strPicsLabel &amp; "ratings (V 0 S 1 L 3 N 0))"
+
+Response.PICS(strPicsLabel)
+%&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>The PICS label in the example states that:</p>
+
+
+
+
+<ul><dd><p>	The PICS draft used is 1.1.</p></dd><dd><p>	The rating service is RSAC.</p></dd><dd><p>The URL for the rating service is <systemitem role="url">http://www.rsac.org/ratingsv01.html</systemitem>.</p></dd><dd><p>	The content label is to go into effect at 6 A.M. GMT 7/20/2000.</p></dd><dd><p>	The content label expires at 11:59 P.M. GMT on 12/31/2000.</p></dd><dd><p>In the content label, the violence level is 0, the sexual content
+level is 1, the adult language level is 3, and the nudity level is 0.</p></dd></ul>
+<p>The actual PICS label that is added to the HTTP response header is
+the following:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>PICS-label:(PICS-1.1 http://www.rsac.org/ratingsv01.html 
+labels on "1998.03.20T06:00-0000" until 
+"1999.12.31T023:59-0000" ratings (v 0 s 1 l 3 n 0))</pre></span>
+
+
+
+
+<p>If you attempt to add an invalid PICS label to the HTTP header, the
+client machine will ignore it. Note that each subsequent setting of
+the PICS property value overwrites the last value. Only the final
+setting is actually sent to the client machine.</p>
+
+
+
+
+<p>Note also that the dates in the PICS label are in quotation marks.
+For this reason you must use the <span class="LITERAL">Chr(34)</span> character
+(34 is the ASCII equivalent to the quotation mark). This is easiest
+to handle by simply typing out the label as it should appear in the
+final PICS label and then replacing each quotation mark in the line
+of code with the following:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>" &amp; Chr(34) &amp; "</pre></span>
+
+
+
+
+<p>Like other properties that result in a change to the HTTP response
+header values, adding a PICS label must be done before the server
+sends the <span class="LITERAL">&lt;HTML&gt;</span> tag to the client unless
+the response is buffered.    </p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Status">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Status</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Response.Status(</span><var class="replaceable">strStatusDescSetting</var><span class="LITERAL">)</span>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p><!--<primary>Status property</primary><secondary>Response
+object</secondary>--> <!--<primary>HTTP (Hypertext
+Transfer Protocol)</primary><secondary>status
+codes</secondary>-->Specifies the HTTP status line that is
+returned to the client machine from the web server.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">strStatusDescSetting</var></dt>
+<dd><p>The <var class="replaceable">strStatusDescSetting</var> is a string value
+containing a three-digit status code that indicates the status of the
+HTTP request and a short explanation of the status code.</p>
+
+
+
+
+<p>The possible values of the
+<var class="replaceable">strStatusDescSetting</var> parameter are
+described in the current HTTP specification and fall into the following high-level categories:
+</p>
+
+
+
+<p>The
+latest version of the HTTP specification can be found at <systemitem role="url">http://www.w3c.org/protocols</systemitem>.</p>
+
+
+
+<dl>
+<dt><span class="LITERAL">1xx</span></dt>
+<dd><p>The 100 range is set aside for sending information-only response
+statuses to the client.</p></dd>
+
+
+
+
+<dt><span class="LITERAL">2xx</span></dt>
+<dd><p>The 200 range is set aside for sending successful response statuses
+to the client.</p></dd>
+
+
+
+
+<dt><span class="LITERAL">3xx</span></dt>
+<dd><p>The 300 range is set aside for redirection of the client. This status
+range should be used for requested pages that have been moved
+temporarily or permanently.</p></dd>
+
+
+
+
+<dt><span class="LITERAL">4xx</span></dt>
+<dd><p><!--<primary>errors</primary><secondary>HTTP status codes
+for</secondary>--> <!--<primary>web
+browsers</primary><secondary>errors, HTTP status codes
+for</secondary>-->The 400 range is set aside for sending
+notices of client error to the client. For example, you have
+undoubtedly seen the <span class="LITERAL">404</span> <span class="LITERAL">Not</span>
+<span class="LITERAL">Found</span> error status sent back to your browser when
+you attempt to navigate to a page that has been moved or that does
+not exist.</p></dd>
+
+
+
+
+<dt>5xx</dt>
+<dd><p>The 500 range is set aside for sending notices of
+<!--<primary>web servers</primary><secondary>errors, HTTP
+status codes for</secondary>-->server error to the client.
+For example, attempts to reach pages on a server that is unable to
+handle the request due to temporary overloading or server maintenance
+could result in the response status <span class="LITERAL">503
+Service Not Available</span>.</p></dd>
+
+</dl></dd>
+
+</dl>
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;% 
+' The following code sets the Status property of the 
+' Response object to 404 Not Found. Unless other content is 
+' generated for the page, the status code will be 
+' interpreted by itself by the client.
+strStatusText = _
+      "404 Not Found The Web server cannot find the "
+strStatusText = strStatusText &amp; "file or script you asked "
+strStatusText = strStatusText &amp; "for. Please check the URL "
+strStatusText = strStatusText &amp; "to ensure that the path "
+strStatusText = strStatusText &amp; "is correct."
+Response.Status = strStatusText
+%&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>As with setting other Response headers, each subsequent setting of
+the Status property value resets the last setting.</p>
+
+
+
+
+<p>Like other properties that result in a change to the HTTP response
+header values, the Status property must be set before the server
+sends the <span class="LITERAL">&lt;HTML&gt;</span> tag to the client unless
+the response is buffered.</p>
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Cookies">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Cookies</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="PROGRAMLISTING"><pre>strKeyName = Response.Cookies.Key(3)
+strKeyValue = Response.Cookies.Item(strKeyName)</pre></span></td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>The <!--<primary>Set-Cookie header</primary>-->
+<!--<primary>Cookies
+collection</primary><secondary>Response
+object</secondary>--> <!--<primary>Response
+object</primary><secondary>Cookies collection</secondary>-->
+<!--<primary>cookies</primary>-->Cookies
+collection of the Response object enables your ASP application to use
+the <span class="LITERAL">Set-Cookie</span> HTTP response header to write
+cookies to the client's machine. If you attempt to set the
+value of a cookie that does not yet exist, it is created. If it
+already exists, the new value you set overwrites the old value
+already written to the client machine.</p>
+
+
+
+
+<p>As with the Cookies collection of the Request object, each cookie in
+the Cookies collection of the Response object can also represent a
+cookie <!--<primary>dictionary,
+cookie</primary>-->dictionary. Recall from <link linkend="ch07-1-fm2xml">Chapter 7</link>, that a cookie dictionary is a construct that
+is similar to an associative array in that each element of the array
+is identifiable by its name. For more information on cookie
+dictionaries, see the section on the Cookies collection of the
+Request object in <link linkend="ch07-1-fm2xml">Chapter 7</link>.</p>
+
+
+
+
+<p>The Cookies collection of the Response object, like other ASP
+collections, has the following properties:</p>
+
+
+
+
+<dl>
+<dt>Item</dt>
+<dd><p><!--<primary>Item property</primary><secondary>Cookies
+collection (Response)</secondary>-->Returns the value of a
+specific element in the collection. To specify an item, you can use
+an index number or a key.</p></dd>
+
+
+
+
+<dt>Key</dt>
+<dd><p><!--<primary>Key property</primary><secondary>Cookies
+collection</secondary><tertiary>Response
+object</tertiary>-->Returns the name of a specific element
+in the Cookies collection. Just as each element's value is
+represented by the Item property, so each element's name is
+represented by its Key property.</p>
+
+
+
+
+<p>If you do not know the name of a specific key, you can obtain it
+using its ordinal reference. For example, assume that you want to
+learn the key name for the third element in the collection and,
+subsequently, that element's value. You could use the following
+code:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>strKeyName = Response.Cookies.Key(3)
+strKeyValue = Response.Cookies.Item(strKeyName)</pre></span>
+
+
+
+
+<p>If, on the other hand, you know that the third element's key
+name is <span class="LITERAL">COLOR_PREF</span>, you could simply use the
+following code to retrieve the value of that element:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>strKeyValue = Response.Cookies.Item("COLOR_PREF")</pre></span></dd>
+
+
+
+
+<dt>Count</dt>
+<dd><p><!--<primary>Count property</primary><secondary>Cookies
+collection (Response)</secondary>-->The Count property of
+the Cookies collection represents the current number of cookies in
+the collection.</p></dd>
+
+</dl>
+
+
+
+
+<p>As with other ASP collections, you can retrieve the value of any
+field of the Cookies collection through the use of the Item property.
+However, as in other places in this book, in the following examples,
+the syntax has been abbreviated so that it does not explicitly show
+the use of the Item property. For example:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Response.Cookies("UserPref") = "Red"</pre></span>
+
+
+
+
+<p>is an abbreviated form of:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Response.Cookies.Item("UserPref") = "Red"</pre></span>
+
+
+
+
+<p>To set the value of a cookie, you would use code similar to the
+following:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Response.Cookies("LastSearch") = _
+   "SELECT * FROM Details WHERE Color = 'Red'"</pre></span>
+
+
+
+
+<tip id="ch08-42-fm2xml" role="ora">
+<p>For more information on the Item, Key, and Count properties of a
+collection, see the discussion in <link linkend="ch04-3-fm2xml">Section 4.2</link> in <link linkend="ch04-40130">Chapter 4</link>.</p>
+
+
+
+</tip>
+
+<p>The previous code would create the cookie <span class="LITERAL">UserPref</span>
+if it doesn't already exist (or overwrite the original value if
+it does). This cookie would translate into a
+<span class="LITERAL">SET-COOKIE</span> response header being added to the
+response sent back to the client browser. The client browser would
+receive this response header and create (or overwrite) a
+<span class="LITERAL">UserPref</span> cookie on the user machine.</p>
+
+
+
+
+<p>Each element in the Cookies collection (or subkey, if the cookie is a
+cookie dictionary) also has the following cookie-specific attributes:</p>
+
+
+
+
+<dl>
+<dt><span class="LITERAL">Domain</span></dt>
+<dd><p><!--<primary>domain attribute</primary><secondary>Cookies
+collection (Response)</secondary>-->Sets the cookie so that
+the client sends the cookie's value only to pages in the domain
+set in the Domain property. The Domain property is write-only. For
+example, suppose we wanted to add the domain "mycorp.com"
+to the following <span class="LITERAL">LastSearch</span> cookie. This would
+cause the client to send this cookie's value to the <em>mycorp.com</em> domain when it requests pages from
+it:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Response.Cookies("LastSearch").Domain = "mycorp.com"</pre></span></dd>
+
+
+
+
+<dt><span class="LITERAL">Expires</span></dt>
+<dd><p><!--<primary>Expires property</primary><secondary>Cookies
+collection (Response)</secondary>-->
+<!--<primary>expiring</primary><secondary>cookies</secondary>-->
+<!--<primary>cookies</primary><secondary>expiration
+dates</secondary>-->The date on which the cookie expires and
+is discarded on the client machine. For example, suppose we want the
+cookie to expire on January 29, 2000. We could use the following
+code:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Response.Cookies("LastSearch").Expires = #1/29/2000#</pre></span>
+
+
+
+
+<p>If you do not set the Expires property value, the cookie resides on
+the client machine for the duration of the client's session.
+The cookie also will reside on the client machine only for the
+duration of the client's session if the date value you set for
+the Expires property is earlier than the current date. The Expires
+property is write-only.</p></dd>
+
+
+
+
+<dt><span class="LITERAL">HasKeys</span></dt>
+<dd><p><!--<primary>HasKeys attribute, Cookies collection
+(Response)</primary>-->As previously mentioned, a cookie in
+the Cookies collection also can represent a cookie dictionary. To
+determine whether a specific cookie has subkeys, you must use the
+HasKeys property of that cookie, as in the following:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>blnHasKeys = Response.Cookies("Colors").HasKeys
+If blnHasKeys Then
+   strColor3 = Response.Cookies("Colors")("color3")
+End If</pre></span>
+
+
+
+
+<p> The HasKeys property is read-only.</p></dd>
+
+
+
+
+<dt><span class="LITERAL">Path</span></dt>
+<dd><p><!--<primary>Path property</primary><secondary>Cookies
+collection (Response)</secondary>-->The Path property
+represents the virtual directory on the server to which the cookie
+will be sent by the client browser when the client browser requests a
+page from within that virtual path. For example, if we want the
+client to send this cookie to only those scripts in the
+<filename>/Apps/SearchApps</filename> virtual directory, we'd
+use the following line of code:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Response.Cookies("LastSearch").Path = "/Apps/SearchApps"</pre></span>
+
+
+
+
+<p>If the cookie's Path attribute is not set, the path defaults to
+the path of the current ASP application. The Path property is
+write-only.</p></dd>
+
+
+
+
+<dt><span class="LITERAL">Secure</span></dt>
+<dd><p>The <!--<primary>Secure property, Cookies collection
+(Response)</primary>-->
+<!--<primary>security</primary><secondary>cookie
+information</secondary>-->Secure property allows you to
+specify whether the cookie is sent from the client only if the client
+is using the Secure Sockets Layer. For example, suppose we have
+stored some sensitive information in a cookie (this is not wise, but
+there are occasions when you might do so), and you want the
+user's browser to send this information only if it is using the
+Secure Sockets Layer. This will significantly decrease the
+probability that a sensitive cookie could be intercepted. You would
+use the following simple line of code:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Response.Cookies("SensitiveCookie").Secure = True</pre></span>
+
+
+
+
+<p>The Secure property takes a Boolean value. The Secure property is
+write-only.</p></dd>
+
+</dl>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>The following is a more complete example of the use of the Cookies
+collection of the Response object. It demonstrates many of the items
+discussed earlier.</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Search Cookie Example&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;H3&gt;Welcome to the Search Results Options Page.&lt;/H3&gt;
+You can use the following form to select your search results display
+options. 
+These options will be saved on your machine as a set of cookies.
+&lt;FORM ACTION="/SaveSearchCookie.asp" METHOD = POST&gt;
+First Name:&lt;INPUT TYPE = TEXT NAME = "txtFirstName"&gt;&lt;BR&gt;
+Last Name:&lt;INPUT TYPE = TEXT NAME = "txtLastName"&gt;&lt;BR&gt;
+User ID:&lt;INPUT TYPE = TEXT NAME = "txtUserId"&gt;&lt;BR&gt;
+Check All that Apply:
+Show Descriptions:
+&lt;INPUT TYPE = CHECKBOX NAME = "chkUserPrefs"VALUE = "Desc"&gt;
+Show Hit Count (display how many matches found per result):
+&lt;INPUT TYPE = CHECKBOX NAME = "chkUserPrefs"VALUE = "Count"&gt;
+Show Relevance with Graph:
+&lt;INPUT TYPE = CHECKBOX NAME = "chkUserPrefs" 
+VALUE = "Graph"&gt;
+Use Small Fonts(will show more results per page):
+&lt;INPUT TYPE = CHECKBOX NAME = "chkUserPrefs" 
+VALUE = "Small"&gt;
+&lt;INPUT TYPE = SUBMIT VALUE = "Save Selections"&gt;
+&lt;/FORM&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;</pre></span>
+
+
+
+
+<p>The following code (<filename>SaveSearchCookie.ASP</filename>) will
+retrieve the values selected in the previous form and save them to
+the user's machine as cookies:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;% 
+' The following code retrieves user information from the 
+' Form collection of the Request object (see <link linkend="ch07-1-fm2xml">Chapter 7</link>) and  
+' then writes the information to a set of cookies on the
+' client machine.
+Dim strFirstName
+Dim strLastName
+Dim strUserId
+Dim intCounter
+Dim intPrefCounter
+Dim strKeyName
+Dim arstrUserPrefs( )
+
+' Retrieve user information...
+strFirstName   = Request.Form("txtFirstName")
+strLastName    = Request.Form("txtLastName")
+strUserId      = Request.Form("txtUserId")
+
+intPrefCounter = 1
+
+For intCounter = 1 to Request.Form("chkUserPrefs").Count
+   ReDim Preserve arstrUserPrefs(intPrefCounter)
+   arstrUserPrefs(intPrefCounter - 1) = _
+      Request.Form("chkUserPrefs")(intCounter)
+   intPrefCounter = intPrefCounter + 1
+Next
+
+' Write the user information to the client machine.
+' Save all the information in cookies, but set the
+' Expires property only for the UserId. We'll want
+' that to remain on the client machine after the session
+' is complete.
+Response.Cookies("UserFirstName") = strFirstName
+Response.Cookies("UserLastName") = strLastName
+
+For intCounter = 1 to intPrefCounter - 1
+   strKeyName = "Pref" &amp; CStr(intCounter)
+   Response.Cookies("UserPrefs")(strKeyName) = _
+      arstrUserPrefs(intCounter - 1)
+Next
+
+' Note in the first line below, that when no property
+' is specified, the value of the cookie is set.
+Response.Cookies("UserId") = strUserId
+Response.Cookies("UserId").Expires = #December 31, 1999#
+Response.Cookies("UserId").Domain = "www.customsearch.com"
+Response.Cookies("UserId").Path = "/usersearch/"
+Response.Cookies("UserId").Secure = True
+%&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>In the example, the UserFirstName cookie is sent to the client
+machine. For this example, let's assume the value of the
+<var class="replaceable">strFirstName</var> variable is the string
+"David." The actual HTTP response header sent to the
+client machine is:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre><!--<primary>Set-Cookie header</primary>-->Set-Cookie:USERFIRSTNAME=david</pre></span>
+
+
+
+
+<p>Also for this example, assume the three values sent are 800 (for
+client browser width), 8 (for color depth in bits), and English (for
+English language preference). The actual HTTP response header sent to
+the client is the following:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Set-Cookie:USERPREFS=PREF1=800&amp;PREF2=8&amp;PREF3=english</pre></span>
+
+
+
+
+<p>If the string value sent for a value of a cookie contains spaces,
+those spaces are replaced with plus signs (+) in the HTTP response
+header.</p>
+
+
+
+
+<p>If you sent a subsequent cookie value to the
+<span class="LITERAL">UserPrefs</span> cookie on the client machine without
+specifying a <var class="replaceable">SubKey</var>, as in the following:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Response.Cookies("UserPrefs") = "german"</pre></span>
+
+
+
+
+<p>the two values for <span class="LITERAL">PREF1</span> and
+<span class="LITERAL">PREF2</span> will be overwritten and the Count property
+for the <span class="LITERAL">UserPrefs</span> cookie will return 1.</p>
+
+
+
+
+<p>Alternatively, if you send a subsequent cookie value and specify a
+<var class="replaceable">SubKey</var> to a client machine where the
+cookie has a value but no keys, the value already in place on the
+client machine is overwritten.</p>
+
+
+
+
+<p>If, while you are generating values for the Cookies collection of the
+Response object, you need to determine if there are already subkeys
+defined for a given cookie, you can evaluate the HasKeys property of
+the cookie. If the cookie has subkeys defined, the HasKeys property
+evaluates to <span class="LITERAL">True</span>.</p>
+
+
+
+
+<p>Like other properties that result in a change to the HTTP response
+header values, the Cookies collection values must be set before the
+server sends the <span class="LITERAL">&lt;HTML&gt;</span> tag to the client
+unless the response is buffered.  </p>
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="AddHeader">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+AddHeader</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="PROGRAMLISTING"><pre><!--<primary>ClientCustomHeader header</primary>-->ClientCustomHeader:CustomHeaderValue</pre></span></td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p><!--<primary>responses,
+HTTP</primary><secondary>headers</secondary><tertiary>custom</tertiary>-->
+<!--<primary>headers, HTTP</primary><secondary>custom, adding
+to responses</secondary>--> <!--<primary>HTTP
+(Hypertext Transfer
+Protocol)</primary><secondary>headers</secondary><tertiary>custom,
+adding to responses</tertiary>-->
+<!--<primary>AddHeader method (Response)</primary>-->
+<!--<primary>Response
+object</primary><secondary>methods
+reference</secondary>-->Allows you to add your own HTTP
+response header with a corresponding value. If you add an HTTP header
+with the same name as a previously added header, the second header
+will be sent in addition to the first; adding the second header does
+not overwrite the value of the first header with the same name. Also,
+once the header has been added to the HTTP response, it cannot be
+removed.</p>
+
+
+
+
+<p>If the client sends the web server an HTTP header other than those
+listed in the section on the ServerVariables collection in <link linkend="ch07-1-fm2xml">Chapter 7</link>, you can use
+<var class="replaceable">HTTP_HeaderName</var> to retrieve it. For
+example, if the client sends the HTTP header:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre><!--<primary>ClientCustomHeader header</primary>-->ClientCustomHeader:CustomHeaderValue</pre></span>
+
+
+
+
+<p>then you could retrieve the value for this element using the
+following syntax:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%
+Request.ServerVariables("HTTP_ClientCustomHeader")
+%&gt;</pre></span>
+
+
+
+
+<p>This is an advanced method and should not be used without careful
+planning. If another method of the Response object will meet your
+needs, use it instead of using the AddHeader method.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">strName</var></dt>
+<dd><p>The name of the HTML header you wish to add to the response header</p></dd>
+
+
+
+
+<dt><var class="replaceable">strValue</var></dt>
+<dd><p>The initial value of the new header you are adding to the response
+header</p></dd>
+
+</dl>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;% 
+' The following code adds the CUSTOM-ERROR HTML header to 
+' the HTTP response headers.
+Response.AddHeader "CUSTOM-ERROR", "Your browser is not IE."
+%&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>Like the other methods and properties of the Response object that
+alter the HTTP response headers, you must call the AddHeader method
+before sending the <span class="LITERAL">&lt;HTML&gt;</span> tag to the client.
+If you have previously set the Buffer property value of the Response
+object to <span class="LITERAL">True</span>, you can use AddHeader unless you
+have previously called the Flush method. If you call AddHeader after
+sending the <span class="LITERAL">&lt;HTML&gt;</span> tag to the client or
+calling the Flush method, your call to AddHeader will result in a
+runtime error.</p>
+
+
+
+
+<p>You should not use underscores in your custom headers. Doing so will
+increase your chances of ambiguity with headers already present. Use
+hyphens to separate multiple words instead. Also, note that to
+retrieve the value of a custom header with hyphens, you replace them
+with underscores when retrieving the values of your custom headers.</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="AppendToLog">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+AppendToLog</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Response.AppendToLog</span> <var class="replaceable">strLogEntry</var>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p><!--<primary>AppendToLog method
+(Response)</primary>-->
+<!--<primary>logging</primary><secondary>web site
+activity</secondary>--> <!--<primary>web
+pages</primary><secondary>logging site
+activity</secondary>--> <!--<primary>web
+servers</primary><secondary>logging site
+activity</secondary>-->Adds a string to the web server log
+entry for the current client request. You can only add up to 80
+characters at a time, but you are able to call the AppendToLog method
+multiple times.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Logging web site activity</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>IIS allows you to log user activity into a text file or into an
+ODBC-compliant database. This logging is separate from Windows NT
+logging, and the records in the IIS log cannot be viewed using the
+Windows NT Event Viewer tool. To view the IIS log files, you must
+open them as you would any other ASCII text file, import them into a
+spreadsheet or database program, or, if you've been logging to
+an ODBC database, view them through queries to that database.</p>
+
+
+
+
+<p>The log files for IIS are found in
+<filename>winnt\system32\LogFiles\W3svc1\ex[date].log</filename>.
+Each entry into the (IIS default) log contains time, caller IP,
+caller method (<span class="LITERAL">GET/POST</span>), uri-stem (no server
+path), and resulting status.</p>
+
+
+
+<p>Specifically, you can log the following aspects of users'
+visits to your web site, among other things:</p>
+
+
+
+
+<ul><dd><p>	Date/time of user visit</p></dd><dd><p>	Requested pages</p></dd><dd><p>	IP address of user</p></dd><dd><p>	Length of time connected to server</p></dd></ul>
+<p>Using this information and information your application adds to this
+log through Response.AppendToLog, you can plan future development for
+your site, plan security, and plan for new servers if the load
+warrants it.</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">strLogEntry</var></dt>
+<dd><p>The string you want added to the current client request's entry
+in the web server. This string can be up to 80 characters in length.
+Note that the string you append to the web server log entry cannot
+contain commas, since the fields in the IIS web log entries are comma
+delimited.</p></dd>
+
+</dl>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%
+' Assume you have constructed one string containing all that 
+' you'd like logged to the web's server. This string is 
+' declared as strOrigLogContent. The following Do...While 
+' loop code will loop through your content and log it to the
+' web server 79 characters at a time.
+Do While Len(strOrigLogContent) &gt; 0 
+   If Len(strOrigLogContent) &gt;= 79 Then
+      strLogString = Left(strOrigLogContent, 79)
+   Else
+      strLogString = strOrigLogContent
+   End If
+   
+   ' Log the content.
+   Response.AppendToLog strLogString 
+
+   If Len(strOrigLogContent) &gt; Len(strLogString) Then
+      strOrigLogContent = _
+         Right(strOrigLogContent, _
+         Len(strOrigLogContent) - Len(strLogString))
+   Else
+      strOrigLogContent = "
+   End If
+Loop
+%&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>Before you are able to append information to the web server log in
+IIS, you must enable the URL Query option of the Extended Logging
+Properties sheet for the web site whose activity the log files are
+being used to record.</p>
+
+
+
+
+<p>This method can be an invaluable time saver in maintaining detailed
+information about actions on your web site. If you have a unique
+identifier for each user that is stored in the log file with the
+entry (which contains an IP address, possibly a Windows NT account
+name, and the date and time of the visit), you can quickly determine
+who was visiting the site at the time of an unexpected error on your
+site. This method cannot be relied on for security, since you cannot
+be 100% certain of the user's identity, but it can help.</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="BinaryWrite">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+BinaryWrite</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Request.BinaryWrite</span> <var class="replaceable">arbyteData</var>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p><!--<primary>BinaryWrite method
+(Response)</primary>--> <!--<primary>writing</primary><secondary>response
+content</secondary>--> <!--<primary>responses,
+HTTP</primary><secondary>writing</secondary>--> <!--<primary>HTTP (Hypertext
+Transfer
+Protocol)</primary><secondary>responses</secondary><tertiary>writing</tertiary>-->Writes
+information directly to the response content without any character
+conversion. If your application involves writing binary data to the
+client, you must use this method to ensure that data you send is not
+converted to character data from the original binary.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">arbyteData</var></dt>
+<dd><p>An array of bytes you wish to write to the response content</p></dd>
+
+</dl>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>The following example code is lengthy for the simple call to
+BinaryWrite, but it demonstrates a very useful concept, especially if
+you are forced to deal with binary data from a database.</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;% 
+
+' The following code retrieves a binary object
+' (in this case a JPG image) and writes it to the
+' client using BinaryWrite. (For more information
+' on ActiveX Data Objects usage, see <link linkend="ch12-1-fm2xml">Chapter 12</link>.)
+
+' Create an ADO connection object.
+Set adoCon = Server.CreateObject("ADODB.Connection")
+
+' Use the Open method of the Connection object
+' to open an ODBC connection with the database
+' represented by the DSN ImageDatabase.
+adoCon.Open "ImageDatabase"
+
+' Use the Execute method of the ADO Connection object
+' to retrieve the binary data field from the database.
+Set adoRecImgData = adoCon.Execute _
+   ("SELECT ImageData FROM Images WHERE ImageId = 1234")
+
+' Create a Field object by setting one equal to a
+' specific field in the recordset created previously.
+Set adoFldImage = adoRecImgData("ImageData")
+
+' Use the ActualSize property of Field object to retrieve
+' the size of the data contained in the Field object. After
+' this line you will know how many bytes of data reside in
+' the Field object.
+lngFieldDataLength = adoFldImage.ActualSize
+
+' Use the BinaryWrite method to write 4K bytes of binary
+' data at a time. So, first we need to determine how many
+' 4K blocks the data in the Field object represents.
+lngBlockCount = lngFieldDataLength / 4096
+
+' Now let's get how many bytes are left over after removing
+' lngBlockCount number of bytes.
+lngRemainingData = lngFieldDataLength Mod 4096
+
+' We now must set the HTTP content type Response header
+' so that the browser will recognize the data being sent
+' as being JPEG image data.
+Response.ContentType = "image/JPEG"
+
+' Loop through and write the first lngBlockCount number
+' of binary blocks of data.
+For intCounter = 1 to lngBlockCount
+   Response.BinaryWrite adoFldImage.GetChunk(4096)
+Next
+
+' Now write the last remainder of the binary data.
+Response.BinaryWrite adoFldImage.GetChunk(lngRemainingData)
+
+' Close the recordset.
+adoRecImgData.Close
+%&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>At first, the BinaryWrite method seems to be of limited use, until
+you have binary data stored in a database that must be sent to the
+client; then, BinaryWrite is invaluable. As the code sample
+demonstrates, one example of this is the display of image data that
+is stored and retrieved from a DBMS capable of storing binary data.</p>
+
+
+
+
+<p>I have used this method to display JPEG images stored in a Microsoft
+SQL Server database (using code similar to the preceding), and it
+works quite well. Because you are sending the HTTP response
+containing only the image data (not a link request to the image), it
+may even be faster than sending images to the client upon a straight
+client request, assuming your database access is suitably
+fast.
+
+
+</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Clear">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Clear</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Response.Clear</span>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p><!--<primary>Clear method (Response)</primary>-->
+<!--<primary>Response object</primary><secondary>clearing
+contents</secondary>-->Empties the
+<!--<primary>Buffer property
+(Response)</primary><secondary>clearing</secondary>-->
+<!--<primary>web pages</primary><secondary>buffering
+downloads</secondary>--> <!--<primary>responses,
+HTTP</primary><secondary>buffering</secondary>-->
+<!--<primary>HTTP (Hypertext Transfer
+Protocol)</primary><secondary>responses</secondary><tertiary>buffering</tertiary>-->current
+contents of the Response buffer. It does so without sending any of
+the buffered response to the client.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>None</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;% Response.Buffer = True%&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Response Clear Method Example&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;%
+On Error Resume Next
+
+[CODE TO DO SOME CALCULATIONS]
+lngFormulaElement1 = 47
+lngFormulaElement2 = lngFormulaElement1 - 47
+lngFormulaElement3 = 23
+
+' This next line results in a division-by-zero error 
+' (Error Number 11).
+lngNewCalcTotal = lngFormulaElement3 / lngFormulaElement2
+
+' This next line will still be processed because we used
+' ON ERROR RESUME NEXT.
+If Err &lt;&gt; 0 Then
+   ' The following code clears the Response buffer, writes 
+   ' an error message, and ends the response, forcing IIS to 
+   ' send the response to the client. Note that the Buffer 
+   ' property has to be set to True for the following code
+   ' to work properly.
+   Response.Clear
+   Response.Write "Your request resulted in the error: " &amp; _
+      Err.Description
+   Response.Write " Error Number: " &amp; Err.Number
+   Response.Write "&lt;BR&gt;Call your web admin at 555-HELP for "
+   Response.Write "more information."
+   Response.End
+End If
+%&gt;
+<lineannotation>. . . [additional code]</lineannotation></pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>The Clear method of the Response object does not clear any HTTP
+headers, only the content. As noted in the example, the Buffer
+property of the Response object must be set to
+<span class="LITERAL">True</span> or the use of this method will result in a
+runtime error.</p>
+
+
+
+
+<p><!--<primary>errors</primary><secondary>Clear method for
+sending</secondary>-->One of the most important uses for the
+Clear method is to clear the buffer and send to the client browser
+something else instead, often error information, as is the case with
+the example.</p>
+
+
+
+
+<p>For errors to be caught and error information to be sent to the
+client in this fashion, not only must the Buffer property be set to
+<span class="LITERAL">True</span>, but also you must use the following line of
+code to ensure that your error trap will be processed:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>On Error Resume Next</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="End">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+End</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Response.End</span>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p><!--<primary>End method (Response)</primary>-->
+<!--<primary>Buffer property
+(Response)</primary><secondary>End method and</secondary>-->
+<!--<primary>web
+pages</primary><secondary>buffering
+downloads</secondary><tertiary>sending buffer
+remains</tertiary>--> <!--<primary>responses,
+HTTP</primary><secondary>buffering</secondary><tertiary>sending
+buffer remains</tertiary>--> <!--<primary>HTTP (Hypertext Transfer
+Protocol)</primary><secondary>responses</secondary><tertiary>buffering</tertiary>-->Ends
+all storage of information in the response buffer and sends the
+current contents of the buffer immediately to the client. Any code
+present after the call to the End method is not processed. Any memory
+set aside by the script up until the call to End (such as database
+objects previously used in the script) is released.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>None</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>See the previous example for the Clear method.</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>If the Buffer property is set to <span class="LITERAL">True</span>, calling the
+End method will flush the Response buffer exactly as if you had
+called the Flush method (see the next section). However, unlike
+calling the Flush method, no code after the call to End is processed
+by the web server.</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Flush">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Flush</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Response.Flush</span>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p><!--<primary>Flush method</primary><secondary>Response
+object</secondary>-->Immediately sends all data currently in
+the response buffer to the client. Unless the Buffer property of the
+Response object is set to <span class="LITERAL">True</span>, this method will
+result in a runtime error. This method allows you to send various
+portions of the response to the client at your discretion.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>None</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;% Response.Buffer = True%&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Response Flush Method Example&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;%
+' Suppose for this example that this first part of the
+' script retrieves some information from a database and
+' that retrieval takes a long time, say 30 seconds.
+' (Don't worry about the details of the ActiveX Data Object
+' calls. They are covered later in the book and serve only
+' as an example here of something that might take a long time.)
+Set adoCon = Server.CreateObject("ADODB.Connection")
+adoCon.Open MyDatabase
+Set adoRec = adoCon.Execute([BIG SQL STATEMENT])
+
+' Rather than continue to the second part of the script, in
+' which a second slow SQL statement (say another 15 seconds)
+' executes, first we'll use the Flush method to force the
+' first part of the script results to the client. This way,
+' the user can be looking at the results of the first query 
+' while waiting for the second.
+Response.Flush
+
+' [Second LONG SQL statement.]
+Set adoRec2 = adoCon.Execute([BIG SQL STATEMENT])
+%&gt;
+&lt;/BODY&gt;&lt;/HTML&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>Using the buffering capacity of the Response object, you are able to
+send the response to the client in parts. For example, suppose you
+are presenting a description of your worldwide organization followed
+by a list of offices derived from information in a database. The
+organization description is straight text, and thus it takes very
+little time to prepare and send it to the client. The second part
+takes more time. You could use the Flush method of the Response
+object to send the organizational description to the client first and
+then send the list when it is complete. Without this approach, the
+user can get the impression that the page is slow to download.</p>
+
+
+
+
+<p>One caution, however: if you use the Flush method on an Active Server
+Page, the server will ignore Keep-Alive requests sent by the client
+for that page. This will force a new connection to be made for each
+piece of information sent to the client.  </p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Redirect">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Redirect</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Response.Redirect</span> <var class="replaceable">strURL</var>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p><!--<primary>URLs</primary><secondary>redirecting requests
+to</secondary>--> <!--<primary>requests,
+HTTP</primary><secondary>redirecting</secondary>-->
+<!--<primary>HTTP (Hypertext Transfer
+Protocol)</primary><secondary>requests</secondary><tertiary>redirecting</tertiary>-->
+<!--<primary>redirecting requests</primary>-->
+<!--<primary>Redirect method
+(Response)</primary>-->Redirects the client's request
+to another URL.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">strURL</var></dt>
+<dd><p>The Universal Resource Locator string for the new location to which
+you wish to redirect the client</p></dd>
+
+</dl>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;% 
+' The following code determines whether the client has
+' security clearance for a certain page. If not, it 
+' is redirected to another URL.
+[...Code to determine user's clearance for the current page...]
+
+If Not(strUserSecurity = "ADMIN" or strUserSecurity = "SUPERADMIN") Then
+   Response.Redirect "/security/noclearance.asp?usrid=09563"
+End If
+%&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>The <var class="replaceable">strURL</var> value you use when calling the
+Redirect method can be an exact URL with DNS or a virtual directory
+and filename. It also can be the name of a file that resides in the
+same folder as the requested page.</p>
+
+
+
+
+<p>If your script has written any content to the HTTP response body,
+that content is ignored by the script once the call to the Redirect
+method is executed.</p>
+
+
+
+
+<p>Calling the Redirect method is conceptually the same as setting the
+Status property to "302 Object Moved" and sending the
+user to a new location using the <span class="LITERAL">Location</span> HTTP
+header.</p>
+
+
+
+
+<p>Note that upon redirection, some older (HTTP 1.0) client browsers
+will mistakenly change <span class="LITERAL">POST</span> requests to
+<span class="LITERAL">GET</span> requests when the new URL is called. This is
+an important consideration when the client's
+<span class="LITERAL">POST</span>ed information contains more data than the
+<span class="LITERAL">GET</span> method can handle. It is assumed that new
+browsers supporting the HTTP 1.1 protocol have fixed this problem.</p>
+
+
+
+
+<p>If your ASP file is running under IIS 5.0, you should consider using
+the Server method Execute or Transfer. Neither of these methods
+involve the costly trip to the client and back to the server that
+Redirect requires.</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Write">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Write</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Response.Write</span><!--<primary>Write method</primary><secondary>Response object</secondary>-->
+<!--<primary>writing</primary><secondary>HTTP responses</secondary>-->
+<!--<primary>responses, HTTP</primary><secondary>writing</secondary>-->
+<!--<primary>HTTP (Hypertext Transfer Protocol)</primary>--> <var class="replaceable">vntData</var>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>Writes information directly to the HTTP response body.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">vntData</var></dt>
+<dd><p>The information to be inserted into the HTML text stream that will be
+received by the client browser. This includes text, HTML tags,
+client-side script, and so on. The data variables in the ASP script
+itself are of the data type variant. The value cannot contain the
+<span class="LITERAL">%&gt;</span> character sequence; the web server will
+interpret it as the end of your active server script. If your script
+requires this character sequence, use the escape sequence
+<span class="LITERAL">%\&gt;</span> instead.</p></dd>
+
+</dl>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;% 
+strDirCommand = "Dir /w"
+
+' The following code writes an entire HTML table to the HTTP
+' response body.
+Response.Write "&lt;TABLE&gt;"
+Response.Write "&lt;TR&gt;"
+Response.Write "&lt;TD WIDTH = 50%\&gt;"
+Response.Write "Command"
+Response.Write "&lt;/TD&gt;"
+Response.Write "&lt;TD WIDTH = 50%\&gt;"
+Response.Write "Description"
+Response.Write "&lt;/TD&gt;"
+Response.Write "&lt;/TR&gt;"
+Response.Write "&lt;TR&gt;"
+Response.Write "&lt;TD WIDTH = 50%\&gt;"
+Response.Write Chr(34) &amp; strDirCommand &amp; Chr(34)
+Response.Write "&lt;/TD&gt;"
+Response.Write "&lt;TD WIDTH = 50%\&gt;"
+Response.Write "This allows you to see a list of the "
+Response.Write "files in &lt;BR&gt; your current folder."
+Response.Write "&lt;/TD&gt;"
+Response.Write "&lt;/TR&gt;"
+Response.Write "&lt;/TABLE&gt;"
+%&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>As demonstrated in the example program, you can use the Write method
+to write HTML and client-side script to the response body that the
+client browser will interpret as plain HTML.</p>
+
+
+
+
+<p>To send a <!--<primary>carriage return,
+writing</primary>--> <!--<primary>line feed,
+writing</primary>--> <!--<primary>quotation marks,
+writing</primary>-->carriage return/line feed or a quotation
+mark, use the <function>Chr</function><!--<primary>Chr
+function</primary>--> function, as demonstrated the
+following code:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>' Note:  Chr(34) is a quotation mark. Chr(13) &amp; Chr(10) is 
+' the equivalent of a carriage return, followed by a 
+' linefeed.
+Response.Write "Hamlet said, " &amp; Chr(34) &amp; _
+   "To be, or not to be." &amp; Chr(34) &amp; Chr(13) &amp; Chr(10)</pre></span>
+
+
+
+
+<p>Finally, you can use the Write method to send the value of a
+server-side script to the client browser. This method is sometimes
+cleaner in your code than going back and forth between server-side
+code and client code using the
+<span class="LITERAL">&lt;%=</span>...<span class="LITERAL">%&gt;</span> notation. For
+example, the following code displays the value of the
+<var class="replaceable">strHighestPrice</var> data value using both the
+<span class="LITERAL">&lt;%=</span>...<span class="LITERAL">%&gt;</span> and the
+Response.Write methods:
+%&gt;
+
+
+
+
+
+</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%
+Response.Write "The highest price is " &amp; strHighestPrice
+Response.Write ".&lt;BR&gt;"
+
+' The same line as the preceding using the other format:
+%&gt;
+The highest price is &lt;%=strhighestPrice%&gt;.&lt;BR&gt; </pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

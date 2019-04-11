@@ -1,0 +1,20 @@
+<tag name="CFTRANSACTION" endtag="yes">
+<tagdialog file="cftransaction.htm" />
+<tagformat nlbeforetag="1" nlbeforecontents="1" nlaftercontents="1" nlaftertag="1" indentcontents="yes"/>
+  <attributes>
+    <attrib name="ACTION" type="Enumerated">
+      <attriboption value="BEGIN"/>
+      <attriboption value="COMMIT"/>
+      <attriboption value="ROLLBACK"/>
+	  </attrib>
+    <attrib name="ISOLATION" type="ENUMERATED">
+      <attriboption value="READ_UNCOMMITTED"/>
+      <attriboption value="READ_COMMITTED"/>
+      <attriboption value="REPEATABLE_READ"/>
+      <attriboption value="SERIALIZABLE"/>
+    </attrib>
+  </attributes>
+	<attribcategories>
+		<attribgroup name="General" elements="action,isolation" />
+	</attribcategories>
+</tag>

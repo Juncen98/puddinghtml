@@ -1,0 +1,77 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- SAFE-IN-TEMPLATES -->
+<HTML>
+<HEAD>
+<SCRIPT SRC="Control Shockwave or Flash.js"></SCRIPT>
+<SCRIPT SRC="MM_findObj.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/docInfo.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/niceName.js"></SCRIPT>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<SCRIPT LANGUAGE="javascript">
+// Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved.
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_NoNSRef = "警告: Netscape 用户无法访问这个 Shockwave OBJECT (使用相同名称或嵌套 EMBED 标签以保持兼容性)。";
+var MSG_NoIERef = "警告: Internet Explorer 用户无法访问这个 Shockwave 对象 (使用 OBJECT 标签以保持兼容性)。";
+var MSG_InvalidFrameNum = "请输入一个正确的帧编号，或点击「取消」。";
+var MSG_NegFrameNum = "请输入一个正数的帧编号，或点击「取消」。"
+var MSG_UnnamedObj = "只能更改 *已命名的* Shockwave 对象，请点击取消或使用属性检查器将您的对象命名。";
+var MSG_NoSelection = "请选取一个 shockwave 对象名称或点击取消。";
+var MSG_ShockwaveNotFound = '无法找到 shockwave "%s"。';
+
+//--------------- END LOCALIZEABLE   ---------------
+</SCRIPT>
+<TITLE>控制 Shockwave 或 Flash</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm" ACTION="">
+   
+     
+    
+  <TABLE BORDER=0 cellpadding="4" cellspacing="2">
+      
+    <TR valign="baseline">
+        
+      <TD ALIGN="right" nowrap> 影片:</TD>
+      <TD nowrap COLSPAN=2>
+          <SELECT NAME="menu" class="namedObjectsList">
+            
+          <OPTION>**无法找到 shockwave 对象
+          </select></TD>
+    </TR>
+	  
+    <TR valign="baseline">
+        
+      <TD ALIGN="right" nowrap>
+          操作:</TD>
+      <TD nowrap>
+          <INPUT TYPE="radio" NAME="theCmd" checked>
+          播放</TD>
+      <TD nowrap>
+          <INPUT TYPE="radio" NAME="theCmd">
+          停止</TD>
+    </TR>
+      
+    <TR valign="baseline">
+        
+      <TD align="right"></TD>
+      <TD nowrap>
+          <INPUT TYPE="radio" NAME="theCmd">
+          后退</TD>
+      <TD nowrap>
+          <INPUT TYPE="radio" NAME="theCmd">
+          前往帧
+          
+        <INPUT TYPE="text" class="smallNumOrChar" NAME="frameNum"></TD>
+    </TR>
+     
+  </TABLE>
+   </FORM>
+</BODY></HTML>

@@ -1,0 +1,8 @@
+<participant>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="SuccessURL_url"><![CDATA[/MM_redirectLoginSuccess\s*=\s*"([^\r\n]*?)"/i]]></searchPattern>
+       <searchPattern paramNames="FailureURL_url"><![CDATA[/MM_redirectLoginFailed\s*=\s*"([^\r\n]*?)"/i]]></searchPattern>
+       <searchPattern paramNames="redirectPage_url"><![CDATA[/MM_logoutRedirectPage="([^\r\n]*)"/i]]></searchPattern>
+		   <searchPattern paramNames="failureURL_url"><![CDATA[/MM_failureURL="([^\r\n]*?)[?&]accessdenied=" & URLEncodedFormat\(MM_referer\)/i]]></searchPattern>
+     </searchPatterns>
+</participant>

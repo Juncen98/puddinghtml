@@ -1,0 +1,11 @@
+<participant>
+  <searchPatterns whereToSearch="tag+jsp:include">
+    <searchPattern paramNames="include_url" limitSearch="attribute+page" />
+  </searchPatterns>
+  <translator>
+    <searchPatterns>
+      <searchPattern paramNames="ssi_includeUrl"><![CDATA[/<jsp:include\s+.*?\s*page\s*=\s*["']([^"']*?)["'].*?\s*\/>/im]]></searchPattern>
+      <searchPattern paramNames="ssi_includeUrl"><![CDATA[/<jsp:include\s+.*?\s*page\s*=\s*["']([^"']*?)["'].*?\s*>\s*(<jsp:param\s+.*?\s*\/>\s*)*\s*<\/jsp:include>/im]]></searchPattern>
+    </searchPatterns>
+  </translator>
+</participant>

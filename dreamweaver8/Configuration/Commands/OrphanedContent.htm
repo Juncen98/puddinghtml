@@ -1,0 +1,149 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Include the UI helper functions -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<!-- Include DOM functions -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<script src="../Shared/MM/Scripts/Cmn/string.js"></script>
+<script src="../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../Shared/MM/Scripts/Class/FileClass.js"></script>
+<script src="ShortcutClass.js"></script> 
+<script src="../Shared/MM/Scripts/keyCodes.js"></script> 
+<SCRIPT src="../Shared/Common/Scripts/ImageButtonClass.js"></SCRIPT>
+<SCRIPT language="javascript" SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<script src="OrphanedContent.js"></script>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT>
+<!--Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved.-->
+//--------------- LOCALIZEABLE GLOBALS---------------
+var LABEL_Popup = "将内容移到新区域:";
+var LABEL_DialogMessage = "此文档中的某些区域在新模板中没有相应区域。";
+var LABEL_nestingMessage = "为来自重复区域 %s 的内容选取新区域。";
+
+var LABEL_NameCol = "名称";
+var LABEL_ResolvedCol = "已解析";
+
+var LABEL_OptionalContent = "模板属性|";
+var LABEL_RepeatingContent = "重复区域|";
+var LABEL_EditableRegions = "可编辑区域|";
+var LABEL_NotResolved = "<未解析>";
+var LABEL_PageTitle = "不一致的区域名称";
+
+var MSG_choose = "<未解析>";
+var MSG_delete = "不在任何地方";
+
+var MSG_mustChoose = "您必须将每一不匹配的区域名称与新区域名称进行匹配。";
+
+//--------------- END LOCALIZEABLE   ---------------
+
+
+//---------------    END JAVASCRIPT    ---------------
+
+//<span id="okLayer" style="position:absolute; left:321px; top:273px; width:75px; height:21px; z-index:1; visibility: visible"> 
+//</span>
+// <span id="cancelLayer" style="position:absolute; left:235px; top:273px; width:75px; height:21px; z-index:2; visibility:visible"> 
+//</span>
+
+</SCRIPT>
+
+<title>不一致的区域名称</title>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+
+<form name="theForm">
+
+  <table border="0" cellpadding="0" cellspacing="0"  >
+    <tr> 
+    <td colspan=4>
+    <span name="dialogMessage">文件 %s 中的某些区域在新模板中没有相应区域。</span><br>
+    </td>
+    </tr>
+   
+    <tr> 
+      <td valign="bottom" width="76"></td>
+      <td  valign="bottom" colspan="2">
+		<mm:treecontrol name= "theTreeControl" style="width:430px; " size="10" onChange="updateUI('theTreeControl');">
+          <mm:treecolumn name="Name" value="名称" width="200"> </mm:treecolumn> 
+          <mm:treecolumn name="Resolution" value="已解析" width="230"> </mm:treecolumn> 
+          
+value=可选内容||           <mm:treenode selected value="Optional content|| " id=-1 state="expanded">
+	          <mm:treenode  value = "Conditional 1|<Not Resolved>" id=0 category="params" ></mm:treenode> 
+	          <mm:treenode  value = "Conditional 2|<Not Resolved>" id=1 category="params" ></mm:treenode> 
+	          <mm:treenode  value = "Conditional 3|<Not Resolved>" id=2 category="params" ></mm:treenode>  
+          </mm:treenode> 
+          
+value=重复的内容||           <mm:treenode selected value="Repeated content|| " id=-1 state="expanded">
+	          <mm:treenode  value = "Repeat 1|<Not Resolved>" id=4 category="repeats" ></mm:treenode> 
+	          <mm:treenode  value = "Repeat 2|<Not Resolved>" id=5 category="repeats"></mm:treenode> 
+	          <mm:treenode  value = "Repeat 3|<Not Resolved>" id=6 category="repeats"></mm:treenode>  
+          </mm:treenode> 
+          
+value=可编辑区域||           <mm:treenode selected value="Editable regions|| " id=-1 state="expanded">
+	          <mm:treenode  value = "Edit 1|<Not Resolved>" id=7 category="editable" ></mm:treenode> 
+	          <mm:treenode  value = "Edit 2|<Not Resolved>" id=8 category="editable"></mm:treenode> 
+	          <mm:treenode  value = "Edit 3|<Not Resolved>" id=9 category="editable"></mm:treenode>  
+          </mm:treenode> 
+          
+        </mm:treecontrol>
+      </td>
+      <td valign="top"><img src="../Shared/MM/Images/transparent.gif" width="20" height="7"></td>
+    </tr>
+    
+    <tr> 
+      <td valign="bottom" height="10" width="76"></td>
+      <td  valign="bottom" colspan="2"></td>
+      <td valign="top" width="24"></td>
+    </tr>
+    
+    <tr> 
+      <td valign="top" > 
+        <div align="right"></div>
+      </td>
+      <td valign="bottom" colspan="2" nowrap>
+      <span name="popupLabel">将内容移到新区域:</span>
+        <select name="itemList" class="basicTextField" onChange="updateUI('itemList')">
+          <option selected></option>
+        </select>
+	    <input type="button" name="setAllBtn" value="用于所有内容" style="width:75px;height:21px" onClick="setAll()">
+      </td>
+      <td valign="top" width="24"></td>
+    </tr>
+    
+    <tr> 
+      <td valign="bottom" height="7" width="76"></td>
+      <td  valign="bottom" colspan="2"></td>
+      <td valign="top" width="24"></td>
+    </tr>
+    
+    <tr> 
+      <td  colspan="4"> 
+        <hr size="2">
+      </td>
+    </tr>
+    
+    <tr> 
+      <td height="33" width="76" valign="top"></td>
+      <td colspan="2" valign="top">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr> 
+            <td width="200" height="33" valign="top"> 
+              <div align="left">
+                <input type="button" name="helpBtn" value="帮助" style="width:75px;height:21px" onClick="displayHelp();focus(this)">
+              </div>
+            </td>
+            <td width="250" height="33" align="right" valign="top" nowrap> 
+			  <input type="button" name="cancelBtn" value="取消" style="width:75px;height:21px" onClick="cmdCancel()">
+            <input type="button" name="okBtn" value="确定" style="width:75px;height:21px" onClick="cmdOK();focus(this)">            </td>
+          </tr>
+        </table>
+      </td>
+      <td valign="top" width="24"></td>
+    </tr>
+  </table>
+        </form>
+</body>
+</html>

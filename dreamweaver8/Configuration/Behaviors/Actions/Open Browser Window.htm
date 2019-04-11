@@ -1,0 +1,69 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- SAFE-IN-TEMPLATES -->
+<HTML>
+<HEAD><link href="../../fields.css" rel="stylesheet" type="text/css">
+<SCRIPT LANGUAGE="javascript" SRC="Open Browser Window.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="../../Shared/MM/Scripts/CMN/file.js"></SCRIPT>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<SCRIPT LANGUAGE="javascript">
+// Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved.
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_BadChars = "窗口名称不正确。请输入不包含空白和特殊字符的名称。";
+//--------------- END LOCALIZEABLE   ---------------
+//---------------    END JAVASCRIPT    ---------------
+</SCRIPT>
+<TITLE>打开浏览器窗口</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+</HEAD>
+<BODY onLoad="initializeUI()">
+<FORM NAME="theForm" ACTION="">
+      
+  <table border=0 cellpadding="4" cellspacing="0">
+    <tr valign="baseline"> 
+    <td align="right" nowrap> 要显示的 URL:</td>
+    <td colspan="4" nowrap> <input name="URL" type="text" class="basicTextField">
+    <input type="button" value="浏览..." onClick="browseFile(document.theForm.URL);focus(this)"> 
+    </td>
+    </tr>
+    <tr valign="baseline"> 
+    <td align="right" nowrap> 窗口宽度:</td>
+    <td nowrap> <input name="width" type="text" class="xsmallTField" value="">
+    </td>
+    <td nowrap>&nbsp;</td>
+    <td align="right" nowrap>窗口高度:</td>
+    <td nowrap><INPUT NAME="height" TYPE="text" class="xsmallTField" VALUE=""></td>
+    </tr>
+    <tr valign="baseline"> 
+    <td align="right" nowrap> 属性:</td>
+    <td colspan="3" nowrap> <input type="checkbox" name="toolbar">
+    导航工具栏</td>
+    <td nowrap> <INPUT TYPE="checkbox" NAME="menubar">
+    菜单条</td>
+    </tr>
+    <tr valign="baseline"> 
+    <td align="right" nowrap></td>
+    <td colspan="3" nowrap> <input type="checkbox" name="location">
+    地址工具栏</td>
+    <td nowrap> <INPUT TYPE="checkbox" NAME="scrollbars">
+    需要时使用滚动条</td>
+    </tr>
+    <tr valign="baseline"> 
+    <td align="right" nowrap></td>
+    <td colspan="3" nowrap> <input type="checkbox" name="status">
+    状态栏</td>
+    <td nowrap> <INPUT TYPE="checkbox" NAME="resizable">
+    调整大小手柄</td>
+    </tr>
+    <tr valign="baseline"> 
+    <td align="right"> 窗口名称:</td>
+    <td colspan="4" nowrap> <input name="winName" type="text" class="basicTextField"></td>
+    </tr>
+  </table>
+  </FORM>
+</BODY>
+</HTML>

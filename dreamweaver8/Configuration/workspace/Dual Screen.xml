@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<panelset>
+
+	<!-- default to App and Document maximized, but don't hard code sizes (code will compute) -->
+  <application maximize="true"/>
+  <document maximize="true"/>
+
+	<!-- TOP - InsertBar docked -->
+	<panelframe dock="top">
+		<panelcontainer>
+			<panel id="objects"/>
+		</panelcontainer>
+	</panelframe>
+
+	<!-- SECOND MONITOR BOTTOM float - Property Inspector, Timeline (hidden), results (hidden) -->
+	<panelframe monitor="2" x="left" y="bottom" dock="float">
+		<panelcontainer>
+			<panel id="properties"/>
+		</panelcontainer>
+	</panelframe>
+	<panelframe x="right" y="top" dock="float">
+		<panelcontainer title="Results" visible="false">
+      		<panel id="search"/>
+ 			<panel id="reference"/>
+      		<panel id="validation"/>
+      		<panel id="btc"/>
+      		<panel id="linkchecker"/>
+      		<panel id="reports"/>
+      		<panel id="ftp log"/>
+      		<panel id="server debug"/>
+		</panelcontainer>
+		<panelcontainer visible="false">
+			<panel id="timelines"/>
+		</panelcontainer>
+	</panelframe>
+
+ 	<!-- SECOND MONITOR LEFT - Site Maximize -->
+	<panelframe monitor="2" dock="floating" height="460" visible="true" width="650" x="left" y="170">
+		<panelcontainer expanded="true" height="460" maxRestoreGroup="Files" maxRestoreIndex="0" maxRestorePanel="assets" maximize="true" title="Files" visible="true">
+			<panel id="site"/>
+		</panelcontainer>
+	</panelframe>
+
+	<!-- SECOND MONITOR LEFT - CSS(Design), Code, Application, Tag Inspector, Frames (hidden), History (hidden) -->
+	<panelframe monitor="2" x="left" y="top" width="300" dock="float">
+		<panelcontainer expanded="false" title="CSS" height="600" >
+      		<panel id="css styles"/>
+      		<panel id="layers"/>
+		</panelcontainer>
+		<panelcontainer expanded="false" title="Application" >
+      		<panel id="database"/>
+      		<panel id="data sources"/>
+      		<panel id="server scripts"/>
+      		<panel id="server components"/>
+		</panelcontainer>
+		<panelcontainer expanded="false" height="600">
+			<panel id="tag inspector"/>
+		</panelcontainer>
+		<panelcontainer expanded="false" height="600">
+			<panel id="assets"/>
+			<panel id="snippets"/>
+		</panelcontainer>
+		<panelcontainer visible="false" >
+			<panel id="frames"/>
+		</panelcontainer>
+		<panelcontainer visible="false" >
+			<panel id="history"/>
+		</panelcontainer>
+	</panelframe>
+	
+	<!-- SECOND MONITOR RIGHT - Code Inspector -->
+  <panelframe dock="floating" monitor="2" height="700" width="600" x="right" y="top">
+    <panelcontainer expanded="true" height="700" visible="true">
+      <panel id="html"/>
+    </panelcontainer>
+  </panelframe>
+
+	<!-- FLOATING, individuals don't need to be listed - default behavior...-->
+</panelset>

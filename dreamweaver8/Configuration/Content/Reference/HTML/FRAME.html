@@ -1,0 +1,975 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">&lt;FRAME&gt;</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">&lt;FRAME&gt;</p>
+					</td><td valign="top" nowrap class="requirements">HTML End Tag: Forbidden&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The <span class="literal">frame</span> element defines properties of an
+individual window space that is some fractional portion of the entire
+browser window. A <span class="literal">frame</span> element must be defined
+within the context of a <span class="literal">frameset</span> element. It is
+the <span class="literal">frameset</span> that defines the row and column
+arrangement of a related group of frames.
+</p><p>A browser treats a frame as a separate browser window within the
+browser application's window. As such, each frame
+window can load its own content, independent of other frames.
+Although no attributes of the <span class="literal">frame</span> element are
+required, assigning a value to the <span class="literal">name</span> attribute
+is highly recommended if you have forms or links whose returned or
+destination document is to be displayed in a different frame.
+Scripting among multiple frames also benefits greatly from names
+assigned to frames because it makes references to those frames (and
+their contents) more easily understandable to someone reading the
+script code. Note that among recent W3C DTDs, the
+<span class="literal">frame</span> element validates only in the HTML 4.01
+Transitional DTD and the Frameset DTDs for both HTML 4.01 and XHTML
+1.0. See Appendix E.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;FRAMESET cols="150,*"&gt;
+    &lt;FRAME name="navbar" src="nav.html"&gt;
+    &lt;FRAME name="main" src="page1.html"&gt;
+&lt;/FRAMESET&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]<span class="replaceable">frameName</span>
+[window.]frames[i]
+[window.]document.getElementById(<span class="replaceable">elementID)</span></pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Element-Specific Attributes</span></td>
+				</tr>
+				<tr>
+      <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+    </tr><tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">allowtransparency</span></td><td><span class="literal">bordercolor</span></td><td><span class="literal">datafld</span></td><td><span class="literal">datasrc</span></td>
+								</tr>
+								<tr><td><span class="literal">frameborder</span></td><td><span class="literal">height</span></td><td><span class="literal">longdesc</span></td><td><span class="literal">marginheight</span></td>
+								</tr>
+								<tr><td><span class="literal">marginwidth</span></td><td><span class="literal">name</span></td><td><span class="literal">noresize</span></td><td><span class="literal">scrolling</span></td>
+								</tr>
+								<tr><td><span class="literal">security</span></td><td><span class="literal">src</span></td><td><span class="literal">width</span></td><td></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Element-Specific Event Handler Attributes</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="allowtransparency">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">allowtransparency</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5.5</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">allowtransparency="<span class="replaceable">featureSwitch</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>More applicable to the <span class="literal">iframe</span> element, the
+<span class="literal">allowtransparency</span> attribute, when engaged, turns
+the frame's background transparent. See the
+<span class="literal">iframe</span> element.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="bordercolor">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">bordercolor</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">bordercolor="<span class="replaceable">colorTripletOrName</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>If your frameset displays borders (as set with the
+<span class="literal">border</span> attribute of the
+<span class="literal">frameset</span> element), but you want a subset of the
+frames in the frameset to be rendered with a border color different
+from the rest, you can assign a color to the
+<span class="literal">bordercolor</span> attribute of an individual
+<span class="literal">frame</span> element. Mixing border colors in a frameset
+exposes your HTML to the risk of different rendering techniques of
+each browser and operating system. Not only do the precise pixel
+composition of borders vary, but each browser and operating system
+may resolve conflicts between colored borders differently. If you
+assign a color to only some frames of a frameset, be sure to test the
+look on as many browser versions and operating systems as possible to
+evaluate the visual effect of your color choices. IE 6 for Windows
+ignores this attribute.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;FRAME name="navbar" src="nav.html" bordercolor="salmon"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>A hexadecimal triplet or plain-language color name. See Appendix A for acceptable plain-language color names.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID).</span>borderColor</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="datafld">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">datafld</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">datafld="<span class="replaceable">columnName</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Used with IE data binding to associate a remote data source column
+name in lieu of an <span class="literal">src</span> attribute for a
+<span class="literal">frame</span> element. The data source column must contain
+a valid URI (relative or absolute). A <span class="literal">datasrc</span>
+attribute must also be set for the element. Works only with text file
+data sources in IE 5/Mac.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;FRAME datasrc="DBSRC3" datafld="newsURL"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-sensitive identifier.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID).</span>dataFld</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="datasrc">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">datasrc</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">datasrc="<span class="replaceable">dataSourceName</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Used with IE data binding to specify the ID of the
+page's <span class="literal">object</span> element that loads
+the data source object for remote data access. Content from the data
+source is specified via the <span class="literal">datafld</span> attribute.
+Works only with text file data sources in IE 5/Mac.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;FRAME datasrc="DBSRC3" datafld="newsURL"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-sensitive identifier.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID).</span>dataSrc</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="frameborder">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">frameborder</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">3</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">frameborder="<span class="replaceable">borderSwitch</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Controls whether an individual frame within a frameset displays a
+border. The setting is supposed to override the
+<span class="literal">frameborder</span> attribute setting of the containing
+<span class="literal">frameset</span> element. Controlling individual frame
+borders appears to be a problem for most browsers in most operating
+system versions. Turning off the border of one frame may have no
+effect if all adjacent frames have their borders on. Feel free to
+experiment with the effects of turning some borders on and some
+borders off, but be sure to test the final effect on all browsers and
+operating systems used by your audience. You can rely more
+comfortably on the <span class="literal">frameborder</span> attribute of the
+entire <span class="literal">frameset</span>.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;FRAME name="navbar" src="nav.html" frameborder="0"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>On-off values for this attribute vary with the source. HTML 4
+specifies the values of <span class="literal">1</span> (on) and
+<span class="literal">0</span> (off). Navigator 3 and 4 use
+<span class="literal">yes</span> and <span class="literal">no</span>. Internet Explorer 4
+and later and Netscape 6 accept both sets of values.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">1</span></p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID).</span>frameBorder</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="height, width">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">height, width</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">height="<span class="replaceable">length</span>"
+width="<span class="replaceable">length</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Microsoft HTML documentation for IE says that the
+<span class="literal">height</span> and <span class="literal">width</span> attributes
+control the size of a frame. In practice in IE, these attributes have
+no direct control over the appearance of the frames within a
+frameset. Instead, the <span class="literal">cols</span> and
+<span class="literal">rows</span> attributes of the containing
+<span class="literal">frameset</span> govern the initial geometry of a frame.
+Do not use these attributes.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="longdesc">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">longdesc</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE<span class="emphasis">6</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">longdesc="<span class="replaceable">URL</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Specifies a URL of a document that contains a longer description of
+the element than what the content of the <span class="literal">title</span>
+attribute reveals. One application of this attribute in future
+browsers is to retrieve an annotated description of the element for
+users who cannot read the browser screen. The <span class="emphasis">Properties</span> choice for Netscape
+6's context menu for this element displays a small
+window that includes an active link to the URL assigned to the
+attribute. Version 6 browsers provide no other functionality for this
+attribute.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;FRAME longdesc="navDesc.html" title="Navigation Bar" src="navbar.html"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Any valid URI, including complete and relative URLs.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None. </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID).</span>longDesc</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="marginheight, marginwidth">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">marginheight, marginwidth</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">3</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">marginheight="<span class="replaceable">pixelCount</span>"
+marginwidth="<span class="replaceable">pixelCount</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The number of pixels between the inner edge of a frame and the
+content rendered inside the frame. The
+<span class="literal">marginheight</span> attribute controls space along the
+top and (when scrolled) the bottom edges of a frame; the
+<span class="literal">marginwidth</span> attribute controls space on the left
+and right edges of a frame. The HTML 4 specification leaves default
+behavior up to browsers.
+</p><p>Without any prompting, Internet Explorer automatically inserts a
+margin of 14 (Windows) or 8 (Macintosh) pixels inside a frame. But if
+you attempt to override the default behavior, be aware that setting
+any one of these two attributes causes the value of the other to go
+to zero. Therefore, unless you want the content to be absolutely
+flush with various frame edges, you need to assign values to both
+attributes.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;FRAME src="navbar.html" marginheight="20" marginwidth="14"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Any positive integer value or zero.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">14</span> (IE/Windows) or <span class="literal">8</span>
+(IE/Macintosh).
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID).</span>marginHeight
+[window.]document.getElementById(<span class="replaceable">elementID).</span>marginWidth</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="name">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">name</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">name="<span class="replaceable">elementIdentifier</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>When links and forms must load their destination or returned
+documents into frames other than the one holding the link or form,
+those elements have <span class="literal">target</span> attributes indicating
+which frame receives the new content. To direct such content to a
+frame, the frame must have a value assigned to its
+<span class="literal">name</span> attribute. That same value is assigned to the
+<span class="literal">target</span> attribute of the <span class="literal">a</span> or
+<span class="literal">form</span> element. Client-side scripting also uses the
+frame's name in building references to other frames
+or content in other frames. It is good practice to assign a unique
+identifying name to all frames.
+</p><p>The name attribute is deprecated in XHTML. To validate under the
+Frameset XHTML DTD, assign the same identifier to the
+element's <span class="literal">name</span> and
+<span class="literal">id</span> attributes.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;FRAME name="navbar" id="navbar" src="nav.html"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-sensitive identifier.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]<span class="replaceable">frameName</span>.name
+[window.]frames[i].name
+[window.]document.getElementById(<span class="replaceable">elementID)</span>.name</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="noresize">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">noresize</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">noresize</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Frame borders can be resized by the user dragging the border
+perpendicular to the axis of the border edge. When present, the
+<span class="literal">noresize</span> attribute instructs the browser to
+prevent the frame's edges from being manually
+resized by the user. All border edges of the affected
+<span class="literal">frame</span> element become locked, meaning that all
+edges that extend to other frames in the frameset remain locked as
+well.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;FRAME src="navbar.html" noresize&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>The presence of the attribute in HTML makes the frame nonresizable.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>Frames are resizable by default.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID).</span>noResize</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="scrolling">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">scrolling</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">scrolling="auto" | "no" | "yes"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>By default, browsers add vertical and/or horizontal scrollbars when
+the content loaded into a frame exceeds the visible content region of
+the frame. Scrollbars can affect the layout of some content because
+they occupy space normally devoted to content (that is, the frame
+does not expand to accommodate scrollbars). Also, due to differences
+in default font sizes in browsers and operating system versions, a
+given collection of text content may display differently in different
+clients. If you want to prevent scrollbars from appearing in the
+frame, set the <span class="literal">scrolling</span> attribute to
+<span class="literal">no</span>; if you want scrollbars to be in the frame at
+all times, set the attribute to <span class="literal">yes</span>. In the latter
+case, if the content does not require scrolling, the scrollbars are
+disabled. In some older versions of Navigator, the automatic
+scrollbars remain visible, even if content not requiring them is
+subsequently loaded into a frame. In Navigator 4 and later and all
+versions of Internet Explorer, the automatic scrollbars appear only
+when needed.
+</p><p>Setting the <span class="literal">scrolling</span> attribute to
+<span class="literal">no</span> should be used only after you have tested on
+all browsers and platforms that mission-critical content is always
+visible in the frame. If the frame is set to not scroll and has the
+<span class="literal">noresize</span> attribute set, some users might not be
+able to see all the content of the frame.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;FRAME src="navbar.html" scrolling="no"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Constant values: <span class="literal">auto</span> | <span class="literal">no</span> |
+<span class="literal">yes</span>.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">auto</span></p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID).</span>scrolling</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="security">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">security</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">6</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">security="restricted"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>When activated, this attribute raises the security level of the frame
+to the Restricted level of the Windows Security preferences settings.
+Such a frame's content may not execute scripts.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;FRAME src="navbar.html" security="restricted"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Constant value: <span class="literal">restricted</span>.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="src">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">src</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">src="<span class="replaceable">URL</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Defines the URL of the content to be loaded into the
+<span class="literal">frame</span> element. The URL can be an absolute URL or
+one relative to the URL of the document containing the frameset
+specifications. You may also use the <span class="literal">javascript:</span>
+pseudo-URL to have the returned value of a script appear in the
+frame. For example, if you want a frame to be blank when the frameset
+loads, you can define a function in the frameset document that
+returns a blank HTML page. The <span class="literal">src</span> attribute for
+each soon-to-be blank frame invokes the function from the vantage
+point of the child frame:
+</p><p>Another type of blank page is available from some browsers and
+versions via the <span class="literal">about:blank</span> URL, which draws from
+an internal blank page. However, Navigator 2 and 3 for the Macintosh
+display an unwanted message with this URL in a window or frame.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;FRAME src="navbar.html"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>A complete or relative URL or a <span class="literal">javascript:</span>
+pseudo-URL.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID).</span>src</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="width">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">width</td><td valign="top" nowrap class="compatibility">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>See height. </p>
+					</td>
+				</tr>
+			</table>
+		</div>
+</body>
+</html>

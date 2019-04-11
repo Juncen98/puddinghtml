@@ -1,0 +1,34 @@
+<participant>
+     <quickSearch><![CDATA[DriverManager.getConnection]]></quickSearch>
+     <insertText location="aboveHTML+50">
+<![CDATA[
+<%
+Driver Driver@@rsName@@ = (Driver)Class.forName(MM_@@cname@@_DRIVER).newInstance();
+Connection Conn@@rsName@@ = DriverManager.getConnection(MM_@@cname@@_STRING,MM_@@cname@@_USERNAME,MM_@@cname@@_PASSWORD);
+PreparedStatement Statement@@rsName@@ = Conn@@rsName@@.prepareStatement("@@encodedSQL@@");
+ResultSet @@rsName@@ = Statement@@rsName@@.executeQuery();
+boolean @@rsName@@_isEmpty = !@@rsName@@.next();
+boolean @@rsName@@_hasData = !@@rsName@@_isEmpty;
+Object @@rsName@@_data;
+int @@rsName@@_numRows = 0;
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName,cname"><![CDATA[/Driver\s+Driver(\w+)\s*=\s*\(Driver\)Class\.forName\(MM_(\w+)_DRIVER\).newInstance\(\);/]]></searchPattern>
+       <searchPattern><![CDATA[/Connection\s+Conn\w+\s*=\s*DriverManager\.getConnection\(MM_\w+_STRING,MM_\w+_USERNAME,MM_\w+_PASSWORD\)/]]></searchPattern>
+       <searchPattern paramNames="encodedSQL"><![CDATA[/PreparedStatement\s+Statement\w+\s*=\s*Conn\w+\.prepareStatement\("([^\r\n]*)"\);/]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="rsName"><![CDATA[/(Driver\s+Driver)\w+(\s*=)/]]></updatePattern>
+       <updatePattern paramName="cname"><![CDATA[/(MM_)\w+(_DRIVER|_STRING|_USERNAME|_PASSWORD)/]]></updatePattern>
+       <updatePattern paramName="rsName"><![CDATA[/(Connection\s+Conn)\w+(\b)/]]></updatePattern>
+       <updatePattern paramName="rsName"><![CDATA[/(PreparedStatement\s+Statement)\w+(\b)/]]></updatePattern>
+       <updatePattern paramName="rsName"><![CDATA[/(Conn)\w+(\.prepareStatement)/]]></updatePattern>
+       <updatePattern paramName="encodedSQL"><![CDATA[/(\.prepareStatement\(")[^\r\n]*("\);)/]]></updatePattern>
+       <updatePattern paramName="rsName"><![CDATA[/(ResultSet\s+\b)\w+(\s*=\s*Statement)/]]></updatePattern>
+       <updatePattern paramName="rsName"><![CDATA[/(\s*=\s*Statement)\w+(\.executeQuery)/]]></updatePattern>
+       <updatePattern paramName="rsName"><![CDATA[/(\b)\w+(_isEmpty|_hasData|_numRows|_data)/]]></updatePattern>
+       <updatePattern paramName="rsName"><![CDATA[/(\b)\w+(\.next\(\))/]]></updatePattern>
+     </updatePatterns>
+</participant>

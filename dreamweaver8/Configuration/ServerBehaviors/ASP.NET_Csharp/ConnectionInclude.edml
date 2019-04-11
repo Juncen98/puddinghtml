@@ -1,0 +1,8 @@
+<participant version="5.0">
+	<insertText location="aboveHTML+10"><![CDATA[<!--#include file="@@ConnectionPath@@" -->]]></insertText>
+	<searchPatterns whereToSearch="comment">
+		<searchPattern paramNames="ConnectionPath" isOptional="false" limitSearch="all"><![CDATA[/<!--#include file="([^\r\n]*?)" -->/i]]></searchPattern>
+		<searchPattern paramNames=",ConnectionName," isOptional="true" limitSearch="all"><![CDATA[/"([^"]*)Connections\/(\w+)\.(\w+)"/i]]></searchPattern> 
+	</searchPatterns>
+	<quickSearch>!--#include</quickSearch>
+</participant>

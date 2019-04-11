@@ -1,0 +1,86 @@
+<!-- Copyright 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<title>CFPROPERTY</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var TYPELIST; 
+var theUIObjects; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function initializeUI()
+{
+  TYPELIST = new ListControl("thetype"); 
+  theUIObjects  = new Array(TYPELIST); 
+
+  tagDialog.populateDropDownList(TYPELIST, theTypesCap, theTypesVal, 0); 
+}
+</script>
+
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="initializeUI()">
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap"> 
+        <input name="thename" type="text" class="medTField" id="attr:cfargument:name" attname="name" required="true" />&nbsp;
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">类型: </td>
+      <td nowrap="nowrap"> 
+          <select name="thetype" class="dataTypeList" id="attr:cfargument:type" attname="type" editable="false" required="true">
+          </select>
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">显示名称: </td>
+      <td nowrap="nowrap"> 
+        <input name="thedisplayName" type="text" class="basicTextField" id="attr:cfargument:displayName" attname="displayName" />&nbsp;
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">提示: </td>
+      <td nowrap="nowrap"> 
+        <input name="thehint" type="text" class="basicTextField" id="attr:cfargument:hint" attname="hint" />&nbsp;
+      </td>
+    </tr>
+	<tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">默认值: </td>
+      <td nowrap="nowrap"> 
+        <input name="thedefault" type="text" class="basicTextField" id="attr:cfargument:default" attname="default" />&nbsp;
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">必需: </td>
+      <td nowrap="nowrap"> 
+        <input name="therequired" type="checkbox" id="attr:cfargument:required" attname="required" truevalue="yes" />
+      </td>
+    </tr>
+  </table>
+</div>
+</body> 
+</html>

@@ -1,0 +1,155 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>REMOVECHARS</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">REMOVECHARS</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Removes characters from a string. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+A copy of the string, with count characters removed from the specified start position. If no characters are found, returns zero.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+String functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>RemoveChars(string, start, count)
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+Insert, Len
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;RemoveChars Example&lt;/h3&gt;
+Returns a string with &lt;I&gt;count&lt;/I&gt; characters removed from the 
+start position. Returns 0 if no characters are found.
+
+&lt;cfif IsDefined(&quot;FORM.myString&quot;)&gt;
+   &lt;cfif (FORM.numChars + FORM.start) GT Len(FORM.myString)&gt;
+      &lt;p&gt;Your string is only &lt;cfoutput&gt;#Len(FORM.myString)#
+       &lt;/cfoutput&gt; characters long.
+      Please enter a longer string, select fewer characters to remove or
+      begin earlier in the string.
+   &lt;cfelse&gt;
+      &lt;cfoutput&gt;
+      &lt;p&gt;Your original string:    #FORM.myString#
+      &lt;p&gt;Your modified string:   #RemoveChars(FORM.myString,
+FORM.start, FORM.numChars)# 
+      &lt;/cfoutput&gt;
+   &lt;/cfif&gt;
+&lt;/cfif&gt;
+
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="STRING">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STRING</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A string or a variable that contains one. String in which to search.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="START">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">START</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A positive integer or a variable that contains one. Position at which to start search.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="COUNT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">COUNT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Number of characters to remove.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

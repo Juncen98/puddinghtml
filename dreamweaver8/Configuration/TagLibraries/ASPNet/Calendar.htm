@@ -1,0 +1,2578 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>日历</title>
+<styleplaceholder>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Controls/Scripts/MultiStateCheckBox.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/******************* GLOBAL VARS *************************/
+var BORDERSTYLELIST;
+var DAYNAMEFORMATLIST; 
+var FIRSTDAYOFWEEKLLIST; 
+var NEXTPREVFORMATLIST; 
+var SELECTIONMODELIST; 
+var TITLEFORMATLIST; 
+
+var theUIObjects; 
+
+// Color control elements
+var COLORP_BACK; 
+var COLORP_BORDER; 
+var COLORP_FORE; 
+var TEXT_BACK 
+var TEXT_BORDER; 
+var TEXT_FORE; 
+
+var COLORP_NEXTPREVSTYLEFORECOLORBACK; 
+var COLORP_NEXTPREVSTYLEFORECOLORBORDER; 
+var COLORP_NEXTPREVSTYLEFORECOLORFORE; 
+var TEXT_NEXTPREVSTYLEFORECOLORBACK; 
+var TEXT_NEXTPREVSTYLEFORECOLORBORDER; 
+var TEXT_NEXTPREVSTYLEFORECOLORFORE; 
+
+var COLORP_DAYHEADERSTYLEFORECOLORBACK; 
+var COLORP_DAYHEADERSTYLEFORECOLORBORDER; 
+var COLORP_DAYHEADERSTYLEFORECOLORFORE; 
+var TEXT_DAYHEADERSTYLEFORECOLORBACK;
+var TEXT_DAYHEADERSTYLEFORECOLORBORDER; 
+var TEXT_DAYHEADERSTYLEFORECOLORFORE; 
+
+var COLORP_DAYSTYLEFORECOLORBACK; 
+var COLORP_DAYSTYLEFORECOLORBORDER; 
+var COLORP_DAYSTYLEFORECOLORFORE; 
+var TEXT_DAYSTYLEFORECOLORBACK; 
+var TEXT_DAYSTYLEFORECOLORBORDER; 
+var TEXT_DAYSTYLEFORECOLORFORE; 
+
+var COLORP_OTHERMONTHDAYSTYLEFORECOLORBACK; 
+var COLORP_OTHERMONTHDAYSTYLEFORECOLORBORDER; 
+var COLORP_OTHERMONTHDAYSTYLEFORECOLORFORE; 
+var TEXT_OTHERMONTHDAYSTYLEFORECOLORBACK; 
+var TEXT_OTHERMONTHDAYSTYLEFORECOLORBORDER; 
+var TEXT_OTHERMONTHDAYSTYLEFORECOLORFORE; 
+
+var COLORP_SELECTEDDAYSTYLEFORECOLORBACK; 
+var COLORP_SELECTEDDAYSTYLEFORECOLORBORDER; 
+var COLORP_SELECTEDDAYSTYLEFORECOLORFORE; 
+var TEXT_SELECTEDDAYSTYLEFORECOLORBACK; 
+var TEXT_SELECTEDDAYSTYLEFORECOLORBORDER; 
+var TEXT_SELECTEDDAYSTYLEFORECOLORFORE; 
+
+var COLORP_SELECTORSTYLEFORECOLORBACK; 
+var COLORP_SELECTORSTYLEFORECOLORBORDER; 
+var COLORP_SELECTORSTYLEFORECOLORFORE; 
+var TEXT_SELECTORSTYLEFORECOLORBACK; 
+var TEXT_SELECTORSTYLEFORECOLORBORDER; 
+var TEXT_SELECTORSTYLEFORECOLORFORE; 
+
+var COLORP_TITLESTYLEFORECOLORBACK; 
+var COLORP_TITLESTYLEFORECOLORBORDER; 
+var COLORP_TITLESTYLEFORECOLORFORE; 
+var TEXT_TITLESTYLEFORECOLORBACK; 
+var TEXT_TITLESTYLEFORECOLORBORDER; 
+var TEXT_TITLESTYLEFORECOLORFORE; 
+
+var COLORP_TODAYDAYSTYLEFORECOLORBACK; 
+var COLORP_TODAYDAYSTYLEFORECOLORBORDER; 
+var COLORP_TODAYDAYSTYLEFORECOLORFORE; 
+var TEXT_TODAYDAYSTYLEFORECOLORBACK; 
+var TEXT_TODAYDAYSTYLEFORECOLORBORDER; 
+var TEXT_TODAYDAYSTYLEFORECOLORFORE; 
+
+var COLORP_WEEKENDDAYSTYLEFORECOLORBACK; 
+var COLORP_WEEKENDDAYSTYLEFORECOLORBORDER; 
+var COLORP_WEEKENDDAYSTYLEFORECOLORFORE; 
+var TEXT_WEEKENDDAYSTYLEFORECOLORBACK; 
+var TEXT_WEEKENDDAYSTYLEFORECOLORBORDER; 
+var TEXT_WEEKENDDAYSTYLEFORECOLORFORE; 
+
+// NextPrevStyle,DayHeaderStyle,DayStyle,OtherMonthDayStyle,SelectedDayStyle,SelectorStyle,TitleStyle,TodayDayStyle,WeekendDayStyle
+
+var theFontBoldMultiStateCheckBox;
+var theFontItalicMultiStateCheckBox;
+var theFontOverlineMultiStateCheckBox;
+var theFontStrikeoutMultiStateCheckBox;
+var theFontUnderlineMultiStateCheckBox;
+var theEnabledMultiStateCheckBox; 
+var theEnableViewStateMultiStateCheckBox;  
+var theVisibleMultiStateCheckBox;  
+var theShowDayHeaderMultiStateCheckbox; 
+var theShowGridLinesMultiStateCheckbox; 
+var theShowNextPrevMonthMultiStateCheckbox; 
+var theShowTitleMultiStateCheckbox; 
+
+var theNextPrevStyleFontBoldMSCB; 
+var theNextPrevStyleFontItalicMSCB; 
+var theNextPrevStyleFontOverlineMSCB; 
+var theNextPrevStyleFontUnderlineMSCB; 
+var theNextPrevStyleFontStrikeoutMSCB; 
+var theNextPrevStyleWrapMSCB; 
+
+var theDayHeaderStyleFontBoldMSCB; 
+var theDayHeaderStyleFontItalicMSCB; 
+var theDayHeaderStyleFontOverlineMSCB; 
+var theDayHeaderStyleFontUnderlineMSCB; 
+var theDayHeaderStyleFontStrikeoutMSCB; 
+var theDayHeaderStyleWrapMSCB; 
+
+var theOtherMonthDayStyleFontBoldMSCB; 
+var theOtherMonthDayStyleFontItalicMSCB; 
+var theOtherMonthDayStyleFontOverlineMSCB; 
+var theOtherMonthDayStyleFontUnderlineMSCB; 
+var theOtherMonthDayStyleFontStrikeoutMSCB; 
+var theOtherMonthDayStyleWrapMSCB; 
+
+var theSelectedDayStyleFontBoldMSCB; 
+var theSelectedDayStyleFontItalicMSCB; 
+var theSelectedDayStyleFontOverlineMSCB; 
+var theSelectedDayStyleFontUnderlineMSCB; 
+var theSelectedDayStyleFontStrikeoutMSCB; 
+var theSelectedDayStyleWrapMSCB; 
+
+var theSelectorStyleFontBoldMSCB; 
+var theSelectorStyleFontItalicMSCB; 
+var theSelectorStyleFontOverlineMSCB; 
+var theSelectorStyleFontUnderlineMSCB; 
+var theSelectorStyleFontStrikeoutMSCB; 
+var theSelectorStyleWrapMSCB; 
+
+var theTitleStyleFontBoldMSCB; 
+var theTitleStyleFontItalicMSCB; 
+var theTitleStyleFontOverlineMSCB; 
+var theTitleStyleFontUnderlineMSCB; 
+var theTitleStyleFontStrikeoutMSCB; 
+var theTitleStyleWrapMSCB; 
+
+var theTodayDayStyleFontBoldMSCB; 
+var theTodayDayStyleFontItalicMSCB; 
+var theTodayDayStyleFontOverlineMSCB; 
+var theTodayDayStyleFontUnderlineMSCB; 
+var theTodayDayStyleFontStrikeoutMSCB; 
+var theTodayDayStyleWrapMSCB; 
+
+var theWeekendDayStyleFontBoldMSCB; 
+var theWeekendDayStyleFontItalicMSCB; 
+var theWeekendDayStyleFontOverlineMSCB; 
+var theWeekendDayStyleFontUnderlineMSCB; 
+var theWeekendDayStyleFontStrikeoutMSCB; 
+var theWeekendDayStyleWrapMSCB; 
+
+/*********************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+  updateColors();
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+
+function updateUI(itemName)
+{
+  switch(itemName)
+  {
+    case "backColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_BACK,TEXT_BACK);
+      break;
+    }
+    case "backcolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_BACK,TEXT_BACK);
+      break;
+    }
+    case "borderColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_BORDER,TEXT_BORDER);
+      break;
+    }
+    case "bordercolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_BORDER,TEXT_BORDER);
+      break;
+    }
+    case "foreColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_FORE,TEXT_FORE);
+      break;
+    }
+    case "forecolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_FORE,TEXT_FORE);
+      break;
+    }
+    case "NextPrevStyle-BackColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_NEXTPREVSTYLEFORECOLORBACK,TEXT_NEXTPREVSTYLEFORECOLORBACK);
+      break;
+    }
+    case "NextPrevStyle-BackColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_NEXTPREVSTYLEFORECOLORBACK,TEXT_NEXTPREVSTYLEFORECOLORBACK);
+      break;
+    }
+    case "NextPrevStyle-ForeColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_NEXTPREVSTYLEFORECOLORFORE,TEXT_NEXTPREVSTYLEFORECOLORFORE);
+      break;
+    }
+    case "NextPrevStyle-ForeColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_NEXTPREVSTYLEFORECOLORFORE,TEXT_NEXTPREVSTYLEFORECOLORFORE);
+      break;
+    }
+    case "NextPrevStyle-BorderColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_NEXTPREVSTYLEFORECOLORBORDER,TEXT_NEXTPREVSTYLEFORECOLORBORDER);
+      break;
+    }
+    case "NextPrevStyle-BorderColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_NEXTPREVSTYLEFORECOLORBORDER,TEXT_NEXTPREVSTYLEFORECOLORBORDER);
+      break;
+    }
+
+    case "WeekendDayStyle-BackColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_WEEKENDDAYSTYLEFORECOLORBACK,TEXT_WEEKENDDAYSTYLEFORECOLORBACK);
+      break;
+    }
+    case "WeekendDayStyle-BackColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_WEEKENDDAYSTYLEFORECOLORBACK,TEXT_WEEKENDDAYSTYLEFORECOLORBACK);
+      break;
+    }
+    case "WeekendDayStyle-ForeColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_WEEKENDDAYSTYLEFORECOLORFORE,TEXT_WEEKENDDAYSTYLEFORECOLORFORE);
+      break;
+    }
+    case "WeekendDayStyle-ForeColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_WEEKENDDAYSTYLEFORECOLORFORE,TEXT_WEEKENDDAYSTYLEFORECOLORFORE);
+      break;
+    }
+    case "WeekendDayStyle-BorderColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_WEEKENDDAYSTYLEFORECOLORBORDER,TEXT_WEEKENDDAYSTYLEFORECOLORBORDER);
+      break;
+    }
+    case "WeekendDayStyle-BorderColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_WEEKENDDAYSTYLEFORECOLORBORDER,TEXT_WEEKENDDAYSTYLEFORECOLORBORDER);
+      break;
+    }    
+
+    case "SelectedDayStyle-BackColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_SELECTEDDAYSTYLEFORECOLORBACK,TEXT_SELECTEDDAYSTYLEFORECOLORBACK);
+      break;
+    }
+    case "SelectedDayStyle-BackColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_SELECTEDDAYSTYLEFORECOLORBACK,TEXT_SELECTEDDAYSTYLEFORECOLORBACK);
+      break;
+    }
+    case "SelectedDayStyle-ForeColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_SELECTEDDAYSTYLEFORECOLORFORE,TEXT_SELECTEDDAYSTYLEFORECOLORFORE);
+      break;
+    }
+    case "SelectedDayStyle-ForeColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_SELECTEDDAYSTYLEFORECOLORFORE,TEXT_SELECTEDDAYSTYLEFORECOLORFORE);
+      break;
+    }
+    case "SelectedDayStyle-BorderColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_SELECTEDDAYSTYLEFORECOLORBORDER,TEXT_SELECTEDDAYSTYLEFORECOLORBORDER);
+      break;
+    }
+    case "SelectedDayStyle-BorderColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_SELECTEDDAYSTYLEFORECOLORBORDER,TEXT_SELECTEDDAYSTYLEFORECOLORBORDER);
+      break;
+    }        
+
+    case "SelectorStyle-BackColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_SELECTORSTYLEFORECOLORBACK,TEXT_SELECTORSTYLEFORECOLORBACK);
+      break;
+    }
+    case "SelectorStyle-BackColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_SELECTORSTYLEFORECOLORBACK,TEXT_SELECTORSTYLEFORECOLORBACK);
+      break;
+    }
+    case "SelectorStyle-ForeColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_SELECTORSTYLEFORECOLORFORE,TEXT_SELECTORSTYLEFORECOLORFORE);
+      break;
+    }
+    case "SelectorStyle-ForeColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_SELECTORSTYLEFORECOLORFORE,TEXT_SELECTORSTYLEFORECOLORFORE);
+      break;
+    }
+    case "SelectorStyle-BorderColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_SELECTORSTYLEFORECOLORBORDER,TEXT_SELECTORSTYLEFORECOLORBORDER);
+      break;
+    }
+    case "SelectorStyle-BorderColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_SELECTORSTYLEFORECOLORBORDER,TEXT_SELECTORSTYLEFORECOLORBORDER);
+      break;
+    }    
+    
+    case "DayStyle-BackColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_DAYSTYLEFORECOLORBACK,TEXT_DAYSTYLEFORECOLORBACK);
+      break;
+    }
+    case "DayStyle-BackColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_DAYSTYLEFORECOLORBACK,TEXT_DAYSTYLEFORECOLORBACK);
+      break;
+    }
+    case "DayStyle-ForeColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_DAYSTYLEFORECOLORFORE,TEXT_DAYSTYLEFORECOLORFORE);
+      break;
+    }
+    case "DayStyle-ForeColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_DAYSTYLEFORECOLORFORE,TEXT_DAYSTYLEFORECOLORFORE);
+      break;
+    }
+    case "DayStyle-BorderColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_DAYSTYLEFORECOLORBORDER,TEXT_DAYSTYLEFORECOLORBORDER);
+      break;
+    }
+    case "DayStyle-BorderColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_DAYSTYLEFORECOLORBORDER,TEXT_DAYSTYLEFORECOLORBORDER);
+      break;
+    }
+
+    case "DayHeaderStyle-BackColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_DAYHEADERSTYLEFORECOLORBACK,TEXT_DAYHEADERSTYLEFORECOLORBACK);
+      break;
+    }
+    case "DayHeaderStyle-BackColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_DAYHEADERSTYLEFORECOLORBACK,TEXT_DAYHEADERSTYLEFORECOLORBACK);
+      break;
+    }
+    case "DayHeaderStyle-ForeColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_DAYHEADERSTYLEFORECOLORFORE,TEXT_DAYHEADERSTYLEFORECOLORFORE);
+      break;
+    }
+    case "DayHeaderStyle-ForeColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_DAYHEADERSTYLEFORECOLORFORE,TEXT_DAYHEADERSTYLEFORECOLORFORE);
+      break;
+    }
+    case "DayHeaderStyle-BorderColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_DAYHEADERSTYLEFORECOLORBORDER,TEXT_DAYHEADERSTYLEFORECOLORBORDER);
+      break;
+    }
+    case "DayHeaderStyle-BorderColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_DAYHEADERSTYLEFORECOLORBORDER,TEXT_DAYHEADERSTYLEFORECOLORBORDER);
+      break;
+    } 
+       
+    case "OtherMonthDayStyle-BackColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_OTHERMONTHDAYSTYLEFORECOLORBACK,TEXT_OTHERMONTHDAYSTYLEFORECOLORBACK);
+      break;
+    }
+    case "OtherMonthDayStyle-BackColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_OTHERMONTHDAYSTYLEFORECOLORBACK,TEXT_OTHERMONTHDAYSTYLEFORECOLORBACK);
+      break;
+    }
+    case "OtherMonthDayStyle-ForeColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_OTHERMONTHDAYSTYLEFORECOLORFORE,TEXT_OTHERMONTHDAYSTYLEFORECOLORFORE);
+      break;
+    }
+    case "OtherMonthDayStyle-ForeColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_OTHERMONTHDAYSTYLEFORECOLORFORE,TEXT_OTHERMONTHDAYSTYLEFORECOLORFORE);
+      break;
+    }
+    case "OtherMonthDayStyle-BorderColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_OTHERMONTHDAYSTYLEFORECOLORBORDER,TEXT_OTHERMONTHDAYSTYLEFORECOLORBORDER);
+      break;
+    }
+    case "OtherMonthDayStyle-BorderColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_OTHERMONTHDAYSTYLEFORECOLORBORDER,TEXT_OTHERMONTHDAYSTYLEFORECOLORBORDER);
+      break;
+    }
+    
+    case "TitleStyle-BackColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_TITLESTYLEFORECOLORBACK,TEXT_TITLESTYLEFORECOLORBACK);
+      break;
+    }
+    case "TitleStyle-BackColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_TITLESTYLEFORECOLORBACK,TEXT_TITLESTYLEFORECOLORBACK);
+      break;
+    }
+    case "TitleStyle-ForeColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_TITLESTYLEFORECOLORFORE,TEXT_TITLESTYLEFORECOLORFORE);
+      break;
+    }
+    case "TitleStyle-ForeColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_TITLESTYLEFORECOLORFORE,TEXT_TITLESTYLEFORECOLORFORE);
+      break;
+    }
+    case "TitleStyle-BorderColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_TITLESTYLEFORECOLORBORDER,TEXT_TITLESTYLEFORECOLORBORDER);
+      break;
+    }
+    case "TitleStyle-BorderColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_TITLESTYLEFORECOLORBORDER,TEXT_TITLESTYLEFORECOLORBORDER);
+      break;
+    }
+
+    case "TodayDayStyle-BackColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_TODAYDAYSTYLEFORECOLORBACK,TEXT_TODAYDAYSTYLEFORECOLORBACK);
+      break;
+    }
+    case "TodayDayStyle-BackColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_TODAYDAYSTYLEFORECOLORBACK,TEXT_TODAYDAYSTYLEFORECOLORBACK);
+      break;
+    }
+    case "TodayDayStyle-ForeColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_TODAYDAYSTYLEFORECOLORFORE,TEXT_TODAYDAYSTYLEFORECOLORFORE);
+      break;
+    }
+    case "TodayDayStyle-ForeColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_TODAYDAYSTYLEFORECOLORFORE,TEXT_TODAYDAYSTYLEFORECOLORFORE);
+      break;
+    }
+    case "TodayDayStyle-BorderColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_TODAYDAYSTYLEFORECOLORBORDER,TEXT_TODAYDAYSTYLEFORECOLORBORDER);
+      break;
+    }
+    case "TodayDayStyle-BorderColor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_TODAYDAYSTYLEFORECOLORBORDER,TEXT_TODAYDAYSTYLEFORECOLORBORDER);
+      break;
+    }    
+    
+    case "font-bold":
+    {
+	    theFontBoldMultiStateCheckBox.updateUI(); 
+	    break; 
+	  } 	
+    case "font-italic":
+	  {
+	    theFontItalicMultiStateCheckBox.updateUI(); 
+	    break; 
+	  } 	
+    case "font-overline":
+	  {
+	    theFontOverlineMultiStateCheckBox.updateUI(); 
+	    break; 
+	  } 	
+    case "font-strikeout":
+	  {
+	    theFontStrikeoutMultiStateCheckBox.updateUI(); 
+	    break; 
+	  } 	
+    case "font-underline":
+	  {
+	    theFontUnderlineMultiStateCheckBox.updateUI(); 
+	    break; 
+	  } 	
+    case "enabled":
+	  {
+	    theEnabledMultiStateCheckBox.updateUI(); 
+	    break; 
+	  } 	
+    case "enableviewstate":
+	  {
+	    theEnableViewStateMultiStateCheckBox.updateUI(); 
+	    break; 
+	  } 	
+    case "visible":
+	  {
+	    theVisibleMultiStateCheckBox.updateUI(); 
+	    break; 
+	  } 	
+    case "showdayheader":
+	  {
+	    theShowDayHeaderMultiStateCheckbox.updateUI(); 
+	    break; 
+	  } 	
+    case "showgridlines":
+	  {
+	    theShowGridLinesMultiStateCheckbox.updateUI(); 
+	    break; 
+	  } 	    
+    case "shownextprevmonth":
+	  {
+	    theShowNextPrevMonthMultiStateCheckbox.updateUI(); 
+	    break; 
+	  } 	    
+    case "showtitle":
+	  {
+	    theShowTitleMultiStateCheckbox.updateUI(); 
+	    break; 
+	  } 	
+   
+    case "NextPrevStyle-Font-Bold":
+	  {
+	    theNextPrevStyleFontBoldMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "NextPrevStyle-Font-Italic":
+	  {
+	    theNextPrevStyleFontItalicMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "NextPrevStyle-Font-Overline":
+	  {
+	    theNextPrevStyleFontOverlineMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "NextPrevStyle-Font-Underline":
+	  {
+	    theNextPrevStyleFontUnderlineMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "NextPrevStyle-Font-Strikeout":
+	  {
+	    theNextPrevStyleFontStrikeoutMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "NextPrevStyle-Wrap":
+	  {
+	    theNextPrevStyleWrapMSCB.updateUI(); 
+	    break; 
+	  } 	
+
+
+    case "DayHeaderStyle-Font-Bold":
+	  {
+	    theDayHeaderStyleFontBoldMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "DayHeaderStyle-Font-Italic":
+	  {
+	    theDayHeaderStyleFontItalicMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "DayHeaderStyle-Font-Overline":
+	  {
+	    theDayHeaderStyleFontOverlineMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "DayHeaderStyle-Font-Underline":
+	  {
+	    theDayHeaderStyleFontUnderlineMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "DayHeaderStyle-Font-Strikeout":
+	  {
+	    theDayHeaderStyleFontStrikeoutMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "DayHeaderStyle-Wrap":
+	  {
+	    theDayHeaderStyleWrapMSCB.updateUI(); 
+	    break; 
+	  } 	
+
+    case "DayStyle-Font-Bold":
+	  {
+	    theDayStyleFontBoldMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "DayStyle-Font-Italic":
+	  {
+	    theDayStyleFontItalicMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "DayStyle-Font-Overline":
+	  {
+	    theDayStyleFontOverlineMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "DayStyle-Font-Underline":
+	  {
+	    theDayStyleFontUnderlineMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "DayStyle-Font-Strikeout":
+	  {
+	    theDayStyleFontStrikeoutMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "DayStyle-Wrap":
+	  {
+	    theDayStyleWrapMSCB.updateUI(); 
+	    break; 
+	  } 	    
+
+    case "OtherMonthDayStyle-Font-Bold":
+	  {
+	    theOtherMonthDayStyleFontBoldMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "OtherMonthDayStyle-Font-Italic":
+	  {
+	    theOtherMonthDayStyleFontItalicMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "OtherMonthDayStyle-Font-Overline":
+	  {
+	    theOtherMonthDayStyleFontOverlineMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "OtherMonthDayStyle-Font-Underline":
+	  {
+	    theOtherMonthDayStyleFontUnderlineMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "OtherMonthDayStyle-Font-Strikeout":
+	  {
+	    theOtherMonthDayStyleFontStrikeoutMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "OtherMonthDayStyle-Wrap":
+	  {
+	    theOtherMonthDayStyleWrapMSCB.updateUI(); 
+	    break; 
+	  } 	
+
+    case "SelectedDayStyle-Font-Bold":
+	  {
+	    theSelectedDayStyleFontBoldMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "SelectedDayStyle-Font-Italic":
+	  {
+	    theSelectedDayStyleFontItalicMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "SelectedDayStyle-Font-Overline":
+	  {
+	    theSelectedDayStyleFontOverlineMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "SelectedDayStyle-Font-Underline":
+	  {
+	    theSelectedDayStyleFontUnderlineMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "SelectedDayStyle-Wrap":
+	  {
+	    theSelectedDayStyleWrapMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "SelectedDayStyle-Font-Strikeout":
+	  {
+	    theSelectedDayStyleFontStrikeoutMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "SelectorStyle-Font-Bold":
+	  {
+	    theSelectorStyleFontBoldMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "SelectorStyle-Font-Italic":
+	  {
+	    theSelectorStyleFontItalicMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "SelectorStyle-Font-Overline":
+	  {
+	    theSelectorStyleFontOverlineMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "SelectorStyle-Font-Underline":
+	  {
+	    theSelectorStyleFontUnderlineMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "SelectorStyle-Font-Strikeout":
+	  {
+	    theSelectorStyleFontStrikeoutMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "SelectorStyle-Wrap":
+	  {
+	    theSelectorStyleWrapMSCB.updateUI(); 
+	    break; 
+	  } 	    
+
+    case "TitleStyle-Font-Bold":
+	  {
+	    theTitleStyleFontBoldMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "TitleStyle-Font-Italic":
+	  {
+	    theTitleStyleFontItalicMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "TitleStyle-Font-Overline":
+	  {
+	    theTitleStyleFontOverlineMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "TitleStyle-Font-Underline":
+	  {
+	    theTitleStyleFontUnderlineMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "TitleStyle-Font-Strikeout":
+	  {
+	    theTitleStyleFontStrikeoutMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "TitleStyle-Wrap":
+	  {
+	    theTitleStyleWrapMSCB.updateUI(); 
+	    break; 
+	  } 	        
+
+    case "TodayDayStyle-Font-Bold":
+	  {
+	    theTodayDayStyleFontBoldMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "TodayDayStyle-Font-Italic":
+	  {
+	    theTodayDayStyleFontItalicMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "TodayDayStyle-Font-Overline":
+	  {
+	    theTodayDayStyleFontOverlineMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "TodayDayStyle-Font-Underline":
+	  {
+	    theTodayDayStyleFontUnderlineMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "TodayDayStyle-Font-Strikeout":
+	  {
+	    theTodayDayStyleFontStrikeoutMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "TodayDayStyle-Wrap":
+	  {
+	    theTodayDayStyleWrapMSCB.updateUI(); 
+	    break; 
+	  } 	        
+
+    case "WeekendDayStyle-Font-Bold":
+	  {
+	    theWeekendDayStyleFontBoldMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "WeekendDayStyle-Font-Italic":
+	  {
+	    theWeekendDayStyleFontItalicMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "WeekendDayStyle-Font-Overline":
+	  {
+	    theWeekendDayStyleFontOverlineMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "WeekendDayStyle-Font-Underline":
+	  {
+	    theWeekendDayStyleFontUnderlineMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "WeekendDayStyle-Font-Strikeout":
+	  {
+	    theWeekendDayStyleFontStrikeoutMSCB.updateUI(); 
+	    break; 
+	  } 	
+    case "WeekendDayStyle-Wrap":
+	  {
+	    theWeekendDayStyleWrapMSCB.updateUI(); 
+	    break; 
+	  } 	        
+  }
+}
+
+function updateColors()
+{
+  tagDialog.updateColorPicker("colorField",COLORP_BACK,TEXT_BACK);
+  tagDialog.updateColorPicker("colorField",COLORP_BORDER,TEXT_BORDER);
+  tagDialog.updateColorPicker("colorField",COLORP_FORE,TEXT_FORE);
+
+  tagDialog.updateColorPicker("colorField",COLORP_NEXTPREVSTYLEFORECOLORFORE,TEXT_NEXTPREVSTYLEFORECOLORFORE);
+  tagDialog.updateColorPicker("colorField",COLORP_NEXTPREVSTYLEFORECOLORBACK,TEXT_NEXTPREVSTYLEFORECOLORBACK);
+  tagDialog.updateColorPicker("colorField",COLORP_NEXTPREVSTYLEFORECOLORBORDER,TEXT_NEXTPREVSTYLEFORECOLORBORDER);
+
+  tagDialog.updateColorPicker("colorField",COLORP_WEEKENDDAYSTYLEFORECOLORBACK,TEXT_WEEKENDDAYSTYLEFORECOLORBACK);
+  tagDialog.updateColorPicker("colorField",COLORP_WEEKENDDAYSTYLEFORECOLORBORDER,TEXT_WEEKENDDAYSTYLEFORECOLORBORDER);
+  tagDialog.updateColorPicker("colorField",COLORP_WEEKENDDAYSTYLEFORECOLORFORE,TEXT_WEEKENDDAYSTYLEFORECOLORFORE);  
+
+  tagDialog.updateColorPicker("colorField",COLORP_SELECTEDDAYSTYLEFORECOLORBACK,TEXT_SELECTEDDAYSTYLEFORECOLORBACK);
+  tagDialog.updateColorPicker("colorField",COLORP_SELECTEDDAYSTYLEFORECOLORBORDER,TEXT_SELECTEDDAYSTYLEFORECOLORBORDER);
+  tagDialog.updateColorPicker("colorField",COLORP_SELECTEDDAYSTYLEFORECOLORFORE,TEXT_SELECTEDDAYSTYLEFORECOLORFORE);
+
+  tagDialog.updateColorPicker("colorField",COLORP_SELECTORSTYLEFORECOLORBACK,TEXT_SELECTORSTYLEFORECOLORBACK);
+  tagDialog.updateColorPicker("colorField",COLORP_SELECTORSTYLEFORECOLORBORDER,TEXT_SELECTORSTYLEFORECOLORBORDER);
+  tagDialog.updateColorPicker("colorField",COLORP_SELECTORSTYLEFORECOLORFORE,TEXT_SELECTORSTYLEFORECOLORFORE);
+
+  tagDialog.updateColorPicker("colorField",COLORP_DAYHEADERSTYLEFORECOLORBACK,TEXT_DAYHEADERSTYLEFORECOLORBACK);
+  tagDialog.updateColorPicker("colorField",COLORP_DAYHEADERSTYLEFORECOLORBORDER,TEXT_DAYHEADERSTYLEFORECOLORBORDER);
+  tagDialog.updateColorPicker("colorField",COLORP_DAYHEADERSTYLEFORECOLORFORE,TEXT_DAYHEADERSTYLEFORECOLORFORE);
+
+  tagDialog.updateColorPicker("colorField",COLORP_DAYSTYLEFORECOLORBACK,TEXT_DAYSTYLEFORECOLORBACK);
+  tagDialog.updateColorPicker("colorField",COLORP_DAYSTYLEFORECOLORBORDER,TEXT_DAYSTYLEFORECOLORBORDER);
+  tagDialog.updateColorPicker("colorField",COLORP_DAYSTYLEFORECOLORFORE,TEXT_DAYSTYLEFORECOLORFORE);  
+
+  tagDialog.updateColorPicker("colorField",COLORP_OTHERMONTHDAYSTYLEFORECOLORBACK,TEXT_OTHERMONTHDAYSTYLEFORECOLORBACK);
+  tagDialog.updateColorPicker("colorField",COLORP_OTHERMONTHDAYSTYLEFORECOLORBORDER,TEXT_OTHERMONTHDAYSTYLEFORECOLORBORDER);
+  tagDialog.updateColorPicker("colorField",COLORP_OTHERMONTHDAYSTYLEFORECOLORFORE,TEXT_OTHERMONTHDAYSTYLEFORECOLORFORE);
+
+  tagDialog.updateColorPicker("colorField",COLORP_TITLESTYLEFORECOLORBACK,TEXT_TITLESTYLEFORECOLORBACK);
+  tagDialog.updateColorPicker("colorField",COLORP_TITLESTYLEFORECOLORBORDER,TEXT_TITLESTYLEFORECOLORBORDER);
+  tagDialog.updateColorPicker("colorField",COLORP_TITLESTYLEFORECOLORFORE,TEXT_TITLESTYLEFORECOLORFORE);
+
+  tagDialog.updateColorPicker("colorField",COLORP_TODAYDAYSTYLEFORECOLORBACK,TEXT_TODAYDAYSTYLEFORECOLORBACK);
+  tagDialog.updateColorPicker("colorField",COLORP_TODAYDAYSTYLEFORECOLORBORDER,TEXT_TODAYDAYSTYLEFORECOLORBORDER);
+  tagDialog.updateColorPicker("colorField",COLORP_TODAYDAYSTYLEFORECOLORFORE,TEXT_TODAYDAYSTYLEFORECOLORFORE);
+}
+
+function initializeUI()
+{
+  // fix up dialog if its an OSX but linking to a style sheet (only for OSX) 
+  tagDialog.setOSXStyleSheetIfNeeded(); 
+  
+  theFontBoldMultiStateCheckBox = new MultiStateCheckBox("thefont-bold");
+  theFontBoldMultiStateCheckBox.initializeUI(); 
+
+  theFontItalicMultiStateCheckBox = new MultiStateCheckBox("thefont-italic");
+  theFontItalicMultiStateCheckBox.initializeUI(); 
+  theFontOverlineMultiStateCheckBox = new MultiStateCheckBox("thefont-overline");
+  theFontOverlineMultiStateCheckBox.initializeUI(); 
+  theFontStrikeoutMultiStateCheckBox = new MultiStateCheckBox("thefont-strikeout");
+  theFontStrikeoutMultiStateCheckBox.initializeUI(); 
+  theFontUnderlineMultiStateCheckBox = new MultiStateCheckBox("thefont-underline");
+  theFontUnderlineMultiStateCheckBox.initializeUI(); 
+  theEnabledMultiStateCheckBox = new MultiStateCheckBox("theenabled");
+  theEnabledMultiStateCheckBox.initializeUI(); 
+  theEnableViewStateMultiStateCheckBox = new MultiStateCheckBox("theenableviewstate");
+  theEnableViewStateMultiStateCheckBox.initializeUI(); 
+  theVisibleMultiStateCheckBox = new MultiStateCheckBox("thevisible");
+  theVisibleMultiStateCheckBox.initializeUI(); 
+  theShowDayHeaderMultiStateCheckbox = new MultiStateCheckBox("theShowDayHeader");
+  theShowDayHeaderMultiStateCheckbox.initializeUI(); 
+  theShowGridLinesMultiStateCheckbox = new MultiStateCheckBox("theShowGridLines");
+  theShowGridLinesMultiStateCheckbox.initializeUI(); 
+  theShowNextPrevMonthMultiStateCheckbox = new MultiStateCheckBox("theShowNextPrevMonth");
+  theShowNextPrevMonthMultiStateCheckbox.initializeUI(); 
+  theShowTitleMultiStateCheckbox = new MultiStateCheckBox("theShowTitle");
+  theShowTitleMultiStateCheckbox.initializeUI(); 
+  
+  theNextPrevStyleFontBoldMSCB = new MultiStateCheckBox("theNextPrevStyle-Font-Bold");
+  theNextPrevStyleFontBoldMSCB.initializeUI();
+  theNextPrevStyleFontItalicMSCB = new MultiStateCheckBox("theNextPrevStyle-Font-Italic");
+  theNextPrevStyleFontItalicMSCB.initializeUI();
+  theNextPrevStyleFontOverlineMSCB = new MultiStateCheckBox("theNextPrevStyle-Font-Overline");
+  theNextPrevStyleFontOverlineMSCB.initializeUI();
+  theNextPrevStyleFontUnderlineMSCB = new MultiStateCheckBox("theNextPrevStyle-Font-Underline");
+  theNextPrevStyleFontUnderlineMSCB.initializeUI();  
+  theNextPrevStyleFontStrikeoutMSCB = new MultiStateCheckBox("theNextPrevStyle-Font-Strikeout");
+  theNextPrevStyleFontStrikeoutMSCB.initializeUI();  
+  theNextPrevStyleWrapMSCB = new MultiStateCheckBox("theNextPrevStyle-Wrap");
+  theNextPrevStyleWrapMSCB.initializeUI();  
+  
+  theDayHeaderStyleFontBoldMSCB = new MultiStateCheckBox("theDayHeaderStyle-Font-Bold");
+  theDayHeaderStyleFontBoldMSCB.initializeUI();
+  theDayHeaderStyleFontItalicMSCB = new MultiStateCheckBox("theDayHeaderStyle-Font-Italic");
+  theDayHeaderStyleFontItalicMSCB.initializeUI();
+  theDayHeaderStyleFontOverlineMSCB = new MultiStateCheckBox("theDayHeaderStyle-Font-Overline");
+  theDayHeaderStyleFontOverlineMSCB.initializeUI();
+  theDayHeaderStyleFontUnderlineMSCB = new MultiStateCheckBox("theDayHeaderStyle-Font-Underline");
+  theDayHeaderStyleFontUnderlineMSCB.initializeUI();  
+  theDayHeaderStyleFontStrikeoutMSCB = new MultiStateCheckBox("theDayHeaderStyle-Font-Strikeout");
+  theDayHeaderStyleFontStrikeoutMSCB.initializeUI();  
+  theDayHeaderStyleWrapMSCB = new MultiStateCheckBox("theDayHeaderStyle-Wrap");
+  theDayHeaderStyleWrapMSCB.initializeUI();  
+  
+  theDayStyleFontBoldMSCB = new MultiStateCheckBox("theDayStyle-Font-Bold");
+  theDayStyleFontBoldMSCB.initializeUI();
+  theDayStyleFontItalicMSCB = new MultiStateCheckBox("theDayStyle-Font-Italic");
+  theDayStyleFontItalicMSCB.initializeUI();
+  theDayStyleFontOverlineMSCB = new MultiStateCheckBox("theDayStyle-Font-Overline");
+  theDayStyleFontOverlineMSCB.initializeUI();
+  theDayStyleFontUnderlineMSCB = new MultiStateCheckBox("theDayStyle-Font-Underline");
+  theDayStyleFontUnderlineMSCB.initializeUI();  
+  theDayStyleFontStrikeoutMSCB = new MultiStateCheckBox("theDayStyle-Font-Strikeout");
+  theDayStyleFontStrikeoutMSCB.initializeUI();  
+  theDayStyleWrapMSCB = new MultiStateCheckBox("theDayStyle-Wrap");
+  theDayStyleWrapMSCB.initializeUI();  
+
+  theOtherMonthDayStyleFontBoldMSCB = new MultiStateCheckBox("theOtherMonthDayStyle-Font-Bold");
+  theOtherMonthDayStyleFontBoldMSCB.initializeUI();
+  theOtherMonthDayStyleFontItalicMSCB = new MultiStateCheckBox("theOtherMonthDayStyle-Font-Italic");
+  theOtherMonthDayStyleFontItalicMSCB.initializeUI();
+  theOtherMonthDayStyleFontOverlineMSCB = new MultiStateCheckBox("theOtherMonthDayStyle-Font-Overline");
+  theOtherMonthDayStyleFontOverlineMSCB.initializeUI();
+  theOtherMonthDayStyleFontUnderlineMSCB = new MultiStateCheckBox("theOtherMonthDayStyle-Font-Underline");
+  theOtherMonthDayStyleFontUnderlineMSCB.initializeUI();  
+  theOtherMonthDayStyleFontStrikeoutMSCB = new MultiStateCheckBox("theOtherMonthDayStyle-Font-Strikeout");
+  theOtherMonthDayStyleFontStrikeoutMSCB.initializeUI();  
+  theOtherMonthDayStyleWrapMSCB = new MultiStateCheckBox("theOtherMonthDayStyle-Wrap");
+  theOtherMonthDayStyleWrapMSCB.initializeUI();   
+
+  theSelectedDayStyleFontBoldMSCB = new MultiStateCheckBox("theSelectedDayStyle-Font-Bold");
+  theSelectedDayStyleFontBoldMSCB.initializeUI();
+  theSelectedDayStyleFontItalicMSCB = new MultiStateCheckBox("theSelectedDayStyle-Font-Italic");
+  theSelectedDayStyleFontItalicMSCB.initializeUI();
+  theSelectedDayStyleFontOverlineMSCB = new MultiStateCheckBox("theSelectedDayStyle-Font-Overline");
+  theSelectedDayStyleFontOverlineMSCB.initializeUI();
+  theSelectedDayStyleFontUnderlineMSCB = new MultiStateCheckBox("theSelectedDayStyle-Font-Underline");
+  theSelectedDayStyleFontUnderlineMSCB.initializeUI();  
+  theSelectedDayStyleFontStrikeoutMSCB = new MultiStateCheckBox("theSelectedDayStyle-Font-Strikeout");
+  theSelectedDayStyleFontStrikeoutMSCB.initializeUI();  
+  theSelectedDayStyleWrapMSCB = new MultiStateCheckBox("theSelectedDayStyle-Wrap");
+  theSelectedDayStyleWrapMSCB.initializeUI();   
+
+  theSelectorStyleFontBoldMSCB = new MultiStateCheckBox("theSelectorStyle-Font-Bold");
+  theSelectorStyleFontBoldMSCB.initializeUI();
+  theSelectorStyleFontItalicMSCB = new MultiStateCheckBox("theSelectorStyle-Font-Italic");
+  theSelectorStyleFontItalicMSCB.initializeUI();
+  theSelectorStyleFontOverlineMSCB = new MultiStateCheckBox("theSelectorStyle-Font-Overline");
+  theSelectorStyleFontOverlineMSCB.initializeUI();
+  theSelectorStyleFontUnderlineMSCB = new MultiStateCheckBox("theSelectorStyle-Font-Underline");
+  theSelectorStyleFontUnderlineMSCB.initializeUI();  
+  theSelectorStyleFontStrikeoutMSCB = new MultiStateCheckBox("theSelectorStyle-Font-Strikeout");
+  theSelectorStyleFontStrikeoutMSCB.initializeUI();  
+  theSelectorStyleWrapMSCB = new MultiStateCheckBox("theSelectorStyle-Wrap");
+  theSelectorStyleWrapMSCB.initializeUI();  
+
+  theTitleStyleFontBoldMSCB = new MultiStateCheckBox("theTitleStyle-Font-Bold");
+  theTitleStyleFontBoldMSCB.initializeUI();
+  theTitleStyleFontItalicMSCB = new MultiStateCheckBox("theTitleStyle-Font-Italic");
+  theTitleStyleFontItalicMSCB.initializeUI();
+  theTitleStyleFontOverlineMSCB = new MultiStateCheckBox("theTitleStyle-Font-Overline");
+  theTitleStyleFontOverlineMSCB.initializeUI();
+  theTitleStyleFontUnderlineMSCB = new MultiStateCheckBox("theTitleStyle-Font-Underline");
+  theTitleStyleFontUnderlineMSCB.initializeUI();  
+  theTitleStyleFontStrikeoutMSCB = new MultiStateCheckBox("theTitleStyle-Font-Strikeout");
+  theTitleStyleFontStrikeoutMSCB.initializeUI();  
+  theTitleStyleWrapMSCB = new MultiStateCheckBox("theTitleStyle-Wrap");
+  theTitleStyleWrapMSCB.initializeUI();  
+
+  theTodayDayStyleFontBoldMSCB = new MultiStateCheckBox("theTodayDayStyle-Font-Bold");
+  theTodayDayStyleFontBoldMSCB.initializeUI();
+  theTodayDayStyleFontItalicMSCB = new MultiStateCheckBox("theTodayDayStyle-Font-Italic");
+  theTodayDayStyleFontItalicMSCB.initializeUI();
+  theTodayDayStyleFontOverlineMSCB = new MultiStateCheckBox("theTodayDayStyle-Font-Overline");
+  theTodayDayStyleFontOverlineMSCB.initializeUI();
+  theTodayDayStyleFontUnderlineMSCB = new MultiStateCheckBox("theTodayDayStyle-Font-Underline");
+  theTodayDayStyleFontUnderlineMSCB.initializeUI();  
+  theTodayDayStyleFontStrikeoutMSCB = new MultiStateCheckBox("theTodayDayStyle-Font-Strikeout");
+  theTodayDayStyleFontStrikeoutMSCB.initializeUI();  
+  theTodayDayStyleWrapMSCB = new MultiStateCheckBox("theTodayDayStyle-Wrap");
+  theTodayDayStyleWrapMSCB.initializeUI();  
+
+  theWeekendDayStyleFontBoldMSCB = new MultiStateCheckBox("theWeekendDayStyle-Font-Bold");
+  theWeekendDayStyleFontBoldMSCB.initializeUI();
+  theWeekendDayStyleFontItalicMSCB = new MultiStateCheckBox("theWeekendDayStyle-Font-Italic");
+  theWeekendDayStyleFontItalicMSCB.initializeUI();
+  theWeekendDayStyleFontOverlineMSCB = new MultiStateCheckBox("theWeekendDayStyle-Font-Overline");
+  theWeekendDayStyleFontOverlineMSCB.initializeUI();
+  theWeekendDayStyleFontUnderlineMSCB = new MultiStateCheckBox("theWeekendDayStyle-Font-Underline");
+  theWeekendDayStyleFontUnderlineMSCB.initializeUI();  
+  theWeekendDayStyleFontStrikeoutMSCB = new MultiStateCheckBox("theWeekendDayStyle-Font-Strikeout");
+  theWeekendDayStyleFontStrikeoutMSCB.initializeUI();  
+  theWeekendDayStyleWrapMSCB = new MultiStateCheckBox("theWeekendDayStyle-Wrap");
+  theWeekendDayStyleWrapMSCB.initializeUI();  
+
+  BORDERSTYLELIST = new ListControl("theBorderStyle"); 
+  DAYNAMEFORMATLIST = new ListControl("theDayNameFormat"); 
+  FIRSTDAYOFWEEKLLIST = new ListControl("theFirstDayOfWeek");
+  NEXTPREVFORMATLIST = new ListControl("theNextPrevFormat"); 
+  SELECTIONMODELIST = new ListControl("theSelectionMode"); 
+  TITLEFORMATLIST = new ListControl("theTitleFormat");  
+
+  theUIObjects = new Array(BORDERSTYLELIST,DAYNAMEFORMATLIST,FIRSTDAYOFWEEKLLIST,NEXTPREVFORMATLIST,SELECTIONMODELIST,TITLEFORMATLIST); 
+
+  COLORP_BACK = dwscripts.findDOMObject("backColorPicker");
+  COLORP_BORDER = dwscripts.findDOMObject("borderColorPicker"); 
+  COLORP_FORE = dwscripts.findDOMObject("foreColorPicker"); 
+  TEXT_BACK = dwscripts.findDOMObject("thebackcolor");
+  TEXT_BORDER = dwscripts.findDOMObject("thebordercolor");
+  TEXT_FORE = dwscripts.findDOMObject("theforecolor");
+
+  COLORP_NEXTPREVSTYLEFORECOLORBACK = dwscripts.findDOMObject("NextPrevStyle-BackColorPicker");
+  COLORP_NEXTPREVSTYLEFORECOLORBORDER = dwscripts.findDOMObject("NextPrevStyle-BorderColorPicker"); 
+  COLORP_NEXTPREVSTYLEFORECOLORFORE = dwscripts.findDOMObject("NextPrevStyle-ForeColorPicker"); 
+  TEXT_NEXTPREVSTYLEFORECOLORBACK = dwscripts.findDOMObject("NextPrevStyle-BackColor");
+  TEXT_NEXTPREVSTYLEFORECOLORBORDER = dwscripts.findDOMObject("NextPrevStyle-BorderColor");
+  TEXT_NEXTPREVSTYLEFORECOLORFORE = dwscripts.findDOMObject("NextPrevStyle-ForeColor");
+
+  COLORP_WEEKENDDAYSTYLEFORECOLORBACK = dwscripts.findDOMObject("WeekendDayStyle-BackColorPicker");
+  COLORP_WEEKENDDAYSTYLEFORECOLORBORDER = dwscripts.findDOMObject("WeekendDayStyle-BorderColorPicker"); 
+  COLORP_WEEKENDDAYSTYLEFORECOLORFORE = dwscripts.findDOMObject("WeekendDayStyle-ForeColorPicker"); 
+  TEXT_WEEKENDDAYSTYLEFORECOLORBACK = dwscripts.findDOMObject("WeekendDayStyle-BackColor");
+  TEXT_WEEKENDDAYSTYLEFORECOLORBORDER = dwscripts.findDOMObject("WeekendDayStyle-BorderColor");
+  TEXT_WEEKENDDAYSTYLEFORECOLORFORE = dwscripts.findDOMObject("WeekendDayStyle-ForeColor");  
+  
+  COLORP_SELECTEDDAYSTYLEFORECOLORBACK = dwscripts.findDOMObject("SelectedDayStyle-BackColorPicker");
+  COLORP_SELECTEDDAYSTYLEFORECOLORBORDER = dwscripts.findDOMObject("SelectedDayStyle-BorderColorPicker"); 
+  COLORP_SELECTEDDAYSTYLEFORECOLORFORE = dwscripts.findDOMObject("SelectedDayStyle-ForeColorPicker"); 
+  TEXT_SELECTEDDAYSTYLEFORECOLORBACK = dwscripts.findDOMObject("SelectedDayStyle-BackColor");
+  TEXT_SELECTEDDAYSTYLEFORECOLORBORDER = dwscripts.findDOMObject("SelectedDayStyle-BorderColor");
+  TEXT_SELECTEDDAYSTYLEFORECOLORFORE = dwscripts.findDOMObject("SelectedDayStyle-ForeColor");  
+
+  COLORP_SELECTORSTYLEFORECOLORBACK = dwscripts.findDOMObject("SelectorStyle-BackColorPicker");
+  COLORP_SELECTORSTYLEFORECOLORBORDER = dwscripts.findDOMObject("SelectorStyle-BorderColorPicker"); 
+  COLORP_SELECTORSTYLEFORECOLORFORE = dwscripts.findDOMObject("SelectorStyle-ForeColorPicker"); 
+  TEXT_SELECTORSTYLEFORECOLORBACK = dwscripts.findDOMObject("SelectorStyle-BackColor");
+  TEXT_SELECTORSTYLEFORECOLORBORDER = dwscripts.findDOMObject("SelectorStyle-BorderColor");
+  TEXT_SELECTORSTYLEFORECOLORFORE = dwscripts.findDOMObject("SelectorStyle-ForeColor");    
+  
+  COLORP_DAYSTYLEFORECOLORBACK = dwscripts.findDOMObject("DayStyle-BackColorPicker");
+  COLORP_DAYSTYLEFORECOLORBORDER = dwscripts.findDOMObject("DayStyle-BorderColorPicker"); 
+  COLORP_DAYSTYLEFORECOLORFORE = dwscripts.findDOMObject("DayStyle-ForeColorPicker"); 
+  TEXT_DAYSTYLEFORECOLORBACK = dwscripts.findDOMObject("DayStyle-BackColor");
+  TEXT_DAYSTYLEFORECOLORBORDER = dwscripts.findDOMObject("DayStyle-BorderColor");
+  TEXT_DAYSTYLEFORECOLORFORE = dwscripts.findDOMObject("DayStyle-ForeColor");
+
+  COLORP_DAYHEADERSTYLEFORECOLORBACK = dwscripts.findDOMObject("DayHeaderStyle-BackColorPicker");
+  COLORP_DAYHEADERSTYLEFORECOLORBORDER = dwscripts.findDOMObject("DayHeaderStyle-BorderColorPicker"); 
+  COLORP_DAYHEADERSTYLEFORECOLORFORE = dwscripts.findDOMObject("DayHeaderStyle-ForeColorPicker"); 
+  TEXT_DAYHEADERSTYLEFORECOLORBACK = dwscripts.findDOMObject("DayHeaderStyle-BackColor");
+  TEXT_DAYHEADERSTYLEFORECOLORBORDER = dwscripts.findDOMObject("DayHeaderStyle-BorderColor");
+  TEXT_DAYHEADERSTYLEFORECOLORFORE = dwscripts.findDOMObject("DayHeaderStyle-ForeColor"); 
+  
+  COLORP_OTHERMONTHDAYSTYLEFORECOLORBACK = dwscripts.findDOMObject("OtherMonthDayStyle-BackColorPicker");
+  COLORP_OTHERMONTHDAYSTYLEFORECOLORBORDER = dwscripts.findDOMObject("OtherMonthDayStyle-BorderColorPicker"); 
+  COLORP_OTHERMONTHDAYSTYLEFORECOLORFORE = dwscripts.findDOMObject("OtherMonthDayStyle-ForeColorPicker"); 
+  TEXT_OTHERMONTHDAYSTYLEFORECOLORBACK = dwscripts.findDOMObject("OtherMonthDayStyle-BackColor");
+  TEXT_OTHERMONTHDAYSTYLEFORECOLORBORDER = dwscripts.findDOMObject("OtherMonthDayStyle-BorderColor");
+  TEXT_OTHERMONTHDAYSTYLEFORECOLORFORE = dwscripts.findDOMObject("OtherMonthDayStyle-ForeColor");   
+
+  COLORP_TITLESTYLEFORECOLORBACK = dwscripts.findDOMObject("TitleStyle-BackColorPicker");
+  COLORP_TITLESTYLEFORECOLORBORDER = dwscripts.findDOMObject("TitleStyle-BorderColorPicker"); 
+  COLORP_TITLESTYLEFORECOLORFORE = dwscripts.findDOMObject("TitleStyle-ForeColorPicker"); 
+  TEXT_TITLESTYLEFORECOLORBACK = dwscripts.findDOMObject("TitleStyle-BackColor");
+  TEXT_TITLESTYLEFORECOLORBORDER = dwscripts.findDOMObject("TitleStyle-BorderColor");
+  TEXT_TITLESTYLEFORECOLORFORE = dwscripts.findDOMObject("TitleStyle-ForeColor");
+
+  COLORP_TODAYDAYSTYLEFORECOLORBACK = dwscripts.findDOMObject("TodayDayStyle-BackColorPicker");
+  COLORP_TODAYDAYSTYLEFORECOLORBORDER = dwscripts.findDOMObject("TodayDayStyle-BorderColorPicker"); 
+  COLORP_TODAYDAYSTYLEFORECOLORFORE = dwscripts.findDOMObject("TodayDayStyle-ForeColorPicker"); 
+  TEXT_TODAYDAYSTYLEFORECOLORBACK = dwscripts.findDOMObject("TodayDayStyle-BackColor");
+  TEXT_TODAYDAYSTYLEFORECOLORBORDER = dwscripts.findDOMObject("TodayDayStyle-BorderColor");
+  TEXT_TODAYDAYSTYLEFORECOLORFORE = dwscripts.findDOMObject("TodayDayStyle-ForeColor");
+  
+  updateColors(); 
+
+  tagDialog.populateDropDownList(BORDERSTYLELIST, theStylesCap, theStylesVal, 1); 
+  tagDialog.populateDropDownList(DAYNAMEFORMATLIST, theCalendarDayNameFormatCap, theCalendarDayNameFormatVal, 1); 
+  tagDialog.populateDropDownList(FIRSTDAYOFWEEKLLIST, theCalendarFirstDayOfWeekCap, theCalendarFirstDayOfWeekVal, 1); 
+  tagDialog.populateDropDownList(NEXTPREVFORMATLIST, theCalendarNextPrevFormatCap, theCalendarNextPrevFormatVal, 1); 
+  tagDialog.populateDropDownList(SELECTIONMODELIST, theCalendarSelectionModeCap, theCalendarSelectionModeVal, 1); 
+  tagDialog.populateDropDownList(TITLEFORMATLIST, theCalendarTitleFormatCap, theCalendarTitleFormatVal, 1); 
+
+}
+</script>
+<link rel="stylesheet" href="../../fields.css">
+</head>
+
+<body onLoad="initializeUI();">
+<div name="常规"> 
+  <input type="hidden" name="therunat" attname="runat" value="server" required="true" /> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" TYPE="text" class="medTField" id="aspnet:calendar:id" attname="id" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">日期名称格式: </td>
+      <td nowrap="nowrap">
+        <select name="theDayNameFormat" class="formatList" id="attr:aspnet:calendar:DayNameFormat" attname="DayNameFormat">
+        </select> 
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">某星期的第一天: </td>
+      <td nowrap="nowrap">
+        <select name="theFirstDayOfWeek" class="dayList" id="attr:aspnet:calendar:FirstDayOfWeek" attname="FirstDayOfWeek">
+        </select> 
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">下个月文本: </td>
+      <td nowrap="nowrap">
+        <input name="theNextMonthText" TYPE="text" class="basicTextField" id="aspnet:calendar:NextMonthText" attname="NextMonthText" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">上个月文本: </td>
+      <td nowrap="nowrap">
+        <input name="thePrevMonthText" TYPE="text" class="basicTextField" id="aspnet:calendar:PrevMonthText" attname="PrevMonthText" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">下一个“前一个格式”: </td>
+      <td nowrap="nowrap">
+        <select name="theNextPrevFormat" class="formatList" id="attr:aspnet:calendar:NextPrevFormat" attname="NextPrevFormat">
+        </select> 
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">所选日期: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectedDate" TYPE="text" class="xSmallTField" id="aspnet:calendar:SelectedDate" attname="SelectedDate" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">显示日期: </td>
+      <td nowrap="nowrap">
+        <input name="theVisibleDate" TYPE="text" class="xsmallTField" id="aspnet:calendar:VisibleDate" attname="VisibleDate" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">选择模式: </td>
+      <td nowrap="nowrap">
+        <select name="theSelectionMode" class="formatList" id="attr:aspnet:calendar:SelectionMode" attname="SelectionMode">
+        </select> 
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">选择月份文本: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectMonthText" TYPE="text" class="basicTextField" id="aspnet:calendar:SelectMonthText" attname="SelectMonthText" />
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">选择星期文本: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectWeekText" TYPE="text" class="basicTextField" id="aspnet:calendar:SelectWeekText" attname="SelectWeekText" />
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">标题格式: </td>
+      <td nowrap="nowrap">
+        <select name="theTitleFormat" class="formatList" id="attr:aspnet:calendar:TitleFormat" attname="TitleFormat">
+        </select> 
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theShowDayHeader" attname="ShowDayHeader" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('showdayheader');" > 
+        显示日期标题
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theShowGridLines" attname="ShowGridLines" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('showgridlines');" > 
+        显示网格线 
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theShowNextPrevMonth" attname="ShowNextPrevMonth" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('shownextprevmonth');" > 
+        显示下一个“上个月”
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theShowTitle" attname="ShowTitle" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('showtitle');" > 
+        显示标题
+      </td>
+    </tr> 
+  </table>
+</div>
+<div name="布局"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">高度: </td>
+      <td nowrap="nowrap">
+        <input name="theheight" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:height" attname="height" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">宽度: </td>
+      <td nowrap="nowrap">
+        <input name="thewidth" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:width" attname="width" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theborderwidth" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:borderwidth" attname="borderwidth" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">单元格边距: </td>
+      <td nowrap="nowrap">
+        <input name="thecellpadding" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:cellpadding" attname="cellpadding" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">单元格间距: </td>
+      <td nowrap="nowrap">
+        <input name="thecellspacing" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:cellspacing" attname="cellspacing" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">背景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="backColorPicker" value="" onChange="updateUI('backColorPicker')"> <input name="thebackcolor" TYPE="text" class="smallTField" id="att:body:backcolor" onBlur="updateUI('backcolor')" value="" attname="backcolor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="borderColorPicker" value="" onChange="updateUI('borderColorPicker')"> <input name="thebordercolor" TYPE="text" class="smallTField" id="att:body:alink" onBlur="updateUI('bordercolor')" value="" attname="bordercolor">
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">前景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="foreColorPicker" value="" onChange="updateUI('foreColorPicker')"> <input name="theforecolor" TYPE="text" class="smallTField" id="att:calendar:forecolor" onBlur="updateUI('forecolor')" value="" attname="forecolor">
+      </td>
+    </tr>  
+  </table> 
+</div> 
+
+<div name="样式信息"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">CSS 类: </td>
+      <td nowrap="nowrap">
+        <input name="thecssclass" TYPE="text" class="basicTextField" id="aspnet:calendar:cssclass" attname="cssclass" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框样式: </td>
+      <td nowrap="nowrap">
+        <select name="theBorderStyle" class="styleList" id="attr:aspnet:calendar:borderstyle" attname="BorderStyle">
+        </select> 
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="thefont-name" TYPE="text" class="basicTextField" id="aspnet:calendar:font-name" attname="font-name" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="thefont-names" TYPE="text" class="basicTextField" id="aspnet:calendar:font-names" attname="font-names" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体大小: </td>
+      <td nowrap="nowrap">
+        <input name="thefont-size" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:font-size" attname="font-size" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="thefont-bold" attname="font-bold" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('font-bold');" > 
+        粗体
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="thefont-italic" attname="font-italic" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('font-italic');" > 
+        斜体
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="thefont-overline" attname="font-overline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('font-overline');" > 
+        上划线
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="thefont-strikeout" attname="font-strikeout" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('font-strikeout');" > 
+        删除线
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="thefont-underline" attname="font-underline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('font-underline');" > 下划线
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theenabled" attname="enabled" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('enabled');" > 
+        已启用
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theenableviewstate" attname="enableviewstate" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('enableviewstate');" > 
+        启用视图状态 
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="thevisible" attname="visible" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('visible');" > 
+        可见
+      </td>
+    </tr>  
+  </table>
+</div> 
+
+<div name="辅助功能"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">工具提示: </td>
+      <td nowrap="nowrap">
+        <input name="thetooltip" TYPE="text" class="basicTextField" id="aspnet:calendar:tooltip" attname="tooltip" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">Tab 键索引: </td>
+      <td nowrap="nowrap">
+        <input name="thetabindex" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:tabindex" attname="tabindex" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">访问键: </td>
+      <td nowrap="nowrap">
+        <input name="theaccesskey" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:accesskey" attname="accesskey" />
+      </td>
+    </tr>
+  </table>
+</div> 
+
+<div name="下一个“前一个样式”"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">高度: </td>
+      <td nowrap="nowrap">
+        <input name="theNextPrevStyle-Height" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:NextPrevStyle-Height" attname="NextPrevStyle-Height" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theNextPrevStyle-Width" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:NextPrevStyle-Width" attname="NextPrevStyle-Width" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">水平对齐: </td>
+      <td nowrap="nowrap">
+        <input name="theNextPrevStyle-HorizontalAlign" TYPE="text" class="basicTextField" id="aspnet:calendar:NextPrevStyle-HorizontalAlign" attname="NextPrevStyle-HorizontalAlign" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">垂直对齐: </td>
+      <td nowrap="nowrap">
+        <input name="theNextPrevStyle-VerticalAlign" TYPE="text" class="basicTextField" id="aspnet:calendar:NextPrevStyle-VerticalAlign" attname="NextPrevStyle-VerticalAlign" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框样式: </td>
+      <td nowrap="nowrap">
+        <input name="theNextPrevStyle-BorderStyle" TYPE="text" class="basicTextField" id="aspnet:calendar:NextPrevStyle-BorderStyle" attname="NextPrevStyle-BorderStyle" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theNextPrevStyle-BorderWidth" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:NextPrevStyle-BorderWidth" attname="NextPrevStyle-BorderWidth" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">CSS 类: </td>
+      <td nowrap="nowrap">
+        <input name="theNextPrevStyle-CssClass" TYPE="text" class="basicTextField" id="aspnet:calendar:NextPrevStyle-CssClass" attname="NextPrevStyle-CssClass" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="theNextPrevStyle-Font-Name" TYPE="text" class="basicTextField" id="aspnet:calendar:NextPrevStyle-Font-Name" attname="NextPrevStyle-Font-Name" />
+      </td>
+    </tr>
+   <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="theNextPrevStyle-Font-Names" TYPE="text" class="basicTextField" id="aspnet:calendar:NextPrevStyle-Font-Names" attname="NextPrevStyle-Font-Names" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体大小: </td>
+      <td nowrap="nowrap">
+        <input name="theNextPrevStyle-Font-Size" TYPE="text" class="basicTextField" id="aspnet:calendar:NextPrevStyle-Font-Size" attname="NextPrevStyle-Font-Size" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">前景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="NextPrevStyle-ForeColorPicker" value="" onChange="updateUI('NextPrevStyle-ForeColorPicker')"> <input name="NextPrevStyle-ForeColor" TYPE="text" class="smallTField" id="att:body:NextPrevStyle-BorderColor" onBlur="updateUI('NextPrevStyle-ForeColor')" value="" attname="NextPrevStyle-ForeColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">背景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="NextPrevStyle-BackColorPicker" value="" onChange="updateUI('NextPrevStyle-BackColorPicker')"> <input name="NextPrevStyle-BackColor" TYPE="text" class="smallTField" id="att:body:NextPrevStyle-BackColor" onBlur="updateUI('NextPrevStyle-BackColor')" value="" attname="NextPrevStyle-BackColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="NextPrevStyle-BorderColorPicker" value="" onChange="updateUI('NextPrevStyle-BorderColorPicker')"> <input name="NextPrevStyle-BorderColor" TYPE="text" class="smallTField" id="att:body:NextPrevStyle-BorderColor" onBlur="updateUI('NextPrevStyle-BorderColor')" value="" attname="NextPrevStyle-BorderColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theNextPrevStyle-Font-Bold" attname="NextPrevStyle-Font-Bold" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('NextPrevStyle-Font-Bold');" > 
+        粗体
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theNextPrevStyle-Font-Italic" attname="NextPrevStyle-Font-Italic" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('NextPrevStyle-Font-Italic');" > 
+        斜体
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theNextPrevStyle-Font-Overline" attname="NextPrevStyle-Font-Overline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('NextPrevStyle-Font-Overline');" > 
+        上划线
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theNextPrevStyle-Font-Underline" attname="NextPrevStyle-Font-Underline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('NextPrevStyle-Font-Underline');" > 
+        下划线
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theNextPrevStyle-Font-Strikeout" attname="NextPrevStyle-Font-Strikeout" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('NextPrevStyle-Font-Strikeout');" > 
+        删除线
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theNextPrevStyle-Wrap" attname="NextPrevStyle-Wrap" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('NextPrevStyle-Wrap');" > 
+        换行
+      </td>
+    </tr> 
+  </table> 
+</div> 
+<div name="周末日期样式"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">高度: </td>
+      <td nowrap="nowrap">
+        <input name="theWeekendDayStyle-Height" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:WeekendDayStyle-Height" attname="WeekendDayStyle-Height" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theWeekendDayStyle-Width" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:WeekendDayStyle-Width" attname="WeekendDayStyle-Width" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">水平对齐: </td>
+      <td nowrap="nowrap">
+        <input name="theWeekendDayStyle-HorizontalAlign" TYPE="text" class="basicTextField" id="aspnet:calendar:WeekendDayStyle-HorizontalAlign" attname="WeekendDayStyle-HorizontalAlign" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">垂直对齐: </td>
+      <td nowrap="nowrap">
+        <input name="theWeekendDayStyle-VerticalAlign" TYPE="text" class="basicTextField" id="aspnet:calendar:WeekendDayStyle-VerticalAlign" attname="WeekendDayStyle-VerticalAlign" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框样式: </td>
+      <td nowrap="nowrap">
+        <input name="theWeekendDayStyle-BorderStyle" TYPE="text" class="basicTextField" id="aspnet:calendar:WeekendDayStyle-BorderStyle" attname="WeekendDayStyle-BorderStyle" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theWeekendDayStyle-BorderWidth" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:WeekendDayStyle-BorderWidth" attname="WeekendDayStyle-BorderWidth" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">CSS 类: </td>
+      <td nowrap="nowrap">
+        <input name="theWeekendDayStyle-CssClass" TYPE="text" class="basicTextField" id="aspnet:calendar:WeekendDayStyle-CssClass" attname="WeekendDayStyle-CssClass" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="theWeekendDayStyle-Font-Name" TYPE="text" class="basicTextField" id="aspnet:calendar:WeekendDayStyle-Font-Name" attname="WeekendDayStyle-Font-Name" />
+      </td>
+    </tr>
+   <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="theWeekendDayStyle-Font-Names" TYPE="text" class="basicTextField" id="aspnet:calendar:WeekendDayStyle-Font-Names" attname="WeekendDayStyle-Font-Names" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体大小: </td>
+      <td nowrap="nowrap">
+        <input name="theWeekendDayStyle-Font-Size" TYPE="text" class="basicTextField" id="aspnet:calendar:WeekendDayStyle-Font-Size" attname="WeekendDayStyle-Font-Size" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">前景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="WeekendDayStyle-ForeColorPicker" value="" onChange="updateUI('WeekendDayStyle-ForeColorPicker')"> <input name="WeekendDayStyle-ForeColor" TYPE="text" class="smallTField" id="att:body:WeekendDayStyle-BorderColor" onBlur="updateUI('WeekendDayStyle-ForeColor')" value="" attname="WeekendDayStyle-ForeColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">背景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="WeekendDayStyle-BackColorPicker" value="" onChange="updateUI('WeekendDayStyle-BackColorPicker')"> <input name="WeekendDayStyle-BackColor" TYPE="text" class="smallTField" id="att:body:WeekendDayStyle-BackColor" onBlur="updateUI('WeekendDayStyle-BackColor')" value="" attname="WeekendDayStyle-BackColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="WeekendDayStyle-BorderColorPicker" value="" onChange="updateUI('WeekendDayStyle-BorderColorPicker')"> <input name="WeekendDayStyle-BorderColor" TYPE="text" class="smallTField" id="att:body:WeekendDayStyle-BorderColor" onBlur="updateUI('WeekendDayStyle-BorderColor')" value="" attname="WeekendDayStyle-BorderColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theWeekendDayStyle-Font-Bold" attname="WeekendDayStyle-Font-Bold" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('WeekendDayStyle-Font-Bold');" > 
+        粗体
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theWeekendDayStyle-Font-Italic" attname="WeekendDayStyle-Font-Italic" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('WeekendDayStyle-Font-Italic');" > 
+        斜体
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theWeekendDayStyle-Font-Overline" attname="WeekendDayStyle-Font-Overline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('WeekendDayStyle-Font-Overline');" > 
+        上划线
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theWeekendDayStyle-Font-Underline" attname="WeekendDayStyle-Font-Underline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('WeekendDayStyle-Font-Underline');" > 
+        下划线
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theWeekendDayStyle-Font-Strikeout" attname="WeekendDayStyle-Font-Strikeout" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('WeekendDayStyle-Font-Strikeout');" > 
+        删除线
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theWeekendDayStyle-Wrap" attname="WeekendDayStyle-Wrap" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('WeekendDayStyle-Wrap');" > 
+        换行
+      </td>
+    </tr>
+  </table>
+</div> 
+<div name="选择器样式"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">高度: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectorStyle-Height" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:SelectorStyle-Height" attname="SelectorStyle-Height" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectorStyle-Width" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:SelectorStyle-Width" attname="SelectorStyle-Width" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">水平对齐: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectorStyle-HorizontalAlign" TYPE="text" class="basicTextField" id="aspnet:calendar:SelectorStyle-HorizontalAlign" attname="SelectorStyle-HorizontalAlign" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">垂直对齐: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectorStyle-VerticalAlign" TYPE="text" class="basicTextField" id="aspnet:calendar:SelectorStyle-VerticalAlign" attname="SelectorStyle-VerticalAlign" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框样式: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectorStyle-BorderStyle" TYPE="text" class="basicTextField" id="aspnet:calendar:SelectorStyle-BorderStyle" attname="SelectorStyle-BorderStyle" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectorStyle-BorderWidth" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:SelectorStyle-BorderWidth" attname="SelectorStyle-BorderWidth" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">CSS 类: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectorStyle-CssClass" TYPE="text" class="basicTextField" id="aspnet:calendar:SelectorStyle-CssClass" attname="SelectorStyle-CssClass" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectorStyle-Font-Name" TYPE="text" class="basicTextField" id="aspnet:calendar:SelectorStyle-Font-Name" attname="SelectorStyle-Font-Name" />
+      </td>
+    </tr>
+   <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectorStyle-Font-Names" TYPE="text" class="basicTextField" id="aspnet:calendar:SelectorStyle-Font-Names" attname="SelectorStyle-Font-Names" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体大小: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectorStyle-Font-Size" TYPE="text" class="basicTextField" id="aspnet:calendar:SelectorStyle-Font-Size" attname="SelectorStyle-Font-Size" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">前景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="SelectorStyle-ForeColorPicker" value="" onChange="updateUI('SelectorStyle-ForeColorPicker')"> <input name="SelectorStyle-ForeColor" TYPE="text" class="smallTField" id="att:body:SelectorStyle-BorderColor" onBlur="updateUI('SelectorStyle-ForeColor')" value="" attname="SelectorStyle-ForeColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">背景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="SelectorStyle-BackColorPicker" value="" onChange="updateUI('SelectorStyle-BackColorPicker')"> <input name="SelectorStyle-BackColor" TYPE="text" class="smallTField" id="att:body:SelectorStyle-BackColor" onBlur="updateUI('SelectorStyle-BackColor')" value="" attname="SelectorStyle-BackColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="SelectorStyle-BorderColorPicker" value="" onChange="updateUI('SelectorStyle-BorderColorPicker')"> <input name="SelectorStyle-BorderColor" TYPE="text" class="smallTField" id="att:body:SelectorStyle-BorderColor" onBlur="updateUI('SelectorStyle-BorderColor')" value="" attname="SelectorStyle-BorderColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theSelectorStyle-Font-Bold" attname="SelectorStyle-Font-Bold" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('SelectorStyle-Font-Bold');" > 
+        粗体
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theSelectorStyle-Font-Italic" attname="SelectorStyle-Font-Italic" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('SelectorStyle-Font-Italic');" > 
+        斜体
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theSelectorStyle-Font-Overline" attname="SelectorStyle-Font-Overline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('SelectorStyle-Font-Overline');" > 
+        上划线
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theSelectorStyle-Font-Underline" attname="SelectorStyle-Font-Underline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('SelectorStyle-Font-Underline');" > 
+        下划线
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theSelectorStyle-Font-Strikeout" attname="SelectorStyle-Font-Strikeout" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('SelectorStyle-Font-Strikeout');" > 
+        删除线
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theSelectorStyle-Wrap" attname="SelectorStyle-Wrap" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('SelectorStyle-Wrap');" > 
+        换行
+      </td>
+    </tr> 
+  </table>
+</div> 
+<div name="所选日期样式"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">高度: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectedDayStyle-Height" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:SelectedDayStyle-Height" attname="SelectedDayStyle-Height" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectedDayStyle-Width" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:SelectedDayStyle-Width" attname="SelectedDayStyle-Width" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">水平对齐: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectedDayStyle-HorizontalAlign" TYPE="text" class="basicTextField" id="aspnet:calendar:SelectedDayStyle-HorizontalAlign" attname="SelectedDayStyle-HorizontalAlign" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">垂直对齐: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectedDayStyle-VerticalAlign" TYPE="text" class="basicTextField" id="aspnet:calendar:SelectedDayStyle-VerticalAlign" attname="SelectedDayStyle-VerticalAlign" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框样式: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectedDayStyle-BorderStyle" TYPE="text" class="basicTextField" id="aspnet:calendar:SelectedDayStyle-BorderStyle" attname="SelectedDayStyle-BorderStyle" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectedDayStyle-BorderWidth" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:SelectedDayStyle-BorderWidth" attname="SelectedDayStyle-BorderWidth" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">CSS 类: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectedDayStyle-CssClass" TYPE="text" class="basicTextField" id="aspnet:calendar:SelectedDayStyle-CssClass" attname="SelectedDayStyle-CssClass" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectedDayStyle-Font-Name" TYPE="text" class="basicTextField" id="aspnet:calendar:SelectedDayStyle-Font-Name" attname="SelectedDayStyle-Font-Name" />
+      </td>
+    </tr>
+   <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectedDayStyle-Font-Names" TYPE="text" class="basicTextField" id="aspnet:calendar:SelectedDayStyle-Font-Names" attname="SelectedDayStyle-Font-Names" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体大小: </td>
+      <td nowrap="nowrap">
+        <input name="theSelectedDayStyle-Font-Size" TYPE="text" class="basicTextField" id="aspnet:calendar:SelectedDayStyle-Font-Size" attname="SelectedDayStyle-Font-Size" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">前景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="SelectedDayStyle-ForeColorPicker" value="" onChange="updateUI('SelectedDayStyle-ForeColorPicker')"> <input name="SelectedDayStyle-ForeColor" TYPE="text" class="smallTField" id="att:body:SelectedDayStyle-BorderColor" onBlur="updateUI('SelectedDayStyle-ForeColor')" value="" attname="SelectedDayStyle-ForeColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">背景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="SelectedDayStyle-BackColorPicker" value="" onChange="updateUI('SelectedDayStyle-BackColorPicker')"> <input name="SelectedDayStyle-BackColor" TYPE="text" class="smallTField" id="att:body:SelectedDayStyle-BackColor" onBlur="updateUI('SelectedDayStyle-BackColor')" value="" attname="SelectedDayStyle-BackColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="SelectedDayStyle-BorderColorPicker" value="" onChange="updateUI('SelectedDayStyle-BorderColorPicker')"> <input name="SelectedDayStyle-BorderColor" TYPE="text" class="smallTField" id="att:body:SelectedDayStyle-BorderColor" onBlur="updateUI('SelectedDayStyle-BorderColor')" value="" attname="SelectedDayStyle-BorderColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theSelectedDayStyle-Font-Bold" attname="SelectedDayStyle-Font-Bold" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('SelectedDayStyle-Font-Bold');" > 
+        粗体
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theSelectedDayStyle-Font-Italic" attname="SelectedDayStyle-Font-Italic" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('SelectedDayStyle-Font-Italic');" > 
+        斜体
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theSelectedDayStyle-Font-Overline" attname="SelectedDayStyle-Font-Overline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('SelectedDayStyle-Font-Overline');" > 
+        上划线
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theSelectedDayStyle-Font-Strikeout" attname="SelectedDayStyle-Font-Strikeout" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('SelectedDayStyle-Font-Strikeout');" > 
+        删除线
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theSelectedDayStyle-Font-Underline" attname="SelectedDayStyle-Font-Underline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('SelectedDayStyle-Font-Underline');" > 
+        下划线
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theSelectedDayStyle-Wrap" attname="SelectedDayStyle-Wrap" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('SelectedDayStyle-Wrap');" > 
+        换行
+      </td>
+    </tr> 
+  </table>
+</div> 
+<div name="日期样式"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">高度: </td>
+      <td nowrap="nowrap">
+        <input name="theDayStyle-Height" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:DayStyle-Height" attname="DayStyle-Height" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theDayStyle-Width" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:DayStyle-Width" attname="DayStyle-Width" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">水平对齐: </td>
+      <td nowrap="nowrap">
+        <input name="theDayStyle-HorizontalAlign" TYPE="text" class="basicTextField" id="aspnet:calendar:DayStyle-HorizontalAlign" attname="DayStyle-HorizontalAlign" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">垂直对齐: </td>
+      <td nowrap="nowrap">
+        <input name="theDayStyle-VerticalAlign" TYPE="text" class="basicTextField" id="aspnet:calendar:DayStyle-VerticalAlign" attname="DayStyle-VerticalAlign" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框样式: </td>
+      <td nowrap="nowrap">
+        <input name="theDayStyle-BorderStyle" TYPE="text" class="basicTextField" id="aspnet:calendar:DayStyle-BorderStyle" attname="DayStyle-BorderStyle" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theDayStyle-BorderWidth" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:DayStyle-BorderWidth" attname="DayStyle-BorderWidth" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">CSS 类: </td>
+      <td nowrap="nowrap">
+        <input name="theDayStyle-CssClass" TYPE="text" class="basicTextField" id="aspnet:calendar:DayStyle-CssClass" attname="DayStyle-CssClass" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="theDayStyle-Font-Name" TYPE="text" class="basicTextField" id="aspnet:calendar:DayStyle-Font-Name" attname="DayStyle-Font-Name" />
+      </td>
+    </tr>
+   <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="theDayStyle-Font-Names" TYPE="text" class="basicTextField" id="aspnet:calendar:DayStyle-Font-Names" attname="DayStyle-Font-Names" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体大小: </td>
+      <td nowrap="nowrap">
+        <input name="theDayStyle-Font-Size" TYPE="text" class="basicTextField" id="aspnet:calendar:DayStyle-Font-Size" attname="DayStyle-Font-Size" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">前景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="DayStyle-ForeColorPicker" value="" onChange="updateUI('DayStyle-ForeColorPicker')"> <input name="DayStyle-ForeColor" TYPE="text" class="smallTField" id="att:body:DayStyle-BorderColor" onBlur="updateUI('DayStyle-ForeColor')" value="" attname="DayStyle-ForeColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">背景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="DayStyle-BackColorPicker" value="" onChange="updateUI('DayStyle-BackColorPicker')"> <input name="DayStyle-BackColor" TYPE="text" class="smallTField" id="att:body:DayStyle-BackColor" onBlur="updateUI('DayStyle-BackColor')" value="" attname="DayStyle-BackColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="DayStyle-BorderColorPicker" value="" onChange="updateUI('DayStyle-BorderColorPicker')"> <input name="DayStyle-BorderColor" TYPE="text" class="smallTField" id="att:body:DayStyle-BorderColor" onBlur="updateUI('DayStyle-BorderColor')" value="" attname="DayStyle-BorderColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theDayStyle-Font-Bold" attname="DayStyle-Font-Bold" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('DayStyle-Font-Bold');" > 
+        粗体
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theDayStyle-Font-Italic" attname="DayStyle-Font-Italic" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('DayStyle-Font-Italic');" > 
+        斜体
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theDayStyle-Font-Overline" attname="DayStyle-Font-Overline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('DayStyle-Font-Overline');" > 
+        上划线
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theDayStyle-Font-Underline" attname="DayStyle-Font-Underline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('DayStyle-Font-Underline');" > 
+        下划线
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theDayStyle-Font-Strikeout" attname="DayStyle-Font-Strikeout" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('DayStyle-Font-Strikeout');" > 
+        删除线
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theDayStyle-Wrap" attname="DayStyle-Wrap" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('DayStyle-Wrap');" > 
+        换行
+      </td>
+    </tr> 
+  </table>
+</div> 
+
+<div name="日期标题样式"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">高度: </td>
+      <td nowrap="nowrap">
+        <input name="theDayHeaderStyle-Height" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:DayHeaderStyle-Height" attname="DayHeaderStyle-Height" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theDayHeaderStyle-Width" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:DayHeaderStyle-Width" attname="DayHeaderStyle-Width" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">水平对齐: </td>
+      <td nowrap="nowrap">
+        <input name="theDayHeaderStyle-HorizontalAlign" TYPE="text" class="basicTextField" id="aspnet:calendar:DayHeaderStyle-HorizontalAlign" attname="DayHeaderStyle-HorizontalAlign" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">垂直对齐: </td>
+      <td nowrap="nowrap">
+        <input name="theDayHeaderStyle-VerticalAlign" TYPE="text" class="basicTextField" id="aspnet:calendar:DayHeaderStyle-VerticalAlign" attname="DayHeaderStyle-VerticalAlign" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框样式: </td>
+      <td nowrap="nowrap">
+        <input name="theDayHeaderStyle-BorderStyle" TYPE="text" class="basicTextField" id="aspnet:calendar:DayHeaderStyle-BorderStyle" attname="DayHeaderStyle-BorderStyle" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theDayHeaderStyle-BorderWidth" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:DayHeaderStyle-BorderWidth" attname="DayHeaderStyle-BorderWidth" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">CSS 类: </td>
+      <td nowrap="nowrap">
+        <input name="theDayHeaderStyle-CssClass" TYPE="text" class="basicTextField" id="aspnet:calendar:DayHeaderStyle-CssClass" attname="DayHeaderStyle-CssClass" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="theDayHeaderStyle-Font-Name" TYPE="text" class="basicTextField" id="aspnet:calendar:DayHeaderStyle-Font-Name" attname="DayHeaderStyle-Font-Name" />
+      </td>
+    </tr>
+   <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="theDayHeaderStyle-Font-Names" TYPE="text" class="basicTextField" id="aspnet:calendar:DayHeaderStyle-Font-Names" attname="DayHeaderStyle-Font-Names" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体大小: </td>
+      <td nowrap="nowrap">
+        <input name="theDayHeaderStyle-Font-Size" TYPE="text" class="basicTextField" id="aspnet:calendar:DayHeaderStyle-Font-Size" attname="DayHeaderStyle-Font-Size" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">前景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="DayHeaderStyle-ForeColorPicker" value="" onChange="updateUI('DayHeaderStyle-ForeColorPicker')"> <input name="DayHeaderStyle-ForeColor" TYPE="text" class="smallTField" id="att:body:DayHeaderStyle-BorderColor" onBlur="updateUI('DayHeaderStyle-ForeColor')" value="" attname="DayHeaderStyle-ForeColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">背景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="DayHeaderStyle-BackColorPicker" value="" onChange="updateUI('DayHeaderStyle-BackColorPicker')"> <input name="DayHeaderStyle-BackColor" TYPE="text" class="smallTField" id="att:body:DayHeaderStyle-BackColor" onBlur="updateUI('DayHeaderStyle-BackColor')" value="" attname="DayHeaderStyle-BackColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="DayHeaderStyle-BorderColorPicker" value="" onChange="updateUI('DayHeaderStyle-BorderColorPicker')"> <input name="DayHeaderStyle-BorderColor" TYPE="text" class="smallTField" id="att:body:DayHeaderStyle-BorderColor" onBlur="updateUI('DayHeaderStyle-BorderColor')" value="" attname="DayHeaderStyle-BorderColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theDayHeaderStyle-Font-Bold" attname="DayHeaderStyle-Font-Bold" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('DayHeaderStyle-Font-Bold');" > 
+        粗体
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theDayHeaderStyle-Font-Italic" attname="DayHeaderStyle-Font-Italic" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('DayHeaderStyle-Font-Italic');" > 
+        斜体
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theDayHeaderStyle-Font-Overline" attname="DayHeaderStyle-Font-Overline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('DayHeaderStyle-Font-Overline');" > 
+        上划线
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theDayHeaderStyle-Font-Underline" attname="DayHeaderStyle-Font-Underline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('DayHeaderStyle-Font-Underline');" > 
+        下划线
+      </td>
+    </tr> 
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theDayHeaderStyle-Font-Strikeout" attname="DayHeaderStyle-Font-Strikeout" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('DayHeaderStyle-Font-Strikeout');" > 
+        删除线
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theDayHeaderStyle-Wrap" attname="DayHeaderStyle-Wrap" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('DayHeaderStyle-Wrap');" > 
+        换行
+      </td>
+    </tr> 
+  </table>
+</div> 
+
+<div name="其他月份日期样式"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">高度: </td>
+      <td nowrap="nowrap">
+        <input name="theOtherMonthDayStyle-Height" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:OtherMonthDayStyle-Height" attname="OtherMonthDayStyle-Height" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theOtherMonthDayStyle-Width" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:OtherMonthDayStyle-Width" attname="OtherMonthDayStyle-Width" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">水平对齐: </td>
+      <td nowrap="nowrap">
+        <input name="theOtherMonthDayStyle-HorizontalAlign" TYPE="text" class="basicTextField" id="aspnet:calendar:OtherMonthDayStyle-HorizontalAlign" attname="OtherMonthDayStyle-HorizontalAlign" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">垂直对齐: </td>
+      <td nowrap="nowrap">
+        <input name="theOtherMonthDayStyle-VerticalAlign" TYPE="text" class="basicTextField" id="aspnet:calendar:OtherMonthDayStyle-VerticalAlign" attname="OtherMonthDayStyle-VerticalAlign" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框样式: </td>
+      <td nowrap="nowrap">
+        <input name="theOtherMonthDayStyle-BorderStyle" TYPE="text" class="basicTextField" id="aspnet:calendar:OtherMonthDayStyle-BorderStyle" attname="OtherMonthDayStyle-BorderStyle" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theOtherMonthDayStyle-BorderWidth" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:OtherMonthDayStyle-BorderWidth" attname="OtherMonthDayStyle-BorderWidth" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">CSS 类: </td>
+      <td nowrap="nowrap">
+        <input name="theOtherMonthDayStyle-CssClass" TYPE="text" class="basicTextField" id="aspnet:calendar:OtherMonthDayStyle-CssClass" attname="OtherMonthDayStyle-CssClass" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="theOtherMonthDayStyle-Font-Name" TYPE="text" class="basicTextField" id="aspnet:calendar:OtherMonthDayStyle-Font-Name" attname="OtherMonthDayStyle-Font-Name" />
+      </td>
+    </tr>
+   <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="theOtherMonthDayStyle-Font-Names" TYPE="text" class="basicTextField" id="aspnet:calendar:OtherMonthDayStyle-Font-Names" attname="OtherMonthDayStyle-Font-Names" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体大小: </td>
+      <td nowrap="nowrap">
+        <input name="theOtherMonthDayStyle-Font-Size" TYPE="text" class="basicTextField" id="aspnet:calendar:OtherMonthDayStyle-Font-Size" attname="OtherMonthDayStyle-Font-Size" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">前景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="OtherMonthDayStyle-ForeColorPicker" value="" onChange="updateUI('OtherMonthDayStyle-ForeColorPicker')"> <input name="OtherMonthDayStyle-ForeColor" TYPE="text" class="smallTField" id="att:body:OtherMonthDayStyle-BorderColor" onBlur="updateUI('OtherMonthDayStyle-ForeColor')" value="" attname="OtherMonthDayStyle-ForeColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">背景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="OtherMonthDayStyle-BackColorPicker" value="" onChange="updateUI('OtherMonthDayStyle-BackColorPicker')"> <input name="OtherMonthDayStyle-BackColor" TYPE="text" class="smallTField" id="att:body:OtherMonthDayStyle-BackColor" onBlur="updateUI('OtherMonthDayStyle-BackColor')" value="" attname="OtherMonthDayStyle-BackColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="OtherMonthDayStyle-BorderColorPicker" value="" onChange="updateUI('OtherMonthDayStyle-BorderColorPicker')"> <input name="OtherMonthDayStyle-BorderColor" TYPE="text" class="smallTField" id="att:body:OtherMonthDayStyle-BorderColor" onBlur="updateUI('OtherMonthDayStyle-BorderColor')" value="" attname="OtherMonthDayStyle-BorderColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theOtherMonthDayStyle-Font-Bold" attname="OtherMonthDayStyle-Font-Bold" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('OtherMonthDayStyle-Font-Bold');" > 
+        粗体
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theOtherMonthDayStyle-Font-Italic" attname="OtherMonthDayStyle-Font-Italic" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('OtherMonthDayStyle-Font-Italic');" > 
+        斜体
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theOtherMonthDayStyle-Font-Overline" attname="OtherMonthDayStyle-Font-Overline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('OtherMonthDayStyle-Font-Overline');" > 
+        上划线
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theOtherMonthDayStyle-Font-Underline" attname="OtherMonthDayStyle-Font-Underline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('OtherMonthDayStyle-Font-Underline');" > 
+        下划线
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theOtherMonthDayStyle-Font-Strikeout" attname="OtherMonthDayStyle-Font-Strikeout" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('OtherMonthDayStyle-Font-Strikeout');" > 
+        删除线
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theOtherMonthDayStyle-Wrap" attname="OtherMonthDayStyle-Wrap" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('OtherMonthDayStyle-Wrap');" > 
+        换行
+      </td>
+    </tr> 
+  </table>
+</div> 
+<div name="标题样式"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">高度: </td>
+      <td nowrap="nowrap">
+        <input name="theTitleStyle-Height" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:TitleStyle-Height" attname="TitleStyle-Height" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theTitleStyle-Width" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:TitleStyle-Width" attname="TitleStyle-Width" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">水平对齐: </td>
+      <td nowrap="nowrap">
+        <input name="theTitleStyle-HorizontalAlign" TYPE="text" class="basicTextField" id="aspnet:calendar:TitleStyle-HorizontalAlign" attname="TitleStyle-HorizontalAlign" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">垂直对齐: </td>
+      <td nowrap="nowrap">
+        <input name="theTitleStyle-VerticalAlign" TYPE="text" class="basicTextField" id="aspnet:calendar:TitleStyle-VerticalAlign" attname="TitleStyle-VerticalAlign" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框样式: </td>
+      <td nowrap="nowrap">
+        <input name="theTitleStyle-BorderStyle" TYPE="text" class="basicTextField" id="aspnet:calendar:TitleStyle-BorderStyle" attname="TitleStyle-BorderStyle" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theTitleStyle-BorderWidth" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:TitleStyle-BorderWidth" attname="TitleStyle-BorderWidth" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">CSS 类: </td>
+      <td nowrap="nowrap">
+        <input name="theTitleStyle-CssClass" TYPE="text" class="basicTextField" id="aspnet:calendar:TitleStyle-CssClass" attname="TitleStyle-CssClass" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="theTitleStyle-Font-Name" TYPE="text" class="basicTextField" id="aspnet:calendar:TitleStyle-Font-Name" attname="TitleStyle-Font-Name" />
+      </td>
+    </tr>
+   <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="theTitleStyle-Font-Names" TYPE="text" class="basicTextField" id="aspnet:calendar:TitleStyle-Font-Names" attname="TitleStyle-Font-Names" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体大小: </td>
+      <td nowrap="nowrap">
+        <input name="theTitleStyle-Font-Size" TYPE="text" class="basicTextField" id="aspnet:calendar:TitleStyle-Font-Size" attname="TitleStyle-Font-Size" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">前景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="TitleStyle-ForeColorPicker" value="" onChange="updateUI('TitleStyle-ForeColorPicker')"> <input name="TitleStyle-ForeColor" TYPE="text" class="smallTField" id="att:body:TitleStyle-BorderColor" onBlur="updateUI('TitleStyle-ForeColor')" value="" attname="TitleStyle-ForeColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">背景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="TitleStyle-BackColorPicker" value="" onChange="updateUI('TitleStyle-BackColorPicker')"> <input name="TitleStyle-BackColor" TYPE="text" class="smallTField" id="att:body:TitleStyle-BackColor" onBlur="updateUI('TitleStyle-BackColor')" value="" attname="TitleStyle-BackColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="TitleStyle-BorderColorPicker" value="" onChange="updateUI('TitleStyle-BorderColorPicker')"> <input name="TitleStyle-BorderColor" TYPE="text" class="smallTField" id="att:body:TitleStyle-BorderColor" onBlur="updateUI('TitleStyle-BorderColor')" value="" attname="TitleStyle-BorderColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theTitleStyle-Font-Bold" attname="TitleStyle-Font-Bold" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('TitleStyle-Font-Bold');" > 
+        粗体
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theTitleStyle-Font-Italic" attname="TitleStyle-Font-Italic" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('TitleStyle-Font-Italic');" > 
+        斜体
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theTitleStyle-Font-Overline" attname="TitleStyle-Font-Overline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('TitleStyle-Font-Overline');" > 
+        上划线
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theTitleStyle-Font-Underline" attname="TitleStyle-Font-Underline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('TitleStyle-Font-Underline');" > 
+        下划线
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theTitleStyle-Font-Strikeout" attname="TitleStyle-Font-Strikeout" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('TitleStyle-Font-Strikeout');" > 
+        删除线
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theTitleStyle-Wrap" attname="TitleStyle-Wrap" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('TitleStyle-Wrap');" > 
+        换行
+      </td>
+    </tr> 
+  </table>
+</div> 
+<div name="今天日期格式"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">高度: </td>
+      <td nowrap="nowrap">
+        <input name="theTodayDayStyle-Height" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:TodayDayStyle-Height" attname="TodayDayStyle-Height" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theTodayDayStyle-Width" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:TodayDayStyle-Width" attname="TodayDayStyle-Width" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">水平对齐: </td>
+      <td nowrap="nowrap">
+        <input name="theTodayDayStyle-HorizontalAlign" TYPE="text" class="basicTextField" id="aspnet:calendar:TodayDayStyle-HorizontalAlign" attname="TodayDayStyle-HorizontalAlign" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">垂直对齐: </td>
+      <td nowrap="nowrap">
+        <input name="theTodayDayStyle-VerticalAlign" TYPE="text" class="basicTextField" id="aspnet:calendar:TodayDayStyle-VerticalAlign" attname="TodayDayStyle-VerticalAlign" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框样式: </td>
+      <td nowrap="nowrap">
+        <input name="theTodayDayStyle-BorderStyle" TYPE="text" class="basicTextField" id="aspnet:calendar:TodayDayStyle-BorderStyle" attname="TodayDayStyle-BorderStyle" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theTodayDayStyle-BorderWidth" TYPE="text" class="smallNumOrChar" id="aspnet:calendar:TodayDayStyle-BorderWidth" attname="TodayDayStyle-BorderWidth" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">CSS 类: </td>
+      <td nowrap="nowrap">
+        <input name="theTodayDayStyle-CssClass" TYPE="text" class="basicTextField" id="aspnet:calendar:TodayDayStyle-CssClass" attname="TodayDayStyle-CssClass" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="theTodayDayStyle-Font-Name" TYPE="text" class="basicTextField" id="aspnet:calendar:TodayDayStyle-Font-Name" attname="TodayDayStyle-Font-Name" />
+      </td>
+    </tr>
+   <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="theTodayDayStyle-Font-Names" TYPE="text" class="basicTextField" id="aspnet:calendar:TodayDayStyle-Font-Names" attname="TodayDayStyle-Font-Names" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体大小: </td>
+      <td nowrap="nowrap">
+        <input name="theTodayDayStyle-Font-Size" TYPE="text" class="basicTextField" id="aspnet:calendar:TodayDayStyle-Font-Size" attname="TodayDayStyle-Font-Size" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">前景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="TodayDayStyle-ForeColorPicker" value="" onChange="updateUI('TodayDayStyle-ForeColorPicker')"> <input name="TodayDayStyle-ForeColor" TYPE="text" class="smallTField" id="att:body:TodayDayStyle-BorderColor" onBlur="updateUI('TodayDayStyle-ForeColor')" value="" attname="TodayDayStyle-ForeColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">背景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="TodayDayStyle-BackColorPicker" value="" onChange="updateUI('TodayDayStyle-BackColorPicker')"> <input name="TodayDayStyle-BackColor" TYPE="text" class="smallTField" id="att:body:TodayDayStyle-BackColor" onBlur="updateUI('TodayDayStyle-BackColor')" value="" attname="TodayDayStyle-BackColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="TodayDayStyle-BorderColorPicker" value="" onChange="updateUI('TodayDayStyle-BorderColorPicker')"> <input name="TodayDayStyle-BorderColor" TYPE="text" class="smallTField" id="att:body:TodayDayStyle-BorderColor" onBlur="updateUI('TodayDayStyle-BorderColor')" value="" attname="TodayDayStyle-BorderColor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theTodayDayStyle-Font-Bold" attname="TodayDayStyle-Font-Bold" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('TodayDayStyle-Font-Bold');" > 
+        粗体
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theTodayDayStyle-Font-Italic" attname="TodayDayStyle-Font-Italic" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('TodayDayStyle-Font-Italic');" > 
+        斜体
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theTodayDayStyle-Font-Overline" attname="TodayDayStyle-Font-Overline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('TodayDayStyle-Font-Overline');" > 
+        上划线
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theTodayDayStyle-Font-Underline" attname="TodayDayStyle-Font-Underline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('TodayDayStyle-Font-Underline');" > 
+        下划线
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theTodayDayStyle-Font-Strikeout" attname="TodayDayStyle-Font-Strikeout" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('TodayDayStyle-Font-Strikeout');" > 
+        删除线
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theTodayDayStyle-Wrap" attname="TodayDayStyle-Wrap" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('TodayDayStyle-Wrap');" > 
+        换行
+      </td>
+    </tr> 
+  </table>
+</div> 
+
+<div name="事件"> 
+  <div name="OnInit">
+    <textarea name="theOnInit" attname="OnInit" id="aspnet:calendar:OnInit" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnDataBinding">
+    <textarea name="theOnDataBinding" attname="OnDataBinding" id="aspnet:calendar:OnDataBinding" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnDayRender">
+    <textarea name="theOnDayRender" attname="OnDayRender" id="aspnet:calendar:OnDayRender" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnDisposed">
+    <textarea name="theOnDisposed" attname="OnDisposed" id="aspnet:calendar:OnDisposed" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnLoad">
+    <textarea name="theOnLoad" attname="OnLoad" id="aspnet:calendar:OnLoad" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnPreRender">
+    <textarea name="theOnPreRender" attname="OnPreRender" id="aspnet:calendar:OnPreRender" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnSelectionChanged">
+    <textarea name="theOnSelectionChanged" attname="OnSelectionChanged" id="aspnet:calendar:OnSelectionChanged" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnUnload">
+    <textarea name="theOnUnload" attname="OnUnload" id="aspnet:calendar:OnUnload" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnVisibleMonthChanged">
+    <textarea name="theOnVisibleMonthChanged" attname="OnVisibleMonthChanged" id="aspnet:calendar:OnVisibleMonthChanged" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+</div>  
+</body>
+</html>

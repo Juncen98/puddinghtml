@@ -1,0 +1,77 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>自定义样式</TITLE>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+<!--
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MENU_None = "无(_N)";
+
+//--------------- END LOCALIZEABLE   ---------------
+
+function receiveArguments()
+{
+	var styleName = arguments[0];
+	if (styleName == "(None)")
+		dw.cssRuleTracker.setSelectedTagClass('');
+	else
+		dw.cssRuleTracker.setSelectedTagClass(styleName);
+}
+
+function canAcceptCommand()
+{
+	return (dw.cssRuleTracker.canSetSelectedTagClass());
+}
+
+function isCommandChecked()
+{
+  var bChecked = false;
+	var cssStyle = arguments[0];
+	
+	if (dw.getDocumentDOM() == null) 
+	  return false;
+
+	if (cssStyle == "(None)")
+	{
+		return dw.cssRuleTracker.getSelectedTagClass() == '';
+	}
+	else
+	{
+		return dw.cssRuleTracker.getSelectedTagClass() == cssStyle;
+	}
+		return bChecked;
+}
+
+// getDynamicContent returns the contents of a dynamically generated menu.
+// returns an array of strings to be placed in the menu, with a unique
+// identifier for each item separated from the menu string by a semicolon.
+//
+// return null from this routine to indicate that you are not adding any
+// items to the menu
+function getDynamicContent(itemID)
+{
+	var cssStyles = null;
+	cssStyles = new Array();
+	cssStyles[0] = new String(MENU_None + ";id='(None)'"); // add the base "None" style
+	var dwCSS = dw.cssStylePalette.getStyles();
+	var i;
+
+	if (dwCSS.length > 0)
+	{
+		for (i=0; i<dwCSS.length; i++)
+		{
+			cssStyles[i+1] = new String(dwCSS[i]);
+			cssStyles[i+1] += ";id='"+escQuotes(dwCSS[i])+"'"; // each item needs an ID
+		}
+	}
+	return cssStyles;
+}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

@@ -1,0 +1,62 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<HTML>
+<HEAD>
+<!--  Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<TITLE>MySQL 连接</TITLE>
+
+<SCRIPT SRC="../../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/UltraDev/Scripts/connectionCmn.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/UltraDev/Scripts/sbManager.js"></SCRIPT>
+<SCRIPT SRC="../Connection_php_mysql.js"></SCRIPT>
+
+<link href="../../../fields.css" rel="stylesheet" type="text/css"></HEAD>
+
+<BODY onLoad="initializeUI()">
+
+<form NAME="theForm" ACTION="">
+  <table border=0>
+    <tr>
+      <td align="right" valign="baseline" nowrap>连接名称: </td>
+      <td align="left" colspan="2">
+        <input name="ConnectionName" type="text" class="medTField">
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap>MySQL 服务器:</td>
+      <td align="left" colspan="2">
+        <input name="HostName" type="text" class="medTField">
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap>用户名:</td>
+      <td align="left" colspan="2">
+        <input name="UserName" type="text" class="medTField">
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+      <td>
+        <div align="right">密码:</div>
+      </td>
+      <td align="left" colspan="2">
+        <input type="password" style="width:150px" name="Password">
+      </td>
+    </tr>
+	 <tr>
+      <td align="right" valign="baseline" nowrap>数据库: </td>
+      <td align="left" valign="baseline">
+        <input name="DatabaseName" type="text" class="medTField">
+      </td>
+      <td align="left">
+        <input type="button" name="DB_button" value="选取..." onClick="selectDatabase()">
+      </td>
+    </tr>
+  </table>
+</form>
+
+</BODY>
+</HTML>

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<head>
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<title><MMString:LoadString id="insertbar/script" /> </title>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<script language="javascript" src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script language="javascript" src="../../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<script language="javascript" src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+
+
+<!-- End removal area. -->
+
+<script language="javascript" src="Script.js"></script>
+
+<body onLoad="initUI()">
+<form name="theform">
+  <table><tr> <td align="right" nowrap>语言:</td><td colspan="4"> <select name="Language" class="oneWordOptionList">
+          <option value="JavaScript" selected>JavaScript</option>
+		  <option value="JavaScript1.1">JavaScript1.1</option>
+		  <option value="JavaScript1.2">JavaScript1.2</option>
+		  <option value="JavaScript1.3">JavaScript1.3</option>
+		  <option value="JavaScript1.4">JavaScript1.4</option>
+		  <option value="JavaScript1.5">JavaScript1.5</option>
+		  <option value="VBScript">VBScript</option>
+		  </select> </td></tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap>源:</td>
+      <td valign="baseline" colspan="4"><input type="text" name="externalSrc" class="largeTField" onBlur="if (this.value !=''){TEXT_SCRIPT.value = '';TEXT_SCRIPT.setAttribute('disabled','true');}else{TEXT_SCRIPT.removeAttribute('disabled');}">
+      &nbsp;
+      <input name="imageField" type="image" src="../../Shared/MM/Images/folder.gif" onClick="TEXT_SRC.value=dw.browseForFileURL();if(TEXT_SRC.value != ''){TEXT_SCRIPT.value = '';TEXT_SCRIPT.setAttribute('disabled','true');}else{TEXT_SCRIPT.removeAttribute('disabled');}"></td>
+    </tr>
+    <tr> <td align="right" height="5"></td><td colspan="4" rowspan="2"> <textarea name="scriptContents" rows="8" class="xlargeTField" value=""></textarea> </td></tr><tr> <td align="right" valign="top" nowrap>内容:</td></tr><tr><td align="right" height="5"></td><td colspan="4" rowspan="2"><textarea name="noscript" rows=3" class="xlargeTField"></textarea></td></tr><tr><td align="right" valign="top" nowrap>无脚本:</td></tr></table>
+</form>
+
+</body>
+</html>

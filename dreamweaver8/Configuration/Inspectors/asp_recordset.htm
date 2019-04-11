@@ -1,0 +1,189 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//pi">
+<!-- tag:*LOCKED*, attrName:type, attrValue:DynamicSource, priority:1, selection:within,hline,vline, serverModel:ASP-->
+<html>
+<head>
+<!-- Copyright 2000-2002 Macromedia, Inc. All rights reserved. -->
+<title>记录集</title>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/enableControl.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/helper.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<!-- non-existent file
+<SCRIPT src="../ServerBehaviors/ASP_VBS/ASPRecordsetMasks.js"></SCRIPT>
+-->
+<SCRIPT src="../ServerBehaviors/Shared/CheckDupeObjName.js"></SCRIPT>
+<SCRIPT src="../ServerBehaviors/Shared/Recordset.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssClasses.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/sbManager.js"></SCRIPT>
+<SCRIPT SRC="_pi_common.js"></SCRIPT>
+<SCRIPT src="recordset.js"></SCRIPT>
+</head>
+
+<body onLoad="initializeUI()">
+<span id="image" style="position:absolute; width:23px; height:17px; z-index:16; left: 0px; top: 2px"><img src="rs_pi.gif" width="36" height="36"></span>
+<div id="RecordsetNameLayer" style="position:absolute; width:80px; height:15px; z-index:1; left: 40px; top: 5px">
+	<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		  <td></td>
+		  <td valign="baseline" align="left" width="85">记录集</td>
+		</tr>
+		<tr>
+		  <td align="left" valign="baseline" nowrap colspan=2>
+
+        <form>
+          <input type="text" name="RecordsetName" style="width:65px" onBlur="updateRSRec('rsName')">
+        </form>
+		  </td>
+		</tr>
+	</table>
+</div>
+
+<!--
+<div id="SQLEdit" style="position:absolute; width:255px; height:38px; z-index:26; left: 203px; top:-3px">
+	<textarea name="SQL" style="left:0px;top:-7px; width:250px; height:34px" onBlur="validateSQL()"></textarea>
+</div>
+-->
+<!--<div id="LockTypelabel" style="position:absolute; width:55px; height:18px; z-index:35; left: 320px; top: 48px"> Lock Type
+  <div id="LockTypeSelection" style="position:absolute; width:82px; height:22px; z-index:36; left: 56px; top:-1px">
+    <select type="text" name="LockType" style="width:80px" onChange="UpdateRecordset()">
+		<option value=1>Read Only</option>
+		<option value=2>Pessimistic</option>
+		<option value=3>Optimistic</option>
+		<option value=4>BatchOptimistic</option>
+	</select>
+  </div>
+</div>-->
+<div id="Layer1" style="position:absolute; left:125px; top:2px; width:378px; height:55px; z-index:32">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+      <td align="right" nowrap>连接&nbsp;</td>
+      <td nowrap>
+        <input type="text" name="ConnectionList" style="width:245px;" DISABLED="true" onBlur="updateRSRec()"></td>
+      <td nowrap> &nbsp;
+        <input type="button" name="ConnectionButton"  height:20px;" value="编辑..." onClick="editServerBehavior()"></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>SQL&nbsp;</td>
+      <td nowrap><input type="text" name="SQL" style="width:245px" onBlur="updateRSRec('sql')"></td>
+      <td nowrap>&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<div id="Layer2" style="position:absolute; left:125px; top:50px; height:40px; z-index:33">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+      <td width="26%" align="right" nowrap>光标类型&nbsp;</td>
+      <td width="26%">
+        <select type="text" name="CursorType" style="width:90px" onChange="updateRSRec()">
+          <option value=0>仅向前</option>
+          <option value=1>键集</option>
+          <option value=2>动态</option>
+          <option value=3>静态</option>
+        </select></td>
+      <td width="18%" align="right" nowrap>&nbsp;锁定类型&nbsp;</td>
+      <td width="30%">
+        <select type="text" name="LockType" style="width:90px" onChange="updateRSRec()">
+          <option value=1>只读</option>
+          <option value=2>保守式</option>
+          <option value=3>开放式</option>
+          <option value=4>开放式批处理</option>
+        </select></td>
+    </tr>
+    <tr>
+      <td align="right">光标位置&nbsp;</td>
+      <td><select type="text" name="CursorLocation" style="width:90px" onChange="updateRSRec()">
+          <option value=3>客户端</option>
+          <option value=2>服务器</option>
+        </select></td>
+      <td align="right">&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</div>
+</body>
+
+
+
+<!--
+<div id="RecordsetNameLayer" style="position:absolute; width:170px; height:15px; z-index:1; left: 2px; top: -3px">
+	<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		  <td valign="baseline" align="right" width="50">Recordset</td>
+		  <td align="right" valign="baseline" nowrap>
+			<input type="text" name="RecordsetName" style="width:110px" onBlur="CheckForDuplicates()">
+		  </td>
+		</tr>
+	</table>
+</div>
+
+<div id="ConnectionNameLayer" style="position:absolute; width:170px; height:15px; z-index:4; left: 2px; top: 14px">
+	<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td valign="baseline" align="right" width="50">Connection</td>
+			<td align="right" valign="baseline" nowrap>
+				<select name="ConnectionList" style="width:90px;" onChange="UpdateRecordset()">
+				</select></td>
+			<td valign="baseline" align="top">
+				<input type="button" name="ConnectionButton" style="width:15px; height:15px;" value="..." onClick="MMDB.showConnectionMgrDialog()">
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="SQLLayer" style="position:absolute; width:20px; height:18px; z-index:5; left:180px; top:3px">
+	<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td valign="baseline" align="right" width="20">SQL</td>
+		</tr>
+		<tr>
+			<td valign="baseline" align="top">
+				<input type="button" name="SQLButton" style="width:15px; height:15px;" value="..." onClick="dw.popupServerBehavior()">
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+<div id="SQLEdit" style="position:absolute; width:255px; height:38px; z-index:26; left: 203px; top:-3px">
+	<textarea name="SQL" style="left:0px;top:-7px; width:250px; height:34px" onBlur="validateSQL()"></textarea>
+</div>
+
+
+<div id="CursorTypelabel" style="position:absolute; width:60px; height:18px; z-index:27; left: 3px; top: 48px"> Cursor Type
+  <div id="CursorTypeSelection" style="position:absolute; width:82px; height:22px; z-index:28; left: 56px; top:-1px">
+    <select type="text" name="CursorType" style="width:80px" onChange="UpdateRecordset()">
+		<option value=0>Forward Only</option>
+		<option value=1>Keyset</option>
+		<option value=2>Dynamic</option>
+		<option value=3>Static</option>
+	</select>
+  </div>
+</div>
+
+<div id="CursorLocationlabel" style="position:absolute; width:77px; height:18px; z-index:31; left:154px; top: 48px"> Cursor Location
+  <div id="CursorLocationSelection" style="position:absolute; width:82px; height:22px; z-index:32; left:68px; top:-1px">
+    <select type="text" name="CursorLocation" style="width:80px" onChange="UpdateRecordset()">
+		<option value=3>Client</option>
+		<option value=2>Server</option>
+	</select>
+  </div>
+</div>
+
+
+<div id="LockTypelabel" style="position:absolute; width:55px; height:18px; z-index:35; left: 320px; top: 48px"> Lock Type
+  <div id="LockTypeSelection" style="position:absolute; width:82px; height:22px; z-index:36; left: 56px; top:-1px">
+    <select type="text" name="LockType" style="width:80px" onChange="UpdateRecordset()">
+		<option value=1>Read Only</option>
+		<option value=2>Pessimistic</option>
+		<option value=3>Optimistic</option>
+		<option value=4>BatchOptimistic</option>
+	</select>
+  </div>
+</div>
+--->
+
+</html>

@@ -1,0 +1,13 @@
+<participant name="transNotEmptyRS_end">
+  <translator>
+    <searchPatterns>
+      <searchPattern><![CDATA[/\} \/\/ Show if recordset not empty (?=\r\n|\r|\n|\?>)/i]]></searchPattern>
+      <searchPattern requiredLocation="leading"><![CDATA[/if \(\$totalRows_([^\r\n]*?) >\s*0\) \{ \/\/ Show if recordset not empty (?=\r\n|\r|\n|\?>)/i]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="directive" translationType="tabbed region end">
+        <closeTag>MM_HIDDENREGION</closeTag>
+      </translation>
+    </translations>
+  </translator>
+</participant>

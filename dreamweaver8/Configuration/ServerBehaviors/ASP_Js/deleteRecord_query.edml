@@ -1,0 +1,37 @@
+<participant>
+     <quickSearch><![CDATA[MM_delete]]></quickSearch>
+     <insertText location="aboveHTML+30">
+<![CDATA[
+<%
+// *** Delete Record: construct a sql delete statement and execute it
+
+if (String(Request("MM_delete")) != "undefined" &&
+    String(Request("MM_recordId")) != "undefined") {
+
+  // create the sql delete statement
+  MM_editQuery = "delete from " + MM_editTable + " where " + MM_editColumn + " = " + MM_recordId;
+
+  if (!MM_abortEdit) {
+    // execute the delete
+    var MM_editCmd = Server.CreateObject('ADODB.Command');
+    MM_editCmd.ActiveConnection = MM_editConnection;
+    MM_editCmd.CommandText = MM_editQuery;
+    MM_editCmd.Execute();
+    MM_editCmd.ActiveConnection.Close();
+
+    if (MM_editRedirectUrl) {
+      Response.Redirect(MM_editRedirectUrl);
+    }
+  }
+
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern><![CDATA[/Request\("MM_delete"\)/]]></searchPattern>
+       <searchPattern><![CDATA[/if\s*\(!MM_abortEdit\)\s*\{/]]></searchPattern>
+       <searchPattern><![CDATA[/MM_editQuery\s*=\s*"delete from "/]]></searchPattern>
+     </searchPatterns>
+</participant>
+

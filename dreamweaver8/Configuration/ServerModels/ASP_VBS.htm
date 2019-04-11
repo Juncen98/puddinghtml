@@ -1,0 +1,620 @@
+<HTML>
+<HEAD>
+<!-- Copyright 2001, 2002, 2003, 2004 Macromedia, Inc. All rights reserved. -->
+
+<SCRIPT LANGUAGE="javascript">
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   getServerModelDisplayName
+//
+// DESCRIPTION:
+//   Returns the name that should be displayed in the UI for
+//   this Server Model
+//
+//   This value can be accessed from JavaScript by calling the
+//   function:
+//     dom.serverModel.getDisplayName()
+//
+// ARGUMENTS:
+//   None
+//
+// RETURNS:
+//   string
+//--------------------------------------------------------------------
+
+function getServerModelDisplayName()
+{
+  return "ASP VBScript";
+}
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   getServerModelFolderName
+//
+// DESCRIPTION:
+//   Returns the folder name that will be used for this Server Model
+//   within the Configuration folder
+//
+//   This value can be accessed from JavaScript by calling the
+//   function:
+//     dom.serverModel.getFolderName()
+//
+// ARGUMENTS:
+//   None
+//
+// RETURNS:
+//   string
+//--------------------------------------------------------------------
+
+function getServerModelFolderName()
+{
+  return "ASP_VBS";
+}
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   canRecognizeDocument
+//
+// DESCRIPTION:
+//   This function is called when a user attempts to open a document
+//   whose file extension matches two or more Document Types.
+//
+// ARGUMENTS:
+//   dom - The Document DOM of the document to be opened.
+//
+// RETURNS:
+//   integer +ve integer if document is identified.
+//           -ve integer if not identified.
+//            0  if this is the default language. This is so other languages can
+//               override us with a value of 1, but we do not fall thru to HTML
+//               if no other language is recognized.
+//--------------------------------------------------------------------
+
+function canRecognizeDocument(dom)
+{
+  var retVal = -1;
+  var vblangRE = /@\s*language\s*=\s*(\"|\')?vbscript(\"|\')?/i;
+
+  // Search for the string language="vbscript"
+  var oHTML = dom.documentElement.outerHTML;
+  if (oHTML.search(vblangRE) > -1)
+    retVal = 1;
+  else if (site.getServerDisplayNameForSite() == getServerModelDisplayName() ||
+           site.getServerDisplayNameForSite() == "")
+  {
+    // Default to current server model
+    retVal = 0;
+  }
+
+  return retVal;
+}
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   getServerInfo
+//
+// DESCRIPTION:
+//   Returns a JavaScript Object, which can be accessed from within
+//   the JavaScript code.
+//
+//   The entire object can be retreived through the JavaScript function:
+//     dom.serverModel.getServerInfo();
+//
+//   The properties: serverName, serverLanguage, and serverVersion
+//   are special properties, which can also be accessed with the
+//   JavaScript functions:
+//     dom.serverModel.getServerName()
+//     dom.serverModel.getServerLanguage()
+//     dom.serverModel.getServerVersion();
+//
+// ARGUMENTS:
+//   None
+//
+// RETURNS:
+//   Object
+//--------------------------------------------------------------------
+
+function getServerInfo()
+{
+  var obj = new Object();
+
+  obj.serverName = "ASP";
+  obj.serverLanguage = "VBScript";
+  obj.serverVersion = "2.0";
+
+  obj.recordsetDisplayName = MM.LABEL_TitleRecordset;
+  obj.recordsetBaseName = MM.LABEL_RecordsetBaseName;
+  obj.defaultRadioButtonSB = MM.LABEL_DynamicRadioSBFileTitle;
+  obj.defaultCheckboxSB = MM.LABEL_DynCheckboxSBFileTitle;
+  obj.defaultListboxSB = MM.LABEL_DynamicListMenuSBFileTitle;
+
+  return obj;
+}
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   getServerModelExtDataNameUD4
+//
+// DESCRIPTION:
+//   Returns the Server Model Implementation name that should be used
+//   when accessing UD4 extension data files that live in the folder:
+//     Configurations/ExtensionData
+//
+// ARGUMENTS:
+//   None
+//
+// RETURNS:
+//   string
+//--------------------------------------------------------------------
+
+function getServerModelExtDataNameUD4()
+{
+  return "ASP/VBScript";
+}
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   getFileExtensions
+//
+// DESCRIPTION:
+//   Returns a JavaScript Array of the file extensions which will
+//   be listed as potential default file extensions on the Application
+//   Server configuration page within the Site definition dialog.
+//
+// ARGUMENTS:
+//   None
+//
+// RETURNS:
+//   Array
+//--------------------------------------------------------------------
+
+function getFileExtensions()
+{
+  FileExtensionArray = new Array();
+
+  FileExtensionArray[0] = ".asp";
+  FileExtensionArray[1] = ".htm";
+  FileExtensionArray[2] = ".html";
+  FileExtensionArray[3] = ".inc";
+  FileExtensionArray[4] = ".js";
+
+  return FileExtensionArray;
+}
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   getVersionArray
+//
+// DESCRIPTION:
+//   Returns a JavaScript Array of JavaScript Objects.  Each object
+//   contains a Name and a Version propery.
+//
+//   The version values can be accessed from JavaScript by calling the
+//   function:
+//     dom.serverModel.getServerVersion(name)
+//
+// ARGUMENTS:
+//   None
+//
+// RETURNS:
+//   Array
+//--------------------------------------------------------------------
+
+function getVersionArray()
+{
+  VersionArray = new Array();
+
+  VersionObject = new Object();
+  VersionObject["Name"]="ASP";
+  VersionObject["Version"]="2.0";
+  VersionArray[0]=VersionObject;
+
+  VersionObject = new Object();
+  VersionObject["Name"]="ADODB";
+  VersionObject["Version"]="2.1";
+  VersionArray[1]=VersionObject;
+
+  return VersionArray;
+}
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   getServerSupportsCharset
+//
+// DESCRIPTION:
+//   Returns true if the current server supports the given charset
+//
+//   The CharSet support be accessed from JavaScript by calling the
+//   function:
+//     dom.serverModel.getServerSupportsCharset(metaCharSetString)
+//
+// ARGUMENTS:
+//   metaCharSetString - string - the value of the documents "charset="
+//
+// RETURNS:
+//   Array
+//--------------------------------------------------------------------
+
+function getServerSupportsCharSet( metaCharSetString )
+{
+  if ( metaCharSetString.indexOf( "utf-8" ) != -1  )
+  {
+  	return true;
+  }
+  else
+  {
+    return true;
+  }
+}
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   updatePageDirective
+//
+// DESCRIPTION:
+//   This function is called when a user changes their document encoding
+//	 or the document type of their document.
+//
+// ARGUMENTS:
+//   dom - The Document DOM of the document to be opened.
+//
+// RETURNS:
+//   none
+//--------------------------------------------------------------------
+
+function updatePageDirective(dom)
+{
+  if (dom)
+  {
+    encoding = dom.getCharSet();
+    if (encoding)
+    {
+      var codepage = charsetToCodePage(encoding);
+
+      var docStr = dom.documentElement.outerHTML;
+      var endSearch = -1;
+      var pageDirectiveStart = -1;
+      var startSearch = docStr.indexOf('<%');
+      if (startSearch > -1)
+        endSearch = docStr.indexOf('%>');
+        
+      if (startSearch > -1 && endSearch > 0){
+        pageDirectiveStart = docStr.substring(startSearch,endSearch).search( /@LANGUAGE=/i );
+      }
+
+      if( pageDirectiveStart > -1 )
+      {
+        var pageDirectiveEnd = 0;
+        pageDirectiveEnd = docStr.indexOf("%>", pageDirectiveStart) + 2;
+
+        if(pageDirectiveEnd > 1 && pageDirectiveEnd > pageDirectiveStart)
+        {
+          var oldLangStr = docStr.substring(pageDirectiveStart, pageDirectiveEnd);
+          var newLangStr = oldLangStr;
+          newLangStr = newLangStr.replace(/(codepage=)"[\w-]*"/i, "$1\"" + codepage + "\"");  // double quotes
+          newLangStr = newLangStr.replace(/(codepage=)'[\w-]*'/i, "$1'" + codepage + "'");    // single quotes
+          if (newLangStr != oldLangStr)
+          {
+            var newDocStr = docStr.substring(0, pageDirectiveStart) +
+                            newLangStr +
+                            docStr.substring(pageDirectiveEnd);
+            dom.documentElement.outerHTML = newDocStr;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   charsetToCodePage
+//
+// DESCRIPTION:
+//   This function returns the correct codepage value for the given character set
+//
+// ARGUMENTS:
+//   charset - string - the charset to determine the code page for
+//
+// RETURNS:
+//   string
+//--------------------------------------------------------------------
+
+function charsetToCodePage(charset)
+{
+  charset = charset.toLowerCase();
+
+  var codepage = "CP_ACP";  // default value
+
+  if (charset.indexOf( "iso-8859-1" ) != -1)
+  {
+    codepage = "1252";
+  }
+  else if (charset.indexOf( "utf-8" ) != -1)
+  {
+    codepage = "65001";
+  }
+  else if (charset.indexOf( "shift_jis" ) != -1)
+  {
+    codepage = "932";
+  }
+  else if (charset.indexOf( "iso-2022-jp" ) != -1)
+  {
+    codepage = "CODE_JPN_JIS";
+  }
+  else if (charset.indexOf( "euc-jp" ) != -1)
+  {
+    codepage = "CODE_JPN_EUC";
+  }
+  else if (charset.indexOf( "big5" ) != -1)
+  {
+    codepage = "950";
+  }
+  else if (charset.indexOf( "gb2312" ) != -1)
+  {
+    codepage = "936";
+  }
+  else if (charset.indexOf( "euc-kr" ) != -1)
+  {
+    codepage = "949";
+  }
+  else if (charset.indexOf( "din_66003-kr" ) != -1)
+  {
+    codepage = "20106";
+  }
+  else if (charset.indexOf( "ns_4551-1-kr" ) != -1)
+  {
+    codepage = "20108";
+  }
+  else if (charset.indexOf( "sen_850200_b" ) != -1)
+  {
+    codepage = "20107";
+  }
+  else if (charset.indexOf( "_autodetect" ) != -1)
+  {
+    codepage = "50932";
+  }
+  else if (charset.indexOf( "_autodetect_kr" ) != -1)
+  {
+    codepage = "50949";
+  }
+  else if (charset.indexOf( "csISO2022jp" ) != -1)
+  {
+    codepage = "50221";
+  }
+  else if (charset.indexOf( "hz-gb-2312" ) != -1)
+  {
+    codepage = "52936";
+  }
+  else if (charset.indexOf( "ibm852" ) != -1)
+  {
+    codepage = "852";
+  }
+  else if (charset.indexOf( "ibm866" ) != -1)
+  {
+    codepage = "866";
+  }
+  else if (charset.indexOf( "irv" ) != -1)
+  {
+    codepage = "20105";
+  }
+  else if (charset.indexOf( "iso-2022-kr" ) != -1)
+  {
+    codepage = "949";
+  }
+  else if (charset.indexOf( "iso-8859-2" ) != -1)
+  {
+    codepage = "28592";
+  }
+  else if (charset.indexOf( "iso-8859-3" ) != -1)
+  {
+    codepage = "28593";
+  }
+  else if (charset.indexOf( "iso-8859-4" ) != -1)
+  {
+    codepage = "28594";
+  }
+  else if (charset.indexOf( "iso-8859-5" ) != -1)
+  {
+    codepage = "28595";
+  }
+  else if (charset.indexOf( "iso-8859-6" ) != -1)
+  {
+    codepage = "28596";
+  }
+  else if (charset.indexOf( "iso-8859-7" ) != -1)
+  {
+    codepage = "28597";
+  }
+  else if (charset.indexOf( "iso-8859-8" ) != -1)
+  {
+    codepage = "28598";
+  }
+  else if (charset.indexOf( "iso-8859-9" ) != -1)
+  {
+    codepage = "1254";
+  }
+  else if (charset.indexOf( "koi8-r" ) != -1)
+  {
+    codepage = "20866";
+  }
+  else if (charset.indexOf( "ks_c_5601" ) != -1)
+  {
+    codepage = "949";
+  }
+  else if (charset.indexOf( "unicode" ) != -1)
+  {
+    codepage = "1200";
+  }
+  else if (charset.indexOf( "unicodeFEFF" ) != -1)
+  {
+    codepage = "1201";
+  }
+  else if (charset.indexOf( "utf-7" ) != -1)
+  {
+    codepage = "65000";
+  }
+  else if (charset.indexOf( "windows-1250" ) != -1)
+  {
+    codepage = "1250";
+  }
+  else if (charset.indexOf( "windows-1251" ) != -1)
+  {
+    codepage = "1251";
+  }
+  else if (charset.indexOf( "windows-1252" ) != -1)
+  {
+    codepage = "1252";
+  }
+  else if (charset.indexOf( "windows-1253" ) != -1)
+  {
+    codepage = "1253";
+  }
+  else if (charset.indexOf( "windows-1254" ) != -1)
+  {
+    codepage = "1254";
+  }
+  else if (charset.indexOf( "windows-1255" ) != -1)
+  {
+    codepage = "1255";
+  }
+  else if (charset.indexOf( "windows-1256" ) != -1)
+  {
+    codepage = "1256";
+  }
+  else if (charset.indexOf( "windows-1257" ) != -1)
+  {
+    codepage = "1257";
+  }
+  else if (charset.indexOf( "windows-1258" ) != -1)
+  {
+    codepage = "1258";
+  }
+  else if (charset.indexOf( "windows-874" ) != -1)
+  {
+    codepage = "874";
+  }
+  else if (charset.indexOf( "x-euc" ) != -1)
+  {
+    codepage = "51932";
+  }
+  else if (charset.indexOf( "x-user-defined" ) != -1)
+  {
+    codepage = "50000";
+  }
+  else if (charset.indexOf( "asmo-708" ) != -1)
+  {
+    codepage = "708";
+  }
+  else if (charset.indexOf( "dos-720" ) != -1)
+  {
+    codepage = "720";
+  }
+  else if (charset.indexOf( "dos-862" ) != -1)
+  {
+    codepage = "862";
+  }
+  else if (charset.indexOf( "dos-874" ) != -1)
+  {
+    codepage = "874";
+  }
+  else if (charset.indexOf( "cp866" ) != -1)
+  {
+    codepage = "866";
+  }
+  else if (charset.indexOf( "cp1256" ) != -1)
+  {
+    codepage = "1256";
+  }
+  
+
+  return codepage;
+}
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   getServerModelDelimiters
+//
+// DESCRIPTION:
+//   Returns the script delimiters which are used by the application
+//   server, and states whether each can or cannot participate in
+//   merging of code blocks.
+//
+//   This value can be accessed from JavaScript by calling the
+//   function:
+//     dom.serverModel.getDelimiters()
+//
+// ARGUMENTS:
+//   None
+//
+// RETURNS:
+//   Array
+//--------------------------------------------------------------------
+
+function getServerModelDelimiters()
+{
+	DelimArray = new Array();
+
+	DelimObject = new Object();
+	DelimObject["startPattern"]="<%";
+	DelimObject["endPattern"]="%>";
+	DelimObject["participateInMerge"]=true;
+	DelimArray[0]=DelimObject;
+
+	DelimObject = new Object();
+	DelimObject["startPattern"]="<%\\s*=";
+	DelimObject["endPattern"]="%>";
+	DelimObject["participateInMerge"]=false;
+	DelimArray[1]=DelimObject;
+
+	DelimObject = new Object();
+  // Note the extra (?!@) in pattern below. This means do not match <%@ if it is
+  //   followed by another @. Also, the character matched by (?!@) is not extracted
+  //   in the regexp. This case is needed in case we see a participant like:
+  //   "<% @@param1@@ ...". We still want to strip the <% in this case.
+	DelimObject["startPattern"]="<%\\s*@(?!@)";
+	DelimObject["endPattern"]="%>";
+	DelimObject["participateInMerge"]=false;
+	DelimArray[2]=DelimObject;
+
+	return DelimArray;
+}
+
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   getLanguageSignatures
+//
+// DESCRIPTION:
+//   Returns the method and array signatures used by the scripting
+//   language.
+//
+// ARGUMENTS:
+//   None
+//
+// RETURNS:
+//   Signatures object
+//--------------------------------------------------------------------
+
+function getLanguageSignatures()
+{
+	return new Object();
+}
+
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

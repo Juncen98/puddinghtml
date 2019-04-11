@@ -1,0 +1,469 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFFORMITEM</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFFORMITEM</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Inserts a horizontal line, a vertical line, a spacer, or text in a Flash form. Used in the cfform or cfformgroup tag body for Flash and XML forms. Ignored in HTML forms.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Forms tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfformitem 
+   type = &quot;hrule, vrule, or spacer&quot;
+   style = &quot;style specification&quot;
+   width = &quot;pixels&quot;
+   height = &quot;pixels&quot;
+   visible = &quot;Yes&quot; or &quot;No&quot;/&gt;
+</pre>
+<p>
+or
+</p>
+<pre>&lt;cfformitem 
+   type= &quot;html or text&quot;
+   style = &quot;style specification&quot;
+   width = &quot;pixels&quot;
+   height = &quot;pixels&quot;
+   visible = &quot;Yes&quot; or &quot;No&quot;
+   enabled = &quot;Yes&quot; or &quot;No&quot;
+   tooltip = &quot;Tip text&quot;
+   bind = &quot;bind expression&quot;&gt;
+...<i>text
+</i>&lt;/cfformitem&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfapplet, cfform, cfformgroup, cfgrid, cfinput, cfselect, cfslider, cftextarea, cftree, "Adding text, images, rules, and space with the cfformitem tag" in Chapter&#160;29, "Adding text, images, rules, and space with the cfformitem tag," in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7: Added tag
+</p>
+
+<p>
+The following table lists the attributes and their behavior in Flash forms. For XML format, if not otherwise noted, the attribute is passed to the XML but is not interpreted by the basic XSL style sheet provided with ColdFusion MX. 
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>Attributes that are marked as Flash only are not handled by the skins provided with ColdFusion MX. They are, however, included in the generated XML in all controls except text and html types.</td>
+  </tr>
+</table>
+<p>
+
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>Attributes that are marked as Flash only are not handled by the skins provided with ColdFusion MX. They are, however, included in the generated XML in all controls except text and html types.</td>
+  </tr>
+</table>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+This tag requires an end tag or a slash before the closing end character of the opening tag, as the following example shows:
+</p>
+<pre>&lt;cfformitem type=&quot;hrule&quot; /&gt;
+</pre>
+<p>
+For more information on using this tag in Flash forms, see Chapter&#160;29, "Creating Forms in Macromedia Flash" in ColdFusion MX Developer's Guide.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+The following example shows a simple Flash form using horizontal rules and text:
+</p>
+<pre>&lt;h3&gt;cfformitem Example&lt;/h3&gt;
+&lt;cfform name=&quot;myform&quot; height=&quot;450&quot; width=&quot;500&quot; format=&quot;Flash&quot; &gt;
+   &lt;cfformitem type=&quot;hrule&quot; /&gt;
+   &lt;cfformitem type=&quot;text&quot;&gt;
+      This simple form has two hrule cfformitem tags around the cfformitem tag
+      that contains this text.
+   &lt;/cfformitem&gt;
+   &lt;cfformitem type=&quot;hrule&quot; /&gt;
+&lt;/cfform&gt;
+</pre>
+<p>
+For a more complex form, see cfformgroup.
+</p>
+
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="TYPE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TYPE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Flash and XML</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Flash:</p><ul>
+
+<li>html: place the text in the body of this tag on the form. For Flash forms, you can use the following text formatting tags, most of which correspond to HTML tags, in the text: a, b, br, font, i, img, li, p, textformat, and u. For details on using these formatting tags, see the Flash documentation. The style attribute has no effect on the format of the text in type.</li>
+
+<li>text: place the text in the body of this tag on the form verbatim, without interpreting any markup. You can control the overall appearance of the text by using the style attribute.</li>
+
+<li>spacer: places an invisible spacer of the specified height and width on the form. Used to place space between form controls. This tag must not have any children.</li>
+
+<li>hrule: places a horizontal rule on the form. This tag must not have any children.</li>
+
+<li>vrule: places a vertical rule on the form. This tag must not have any children.</li>
+</ul>
+
+<p>XML:</p><ul>
+
+<li>html: puts the CFML tag's body text in a CDATA section in an XML xf:output element.</li>
+
+<li>text: XML-formats (escapes characters such as &lt;) the CFML tag's body text and puts it in a CDATA section in an XML xf:output element.</li>
+
+<li>hrule: puts an hr tag in the output. Use the style attribute to specify all rule characteristics, including height and width. This tag must not have any children.</li>
+
+<li>Any other string: generates an XML xf:group element with the type name as the appearance attribute. The CFML tag body is put in a CDATA section in a cf:attribute name=&quot;body&quot; element. The XSL transforms provided with ColdFusion MX ignore these elements.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="STYLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STYLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Flash and XML</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<strong>Default value:</strong> "Flash: "
+<strong>Default value:</strong> "Must be a style specification in CSS format."
+<strong>Default value:</strong> "Ignored if the type attribute is html or text."
+<strong>Default value:</strong> "For detailed information on specifying Flash styles, see Chapter&#160;29, "Creating Forms in Macromedia Flash" in ColdFusion MX Developer's Guide. Not used with the spacer type."
+<strong>Default value:</strong> "XML: "
+<strong>Default value:</strong> "ColdFusion passes the style attribute to the XML. ColdFusion skins include the style attribute in the generated HTML."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="WIDTH">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">WIDTH</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Flash</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<strong>Default value:</strong> "Width of the item, in pixels. If you omit this attribute, Flash automatically sizes the width. In ColdFusion XSL skins, use the style attribute, instead."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="HEIGHT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">HEIGHT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Flash</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<strong>Default value:</strong> "Height of the item, in pixels. If you omit this attribute, Flash automatically sizes the width. In ColdFusion XSL skins, use the style attribute, instead."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ENABLED">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ENABLED</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Flash</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Yes"
+
+<strong>Default value:</strong> "Boolean value specifying whether the control is enabled. Disabled text appear in light gray. Has no effect on spacers and rules."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="VISIBLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">VISIBLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Flash</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Yes"
+
+<strong>Default value:</strong> "Boolean value specifying whether to show the control. Space that would be occupied by an invisible control is blank. Has no effect on spacers."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TOOLTIP">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TOOLTIP</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Flash</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<strong>Default value:</strong> "Text to display when the mouse pointer hovers over the control. Has no effect on spacers."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="BIND">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">BIND</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Flash</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>A Flash bind expression that populates the field with information from other form fields. If you use this attribute, ColdFusion MX ignores any text that you specify in the body of the cftextitem tag. This attribute can be useful if the cfformitem tag is in a cfformgroup type=&quot;repeater&quot; tag. See Usage. For details, see "Flash form data binding" in the cfinput tag description.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

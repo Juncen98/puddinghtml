@@ -1,0 +1,139 @@
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<html>
+<head>
+<title>更新记录表单</title>
+<script language = "JavaScript">
+// note: this global variable needs to be at the top of this file to load properly
+// it is not a localizable variable, and localizing it will break the script!!
+var EDIT_OP_TYPE = "Update";
+var helpDoc = MM.HELP_objUpdateRecord;
+</script>
+
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+
+<SCRIPT SRC="../Shared/UltraDev/Scripts/sbManager.js"></SCRIPT>
+<SCRIPT SRC="EditOpsCustomObjs.js"></SCRIPT>
+<SCRIPT SRC="EditOpsCmn.js"></SCRIPT>
+<SCRIPT SRC="EditOpsLayoutTable.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/sbManager.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/Class/GridClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/file.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/docInfo.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssClasses.js"></SCRIPT>
+<SCRIPT SRC="../ServerBehaviors/Shared/DynamicCmn.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/SQLTypes.js"></SCRIPT>
+<SCRIPT>
+function windowDimensions()
+{
+  if(navigator.platform.charAt(0)=="M")
+  {
+    return "540,515";
+  }
+}
+</SCRIPT>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onload="initializeUI()">
+  <form>
+    <table border=0 width="482">
+      <tr>
+        <td align="right" valign="baseline" nowrap>连接:</td>
+        <td valign="baseline" colspan="2" nowrap> <select name="Connection" class="connNameList" onChange="updateUI('tableMenu')">
+          </select> <input type="submit" name="Submit" value="定义..." onClick="updateUI('defineConnection');focus(this)">
+        </td>
+      </tr>
+      <tr><td height=1></td></tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap>要更新的表格: </td>
+        <td valign="baseline" colspan="2" nowrap> <select name="TableToUpdate" class="connRSTableList" onChange="updateUI('columnGrid')">
+          </select> </td>
+      </tr>
+      <tr><td height=1></td></tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap>选取记录自: </td>
+        <td valign="baseline" colspan="2" nowrap> <select name="SelectRecordFrom" class="connRSTableList" onChange="updateUI('RSHasChanged')">
+            
+          <option selected></option>
+          </select> </td>
+      </tr>
+      <tr><td height=1></td></tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap>唯一键列: </td>
+        <td valign="baseline" nowrap> <select name="UniqueKeyColumn" class="columnNameList" onChange="updateUI('tableColList')">
+            
+          <option selected></option>
+          </select>
+          <input type="checkbox" name="Numeric" checked>
+          数字
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap>在更新后，转到: </td>
+        <td valign="baseline" colspan="2" nowrap> <input name="GoToURL" type="text" class="largeTField">
+          <input type="button" value="浏览..." onClick="updateUI('GoToURL');focus(this)">
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap colspan="3"> <hr> </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap>表单字段:</td>
+        <td valign="baseline" colspan="2" nowrap align="left"> <input type="image" border="0" name="imageField" src="../Shared/MM/Images/btnAdd.gif" onClick="addGridRow();focus(this)">
+          <input type="image" border="0" name="imageField2" src="../Shared/MM/Images/btnDel.gif" onClick="deleteGridRow();focus(this)">
+          <img src="../Shared/MM/Images/transparent.gif" height="8" width="295">
+          <input type="image" name="elemUp" onClick="GRID_COLS.moveRowUp();focus(this)" border="0" src="../Shared/MM/Images/btnUp.gif" >
+          <input type="image" name="elemDown" onClick="GRID_COLS.moveRowDown();focus(this)" border="0" src="../Shared/MM/Images/btnDown.gif" >
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap></td>
+        <td valign="baseline" rowspan="2" colspan="2" nowrap> <mm:treecontrol noexpandbuttons name="ColumnNames" style="width:390px;height:116px" onChange="displayGridFieldValues()">
+          <mm:treecolumn width="80">
+          <mm:treecolumn width="90">
+          <mm:treecolumn width="90">
+          <mm:treecolumn width="80"> </mm:treecontrol>
+        </td>
+      </tr>
+      <tr><td height=1></td></tr>
+      <tr><td height=1></td></tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap>标签:</td>
+        <td valign="baseline" nowrap colspan="2"> <input name="ElementLabel" type="text" class="medTField" onBlur="updateGridRow('label')">
+        </td>
+      </tr>
+      <tr><td height=1></td></tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap>显示为: </td>
+        <td valign="baseline" nowrap colspan="2"> <select name="DisplayAs" class="dataTypeList" onChange="updateUIBasedOnDisplayAsMenuChange()">
+          
+        </select>
+          提交为: 
+          
+        <select name="SubmitAs" class="dataTypeList" onChange="updateGridRow('submitAs')">
+          </select> </td>
+      </tr>
+      <tr><td height=1></td></tr>
+      <mmParams>
+      <tr>
+        <td nowrap valign="baseline" align="right" height="50">&nbsp;</td>
+        <td nowrap align="left">&nbsp;</td>
+      </tr>
+      </mmParams>
+    </table>
+  </form>
+</body>
+</html>

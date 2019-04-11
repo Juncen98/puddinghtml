@@ -1,0 +1,46 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<title>÷ÿ∏¥œÓ</title>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<script language="javascript" src="../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<script language="javascript" src="../Shared/MM/Scripts/CMN/string.js"></script>
+<script language="javascript" src="../Shared/MM/Scripts/CMN/TemplateUtils.js"></script>
+<!-- End removal area. -->
+
+<script language="javascript">
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+//--------------- END LOCALIZEABLE   ---------------
+function isDOMRequired() {
+	return true;
+}
+
+function canAcceptCommand()
+	{			
+	return true; 	
+	} //canAcceptCommand
+
+
+function receiveArguments()
+	{
+	var targetDom = arguments[1];
+	if (targetDom == null)
+		targetDom = dw.getDocumentDOM();
+	
+	var dialogParams = arguments[0]; 
+	if (typeof dialogParams.returnValue == 'undefined')
+		dialogParams.returnValue = false; 		
+		
+	dialogParams.returnValue = clipIsRepeatEntry(targetDom) && canPasteRepeatEntry(targetDom);
+	}
+	
+
+</script>
+</head>
+
+<body >
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<html>
+<head>
+<title>Attribute List Declaration</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">Attribute List Declaration</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+<span class="PROGRAMLISTING"><pre><strong class="userinput">&lt;!ATTLIST</strong> <var class="replaceable">element_name</var> <var class="replaceable">[attribute_name attribute_type default_decl]</var><strong class="userinput">*&gt;</strong></pre></span>
+<p>In a valid XML document, it is
+necessary to declare the attribute names, types, and default values
+that are used with each element type.</p>
+
+<p>The attribute name must obey the rules for XML names, and no
+duplicate attribute names may exist within a single declaration.</p>
+
+<p>Attributes
+are declared as having a specific type. Depending on the declared
+type, a validating XML parser will constrain the values that appear
+in instances of those attributes within a document. The following
+table lists the various attribute types and their meanings:</p>
+
+<table border="1">
+
+
+
+<thead>
+<tr valign="top">
+<td>
+<p>Attribute type</p>
+</td>
+<td>
+<p>Meaning</p>
+</td>
+</tr>
+</thead>
+<tbody>
+<tr valign="top">
+<td>
+<p><span class="LITERAL">CDATA</span></p>
+</td>
+<td>
+<p>Simple character data.</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<p>
+<span class="LITERAL">ID</span></p>
+</td>
+<td>
+<p>A unique <span class="LITERAL">ID</span> value within the current XML document.
+No two <span class="LITERAL">ID</span> attribute values within a document can
+have the same value, and no element can have two attributes of type
+<span class="LITERAL">ID</span>.</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<p>
+IDREF,
+
+IDREFS</p>
+</td>
+<td>
+<p>A single reference to an element <span class="LITERAL">ID</span>
+(<span class="LITERAL">IDREF</span>) or a list of <span class="LITERAL">IDs</span>
+(<span class="LITERAL">IDREFS</span>), separated by spaces. Every
+<span class="LITERAL">ID</span> token must refer to a valid
+<span class="LITERAL">ID</span> located somewhere within the document that
+appears as the <span class="LITERAL">ID</span> type
+attribute's value.</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<p>
+ENTITY,
+
+ENTITIES</p>
+</td>
+<td>
+<p>A single reference to a declared unparsed external entity
+(<span class="LITERAL">ENTITY</span>) or a list of references
+(<span class="LITERAL">ENTITIES</span>), separated by whitespace.</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<p>NMTOKEN, NMTOKENS</p>
+</td>
+<td>
+<p>A single name token value (<span class="LITERAL">NMTOKEN</span>) or a list of
+name tokens (<span class="LITERAL">NMTOKENS</span>), separated by spaces.</p>
+</td>
+</tr>
+</tbody>
+
+</table>
+</td></tr>
+</table>
+</div>
+</body>
+</html>

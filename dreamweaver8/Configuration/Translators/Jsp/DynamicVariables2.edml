@@ -1,0 +1,25 @@
+<participant name="DynamicVariables2">
+		<translator priority=407>
+			<searchPatterns>
+				<searchPattern><![CDATA[<%=]]></searchPattern>
+				<searchPattern><![CDATA[.getParameter]]></searchPattern>
+				<searchPattern paramNames="rs,col"><![CDATA[/\b(request)\.getParameter\(\s*"?([^\)"]+)"?\)/i]]></searchPattern>
+			</searchPatterns>
+			<translations>
+				<translation whereToSearch="directive" translationType="dynamic data">
+					<openTag>MM_DYNAMIC_CONTENT</openTag>
+					<attributes>
+						<attribute><![CDATA[SOURCE=@@rs@@]]></attribute>
+						<attribute><![CDATA[BINDING="@@col@@"]]></attribute>
+					</attributes>
+					<display><![CDATA[{@@rs@@.@@col@@}]]></display>
+					<closeTag>MM_DYNAMIC_CONTENT</closeTag>
+				</translation>
+				<translation whereToSearch="tag+INPUT" limitSearch="attribute+VALUE" translationType="dynamic data">
+					<attributes>
+						<attribute><![CDATA[mmTranslatedValueDynValue="VALUE={@@rs@@.@@col@@}"]]></attribute>
+					</attributes>
+				</translation>
+			</translations>
+		</translator>
+</participant>

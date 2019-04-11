@@ -1,0 +1,13 @@
+<participant version="5.0">
+  <insertText location="wrapSelection">
+<![CDATA[<cfoutput query="@@RecordsetName@@"<@ if (@@PageSize@@ || @@StartRow@@) @> startRow=<@ if (@@PageSize@@) @>"#StartRow_@@RecordsetName@@#"<@ else @>"@@StartRow@@"<@ endif @><@ endif @><@ if (@@PageSize@@ || @@MaxRows@@) @> maxRows=<@ if (@@PageSize@@) @>"#MaxRows_@@RecordsetName@@#"<@ else @>"@@MaxRows@@"<@ endif @><@ endif @>>]]>
+  </insertText>
+  <quickSearch>cfoutput</quickSearch>
+  <searchPatterns whereToSearch="tag+cfoutput">
+    <searchPattern isOptional="false" limitSearch="all"></searchPattern>
+    <searchPattern paramNames="RecordsetName" isOptional="false" limitSearch="attribute+query"><![CDATA[/([\s\S]+)/i]]></searchPattern>
+    <searchPattern paramNames="StartRow" isOptional="true" limitSearch="attribute+startrow"></searchPattern>
+    <searchPattern paramNames="MaxRows" isOptional="true" limitSearch="attribute+maxrows"></searchPattern>
+  </searchPatterns>
+  <delete deleteType="attribute+*"/>
+</participant>

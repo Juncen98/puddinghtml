@@ -1,0 +1,25 @@
+<participant version="7.0.1">
+	<insertText location="afterSelection"><![CDATA[<?php
+<@ loop (@@paramID@@, @@paramShortVal@@, @@paramDefault@@) @>
+$@@paramID@@ = "@@paramDefault@@";
+if (isset(@@paramShortVal@@)) {
+	$@@paramID@@ = (get_magic_quotes_gpc()) ? @@paramShortVal@@ : addslashes(@@paramShortVal@@);
+}
+<@ endloop @>
+$@@transName@@ = new MM_XSLTransform();
+$@@transName@@->setXML("@@xmlFile@@");
+$@@transName@@->setXSL("@@xslFile@@");
+<@ loop (@@paramNames@@, @@paramValues@@) @>
+$@@transName@@->addParameter("@@paramNames@@", @@paramValues@@);
+<@ endloop @>
+echo $@@transName@@->Transform();
+?>]]></insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="MM_loop1,transName,xmlFile,xslFile,MM_loop2" isOptional="false" limitSearch="all"><![CDATA[/((?:\$[^\r\n]* = "[^\r\n]*";(?:\r\n|\r(?!\n)|\n)[ \t]*if \(isset\([^\r\n]*\)\) \{(?:\r\n|\r(?!\n)|\n)[ \t]*\$[^\r\n]* = \(get_magic_quotes_gpc\(\)\) \? [^\r\n]* : addslashes\([^\r\n]*\);(?:\r\n|\r(?!\n)|\n)[ \t]*\}(?:\r\n|\r(?!\n)|\n)[ \t]*)*?)\$([^\r\n]*?) = new MM_XSLTransform\(\);(?:\r\n|\r(?!\n)|\n)[ \t]*\$[^\r\n]*?->\s*setXML\("([^\r\n]*?)"\);(?:\r\n|\r(?!\n)|\n)[ \t]*\$[^\r\n]*?->\s*setXSL\("([^\r\n]*?)"\);(?:\r\n|\r(?!\n)|\n)[ \t]*((?:\$[^\r\n]*->\s*addParameter\("[^\r\n]*", [^\r\n]*\);(?:\r\n|\r(?!\n)|\n)[ \t]*)*?)echo \$[^\r\n]*?->\s*Transform\(\);(?=\r\n|\r|\n|\?>)/i]]></searchPattern>
+		<searchPattern paramNames="paramID,paramDefault,paramShortVal" limitSearch="@@MM_loop1@@" isOptional="true" searchType="multiple"><![CDATA[/\$([^\r\n]*?) = "([^\r\n]*?)";(?:\r\n|\r(?!\n)|\n)[ \t]*if \(isset\(([^\r\n]*?)\)\) \{(?:\r\n|\r(?!\n)|\n)[ \t]*\$[^\r\n]*? = \(get_magic_quotes_gpc\(\)\) \? [^\r\n]*? : addslashes\([^\r\n]*?\);(?:\r\n|\r(?!\n)|\n)[ \t]*\}(?:\r\n|\r(?!\n)|\n)[ \t]*/i]]></searchPattern>
+		<searchPattern paramNames="paramNames,paramValues" limitSearch="@@MM_loop2@@" isOptional="true" searchType="multiple"><![CDATA[/\$[^\r\n]*?->\s*addParameter\("([^\r\n]*?)", ([^\r\n]*?)\);(?:\r\n|\r(?!\n)|\n)[ \t]*/i]]></searchPattern>
+		<searchPattern paramNames="xmlFile_url" isOptional="true" limitSearch="all"><![CDATA[/\$[^\r\n]*?->\s*setXML\("([^\r\n]*?)"\);/i]]></searchPattern>
+		<searchPattern paramNames="xslFile_url" isOptional="true" limitSearch="all"><![CDATA[/\$[^\r\n]*?->\s*setXSL\("([^\r\n]*?)"\);/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>->setXSL</quickSearch>
+</participant>

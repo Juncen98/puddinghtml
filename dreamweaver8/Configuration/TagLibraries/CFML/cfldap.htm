@@ -1,0 +1,315 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>CFLDAP</title>
+<styleplaceholder>
+  <link rel="stylesheet" href="../../fields.css">
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var SCOPELIST;
+var SELECTORLIST;
+var MODIFYTYPELIST; 
+var MODIFYTYPELIST2; 
+var MODIFYTYPELIST3; 
+var MODIFYTYPELIST4; 
+
+var theUIObjects;
+var applyType = "dynamic"; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode, SELECTORLIST); 
+}
+
+function applyTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode); 
+}
+
+function updateUI()
+{
+  var curDiv = SELECTORLIST.getValue(); 
+  tagDialog.showOnlyThisLayer(curDiv,document.layers[0]); 
+}
+
+function initializeUI()
+{
+  // fix up dialog if its an OSX but linking to a style sheet (only for OSX) 
+  tagDialog.setOSXStyleSheetIfNeeded(); 
+
+  SCOPELIST = new ListControl("thescope"); 
+  MODIFYTYPELIST = new ListControl("themodifytype"); 
+  MODIFYTYPELIST2 = new ListControl("themodifytype2"); 
+  MODIFYTYPELIST3 = new ListControl("themodifytype3"); 
+  MODIFYTYPELIST4 = new ListControl("themodifytype4"); 
+
+  SELECTORLIST = new ListControl("theselector"); 
+  theUIObjects = new Array(SCOPELIST, MODIFYTYPELIST, MODIFYTYPELIST2, MODIFYTYPELIST3, MODIFYTYPELIST4, SELECTORLIST); 
+
+  tagDialog.populateDropDownList(SCOPELIST, theScopeCfldapCap, theScopeCfldapVal, 1); 
+  tagDialog.populateDropDownList(MODIFYTYPELIST, theModifyTypeCfldapCap, theModifyTypeCfldapVal, 1);     
+  tagDialog.populateDropDownList(MODIFYTYPELIST2, theModifyTypeCfldapCap, theModifyTypeCfldapVal, 0);     
+  tagDialog.populateDropDownList(MODIFYTYPELIST3, theModifyTypeCfldapCap, theModifyTypeCfldapVal, 0);     
+  tagDialog.populateDropDownList(MODIFYTYPELIST4, theModifyTypeCfldapCap, theModifyTypeCfldapVal, 0);     
+  tagDialog.populateDropDownList(SELECTORLIST, theSelCFLDAPVal, theSelCFLDAPVal, 0); 
+}
+</script>
+</head> 
+ 
+<body onLoad="initializeUI();">
+
+<div name="高级"> 
+<br /> 
+操作: 
+<select name="theselector" class="selectorList" id="attr:cfldap:selector" onChange="updateUI();" attname="action" editable="false">
+</select>
+
+<hr width="100%" /> 
+  <div id="thequery" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td align="right" valign="baseline" nowrap="nowrap">查询名称: </td>
+      <td colspan="3" nowrap="nowrap"> <input name="thename" type="text" class="medTField" id="attr:cfldap:name" attname="name" required="true" /> 
+      </td>
+    </tr>
+    <tr> 
+      <td align="right" valign="baseline" nowrap="nowrap">判别名: </td>
+      <td colspan="3" nowrap="nowrap"> <input name="thedn" type="text" class="basicTextField" id="attr:cfldap:dn" attname="dn" /> 
+      </td>
+    </tr>
+    <tr> 
+      <td align="right" valign="baseline" nowrap="nowrap">开始判别名: </td>
+      <td colspan="3" nowrap="nowrap"> <input name="thestart" type="text" class="basicTextField" id="attr:cfldap:start" attname="start" /> 
+      </td>
+    </tr>
+    <tr> 
+      <td align="right" valign="baseline" nowrap="nowrap">属性: </td>
+      <td colspan="3" nowrap="nowrap"> <input name="theattributes" type="text" class="basicTextField" id="attr:cfldap:attributes" attname="attributes" required="true" /> 
+      </td>
+    </tr>
+	 <tr> 
+      <td align="right" valign="baseline" nowrap="nowrap">筛选: </td>
+      <td nowrap="nowrap"><input name="thefilter" type="text" class="xsmallTField" id="thefilter2" attname="filter" /> 
+    </td>
+    <td nowrap="nowrap" align="right">滤镜文件:</td>
+    <td nowrap="nowrap"><input name="thefilterfile" type="text" class="xsmallTField" id="thefilterfile3" attname="filterfile" /></td>
+  </tr>
+  <tr> 
+    <td align="right" valign="baseline" nowrap="nowrap">起始行: </td>
+    <td nowrap="nowrap"><input name="thestartrow" type="text" class="smallNumOrChar" id="thestartrow4" attname="startrow" /> 
+    </td>
+    <td nowrap="nowrap" align="right">最大行数:</td>
+    <td nowrap="nowrap"><input name="themaxrows" type="text" class="smallNumOrChar" id="themaxrows4" attname="maxrows" /></td>
+  </tr>
+  <tr> 
+    <td align="right" valign="baseline" nowrap="nowrap">排序: </td>
+    <td nowrap="nowrap"><input name="thesort" type="text" class="xsmallTField" id="thesort4" attname="sort" /> 
+    </td>
+    <td nowrap="nowrap" align="right">排序控制: </td>
+    <td nowrap="nowrap"><input name="thesortcontrol" type="text" class="xsmallTField" id="thesortcontrol4" attname="sortcontrol" /></td>
+  </tr>
+  <tr> 
+    <td align="right" valign="baseline" nowrap="nowrap">修改类型: </td>
+    <td colspan="3" nowrap="nowrap"> <select name="themodifytype" class="oneWordOptionList" id="attr:cfldap:modifytype" attname="modifytype" editable="false">
+      </select> </td>
+  </tr>
+  <tr> 
+    <td align="right" valign="baseline" nowrap="nowrap">范围: </td>
+    <td colspan="3" nowrap="nowrap"> <select name="thescope" class="oneWordOptionList" id="attr:cfldap:scope" attname="scope" editable="true">
+      </select> </td>
+  </tr>
+     <tr> 
+      <td align="right" valign="baseline" nowrap="nowrap">以二进制形式返回: </td>
+      <td colspan="3" nowrap="nowrap"> <input name="thereturnasbinary" type="text" class="basicTextField" id="attr:cfldap:returnasbinary" attname="returnasbinary" /> 
+      </td>
+    </tr>
+  <tr> 
+    <td align="right" valign="baseline" nowrap="nowrap">分隔符: </td>
+    <td nowrap="nowrap"><input name="theseparator" type="text" class="xsmallTField" id="theseparator5" attname="separator" /> 
+    </td>
+    <td nowrap="nowrap" align="right">定界符 </td>
+    <td nowrap="nowrap"><input name="thedelimiter" type="text" class="xsmallTField" id="thedelimiter4" attname="delimiter" /></td>
+  </tr>
+  <tr> 
+    <td align="right" valign="baseline" nowrap="nowrap">检索: </td>
+    <td nowrap="nowrap"><input name="thereferral" type="text" class="xsmallTField" id="thereferral4" attname="referral" /> 
+    </td>
+    <td nowrap="nowrap" align="right">安全: </td>
+    <td nowrap="nowrap"><input name="thesecure" type="text" class="xsmallTField" id="thesecure4" attname="secure" /></td>
+  </tr>
+   <tr> 
+     <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+    <td colspan="3" nowrap="nowrap"> <input type="checkbox" id="attr:cfhttp:rebind" name="therebind" attname="rebind" truevalue="yes" falsevalue="" />
+      重新绑定</td>
+  </tr>
+</table>
+  </div>
+  <div id="theadd" style="position:absolute; width:350px; height:115px; z-index:1; left: 0px; top: 55px; visibility: hidden;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">判别名: </td>
+        <td nowrap="nowrap">
+          <input name="thedn" type="text" class="basicTextField" id="attr:cfldap:dn" attname="dn" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">属性: </td>
+        <td nowrap="nowrap">
+          <input name="theattributes" type="text" class="basicTextField" id="attr:cfldap:attributes" attname="attributes" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">修改类型: </td>
+        <td nowrap="nowrap">
+          <select name="themodifytype2" class="oneWordOptionList" id="attr:cfldap:modifytype2" attname="modifytype" editable="false">
+          </select>
+        </td>
+      </tr> 
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">分隔符: </td>
+        <td nowrap="nowrap">
+          <input name="theseparator" type="text" class="basicTextField" id="attr:cfldap:separator" attname="separator" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">定界符: </td>
+        <td nowrap="nowrap">
+          <input name="thedelimiter" type="text" class="basicTextField" id="attr:cfldap:delimiter" attname="delimiter" />
+        </td>
+      </tr>
+    </table> 
+  </div>
+  <div id="themodify" style="position:absolute; width:350px; height:115px; z-index:1; left: 0px; top: 55px; visibility: hidden;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">判别名: </td>
+        <td nowrap="nowrap">
+          <input name="thedn" type="text" class="basicTextField" id="attr:cfldap:dn" attname="dn" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">修改类型: </td>
+        <td nowrap="nowrap">
+          <select name="themodifytype3" class="oneWordOptionList" id="attr:cfldap:modifytype3" attname="modifytype" editable="false">
+          </select>
+        </td>
+      </tr> 
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">属性: </td>
+        <td nowrap="nowrap">
+          <input name="theattributes" type="text" class="basicTextField" id="attr:cfldap:attributes" attname="attributes" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">分隔符: </td>
+        <td nowrap="nowrap">
+          <input name="theseparator" type="text" class="basicTextField" id="attr:cfldap:separator" attname="separator" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">定界符: </td>
+        <td nowrap="nowrap">
+          <input name="thedelimiter" type="text" class="basicTextField" id="attr:cfldap:delimiter" attname="delimiter" />
+        </td>
+      </tr>
+    </table> 
+  </div>
+  <div id="themodifydn" style="position:absolute; width:350px; height:115px; z-index:1; left: 0px; top: 55px; visibility: hidden;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">判别名: </td>
+        <td nowrap="nowrap">
+          <input name="thedn" type="text" class="basicTextField" id="attr:cfldap:dn" attname="dn" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">修改类型: </td>
+        <td nowrap="nowrap">
+          <select name="themodifytype4" class="oneWordOptionList" id="attr:cfldap:modifytype4" attname="modifytype" editable="false">
+          </select>
+        </td>
+      </tr> 
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">属性: </td>
+        <td nowrap="nowrap">
+          <input name="theattributes" type="text" class="basicTextField" id="attr:cfldap:attributes" attname="attributes" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">分隔符: </td>
+        <td nowrap="nowrap">
+          <input name="theseparator" type="text" class="basicTextField" id="attr:cfldap:separator" attname="separator" />
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">定界符: </td>
+        <td nowrap="nowrap">
+          <input name="thedelimiter" type="text" class="basicTextField" id="attr:cfldap:delimiter" attname="delimiter" />
+        </td>
+      </tr>
+    </table> 
+  </div>
+  <div id="thedelete" style="position:absolute; width:350px; height:115px; z-index:1; left: 0px; top: 55px; visibility: hidden;">
+    <table border="0" cellspacing="4">
+      <tr>
+        <td align="right" valign="baseline" nowrap="nowrap">判别名: </td>
+        <td nowrap="nowrap">
+          <input name="thedn" type="text" class="basicTextField" id="attr:cfldap:dn" attname="dn" required="true" />
+        </td>
+      </tr>
+    </table> 
+  </div>
+</div> 
+<div name="连接"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">服务器: </td>
+      <td nowrap="nowrap">
+        <input name="theserver" type="text" class="basicTextField" id="attr:cfldap:server" attname="server" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">用户名: </td>
+      <td nowrap="nowrap">
+        <input name="theusername" type="text" class="basicTextField" id="attr:cfldap:username" attname="username" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">密码: </td>
+      <td nowrap="nowrap">
+        <input name="thepassword" type="text" class="basicTextField" id="attr:cfldap:password" attname="password" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">端口: </td>
+      <td nowrap="nowrap">
+        <input name="theport" type="text" class="smallNumOrChar" id="attr:cfldap:port" attname="port" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">超时: </td>
+      <td nowrap="nowrap">
+        <input name="thetimeout" type="text" class="smallNumOrChar" id="attr:cfldap:timeout" attname="timeout" />
+      </td>
+    </tr>
+  </table>
+</div>
+
+</body>
+</html>

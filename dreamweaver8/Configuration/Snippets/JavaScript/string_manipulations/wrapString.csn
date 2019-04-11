@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "使字符串换行" description = "将分隔符（默认情况下为回车符）插入字符串中指定的间隔处。" preview="code" type="block">
+<insertText location="beforeSelection">
+<![CDATA[function wrapString(inputString,wrapLength,delimiter)
+{
+  if (!delimiter) delimiter = '\n';
+  if (!wrapLength) wrapLength = inputString.length.
+  buildString = '';
+  for (i=0; i < inputString.length; i+=wrapLength)
+  {
+    buildString += inputString.slice(i,i+wrapLength) + delimiter;
+  }
+  return buildString.slice(0,(buildString.length - delimiter.length));
+}]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

@@ -1,0 +1,32 @@
+<!-- MENU-LOCATION=NONE --> 
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<html>
+  <head>
+    <title>列表值</title>
+    <SCRIPT SRC="../Shared/Common/Scripts/GridControlClass.js"></SCRIPT>
+	<script src="CFSelectListValues.js"></script>
+  </head>
+
+<body onLoad="initializeUI()">
+  <form name="theForm">
+    <table border="0">
+      <tr>
+        <td ALIGN="left" VALIGN="top" NOWRAP>
+          <input type="image" id="elemAdd" name="elemAdd" alt="添加元素" onClick="addElement()"  border="0" src="../Shared/MM/Images/btnAdd.gif">
+          <input type="image" id="elemDel" name="elemDel" alt="删除元素" onClick="removeElement()"  border="0" src="../Shared/MM/Images/btnDel.gif">
+        </td>
+        <td align="right" valign="top" nowrap>
+          <input type="image" id="elemUp" name="elemUp" alt="在列表中上移元素" onClick="ELEMENTS.moveUp()" border="0" src="../Shared/MM/Images/btnUp.gif" >
+          <input type="image" id="elemDown" name="elemDown" alt="在列表中下移元素" onClick="ELEMENTS.moveDown()" border="0" src="../Shared/MM/Images/btnDown.gif" >
+        </td>
+      </tr>
+      <tr>
+        <td VALIGN="baseline" NOWRAP colspan="2">
+		    <select name="theElements" style="width:200px;" type=mmparameterlist columns="项目标签,值" columnWidths="100,100" size=5 onChange="alert('as')"></select>
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<participant version="5.0">
+  <insertText location="aboveHTML+30">
+<![CDATA[
+<MM:Update
+runat="server"
+CommandText='<%# "@@CommandText@@" %>'
+ConnectionString='<%# System.Configuration.ConfigurationSettings.AppSettings("MM_CONNECTION_STRING_@@ConnectionName@@") %>'
+DatabaseType='<%# System.Configuration.ConfigurationSettings.AppSettings("MM_CONNECTION_DATABASETYPE_@@ConnectionName@@") %>'
+Expression='<%# Request.Form("MM_update") = "@@FormName@@" %>'
+CreateDataSet="false"
+<@ if (@@SuccessURL@@) @>SuccessURL='<%# @@SuccessURL@@ %>'
+<@ endif @><@ if (@@FailureURL@@) @>FailureURL='<%# @@FailureURL@@ %>'
+<@ endif @><@ if (@@Debug@@) @>Debug="@@Debug@@"
+<@ endif @>
+> 
+<@ if (@@SqlVarRuntime@@) @>
+<Parameters>
+<@ loop (@@SqlVarName@@,@@SqlVarRuntime@@,@@SqlVarType@@) @>
+<Parameter Name="@@SqlVarName@@" Value='<%# @@SqlVarRuntime@@ %>' Type="@@SqlVarType@@" />
+<@ endloop @>
+</Parameters><@ endif @>
+</MM:Update>]]>
+  </insertText>
+  <searchPatterns whereToSearch="tag+mm:update">
+    <searchPattern isOptional="false" limitSearch="all"><![CDATA[/([\s\S]+)/]]></searchPattern>
+    <searchPattern paramNames="CommandText" isOptional="false" limitSearch="attribute+commandtext"><![CDATA[/<%#\s*"([\s\S]+)"\s*%>/]]></searchPattern>
+    <searchPattern paramNames="ConnectionName" isOptional="false" limitSearch="attribute+connectionstring"><![CDATA[/<%#\s*System\.Configuration\.ConfigurationSettings\.AppSettings\(\"MM_CONNECTION_STRING_([^\r\n]*?)\"\)\s*%>/]]></searchPattern>
+    <searchPattern paramNames="Expression" isOptional="true" limitSearch="attribute+expression"><![CDATA[/<%#\s*([\s\S]+)\s*%>/]]></searchPattern>
+    <searchPattern paramNames="SuccessURL" isOptional="true" limitSearch="attribute+successurl"><![CDATA[/<%#\s*([\s\S]+)\s*%>/]]></searchPattern>
+    <searchPattern paramNames="FailureURL" isOptional="true" limitSearch="attribute+failureurl"><![CDATA[/<%#\s*([\s\S]+)\s*%>/]]></searchPattern>
+    <searchPattern paramNames="Debug" isOptional="true" limitSearch="attribute+debug"><![CDATA[/([\s\S]+)/]]></searchPattern>
+    <searchPattern paramNames="success_url" isOptional="true" limitSearch="attribute+successurl" />
+    <searchPattern paramNames="failure_url" isOptional="true" limitSearch="attribute+failureurl" />
+  </searchPatterns>
+  <quickSearch>MM:Update</quickSearch>
+</participant>

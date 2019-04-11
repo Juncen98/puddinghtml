@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<!-- Copyright 2002, 2003, 2004 Macromedia, Inc. All rights reserved. -->
+<title>JavaScript Interpreter Notes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<p>JavaScript Interpreter Notes<br>
+  ============================
+</p>
+<p>Dreamweaver MX 2004<br>
+  --------------------------<br>
+Changes made to the JavaScript Interpreter source code by Macromedia for Dreamweaver MX 2004.</p>
+<p>The following files have been updated in Dreamweaver MX 2004. The changes largely relate to recursion and garbage collection code. Inline comments describe the changes (see Changes.htm) </p>
+<p>jsregexp.c<br>
+  jsregexp.h<br>
+  jsapi.c<br>
+  jsapi.h<br>
+  jsgc.c<br>
+  jsgc.h<br>
+glue.cpp </p>
+<p>&nbsp; </p>
+<p>&nbsp;</p>
+<p>Dreamweaver MX<br>
+  --------------------------<br>
+  Changes made to the JavaScript Interpreter source code by Macromedia for Dreamweaver 
+MX.</p>
+<p> (Update: John Albano 10/21/02)</p>
+<p>There are some circumstances under which a particular regular expression applied
+  to a particular body of text can result in either an extremely long or seemingly
+infinite processing loop.</p>
+<p>In order to prevent this, we have added a limit to the number of recursive
+calls to matchRENodes() that can be made for a single call to MatchRegExp().</p>
+<p>This new logic is controlled by the DREAMWEAVER_LIMIT_REG_EXP_RECURSION define in regexp.c.</p>
+<p>(Update: Steve Newman 3/19/01)</p>
+<p>I've just upgraded from RC2 to RC3 of the JavaScript 1.5 interpreter.<br>
+  This should fix the bug with anonymous nested functions (mentioned<br>
+  below). At some point, we should upgrade to the final version of<br>
+  JS1.5 (once Netscape releases it).</p>
+<p>Here is the procedure I followed to install RC3, it should be applicable<br>
+  to any future releases unless/until Netscape makes a major reorganization<br>
+  to the code.</p>
+<p>1. Get a source code bundle from Mozilla's FTP server. (You can also get<br>
+  the code from CVS, but presumably it's better to get a &quot;stable&quot; release.)</p>
+<p>2. The root folder should contain a README file, a CVS folder, and a src<br>
+  folder. Check the README for any news, and then discard it and the CVS<br>
+  folder.</p>
+<p>3. Within the src folder, discard any CVS folders or .cvsignore files.<br>
+  (These appear at multiple levels in the folder hierarchy, you need to<br>
+  walk down each subfolder to locate them.) Also discard these entries<br>
+  from the top level of the src folder:</p>
+<p> :config:<br>
+  :editline:<br>
+  :fdlibm:<br>
+  :macbuild:<br>
+  :perlconnect:<br>
+  :sh:</p>
+<p> js.mdp<br>
+  js3240.rc<br>
+  lock_SunOS.s<br>
+  MANIFEST<br>
+  plify_jsdhash.sed<br>
+  resource.h<br>
+  SpiderMonkey.rsp<br>
+  win32.order<br>
+  <br>
+  *.mk<br>
+  Makefile.*<br>
+  makefile.*</p>
+<p>4. Copy the _DW folder and the DW_decls.h file from the<br>
+  ThirdParty/JavaScript_1_5 folder in the Dreamweaver source.</p>
+<p>5. Make a copy of src/jsinterp.h, and name it jsinterp2.h (leaving<br>
+  it in the same folder as jsinterp.h).</p>
+<p>6. Search for the word &quot;DREAMWEAVER&quot; in the ThirdParty/JavaScript_1_5<br>
+  folder in the Dreamweaver source. Look at each match, see what change<br>
+  it describes, and make an equivalent change to the new source.</p>
+<p>7. Insert this line:<br>
+  <br>
+  #include &quot;DW_decls.h&quot;</p>
+<p>near the top of every .c file in the new Netscape code.</p>
+<p>At this point, you can replace the contents of the<br>
+  ThirdParty/JavaScript_1_5 folder in the Dreamweaver source, with<br>
+  the contents of the &quot;src&quot; folder.</p>
+<p></p>
+<p>(Original notes: Steve Newman 2/22/01)</p>
+<p>This file contains some notes on the JavaScript interpreter that we<br>
+  use in Dreamweaver. I originally created it while cleaning up some<br>
+  bugs that were introduced with the move to JavaScript 1.5 at the<br>
+  outset of Vertigo (Dreamweaver 5).</p>
+<p>Dreamweaver and Ultradev use Netscape's C-based JavaScript<br>
+  interpreter, code-named SpiderMonkey. Information is available<br>
+  on this page:</p>
+<p> http://mozilla.org/js/</p>
+<p>Dave George and NJ did the original work to install the interpreter back<br>
+  in '98. Prior to Vertigo, we used an old version of the code (licensed<br>
+  directly from Netscape) which implemented JavaScript version 1.2. In<br>
+  December 2000, Charles McBrian downloaded the 1.5-rc2 version of the<br>
+  code from Netscape's FTP server and incorporated it into the Vertigo<br>
+  codebase. This code is in ThirdParty/JavaScript_1_5; the old code was<br>
+  in ThirdParty/NscpJavaScript.</p>
+<p>We've made a handful of tweaks to Netscape's source. All of these<br>
+  changes are flagged with the keyword &quot;DREAMWEAVER&quot;. The tweaks are<br>
+  mostly to fix build problems or to expose private functions which we<br>
+  need; there is one wierd patch to the WITH lookup code which is<br>
+  discussed below (and in a comment on the patch itself).</p>
+<p>Note that in the 1.2 source, we made one tweak each to<br>
+  Include/prtypes.h and to Source/os/win32.h. We aren't using these<br>
+  files in the 1.5 interpreter, so I didn't have any way to carry<br>
+  those tweaks across. (Search for &quot;DaveG&quot; in the NscpJavaScript<br>
+  folder to see them.) Doesn't seem to be a problem. I also didn't<br>
+  carry across a change to a _control87 call in jsnum.c which didn't<br>
+  seem applicable in the 1.5 codebase.</p>
+<p>Dreamweaver defines many custom classes of JavaScript objects.<br>
+  In some (all?) of these, we define additional properties, but<br>
+  don't support iteration over those properties. For example, you<br>
+  can't iterate over the properties of a JSObjDocument that come<br>
+  from named nodes in the DOM. To fix this, I think we'd need to<br>
+  find all of the places where we define a new class, and ensure<br>
+  that we define an iteration function for the class which matches<br>
+  the getter function.</p>
+<p>If you're going to do any work on the JavaScript interpreter, and<br>
+  in particular if you're trying to upgrade us to a newer version,<br>
+  a good first step is to search for &quot;DREAMWEAVER&quot; in the code we're<br>
+  currently using (ThirdParty/JavaScript_1_5).</p>
+<p>NOTE: as of this writing (2/22/01), there is a bug with anonymous<br>
+  nested functions that breaks the test harness. It appears that<br>
+  this bug was fixed by Netscape subsequent to the 1.5-rc2 release<br>
+  that we're using. I am corresponding with a Netscape engineer<br>
+  about the problem and will get a fix into our copy of the code<br>
+  shortly. We may want to try to get a newer copy of the code from<br>
+  Netscape before shipping Vertigo. (UPDATE 3/23/01: this should<br>
+  have been fixed by the move to 1.5-rc3; I haven't checked.)</p>
+<p><br>
+  Additional notes from DaveG<br>
+  ===========================</p>
+<p>- You're right that getting and setting a property is a messy piece of code.<br>
+  If you look at the types that are built into the interpreter, such as<br>
+  jsarray.c, you'll see that overriding the getProperty and setProperty<br>
+  methods is not only kosher - it's the way that they define their own types.</p>
+<p>- I've been working with a version of the JS interpreter that doesn't<br>
+  support LiveConnect, and the property getting/setting is still pretty darn<br>
+  complicated. Part of the complexity seems related to their caching scheme,<br>
+  which was presumably implemented for performance reasons.</p>
+<p>- A jsval can hold a JSString pointer, or it might hold an integer, a<br>
+  boolean, a pointer to a JSDouble, or a pointer to a JSObject. As you<br>
+  hinted, the two low-order bits are used to remember the type thing stored in<br>
+  the jsval.</p>
+<p>- If you stop the debugger in the middle of a Javascript script, it's often<br>
+  useful to know the contents of the JS stack. There's a field on the<br>
+  js_context global (I think it's called &quot;frame&quot; or something like that) 
+  that<br>
+  stores a linked list of stack frames.</p>
+<p>- You can get the type of a (JSObject *) in the Visual C++ quickwatch window<br>
+  by typing JS_GetClass(obj).</p>
+<p><br>
+  Random debugging tips<br>
+  =====================</p>
+<p>General:</p>
+<p> In the Extension Debugger code, I've defined a couple of native<br>
+  functions which are useful for debugging interpreter problems.<br>
+  (Note that the Extension Debugger is not checked in as of this<br>
+  writing.)<br>
+  <br>
+  debug_cDebugger(message); // Drops into the C-level debugger<br>
+  // with the given message string.<br>
+  // (Message string is optional.)</p>
+<p> debug_dumpObj(obj); // Writes a list of obj's fields<br>
+  // to the trace output.</p>
+<p> These are handy to get into the C debugger at a specific point<br>
+  during JavaScript execution.</p>
+<p>Looking at JSObjects in the debugger:</p>
+<p> This is a pain. A few useful things to know:<br>
+  <br>
+  A JSObject's map field is really a JSScope*, you can coerce it<br>
+  to this in the debugger to see more information.<br>
+  <br>
+  To find out what string a JSAtom corresponds to, look at the<br>
+  key part of the hash entry field. This is typically a jsval,<br>
+  which in turn is typically a JSString* plus a fixed offset (I<br>
+  think the offset is 4, but it might be 8).</p>
+<p>Understanding how properties are accessed in a JSObject:</p>
+<p> This is really complicated. For each JSClass, there is a table<br>
+  of function pointers which implement operations such as &quot;get<br>
+  property&quot; and &quot;set property&quot;. These are often overridden; we<br>
+  override these functions in many of the classes that DW defines.<br>
+  <br>
+  There is another set of function pointers in the object's map-&gt;ops<br>
+  field. These seem to be lower-level operations, and are usually not<br>
+  overridden. (I have a hunch that they were introduced for use by<br>
+  LiveConnect.) And there's a third small table of function pointers<br>
+  in JSScope's &quot;ops&quot; field; this seems to be related to hash table<br>
+  lookup, and is probably never overridden.<br>
+  <br>
+  The upshot is that you should pay very close attention when trying<br>
+  to step through a get-property call. There are many levels of<br>
+  function call, involving all three of the function pointer tables<br>
+  mentioned above, and a complicated dance between &quot;lookup&quot; and &quot;get&quot;<br>
+  operations. (As far as I can tell, &quot;lookup&quot; operations determine<br>
+  whether an object has a certain property, and get metadata about<br>
+  the property; &quot;get&quot; operations actually fetch the value.)</p>
+<p> Many of the classes defined by Dreamweaver publish dynamically<br>
+  defined properties. For example, a document object publishes a<br>
+  property for each named DOM node. This is implemented by<br>
+  overriding the get-property operation in the JSClass's function<br>
+  table. This seems to not be &quot;kosher&quot; -- I gather that you're<br>
+  supposed to actually create a record for each property in the<br>
+  object's hash table. The way we do things works for operations<br>
+  that call &quot;get&quot; directly, but not for operations that use &quot;lookup&quot;.<br>
+  I think this means that various uncommon operations, such as<br>
+  adding or removing properties, won't always work properly on<br>
+  (say) document objects. It also breaks WITH lookup into our<br>
+  objects, which we've patched in the JavaScript interpreter.<br>
+  To implement this &quot;correctly&quot;, we'd either need to override<br>
+  various function pointers in the JSObjectOps table for all of<br>
+  our classes, or else we'd need to create a property record for<br>
+  every one of these dynamically-defined properties. Right now<br>
+  that seems like way too much work for little apparent gain.<br>
+  <br>
+  Debugging problems with WITH:</p>
+<p> WITH statements are implemented by the JSOP_ENTERWITH opcode in<br>
+  jsinterp.c. This creates an object and pushes it onto a stack<br>
+  of scope objects. For some reason SpiderMonkey wraps a special<br>
+  object around the object used in the WITH; all lookup operations<br>
+  pass through this wrapper object and are forwarded along to the<br>
+  original object. We had to patch this to get around the <br>
+  problem with dynamically defined attributes in Dreamweaver objects<br>
+  not being done correctly.<br>
+</p>
+</body>
+</html>

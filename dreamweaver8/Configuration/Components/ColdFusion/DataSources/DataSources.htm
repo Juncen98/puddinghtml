@@ -1,0 +1,27 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!-- #include virtual="../../Common/DataSources/DataSources.htm" -->
+<TITLE>สýพÝิด</TITLE>
+
+<script language="javascript" >
+//*-------------------------------------------------------------------
+// FUNCTION:
+//   canDisplayComponent()
+//
+// DESCRIPTION:
+//   optional Component API function. Lets this component conditionally 
+//	 display for a given server
+//
+// ARGUMENTS: none
+//	
+// RETURNS: true/false
+//--------------------------------------------------------------------
+function canDisplayComponent ()
+{
+	var dom = dw.getDocumentDOM();
+	//only display components if this CF Server less than 7, otherwise the Connections component can show
+	if (dom) {
+		return (dom.serverModel.getServerVersion('Server.ColdFusion.ProductVersion.Major') < 7);
+	}
+	return true; //default is to show (DW MX 2004 behavior)
+}
+</script>

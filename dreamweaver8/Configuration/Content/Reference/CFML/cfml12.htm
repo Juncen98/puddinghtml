@@ -1,0 +1,1541 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFCHART</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFCHART</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Generates and displays a chart.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Data output tags, Extensibility tags; "Controlling chart appearance" in Chapter&#160;31, "Creating Charts and Graphs," in ColdFusion MX Developer's Guide
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>Syntax 1
+&lt;!--- This syntax uses an XML file or string to specify the chart style. ---&gt;
+&lt;cfchart
+      style = &quot;XML string or filename&quot;&gt; 
+&lt;/cfchart&gt;
+Syntax 2
+&lt;!--- This syntax uses the attributes of the cfchart tag to specify the chart 
+style. ---&gt;
+&lt;cfchart 
+      backgroundColor = &quot;Hex value or Web color&quot; 
+      chartHeight = &quot;integer number of pixels&quot; 
+      chartWidth = &quot;integer number of pixels&quot; 
+      dataBackgroundColor = &quot;Hex value or Web color&quot; 
+      font = &quot;font name&quot; 
+      fontBold = &quot;yes&quot; or &quot;no&quot; 
+      fontItalic = &quot;yes&quot; or &quot;no&quot; 
+      fontSize = &quot;integer font size&quot; 
+      foregroundColor = &quot;Hex value or Web color&quot; 
+      format = &quot;flash&quot; or &quot;jpg&quot; or &quot;png&quot; 
+      gridlines = &quot;integer number of lines&quot; 
+      labelFormat = &quot;number, currency, percent, date&quot; 
+      markerSize = &quot;integer number of pixels&quot; 
+      name = &quot;String&quot;&gt;
+      pieSliceStyle = &quot;solid, sliced&quot; 
+      scaleFrom = &quot;integer minimum value&quot; 
+      scaleTo = &quot;integer maximum value&quot; 
+      seriesPlacement = &quot;default, cluster, stacked, percent&quot; 
+      show3D = &quot;yes&quot; or &quot;no&quot; 
+      showBorder = &quot;yes&quot; or &quot;no&quot; 
+      showLegend = &quot;yes&quot; or &quot;no&quot; 
+      showMarkers = &quot;yes&quot; or &quot;no&quot; 
+      showXGridlines = &quot;yes&quot; or &quot;no&quot; 
+      showYGridlines = &quot;yes&quot; or &quot;no&quot; 
+      sortXAxis = &quot;yes&quot; or &quot;no&quot; 
+      tipBGColor = &quot;hex value or web color&quot; 
+      tipStyle = &quot;MouseDown, MouseOver, none&quot;
+      title = &quot;title of chart&quot;
+      url = &quot;onClick destination page&quot; 
+      xAxisTitle = &quot;title text&quot; 
+      xAxisType = &quot;scale or category&quot;
+      xOffset = &quot;number between -1 and 1&quot; 
+      yAxisTitle = &quot;title text&quot; 
+      yAxisType = &quot;scale or category&quot;
+      yOffset = &quot;number between -1 and 1&quot; 
+      &lt;/cfchart&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfchartdata, cfchartseries
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7:
+</p>
+<ul>
+
+<li>Added style and title attributes.</li>
+
+<li>Added support for eight-digit hexadecimal values to specify RGB color and transparency.</li>
+
+<li>Removed the rotated attribute.</li>
+
+<li>Renamed the column chart type to be horizontalbar chart type.</li>
+</ul>
+
+<p>
+ColdFusion MX&#160;6.1: 
+</p>
+<ul>
+
+<li>Added the xAxisType and yAxisType attributes.</li>
+
+<li>Changed interpolation behavior: the tag now interpolates data points on line charts with multiple series.</li>
+</ul>
+
+<p>
+ColdFusion&#160;MX: Added this tag.
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+The cfchart tag defines a container in which a graph displays: its height, width, background color, labels, and so on. The cfchartseries tag defines the chart style in which data displays: bar, line, pie, and so on. The cfchartdata tag defines a data point.
+</p>
+
+<p>
+Data is passed to the cfchartseries tag in the following ways:
+</p>
+<ul>
+
+<li>As a query </li>
+
+<li>As data points, using the cfchartdata tag </li>
+</ul>
+
+<p>
+For the font attribute value ArialUnicodeMS, the following rules apply:
+</p>
+<ul>
+
+<li>In Windows, to permit Flash charts (type = &quot;flash&quot;) to render a double-byte character set, you must select this value.</li>
+
+<li>On UNIX, for all type values, to render a double-byte character set, you must select this value. </li>
+
+<li>If this value is selected, the fontBold and fontItalic attributes have no effect.</li>
+</ul>
+
+<p>
+The following table lists W3C HTML 4 named color value or hexadecimal values that the color attribute accepts:
+</p>
+
+<p>
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr align="center">    <th>&#160;</th>
+    <th>&#160;</th>
+</tr>
+  <tr align="left">    <td>
+<p>Aqua</p></td>
+    <td>
+<p>##00FFFF</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Black </p></td>
+    <td>
+<p>#000000</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Blue</p></td>
+    <td>
+<p>##0000FF</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Fuchsia</p></td>
+    <td>
+<p>##FF00FF</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Gray</p></td>
+    <td>
+<p>##808080</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Green</p></td>
+    <td>
+<p>##008000</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Lime</p></td>
+    <td>
+<p>##00FF00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Maroon</p></td>
+    <td>
+<p>##800000</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Navy</p></td>
+    <td>
+<p>##000080</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Olive </p></td>
+    <td>
+<p>##808000</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Purple</p></td>
+    <td>
+<p>##800080</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Red</p></td>
+    <td>
+<p>##FF0000</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Silver</p></td>
+    <td>
+<p>##C0C0C0</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Teal</p></td>
+    <td>
+<p>##008080</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>White</p></td>
+    <td>
+<p>##FFFFFF</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Yellow</p></td>
+    <td>
+<p>##FFFF00</p></td>
+</tr>
+</table>
+</div>
+<p>
+</p>
+
+<p>
+For all other color values, you must enter the hexadecimal value. You can enter a six-digit value, which specifies the RGB value, or an eight-digit value, which specifies the RGB value and the transparency. The first two digits of an eight-digit hexadecimal value specify the degree of transparency, with FF indicating opaque and 00 indicating transparent. Values between 00 and FF are allowed.
+</p>
+
+<p>
+For more color names that are supported by popular browsers, go to www.w3.org/TR/css3-color</a> 
+</p>
+
+<p>
+You can specify whether charts are cached in memory, the number of charts to cache, and the number of chart requests that ColdFusion can process concurrently. To set these options in the ColdFusion Administrator, select Server Settings &gt; Charting.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!---The following example analyzes the salary data in the cfdocexamples
+database and generates a bar chart showing average salary by department. The
+body of the cfchartseries tag includes one cfchartdata tag to include data that
+is not available from the query. ---&gt;
+
+&lt;!--- Get the raw data from the database. ---&gt;
+&lt;cfquery name=&quot;GetSalaries&quot; datasource=&quot;cfdocexamples&quot;&gt;
+SELECT Departmt.Dept_Name, 
+Employee.Dept_ID, 
+Employee.Salary
+FROM Departmt, Employee
+WHERE Departmt.Dept_ID = Employee.Dept_ID
+&lt;/cfquery&gt;
+
+&lt;!--- Use a query of queries to generate a new query with ---&gt;
+&lt;!--- statistical data for each department. ---&gt;
+&lt;!--- AVG and SUM calculate statistics. ---&gt;
+&lt;!--- GROUP BY generates results for each department. ---&gt;
+&lt;cfquery dbtype = &quot;query&quot; name = &quot;DataTable&quot;&gt;
+SELECT 
+Dept_Name,
+AVG(Salary) AS avgSal,
+SUM(Salary) AS sumSal
+FROM GetSalaries
+GROUP BY Dept_Name
+&lt;/cfquery&gt;
+
+&lt;!--- Reformat the generated numbers to show only thousands. ---&gt;
+&lt;cfloop index = &quot;i&quot; from = &quot;1&quot; to = &quot;#DataTable.RecordCount#&quot;&gt;
+&lt;cfset DataTable.sumSal[i] = Round(DataTable.sumSal[i]/1000)*1000&gt;
+&lt;cfset DataTable.avgSal[i] = Round(DataTable.avgSal[i]/1000)*1000&gt;
+&lt;/cfloop&gt;
+
+&lt;h1&gt;Employee Salary Analysis&lt;/h1&gt; 
+&lt;!--- Bar graph, from Query of Queries ---&gt;
+&lt;cfchart format=&quot;flash&quot; 
+xaxistitle=&quot;Department&quot; 
+yaxistitle=&quot;Salary Average&quot;&gt; 
+
+&lt;cfchartseries type=&quot;bar&quot; 
+query=&quot;DataTable&quot; 
+itemcolumn=&quot;Dept_Name&quot; 
+valuecolumn=&quot;avgSal&quot;&gt;
+
+&lt;cfchartdata item=&quot;Facilities&quot; value=&quot;35000&quot;&gt;
+
+&lt;/cfchartseries&gt;
+&lt;/cfchart&gt; 
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="BACKGROUNDCOLOR">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">BACKGROUNDCOLOR</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Color of the area between the data background and the chart border, around labels and around the legend. </p>
+<p>Hexadecimal value or supported named color; see the name list in Usage. For a hexadecimal value, use the form &quot;##xxxxxx&quot; or &quot;##xxxxxxxx&quot;, where x = 0-9 or A-F; use two number signs or none.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="CHARTHEIGHT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">CHARTHEIGHT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "240"
+
+
+<p>Chart height; integer number of pixels.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="CHARTWIDTH">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">CHARTWIDTH</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "320"
+
+
+<p>Chart width; integer number of pixels.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DATABACKGROUNDCOLOR">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DATABACKGROUNDCOLOR</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "white"
+
+
+<p>Color of area around chart data.</p>
+<p>Hexadecimal value or supported named color; see the name list in Usage.</p>
+<p>For a hexadecimal value, use the form &quot;##xxxxxx&quot; or &quot;##xxxxxxxx&quot;, where x = 0-9 or A-F; use two number signs or none. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="FONT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">FONT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "arial "
+
+
+<p>Name of text font:</p><ul>
+
+<li>arial</li>
+
+<li>times</li>
+
+<li>courier</li>
+
+<li>arialunicodeMS. This option is required, if you are using a double-byte character set on UNIX, or using a double-byte character set in Windows with a file type of Flash.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="FONTBOLD">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">FONTBOLD</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+
+<p>Whether to make the text bold:</p><ul>
+
+<li>yes</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="FONTITALIC">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">FONTITALIC</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional&#160;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+
+<p>Whether to make the text italicized:</p><ul>
+
+<li>yes</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="FONTSIZE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">FONTSIZE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "11"
+
+
+<p>Font size; integer.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="FOREGROUNDCOLOR">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">FOREGROUNDCOLOR</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "black"
+
+
+<p>Color of text, grid lines, and labels.</p>
+<p>Hexadecimal value or supported named color; see name list in Usage.</p>
+<p>For a hexadecimal value, use the form &quot;##xxxxxx&quot; or &quot;##xxxxxxxx&quot;, where x = 0-9 or A-F; use two number signs or none. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="FORMAT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">FORMAT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "flash"
+
+
+<p>File format in which to save the graph:</p><ul>
+
+<li>flash</li>
+
+<li>jpg</li>
+
+<li>png</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="GRIDLINES">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">GRIDLINES</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "10, including top and bottom"
+
+
+<p>Number of grid lines to display on the value axis, including axis; positive integer.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="LABELFORMAT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">LABELFORMAT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "number"
+
+
+<p>Format for y-axis labels:</p><ul>
+
+<li>number</li>
+
+<li>currency</li>
+
+<li>percent</li>
+
+<li>date</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="MARKERSIZE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">MARKERSIZE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional&#160;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "(Automatic)"
+
+
+<p>Size of data point marker in pixels; integer.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="NAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Page variable name; string. Generates the the graph as binary data and assigns it to the specified variable. Suppresses chart display. You can use the name value in the cffile tag to write the chart to a file.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="PIESLICESTYLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PIESLICESTYLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "sliced"
+
+
+<p>Applies to the cfchartseries type attribute value pie.</p><ul>
+
+<li>solid: displays pie as if unsliced.</li>
+
+<li>sliced: displays pie as if sliced.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ROTATED">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ROTATED</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+
+<p>Whether to rotate the chart 90 degrees:</p><ul>
+
+<li>yes</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SCALEFROM">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SCALEFROM</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Determined by data"
+
+
+<p>Y-axis minimum value; integer.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SCALETO">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SCALETO</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Determined by data"
+
+
+<p>Y-axis maximum value; integer.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SERIESPLACEMENT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SERIESPLACEMENT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "default "
+
+
+<p>Relative positions of series in charts that have more than one data series. </p><ul>
+
+<li>default: ColdFusion determines relative positions, based on graph types</li>
+
+<li>cluster</li>
+
+<li>stacked</li>
+
+<li>percent</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SHOW3D">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SHOW3D</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "yes"
+
+
+<p>Whether to display the chart with three-dimensional appearance:</p><ul>
+
+<li>yes</li>
+
+<li>no </li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SHOWBORDER">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SHOWBORDER</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+
+<p>Whether to display a border around the chart:</p><ul>
+
+<li>yes</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SHOWLEGEND">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SHOWLEGEND</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "yes"
+
+
+<p>Whether to display the legend if the chart contains more than one data series:</p><ul>
+
+<li>yes</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SHOWMARKERS">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SHOWMARKERS</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "yes "
+
+
+<p>Whether to display markers at data points in line, curve, and scatter graphs:</p><ul>
+
+<li>yes</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SHOWXGRIDLINES">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SHOWXGRIDLINES</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+
+<p>Whether to display x-axis gridlines:</p><ul>
+
+<li>yes</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SHOWYGRIDLINES">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SHOWYGRIDLINES</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "yes"
+
+
+<p>Whether to display y-axis gridlines:</p><ul>
+
+<li>yes</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SORTXAXIS">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SORTXAXIS</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+
+<p>Whether to display column labels in alphabetic order along the x-axis:</p><ul>
+
+<li>yes:</li>
+
+<li>no</li>
+</ul>
+
+<p>Ignored if the xAxisType attribute is scale.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="STYLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STYLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>XML file or string to use to specify the style of the chart.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TITLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TITLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Title of the chart.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TIPBGCOLOR">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TIPBGCOLOR</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "white"
+
+
+<p>Background color of tips. Applies only to Flash format graph files. </p>
+<p>Hexadecimal value or supported named color; see the name list in the Usage section.</p>
+<p>For a hexadecimal value, use the form &quot;##xxxxxx&quot;, where x = 0-9 or A-F; use two number signs or none.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TIPSTYLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TIPSTYLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "mouseOver"
+
+
+<p>Determines the action that opens a pop-up window to display information about the current chart element.</p><ul>
+
+<li>mouseDown: display if the user positions the cursor at the element and clicks the mouse. Applies only to Flash format graph files. (For other formats, this option functions the same as mouseOver.)</li>
+
+<li>mouseOver: displays if the user positions the cursor at the element</li>
+
+<li>none: suppresses display</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="URL">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">URL</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>URL to open if the user clicks item in a data series; the onClick destination page.</p>
+<p>You can specify variables within the URL string; ColdFusion passes current values of the variables.</p><ul>
+
+<li>$VALUE$: the value of the selected row. If none, the value is an empty string.</li>
+
+<li>$ITEMLABEL$: the label of the selected item. If none, the value is an empty string.</li>
+
+<li>$SERIESLABEL$: the label of the selected series. If none, the value is an empty string. </li>
+</ul>
+
+<p>For example:</p><pre>"somepage.cfm?item=$ITEMLABEL$&amp;series=$
+SERIESLABEL$&amp;value=$VALUE$
+</pre><ul>
+
+<li>&quot;javascript:...&quot;: executes a client-side script</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="XAXISTITLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">XAXISTITLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Title that appears on the x-axis; text.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="XAXISTYPE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">XAXISTYPE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "category"
+
+
+<p>Whether the x-axis indicates data or is numeric:</p><ul>
+
+<li>category: The axis indicates the data category. Data is sorted according to the sortXAxis attribute.</li>
+
+<li>scale: The axis is numeric. All cfchartdata item attribute values must be numeric. The x-axis is automatically sorted numerically.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="XOFFSET">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">XOFFSET</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "0.1"
+
+
+<p>Number of units by which to display the chart as angled, horizontally. Applies if show3D=&quot;yes&quot;. The number can be between -1 and 1, where &quot;-1&quot; specifies 90 degrees left and &quot;1&quot; specifies 90 degrees right.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="YAXISTITLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">YAXISTITLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Title of the y-axis; text.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="YAXISTYPE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">YAXISTYPE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "category"
+
+
+<p>Currently has no effect, as the y-axis is always used for data values. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="YOFFSET">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">YOFFSET</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "0.1 "
+
+
+<p>Number of units by which to display the chart as angled, vertically. Applies if show3D=&quot;yes&quot;. The number can be between -1 and 1, where &quot;-1&quot; specifies 90 degrees left and &quot;1&quot; specifies 90 degrees right.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

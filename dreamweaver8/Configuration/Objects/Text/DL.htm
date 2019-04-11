@@ -1,0 +1,41 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Copyright 2001 Macromedia, Inc. All rights reserved. -->
+<title><MMString:LoadString id="insertbar/textDL" /></title>
+<script language="javascript">
+
+//---------------     API FUNCTIONS    ---------------
+
+function isDOMRequired() {
+	// Return false, indicating that this object is available in code view.
+	return false;
+}
+
+function objectTag() {
+	// Manually wrap tags around selection.
+	var dom = dw.getDocumentDOM();
+	if (dw.getFocus() == 'textView' || dw.getFocus(true) == 'html'){
+    var upCaseTag = (dw.getPreferenceString("Source Format", "Tags Upper Case", "") == 'TRUE');
+  	// Manually wrap tags around selection.
+    if (upCaseTag){
+      dom.source.wrapSelection('<DL>','</DL>');
+    }else{
+  		dom.source.wrapSelection('<dl>','</dl>');
+    }
+	}else if (dw.getFocus() == 'document'){
+		dom.setListTag("dl")
+  }
+  
+  // Just return -- don't do anything else.
+  return;
+}
+
+</script>
+
+</head>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "秒数到小时数" description = "将秒数转换为小时数，以“小时数:分钟数:秒数”形式的字符串表示结果。" preview="code" type="block">
+<insertText location="beforeSelection">
+<![CDATA[function secondsToHours(sec)
+{
+  var hrs = Math.floor(sec/3600);
+  var min = Math.floor((sec%3600)/60);
+  sec = sec % 60;
+  if(sec<10) sec = "0" + sec;
+  if(min<10) min = "0" + min;
+  return hrs + ":" + min + ":" + sec;
+}
+]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

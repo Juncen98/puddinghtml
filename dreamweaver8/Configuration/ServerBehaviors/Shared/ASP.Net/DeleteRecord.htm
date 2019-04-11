@@ -1,0 +1,79 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<HTML>
+<HEAD>
+<!-- Copyright 2002 Macromedia, Inc. All rights reserved. -->
+
+<!-- Common Functions-->
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+
+<!-- Server Behavior Classes -->
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/TagEditClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/SBDatabaseCallClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/SQLStatementClass.js"></SCRIPT>
+
+<!-- Control Classes -->
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/ConnectionTableMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/ConnectionMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/ConnectionColumnMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/ListMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/TagMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/TextField.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/CheckBox.js"></SCRIPT>
+
+<SCRIPT SRC="../Shared/ASP.Net/DatabaseCallClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/ASP.Net/EditOpsClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/ASP.Net/DeleteRecordClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/ASP.Net/EditOps.js"></SCRIPT>
+<SCRIPT src="../Shared/ASP.Net/DeleteRecord.js"></SCRIPT>
+
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY onload="initializeUI();">
+<FORM name="theForm">
+  <TABLE border="0">
+    <tr valign="baseline" nowrap="nowrap">
+      <td align="right" nowrap="nowrap">首先检查是否已定义变量: 
+      </td>
+      <td align="left" nowrap="nowrap"><select name="DeleteIfDefinedParameter" class="columnNameList" onChange="updateUI('DeleteIfDefinedParameter','onChange')"></select>&nbsp;<input name="DeleteIfDefinedParameterValue" type="text" disabled="true" class="medTField" value=""></td>
+    </tr>
+    <tr valign="baseline" nowrap="nowrap">
+      <td align="right" nowrap="nowrap">连接:</td>
+      <td nowrap="nowrap"><select name="ConnectionName" class="connNameList" onChange="updateUI('ConnectionName','onChange')" wrap="virtual"></select>&nbsp;<input type="button" value="定义..." onClick="updateUI('Define','onClick')"></td>
+    </tr>
+    <tr valign="baseline" nowrap="nowrap">
+      <td align="right">表格: </td>
+      <td><select name="TableName" class="connRSTableList" onChange="updateUI('TableName','onChange')" wrap="virtual"></select></td>
+    </tr>
+    <tr valign="baseline" nowrap="nowrap">
+      <td align="right">主键列: </td>
+      <td nowrap="nowrap"><select name="ColumnList" class="columnNameList" onChange="updateUI('ColumnList','onChange')" wrap="virtual"></select></td>
+    </tr>
+    <tr valign="baseline" nowrap="nowrap">
+      <td height="15" align="right" nowrap="nowrap">提交主键作为:</td>
+      <td nowrap="nowrap"><select name="PrimaryKeySubmitAs" class="dataTypeList" onChange="updateUI('PrimaryKeySubmitAs','onChange')" wrap="virtual"></select>
+      </td>
+    </tr>
+    <tr valign="baseline" nowrap="nowrap">
+      <td align="right" nowrap="nowrap">主键值: </td>
+      <td nowrap="nowrap"><select name="PrimaryKeyParameter" class="columnNameList" onChange="updateUI('PrimaryKeyParameter', 'onChange')"></select>&nbsp;<input name="PrimaryKeyParameterValue" type="text" class="medTField" onBlur="updateUI('PrimaryKeyParameterValue', 'onBlur')"></td>
+    </tr>
+    <tr valign="baseline" nowrap="nowrap">
+      <td align="right" valign="baseline" nowrap="nowrap">如果成功，则转到:</td>
+      <td valign="baseline" nowrap="nowrap"><input name="SuccessURL" type="text" class="largeTField">&nbsp;<input type="button" value="浏览..." onClick="updateUI('SuccessURL');focus(this);"></td>
+    </tr>
+    <tr valign="baseline" nowrap="nowrap">
+      <td align="right" valign="baseline" nowrap="nowrap">如果失败，则转到:</td>
+      <td valign="baseline" nowrap="nowrap"><input name="FailureURL" type="text" class="largeTField">&nbsp;<input type="button" value="浏览..." onClick="updateUI('FailureURL');focus(this);"></td>
+    </tr>
+    <tr valign="baseline" nowrap="nowrap">
+      <td align="right" valign="baseline" nowrap="nowrap">&nbsp;</td>
+      <td valign="baseline" nowrap="nowrap"><input name="Debug" type="checkbox" value="true" onClick="updateUI('Debug')">失败时显示调试信息</td>
+    </tr>
+  </TABLE>
+</FORM>
+</BODY>
+</HTML>

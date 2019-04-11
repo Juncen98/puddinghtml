@@ -1,0 +1,9 @@
+<participant version="5.0">
+	<insertText location="aboveHTML+0"><![CDATA[<%@ Page CodeBehind="@@PageName@@" ContentType="text/html" %>
+]]></insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="file_codebehindtype,file_cbPath" isOptional="false" limitSearch="all"><![CDATA[/@\s*page\s*.*\s*(src|codebehind)\s*=\s*(?:'|")([^\r\n]*?)(?:'|").*%>/ig]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>CodeBehind</quickSearch>
+	<delete deleteType="none" />
+</participant>

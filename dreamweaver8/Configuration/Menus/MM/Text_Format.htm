@@ -1,0 +1,119 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>文本格式菜单</TITLE>
+<SCRIPT LANGUAGE="javascript">
+<!--
+
+function isDOMRequired()
+{
+  return false;
+}
+
+
+function receiveArguments()
+{
+  var what = arguments[0];
+  
+  if (dw.getFocus() == 'document') {
+    if (what == "None")
+      dw.getDocumentDOM().setTextFormat('')
+    if (what == "P")
+      dw.getDocumentDOM().setTextFormat('p')
+    if (what == "H1")
+      dw.getDocumentDOM().setTextFormat('h1')
+    if (what == "H2")
+      dw.getDocumentDOM().setTextFormat('h2')
+    if (what == "H3")
+      dw.getDocumentDOM().setTextFormat('h3')
+    if (what == "H4")
+      dw.getDocumentDOM().setTextFormat('h4')
+    if (what == "H5")
+      dw.getDocumentDOM().setTextFormat('h5')
+    if (what == "H6")
+      dw.getDocumentDOM().setTextFormat('h6')
+    if (what == "PRE")
+      dw.getDocumentDOM().setTextFormat('pre')
+  } else {
+    if (what == "P")
+      dw.getDocumentDOM().source.wrapSelection('<p>', '</p>')
+    if (what == "H1")
+      dw.getDocumentDOM().source.wrapSelection('<h1>', '</h1>')
+    if (what == "H2")
+      dw.getDocumentDOM().source.wrapSelection('<h2>', '</h2>')
+    if (what == "H3")
+      dw.getDocumentDOM().source.wrapSelection('<h3>', '</h3>')
+    if (what == "H4")
+      dw.getDocumentDOM().source.wrapSelection('<h4>', '</h4>')
+    if (what == "H5")
+      dw.getDocumentDOM().source.wrapSelection('<h5>', '</h5>')
+    if (what == "H6")
+      dw.getDocumentDOM().source.wrapSelection('<h6>', '</h6>')
+    if (what == "PRE")
+      dw.getDocumentDOM().source.wrapSelection('<pre>', '</pre>')
+  }
+}
+
+function canAcceptCommand()
+{
+  // Make sure the focus is in the BODY of the document.
+  var retVal = false;
+  if (dw.getFocus() == 'document' && dw.getDocumentDOM().getFocus() == 'body') {
+    retVal = true;
+  }
+
+  if (dw.getFocus(true) == 'html' || dw.getFocus() == 'textView') {
+//    var what = arguments[0];
+//    if (what != "None")
+    retVal = true;
+  }
+  
+  if (dw.getDocumentDOM() && dw.getDocumentDOM().getParseMode() != 'html') {
+  	retVal = false;
+  }
+  
+  return retVal;
+}
+
+function isCommandChecked()
+{
+//  if (dw.getFocus(true) == 'html' || dw.getFocus() == 'textView')
+//    return false;
+    
+  if (dw.getDocumentDOM() != null){
+    var textFormat = dw.getDocumentDOM().getTextFormat();
+    var what = arguments[0];
+
+    if (what == "None")
+      return (textFormat == "");
+    if (what == "P")
+      return (textFormat == "p");
+    if (what == "H1")
+      return (textFormat == "h1");
+    if (what == "H2")
+      return (textFormat == "h2");
+    if (what == "H3")
+      return (textFormat == "h3");
+    if (what == "H4")
+      return (textFormat == "h4");
+    if (what == "H5")
+      return (textFormat == "h5");
+    if (what == "H6")
+      return (textFormat == "h6");
+    if (what == "PRE")
+      return (textFormat == "pre");
+    else
+      return false;
+  }
+  else
+  {
+    return false;
+  }  
+}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

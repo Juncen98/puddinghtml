@@ -1,0 +1,142 @@
+<!-- Copyright 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<html>
+<head>
+<title>µÿ÷∑ URL</title>
+
+<script language="JavaScript">
+
+var AddressOpenNode		= "<urls>\r\n";
+var AddressRec			= "<url address=\"@@url@@\"></url>\r\n";
+var AddressCloseNode	= "</urls>";
+//for the wsrec to rebuild the proxy.
+var urlReplacePattern		= /@@url@@/g;
+MAX_ADDRESS_SIZE=5;
+
+function receiveArguments(newAddress)
+{
+	// If this is the friendly version of a URL, map it back to
+	// the real URL.
+	var dom = dw.getDocumentDOM();
+	if (dom)
+	{
+		var wm = CCWorkspaceManager.getManager(dom);
+		if (wm)
+			newAddress = wm.getRealURLForFriendlyURL(newAddress);
+	}
+	
+	var browser = dw.getBrowser();
+	browser.openURL(newAddress);
+}
+
+function canAcceptCommand()
+{
+	return true;
+}
+
+function getCurrentValue()
+{
+	var browser   = dw.getBrowser(); 
+	var value = browser.getURL();
+	if (value && value.length)
+	{
+		// If this is a special page, make the URL friendlier.
+		var dom = dw.getDocumentDOM();
+		if (dom)
+		{
+			var wm = CCWorkspaceManager.getManager(dom);
+			if (wm)
+				value = wm.getFriendlyURLForRealURL(value);
+		}
+		
+		//check if is it not a temp file
+		//extract the tail of the url
+		var filename    = value;
+		var slashIndex  = filename.lastIndexOf("/");
+		filename	    = filename.substring(slashIndex+1);
+		var tempIndex   = filename.indexOf("TMP");
+		if (tempIndex != 0)
+		{
+			addRecentAddress(value);
+		}
+	}
+
+	// Decode the URL before presenting it to the user.  Note that
+	// we don't re-encode it in receiveArguments--that encoding happens
+	// internally to the app.
+	value = dw.doURLDecoding(value);
+	return value;
+}
+
+function getDynamicContent()
+{
+	var items = new Array;
+	var filename = dw.getConfigurationPath() + "/Toolbars/MM/AddressList.xml";
+	var location = MMNotes.localURLToFilePath(filename);
+	if (DWfile.exists(location))
+	{
+		var addressData		 = DWfile.read(location);
+		var addressDOM		 = dw.getDocumentDOM(dw.getConfigurationPath() + '/Shared/MM/Cache/empty.htm');	
+		addressDOM.documentElement.outerHTML = addressData;
+		var addressNodes = addressDOM.getElementsByTagName("url");
+		if (addressNodes.length)
+		{
+			for (var i=0; i < addressNodes.length ; i++ )
+			{  
+				items[i] = addressNodes[i].address + ";id='" + addressNodes[i].address + "'";
+			}
+		}
+	}
+
+	return items;
+}
+
+function addRecentAddress(address)
+{
+	var fileContents;
+	var filename = dw.getConfigurationPath() + "/Toolbars/MM/AddressList.xml";
+	var location = MMNotes.localURLToFilePath(filename);
+	var addressData;
+	var addressDOM;
+	var addressNodes=null;
+	fileContents = AddressOpenNode;
+	var aRec;
+
+	if (DWfile.exists(location))
+	{
+		addressData		 = DWfile.read(location);
+		addressDOM		 = dw.getDocumentDOM(dw.getConfigurationPath() + '/Shared/MM/Cache/empty.htm');	
+		addressDOM.documentElement.outerHTML = addressData;
+		addressNodes = addressDOM.getElementsByTagName("url");
+	}
+
+	//add the new node on the top.
+	aRec = AddressRec;         
+	aRec = aRec.replace(urlReplacePattern, address);
+	fileContents = fileContents + aRec;
+	var length = -1;
+	if (addressNodes)
+	{
+		length = (addressNodes.length > MAX_ADDRESS_SIZE-1) ? (MAX_ADDRESS_SIZE-1):addressNodes.length;
+	}
+	for (var i=0; i < length ; i++ )
+	{  
+		if (addressNodes[i].address == address)
+		{
+			continue;
+		}
+		aRec = AddressRec;         
+		aRec = aRec.replace(urlReplacePattern, addressNodes[i].address);
+		fileContents = fileContents + aRec;
+	}
+
+	fileContents = fileContents + AddressCloseNode;
+	return DWfile.write(filename,fileContents);
+}
+
+</script>
+</head>
+
+<body>
+</body>
+</html>
+

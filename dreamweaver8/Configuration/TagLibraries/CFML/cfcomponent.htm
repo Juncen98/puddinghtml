@@ -1,0 +1,99 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFCOMPONENT</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var LOGINSTORAGELIST;
+var theUIObjects;
+
+/****************************************************************/
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj,theUIObjects);
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj,theUIObjects);
+}
+
+function initializeUI()
+{
+  STYLELIST = new ListControl("thestyle");
+  theUIObjects  = new Array(STYLELIST);
+
+  tagDialog.populateDropDownList(STYLELIST, theComponentStyleCap, theComponentStyleVal, 0);
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<div name="CFCOMPONENT 标签">
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+	    <td align="right" nowrap="nowrap">扩展: </td>
+      <td nowrap="nowrap">
+        <input name="theextends" type="text" class="basicTextField" id="attr:cfcomponent:extends" attname="extends" required="true" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+	    <td align="right" nowrap="nowrap">显示名称: </td>
+      <td nowrap="nowrap">
+        <input name="thedisplayname" type="text" class="basicTextField" id="attr:cfcomponent:displayname" attname="displayname" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+	    <td align="right" nowrap="nowrap">提示: </td>
+      <td nowrap="nowrap">
+        <input name="thehint" type="text" class="basicTextField" id="attr:cfcomponent:hint" attname="hint" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+	    <td align="right" nowrap="nowrap">样式: </td>
+      <td nowrap="nowrap">
+        <select name="thestyle" type="text" class="oneWordOptionList" id="attr:cfcomponent:style" attname="style" >
+		</select>
+      </td>
+    </tr>
+    <tr valign="baseline">
+	    <td align="right" nowrap="nowrap">命名空间: </td>
+      <td nowrap="nowrap">
+        <input name="thenamespace" class="basicTextField" id="attr:cfcomponent:namespace" attname="namespace" />
+       
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">服务端口名称: </td>
+      <td nowrap="nowrap"><input name="theserviceportname" type="text" class="basicTextField" id="attr:cfcomponent:serviceportname" attname="serviceportname" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">端口类型名称: </td> 
+      <td nowrap="nowrap"><input type="text" class="basicTextField" id="attr:cfcomponent:theporttypename" name="theporttypename" attname="porttypename" />
+        </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">WSDL 文件: </td> 
+      <td nowrap="nowrap"><input type="text" class="basicTextField" id="attr:cfcomponent:thewsdlfile" name="thewsdlfile" attname="wsdlfile" />
+        </td>
+    </tr>
+	<tr valign="baseline">
+      <td align="right" nowrap="nowrap">绑定名称: </td> 
+      <td nowrap="nowrap"><input type="text" class="basicTextField" id="attr:cfcomponent:thebindingname" name="thebindingname" attname="bindingname" />
+        </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

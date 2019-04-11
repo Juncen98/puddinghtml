@@ -1,0 +1,1840 @@
+<html>
+<head>
+<title>Application Object</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">Application Object</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+<p><!--<primary>Application
+object</primary>-->In the context of Active Server Pages, an
+<em>application</em> is the sum of all the files that can
+be accessed through a given virtual directory and its subdirectories.
+This ASP application context is the same for all clients using the
+application. For example, a client from Thailand who requests pages
+from your <filename>/SearchApp</filename> virtual directory is
+accessing the same "application" as a second client from
+Sweden who is requesting pages from the same virtual
+directory—regardless of which specific web page within the
+virtual directory each is requesting.</p>
+
+
+
+
+<p>Just as traditional standalone applications allow you to share
+information throughout the application, so too do ASP applications.
+You can share information among all clients of a given ASP
+application using the <em>Application</em> object. This
+built-in object represents the ASP application itself and is the same
+regardless of the number or type of clients accessing the application
+and regardless of what part or parts of the application those clients
+are requesting.</p>
+
+
+
+
+<p>The Application object is initialized by IIS the moment the first
+client requests <em>any</em> file from within the given
+virtual directory. It remains in the server's memory until
+either the web service is stopped or the application is explicitly
+unloaded from the web server using the Microsoft Management Console.</p>
+
+
+
+
+<p>IIS allows you to instantiate variables and objects with
+application-level scope. This means that a given variable contains
+the same value for all clients of your application. You also can
+instantiate server-side objects with application-level scope that
+likewise contain the same values for all clients. These
+application-level variables and objects can be accessed and changed
+from the context of any user's session and from any file within
+the current application.</p>
+
+
+
+
+<p>As stated earlier, the Application object's
+<!--<primary>initializing</primary><secondary>Application
+object</secondary>-->initialization occurs when the first
+user of your application requests any file from within the virtual
+directory that the ASP application encompasses. This initialization
+can be thought of as setting aside memory for the given ASP
+application. The web server instantiates and initializes the
+Application object for you. However, you can customize this
+initialization by including code in a special optional file called
+<filename>GLOBAL.ASA</filename><!--<primary>global variables</primary>-->
+<!--<primary>application-level
+scope</primary>--> <!--<primary>GLOBAL.ASA file</primary>-->
+<!--<primary>scope</primary><secondary>application-level</secondary>-->
+<!--<primary>variables</primary><secondary>scope</secondary><see>scope</see>-->
+<!--<primary>objects</primary><secondary>scope</secondary><see>scope</see>-->.
+Although I will discuss this file in greater depth in <link linkend="ch11-1-fm2xml">Chapter 11</link>, it is worth presenting a brief overview here.</p>
+
+
+
+
+<p>The <filename>GLOBAL.ASA</filename> file exists—if it
+exists—at the root of the physical directory mapped to by your
+ASP application's virtual directory. It is processed every time
+a new user requests a page from within the application's
+virtual directory. This file contains initialization code for both
+the user's session and the application itself. If the user is
+not the first user, the application-specific sections of
+<filename>GLOBAL.ASA</filename> are not processed. If the
+<filename>GLOBAL.ASA</filename> file does not exist or does not
+contain any code, but the user's request is the web
+server's first request for files within a given application,
+the web server still initializes the Application object. However, the
+web server's initialization involves only the dimensioning of
+memory required for the application.</p>
+
+
+
+
+<p>The <filename>GLOBAL.ASA</filename> file provides a place for you to
+create variables and objects that have application-level scope. This
+section of the <filename>GLOBAL.ASA</filename> file represents an
+event procedure. The event is the OnStart event, and its event
+handler is executed when the application is started. It's
+important to note that although the <filename>GLOBAL.ASA</filename>
+file is processed for every user that makes a request, the
+Application object's OnStart event is executed for only the
+first user. (The OnStart and the corresponding OnEnd event procedures
+are covered in detail later in this chapter.)</p>
+
+
+
+
+<p>Variables and objects with application-level scope have the same
+value for all users at all times during the life of the application.
+If one user requests a page containing code that changes an
+application-level variable's value, then that variable's
+value is changed for all users. This presents a problem: potentially,
+two or more users could attempt to change the value of the same
+application-level variable at the same time. Fortunately, ASP
+provides the Application object's Lock and Unlock methods to
+avoid conflicts in these situations. Just as you must carefully
+consider the ramifications of using global variables in a
+multithreaded application, you also must consider the ramifications
+of using variables with application-level scope. Use
+application-level variables with care.</p>
+
+
+
+
+<p>The properties, collections, methods, and events of the ASP
+Application object are outlined in <link linkend="ch04-59578">Application Object Summary</link>.</p>
+
+
+
+
+<!--
+<p class="TITLE">Application Object Summary</p>
+
+
+
+
+<dl>
+<dt>Properties</dt>
+<dd><p>None</p></dd>
+
+
+
+
+
+
+
+<dt>Collections</dt>
+<dd><p>Contents</p>
+
+
+
+
+
+
+<p>StaticObjects</p>
+</dd>
+
+
+
+
+<dt>Methods</dt>
+<dd><p>Contents.Remove</p>
+
+
+
+
+<p>Contents.RemoveAll</p>
+
+
+
+
+<p>Lock</p>
+
+
+
+
+<p>Unlock</p>
+</dd>
+
+
+
+
+<dt>Events</dt>
+<dd><p>OnEnd</p>
+
+
+
+
+<p>OnStart</p>
+
+</dd>
+
+</dl>
+
+-->
+
+</td></tr>
+</table>
+</div>
+<div id="CommentsTroubleshooting">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Comments/Troubleshooting</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2">&nbsp;</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+<p><!--<primary>comments and
+troubleshooting</primary><secondary>global
+variables</secondary>-->Application-level variables are, in
+effect, global variables for your ASP application. The use of globals
+in ASP applications should be viewed with as much skepticism as the
+use of globals in traditional standalone applications, if not with
+more. The most important step is to painstakingly consider its scope
+before implementing any object or variable with application-level
+scope. There are very few instances in which using these ASP global
+variables is necessary.</p>
+
+<p>With that warning, there are a few instances in which using
+application-level variables or objects is useful in creating
+functional ASP applications. One of the most important of these is
+maintaining application-specific statistics for your web site. Using
+application-level variables that are incremented at the beginning of
+each user session, for example, you could maintain a count of clients
+that have used your application. Although such web management tools
+as Microsoft Site Server perform similar tasks, their statistics are
+file-specific, not application-specific.</p>
+
+
+
+
+<p>Some ASP literature has suggested using application-level objects for
+maintaining open <!--<primary>ADO (ActiveX Data
+Objects)</primary><secondary>application-level objects to maintain
+connections</secondary>--> <!--<primary>ActiveX Data
+Objects</primary><see>ADO</see>-->ActiveX Data Objects (ADO)
+database connections for all application users. (For more information
+on ADO, see <link linkend="ch12-1-fm2xml">Chapter 12</link>.) This is
+<em>not</em> a good use of application-level variables,
+since this approach prevents ODBC from pooling connections per
+individual pages. (However, you could use an
+application-level variable to maintain an application-specific
+connection string for that same database connection.)
+</p>
+
+
+<p>ODBC connection pooling provides a
+method by which ODBC connections can be reused by successive users.
+Instead of creating a new connection each time a client requests one,
+the server attempts to reuse an already existing connection that is
+no longer in use. If unused ODBC connections reside in memory after a
+certain period of time (configured in the MMC), they are destroyed to
+free memory.</p>
+
+<p>There is one trap that you should be aware of when considering the
+use of application-level variables and objects. Consider the
+following scenario. You have two physical directories:
+<filename>c:\inetpub\wwwroot\MainApp</filename> and
+<filename>c:\inetpub\wwwroot\MainApp\SearchApp</filename>. These
+directories are mapped to the virtual directories
+<filename>/MainApp</filename> and <filename>/SearchApp</filename>,
+respectively. You have, in effect, an application within an
+application. The first client requests a page within the
+<filename>c:\inetpub\wwwroot\MainApp\SearchApp</filename> physical
+directory. Which initialization code will be used to initialize the
+Application object—the code in the
+<filename>GLOBAL.ASA</filename> for <filename>/MainApp</filename> or
+the <filename>GLOBAL.ASA</filename> for
+<filename>/SearchApp</filename> ? In this case the
+<filename>/SearchApp</filename> <filename>GLOBAL.ASA</filename> is
+the one processed. Until a file in <filename>/MainApp</filename> that
+does not exist in <filename>/SearchApp</filename> is requested, the
+<filename>GLOBAL.ASA</filename> file for
+<filename>/MainApp</filename> is not processed. If the two
+<filename>GLOBAL.ASA</filename> files define different sets of
+application-level variables, you have no way of knowing within your
+code which Application variables were properly initialized without
+testing them.</p>
+
+
+
+
+<p>Finally, note that IIS now allows you to set ASP applications up in
+separate memory spaces from each other and from the web server itself
+by simply checking an option on the Properties panel of a given
+virtual directory in IIS's Microsoft Management Console. This
+ability is an important improvement in IIS. If your ASP application
+is running in a separate memory space from the web server and a
+server object in it (or the scripting engine itself) crashes, it will
+not also crash the web server or your other ASP applications.<filename/>   </p>
+</td>
+</tr>
+</table>
+</div>
+<div id="ContentsCollection">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Contents Collection</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="PROGRAMLISTING"><pre>Application.Contents.Item("Pi") = 3.14</pre></span></td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>The <!--<primary>Contents
+collection</primary><secondary>Application
+object</secondary>--> <!--<primary>Application
+object</primary><secondary>collections
+reference</secondary>-->Contents collection of the
+Application object contains all the application-level scoped
+variables and objects added to the current application through the
+use of scripts (<em>not</em> through the use of the
+<span class="LITERAL">&lt;OBJECT&gt;</span> tag).</p>
+
+
+
+
+<p>Before examining how elements are added to the Contents collection,
+you must first understand the properties of the Contents collection.
+The Contents collection has three properties:</p>
+
+
+
+
+<dl>
+<dt>Item</dt>
+<dd><p><!--<primary>Item property</primary><secondary>Contents
+collection</secondary>-->Retrieves the value of a specific
+member of the Contents collection. You specify which member using a
+string key (whose value is obtainable using the index through the Key
+property, explained later in this section) or using an index number.
+For example, if you wish to initialize an element in the Contents
+collection with the value of Pi, you might use a line of code similar
+to the following:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Application.Contents.Item("Pi") = 3.14</pre></span>
+
+
+
+
+<p>In the preceding line of code, the desired element in the collection
+is specified using the key value "Pi." Thus initialized,
+you can then retrieve the value of this element of the Contents
+collection using the following line of code:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>dblMyVar = Application.Contents.Item("Pi")</pre></span>
+
+
+
+
+<p>For reasons that will become clear in a moment, let's assume
+that this is the first element added to the Contents collection.</p>
+
+
+
+
+<p>You could also retrieve the value of an element in the Contents
+collection using its index in the collection rather than a key, as
+demonstrated in the following line of code:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>dblMyVar = Application.Contents.Item(1)</pre></span>
+
+
+
+
+<p>Note that you use a 1 (one), not a
+(zero), to represent the first element in the Contents collection.
+This is a subtle point, since using a zero in this line of code will
+result in the variable dblMyVar being initialized with an undefined
+value. Unfortunately, this will not result in an error. It will
+result only in an improperly initialized variable:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>dblMyVar = Application.Contents.Item(0) ' WRONG.</pre></span>
+
+
+
+
+<p>Item is the default property of the Contents collection and the
+Contents collection is the default collection of the Application
+object. This means that each of the following three lines of code is
+interpreted in exactly the same manner in your application:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Application.Contents.Item("Pi") = 3.14
+Application.Contents("Pi") = 3.14
+Application("Pi") = 3.14</pre></span>
+
+
+
+
+<p>Correspondingly, you would assume that the following three lines of
+code are also equivalent:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Application.Contents.Item(1) = 3.14159
+Application.Contents(1) = 3.14159
+Application(1) = 3.14159</pre></span>
+
+
+
+
+<p>However, this is only the case if the first element in the Contents
+collection has previously been defined using a key. Although not
+mentioned in the documentation that accompanies ASP, to use either of
+the preceding first two lines of code, the element must have been
+previously defined using a key. For example, assume you decide to add
+a second element to the Contents collection. You cannot initialize
+this element using either of the following lines of code:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Application.Contents.Item(2) = 3.14159     ' WRONG.
+Application.Contents(2) = 3.14159          ' WRONG.</pre></span>
+
+
+
+
+<p>Unfortunately, even this exception has an exception. You
+<em>can</em> use the following code to initialize a
+second variable:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Application(2) = 3.14159</pre></span>
+
+
+
+
+<p>When you consider these inconsistencies, it becomes quickly apparent
+that it is always safest to use a key rather than an index when
+referencing the value of a specific element in the Contents
+collection.</p>
+
+
+
+
+<p>Also, it is important to use a key when referring to a specific
+member of the Contents collection because that member's index
+may change. For example, suppose you have the following code in your
+application:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Application("strFirstName") = "Arthur"
+Application("strMiddleName") = "Keyton"
+Application("strLastName") = "Weissinger"</pre></span>
+
+
+
+
+<p>Assuming these variables are the first three added to the Contents
+collection, you could later refer to each using its index:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>strFirst = Application(1) 
+strMiddle = Application(2)
+strLast = Application(3)</pre></span>
+
+
+
+
+<p>However, if you use the Remove method, which completely removes a
+variable from the collection (see later in this chapter), to remove
+the strMiddleName variable, the index numbers will change:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Session.Contents.Remove("strMiddleName")
+
+strFirst = Application(1)          ' Initializes to "Arthur" 
+strMiddle = Application(2)         ' Initializes to "Weissinger"
+strLast = Application(3)           ' Initializes to Undefined.</pre></span></dd>
+
+
+
+
+<dt>Key</dt>
+<dd><p><!--<primary>Key property</primary><secondary>Contents
+collection</secondary>-->Represents the name of a specific
+element in the Contents collection. Remember from earlier that each
+element's value is represented by the Item property. Similarly,
+each element's name is represented by its Key property.</p>
+
+
+
+
+<p>If you do not know the name of a specific key, you can obtain it
+using its ordinal reference. For example, assume that you want to
+learn the key name for the third element in the collection and,
+subsequently, retrieve that element's value. You could use the
+following code:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>strKeyName = Application.Contents.Key(3)
+strKeyValue = Application.Contents.Item(strKeyName)</pre></span></dd>
+
+
+
+
+<dt>Count</dt>
+<dd><p><!--<primary>Count property</primary><secondary>Contents
+collection (Application)</secondary>-->Represents the total
+number of elements in the Contents collection.</p></dd>
+
+</dl>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>You can
+<!--<primary>initializing</primary><secondary>application-level
+variables</secondary>-->initialize application-level
+variables and thus add elements to the Contents collection in one of
+two ways. First, you can initialize Application variables in the
+Application_OnStart event procedure in the
+<filename>GLOBAL.ASA</filename> file, as <link linkend="ch04-21135">Example 4.1</link>
+illustrates.</p>
+
+
+
+
+<example id="ch04-21135" label="4.1">
+<p class="TITLE">Initializing Application-Level Variables in GLOBAL.ASA </p>
+
+
+
+<span class="PROGRAMLISTING"><pre>' &lt; FROM GLOBAL.ASA &gt;
+' This code resides in the GLOBAL.ASA file at the
+' root of the current application.
+' See <link linkend="ch11-1-fm2xml">Chapter 11</link> for more details on the GLOBAL.ASA file.
+
+Sub Application_OnStart
+
+   Application.Contents.Item("STATE_FIRST") = "California"
+   Application.Contents("STATE_SECOND") = "Oregon"
+   Application("STATE_THIRD") = "Washington"
+
+End Sub</pre></span>
+
+</example>
+
+
+
+
+<p>The code in <link linkend="ch04-21135">Example 4.1</link> creates three
+application-scoped variables, thus adding three elements to the
+Contents collection. Note that these variables will be instantiated
+and initialized only at the start of the application, not upon every
+visit to the site by subsequent users. These variables maintain the
+same values unless another script changes them for all pages and for
+all users.</p>
+
+
+
+
+<p>The previous code adds elements to the Contents collection by key.
+You can also add elements to the collection by using an index value,
+as in:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Application.Contents(1) = "California"</pre></span>
+
+
+
+
+<p>However, you should add elements to a collection either by key or by
+index, but not both. If you add elements both by index and by key,
+elements with keys will overwrite elements at lower ordinal positions
+that have not been assigned keys.</p>
+
+
+
+
+<p>You also can create application-scoped variables and thus add
+elements to the Contents collection inside any script on any page.
+Note, however, that any variables created in this manner are created
+and maintained across the whole application and all its users. <link linkend="ch04-28500">Example 4.2</link> illustrates this method of initializing
+application-scoped variables.</p>
+
+
+
+
+<example id="ch04-28500" label="4.2">
+<p class="TITLE">Initializing Application-Level Variables in a Server-Side Script </p>
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%
+' This code exists in the server-side section of a script
+' on the web site.
+Application.Contents.Item("STATE_FOURTH") = "New York"
+Application.Contents("STATE_FIFTH") = "New Jersey"
+Application("STATE_SIXTH") = "Vermont"
+
+%&gt;</pre></span>
+</example>
+
+
+
+
+<p>The code in <link linkend="ch04-28500">Example 4.2</link> adds three more
+application-scoped variables to the application. Note that these
+variables will be reinitialized every time a user requests the page
+containing this code. To prevent this waste of processor power, it
+might be better to perform this initialization using code similar to
+the following:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%
+' A more efficient example of the creation of an 
+' application-scoped variable.
+If IsEmpty(Application.Contents.Item(STATE_SEVENTH)) Then
+   Application.Contents(STATE_SEVENTH) = "Texas"
+End If
+
+%&gt;</pre></span>
+
+
+
+
+<p>This code creates a seventh application variable for the current
+application only if it has not already been created.</p>
+
+
+
+
+<p><!--<primary>For Each construct</primary><secondary>iterating
+Contents collection</secondary>-->
+<!--<primary>For...Next
+construct</primary><secondary>iterating Contents
+collection</secondary>-->The Contents collection supports
+the <span class="LITERAL">For</span> <span class="LITERAL">Each</span> and
+<span class="LITERAL">For...Next</span> constructs for iterating the
+collection, as <link linkend="ch04-23278">Example 4.3</link> demonstrates.</p>
+
+
+
+
+<example id="ch04-23278" label="4.3">
+<p class="TITLE">Using For Each with the Contents Collection </p>
+
+
+
+<span class="PROGRAMLISTING"><pre><strong class="userinput">&lt;%
+For Each strKey in Application.Contents
+%&gt;</strong>
+   The next item in Application's Contents collection&lt;BR&gt;
+   has &lt;%= <strong class="userinput">strKey</strong> %&gt; as its key and
+   <strong class="userinput">&lt;%= Application.Contents(strKey) %&gt;</strong>
+   as its value.&lt;P&gt;
+<strong class="userinput">&lt;%
+Next %&gt;</strong></pre></span>
+</example>
+
+
+
+
+<p>Note, however, that unlike most collection objects, the Contents
+collection does not support the <!--<primary>Add
+method</primary><secondary>Contents collection
+and</secondary>--> <!--<primary>Remove
+method</primary><secondary>Contents
+collection</secondary>-->Add method, and until IIS 5.0 did
+not support a Remove method. Unless they are explicitly removed,
+variables given application scope stay resident until the web server
+is stopped or the last user's session times out.</p>
+
+
+
+
+<p>If you add an object to the Application's Contents collection,
+make sure that the <!--<primary>threading, application-level
+scope and</primary>-->threading model for the object
+supports its use in an application scope; use of the free-threaded
+model is recommended. For more on the use of
+various threading models in IIS server components, see Shelley
+Powers' book <citetitle>Developing ASP Components</citetitle>,
+published by O'Reilly &amp; Associates<citetitle>.</citetitle>
+</p>
+
+
+
+<p>Free-threaded applications
+allow multiple user processes to access the same instance of the
+component simultaneously.</p>
+
+
+<p>To access an application-scoped object's properties or methods,
+use an extension of the syntax you saw earlier for accessing the
+value of an application-scoped variable, as the following code
+fragment illustrates:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>' In this example, assume you have an application-scoped Ad 
+' Rotator variable called MyAdRot.
+
+' Accessing a property:
+intBorder = Application.Contents("MyAdRot").Border
+
+' Executing a method:
+Application.Contents("MyAdRot").GetAdvertisement("Sched.txt")</pre></span>
+
+
+
+
+<warning id="ch04-5-fm2xml" role="ora">
+<p>If you intend to use a given object in a transaction using the
+<!--<primary>ObjectContext
+object</primary><secondary>application-level scope
+and</secondary>-->ObjectContext object, do not give that
+object application or session scope. Objects used in transactions are
+destroyed at the end of the transaction and any subsequent reference
+to their properties or calls to their methods will result in an
+error.</p>
+
+
+
+</warning>
+
+<p><!--<primary>arrays, adding to Contents
+collection</primary>-->When adding an array to the
+Application object's Contents collection, add the entire array
+as a whole. When changing an element of the array, retrieve a copy of
+the array, change the element, and then add the array to the Contents
+collection as a whole again. The code in <link linkend="ch04-34094">Example 4.4</link>
+demonstrates this.</p>
+
+
+
+
+<example id="ch04-34094" label="4.4">
+<p class="TITLE">Working with Arrays in the Contents Collection </p>
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%
+' Create an array variable and add it to Contents collection.
+ReDim arystrNames(3)
+
+arystrNames(0) = "Chris"
+arystrNames(1) = "Julie"
+arystrNames(2) = "Vlad"
+arystrNames(3) = "Kelly"
+
+Application("arystrUserNames") = arystrNames
+
+%&gt;
+
+The second name in the User Names array is 
+&lt;%= Application("arystrUserNames")(1) %&gt;
+&lt;BR&gt;
+&lt;%
+
+' Change an element of the array being held in the
+' Contents collection.
+Dim arystrNamesLocal
+
+arystrNamesLocal = Application("arystrUserNames")
+arystrNamesLocal(1) = "Mark"
+
+Application("arystrUserNames") = arystrNamesLocal
+' The second name is now Mark.
+
+%&gt;
+Now, the second name in the User Names array is
+&lt;%= Application("arystrUserNames")(1) %&gt;
+&lt;BR&gt;</pre></span>
+</example>
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Remove">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Remove</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Application.Contents.Remove(</span><var class="replaceable">Key|Index</var>)
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+<p><!--<primary>Remove method</primary><secondary>Contents
+collection</secondary>-->Removes a
+<!--<primary>memory</primary><secondary>user
+sessions</secondary><tertiary>releasing</tertiary>-->
+<!--<primary>user sessions</primary><secondary>memory
+for</secondary><tertiary>releasing</tertiary>-->specific
+member from the Contents collection. An addition in IIS 5.0, the
+Remove method allows you to remove from memory a specific variable
+from the Application's Contents collection without removing all
+the others.</p>
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt>Key</dt>
+<dd><p>A string variable that specifies the name of the specific member of
+the Contents collection to be removed.</p></dd>
+
+
+
+
+<dt>Index</dt>
+<dd><p>An integer variable that specifies the index of the member of the
+Contents collection to be removed.</p></dd>
+
+</dl>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>The following script removes two members of the Contents collection:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%
+' This script assumes you have set up two greeting salutations for all
+' the members of your site based on time of day. You want to now 
+' remove these from your site.
+strAppMorningGreeting = Application("strAMGreet")
+strAppEveningGreeting = Application("strPMGreet")
+
+.
+.
+.
+Application.Contents.Remove("strAMGreet")
+Application.Contents.Remove("strPMGreet")
+.
+.
+.
+%&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>The <!--<primary>Remove method</primary><secondary>Contents
+collection</secondary>-->Remove method is an important
+addition to the Contents collection because it allows for better
+<!--<primary>memory</primary><secondary>user
+sessions</secondary><tertiary>releasing</tertiary>-->
+<!--<primary>user sessions</primary><secondary>memory
+for</secondary><tertiary>releasing</tertiary>-->memory
+control and cleanup. It allows you to remove from memory some of your
+collection's elements without abandoning the user's
+session. As discussed earlier under the Item property of the Contents
+collection, it is very important to use a string key instead of an
+index when calling the Remove method. An element's index may
+change over the life of the application, and then your call to Remove
+using a stored index value may lead to unpredictable results.</p>
+
+
+
+
+<p>The Remove method of the Application's Contents collection
+allows you to remove members of the Contents collection without
+unloading the entire web application through the IIS web admin
+interface. The lack of this functionality in pre-5.0 IIS led to
+difficult management of application-scoped variables.</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="RemoveAll">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+RemoveAll</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Application.Contents.RemoveAll</span>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>Removes<!--<primary>RemoveAll, Contents
+collection</primary>--> all members from the Contents
+collection. An addition in IIS 5.0, the RemoveAll method allows you
+to remove from memory all application-scoped variables without
+unloading the application itself.</p>
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>None</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>The following script removes all members of the Contents collection:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%
+' This script assumes you have set up two greeting salutations for all 
+' the members of your site based on time of day. You want to now remove 
+' these from your site.
+strAppMorningGreeting = Application("strAMGreet")
+strAppEveningGreeting = Application("strPMGreet")
+
+.
+.
+.
+Application.Contents.RemoveAll
+.
+.
+.
+%&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>Like the Remove method, the RemoveAll method is an important addition
+to the Contents collection because it allows for better memory
+control and cleanup. It allows you to remove all application-scoped
+variables without unloading the application itself.</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="StaticObjects">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+StaticObjects </td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="PROGRAMLISTING"><pre>&lt;OBJECT RUNAT=Server SCOPE=Application ID=AppInfo2 
+        PROGID="MSWC.MyInfo"&gt;
+&lt;/OBJECT&gt;</pre></span></td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>The <!--<primary>StaticObjects
+collection</primary><secondary>Application
+object</secondary>-->StaticObjects collection contains all
+of the objects added to the application through the use of the
+<!--<primary>application-level
+scope</primary><secondary>objects added with</secondary>-->
+<!--<primary sortas="OBJECT tags">tags</primary><secondary>application-level objects added
+with</secondary>-->
+<!--<primary>scope</primary><secondary>application-level</secondary>--><span class="LITERAL">&lt;OBJECT&gt;</span>
+tag. You can use the Item property (discussed later) of the
+StaticObjects collection to retrieve properties of a specific object
+in the collection. You also can use the Item property of the
+<command role="literal">StaticObjects</command> collection to access a specific
+method of a given object in the collection.</p>
+
+
+
+
+<p>You can add objects to this collection only through the use of the
+<span class="LITERAL">&lt;OBJECT&gt;</span> tag in the
+<filename>GLOBAL.ASA</filename> file, as in the following example:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;OBJECT RUNAT=Server SCOPE=Application ID=AppInfo2 
+        PROGID="MSWC.MyInfo"&gt;
+&lt;/OBJECT&gt;</pre></span>
+
+
+
+
+<p>You cannot add objects to this collection anywhere else in your ASP
+application.</p>
+
+
+
+
+<p>The StaticObjects collection, like other ASP collections, has the
+following properties:</p>
+
+
+
+
+<dl>
+<dt>Item</dt>
+<dd><p><!--<primary>Item property</primary><secondary>StaticObjects
+collection</secondary><tertiary>Application
+object</tertiary>-->Returns a reference to a specific
+element in the collection. To specify an item, you can use an index
+number or a key.</p></dd>
+
+
+
+
+<dt>Key</dt>
+<dd><p><!--<primary>Key property</primary><secondary>StaticObjects
+collection</secondary><tertiary>Application
+object</tertiary>-->Returns the name of a specific element
+in the collection; the name is assigned by the <span class="LITERAL">ID</span>
+attribute of the <span class="LITERAL">&lt;OBJECT&gt;</span> tag. For example,
+you could receive the name of the first element in the collection
+like this:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>objElement = Application.StaticObjects.Key(1)</pre></span>
+
+
+
+
+<p>Use the value of the Key property to retrieve the value of an element
+by name. For example, suppose the first object in the StaticObjects
+collection is named MyAdRotator. You could then use the following
+line of code to set (or retrieve) the value of the Border property of
+that object:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>strKey = Application.StaticObjects.Key(1)
+Application.StaticObjects.Item(strKey).Border = 0</pre></span></dd>
+
+
+
+
+<dt>Count</dt>
+<dd><p><!--<primary>Count property</primary><secondary>StaticObjects
+collection</secondary><tertiary>Application
+object</tertiary>-->The current number of elements in the
+collection.</p></dd>
+
+</dl>
+
+
+
+
+<tip id="ch04-16-fm2xml" role="ora">
+<p>For more information on the Item, Key, and Count properties of a
+collection, see <link linkend="ch04-28098">Contents Collection</link>, earlier in this chapter.</p>
+
+
+
+</tip>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>' &lt; FROM GLOBAL.ASA &gt;
+' This code resides in the GLOBAL.ASA file at the root
+' of the current application. The following &lt;OBJECT&gt;
+' tag is processed only once for the current application.
+' See <link linkend="ch11-1-fm2xml">Chapter 11</link> for more details on the GLOBAL.ASA file.
+
+&lt;OBJECT RUNAT=Server 
+SCOPE=Application
+ID=AppInfo1 
+PROGID="MSWC.MyInfo"&gt;
+&lt;/OBJECT&gt;
+
+' &lt;&gt;
+
+&lt;%
+' The following code initializes the AppInfo1 component.
+' This initialization code can reside anywhere.
+AppInfo1.PersonalName = "Gertrude Stein"
+AppInfo1.PersonalAddress = "233 Main Street"
+
+' The following code uses the StaticObjects collection 
+' of the Application object to retrieve the value
+' of the PersonalName property of AppInfo1. 
+For Each objInfo In Application.StaticObjects
+%&gt;
+   The personal name is &lt;BR&gt;
+   &lt;%= Application.StaticObjects(objInfo).PersonalName%&gt;&lt;P&gt;
+&lt;%
+Next
+%&gt;
+
+There are &lt;%= Application.StaticObjects.Count %&gt; items
+in the Application's StaticObjects collection.</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>The StaticObjects collection allows you to access any object
+instantiated with application-level scope through the use of an
+<span class="LITERAL">&lt;OBJECT&gt;</span> tag. Objects instantiated using the
+Server.<!--<primary>CreateObject method
+(Server)</primary><secondary>StaticObjects collection
+and</secondary>--> <!--<primary>StaticObjects
+collection</primary><secondary>CreateObject method
+and</secondary>-->CreateObject method are not accessible
+through this collection. The nomenclature here can be a bit
+confusing. To reiterate: the StaticObjects collection contains those
+<em>server</em> objects instantiated through the use of
+the <span class="LITERAL">&lt;OBJECT&gt;</span> tag, not through the
+CreateObject method of the Server object.</p>
+
+
+
+
+<p>The StaticObjects example in the IIS 4.0 documentation by Microsoft
+suggests that if you iterate through this collection, you will be
+able to reference each property. This is somewhat misleading, as it
+suggests that the collection actually represents all the properties
+of the objects rather than the objects themselves. If you want to
+access the properties or methods of objects in the StaticObjects
+collection, you must use the dot operator outside of the parentheses
+around the Key, followed by the property or method name, as
+demonstrated in the preceding example.</p>
+
+
+
+
+<p>Objects created in the <filename>GLOBAL.ASA</filename> file are not
+actually instantiated on the server until the first time a property
+or method of that object is called. For this reason, the
+StaticObjects collection cannot be used to access these
+objects' properties and methods until some other code in your
+application has caused them to be instantiated on the server.</p>
+
+
+
+
+<p>Do not give application or session scope to an object used in a
+transaction using the ObjectContext object. Objects used in
+transactions are destroyed at the end of the transaction, and any
+subsequent references to their properties or calls to their methods
+will result in an error. </p>
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Lock">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Lock</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Application.Lock</span>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>The <!--<primary>Lock method
+(Application)</primary>--> <!--<primary>Application
+object</primary><secondary>methods reference</secondary>-->
+<!--<primary>locking/unlocking, Application
+object</primary>--> <!--<primary>unlocking, Application
+object</primary>-->Lock method locks the Application object,
+preventing any other client from altering <em>any</em>
+variables' values in the Contents collection (not just those
+variables you alter before calling the Unlock method). The
+corresponding Unlock method is used to release the Application object
+so other clients can again alter the Contents collection variable
+values. If you fail to use the Unlock method, IIS will unlock the
+variable automatically at the end of the current Active Server Pages
+script or upon script timeout, whichever occurs first.
+
+
+
+<p>The ASP script timeout
+is adjustable through the Properties page of the web site using the
+Microsoft Management Console. The default is 120 seconds.</p>
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>None</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%
+' This script exists on the second page of a 
+' multipage ASP application, so that users may
+' or may not visit it. The example shows how you could
+' see how many visitors the page has had.
+' Assume that TotalNumPage2 starts at 0.
+
+' Lock the Application object.
+Application.Lock
+
+intNumVisits = Application.Contents("TotalNumPage2")
+intNumVisits = intNumVisits + 1
+Application.Contents("TotalNumPage2") = intNumVisits
+
+' Explicitly unlock the Application object.
+Application.Unlock
+
+' NOTE: Using the PageCnt.DLL would be a more
+' efficient manner of doing this.
+
+%&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Home Page&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY BGCOLOR = #ffffcc&gt;
+Welcome to our homepage. You are client number 
+&lt;%= Application.Contents("TotalNumPage2")%&gt; to our site. Thank you for your patronage.
+&lt;/BODY&gt;
+&lt;/HTML&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>Any client connected to your web server can call a script that
+potentially could alter the value of a variable in the Application
+Contents collection. For this reason, it is a good idea to use the
+Lock and Unlock methods every time you reference or alter a variable
+in the Contents collection. This prevents the possibility of a client
+attempting to change a variable's value when another client is
+resolving that variable's value.</p>
+
+
+
+
+<p>Keep in mind that you cannot create a read-only variable by using a
+call to the Lock method without a corresponding call to Unlock, since
+IIS automatically unlocks the Application object.</p>
+
+
+
+
+<p>You do not have to call the Lock and Unlock methods in the
+Application_<!--<primary>OnStart
+event</primary><secondary>Application
+object</secondary><tertiary>locking/unlocking Application
+object</tertiary>-->OnStart event procedure (see this
+chapter's Events Reference for more about the
+Application_OnStart event). The Application_OnStart event occurs only
+once regardless of the number of sessions that are eventually
+initiated. Only the first client request triggers the
+Application_OnStart event and, for that reason, only that client can
+alter the value of the specific Application variable. Also, no other
+client requests will be handled until the Application_OnStart code
+has completed. </p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Unlock">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Unlock</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Application.Unlock</span>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>The <!--<primary>Unlock method
+(Application)</primary>-->Unlock method releases the
+application variables from a Lock method call. Once Unlock has been
+called, other clients can again alter the values of the variables in
+the Application Contents collection. If you call Lock and do not
+provide a corresponding Unlock, IIS will automatically unlock the
+variables in the Application Contents collection at the end of the
+current active server page or when the script times out, whichever
+comes first.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>None</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>See the example for Application.Lock.</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>See the notes for Application.Lock. </p>
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="OnEnd">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+OnEnd</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Application_OnEnd</span>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>The Application_<!--<primary>OnEnd
+event</primary><secondary>Application object</secondary>-->
+<!--<primary>Application
+object</primary><secondary>OnStart and OnEnd
+events</secondary>--> <!--<primary>events</primary><secondary>Application
+object</secondary>-->OnEnd event is triggered when the ASP
+application itself is unloaded from the web server (using the
+Microsoft Management Console) or when the application is
+inadvertently stopped for some reason (i.e., the web service is
+stopped on the web server). Application_OnEnd is called only once per
+application. The code for this event procedure resides in the
+<filename>GLOBAL.ASA</filename> file and is processed after all other
+code in the file. It is in the code for the Application_OnEnd event
+that you will "clean up" after any application-scoped
+variables.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>None</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>' &lt; FROM GLOBAL.ASA &gt;
+' This code resides in the GLOBAL.ASA file at the
+' root of the current application. The following
+' procedure is processed only once for the current
+' application.
+' See <link linkend="ch11-1-fm2xml">Chapter 11</link> for more details on the GLOBAL.ASA file.
+
+&lt;SCRIPT LANGUAGE="VBScript" RUNAT=Server&gt; 
+Sub Application_OnEnd
+
+' This code will run on the server when
+' the application stops.
+' This code saves the final count of an application
+' use counter to a file.
+Set filsysObj1 = _
+    CreateObject("Scripting.FileSystemObject")
+Set tsObj1 = filsysObj1.CreateTextFile("c:\usrcount.txt", _
+             True)
+tsObj1.WriteLine(Application.Contents("AppUserCount"))
+tsObj1.Close
+
+End Sub 
+&lt;/SCRIPT&gt; 
+
+' &lt;&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>The use of the Application_OnEnd event is tricky. The Microsoft
+documentation suggests that the OnEnd event is triggered when there
+are no longer any active sessions. However, this is not the case.
+Only when the web service is interrupted or when the administrator
+explicitly unloads the application from the web server's memory
+(using the MMC) is OnEnd executed. You cannot assume that this event
+will ever be called from your application without something going
+wrong or direct intervention on your part. This is yet another reason
+to very carefully consider the implications before using
+application-level variables of any kind.</p>
+
+
+
+
+<p>You cannot use the Server object method MapPath (see <link linkend="ch09-1-fm2xml">Chapter 9</link>, for more on the Server object) to map a
+relative or virtual directory to a physical directory within the
+Application_OnEnd event procedure. Microsoft gives no reason for this
+limitation, though it is likely a security-related control.</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="OnStart">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+OnStart</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Application_OnStart</span>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>The Application_<!--<primary>OnStart
+event</primary><secondary>Application
+object</secondary>-->OnStart event is triggered when the
+first client request is received. Application_OnStart is called only
+once per application. The code for this event procedure resides in
+the <filename>GLOBAL.ASA </filename>file and is processed before any
+other code or object instantiation in the file.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>None</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>' &lt; FROM GLOBAL.ASA &gt;
+' This code resides in the GLOBAL.ASA file at the
+' root of the current application. The following
+' procedure is processed only once for the current
+' application.
+' See <link linkend="ch11-1-fm2xml">Chapter 11</link> for more details on the GLOBAL.ASA file.
+
+&lt;SCRIPT LANGUAGE="VBScript" RUNAT=Server&gt; 
+Sub Application_OnStart
+
+' This code will run on the server when
+' the application starts.
+' This code retrieves the last final user count
+' and uses it to initialize an Application
+' variable.
+Set filsysObj1 = CreateObject("Scripting.FileSystemObject")
+Set tsObj1 = filsysObj1.OpenTextFile("c:\usrcount.txt", _
+             True)
+Application.Contents("AppUserCount") = tsObj1.ReadAll
+tsObj1.Close
+
+End Sub 
+&lt;/SCRIPT&gt; 
+
+' &lt;&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>The Application_OnStart event procedure, if it exists, is the first
+code run on the server for a given Active Server Pages application.
+For this reason, it is the best place to initialize application-level
+variables. No other code in your ASP application is guaranteed to
+run.</p>
+
+
+
+
+<p>Carefully consider the use of application-level variables. Every
+variable with application scope that you dimension and initialize in
+the Application_OnStart event continues to take up memory on the
+server until the end of the application.  </p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

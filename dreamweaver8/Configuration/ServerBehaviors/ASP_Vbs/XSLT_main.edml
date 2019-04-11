@@ -1,0 +1,23 @@
+<participant version="7.0.1">
+	<insertText location="afterSelection"><![CDATA[<%
+<@ loop (@@paramID@@, @@paramShortVal@@, @@paramDefault@@) @>Dim @@paramID@@: @@paramID@@ = "@@paramDefault@@"
+If @@paramShortVal@@ <> "" Then @@paramID@@ = @@paramShortVal@@ End If
+<@ endloop @>
+Dim @@transName@@: Set @@transName@@ = new MM_XSLTransform
+@@transName@@.setXML "@@xmlFile@@"
+@@transName@@.setXSL "@@xslFile@@"
+<@ loop (@@paramNames@@, @@paramValues@@) @>@@transName@@.addParameter "@@paramNames@@", @@paramValues@@
+<@ endloop @>
+Response.write @@transName@@.Transform()
+%>]]></insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="MM_loop1,transName,xmlFile,xslFile,MM_loop2" isOptional="false" limitSearch="all"><![CDATA[/((?:Dim [^\r\n]*: [^\r\n]* = "[^\r\n]*"(?:\r\n|\r(?!\n)|\n)[ \t]*If\s*[^\r\n]*\s*<>\s*"" Then [^\r\n]* = [^\r\n]* End If(?:\r\n|\r(?!\n)|\n)[ \t]*)*?)Dim ([^\r\n]*?): Set [^\r\n]*? = new MM_XSLTransform(?:\r\n|\r(?!\n)|\n)[ \t]*[^\r\n]*?\.setXML "([^\r\n]*?)"(?:\r\n|\r(?!\n)|\n)[ \t]*[^\r\n]*?\.setXSL "([^\r\n]*?)"(?:\r\n|\r(?!\n)|\n)[ \t]*((?:[^\r\n]*\.addParameter "[^\r\n]*", [^\r\n]*(?:\r\n|\r(?!\n)|\n)[ \t]*)*?)Response\.write [^\r\n]*?\.Transform\(\)(?=\r\n|\r|\n|%>)/i]]></searchPattern>
+		<searchPattern paramNames="paramID,paramDefault,paramShortVal" limitSearch="@@MM_loop1@@" isOptional="true" searchType="multiple"><![CDATA[/Dim ([^\r\n]*?): [^\r\n]*? = "([^\r\n]*?)"(?:\r\n|\r(?!\n)|\n)[ \t]*If\s*([^\r\n]*?)\s*<>\s*"" Then [^\r\n]*? = [^\r\n]*? End If(?:\r\n|\r(?!\n)|\n)[ \t]*/i]]></searchPattern>
+		<searchPattern paramNames="paramNames,paramValues" limitSearch="@@MM_loop2@@" isOptional="true" searchType="multiple"><![CDATA[/[^\r\n]*?\.addParameter "([^\r\n]*?)", ([^\r\n]*?)(?:\r\n|\r(?!\n)|\n)[ \t]*/i]]></searchPattern>
+		<searchPattern paramNames="xmlFileVB_url" isOptional="true" limitSearch="all"><![CDATA[/[^\r\n]*?\.setXML "([^\r\n]*?)"/i]]></searchPattern>
+		<searchPattern paramNames="xslFileVB_url" isOptional="true" limitSearch="all"><![CDATA[/[^\r\n]*?\.setXSL "([^\r\n]*?)"/i]]></searchPattern>
+		<searchPattern paramNames="xmlFileJS_url" isOptional="true" limitSearch="all"><![CDATA[/[^\r\n]*?\.setXML\("([^\r\n]*?)"\);/i]]></searchPattern>
+		<searchPattern paramNames="xslFileJS_url" isOptional="true" limitSearch="all"><![CDATA[/[^\r\n]*?\.setXSL\("([^\r\n]*?)"\);/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>.setXSL</quickSearch>
+</participant>

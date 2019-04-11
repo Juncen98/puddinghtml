@@ -1,0 +1,177 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>HR</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var ALIGNLIST; 
+var theUIObjects; 
+
+// Color control elements
+var COLORP_COLOR; 
+var TEXT_COLOR; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+  updateColors();
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function updateUI(itemName)
+{
+  switch(itemName)
+  {
+    case "colorColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_COLOR,TEXT_COLOR);
+      break;
+    }
+    case "colorcolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_COLOR,TEXT_COLOR);
+      break;
+    }
+  }
+}
+
+function updateColors()
+{
+  tagDialog.updateColorPicker("colorField",COLORP_COLOR,TEXT_COLOR);
+}
+
+function initializeUI()
+{
+	ALIGNLIST = new ListControl("thealign"); 
+	theUIObjects  = new Array(ALIGNLIST); 
+
+  COLORP_COLOR = dwscripts.findDOMObject("colorColorPicker");
+  TEXT_COLOR = dwscripts.findDOMObject("thecolor");
+
+  updateColors(); 
+  tagDialog.populateDropDownList(ALIGNLIST, theAlignsHRCap, theAlignsHRVal, 1); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">对齐: </td>
+      <td nowrap="nowrap">
+        <select name="thealign" class="alignList" id="attr:hr:align" attname="align" editable="false">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">宽度: </td>
+      <td nowrap="nowrap">
+        <input name="thewidth" type="text" class="smallNumOrChar" id="attr:hr:width" attname="width" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">高度: </td>
+      <td nowrap="nowrap">
+        <input name="thesize" type="text" class="smallNumOrChar" id="attr:hr:size" attname="size" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:hr:noshade" name="thenosahde" attname="noshade" truevalue="noshade" falsevalue="" /> 无底纹
+      </td>
+    </tr>
+  </table> 
+</div> 
+<div name="浏览器特定的"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="colorColorPicker" value="" onChange="updateUI('colorColorPicker')"> 
+        <input name="thecolor" type="text" class="smallTField" id="att:hr:color" onBlur="updateUI('colorcolor')" value="" attname="color">&nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;3+
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>
+  </table> 
+</div> 
+<div name="样式表/辅助功能"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类: </td>
+      <td nowrap="nowrap">
+        <input name="theclass" type="text" class="basicTextField" id="attr:hr:class" attname="class" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="attr:hr:id" attname="id" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">样式: </td>
+      <td nowrap="nowrap">
+        <input name="thestyle" type="text" class="basicTextField" id="attr:hr:class" attname="style" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">标题: </td>
+      <td nowrap="nowrap">
+        <input name="thetitle" type="text" class="basicTextField" id="attr:hr:title" attname="title" />
+      </td>
+    </tr>
+  </table> 
+</div>
+<div name="事件"> 
+  <div name="onClick"> 
+    <textarea name="theonClick"  wrap="VIRTUAL" class="contentsField" id="attr:hr:onclick" attname="onClick"></textarea>
+  </div> 
+  <div name="onDblClick"> 
+    <textarea name="theonDblClick"  wrap="VIRTUAL" class="contentsField" id="attr:hr:ondblclick" attname="onDblClick"></textarea>
+  </div> 
+  <div name="onMouseDown"> 
+    <textarea name="theonMouseDown"  wrap="VIRTUAL" class="contentsField" id="attr:hr:onmousedown" attname="onMouseDown"></textarea>
+  </div> 
+  <div name="onMouseUp"> 
+    <textarea name="theonMouseUp"  wrap="VIRTUAL" class="contentsField" id="attr:hr:onmouseup" attname="onMouseUp"></textarea>
+  </div> 
+  <div name="onMouseOver"> 
+    <textarea name="theonMouseOver"  wrap="VIRTUAL" class="contentsField" id="attr:hr:onmouseover" attname="onMouseOver"></textarea>
+  </div> 
+  <div name="onMouseMove"> 
+    <textarea name="theonMouseMove"  wrap="VIRTUAL" class="contentsField" id="attr:hr:onmousemove" attname="onMouseMove"></textarea>
+  </div> 
+  <div name="onMouseOut"> 
+    <textarea name="theonMouseOut"  wrap="VIRTUAL" class="contentsField" id="attr:hr:onmouseout" attname="onMouseOut"></textarea>
+  </div> 
+  <div name="onKeyPress"> 
+    <textarea name="theonKeyPress"  wrap="VIRTUAL" class="contentsField" id="attr:hr:onkeypress" attname="onKeyPress"></textarea>
+  </div> 
+  <div name="onKeyDown"> 
+    <textarea name="theonKeyDown"  wrap="VIRTUAL" class="contentsField" id="attr:hr:onkeydown" attname="onKeyDown"></textarea>
+  </div> 
+  <div name="onKeyUp"> 
+    <textarea name="theonKeyUp"  wrap="VIRTUAL" class="contentsField" id="attr:hr:onkeyup" attname="onKeyUp"></textarea>
+  </div> 
+</div>
+</body>
+</html>

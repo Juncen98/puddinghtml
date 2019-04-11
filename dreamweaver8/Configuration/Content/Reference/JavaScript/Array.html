@@ -1,0 +1,1032 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="name">Array</td>
+<td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> ECMA <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" nowrap class="usage"><p class="literal">
+</p></td>
+<td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+An array is an ordered collection of one or more pieces of data.
+JavaScript array entries may be of any data type, and you can mix
+different data types in the same array. Each entry in an array has an
+index assigned to it. The default behavior is for the index to be a
+zero-based integer (the first entry has an index of zero). An index
+value may also be a string, but the string index acts like a property
+name of an array object, and does not influence the numeric indices
+(which is why string-indexed entries cannot be iterated via the
+array's <span class="literal">length</span> property, but can
+be iterated via a <span class="literal">for-in</span> loop). Separate sets of
+integer- and string-indexed items can coexist within the same array
+object.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2"><p>
+Accessing an entry in an array requires the name of the array and the
+index in square brackets:
+</p>
+<span class="programlisting"><pre>cars[0]
+cars["Ford"]</pre></span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2"><p>
+You may also create an array of arrays to simulate multidimensional
+arrays. A reference to an item in a two-dimensional array uses syntax
+as follows:
+</p>
+
+<span class="programlisting">
+<pre>myArray[x][y]</pre>
+</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2"><p>
+The number of entries in a JavaScript array (its length) can vary
+over time. Therefore, you do not have to initialize an empty array to
+a specific size (nor is there any particular advantage to doing so).
+To add a new entry to an array of indeterminant length, assign the
+value to the next higher array index value:
+</p>
+
+<span class="programlisting"><pre>cars[cars.length] = &quot;Bentley&quot;;</pre></span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2"><p>
+A shortcut array creation technique is available starting in IE 4 and
+Navigator 4, using square brackets to contain values in literal
+notation.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="properties"><span class="title">Properties</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td><table border="1">
+<tbody>
+<tr>
+<td><span class="literal">constructor</span></td>
+<td><span class="literal">length</span></td>
+<td><span class="literal">prototype</span></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="methods"><span class="title">Methods</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td><table border="1">
+<tbody>
+<tr>
+<td><span class="literal">concat( )</span></td>
+<td><span class="literal">join( )</span></td>
+<td><span class="literal">pop( )</span></td>
+</tr>
+<tr>
+<td><span class="literal">push( )</span></td>
+<td><span class="literal">reverse( )</span></td>
+<td><span class="literal">shift( )</span></td>
+</tr>
+<tr>
+<td><span class="literal">slice( )</span></td>
+<td><span class="literal">sort( )</span></td>
+<td><span class="literal">splice( )</span></td>
+</tr>
+<tr>
+<td><span class="literal">toLocaleString( )</span></td>
+<td><span class="literal">toString( )</span></td>
+<td><span class="literal">unshift( )</span></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="creatinganarray"><span class="title">Creating an Array</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td><span class="programlisting">
+<pre>var myArray = new Array( );
+var myArray = new Array(<span class="replaceable">sizeInteger</span>);
+var myArray = new Array(<span class="replaceable">element0</span>, <span class="replaceable">element1</span>, ..., <span class="replaceable">elementN</span>);
+var myArray = [<span class="replaceable">element0</span>, <span class="replaceable">element1</span>, ..., <span class="replaceable">elementN</span>];</pre>
+</span></td>
+</tr>
+</table>
+</div>
+<div id="constructor">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="name">constructor</td>
+<td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">4</span> ECMA <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" nowrap class="usage"><p class="literal">
+</p></td>
+<td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+This is a reference to the function that created the instance of an <span class="literal">Array</span> objectthe native <span class="literal">Array(
+)</span> constructor function in browsers.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td><span class="programlisting">
+<pre>if (myVar.constructor == Array) &#123;
+    // process native string
+}</pre>
+</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+Function object reference.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="length">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="name">length</td>
+<td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> ECMA <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" nowrap class="usage"><p class="literal">
+</p></td>
+<td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Provides a count of the number of numerically-indexed entries stored
+in the array. If the constructor function used to create the array
+specified a preliminary length, the <span class="literal">length</span> property reflects that amount, even if data does not occupy every
+slot.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td><span class="programlisting">
+<pre>for (var i = 0; i &lt; myArray.length; i++) &#123;
+    ...
+}</pre>
+</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+Integer.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="prototype">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="name">prototype</td>
+<td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> ECMA <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" nowrap class="usage"><p class="literal">
+</p></td>
+<td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+This is a property of the static <span class="literal">Array</span> object. Use
+the <span class="literal">prototype</span> property to assign new properties
+and methods to future instances of arrays created in the current
+document. For example, the following function creates a
+return-delimited list of elements in an array in reverse order:
+</p>
+<span class="programlisting"><pre>function formatAsList( ) &#123;
+    var output = &quot;&quot;;
+    for (var i = this.length - 1; i&gt;= 0; i--) &#123;
+        output += this[i] + &quot;\n&quot;;
+    }
+    alert(output);
+} </pre></span>
+</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2"><p>
+To give an array that power, assign this function reference to a <span class="literal">prototype</span> property whose name you want to use as
+the method to invoke this function:
+</p>
+<span class="programlisting"><pre>Array.prototype.showReverseList = formatAsList;</pre></span>
+</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2"><p>
+If a script creates an array at this point:
+</p>
+<span class="programlisting"><pre>var stooges = new Array(&quot;Moe&quot;, &quot;Larry&quot;, &quot;Curly&quot;, &quot;Shemp&quot;);</pre></span>
+</td>
+</tr>
+<tr>
+<td colspan="2"><p>
+the new array has the <span class="literal">showReverseList( )</span> method
+available to it. To invoke the method, the call is:
+</p>
+<span class="programlisting"><pre>stooges.showReverseList( );</pre></span>
+</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2"><p>
+You can add properties the same way. These allow you to attach
+information about the array (its creation time, for example) without
+disturbing the ordered sequence of array data. When a new document
+loads into the window or frame, the static <span class="literal">Array</span> object starts fresh again.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td><span class="programlisting">
+<pre>Array.prototype.created = "";</pre>
+</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+Any data, including function references.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="concat( )">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="name">concat( )</td>
+<td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">4</span> ECMA <span class="emphasis">3</span>&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" nowrap class="usage"><p class="literal">
+concat(<span class="replaceable">item1</span>[, <span class="replaceable">item2</span>[, ..<span class="emphasis">.</span><span class="replaceable">itemN</span>]])
+</p></td>
+<td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Returns an array that combines the current array object with one or
+more array objects (or other values) specified as the method
+parameter(s):
+</p>
+<span class="programlisting"><pre>var combinedArray = myArray1.concat(myArray2, someValue);</pre></span>
+</td>
+</tr>
+<tr>
+<td colspan="2"><p>
+Neither of the original arrays is altered in the process.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2">
+<dl>
+<dt><var class="replaceable">item1...itemN</var></dt>
+<dd>
+<p>Any JavaScript value, including another array.</p>
+</dd>
+
+</dl>
+</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+An <span class="literal">Array</span> object.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="join( )">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="name">join( )</td>
+<td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> ECMA <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" nowrap class="usage"><p class="literal">
+join(["<span class="replaceable">delimiterString</span>"])
+</p></td>
+<td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Returns a string consisting of a list of items (as strings) contained
+by an array. The delimiter character(s) between items is set by the
+parameter to the method. Note that an array's items
+are only those items that are accessible via an integer index. Items
+referenced via string index values are treated as properties of the
+array object, and are thus independent of integer indexed values (the
+two sets can coexist in a single array without conflict). The <span class="literal">join( )</span> method works only with the integer-indexed
+items.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2">
+<dl>
+<dt><var class="replaceable">delimiterString</var></dt>
+<dd>
+<p>Any string of characters. Nonalphanumeric characters must use
+URL-encoded equivalents (<span class="LITERAL">%0D</span> for carriage return).
+The default delimiter string is a comma character.
+</p>
+</dd>
+
+</dl>
+</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+String.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="pop( )">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="name">pop( )</td>
+<td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">5.5(Win)</span> ECMA <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" nowrap class="usage"><p class="literal">
+</p></td>
+<td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Returns the value of the last item in an array and removes it from
+the array. The length of the array decreases by one.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+None.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+Any JavaScript value.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="push( )">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="name">push( )</td>
+<td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">5.5(Win)</span> ECMA <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" nowrap class="usage"><p class="literal">
+push(<span class="replaceable">item1</span>[, <span class="replaceable">item2</span>[, ..<span class="emphasis">.</span><span class="replaceable">itemN</span>]])
+</p></td>
+<td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Appends one or more items to the end of an array. The length of the
+array increases by one.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2">
+<dl>
+<dt><var class="replaceable">item1...itemN</var></dt>
+<dd>
+<p>Comma-delimited list of one or more JavaScript values, including
+object references.
+</p>
+</dd>
+
+</dl>
+</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+The value pushed into the array.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="reverse( )">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="name">reverse( )</td>
+<td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> ECMA <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" nowrap class="usage"><p class="literal">
+</p></td>
+<td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Reverses the order of items in the array and returns a copy of the
+array in the new order. Not only does the <span class="literal">reverse(
+)</span> method rearrange the values in the array, but it also
+returns a copy of the reversed array.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+None.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+An <span class="literal">Array</span> object.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="shift( )">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="name">shift( )</td>
+<td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">5.5(Win)</span> ECMA <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" nowrap class="usage"><p class="literal">
+</p></td>
+<td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Returns the value of the first item in an array and removes it from
+the array. The length of the array decreases by one.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+None.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+Any JavaScript value.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="slice( )">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="name">slice( )</td>
+<td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">4</span> ECMA <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" nowrap class="usage"><p class="literal">
+slice(<span class="replaceable">startIndex</span>[, <span class="replaceable">endIndex</span>])
+</p></td>
+<td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Returns an array that is a subset of contiguous items from the main
+array. Parameters determine where the selection begins and ends.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2">
+<dl>
+<dt><var class="replaceable">startIndex</var></dt>
+<dd>
+<p>A zero-based integer of the first item of the subset from the current
+array.
+</p>
+</dd>
+
+
+<dt><var class="replaceable">endIndex</var></dt>
+<dd>
+<p>An optional zero-based integer of the last item of the subset from
+the current array. If omitted, the selection is made from the
+<var class="replaceable">startIndex</var> position to the end of the
+array.
+</p>
+</dd>
+
+</dl></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+An <span class="literal">Array</span> object.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="sort( )">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="name">sort( )</td>
+<td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> ECMA <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" nowrap class="usage"><p class="literal">
+sort([<span class="replaceable">compareFunction</span>])
+</p></td>
+<td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Sorts the values of the array either by the ASCII value of string
+versions of each array entry or according to a comparison function of
+your own design. The <span class="literal">sort( )</span> method repeatedly
+invokes the comparison function, passing two values from the array.
+The comparison function should return an integer value, which is
+interpreted by the <span class="literal">sort( )</span> function as follows.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td><table border="1">
+<tbody>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+<tr>
+<td>&lt;0</td>
+<td>The second passed value should sort later than the first value.</td>
+</tr>
+<tr>
+<td> 0</td>
+<td>The sort order of the two values should not change.</td>
+</tr>
+<tr>
+<td>&gt;0</td>
+<td>The first passed value should sort later than the second.</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2"><p>
+The following comparison function sorts values of an array in
+numerical (instead of ASCII) order:
+</p>
+
+<span class="programlisting"><pre>
+function doCompare(a, b) &#123;
+    return a - b
+}</pre></span>
+</td>
+</tr>
+<tr>
+<td colspan="2"><p>
+To sort an array by this function, the statement is:
+</p>
+<span class="programlisting"><pre>myArray.sort(doCompare)</pre></span>
+</td>
+</tr>
+<tr>
+<td colspan="2"><p>
+By the time the <span class="literal">sort( )</span> method has completed its
+job, it has sent all values to the <span class="literal">doCompare( )</span> function two values at a time and sorted the values on whether the
+first value is larger than the second (in the manner of a bubble
+sort).
+</p></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+Not only does the <span class="literal">sort( )</span> method rearrange the
+values in the array, but it also returns a copy of the sorted array.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2">
+<dl>
+<dt><var class="replaceable">compareFunction</var></dt>
+<dd>
+<p>A reference to a function that receives two parameters and returns an
+integer result.
+</p>
+</dd>
+
+</dl></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+An <span class="literal">Array</span> object, sorted according to sorting
+criteria.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="splice( )">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="name">splice( )</td>
+<td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">5.5(Win)</span> ECMA <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" nowrap class="usage"><p class="literal">
+splice(<span class="replaceable">startIndex</span>, <span class="replaceable">deleteCount</span>[, <span class="replaceable">item1</span>[, <span class="replaceable">item2</span>[, ...<span class="replaceable">itemN</span>]]])
+</p></td>
+<td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Removes one or more contiguous items from within an array and,
+optionally, inserts new items in their places. The length of the
+array adjusts itself accordingly.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2">
+<dl>
+<dt><var class="replaceable">startIndex</var></dt>
+<dd>
+<p>A zero-based integer of the first item of the subset from the current
+array.
+</p>
+</dd>
+
+
+<dt><var class="replaceable">deleteCount</var></dt>
+<dd>
+<p>An integer denoting how many items from the
+<var class="replaceable">startIndex</var> position are to be removed from
+the array.
+</p>
+</dd>
+
+
+<dt><var class="replaceable">item1...itemN</var></dt>
+<dd>
+<p>Comma-delimited list of JavaScript values to be inserted into the
+array in place of removed items. The number of items does not have to
+equal <var class="replaceable">deleteCount</var>.
+</p>
+</dd>
+
+</dl></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+An <span class="literal">Array</span> object containing removed items.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="toLocaleString( )">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="name">toLocaleString( )</td>
+<td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">5.5(Win)</span> ECMA <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" nowrap class="usage"><p class="literal">
+</p></td>
+<td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Returns a comma-delimited string of values, theoretically in a format
+tailored to the language and customs of the
+browser's default language. Implementation details
+vary with browser and data type. IE 5.5 and later converts numbers of
+all kinds to strings with two digits to the right of the decimal, but
+triggers an error for object references. Netscape 6 leaves integers
+in their original format and displays object references as <span class="literal">[object</span> <span class="replaceable">objectType</span><span class="literal">]</span>. The ECMA
+standard leaves such interpretations up to the browser maker.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+None.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+Comma-delimited string.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="toString( )">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="name">toString( )</td>
+<td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> ECMA <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" nowrap class="usage"><p class="literal">
+</p></td>
+<td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Returns a comma-delimited string of values, identical to using the <span class="literal">Array.join( )</span> method with a comma parameter. All
+values are converted to some string equivalent, including objects
+(<span class="literal">[object]</span> in IE/Windows; <span class="literal">[object</span> <span class="replaceable">objectType</span><span class="literal">]</span> in IE
+5/Macintosh and Netscape 6).
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+None.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+Comma-delimited string.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="unshift( )">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="name">unshift( )</td>
+<td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">5.5(Win)</span> ECMA <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" nowrap class="usage"><p class="literal">
+unshift(<span class="replaceable">item1</span>[, <span class="replaceable">item2</span>[, ..<span class="emphasis">.</span><span class="replaceable">itemN</span>]])
+</p></td>
+<td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Inserts one or more items at the beginning of an array. The length of
+the array increases by the number of items added, and the method
+returns the new length of the array.
+</p></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2">
+<dl>
+<dt><var class="replaceable">item1...itemN</var></dt>
+<dd>
+<p>Comma-delimited list of one or more JavaScript values. </p>
+</dd>
+</dl></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+</tr>
+<tr>
+<td colspan="2"><p>
+Integer.
+</p></td>
+</tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<html xmlns:un="http://usablenet.com/namespaces/508_rules">
+   <link rel="stylesheet" href="josh.css">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Detailed View for rule: Avoid using structural markup for visual formatting</title>
+      <!--
+  508/W3C Accessibility Suite OEM V2 for Macromedia Dreamweaver
+  (C) Copyright 2001-2005 UsableNet Inc. All rights reserved.
+  -->
+   </head>
+   <body bgcolor="#ffffff">
+      <div id="Description">
+         <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+            <tr>
+               <td valign="top" nowrap="true" class="name">Avoid using structural markup for visual formatting</td>
+               <td valign="top" nowrap="true" class="compatibility">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+            </tr>
+            <tr>
+               <td valign="top" align="right" nowrap="true" colspan="2" class="requirements">WAI / WCAG 1.0 Priority 2 checkpoint 5.4</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Description</b><br>
+                  
+                  
+                  <p>
+                     The page contains a table that appears to be used to present tabular
+                     information, rather than to layout the page. ("Tabular information"
+                     means that the two-dimensional grid offered by the table is used to
+                     represent logical relationships among the data included in table
+                     cells).
+                     	 
+                  </p>
+                  
+                  <p>
+                     Make sure that the table is indeed used to present tabular information.
+                     
+                  </p>
+                  
+                  <p>
+                     If the table does not represent relationships between information
+                     items, but is solely used for implementing a grid on the screen,
+                     then the page fails this test.
+                     
+                  </p>
+                  
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>How to check</b>
+                  
+                  
+                  <p>
+                     Inspect the table and its content to determine if the table is
+                     used to present tabular information. 
+                     	 
+                  </p>
+                  
+                  <p>
+                     If it is used for layout purposes only, it should
+                     not use tags like CAPTION, TH, THEAD, TFOOT to obtain special
+                     formatting effects.
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     Remove CAPTION, THEAD and TFOOT, and replace all the TH with corresponding
+                     TDs. Then define a CSS class with the formatting properties that are necessary (like "font-weight: bold; text-align: center;")
+                     and add that
+                     class to each newly created TD.
+                     
+                  </p>
+                  
+                  
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Explanation</b><br>
+                  
+                  
+                  <p>
+                     Using markup like TH for its visual effect hinders accessibility. In
+                     fact, some assistive technology, like reading browsers, uses the content
+                     of the TH element when the user navigates through a table. Each time a
+                     user visits a cell of the table, the browser will try to locate the
+                     corresponding header cell (that is marked with a TH) and read its
+                     content. In this way the user is able to understand what the
+                     context is for the cell being visited.
+                     	 
+                  </p>
+                  
+                  <p>
+                     However, if THs are used for visual purposes only, then to the reading
+                     browser user the context will appear very chaotic and confusing.
+                     
+                  </p>
+                  
+                  
+               </td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,51 @@
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<html>
+<head>
+<title>快捷键</title>
+<script language="JavaScript">
+var SHORTCUT_LIST;
+var ACTIVE_SET_PATH;
+var ACTIVE_SET;
+var COMMAND_DOM;
+function initializeUI()
+{  
+  window.setTimeout( "updateXML()", 100 );
+}
+
+function updateXML()
+{
+  MM.setBusyCursor();
+  COMMAND_DOM.parentWindow.editMenuXML(SHORTCUT_LIST,ACTIVE_SET_PATH,ACTIVE_SET);
+  window.close();
+  MM.clearBusyCursor();
+}
+
+function receiveArguments(shortcutList,activeSetPath,activeSet,theDOM)
+{
+  SHORTCUT_LIST = shortcutList;
+  ACTIVE_SET_PATH = activeSetPath;
+  ACTIVE_SET = activeSet;
+	COMMAND_DOM = theDOM;
+}
+function commandButtons()
+{
+  return new Array();
+}
+</script>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<form method="post" action="">
+  <table width="75%" border="0">
+    <tr align="center"> 
+      <td height="50" nowrap> 
+        <div align="center">正在保存快捷键设置...</div>
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>LSPARSECURRENCY</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">LSPARSECURRENCY</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Converts a locale-specific currency string into a formatted number. Attempts conversion by comparing the string with each the three supported currency formats (none, local, international) and using the first that matches.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+A formatted number (string representation of a number) that matches the value of the parameter.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+International functions, String functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>LSParseCurrency(string)
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+LSParseEuroCurrency, LSCurrencyFormat, LSEuroCurrencyFormat, LSIsCurrency; "Locale-specific content" in Chapter&#160;17, "Developing Globalized Applications," in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX: Changed formatting behavior: this function might return different formatting than in earlier releases. This function uses Java standard locale formatting rules on all platforms. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+This function uses the locale formatting rules of the JVM (specified in the ColdFusion Administrator Java and JVM page) on all platforms. These rules changed between Sun JVM 1.3.1 and JVM 1.4.1:
+</p>
+<ul>
+
+<li>JVM 1.3.1 requires that the local and international versions of currencies of countries in the Euro zone be formatted using the older, country-specific designations, such as 100.000,00 DM or DEM100.000,00 for the German (Standard) locale. Use the LSParseEuroCurrency function to parse euro currencies in these locales with JVM 1.3.1.</li>
+
+<li>JVM 1.4.1 requires that currencies for Euro zone countries be expressed as euros; for example 100.000,00 &euro; or EUR100.000,00.</li>
+</ul>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>The LSIsCurrency function always returns True if the locale is in the Euro currency zone and the currency is expressed in euros, including when using JVM 1.3.1. As a result, with older JVMs, LSIsCurrency does not ensure that LSParseCurrency returns a value.</td>
+  </tr>
+</table>
+<p>
+To set the default display format of date, time, number, and currency values, use the SetLocale function. 
+</p>
+
+<p>
+For a list of the locale-specific formats used to parse the currency, see LSCurrencyFormat.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;LSParseCurrency Example&lt;/h3&gt;
+&lt;p&gt;LSParseCurrency coverts a locale-specific currency string to a number. 
+Attempts conversion through each of the three default currency formats.
+&lt;!--- loop through a list of locales; show currency values for 123,456 units -
+--&gt;
+&lt;cfloop LIST = &quot;#Server.Coldfusion.SupportedLocales#&quot;
+index = &quot;locale&quot; delimiters = &quot;,&quot;&gt;
+   &lt;cfset oldlocale = SetLocale(locale)&gt;
+   &lt;cfoutput&gt;&lt;p&gt;&lt;B&gt;&lt;I&gt;#locale#&lt;/I&gt;&lt;/B&gt;&lt;br&gt;
+      Local: #LSCurrencyFormat(123456.78, &quot;local&quot;)#&lt;br&gt;
+      Parsed local Currency:
+#LSParseCurrency(LSCurrencyFormat(123456,&quot;local&quot;))#&lt;br&gt;
+      International: #LSCurrencyFormat(123456.78999, &quot;international&quot;)#&lt;br&gt;
+      Parsed International Currency:
+#LSParseCurrency(LSCurrencyFormat(123456.78999,&quot;international&quot;))#&lt;br&gt;
+      None: #LSCurrencyFormat(123456.78999, &quot;none&quot;)#&lt;br&gt;
+      Parsed None formatted currency:
+#LSParseCurrency(LSCurrencyFormat(123456.78999,&quot;none&quot;))#&lt;br&gt;
+      &lt;hr noshade&gt;
+   &lt;/cfoutput&gt;
+&lt;/cfloop&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="STRING">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STRING</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A locale-specific string a variable that contains one </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

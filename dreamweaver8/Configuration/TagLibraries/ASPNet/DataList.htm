@@ -1,0 +1,527 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>数据列表</title>
+<styleplaceholder>
+<link rel="stylesheet" href="../../fields.css">
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Controls/Scripts/MultiStateCheckBox.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/******************* GLOBAL VARS *************************/
+var BORDERSTYLELIST;
+var GRIDLINESLIST;
+var HORIZONTALALIGNLIST;
+var REPEATDIRECTIONLIST; 
+var REPEATLAYOUTLIST; 
+
+var theUIObjects; 
+
+// Color control elements
+var COLORP_BACK, COLORP_BORDER, COLORP_FORE,COLORP_AISBACK,COLORP_AISBORDER; 
+var TEXT_BACK, TEXT_BORDER, TEXT_FORE, TEXT_AISBACK, TEXT_AISBORDER; 
+
+var theAllowCustomPagingMultiStateCB; 
+var theAllowPagingMultiStateCB; 
+var theAllowSortingMultiStateCB; 
+var theAutoGenerateColumnsCB; 
+var theEnabledCB; 
+var theEnableViewStateCB; 
+var theShowFooterCB; 
+var theShowHeaderCB; 
+var theShowHeaderCB; 
+var theVisibleCB; 
+
+/*********************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+  updateColors();
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function updateUI(itemName)
+{
+
+  switch(itemName)
+  {
+    case "backColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_BACK,TEXT_BACK);
+      break;
+    }
+    case "backcolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_BACK,TEXT_BACK);
+      break;
+    }
+    case "foreColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_FORE,TEXT_FORE);
+      break;
+    }
+    case "forecolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_FORE,TEXT_FORE);
+      break;
+    }
+    case "borderColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_BORDER,TEXT_BORDER);
+      break;
+    }
+    case "bordercolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_BORDER,TEXT_BORDER);
+      break;
+    }
+    case "AISBackColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_AISBACK,TEXT_AISBACK);
+      break;
+    }
+    case "AISBackcolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_AISBACK,TEXT_AISBACK);
+      break;
+    }
+    case "AISBorderColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_AISBORDER,TEXT_AISBORDER);
+      break;
+    }
+    case "AISBordercolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_AISBORDER,TEXT_AISBORDER);
+      break;
+    }
+    case "AllowCustomPaging":
+	{
+	  theAllowCustomPagingMultiStateCB.updateUI(); 
+	  break; 
+	} 	
+    case "AllowPaging":
+	{
+	  theAllowPagingMultiStateCB.updateUI(); 
+	  break; 
+	} 	
+    case "AllowSorting":
+	{
+	  theAllowSortingMultiStateCB.updateUI(); 
+	  break; 
+	} 	
+    case "AutoGenerateColumns":
+	{
+	  theAutoGenerateColumnsCB.updateUI(); 
+	  break; 
+	} 	
+    case "Enabled":
+	{
+	  theEnabledCB.updateUI(); 
+	  break; 
+	} 	
+    case "EnableViewState":
+	{
+	  theEnableViewStateCB.updateUI(); 
+	  break; 
+	} 	
+    case "ShowFooter":
+	{
+	  theShowFooterCB.updateUI(); 
+	  break; 
+	} 	
+    case "ShowHeader":
+	{
+	  theShowHeaderCB.updateUI(); 
+	  break; 
+	} 	
+    case "Visible":
+	{
+	  theVisibleCB.updateUI(); 
+	  break; 
+	} 	
+  }
+}
+
+function updateColors()
+{
+  tagDialog.updateColorPicker("colorField",COLORP_BACK,TEXT_BACK);
+  tagDialog.updateColorPicker("colorField",COLORP_BORDER,TEXT_BORDER);
+  tagDialog.updateColorPicker("colorField",COLORP_FORE,TEXT_FORE);
+  /*
+  tagDialog.updateColorPicker("colorField",COLORP_AISBACK,TEXT_AISBACK);
+  tagDialog.updateColorPicker("colorField",COLORP_AISBORDER,TEXT_AISBORDER);
+  */ 
+}
+
+function initializeUI()
+{
+  // fix up dialog if its an OSX but linking to a style sheet (only for OSX) 
+  tagDialog.setOSXStyleSheetIfNeeded(); 
+  
+  theAllowCustomPagingMultiStateCB = new MultiStateCheckBox("theAllowCustomPaging");
+  theAllowCustomPagingMultiStateCB.initializeUI(); 
+  theAllowPagingMultiStateCB = new MultiStateCheckBox("theAllowPaging");
+  theAllowPagingMultiStateCB.initializeUI(); 
+  theAllowSortingMultiStateCB = new MultiStateCheckBox("theAllowSorting");
+  theAllowSortingMultiStateCB.initializeUI(); 
+  theAutoGenerateColumnsCB = new MultiStateCheckBox("theAutoGenerateColumns");
+  theAutoGenerateColumnsCB.initializeUI(); 
+  theEnabledCB = new MultiStateCheckBox("theEnabled");
+  theEnabledCB.initializeUI(); 
+  theEnableViewStateCB = new MultiStateCheckBox("theEnableViewState");
+  theEnableViewStateCB.initializeUI(); 
+  theShowFooterCB = new MultiStateCheckBox("theShowFooter");
+  theShowFooterCB.initializeUI();   
+  theShowHeaderCB = new MultiStateCheckBox("theShowHeader");
+  theShowHeaderCB.initializeUI();   
+  theVisibleCB = new MultiStateCheckBox("theVisible");
+  theVisibleCB.initializeUI();   
+  
+  BORDERSTYLELIST = new ListControl("theborderstyle"); 
+  GRIDLINESLIST = new ListControl("thegridline"); 
+  HORIZONTALALIGNLIST = new ListControl("thehorizontalalign"); 
+  REPEATDIRECTIONLIST = new ListControl("therepeatdirection"); 
+  REPEATLAYOUTLIST = new ListControl("therepeatlayout"); 
+  theUIObjects = new Array(BORDERSTYLELIST,GRIDLINESLIST,HORIZONTALALIGNLIST,REPEATDIRECTIONLIST,REPEATLAYOUTLIST); 
+
+  COLORP_BACK = dwscripts.findDOMObject("backColorPicker");
+  TEXT_BACK = dwscripts.findDOMObject("thebackcolor");  
+  
+  COLORP_BORDER = dwscripts.findDOMObject("borderColorPicker"); 
+  TEXT_BORDER = dwscripts.findDOMObject("thebordercolor");
+  
+  COLORP_FORE = dwscripts.findDOMObject("foreColorPicker"); 
+  TEXT_FORE = dwscripts.findDOMObject("theforecolor");  
+/*
+  COLORP_AISBACK = dwscripts.findDOMObject("AISBackColorPicker");
+  TEXT_AISBACK = dwscripts.findDOMObject("theAlternatingItemStyle-BackColor");    
+
+  COLORP_AISBORDER = dwscripts.findDOMObject("AISBorderColorPicker");
+  TEXT_AISBORDER = dwscripts.findDOMObject("theAlternatingItemStyle-BorderColor");    
+*/ 
+  updateColors(); 
+  tagDialog.populateDropDownList(BORDERSTYLELIST, theStylesCap, theStylesVal, 1); 
+  tagDialog.populateDropDownList(GRIDLINESLIST, theStandardGridlinesCap, theStandardGridlinesVal, 1);
+  tagDialog.populateDropDownList(HORIZONTALALIGNLIST, theStandardAlignsCap, theStandardAlignsVal, 1); 
+  tagDialog.populateDropDownList(REPEATDIRECTIONLIST, theRepeatDirectionListCap, theRepeatDirectionListVal, 1); 
+  tagDialog.populateDropDownList(REPEATLAYOUTLIST, theRepeatLayoutListCap, theRepeatLayoutListVal, 1); 
+}
+</script>
+</head>
+
+<body onLoad="initializeUI();">
+<div name="常规"> 
+  <input type="hidden" name="therunat" attname="runat" value="server" required="true" /> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="aspnet:datalist:id" attname="id" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">背景图像 URL: </td>
+      <td nowrap="nowrap">
+        <input name="theBackImageUrl" type="text" class="largeTField" id="attr:aspnet:BackImageUrl:advertisementfile" attname="BackImageUrl" />
+        &nbsp;
+        <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('theBackImageUrl');focus(this)">
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">提取模板行: </td>
+      <td nowrap="nowrap">
+        <input name="theextracttemplaterows" type="text" class="medTField" id="aspnet:datalist:extracttemplaterows" attname="extracttemplaterows" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">数据键字段: </td>
+      <td nowrap="nowrap">
+        <input name="thedatakeyfield" type="text" class="medTField" id="aspnet:datalist:datakeyfield" attname="datakeyfield" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">数据成员: </td>
+      <td nowrap="nowrap">
+        <input name="thedatamember" type="text" class="medTField" id="aspnet:datalist:datamember" attname="datamember" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">数据源: </td>
+      <td nowrap="nowrap">
+        <input name="thedatasource" type="text" class="basicTextField" id="aspnet:datalist:datasource" attname="datasource" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">页面尺寸: </td>
+      <td nowrap="nowrap">
+        <input name="thepagesize" type="text" class="xsmallTField" id="aspnet:datalist:pagesize" attname="pagesize" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">选定索引: </td>
+      <td nowrap="nowrap">
+        <input name="theselectedindex" type="text" class="xsmallTField" id="aspnet:datalist:selectedindex" attname="selectedindex" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">编辑项目索引: </td>
+      <td nowrap="nowrap">
+        <input name="theedititemindex" type="text" class="xsmallTField" id="aspnet:datalist:edititemindex" attname="edititemindex" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theAllowCustomPaging" attname="AllowCustomPaging" type="image"  onclick="updateUI('AllowCustomPaging');" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13"> 
+        允许自定义分页
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theAllowPaging" attname="AllowPaging" type="image"  onclick="updateUI('AllowPaging');" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13"> 
+        允许分页
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theAllowSorting" attname="AllowSorting" type="image"  onclick="updateUI('AllowSorting');" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13"> 
+        允许排序
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theAutoGenerateColumns" attname="AutoGenerateColumns" type="image"  onclick="updateUI('AutoGenerateColumns');" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13"> 
+        自动生成列
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theEnabled" attname="enabled" type="image"  onclick="updateUI('Enabled');" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13"> 
+        已启用
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theEnableViewState" attname="EnableViewState" type="image"  onclick="updateUI('EnableViewState');" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13"> 
+        启用视图状态
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theShowFooter" attname="ShowFooter" type="image"  onclick="updateUI('ShowFooter');" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13"> 
+        显示页脚
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theShowHeader" attname="ShowHeader" type="image"  onclick="updateUI('ShowHeader');" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13"> 
+        显示标题
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theVisible" attname="Visible" type="image"  onclick="updateUI('Visible');" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13"> 
+        可见
+      </td>
+    </tr>
+
+  </table>
+</div>
+
+
+<div name="布局"> 
+  <table border="0" cellspacing="4"> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">重复列: </td>
+      <td nowrap="nowrap">
+        <input name="therepeatcolumns" type="text" class="basicTextField" id="aspnet:datalist:repeatcolumns" attname="repeatcolumns" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">重复方向: </td>
+      <td nowrap="nowrap">
+        <select name="therepeatdirection" class="dirLangList" id="attr:aspnet:panel:repeatdirection" attname="repeatdirection" editable="false">
+        </select> 
+      </td>
+    </tr>  
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">重复布局: </td>
+      <td nowrap="nowrap">
+        <select name="therepeatlayout" class="dirLangList" id="attr:aspnet:panel:repeatlayout" attname="repeatlayout" editable="false">
+        </select> 
+      </td>
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">网格线: </td>
+      <td nowrap="nowrap">
+        <select name="thegridline" class="styleList" id="attr:aspnet:table:gridline" attname="gridline" editable="true">
+        </select> 
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">水平对齐: </td>
+      <td nowrap="nowrap">
+        <select name="thehorizontalalign" class="alignList" id="attr:aspnet:panel:horizontalalign" attname="horizontalalign" editable="false">
+        </select> 
+      </td>
+    </tr>  
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">高度: </td>
+      <td nowrap="nowrap">
+        <input name="theheight" type="text" class="smallNumOrChar" id="aspnet:datalist:height" attname="height" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">宽度: </td>
+      <td nowrap="nowrap">
+        <input name="thewidth" type="text" class="smallNumOrChar" id="aspnet:datalist:width" attname="width" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">单元格边距: </td>
+      <td nowrap="nowrap">
+        <input name="thecellpadding" type="text" class="smallNumOrChar" id="aspnet:datalist:cellpadding" attname="cellpadding" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">单元格间距: </td>
+      <td nowrap="nowrap">
+        <input name="theCellSpacing" type="text" class="smallNumOrChar" id="aspnet:datalist:CellSpacing" attname="cellspacing" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theborderwidth" type="text" class="smallNumOrChar" id="aspnet:datalist:borderwidth" attname="borderwidth" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="borderColorPicker" value="" onChange="updateUI('borderColorPicker')"> <input name="thebordercolor" type="text" class="smallTField" id="att:body:alink" onBlur="updateUI('bordercolor')" value="" attname="bordercolor">
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">背景颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="backColorPicker" value="" onChange="updateUI('backColorPicker')"> <input name="thebackcolor" type="text" class="smallTField" id="att:body:backcolor" onBlur="updateUI('backcolor')" value="" attname="backcolor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">前景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="foreColorPicker" value="" onChange="updateUI('foreColorPicker')"> <input name="theforecolor" type="text" class="smallTField" id="att:adrotator:forecolor" onBlur="updateUI('forecolor')" value="" attname="forecolor">
+      </td>
+    </tr>  
+  </table>
+</div> 
+<div name="样式信息"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">CSS 类: </td>
+      <td nowrap="nowrap">
+        <input name="thecssclass" type="text" class="basicTextField" id="aspnet:datalist:CSSClass" attname="cssclass" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框样式: </td>
+      <td nowrap="nowrap">
+        <select name="theborderstyle" class="styleList" id="attr:aspnet:adrotator:borderstyle" attname="borderstyle">
+        </select> 
+      </td>
+    </tr>
+  </table>
+</div> 
+<div name="辅助功能"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">工具提示: </td>
+      <td nowrap="nowrap">
+        <input name="thetooltip" type="text" class="basicTextField" id="aspnet:datalist:tooltip" attname="tooltip" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">Tab 键索引: </td>
+      <td nowrap="nowrap">
+        <input name="thetabindex" type="text" class="smallNumOrChar" id="aspnet:datalist:tabindex" attname="tabindex" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">访问键: </td>
+      <td nowrap="nowrap">
+        <input name="theAccessKey" type="text" class="smallNumOrChar" id="aspnet:datalist:AccessKey" attname="AccessKey" />
+      </td>
+    </tr>
+  </table> 
+</div> 
+<div name="事件"> 
+  <div name="OnAdCreated">
+    <textarea name="theOnUpdateCommand" attname="OnUpdateCommand" id="aspnet:datalist:onadcreated" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnItemCreated">
+    <textarea name="theOnItemCreated" attname="OnItemCreated" id="aspnet:datalist:onadcreated" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnItemCommand">
+    <textarea name="theOnItemCommand" attname="OnItemCommand" id="aspnet:datalist:OnItemCommand" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnInit">
+    <textarea name="theOnInit" attname="OnInit" id="aspnet:datalist:OnInit" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnEditCommand">
+    <textarea name="theOnEditCommand" attname="OnEditCommand" id="aspnet:datalist:OnEditCommand" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div>   
+  <div name="OnCancelCommand">
+    <textarea name="theOnCancelCommand" attname="OnCancelCommand" id="aspnet:datalist:OnCancelCommand" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnPreRender">
+    <textarea name="theOnPreRender" attname="OnPreRender" id="aspnet:datalist:OnPreRender" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnDisposed">
+    <textarea name="theOnDisposed" attname="OnDisposed" id="aspnet:datalist:OnDisposed" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div>   
+  <div name="OnDataBinding">
+    <textarea name="theOnDataBinding" attname="OnDataBinding" id="aspnet:datalist:OnDataBinding" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div>     
+  <div name="OnUnload">
+    <textarea name="theOnUnload" attname="OnUnload" id="aspnet:datalist:OnUnload" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div>     
+  <div name="OnDeleteCommand">
+    <textarea name="theOnDeleteCommand" attname="OnDeleteCommand" id="aspnet:datalist:OnDeleteCommand" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div>     
+  <div name="OnItemDataBound">
+    <textarea name="theOnItemDataBound" attname="OnItemDataBound" id="aspnet:datalist:OnItemDataBound" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div>     
+  <div name="OnLoad">
+    <textarea name="theOnLoad" attname="OnLoad" id="aspnet:datalist:OnLoad" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div>     
+  <div name="OnSelectedIndexChanged">
+    <textarea name="theOnSelectedIndexChanged" attname="OnSelectedIndexChanged" id="aspnet:datalist:OnSelectedIndexChanged" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div>     
+
+  
+  
+</div> 
+</body>
+</html>

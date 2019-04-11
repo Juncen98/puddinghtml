@@ -1,0 +1,58 @@
+<html>
+<head>
+<link rel="stylesheet" href="josh.css">
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+  <table width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+	<td valign="top" class="name">Functions</td>
+	<td valign="top" nowrap class="compatibility"> </td>
+	      </tr>
+	      <tr>
+	         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+	      </tr>
+	    </td>
+	  </tr>
+    <tr>
+    <tr>
+      <td valign="top" colspan="2" class="description"> A function is a special
+        type of command word in the SQL99 command set. In effect, functions are
+        one-word commands that return a single value. The value of a function
+        can be determined by input parameters, as with a function that averages
+        a list of database values. But many functions do not use any type of
+        input parameter, such as the function that returns the current system
+        time, CURRENT_TIME.
+        <p>The SQL99 standard supports a number of useful functions. This chapter
+          covers those functions, providing detailed descriptions and examples.
+          In addition, each database vendor maintains a long list of their own
+          internal functions that are outside of the scope of the SQL standard.
+          Lists and descriptions are provided for each database implementation's
+          internal functions.</p>
+        <p> In addition, most database vendors support the ability to create
+          user-defined functions (UDF). For more information on UDFs, refer to
+          the CREATE FUNCTION command in Chapter 3 (SQL Statements Command Reference). </p></td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description"><span class="title"> Deterministic
+          and Nondeterministic Functions</span></td>
+    </tr>
+    <tr>
+      <td> <p>Functions can be either deterministic or nondeterministic. A <span class="emphasis">deterministic</span> function
+          always returns the same results if given the same input values. A <span class="emphasis">nondeterministic</span> function
+          returns different results every time it is called, even when the same
+          input values are provided.</p>
+        <p>Why is this important? It is important because of how functions may
+          be used within views, user-defined functions, and stored procedures.
+          The restrictions vary across implementations, but these objects sometimes
+          allow only deterministic functions within their defining code. For
+          example, Microsoft SQL Server allows the creation of an index on a
+          column expression--;as long as the expression does not contain nondeterministic
+          functions. Rules and restrictions vary between the vendors, so check
+          their documentation when using functions.</p></td>
+    </tr>
+  </table>
+</DIV>

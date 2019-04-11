@@ -1,0 +1,31 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>—È÷§</TITLE>
+<SCRIPT LANGUAGE="javascript">
+<!--
+function doBTC()
+{
+	if (dw.getDocumentDOM() != null)
+		dw.getDocumentDOM().runValidation("XML");
+}
+
+function canAcceptCommand()
+{
+	var retVal = false;
+	var parseMode;
+	if (dw.getDocumentDOM() != null)
+	{
+		parseMode = dw.getDocumentDOM().getParseMode();
+		if (parseMode == 'html' || parseMode == 'xml')
+			retVal = true;
+	}
+	return retVal;
+}
+// -->
+</SCRIPT>
+</HEAD>
+<BODY onLoad="doBTC()">
+</BODY>
+</HTML>

@@ -1,0 +1,91 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 6.0//pi">
+<!-- tag:asp:radiobutton, priority:1, selection:exact,hline,vline ,serverModel:ASP.NET -->
+<html>
+<head>
+<!-- Copyright 2002 Macromedia, Inc. All rights reserved. -->
+<title>ASP.NET RadioButton</title>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/TagEditClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dotNetUtils.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<script src="../TagLibraries/ASPNet/strings.js"></script>
+<script src="../TagLibraries/ASPNet/loc_strings.js"></script>
+<script src="asp.net_radiobutton.js"></script>
+<script language="JavaScript">
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+//--------------- END LOCALIZEABLE   ---------------
+</script>
+</head>
+
+<body marginwidth="0" marginheight="0">
+<span id="image" style="position:absolute; width:36px; height:36px; z-index:1; left: 5px; top: 9px"><img src="radiobutton.gif" width="36" height="36"></span>
+<div id="idBoxLayer" style="position:absolute; width:65px; height:38px; z-index:1; left: 44px; top: 9px; visibility: visible;"> 
+<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		  <td align="left" height="17" NOWRAP>&nbsp;单选按钮</td>
+		</tr>
+		<tr>
+		  <td align="left" nowrap>
+
+        <input name="radioID" type="text" id="radioID" style="width:65px" onBlur="updateTag('id')">
+		  </td>
+		</tr>
+  </table>
+</div>
+<div id="topLayer" style="position:absolute; left:125px; top:2px; width:420px; height:38px; z-index:29; visibility: visible;">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="9%" align="right" nowrap>文本&nbsp;</td>
+      <td width="38%" nowrap> <input type="text" name="text" id="text" onBlur="updateTag('text')" style="width:150px"></td>
+      <td width="8%" nowrap><input name="textBolt" type="image" onClick="dotNetUtils.getDynamicData(TEXT_TEXT);updateTag('text')" src="../Shared/MM/Images/Bolt.gif" width="15" height="14" alt="绑定动态数据"></td>
+      <td width="45%" rowspan="2" nowrap><table border="0" cellpadding="0" cellspacing="0">
+        <tr valign="baseline">
+          <td align="left" nowrap><input type="radio" name="isChecked" id="isChecked" onClick="updateTag('isChecked')">已选中</td>
+          <td align="right" nowrap>&nbsp;&nbsp;</td>
+          <td align="right" nowrap><input type="radio" name="dynamicChecked" id="dynamicChecked" onClick="IMG_CKBOLT.src='../Shared/MM/Images/Bolt.gif';updateTag('dynamicChecked')">动态&nbsp; <input name="checkedBolt" type="image" onClick="updateTag('dynamicChecked')" src="../Shared/MM/Images/Bolt_dis.gif" width="15" height="14" alt="绑定动态数据"></td>
+        </tr>
+        <tr valign="baseline">
+          <td align="left" nowrap><input type="radio" name="notChecked" id="notChecked" onClick="updateTag('notChecked')">未选中</td>
+          <td align="right" nowrap>&nbsp;</td>
+          <td align="right" nowrap>&nbsp;</td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>工具提示&nbsp;</td>
+      <td nowrap><input type="text" name="tooltip" id="tooltip" onBlur="updateTag('toolTip')" style="width:150px"></td>
+      <td nowrap>&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<div id="bottomLayer" style="position:absolute; left:14px; top:55px; z-index:22; width: 482px; height: 38px;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="12%" align="right" nowrap>访问键&nbsp;</td>
+        <td width="9%" nowrap> <input type="text" name="akey" id="akey" onBlur="updateTag('akey')" style="width:35px"> </td>
+        <td width="13%" align="right" nowrap>文本对齐&nbsp;</td>
+        <td width="37%" nowrap><select name="textAlign" id="textAlign" onChange="updateTag('textAlign')" style="width:150px"> </select> </td>
+        <td width="29%" rowspan="2" nowrap><table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td align="left" nowrap><input type="checkbox" name="autopost" id="autopost" onClick="updateTag('autoPost')">自动回发</td>
+            <td align="left" valign="baseline">&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="left"><input name="enabled" type="checkbox" id="enabled" onClick="updateTag('enabled')">已启用</td>
+            <td align="right" valign="baseline"><input type="image" src="tagDialog.gif" name="more" id="more" title="Display Tag Editor for asp:RadioButton" onClick="dotNetUtils.displayTagDialog()" alt="显示 asp:RadioButton 的标签编辑器"></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td align="right" nowrap>&nbsp;</td>
+        <td nowrap>&nbsp;</td>
+        <td align="right" nowrap>组名称&nbsp;</td>
+        <td nowrap><input type="text" name="groupName" id="groupName" onBlur="updateTag('groupName')" style="width:150px"></td>
+      </tr>
+  </table>
+</div>
+</body>
+</html>

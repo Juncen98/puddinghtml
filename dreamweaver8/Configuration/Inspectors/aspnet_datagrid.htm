@@ -1,0 +1,69 @@
+<!-- tag:asp:datagrid, priority:1, selection:e,hline,vline ,serverModel:ASP.NET-->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//pi">
+<html>
+<head>
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<title>数据网格</title>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/enableControl.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/helper.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssClasses.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<SCRIPT SRC="_pi_common.js"></SCRIPT>
+<SCRIPT src="aspnet_datagrid.js"></SCRIPT>
+</head>
+
+<body onLoad="initializeUI()">
+<form name="theForm">
+
+<span id="image" style="position:absolute; width:23px; height:17px; z-index:16; left: 0px; top: 2px">
+  <img src="datagrid.gif" width="36" height="36">
+</span>
+
+<div id="DataGridNameLayer" style="position:absolute; width:65px; height:15px; z-index:1; left: 40px; top: 0px">
+  <table border="0" cellpadding="0" cellspacing="4">
+    <tr>
+      <td nowrap>数据网格</td>
+    </tr>
+
+    <tr>
+      <td>
+        <input type="text" name="DataGridName" style="width:65px" onBlur="updateTag('gridName')">
+      </td>
+    </tr>
+  </table>
+</div>
+
+  <div id="mainLayer" style="position:absolute; width:150px; height:35px; z-index:1; left: 120px; top:2px"> 
+    <table border="0" cellpadding="0" cellspacing="0">
+<tr><td>
+  <table border=0 cellpadding="0" cellspacing="0">
+    <tr>
+	  <td nowrap valign="center"> <input type="checkbox" value="ShowColumnTitles" name="ShowColumnTitles" onClick="updateTag('titles')"> </td>
+	  <td nowrap> 显示列标题 </td>
+	  <td nowrap>&nbsp; &nbsp; &nbsp;</td>
+	  <td nowrap> 单元格边距:&nbsp;</td>
+	  <td valign="center"> <input type="text" name="CellPadding" style="width:20px" maxlength="2" onBlur="updateTag('cellpadding')"> </td>
+	</tr>
+	<tr>
+      <td nowrap valign="center"> <input type="checkbox" value="ShowColumnFooters" name="ShowColumnFooters" onClick="updateTag('footers')"></td>
+	  <td nowrap> 显示列脚注 </td>
+	  <td nowrap>&nbsp; &nbsp; &nbsp;</td>
+	  <td nowrap> 单元格间距:&nbsp;</td>
+	  <td valign="center" colspan=2> <input type="text" name="CellSpacing" style="width:20px" maxlength="2" onBlur="updateTag('cellspacing')">  </td>
+	</tr>
+  </table>
+</td>
+        <td align="left" valign="top" nowrap> &nbsp; 
+          <input type="button" value="编辑列..." onClick="ColumnsButtonClicked()"> </td></tr>
+</table>
+</div>
+
+</form>
+</body>
+</html>

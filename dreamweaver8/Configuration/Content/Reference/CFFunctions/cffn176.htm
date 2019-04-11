@@ -1,0 +1,202 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>LISTFINDNOCASE</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">LISTFINDNOCASE</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Determines the index of the first list element in which a specified value occurs.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+Index of the first list element that contains value. If not found, returns zero. The search is case-insensitive.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+List functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>ListFindNoCase(list, value [, delimiters ])
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+ListContains, ListFind; "Lists" in Chapter&#160;3, "Using ColdFusion Variables," in ColdFusion MX Developer's Guide 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+ColdFusion ignores empty list elements; thus, the list &quot;a,b,c,,,d&quot; has four elements.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!--- Uses ListFind and ListFindNoCase to see if a substring exists 
+in a list ---&gt; 
+&lt;form action=&quot;./listfind.cfm&quot; method=&quot;POST&quot;&gt; 
+   &lt;p&gt;Try changing the case in Leary&#39;s last name: 
+   &lt;br&gt;&lt;input type=&quot;Text&quot; size=&quot;25&quot; name=&quot;myString&quot; value=&quot;Leary&quot;&gt; 
+   &lt;p&gt;Pick a search type: 
+      &lt;select name=&quot;type&quot;&gt; 
+         &lt;option value=&quot;ListFind&quot; selected&gt;Case-Sensitive 
+         &lt;option value=&quot;ListFindNoCase&quot;&gt;Case-Insensitive 
+      &lt;/select&gt; 
+   &lt;input type=&quot;Submit&quot; name=&quot;&quot; value=&quot;Search Employee List&quot;&gt; 
+&lt;/form&gt; 
+
+&lt;!--- wait to have a string for searching defined ---&gt; 
+&lt;cfif IsDefined(&quot;form.myString&quot;) and IsDefined(&quot;form.type&quot;)&gt; 
+
+&lt;cfquery name=&quot;SearchEmpLastName&quot; datasource=&quot;cfdocexamples&quot;&gt; 
+   SELECT  FirstName, RTrim(LastName) AS LName, Phone, Department 
+   FROM    Employees 
+&lt;/cfquery&gt; 
+
+&lt;cfset myList = ValueList(SearchEmpLastName.LName)&gt; 
+&lt;!--- Is this case-sensitive or case-insensitive searching ---&gt; 
+&lt;cfif form.type is &quot;ListFind&quot;&gt; 
+   &lt;cfset temp = ListFind(myList, form.myString)&gt; 
+      &lt;cfif temp is 0&gt; 
+         &lt;h3&gt;An employee with that exact last name was not found&lt;/h3&gt; 
+      &lt;cfelse&gt; 
+         &lt;cfoutput&gt; 
+         &lt;p&gt;Employee #ListGetAt(ValueList(SearchEmpLastName.FirstName), temp)# 
+         #ListGetAt(ValueList(SearchEmpLastName.LName), temp)#, of the
+         #ListGetAt(ValueList(SearchEmpLastName.Department), temp)# Department,
+         can be reached at #ListGetAt(ValueList(SearchEmpLastName.Phone),
+         temp)#. 
+         &lt;p&gt;This was the first employee found under this case-sensitive last name
+         search. 
+         &lt;/cfoutput&gt; 
+      &lt;/cfif&gt; 
+      &lt;cfelse&gt; 
+         &lt;cfset temp = ListFindNoCase(myList, form.myString)&gt; 
+         &lt;cfif temp is 0&gt; 
+            &lt;h3&gt;An employee with that exact last name was not found&lt;/h3&gt; 
+         &lt;cfelse&gt; 
+            &lt;cfoutput&gt; 
+            &lt;p&gt;Employee #ListGetAt(ValueList(SearchEmpLastName.FirstName), temp)# 
+            #ListGetAt(ValueList(SearchEmpLastName.LName), temp)#, of the
+            #ListGetAt(ValueList(SearchEmpLastName.Department), temp)#
+            Department, can be reached at
+            #ListGetAt(ValueList(SearchEmpLastName.Phone), temp)#. 
+            &lt;p&gt;This was the first employee found under this case-insensitive last
+            name search. 
+         &lt;/cfoutput&gt; 
+      &lt;/cfif&gt; 
+   &lt;/cfif&gt; 
+&lt;/cfif&gt; 
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="LIST">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">LIST</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A list or a variable that contains one.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="VALUE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">VALUE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Number or string for which to search. The search is case-insensitive.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DELIMITERS">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DELIMITERS</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A string or a variable that contains one. Character(s) that separate list elements. The default value is comma. </p>
+<p>If this parameter contains more than one character, ColdFusion processes each occurrence of each character as a delimiter. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

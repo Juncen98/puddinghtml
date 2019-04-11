@@ -1,0 +1,7 @@
+<participant version="4.0">
+	<insertText location="afterSelection"><![CDATA[<%= @@RecordsetName@@.RecordCount %>]]></insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="RecordsetName" isOptional="false" limitSearch="all"><![CDATA[/<%= ([^\r\n]*?)\.RecordCount %>/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>.RecordCount</quickSearch>
+</participant>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "删除前导字符" description = "如果某个给定的字符（如空格）出现在指定字符串的起始处，则删除该字符。" preview="code" type="block">
+<insertText location="beforeSelection">
+<![CDATA[function removeLeadingChar (inputString, removeChar)
+{
+	var returnString = inputString;
+	if (removeChar.length)
+	{
+	  while(''+returnString.charAt(0)==removeChar)
+		{
+		  returnString=returnString.substring(1,returnString.length);
+		}
+	}
+	return returnString;
+}]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

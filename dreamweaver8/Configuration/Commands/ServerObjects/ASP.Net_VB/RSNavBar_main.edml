@@ -1,0 +1,63 @@
+<participant version="5.0">
+<insertText location="afterSelection">
+<![CDATA[
+<table border="0" width="50%" align="center">
+  <tr>
+    <td width="23%" align="center">
+      <MM:If runat="server" Expression='<%# (@@RecordsetName@@.CurrentPage <> 0) %>'>
+      <ContentsTemplate>
+        <a href="<%# Request.ServerVariables("SCRIPT_NAME") %>?@@RecordsetName@@_currentPage=0">@@FirstLinkText@@</a> 
+	  </ContentsTemplate>
+	  </MM:If>
+	</td>
+    <td width="31%" align="center">
+      <MM:If runat="server" Expression='<%# (@@RecordsetName@@.CurrentPage <> 0) %>'>
+      <ContentsTemplate>
+        <a href="<%# Request.ServerVariables("SCRIPT_NAME") %>?@@RecordsetName@@_currentPage=<%# Math.Max(@@RecordsetName@@.CurrentPage - 1, 0) %>">@@PrevLinkText@@</a> 
+      </ContentsTemplate>
+      </MM:If>
+    </td>
+    <td width="23%" align="center">
+      <MM:If runat="server" Expression='<%# (@@RecordsetName@@.CurrentPage < @@RecordsetName@@.LastPage) %>'>
+      <ContentsTemplate>
+        <a href="<%# Request.ServerVariables("SCRIPT_NAME") %>?@@RecordsetName@@_currentPage=<%# Math.Min(@@RecordsetName@@.CurrentPage + 1, @@RecordsetName@@.LastPage) %>">@@NextLinkText@@</a> 
+      </ContentsTemplate>
+      </MM:If>
+    </td>
+    <td width="23%" align="center">
+      <MM:If runat="server" Expression='<%# (@@RecordsetName@@.CurrentPage < @@RecordsetName@@.LastPage) %>'>
+      <ContentsTemplate>
+        <a href="<%# Request.ServerVariables("SCRIPT_NAME") %>?@@RecordsetName@@_currentPage=<%# @@RecordsetName@@.LastPage %>">@@LastLinkText@@</a> 
+      </ContentsTemplate> 
+      </MM:If>
+    </td>
+  </tr>
+</table>
+]]>
+</insertText>
+</participant>
+
+
+  
+  
+  
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  

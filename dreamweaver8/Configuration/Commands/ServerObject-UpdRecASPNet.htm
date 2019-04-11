@@ -1,0 +1,157 @@
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<head>
+<title>更新记录表单</title>
+<script language = "JavaScript">
+// note: this global variable needs to be at the top of this file to load properly
+// it is not a localizable variable, and localizing it will break the script!!
+var EDIT_OP_TYPE = "Update";
+</script>
+
+<!-- Common Functions-->
+<SCRIPT src="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT src="../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+
+<!-- Server Behavior Classes -->
+<SCRIPT src="../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/SQLStatementClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/SBDatabaseCallClass.js"></SCRIPT>
+<SCRIPT SRC="../ServerBehaviors/Shared/ASP.Net/DatabaseCallClass.js"></SCRIPT>
+
+<!-- Control Classes -->
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/TreeControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/CheckBox.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/ConnectionMenu.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/ConnectionTableMenu.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/RecordsetMenu.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/TextField.js"></SCRIPT>
+
+<SCRIPT SRC="EditOpsCustomObjs.js"></SCRIPT>
+<SCRIPT SRC="ServerObject-FormCmnASPNet.js"></SCRIPT>
+<SCRIPT SRC="ServerObject-UpdRecASPNet.js"></SCRIPT>
+<SCRIPT>
+function windowDimensions()
+{
+  if(navigator.platform.charAt(0)=="M")
+  {
+    return "540,610";
+  }
+}
+</SCRIPT>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onload="initializeUI()">
+  <form>
+
+  <table border=0 width="482">
+    <tr>
+    <td height="1"></td>
+    </tr>
+    <tr valign="baseline">
+    <td align="right" NOWRAP>连接:</TD>
+    <td colspan="2" NOWRAP> <select name="ConnectionName" class="connNameList" onChange="updateUI('ConnectionName','onChange')" wrap="virtual">
+    </select> <input type="button" value="定义..." onClick="updateUI('Define','onClick')" name="Define">
+    </td>
+    </tr>
+    <tr>
+    <td height="1"></td>
+    </tr>
+    <TR VALIGN="baseline">
+    <TD ALIGN="right" NOWRAP>表格: </TD>
+    <TD COLSPAN="2" NOWRAP> <select name="TableName" class="connRSTableList" style="width:200px;" onChange="updateUI('TableName','onChange')" wrap="virtual">
+    </select> </TD>
+    </TR>
+    <tr>
+      <td align="right" valign="baseline" nowrap>选取记录自: </td>
+      <td valign="baseline" colspan="4" nowrap>
+        <select name="RecordsetName" class="rsNameList" onChange="updateUI('RecordsetName', 'onChange')">
+        </select>
+      </td>
+    </tr>
+    <TR VALIGN="baseline">
+    <TD ALIGN="right" NOWRAP>唯一键列: </TD>
+    <TD COLSPAN="2" NOWRAP><select name="UniqueKeyColumn" class="columnNameList" onChange="updateUI('UniqueKeyColumn','onChange')">
+    </select></TD>
+    </TR>
+    <TR VALIGN="baseline">
+    <TD ALIGN="right" NOWRAP>提交唯一键为:</TD>
+    <TD COLSPAN="2" NOWRAP><select name="UniqueKeySubmitAs" class="columnNameList" onChange="updateUI('UniqueKeySubmitAs','onChange')">
+    </select></TD>
+    </TR>
+    <tr>
+    <td align="right" valign="baseline" nowrap>如果成功，则转到:</td>
+    <td valign="baseline" colspan="4" nowrap> <input name="SuccessURL" type="text" class="largeTField">
+    &nbsp; <input type="button" value="浏览..." onClick="updateUI('SuccessURL');focus(this);">
+    </td>
+    </tr>
+    <tr>
+    <td align="right" valign="baseline" nowrap>如果失败，则转到:</td>
+    <td valign="baseline" colspan="4" nowrap> <input name="FailureURL" type="text" class="largeTField">
+    &nbsp; <input type="button" value="浏览..." onClick="updateUI('FailureURL');focus(this);">
+    </td>
+    </tr>
+    <tr>
+    <td align="right" valign="baseline" nowrap>&nbsp;</td>
+    <td valign="baseline" nowrap>
+      <input name="Debug" type="checkbox" value="true" onClick="updateUI('Debug')">
+      失败时显示调试信息</td>
+    </tr>
+    <tr>
+    <td align="right" valign="baseline" nowrap colspan="5"> <hr> </td>
+    </tr>
+    <tr>
+    <td align="right" valign="baseline" nowrap>表单字段:</td>
+    <td valign="baseline" colspan="4" nowrap align="left"> <input type="image" border="0" alt="添加项" name="elemAdd" src="../Shared/MM/Images/btnAdd.gif" onClick="updateUI('AddRow','onClick')">
+    <input type="image" border="0" alt="移除项" name="elemDel" src="../Shared/MM/Images/btnDel.gif" onClick="updateUI('DeleteRow','onClick')">
+    <img src="../Shared/MM/Images/transparent.gif" height="8" width="295"> <input type="image" name="elemUp" alt="在列表中上移项" onClick="updateUI('MoveRowUp','onClick')" border="0" src="../Shared/MM/Images/btnUp.gif" >
+    <input type="image" name="elemDown" alt="在列表中下移项" onClick="updateUI('MoveRowDown','onClick')" border="0" src="../Shared/MM/Images/btnDown.gif" >
+    </td>
+    </tr>
+    <tr>
+    <td align="right" valign="baseline" nowrap></td>
+    <td valign="baseline" rowspan="2" colspan="4" nowrap> <mm:treecontrol noexpandbuttons name="ColumnNames" style="width:390px;height:96px" onChange="updateUI('ColumnNames','onChange')"> <mm:treecolumn width="80"> <mm:treecolumn width="90"> <mm:treecolumn width="90"> <mm:treecolumn width="80"> </mm:treecontrol> </td>
+    </tr>
+    <tr>
+    <td height=1></td>
+    </tr>
+    <tr>
+    <td align="right" valign="baseline" nowrap>标签:</td>
+    <td valign="baseline" nowrap colspan="4"> <input  name="ElementLabel" type="text" class="medTField" onBlur="updateUI('ElementLabel','onBlur')">
+    </td>
+    </tr>
+    <tr>
+    <td height=1></td>
+    </tr>
+    <tr>
+    <td align="right" valign="baseline" nowrap>显示为: </td>
+    <td valign="baseline" nowrap colspan="4"> <select name="DisplayAs" class="dataTypeList" onChange="updateUI('DisplayAs','onChange')">
+    </select> <mmsubmit> 提交为: 
+        <select name="SubmitAs" class="dataTypeList" onChange="updateUI('SubmitAs','onChange')">
+    </select>
+    </mmsubmit> </td>
+    </tr>
+    <tr>
+    <td align="right" valign="baseline" nowrap>&nbsp;</td>
+    <td valign="baseline" nowrap colspan="4"><input type="checkbox" name="UseWebFormControl" value="true" onClick="updateUI('UseWebFormControl','onChange')">
+    使用 Web 表单控件</td>
+    </tr>
+    <tr>
+    <td height=1></td>
+    </tr>
+    <mmParams>
+    <tr>
+    <td nowrap valign="baseline" align="right" height="50">&nbsp;</td>
+    <td nowrap align="left">&nbsp;</td>
+    </tr>
+    </mmParams>
+  </table>
+  </form>
+</body>
+</html>

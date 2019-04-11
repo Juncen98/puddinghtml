@@ -1,0 +1,28 @@
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+
+
+<html>
+<head>
+	<title>导入表格数据</title>
+<script>
+
+function canAcceptCommand()
+{
+	return (dw.getDocumentDOM() && dw.getDocumentDOM().getParseMode() == 'html' && (dw.getFocus() == 'textView' || dw.getFocus(true) == 'html') || (dw.getFocus() == 'document' && dw.getDocumentDOM().getFocus() == 'body'));
+}
+
+function importTableData(){
+   dreamweaver.runCommand("Tabular Data.htm");
+}
+
+
+
+</script>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onload="importTableData()">
+</body>
+</html>

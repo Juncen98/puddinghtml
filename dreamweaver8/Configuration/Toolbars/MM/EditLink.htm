@@ -1,0 +1,44 @@
+<!-- Copyright 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<html>
+<head>
+<title>±à¼­Á´½Ó</title>
+
+<script language="JavaScript">
+function isDOMRequired()
+{
+	return false;
+}
+
+function receiveArguments(newLink)
+{
+	if (dw.getFocus(true) == 'html' || dw.getFocus() == 'textView') 
+	{
+		dw.getDocumentDOM().source.wrapSelection('<a href="' + newLink + '">',
+			'</a>');
+	}
+	else if (newLink == '')
+	{
+		if (dw.getDocumentDOM().getLinkHref() != '')
+			dw.getDocumentDOM().removeLink();
+	}
+	else
+	{
+		dw.getDocumentDOM().setLinkHref(newLink);
+	}
+}
+
+function canAcceptCommand()
+{
+	return true;
+}
+
+function getCurrentValue()
+{
+	return dw.getDocumentDOM().getLinkHref(); 
+}
+</script>
+</head>
+
+<body>
+</body>
+</html>

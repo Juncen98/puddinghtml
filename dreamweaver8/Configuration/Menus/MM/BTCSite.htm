@@ -1,0 +1,64 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2001, 2002, 2003, 2004, 2005  Macromedia, Inc. All rights reserved. -->
+<TITLE>ä¯ÀÀÆ÷Ä¿±ê¼ì²é</TITLE>
+<SCRIPT LANGUAGE="javascript">
+<!--
+
+function receiveArguments()
+{
+	var itemID = arguments[0];
+	
+	if (itemID == 'site')
+		site.checkTargetBrowsers('site');
+	else
+	site.checkTargetBrowsers();
+}
+
+function canAcceptCommand()
+{
+	var retVal = false;
+	var itemID = arguments[0];
+	
+	if (dw.getFocus() == 'browser')
+		return false;
+	
+	if (itemID == 'site')
+		return (site.getCurrentSite() != '');
+	else
+	{
+		var selection = site.getSelection();
+		if (site.getFocus() == 'local' && selection.length > 0)
+		{
+			retVal = true;
+		}
+		else if (site.getFocus() == 'site map' && selection.length > 0)
+		{
+			retVal = DWfile.exists(selection[0]);
+		}
+
+		if (retVal)
+		{
+			// make sure selection isn't under a server node
+		
+			for (var i = 0; i < selection.length; i++)
+			{
+				if (selection[i].indexOf("%%SERVER%%") > -1 ||
+					selection[i].indexOf("http://") == 0)
+				{
+					retVal = false;
+					break;
+				}
+			}
+		}
+
+		return retVal;
+	}
+}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

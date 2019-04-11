@@ -1,0 +1,96 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<HTML>
+<HEAD>
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+
+<!-- Common Functions-->
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+
+<!-- Server Behavior Classes -->
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/TagEditClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/SQLStatementClass.js"></SCRIPT>
+
+<!-- Control Classes -->
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/CFDataSourceMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/ConnectionTableMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/ConnectionColumnMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/ListMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/TextField.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/CheckBox.js"></SCRIPT>
+
+<SCRIPT src="DeleteRecord.js"></SCRIPT>
+
+<title>删除记录</title>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY onload="initializeUI();">
+<FORM name="theForm">
+  <TABLE border="0">
+    <tr valign="baseline" nowrap>
+      <td align="right" nowrap>首先检查是否已定义变量:  </td>
+      <td align="left" nowrap>
+        <select name="DeleteIfDefinedParameter" class="paramNameList" onChange="updateUI('DeleteIfDefinedParameter','onChange')">
+         </select> 
+        <input name="DeleteIfDefinedParameterValue" type="text" disabled="true" class="medTField" value="">
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>数据源:</td>
+      <td nowrap>
+        <select name="ConnectionName" class="connNameList"  onChange="updateUI('ConnectionName','onChange')" wrap="virtual">
+          <option value="pubs" selected>Pubs</option>
+        </select>
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td align="right">用户名: </td>
+      <td>
+        <input name="UserName" type="text" class="medTField">
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td align="right">密码: </td>
+      <td>
+        <input name="Password" type="text" class="medTField">
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td align="right">表格: </td>
+      <td>
+        <select name="TableName" class="connRSTableList" onChange="updateUI('TableName','onChange')" wrap="virtual">
+        </select> </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td align="right">主键列: </td>
+      <td nowrap>
+        <select name="ColumnList" class="columnNameList" onChange="updateUI('ColumnList','onChange')" wrap="virtual">
+        </select> <input type="checkbox" name="IsNumeric" onClick="updateUI('IsNumeric','onClick')" checked> 数字</td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>主键值: </td>
+      <td nowrap>
+        <select name="PrimaryKeyParameter" class="columnNameList" onChange="updateUI('PrimaryKeyParameter', 'onChange')">
+        </select> 
+        <input name="PrimaryKeyParameterValue" type="text" class="medTField" onBlur="updateUI('PrimaryKeyParameterValue', 'onBlur')">
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap>删除后，转到: </td>
+      <td valign="baseline" nowrap>
+        <input name="RedirectURL" type="text" class="largeTField"> <input type="button" value="浏览..." onClick="updateUI('RedirectURL');focus(this)">
+      </td>
+    </tr>
+  </TABLE>
+</FORM>
+</BODY>
+</HTML>

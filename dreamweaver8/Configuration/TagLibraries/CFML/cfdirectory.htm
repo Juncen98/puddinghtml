@@ -1,0 +1,150 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFDIRECTORY</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var SELECTORLIST;
+var applyType = "dynamic"; 
+var theUIObjects;
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.inspectTagCommon(tagNodeObj, null, applyType, activeDisplayNode, SELECTORLIST); 
+}
+
+function applyTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.applyTagCommon(tagNodeObj, null, applyType, activeDisplayNode); 
+}
+
+function updateUI()
+{
+  var curDiv = SELECTORLIST.getValue(); 
+
+  tagDialog.showOnlyThisLayer(curDiv); 
+}
+
+function initializeUI()
+{
+	SELECTORLIST = new ListControl("theselector"); 
+	theUIObjects = new Array(SELECTORLIST); 
+  tagDialog.populateDropDownList(SELECTORLIST, theSelDirectoryCap, theSelDirectoryVal, 0); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+
+<div name="常规"> 
+<br /> 
+操作: 
+<select name="theselector" class="selectorList" id="attr:cfdirectory:selector" onChange="updateUI();" attname="action" editable="false">
+</select>
+<hr width="100%"> 
+<div id="thelist" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">目录</td>
+      <td nowrap="nowrap">
+        <input name="thelistdirectory" type="text" class="basicTextField" id="attr:cfdirectory:listdirectory" attname="directory" required="true" />&nbsp;
+        <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFolder('thelistdirectory',document.layers[0].document.layers['thelist'],true)">
+
+	  </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">查询名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:cfdirectory:name" attname="name" required="true" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">文件过滤器: </td>
+      <td nowrap="nowrap">
+        <input name="thefilter" type="text" class="basicTextField" id="attr:cfdirectory:filter" attname="filter" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">排序规范: </td>
+      <td nowrap="nowrap">
+        <input name="thesort" type="text" class="basicTextField" id="attr:cfdirectory:sort" attname="sort" />
+      </td>
+    </tr>
+	    <tr>
+      <td nowrap="nowrap">
+	  <td valign="baseline" align="left" nowrap="nowrap">
+	  <input type="checkbox" id="attr:cfdirectory:recurse" name="thecheckrecurse" attname="recurse" truevalue="yes" falsevalue="no" />
+        递归</td>
+    </tr>
+  </table>
+</div>
+<div id="thecreate" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">目录: </td>
+      <td nowrap="nowrap">
+	    <input name="thecreatedirectory" type="text" class="basicTextField" id="attr:cfdirectory:createdirectory" attname="directory" required="true" />&nbsp;
+		<input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFolder('thecreatedirectory',document.layers[0].document.layers['thecreate'],true)" />
+	  </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">模式: </td>
+      <td nowrap="nowrap">
+        <input name="themode" type="text" class="medTField" id="attr:cfdirectory:mode" attname="mode" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="thedelete" style="position:absolute;width:200px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">目录: </td>
+      <td nowrap="nowrap">
+	    <input name="thedeletedirectory" type="text" class="basicTextField" id="attr:cfdirectory:deletedirectory" attname="directory" required="true" />&nbsp;
+	    <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFolder('thedeletedirectory',document.layers[0].document.layers['thedelete'],true)" />
+      </td>
+    </tr>
+		    <tr>
+      <td nowrap="nowrap">
+	  <td valign="baseline" align="left" nowrap="nowrap">
+	  <input type="checkbox" id="attr:cfdirectory:deleterecurse" name="thecheckdeleterecurse" attname="recurse" truevalue="yes" falsevalue="no" />
+        递归</td>
+    </tr>
+  </table>
+</div>
+<div id="therename" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">目录: </td>
+      <td nowrap="nowrap">
+        <input name="therenamedirectory" type="text" class="basicTextField" id="attr:cfdirectory:renamedirectory" attname="directory" required="true" />&nbsp;
+        <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFolder('therenamedirectory',document.layers[0].document.layers['therename'],true)">	  
+	  </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">新目录: </td>
+      <td nowrap="nowrap">
+        <input name="thenewdirectory" type="text" class="basicTextField" id="attr:cfdirectory:newdirectory" attname="newdirectory" required="true" />&nbsp;
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+</html>

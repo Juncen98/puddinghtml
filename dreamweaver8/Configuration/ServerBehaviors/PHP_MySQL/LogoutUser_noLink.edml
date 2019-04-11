@@ -1,0 +1,21 @@
+<participant>
+     <quickSearch><![CDATA[logoutGoTo]]></quickSearch>
+     <insertText location="aboveHTML+8"><![CDATA[<?php
+// *** Logout the current user.
+$logoutGoTo = "@@redirectPage@@";
+if (!isset($_SESSION)) {
+  session_start();
+}
+$_SESSION['@@MM_username@@'] = NULL;
+$_SESSION['@@MM_userAuthorization@@'] = NULL;
+unset($_SESSION['@@MM_username@@']);
+unset($_SESSION['@@MM_userAuthorization@@']);
+if ($logoutGoTo != "") {header("Location: $logoutGoTo");
+exit;
+}
+?>]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+	<searchPattern paramNames="redirectPage,MM_Username,MM_UserAuthorization" isOptional="false" limitSearch="all"><![CDATA[/\/\/ \*\*\* Logout the current user\.(?:\r\n|\r(?!\n)|\n)[ \t]*\$logoutGoTo = "([^\r\n]*?)";(?:\r\n|\r(?!\n)|\n)[ \t]*session_start\(\);(?:\r\n|\r(?!\n)|\n)[ \t]*unset\(\$\_SESSION\['([^\r\n]*?)']\);(?:\r\n|\r(?!\n)|\n)[ \t]*unset\(\$\_SESSION\['([^\r\n]*?)']\);(?:\r\n|\r(?!\n)|\n)[ \t]*if \(\$logoutGoTo != ""\) \{header\("Location: \$logoutGoTo"\);/]]></searchPattern>
+     </searchPatterns>
+</participant>

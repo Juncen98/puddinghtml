@@ -1,0 +1,156 @@
+<html xmlns:un="http://usablenet.com/namespaces/508_rules">
+   <link rel="stylesheet" href="josh.css">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Detailed View for rule: Inform users if pop-up windows appear</title>
+      <!--
+  508/W3C Accessibility Suite OEM V2 for Macromedia Dreamweaver
+  (C) Copyright 2001-2005 UsableNet Inc. All rights reserved.
+  -->
+   </head>
+   <body bgcolor="#ffffff">
+      <div id="Description">
+         <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+            <tr>
+               <td valign="top" nowrap="true" class="name">Inform users if pop-up windows appear</td>
+               <td valign="top" nowrap="true" class="compatibility">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+            </tr>
+            <tr>
+               <td valign="top" align="right" nowrap="true" colspan="2" class="requirements">WAI / WCAG 1.0 Priority 2 checkpoint 10.1</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Description</b><br>
+                  
+                  
+                  <p>
+                     The page contains a script, associated to the BODY tag that could
+                     open a new window when the page is loaded by the browser (i.e. a
+                     pop-up window). If this is the case, the page fails to satisfy the
+                     checkpoint. 
+                     	 
+                  </p>
+                  
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>How to fix</b>
+                  
+                  
+                  <p>
+                     Try to avoid opening new pop-up windows.
+                     	 
+                  </p>
+                  
+                  
+                  <p>
+                     If opening new pop-up windows is a required behavior, add a "Close" button to the new window that
+                     would close the new window.
+                     
+                  </p>
+                  
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Explanation</b><br>
+                  
+                  
+                  <p>
+                     When the browser opens a pop-up window the environment in which the
+                     user is working changes. 
+                     It changes because:
+                     	 
+                  </p>
+                  
+                  <ul>
+                     
+                     <li> some features of the browser itself in the new window may change.  For example,
+                        the browser's 
+                        buttons may be hidden completely, the geometry and position of
+                        the new window change, the new window is opened on top of the
+                        old one, or, other times it is opened below;
+                        
+                     </li>
+                     
+                     <li> even if it is not disabled, the "Back" button of the browser does not
+                        work, since in the new window there is no "URL history" (and no
+                        previous URL).
+                        
+                     </li>
+                     
+                     <li> for pop-up windows the change is even worse, since they appear
+                        without any explicit action from the user side (except for clicking on
+                        a link or typing a URL).
+                        
+                     </li>
+                     
+                  </ul>
+                  
+                  <p>
+                     These factors, possibly combined together, amplify the possible
+                     difficulties experienced by visitors, especially those who are
+                     disabled or use disabling technologies. For example, if the new
+                     window is opened with the same size and position as the old one, on
+                     top of the old one, it might appear to a visitor as the
+                     <strong>same</strong> window. The visitor might interpret the fact
+                     that the Back button does not work as a bug of the browser (and might
+                     restart the browser) or a bug in the site (and might switch to another
+                     one).
+                     
+                  </p>
+                  
+                  <p>
+                     For visually impaired visitors it is even worse: screen readers might
+                     not be able to notify the user that there is a new window. Screen magnifiers
+                     users might have a very hard time in guessing that there is a new
+                     window somewhere and  where the new window is placed.
+                     
+                  </p>
+                  
+                  <p>
+                     Therefore it is crucial that in general the visitor is told that a new
+                     window is being opened. Obviously the visitor should be told that
+                     <strong>before</strong> opening the window, which for pop-up windows
+                     is not a viable solution.
+                     
+                  </p>
+                  
+                  <p>
+                     In all cases, the new window should contain a button that
+                     leads the visitor back to the page that has opened the window (or
+                     alternatively that closes it). These buttons will work also if the new
+                     window has disabled the standard browser buttons.
+                     
+                  </p>
+                  
+                  
+                  
+               </td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

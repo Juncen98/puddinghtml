@@ -1,0 +1,554 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<head>
+<script language="JavaScript" src="Show Pop-up Menu.js"></script>
+<script language="JavaScript" src="parse_popup.js"></script>
+<script src="../../Shared/MM/Scripts/CMN/docInfo.js"></script>
+<script src="../../Shared/MM/Scripts/CMN/handler.js"></script>
+<script src="../../Shared/MM/Scripts/CMN/file.js"></script>
+<script src="../../Shared/MM/Scripts/CMN/DOM.js"></script>
+<script src="../../Shared/MM/Scripts/CMN/UI.js"></script>
+<!--
+<script src="../../Shared/MM/Scripts/CMN/niceName.js"></script>
+-->
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/MM/Scripts/CMN/string.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/MM/Scripts/Class/TabControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/ImageButtonClass.js"></script>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<script src="../../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<!-- End removal area. -->
+<script language="javascript">
+// Copyright 2001, 2002, 2003, 2004 Macromedia, Inc. All rights reserved.
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var LABEL_Items = "内容";
+var LABEL_Format = "外观";
+var LABEL_Advanced = "高级";
+var LABEL_Position = "位置";
+
+var LABEL_Vertical = "垂直菜单";
+var LABEL_Horizontal = "水平菜单";
+var LABEL_Cells = "单元格";
+var LABEL_UseImages = "图像";
+var LABEL_UseHTML = "HTML";
+var LABEL_UpState = "一般状态";
+var LABEL_OverState = "滑过状态";
+var LABEL_Text = "文本";
+var LABEL_Cell = "单元格";
+var LABEL_Link = "链接";
+var LABEL_Target = "目标";
+
+var LABEL_NewItem = "新建项目";
+
+var DEFAULT_FONT = "默认字体";
+var EDIT_FONT_LIST = "编辑字体列表...";
+
+
+var SAVE_FIRST = "单击“取消”以退出该对话框。";
+var OK_TO_FW8_MSG = "单击“继续”在 Dreamweaver 中创建弹出式菜单，或者单击“取消”退出对话框。";
+var DELETE_KIDS = "如果您删除该项，则其子项也将被删除。如果您不想这样做，则单击“取消”并将子项先划拨出来。\n\n确实要删除此项及其子项吗？";
+var MSG_IRREVOCABLE = "如果您选择只将 HTML 用于此菜单，则对图像文件的引用将被删除，并且您将不能检索它们。\n\n是否删除图像背景并只使用文本？";
+var MSG_INVALIDFONTSIZE = "大小应为不含单位的正数值，例如 10 或 12。";
+var MSG_NEEDINTEGER = "此字段要求整数，例如 0、300 或 -50。";
+var MSG_NEEDPOSNUMBER = "此字段要求大于或等于零的整数。";
+var MSG_NOPIPES = "在“文本”和“链接”字段中不允许使用管道符号 (|)。";
+var MSG_PIPE_IN_FRAME_NAME = "此框架在其名称中含有管道符号 (|)。若要应用此框架，您必须首先从框架名称中删除该管道符号。然后您可以重新编辑此行为来应用新框架名称。";
+var MSG_UNSAVED = "您正在尝试编辑未保存文档中的弹出式菜单。\n在浏览器中预览该文档时，\n这可能会导致菜单显示不正确（或根本不显示）。\n\n我们强烈建议您先保存文档，然后再继续。";
+var MISSING_MENU_FILE = "mm_menu.js 文件从“配置”文件夹丢失，所以不能将它拷贝到当前文件夹。因此该行为将不能在浏览器中正确行使功能。";
+
+//--------------- END LOCALIZEABLE   ---------------
+//---------------    END JAVASCRIPT    ---------------
+</script>
+<style type="text/css">
+<!--
+.pageBg{
+	position:absolute;
+	left:6px;
+	top:31px;
+	width:10px;
+	height:10px;
+	z-index:1;
+	visibility: hidden;
+}
+.tabLayer      { position:absolute; top:10px; width:70px; height:20px; z-index:8; visibility:hidden ;}
+.tabInnerLayer { position:absolute; width:75px; height:23px; z-index:8; left: 0px; top: 0px; visibility:inherit ;}
+.tabLabelLayer { position:absolute; width:69px; height:1px; z-index:8; left: 0px; top: 5px; visibility:inherit; text-align:center }
+#infoIcon {float: left; margin: 0 5px 40px 0;}
+#floatl {float: left;}
+-->
+</style>
+<title>显示弹出式菜单</title>
+<meta http-equiv="Content-Type" content="text/html">
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="initUI()">
+
+<!-- TAB DIVS -->
+
+<div class="pageBg" style="visibility:visible; left:4px; ">
+  <img name="tabBgWin" width="430" height="380" src="../../Shared/MM/Images/transparent.gif"></div>
+
+<div class="pageBg" id="loading" style="visibility:visible;left:4px; ">
+  <table width="430" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+  <td height="380" align="center"><p>
+  正在载入...
+  </p>
+  </td>
+  </tr>
+  </table>
+</div>
+
+<div class="pageBg" id="readingMenus" style="visibility:hidden; left:4px; ">
+  <table width="430" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+  <td height="380" align="center"><p>
+  读取文档并建立菜单…
+  </p>
+  </td>
+  </tr>
+  </table>
+</div>
+
+<div class="pageBg" id="saveDoc" style="visibility:hidden; left:4px; ">
+  <table width="430" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+  <td height="380" align="center"><p>
+  您在应用“显示弹出式菜单”行为前必须先保存您的文档。
+  </p>
+  <p>
+单击“取消”以退出此对话框并返回到您的文档。
+</p></td>
+  </tr>
+  </table>
+</div>
+
+<div class="pageBg" id="useFWInstead" style="visibility:hidden; left:4px; ">
+  <table width="430" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+  <td height="380" align="center" valign="top">
+<form id="useFWform">
+<table width="100%">
+<tr valign="baseline">
+  <td align="center"><img src="../../Shared/MM/Images/transparent.gif" width="20" height="10"></td>
+  <td align="left"><div id="infoIcon"><img src="../../Shared/MM/Images/P_InfoPC_Lg_N.png"></div> 
+  <div class="floatl">在 Dreamweaver 中，您可以创建基本的弹出式菜单。<br>
+如果您使用的是 Fireworks 8，可以生成更高级的弹出式菜单，这种菜单拥有更容易自定义和维护的代码。 <br><br><input type="checkbox" name="dontShowAgain" value="dontShowAgain" onClick="dontShowAgain(this.checked)">
+    Don't show me this message again </div></td>
+  <td align="center">&nbsp;</td>
+</tr>
+
+<tr valign="baseline">
+  <td align="center">&nbsp;</td>
+  <td align="center" style="padding-top:6px">
+  <input name="learnMore" type="button" id="learnMore" value="了解更多信息" onClick="learnMore()">
+  &nbsp;
+  <input name="continue" type="button" id="continue" value="继续" onClick="continueAnyway()"></td><td align="center">&nbsp;</td>
+</tr>
+<tr valign="baseline">
+  <td colspan="3">&nbsp;</td>
+  </tr>
+</table>
+</form></td>
+  </tr>
+  </table>
+</div>
+
+<div id="Tab0" class="tabLayer" style="left: 8px; ">
+  <div class="tabInnerLayer"> <img src="../../Shared/MM/Images/tabBg.gif"> </div>
+  <div id="Tab0Sel" class="tabInnerLayer" style="visibility:hidden">
+    <img src="../../Shared/MM/Images/tabBgSel.gif"> </div>
+  <div name="Tab0Label" class="tabLabelLayer"></div>
+  <div class="tabInnerLayer">
+    <input type="image" alt="内容" src="../../Shared/MM/Images/transparent.gif" width="69" height="21" onClick="T.showPageNum(0)"> </div>
+</div>
+<div id="Tab1" class="tabLayer" style="left: 78px; ">
+  <div class="tabInnerLayer"> <img src="../../Shared/MM/Images/tabBg.gif"> </div>
+  <div id="Tab1Sel" class="tabInnerLayer" style="visibility:hidden">
+    <img src="../../Shared/MM/Images/tabBgSel.gif"> </div>
+  <div name="Tab1Label" class="tabLabelLayer"></div>
+  <div class="tabInnerLayer">
+    <input type="image" alt="外观" src="../../Shared/MM/Images/transparent.gif" width="69" height="21" onClick="T.showPageNum(1)"> </div>
+</div>
+<div id="Tab2" class="tabLayer" style="left: 148px; ">
+  <div class="tabInnerLayer"> <img src="../../Shared/MM/Images/tabBg.gif"> </div>
+  <div id="Tab2Sel" class="tabInnerLayer" style="visibility:hidden">
+    <img src="../../Shared/MM/Images/tabBgSel.gif"> </div>
+  <div name="Tab2Label" class="tabLabelLayer"></div>
+  <div class="tabInnerLayer">
+    <input type="image" alt="高级" src="../../Shared/MM/Images/transparent.gif" width="69" height="21" onClick="T.showPageNum(2)"> </div>
+</div>
+<div id="Tab3" class="tabLayer" style="left: 218px; ">
+  <div class="tabInnerLayer"> <img src="../../Shared/MM/Images/tabBg.gif"> </div>
+  <div id="Tab3Sel" class="tabInnerLayer" style="visibility:hidden">
+    <img src="../../Shared/MM/Images/tabBgSel.gif"> </div>
+  <div name="Tab3Label" class="tabLabelLayer"></div>
+  <div class="tabInnerLayer">
+    <input type="image" alt="位置" src="../../Shared/MM/Images/transparent.gif" width="69" height="21" onClick="T.showPageNum(3)"> </div>
+</div>
+
+<!-- Content layers ---->
+<div id="Layer1" class="pageBg">
+<form>
+    <table border="0" cellspacing="3">
+      <tr>
+        <td valign="middle" align="right">&nbsp;</td>
+        <td valign="middle" align="right" nowrap>&nbsp;</td>
+        <td valign="middle">&nbsp;</td>
+        <td valign="baseline">&nbsp;</td>
+        <td valign="baseline">&nbsp;</td>
+        <td valign="baseline">&nbsp;</td>
+      </tr>
+      <tr> 
+        <td valign="middle" align="right">&nbsp;</td>
+        <td valign="middle" align="right" nowrap>菜单: </td>
+        <td valign="middle"> <table border="0" cellspacing="0" cellpadding="0">
+            <tr> 
+              <td> <input type="image" src="../../Shared/MM/Images/btnAdd.gif" alt="添加项" name="addItem"  onClick="T.update('addItem');this.focus()"></td>
+              <td><input type="image" src="../../Shared/MM/Images/btnDel_dis.gif" alt="移除项" name="removeItem"  onClick="T.update('removeItem');this.focus()"></td>
+              <td><img src="../../Shared/MM/Images/transparent.gif" width="13" height="1"></td>
+              <td><input type="image" src="../../Shared/MM/Images/outdent_dis.gif" alt="左缩进项" name="outBtn" width="19" height="19" onClick="T.update('outdent');this.focus()"></td>
+              <td><input type="image" src="../../Shared/MM/Images/indent_dis.gif" alt="缩进项" name="inBtn" width="19" height="19" onClick="T.update('indent');this.focus()"></td>
+              <td><img src="../../Shared/MM/Images/transparent.gif" width="13" height="1"></td>
+              <td><input type="image" src="../../Shared/MM/Images/btnUp_dis.gif" alt="上移项" name="upBtn"  onClick="T.update('moveUp');this.focus()"></td>
+              <td><input type="image" src="../../Shared/MM/Images/btnDown_dis.gif" alt="下移项" name="downBtn"  onClick="T.update('moveDown');this.focus()"></td>
+            </tr>
+          </table></td>
+        <td valign="baseline">&nbsp;</td>
+        <td valign="baseline">&nbsp;</td>
+        <td valign="baseline">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      </tr>
+      <tr> 
+        <td align="right" valign="baseline">&nbsp;</td>
+        <td align="right" valign="baseline" nowrap>文本: </td>
+        <td valign="baseline"> <input name="itemText" type="text" class="basicTextField" tabindex="1" onBlur="T.update('itemText')"> 
+        </td>
+        <td align="right" nowrap valign="baseline">目标:</td>
+        <td align="right" nowrap valign="baseline"> <select name="targetList" class="targetList" style="width:75px" tabindex="3" onChange="T.update('targetList')">
+            <option value=" "></option>
+            <option value="空白(_B)">_blank</option>
+            <option value="父(_P)">_parent</option>
+            <option value="自身(_S)">_self</option>
+            <option value="顶部(_T)">_top</option>
+          </select> </td>
+        <td align="right" nowrap valign="baseline">&nbsp;</td>
+      </tr>
+      <tr> 
+        <td align="right">&nbsp;</td>
+        <td align="right" nowrap>链接: </td>
+        <td colspan="2"> <input name="itemURL" type="text" class="largeTField" style="width:260px" tabindex="2" onFocus="if(this.value==' ')this.value=''"  onBlur="T.update('itemURL')"> 
+        </td>
+        <td> <input type="image" name="browseBtn" alt="浏览文件夹" src="../../Shared/MM/Images/folder.gif" onClick="browseForURL();this.focus()"> 
+        </td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr> 
+        <td>&nbsp;</td>
+        <td> <br> <br> </td>
+        <td colspan="3"> <mm:treecontrol name="menuItems" style="width:350px" size="12" onChange="T.update('menuItems');this.focus()"> 
+          <mm:treecolumn name="label" value="文本" width="100"> <mm:treecolumn name="url" value="链接" width="150"> 
+          <mm:treecolumn name="target" value="目标" width="100"> </mm:treecontrol> 
+        </td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+</form>
+</div>
+<div id="Layer2" class="pageBg" style="left: 11px; top: 31px; visibility: hidden; ">
+<form>
+  
+    
+<table width="410" border="0">
+
+
+
+<tr>
+<td align="center">
+<table border="0" cellspacing="3">
+            <div id="cellsRow"> 
+              <tr>
+                <td align="right" valign="baseline">&nbsp;</td>
+                <td colspan="3" valign="baseline">&nbsp;</td>
+                <td valign="baseline">&nbsp;</td>
+                <td valign="baseline">&nbsp;</td>
+              </tr>
+              <tr> 
+                <td align="right" valign="baseline">&nbsp;</td>
+                <td colspan="3" valign="baseline"><select name="orientation" class="oneWordOptionList" onChange="T.update('orientation')">
+                    <option value="vert" selected>垂直菜单</option>
+                    <option value="horz">水平菜单</option>
+                  </select></td>
+                <td valign="baseline">&nbsp;</td>
+                <td valign="baseline">&nbsp;</td>
+              </tr>
+            </div>
+            <tr> 
+              <td colspan="6"><img src="../../Shared/MM/Images/greywhite2x2.gif" width="100%" height="2"></td>
+            </tr>
+            <tr> 
+              <td align="right" valign="baseline">字体: </td>
+              <td colspan="3" valign="baseline"> <select name="fontList" class="fontGroupList" onChange="T.update('fontList')">
+<option value="Verdana" selected>Verdana, Arial, Helvetica, sans-serif</option>
+
+
+                </select> </td>
+              <td valign="baseline">&nbsp;</td>
+              <td valign="baseline">&nbsp;</td>
+            </tr>
+            <tr> 
+              <td valign="baseline" align="right">*大小: </td>
+              <td valign="baseline"> <input name="fontSize" type="text" class="smallNumOrChar" onBlur="T.update('fontSize')" value="12"> 
+              </td>
+              <td align="right" valign="baseline"> <input type="image" src="../../Shared/MM/Images/bold.gif" alt="粗体" width="18" height="17" name="makeBold" onClick="T.update('makeBold')"> 
+                <input type="image" src="../../Shared/MM/Images/italic.gif" alt="斜体" width="18" height="17" name="makeItalic" onClick="T.update('makeItalic')"> 
+              </td>
+              <td align="right" valign="baseline" nowrap> <input type="image" src="../../Shared/MM/Images/leftAlign.gif" alt="左对齐" width="18" height="17" name="left" onClick="T.update('alignLeft')"> 
+                <input type="image" src="../../Shared/MM/Images/centerAlign.gif" alt="居中对齐" width="18" height="17" name="center" onClick="T.update('alignCenter')"> 
+                <input type="image" src="../../Shared/MM/Images/rightAlign.gif" alt="右对齐" width="18" height="17" name="right" onClick="T.update('alignRight')"> 
+              </td>
+              <td align="right" valign="baseline" nowrap>&nbsp;</td>
+              <td align="right" valign="baseline" nowrap>&nbsp;</td>
+            </tr>
+            <tr> 
+              <td height="2" align="center">&nbsp;</td>
+              <td height="2" align="center">&nbsp;</td>
+              <td height="2" align="center">&nbsp;</td>
+              <td height="2" align="center">&nbsp;</td>
+              <td height="2" align="center">&nbsp;</td>
+              <td height="2" align="center">&nbsp;</td>
+            </tr>
+            <div id="colorSwatches"> 
+              <tr> 
+                <td nowrap align="right">一般状态:</td>
+                <td align="left">&nbsp; </td>
+                <td align="right" nowrap>滑过状态:</td>
+                <td align="left">&nbsp;</td>
+                <td align="left">&nbsp;</td>
+                <td align="left">&nbsp;</td>
+              </tr>
+              <tr> 
+                <td height="17" align="right" nowrap>文本:</td>
+                <td height="17" align="left"> <input type="mmcolorbutton" name="upText" value="#000000" onChange="T.update('upText')"> 
+                </td>
+                <td height="17" align="right">文本:</td>
+                <td height="17" align="left"> <input type="mmcolorbutton" name="overText" value="#FFFFFF" onChange="T.update('overText')"> 
+                </td>
+                <td height="17" align="left">&nbsp;</td>
+                <td height="17" align="left">&nbsp;</td>
+              </tr>
+              <tr> 
+                <td nowrap align="right">单元格:</td>
+                <td align="left"> <input type="mmcolorbutton" name="upCell" value="#CCCCCC" onChange="T.update('upCell')"> 
+                </td>
+                <td align="right">单元格:</td>
+                <td align="left"> <input type="mmcolorbutton" name="overCell" value="#000084" onChange="T.update('overCell')"> 
+                </td>
+                <td align="left">&nbsp;</td>
+                <td align="left">&nbsp;</td>
+              </tr>
+            </div>
+          </table></td>
+</tr>
+<tr>
+<td height="2"><img src="../../Shared/MM/Images/transparent.gif" width="400" height="1"></td>
+</tr>
+<tr>
+<td><table width="100%" border="0" cellspacing="0" cellpadding="15">
+    
+<tr> 
+      
+<td height="100" align="center" bgcolor="#FFFFFF">  
+
+<div id="previewTable">
+<table border="1" cellspacing="0" cellpadding="3">
+<tr>
+<td bgcolor="#CCCCCC"><font style="color:#000000;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:12px">船</font></td>
+</tr>
+<tr>
+<td bgcolor="#000084"><font style="color:white;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:12px">火车</font></td>
+</tr>
+<tr>
+<td bgcolor="#CCCCCC"><font style="color:#000000;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:12px">飞机</font></td>
+</tr>
+<tr>
+<td bgcolor="#CCCCCC"><font style="color:#000000;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:12px">汽车</font></td>
+</tr>
+</table>
+</div></td>
+</tr>
+  </table></td>
+</tr>
+<tr>
+<td height="2"><img src="../../Shared/MM/Images/transparent.gif" width="400" height="1"></td>
+</tr>
+
+<tr>
+<td>*预览结果是近似情况。</td>
+</tr>
+</table>
+</form>
+</div>
+<div id="Layer3" class="pageBg" style="left: 11px; top: 31px; visibility: hidden; "> 
+  
+<form>
+    
+<table width="410" border="0">
+
+<tr>
+<td align="center">
+<table border="0" cellspacing="3">
+            <tr valign="baseline">
+              <td align="right">&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr valign="baseline"> 
+              <td align="right">单元格宽度:</td>
+              <td> <input type="text" name="cellWidth" class="smallNumOrChar" onBlur="T.update('cellWidth')" disabled="true"> 
+              </td>
+              <td> <select name="cellWidthSel" class="oneWordOptionList"  onChange="T.update('cellWidthSel')">
+                  <option value="auto" selected>自动</option>
+                  <option value="px">像素</option>
+                </select></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr valign="baseline"> 
+              <td align="right">单元格高度:</td>
+              <td> <input type="text" name="cellHeight" class="smallNumOrChar" onBlur="T.update('cellHeight')" disabled="true"> 
+              </td>
+              <td> <select name="cellHeightSel" class="oneWordOptionList"  onChange="T.update('cellHeightSel')">
+                  <option value="auto" selected>自动</option>
+                  <option value="px">像素</option>
+                </select> </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr valign="baseline"> 
+              <td align="right" nowrap>单元格边距:</td>
+              <td align="left"> <input name="cellPad" type="text" class="smallNumOrChar" onBlur="T.update('cellPad')" value="3"> 
+              </td>
+              <td align="right" nowrap>文本缩进: 
+                <input name="textIndent" type="text" style="width:45px" onBlur="T.update('textIndent')"> 
+              </td>
+              <td align="right" nowrap>&nbsp;</td>
+            </tr>
+            <tr valign="baseline"> 
+              <td align="right" nowrap>单元格间距:</td>
+              <td align="left"> <input name="cellSpace" type="text" class="smallNumOrChar" onBlur="T.update('cellSpace')" value="0"> 
+              </td>
+              <td align="right" nowrap> 菜单延迟: 
+                <input name="menuDelay" type="text" style="width:45px" onBlur="T.update('menuDelay')" value="1000"> 
+              </td>
+              <td align="right" nowrap>ms</td>
+            </tr>
+            <tr valign="baseline"> 
+              <td height="3" colspan="4" align="center" nowrap><img src="../../Shared/MM/Images/transparent.gif" width="10" height="3"></td>
+            </tr>
+            <tr valign="baseline"> 
+              <td align="right" nowrap>弹出式菜单边框:</td>
+              <td colspan="3" align="left"> <input name="showBorders" type="checkbox" value="checkbox" checked onClick="T.update('showBorders')">
+                显示边框</td>
+            </tr>
+            <tr valign="baseline"> 
+              <td align="right" nowrap>边框宽度:</td>
+              <td align="left"> <input name="borderWidth" type="text" class="smallNumOrChar" onBlur="T.update('borderWidth')" value="1"> 
+              </td>
+              <td align="right">阴影: 
+                <input type="mmcolorbutton" name="cellShadow" value="#555555" onChange="T.update('cellShadow')"></td>
+              <td align="right">&nbsp;</td>
+            </tr>
+            <tr valign="baseline"> 
+              <td align="right" nowrap>边框颜色:</td>
+              <td align="left"><input type="mmcolorbutton" name="borderColor" value="#555555" onChange="T.update('borderColor')"></td>
+              <td align="right">高亮显示: 
+                <input type="mmcolorbutton" name="cellHighlight" value="#FFFFFF" onChange="T.update('cellHighlight')"></td>
+              <td align="right">&nbsp;</td>
+            </tr>
+          </table></td>
+</tr>
+<tr>
+<td height="2"><img src="../../Shared/MM/Images/transparent.gif" width="400" height="1"></td>
+</tr>
+<tr>
+<td><table width="100%" border="0" cellspacing="0" cellpadding="15">
+    
+<tr> 
+      
+<td height="100" align="center" bgcolor="#FFFFFF"> 
+<div id="previewTable2">
+<table border="1" cellspacing="0" cellpadding="3">
+<tr>
+<td bgcolor="#CCCCCC"><font style="color:#000000;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:12px">船</font></td>
+</tr>
+<tr>
+<td bgcolor="#000084"><font style="color:white;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:12px">火车</font></td>
+</tr>
+<tr>
+<td bgcolor="#CCCCCC"><font style="color:#000000;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:12px">飞机</font></td>
+</tr>
+<tr>
+<td bgcolor="#CCCCCC"><font style="color:#000000;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:12px">汽车</font></td>
+</tr>
+</table>
+</div></td>
+</tr>
+  </table></td>
+</tr>
+</table>
+</form>
+</div>
+<div id="Layer4" class="pageBg">
+  <form>
+  
+    
+<table width="360" border="0" cellspacing="3">
+<tr>      
+<td align="center" valign="top">
+<table border="0" cellspacing="3">
+            <tr>
+              <td valign="top" align="right" nowrap>&nbsp;</td>
+              <td valign="baseline" nowrap>&nbsp;</td>
+              <td valign="baseline" nowrap>&nbsp;</td>
+              <td valign="baseline" nowrap>&nbsp;</td>
+            </tr>
+            <tr> 
+              <td valign="top" align="right" nowrap>菜单位置:</td>
+              <td valign="baseline" nowrap>&nbsp;</td>
+              <td valign="baseline" nowrap> <input type="image" src="../../Shared/MM/Images/bottomRight.gif" alt="触发器的右下角" name="default" width="30" height="30" onClick="T.update('default')"> 
+                <input type="image" src="../../Shared/MM/Images/bottom.gif" alt="低于且位于触发器的左边缘" name="below" width="30" height="30" onClick="T.update('below')"> 
+                <input type="image" src="../../Shared/MM/Images/top.gif" alt="高于且位于触发器的左边缘" name="above" width="30" height="30" onClick="T.update('above')"> 
+                <input type="image" src="../../Shared/MM/Images/topRight.gif" alt="触发器的右上边缘" name="topRight" width="30" height="30" onClick="T.update('topRight')"></td>
+              <td valign="baseline" nowrap>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            </tr>
+            <tr> 
+              <td>&nbsp;</td>
+              <td align="right">X:</td>
+              <td><input name="leftPos" type="text" class="smallNumOrChar" value="0" onBlur="T.update('leftPos')"> 
+                &nbsp;&nbsp;&nbsp;Y: 
+                <input name="topPos" type="text" class="smallNumOrChar" value="0" onBlur="T.update('topPos')"></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr> 
+              <td>&nbsp;</td>
+              <td nowrap>&nbsp;</td>
+              <td nowrap>&nbsp;</td>
+              <td nowrap>&nbsp;</td>
+            </tr>
+            <tr> 
+              <td>&nbsp;</td>
+              <td nowrap>&nbsp;</td>
+              <td nowrap> <input type="checkbox" name="hideMenu" value="true" onClick="T.update('hideMenu')">
+                在发生 onMouseOut 事件时隐藏菜单</td>
+              <td nowrap>&nbsp;</td>
+            </tr>
+          </table></td>
+</tr>
+</table>
+  </form>
+</div>
+
+</body>
+</html>

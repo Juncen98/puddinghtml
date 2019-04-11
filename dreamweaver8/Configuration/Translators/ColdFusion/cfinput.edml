@@ -1,0 +1,15 @@
+<participant name="CFInput">
+	<translator priority="300" TYPE="renderer">
+		<searchPatterns>
+			<searchPattern requiredLocation="tagName">cfinput</searchPattern>
+			<searchPattern requiredLocation="attribute+type" ><![CDATA[/^(?!hidden$)/i]]></searchPattern>
+			<searchPattern requiredLocation="attribute+type" ><![CDATA[/^(?!file$)/i]]></searchPattern>
+		</searchPatterns>
+		<translations>
+			<translation whereToSearch="tag+cfinput" limitSearch="all" translationType="external">
+				<display>translateCfInput</display>
+			</translation>
+		</translations>
+	</translator>
+
+</participant>

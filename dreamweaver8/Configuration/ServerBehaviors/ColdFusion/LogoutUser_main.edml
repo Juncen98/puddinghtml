@@ -1,0 +1,30 @@
+<participant>
+     <quickSearch><![CDATA[MM_logoutRedirectPage]]></quickSearch>
+     <insertText location="aboveHTML+8">
+<![CDATA[
+<cfif IsDefined("URL.MM_logout") AND URL.MM_logout EQ "1">
+  <cflock scope="Session" type="Exclusive" timeout="30" throwontimeout="no">
+    <cfset Session.MM_Username="">
+    <cfset Session.MM_UserAuthorization="">
+  </cflock>
+  <cfset MM_logoutRedirectPage="@@redirectPage@@">
+  <cfif MM_logoutRedirectPage EQ "">
+    <cfset MM_logoutRedirectPage=CGI.SCRIPT_NAME>
+  </cfif>
+  <cfset MM_logoutQuery=ListDeleteAt(CGI.QUERY_STRING,ListContainsNoCase(CGI.QUERY_STRING,"MM_logout=","&"),"&")>
+  <cfif MM_logoutQuery NEQ "">
+    <cfif Find("?",MM_logoutRedirectPage) EQ 0>
+      <cfset MM_logoutRedirectPage=MM_logoutRedirectPage & "?" & MM_logoutQuery>
+    <cfelse>
+      <cfset MM_logoutRedirectPage=MM_logoutRedirectPage & "&" & MM_logoutQuery>
+    </cfif>
+  </cfif>
+  <cflocation url="#MM_logoutRedirectPage#" addtoken="no">
+</cfif>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="tag+cfif">
+       <searchPattern><![CDATA[/cfif\s+IsDefined\s*\(\s*"URL\.MM_logout"\s*\)\s+AND\s+URL\.MM_logout\s+EQ\s+"1"/i]]></searchPattern>
+       <searchPattern paramNames="redirectPage"><![CDATA[/<cfset\s+MM_logoutRedirectPage="([^\r\n]*)">/i]]></searchPattern>
+     </searchPatterns>
+</participant>

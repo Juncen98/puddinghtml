@@ -1,0 +1,256 @@
+<html xmlns:un="http://usablenet.com/namespaces/508_rules">
+   <link rel="stylesheet" href="josh.css">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Detailed View for rule: SCRIPT with valid NOSCRIPT</title>
+      <!--
+  508/W3C Accessibility Suite OEM V2 for Macromedia Dreamweaver
+  (C) Copyright 2001-2005 UsableNet Inc. All rights reserved.
+  -->
+   </head>
+   <body bgcolor="#ffffff">
+      <div id="Description">
+         <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+            <tr>
+               <td valign="top" nowrap="true" class="name">SCRIPT with valid NOSCRIPT</td>
+               <td valign="top" nowrap="true" class="compatibility">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+            </tr>
+            <tr>
+               <td valign="top" align="right" nowrap="true" colspan="2" class="requirements">
+                  Section 508 1194.22(a); 
+                  
+                  WAI
+                  
+                  / 
+                  
+                  WCAG
+                  
+                  1.0 checkpoint 1.1
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Description</b><br>
+                  
+                  <p>
+                     SCRIPT element does not have an associated valid NOSCRIPT: 
+                     
+                  </p>
+                  
+                  <ul>
+                     
+                     <li>
+                        A NOSCRIPT should directly follow the SCRIPT element
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        The content of the NOSCRIPT element should not be empty.
+                        It can include any HTML instruction.
+                        
+                     </li>
+                     
+                  </ul>
+                  
+                  
+                  <p>
+                     Note that the 508 standard 
+                     <strong>
+                        does not
+                        </strong>
+                     require that all SCRIPTS be followed by corresponding
+                     NOSCRIPTS (though it is a suggested technique in WAI WCAG
+                     1.0). The 508 standard requires that when pages use
+                     scripting languages to display content or to create
+                     interface elements, the information provided by the script
+                     should be identified with functional text that can be read
+                     by assistive technology. 
+                     <br>
+                     There are two kinds of scripts that require special care
+                     and using the NOSCRIPT tag may help:
+                     
+                  </p>
+                  
+                  
+                  <ul>
+                     
+                     <li>
+                        <strong>
+                           Rollovers:
+                           </strong>
+                        If a script changes an image on the screen when the
+                        user moves the cursor over the image, and the script does
+                        not indicate (through text readable by a screen reader)
+                        that it has changed the content of the page, the script
+                        cannot be made accessible.
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        <strong>
+                           Keyboard unoperable scripts:
+                           </strong>
+                        If the event triggering the script cannot be activated
+                        through the keyboard, then the script cannot be made
+                        accessible
+                        
+                     </li>
+                     
+                  </ul>
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>How to check</b>
+                  
+                  <p>
+                     Check that the information provided by the script can be
+                     also provided by text that can be read by assistive
+                     technology.
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     The easiest way to check if a script is accessible is to
+                     try to view the page with a browser where scripts and image
+                     loading are temporarily disabled (consult the browser's
+                     documentation to learn how to disable scripts and image
+                     loading). 
+                     <br>
+                     Another approach is to use the page without the mouse (by
+                     tabbing through elements and using only the keyboard). This
+                     gives you an idea of the role actual played by the script
+                     in the interaction.
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     If not, consider adding a NOSCRIPT element to the SCRIPT.
+                     It can contain any HTML tag. Its content should let people
+                     that do not execute the script achieve the same effects as
+                     those that do. In particular, they should be able to access
+                     the same content and same interaction opportunities,
+                     including links.
+                     
+                  </p>
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Explanation</b><br>
+                  
+                  <p>
+                     One way to provide a text equivalent to a SCRIPT element is
+                     with NOSCRIPT. The content of this element is rendered when
+                     scripts are not enabled.
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     The NOSCRIPT element allows authors to provide alternate
+                     content when a script is not executed. The content of a
+                     NOSCRIPT element should only be rendered by a script-aware
+                     user agent in the following cases:
+                     
+                  </p>
+                  
+                  
+                  <ul>
+                     
+                     <li>
+                        The browser is configured not to evaluate scripts
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        The browser doesn't support a scripting language invoked
+                        by the script
+                        
+                     </li>
+                     
+                  </ul>
+                  
+                  
+                  <p>
+                     Users of screen readers and speaking browsers would not be
+                     able to take advantage of scripts that affect the graphical
+                     interface of a web page.
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     Users not using a mouse or joystick would not be able to
+                     take advantage of scripts that open windows, dialogs, or
+                     menus.
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     Note that there are many other cases where scripts cannot
+                     be run by browsers, and there are going to be more and more
+                     of these cases in the future. They include:
+                     
+                  </p>
+                  
+                  
+                  <ul>
+                     
+                     <li>
+                        PDAs and cellular phones unable to execute scripts
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        Browsers in diverse operating systems (Windows, MacOS,
+                        Linux) unable to execute scripts written in a given
+                        language. For example, VBScripts will not run in Netscape
+                        on Linux machines or PDAs
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        Users of graphical browsers who disable Javascript for
+                        security reasons
+                        
+                     </li>
+                     
+                  </ul>
+                  
+               </td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

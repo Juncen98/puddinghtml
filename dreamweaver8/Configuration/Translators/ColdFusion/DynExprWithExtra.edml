@@ -1,0 +1,61 @@
+<participant name="DynExprWithExtra">
+  <translator priority=500>
+    <searchPatterns>
+	  <searchPattern><![CDATA[#]]></searchPattern>
+	  <searchPattern paramNames="source"><![CDATA[/#\s*(.*?)\s*#/gi]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="tag+INPUT" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="@@attr@@={@@MM.LABEL_DynamicExpression@@}"]]></attribute>
+        </attributes>
+      </translation>
+      <translation whereToSearch="tag+CFINPUT" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="@@attr@@={@@MM.LABEL_DynamicExpression@@}"]]></attribute>
+        </attributes>
+      </translation>
+      <translation whereToSearch="tag+OPTION" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="@@attr@@={@@MM.LABEL_DynamicExpression@@}"]]></attribute>
+        </attributes>
+      </translation>
+      <translation whereToSearch="tag+SELECT" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="@@attr@@={@@MM.LABEL_DynamicExpression@@}"]]></attribute>
+        </attributes>
+      </translation>
+	  <translation whereToSearch="tag+CFSELECT" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="@@attr@@={@@MM.LABEL_DynamicExpression@@}"]]></attribute>
+        </attributes>
+      </translation>
+      <translation whereToSearch="tag+TEXTAREA" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="@@attr@@={@@MM.LABEL_DynamicExpression@@}"]]></attribute>
+        </attributes>
+      </translation>
+	  <translation whereToSearch="tag+CFTEXTAREA" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="@@attr@@={@@MM.LABEL_DynamicExpression@@}"]]></attribute>
+        </attributes>
+      </translation>
+      <translation whereToSearch="tag+FORM" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="@@attr@@={@@MM.LABEL_DynamicExpression@@}"]]></attribute>
+        </attributes>
+      </translation>
+      <translation whereToSearch="tag+A" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="@@attr@@={@@MM.LABEL_DynamicExpression@@}"]]></attribute>
+        </attributes>
+      </translation>
+      <translation whereToSearch="tag+IMG" limitSearch="attribute+SRC" translationType="dynamic image"/>
+      <translation whereToSearch="tag+IMG" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="@@attr@@={@@MM.LABEL_DynamicExpression@@}"]]></attribute>
+        </attributes>
+      </translation>
+    </translations>
+  </translator>
+</participant>

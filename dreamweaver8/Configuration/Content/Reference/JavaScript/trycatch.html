@@ -1,0 +1,78 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">try/catch</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">5</span> ECMA <span class="emphasis">3</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>This construction provides a nondisruptive way to trap for errors
+(exceptions) and handle them gracefully. Both parts of this
+exception-handling construction are required. If an error occurs in
+the <span class="literal">try</span> portion, execution immediately branches to
+the <span class="literal">catch</span> portion, where your scripts can display
+alert dialogs, modify data, or any other task that keeps the
+JavaScript interpreter from triggering a disruptive error message.
+Exceptions that occur naturally (i.e., they are not thrown by a
+<span class="literal">throw</span> statement) pass an instance of the
+<span class="literal">Error</span> object as a parameter to the
+<span class="literal">catch</span> section. Statements inside the
+<span class="literal">catch</span> section can examine properties of the error
+object to determine how to handle exceptions that land there. Thus,
+one <span class="literal">catch</span> portion can handle errors of various
+types.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			You can use <span class="literal">try</span>/<span class="literal">catch</span>
+constructions only in browsers that support them. To protect older
+browsers from seeing this construction, place all affected code
+inside a &lt;script&gt; tag that explicitly requires JavaScript 1.5
+or later (with the <span class="literal">language = "JavaScript1.5"</span>
+attribute.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>function insertOneNode(baseNode, newNode, position) {
+    try {
+        baseNode.insertBefore(newNode, baseNode.childNodes[position]);
+    }
+    catch (e) {
+        // handle W3C DOM Exception types
+        switch (e.name) {
+            case "HIERARCHY_REQUEST_ERR" :
+                // process bad tree hierarchy reference
+                break;
+            case "NOT_FOUND_ERR" :
+                // process bad refNode reference
+                break;
+            default :
+                // process all other exceptions
+        }
+    }
+    return true;
+}</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div>
+
+</body>
+</html>

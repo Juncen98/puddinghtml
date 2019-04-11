@@ -1,0 +1,43 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<SCRIPT>
+// Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved.
+var helpDoc         = MM.HELP_sbDefineAccessLevels;
+</SCRIPT>
+<title>定义访问级别</title>
+<SCRIPT src="Define Access Levels.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/accessControlCmn.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/Cmn/String.js"></SCRIPT>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="initializeUI()">
+<form>
+  <table border="0">
+    <tr>
+      <td align="right" valign="baseline" nowrap>访问级别:</td>
+      <td valign="baseline" nowrap>
+        <input type=image name="addAccessLevel"    onClick="onClickAddAccessLevel()"    src="../Shared/UltraDev/Images/PlusButton.gif">
+        <input type=image name="deleteAccessLevel" onClick="onClickDeleteAccessLevel()" src="../Shared/UltraDev/Images/MinusButtonEnabled.gif">
+      </td>
+    </tr>
+    <tr>
+      <td align="right"></td>
+      <td valign="top" nowrap>
+        <select name="listAccessLevels" size="5" class="itemList" onChange="onChangeAccessLevels()">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap>名称:</td>
+      <td valign="baseline" nowrap>
+        <input name="textAccessLevel" type="text" class="basicTextField" onBlur="onBlurAccessLevel()">
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

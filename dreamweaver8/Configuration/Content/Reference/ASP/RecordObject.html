@@ -1,0 +1,1291 @@
+<html>
+<head>
+<title>Record Object </title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">Record Object </td>
+<td valign="top" class="COMPATIBILITY">(Versions 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+<synopsis>
+Dim <span class="replaceable">record</span> As ADODB.Record</synopsis>
+
+
+<p>The Record object represents either a single row within a Recordset
+object or a resource in a semistructured data source, such as a file
+directory.</p>
+
+</td></tr>
+</table>
+</div>
+<div id="Record.ActiveConnection">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Record.ActiveConnection Property </td>
+<td class="COMPATIBILITY">(Versions 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br><span class="replaceable">Record</span>.ActiveConnection = <span class="replaceable">ConnectionString</span><br>Set <span class="replaceable">Record</span>.ActiveConnection = <span class="replaceable">ConnectionObject</span></td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The ActiveConnection property indicates to which Connection object
+the current Record object belongs.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Datatype</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>String or Variant (containing the current Connection object)</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>The ActiveConnection property of the Record object is both read- and
+write-enabled while the Record object is closed and read-only once it
+is opened. This property can be set to either a connection string or
+a Connection object and returns a Connection object when it is read.</p>
+
+
+<p>If the Record object was opened from an existing Record object or a
+Recordset object, then the Record object gains its Connection object
+from this object. If the Record object is opened by using a URL, a
+Connection object is automatically created for the Record object and
+is accessible from the ActiveConnection property.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">See Also</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>Record.Open Method</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Record.Cancel">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Record.Cancel Method </td>
+<td class="COMPATIBILITY">(Versions 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br>record.Cancel</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The Cancel method cancels an asynchronous operation for the Record
+object.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>The Cancel method can be called to cancel an asynchronous operation
+of the Record object invoked by the CopyRecord, DeleteRecord,
+MoveRecord, and Open methods.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">See Also</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>Record.CopyRecord Method, Record.DeleteRecord Method,
+Record.MoveRecord Method, Record.Open Method</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Record.Close">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Record.Close Method </td>
+<td class="COMPATIBILITY">(Versions 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br>record.Close</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The Close method closes an opened Record object.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>The Close method can be called only on an open Record object. After
+calling the Close method, the Open method can be called again to
+reopen the Record object. Calling the Close method releases any
+resources allocated to the Record object.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Record.CopyRecord">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Record.CopyRecord Method </td>
+<td class="COMPATIBILITY">(Versions 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br>record.CopyRecord (<span class="replaceable">Source</span>, _<br>                   <span class="replaceable">Destination</span>, _<br>                   <span class="replaceable">UserName</span>, _<br>                   <span class="replaceable">Password</span>, _<br>                   <span class="replaceable">Options</span>, _<br>                   <span class="replaceable">Async</span>) As String</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The CancelBatch is a member method of the Recordset object that
+cancels the currently pending batch update.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Arguments</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<dl>
+<dt><span class="replaceable">Source</span> (String)</dt>
+<dd><p>Optional. Indicates the URL of a resource to be copied. If this
+argument is omitted, then the resource represented by the current
+Record object is copied.</p></dd>
+
+</dl>
+
+
+<dl>
+<dt><span class="replaceable">Destination</span> (String)</dt>
+<dd><p>Optional. Represents a URL value that indicates where the resource
+will be copied to.</p></dd>
+
+</dl>
+
+
+<dl>
+<dt><span class="replaceable">UserName</span> (String)</dt>
+<dd><p>Optional. Indicates, if necessary, the username that will be used to
+access the resource indicated by the
+<span class="replaceable">Destination</span> argument.</p></dd>
+
+</dl>
+
+
+<dl>
+<dt><span class="replaceable">Password</span> (String)</dt>
+<dd><p>Optional. Indicates, if necessary, the password to verify the
+<span class="replaceable">UserName</span> argument.</p></dd>
+
+</dl>
+
+
+<dl>
+<dt><span class="replaceable">Options</span> (CopyRecordOptionsEnum)</dt>
+<dd><p>Optional. Indicates the behavior of the copy operation. The default
+value for this argument is <span class="LITERAL">adCopyUnspecified</span>.</p></dd>
+
+</dl>
+
+
+<dl>
+<dt><span class="replaceable">Async</span> (Boolean)</dt>
+<dd><p>Optional. Indicates whether this operation should be executed
+asynchronously.</p></dd>
+
+</dl>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Returns</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>String</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>By default, the CopyRecord method will not overwrite a resource that
+already exists. To force the replacement of the destination resource,
+use the <span class="LITERAL">adCopyOverWrite</span> option.</p>
+
+
+<p>By default, the CopyRecord method will copy all subdirectories and
+files beneath the source resource unless the
+<span class="LITERAL">adCopyNonRecursive</span> option is specified.</p>
+
+
+<p>If the source and the destination resources are identical, an error
+will occur. If the destination resource is a child of the source
+resource, the operation will never complete.</p>
+
+
+<p>The return value, although provider-specific, is usually the name of
+the destination resource.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">See Also</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>CopyRecordOptionsEnum Enumeration</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Record.DeleteRecord">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Record.DeleteRecord Method </td>
+<td class="COMPATIBILITY">(Versions 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br>record.DeleteRecord <span class="replaceable">Source, Async</span></td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The DeleteRecord method deletes the resource represented by the
+current Record object, or another if specified.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Arguments</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<dl>
+<dt><span class="replaceable">Source</span> (String)</dt>
+<dd><p>Optional. Specifies which resource to delete. If this argument is
+omitted, the resource represented by the current Record object will
+be deleted.</p></dd>
+
+</dl>
+
+
+<dl>
+<dt><span class="replaceable">Async</span> (Boolean)</dt>
+<dd><p>Optional. Indicates whether this operation should be executed
+asynchronously.</p></dd>
+
+</dl>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>The DeleteRecord method deletes all children resources of the current
+resource as well.</p>
+
+
+<p>The Record object should be closed immediately after calling the
+DeleteRecord method because its behavior would be unpredictable. At
+the very least, an error will occur when trying to work with a Record
+object that represents a deleted resource.</p>
+
+
+<p>If the Record object was created from a Recordset object, you should
+either close and reopen the Recordset object or call Resync or
+Requery for the resource to be removed from it.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">See Also</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>Recordset.Open Method, Recordset.Requery Method, Recordset.Resync
+Method</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Record.Fields">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Record.Fields Collection </td>
+<td class="COMPATIBILITY">(Versions 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br>record.Fields</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The Fields collection contains individual Field objects for the
+current Record object.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Datatype</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>Fields (Collection object)</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>The Fields collection contains multiple Field objects for the current
+Record object. There are two special Field objects,
+<span class="LITERAL">adDefaultStream</span> and
+<span class="LITERAL">adRecordURL</span>,that can be accessed by specifying the
+FieldEnum enumeration. One returns the default string for the current
+Record object, and the other returns the URL.</p>
+
+
+<p>Field objects can be added to the collection either by calling the
+Field.Append method or by referencing a Field by name that is not
+already part of the collection. Calling the Field.Update method will
+add the field to the collection, if possible, within the data source.
+Until this moment, the Field.Status property will return
+<span class="LITERAL">adFieldPendingInsert</span>.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">See Also</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>Field.Append Method, Field.Update Method, FieldEnum Enumeration</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Record.GetChildren">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Record.GetChildren Method </td>
+<td class="COMPATIBILITY">(Versions 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br>Set <span class="replaceable">recordset</span> = record.GetChildrean</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The GetChildren method returns the children of a collection Record
+object in the form of a Recordset object.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Returns</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>Recordset object</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>The GetChildren method returns a Recordset object containing children
+of the current Record object. Each record within the returned
+Recordset object represents a single resource that is a child of the
+resource represented by the associated Record object.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Record.Mode">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Record.Mode Property </td>
+<td class="COMPATIBILITY">(Versions 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br>record.Mode = ConnectModeEnum</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The Mode property indicates the permissions for modifying data within
+a Record object.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Datatype</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>ConnectModeEnum</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>The default value for the Mode property of a Record object is
+<span class="LITERAL">adModeRead</span>. The Mode property is read- and
+write-enabled while the Record object is closed, but read-only once
+it is opened.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">See Also</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>ConnectModeEnum Enumeration</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Record.MoveRecord">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Record.MoveRecord Method </td>
+<td class="COMPATIBILITY">(Versions 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br>record.MoveRecord  (<span class="replaceable">Source</span>, _<br>                    <span class="replaceable">Destination</span>, _<br>                    <span class="replaceable">UserName</span>, _<br>                    <span class="replaceable">Password</span>, _<br>                    <span class="replaceable">Options</span>, _<br>                    <span class="replaceable">Async</span>) As String</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The MoveRecord method moves a resource to another location.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Arguments</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<dl>
+<dt><span class="replaceable">Source</span> (String)</dt>
+<dd><p>Optional. Indicates the URL of a resource to be moved. If this
+argument is omitted, then the resource represented by the current
+Record object is moved.</p></dd>
+
+</dl>
+
+
+<dl>
+<dt><span class="replaceable">Destination</span> (String)</dt>
+<dd><p>Optional. Represents a URL value that indicates where the resource
+will be moved.</p></dd>
+
+</dl>
+
+
+<dl>
+<dt><span class="replaceable">UserName</span> (String)</dt>
+<dd><p>Optional. Indicates, if necessary, the username that will be used to
+access the resource indicated by the
+<span class="replaceable">Destination</span> argument.</p></dd>
+
+</dl>
+
+
+<dl>
+<dt><span class="replaceable">Password</span> (String)</dt>
+<dd><p>Optional. Indicates, if necessary, the password to verify the
+<span class="replaceable">UserName</span> argument.</p></dd>
+
+</dl>
+
+
+<dl>
+<dt><span class="replaceable">Options</span> (CopyRecordOptionsEnum)</dt>
+<dd><p>Optional. Indicates the behavior of the move operation. The default
+value for this argument is <span class="LITERAL">adMoveUnspecified</span>.</p></dd>
+
+</dl>
+
+
+<dl>
+<dt><span class="replaceable">Async</span> (Boolean)</dt>
+<dd><p>Optional. Indicates whether this operation should be executed
+asynchronously.</p></dd>
+
+</dl>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Returns</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>String</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>By default, the MoveRecord method does not overwrite a resource that
+already exists. To force the replacement of the destination resource,
+use the <span class="LITERAL">adCopyOverWrite</span> option. All hypertext
+links in the file are automatically updated unless otherwise
+specified in the <span class="replaceable">Options</span> argument.</p>
+
+
+<p>If the source and the destination resources are identical, an error
+will occur.</p>
+
+
+<p>If the Record object was created from a Recordset object, you should
+close and reopen the Recordset object or call Resync or Requery for
+the resource to be removed from the recordset.</p>
+
+
+<p>Not all properties of the Record object will be automatically
+repopulated -- to do this, close and reopen the Record object.</p>
+
+
+<p>The return value, although provider-specific, is usually the name of
+the destination resource.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">See Also</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>MoveRecordOptionsEnum Enumeration, Record.Close Method, Record.Open
+Method, Recordset.Open Method, Recordset.Requery Method,
+Recordset.Resync Method</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Record.Open">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Record.Open Method </td>
+<td class="COMPATIBILITY">(Versions 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br>record.Open  (<span class="replaceable">Source</span>, _<br>              <span class="replaceable">ActiveConnection</span>, _<br>              <span class="replaceable">Mode</span>, _<br>              <span class="replaceable">CreateOptions</span>, _<br>              <span class="replaceable">Options</span>, _<br>              <span class="replaceable">UserName</span>, _<br>              <span class="replaceable">Password</span>)</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The Open method opens an individual record in a recordset or a
+resource within a data source.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Arguments</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<dl>
+<dt><span class="replaceable">Source</span> (Variant)</dt>
+<dd><p>Optional. Indicates the source of the resource to open. This can be a
+URL, a Command object returning a single row, an open Recordset
+object, or a String containing a SQL statement or a table name.</p></dd>
+
+</dl>
+
+
+<dl>
+<dt><span class="replaceable">ActiveConnection</span> (Variant)</dt>
+<dd><p>Optional. Indicates the connection to the data source by either a
+connection string or an open Connection object.</p></dd>
+
+</dl>
+
+
+<dl>
+<dt><span class="replaceable">Mode</span> (ConnectModeEnum)</dt>
+<dd><p>Optional. Indicates the access permissions to open the Record object
+with. The default value is <span class="LITERAL">adModeUnknown</span>.</p></dd>
+
+</dl>
+
+
+<dl>
+<dt><span class="replaceable">CreateOptions</span> (CreateModeEnum)</dt>
+<dd><p>Optional. This argument is used only when the Source argument
+represents a URL. This argument can be used to indicate whether to
+open an existing resource or to create a new one. The default value
+for this argument is <span class="LITERAL">adFailIfNotExist</span>.</p></dd>
+
+</dl>
+
+
+<dl>
+<dt><span class="replaceable">Options</span> (RecordOpenOptionsEnum)</dt>
+<dd><p>Optional. Can contain multiple RecordOpenOptionsEnum enumeration
+values that indicate special options for opening the Record object.
+The default value for this method is
+<span class="LITERAL">adOpenRecordUnspecified</span>.</p></dd>
+
+</dl>
+
+
+<dl>
+<dt><span class="replaceable">UserName</span> (String)</dt>
+<dd><p>Optional. Indicates, if necessary, the username that will be used to
+access the resource indicated by the source argument.</p></dd>
+
+</dl>
+
+
+<dl>
+<dt><span class="replaceable">Password</span> (String)</dt>
+<dd><p>Optional. Indicates, if necessary, the password to verify the
+<span class="replaceable">UserName</span> argument.</p></dd>
+
+</dl>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>If the Record object represents a resource that cannot be represented
+by a URL, then the ParentURL property and the adRecordURL default
+field both return <span class="LITERAL">Null</span>.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">See Also</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>ConnectModeEnum Enumeration, RecordCreateOptionsEnum Enumeration,
+RecordOpenOptionsEnum Enumeration</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Record.ParentURL">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Record.ParentURL Property </td>
+<td class="COMPATIBILITY">(Versions 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br><span class="replaceable">record</span>.ParentURL = <span class="replaceable">ParentURL</span></td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The ParentURL is used to indicate the parent record of the current
+Record object by means of an absolute URL.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Datatype</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>String</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>The ParentURL property indicates the parent resource of the current
+resource represented by the Record object. This property is
+read-only.</p>
+
+
+<p>The ParentURL can be <span class="LITERAL">Null</span> if there is no parent
+for the current resource represented by the Record object or if the
+resource cannot be expressed in terms of a URL.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Record.Properties">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Record.Properties Collection </td>
+<td class="COMPATIBILITY">(Versions 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br>record.Properties</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The Properties collection contains characteristics specific to the
+Record object for the currently used provider.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Datatype</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>Properties (Collection object)</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>The Properties collection class contains a Property class instance
+for each property specific to the Record object for the data
+provider.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Record.RecordType">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Record.RecordType Property </td>
+<td class="COMPATIBILITY">(Versions 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br><span class="replaceable">record</span>.RecordType = <span class="replaceable">RecordTypeEnum</span></td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The RecordType property indicates the type of the current record.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Datatype</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>RecordTypeEnum</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>The RecordType property is read-only; it indicates the type of the
+current Record object.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">See Also</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>RecordTypeEnum Enumeration</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Record.Source">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Record.Source Property </td>
+<td class="COMPATIBILITY">(Versions 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br>Set <span class="replaceable">record</span>.Source = <span class="replaceable">object</span></td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The Source property indicates from which object the Record object is
+created.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Datatype</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>Variant</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>The Source property is read-only when the Record object is open, but
+read- and write-enabled while it is closed.</p>
+
+
+<p>The Source property can be set to a Recordset or Command object. If
+the Source property is set to a Recordset object, the Record object
+will be opened based upon the current record of the Recordset object.
+If the Source property is set to a Command object, the Command object
+must return a single row.</p>
+
+
+<p>If the ActiveConnection property is also set, then the Source
+property must be set to an object that is within the
+connection's scope.</p>
+
+
+<p>The Source property returns the Source argument of the Record.Open
+method.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">See Also</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>Record.ActiveConnection Property, Record.Open Method</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Record.State">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Record.State Property </td>
+<td class="COMPATIBILITY">(Versions 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br><span class="replaceable">state</span> = record.State</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The State property indicates the current state of the Record object.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Datatype</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>Long (ObjectStateEnum)</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>The read-only State property returns a Long value that can be
+evaluated as an ObjectStateEnum enumeration value. The default value
+for the Record object is closed (<span class="LITERAL">adStateClosed</span>).</p>
+
+
+<p>For the Record object, the State property can return multiple values
+when the object is executing an operation asynchronously (i.e.,
+<span class="LITERAL">adStateOpen</span> and
+<span class="LITERAL">adStateExecuting</span>).</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">See Also</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>ObjectStateEnum Enumeration</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

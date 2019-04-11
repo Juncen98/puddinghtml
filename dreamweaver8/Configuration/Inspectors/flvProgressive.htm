@@ -1,0 +1,72 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 6.0//pi">
+<!-- tag:object, priority:1, selection:within,hline,vline -->
+<html>
+<head>
+<!-- Copyright 2004 Macromedia, Inc. All rights reserved. -->
+<title>Flash Video</title>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/CheckBox.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/URLTextField.js"></SCRIPT>
+<script src="_pi_flv_common.js"></script>
+<script src="flvProgressive.js"></script>
+</head>
+<body marginwidth="0" marginheight="0">
+<span id="image" style="position:absolute; width:32px; height:32px; z-index:16; left: 5px; top: 9px"><img src="flv_pi_icon.gif" width="32" height="32"></span>
+<div id="idBoxLayer" style="position:absolute; width:99px; height:38px; z-index:1; left: 44px; top: 2px; visibility: visible;">
+<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		  <td height="24" align="left" NOWRAP>&nbsp;Flash 视频</td>
+		</tr>
+		<tr>
+		  <td align="left" nowrap>
+			<input name="videoID" type="text" id="videoID" style="width:65px" onBlur="updateUI('videoID');">
+		  </td>
+		</tr>
+  </table>
+</div>
+<div id="topLayer" style="position:absolute; left:108px; top:1px; width:530px; height:38px; z-index:34; visibility: visible;">
+  <table width="100%" border="0" cellpadding="0" cellspacing="2">
+    <tr>
+      <td width="6%" align="right" nowrap>宽&nbsp;</td>
+      <td width="8%" nowrap> <input name="videoWidth" type="text" id="videoWidth" maxlength="5" style="width:45px" onFocus="this.focus();this.select()" onBlur="updateUI('videoWidth');"> </td>
+      <td width="22%" nowrap>&nbsp;<input type="checkbox" name="videoMaintainAR" onClick="updateUI('videoMaintainAR');" checked>
+        限制高宽比&nbsp;&nbsp;<input type="button" name="resetSize" value="重置" onClick="detectSizeForProgressive();"></td>
+      <td width="7%" align="right" nowrap>文件&nbsp;</td>
+      <td nowrap><input name="videoURL" type="text" id="videoURL" style="width:202px" onFocus="this.select();VIDEO_SIZE_BTN.setAttribute('disabled','true')" onBlur="updateUI('videoURL');">&nbsp;<input name="image"  type="image" onClick="VIDEO_URL.browseForFile();updateUI('videoURL');" src="../Shared/MM/Images/folder.gif" width="15" height="14" alt="	输入 Flash Video 文件的相对或绝对路径"></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>高&nbsp;</td>
+      <td nowrap> <input name="videoHeight" type="text" id="videoHeight" maxlength="5" style="width:45px" onFocus="this.focus();this.select()" onBlur="updateUI('videoHeight');"> </td>
+      <td align="left" nowrap>&nbsp;包括外观:&nbsp;<span id="videoTotalDim"></span></td>
+      <td align="right" nowrap>外观&nbsp;</td>
+      <td nowrap>
+	    <select  name="videoSkinName" style="width:204px" onChange="updateUI('videoSkinName')">
+	    </select>
+	  </td>
+    </tr>
+  </table>
+</div>
+
+<div id="bottomLayer" style="position:absolute; left:44px; top:56px; z-index:24; width: 580px; height: 38px;">
+  <div align="left">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="42%" nowrap>
+          <input type="checkbox" name="videoAutoPlay" onClick="updateUI('videoAutoPlay');">自动播放
+        </td>
+	    <td width="6%" align="left" nowrap>&nbsp;</td>
+		<td width="52%" nowrap>&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="42%" nowrap>
+          <input type="checkbox" name="videoAutoRewind" onClick="updateUI('videoAutoRewind');">自动重新播放
+        </td>
+	    <td width="6%" align="left" nowrap>&nbsp;</td>
+		<td width="52%" nowrap>&nbsp;</td>
+      </tr>
+    </table>
+  </div>
+</div>
+</body>
+</html>

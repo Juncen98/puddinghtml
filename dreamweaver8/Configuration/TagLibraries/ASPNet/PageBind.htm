@@ -1,0 +1,42 @@
+<!-- Copyright 2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<title>页绑定</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script>
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<!-- this is a dummy layer used for resizing purposes. it addresses a windowsXP bug where otherwise
+     this dialog appears cropped because the dimensions are so small. 
+--> 
+<div id="Layer1" style="position:absolute; left:2px; top:1px; width:300px; height:32px; z-index:1"></div>
+<div name="常规"> 
+  <input type="hidden" name="therunat" attname="runat" value="server" required="true" /> 
+  <table border="0" cellspacing="4">
+   <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:pagebind:postbackbind" name="thePostBackBind" attname="PostBackBind" truevalue="true" falsevalue="false" />
+      启用回发绑定</td>
+    </tr>  
+  </table>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<html>
+<head>
+<title>out</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">out</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Variable name:</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+<p><span class="LITERAL">out</span></p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Class name:</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+<p><span class="LITERAL">javax.servlet.jsp.JspWriter</span></p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Extends:</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+<p><span class="LITERAL">java.io.Writer</span></p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Implements:</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+<p>None</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Implemented by:</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+<p>A concrete subclass of this abstract class is provided as an internal
+container-dependent class.
+</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">JSP page type:</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+<p>Available in both regular JSP pages and error pages</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+<p>The <span class="LITERAL">out</span> variable is assigned to a concrete
+subclass of the <span class="LITERAL">JspWriter</span> abstract class by the
+web container. <span class="LITERAL">JspWriter</span> emulates some of the
+functionality found in the <span class="LITERAL">java.io.BufferedWriter</span>
+and <span class="LITERAL">java.io.PrintWriter</span> classes. It differs,
+however, in that it throws a <span class="LITERAL">java.io.IOException</span>
+from the print methods (the <span class="LITERAL">PrintWriter</span> does not).
+</p>
+
+<p>If the <span class="LITERAL">page</span> directive attribute
+<span class="LITERAL">autoflush</span> is set to <span class="LITERAL">true</span>, all
+the I/O operations on this class automatically flush the contents of
+the buffer when it's full. If <span class="LITERAL">autoflush</span> is
+set to <span class="LITERAL">false</span>, all the I/O operations on this class
+throw an <span class="LITERAL">IOException</span> when the buffer is full.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="JspWriter">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">JspWriter()</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage"><span class="LITERAL">protected JspWriter(int bufferSize, boolean autoFlush)</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Creates an instance with at least the specified buffer size and autoflush behavior.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="clear">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">clear()</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage"><span class="LITERAL">public abstract void clear() throws java.io.IOException</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Clears the contents of the buffer. If the buffer has already been flushed, throws an <span class="LITERAL">IOException</span> to signal the fact that some data has already been irrevocably written to the client response stream.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="clearBuffer">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">clearBuffer()</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage"><span class="LITERAL">public abstract void clearBuffer() throws java.io.IOException</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Clears the current contents of the buffer. Unlike <span class="LITERAL">clear()</span>, this method does not throw an <span class="LITERAL">IOException</span> if the buffer has already been flushed. It just clears the current content of the buffer and returns.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="close">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">close()</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage"><span class="LITERAL">public abstract void close() throws java.io.IOException</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Closes the <span class="LITERAL">JspWriter</span> after flushing it. Calls to <span class="LITERAL">flush()</span> or <span class="LITERAL">write()</span> after a call to <span class="LITERAL">close()</span> cause an <span class="LITERAL">IOException</span> to be thrown. If <span class="LITERAL">close()</span> is called on a previously closed <span class="LITERAL">JspWriter</span>, it is ignored.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="flush">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">flush()</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage"><span class="LITERAL">public abstract void flush() throws java.io.IOException</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Flushes the current contents of the buffer to the underlying writer, then flushes the underlying writer. This means the buffered content is delivered to the client immediately.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="getBufferSize">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">getBufferSize()</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage"><span class="LITERAL">public int getBufferSize()</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Returns the size of the buffer in bytes, or <span class="LITERAL">0</span> if it is not buffered.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="getRemaining">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">getRemaining()</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage"><span class="LITERAL">public abstract int getRemaining()</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Returns the number of unused bytes in the buffer.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="isAutoFlush">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">isAutoFlush()</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage"><span class="LITERAL">public boolean isAutoFlush()</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Returns <span class="LITERAL">true</span> if this <span class="LITERAL">JspWriter</span> is set to autoflush the buffer, <span class="LITERAL">false</span> otherwise.
+</p></td>
+</tr>
+</table>
+</div>
+</body>
+</html>

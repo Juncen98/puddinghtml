@@ -1,0 +1,71 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+
+<SCRIPT>
+// Copyright 2001-2003 Macromedia, Inc. All rights reserved.
+var HELP_DOC = MM.HELP_sbRestrictAccessToPage;
+</SCRIPT>
+
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/RadioGroupClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/accessControlCmn.js"></SCRIPT>
+<SCRIPT SRC="../Shared/AccessControlCmn.js"></SCRIPT>
+<SCRIPT SRC="Restrict Access To Page.js"></SCRIPT>
+
+<TITLE>限制对页的访问</TITLE>
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm" ACTION="">
+    <table border="0">
+      <tr valign="baseline">
+        <td align="right" nowrap>基于以下内容进行限制: </td>
+        <td nowrap>
+          <input type="radio" name="securityMethod" id="DontUseAccessLevel" value="DontUseAccessLevel" onClick="onClickDontUseAccessLevel()" checked>
+        </td>
+        <td colspan="3" nowrap><label for="DontUseAccessLevel">用户名和密码</label></td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>&nbsp;</td>
+        <td nowrap>
+          <input type="radio" name="securityMethod" id="UseAccessLevel" value="UseAccessLevel" onClick="onClickUseAccessLevel()">
+        </td>
+        <td colspan="3" nowrap><label for="UseAccessLevel">用户名、密码和访问级别</label></td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td nowrap></td>
+        <td nowrap></td>
+        <td valign="top" align="left" nowrap>
+          <img src="../../Shared/MM/Images/transparent.gif" height="3" width="20"><br>
+          选取级别: 
+        </td>
+        <td valign="top" nowrap>
+          <select name="listAccessLevels" size="5" style="width:110px" multiple>
+            <option></option>
+          </select>
+        </td>
+        <td valign="top" nowrap>
+          <input name="btnFileBrowserOnFailure2" type="button" value="定义..." onClick="onClickBtnDefineAuthLevels();focus(this)">
+        </td>
+      </tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>如果访问被拒绝，则转到: </td>
+        <td nowrap colspan="3">
+          <input name="textGoToURLOnFailure" type="text" style="width:215px" value="">
+        </td>
+        <td nowrap>
+          <input name="btnFileBrowserOnFailure" type="button" value="浏览..." onClick="onClickBtnFileBrowserOnFailure();focus(this)">
+        </td>
+      </tr>
+    </table>
+  </FORM>
+</BODY>
+</HTML>

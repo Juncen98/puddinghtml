@@ -1,0 +1,64 @@
+<tag name="CFFTP" endtag="no">
+<tagformat nlbeforetag="1" nlaftertag="1"/>
+<tagdialog file="cfftp.htm" />
+  <attributes>
+    <attrib name="ACTION" type="ENUMERATED">
+      <attriboption value="LISTDIR"/>
+      <attriboption value="GETFILE"/>
+      <attriboption value="PUTFILE"/>
+      <attriboption value="OPEN"/>
+      <attriboption value="CLOSE"/>
+      <attriboption value="CHANGEDIR"/>
+      <attriboption value="CREATEDIR"/>
+      <attriboption value="RENAME"/>
+      <attriboption value="REMOVE"/>
+      <attriboption value="GETCURRENTDIR"/>
+      <attriboption value="GETCURRENTURL"/>
+      <attriboption value="EXISTS"/>
+      <attriboption value="EXISTSDIR"/>
+      <attriboption value="EXISTSFILE"/>
+    </attrib>
+    <attrib name="PROXYSERVER" type="TEXT"/>
+    <attrib name="SERVER" type="TEXT"/>
+    <attrib name="PORT" type="TEXT"/>
+    <attrib name="STOPONERROR" type="ENUMERATED">
+      <attriboption value="Yes"/>
+      <attriboption value="No"/>
+    </attrib>
+    <attrib name="PASSIVE" type="ENUMERATED">
+      <attriboption value="Yes"/>
+      <attriboption value="No"/>
+    </attrib>
+    <attrib name="USERNAME" type="TEXT"/>
+    <attrib name="PASSWORD" type="TEXT"/>
+    <attrib name="RETRYCOUNT" type="TEXT"/>
+    <attrib name="TIMEOUT" type="TEXT"/>
+    <attrib name="NAME" type="TEXT"/>
+    <attrib name="DIRECTORY" type="TEXT"/>
+    <attrib name="CONNECTION" type="TEXT"/>
+    <attrib name="LOCALFILE" type="TEXT"/>
+    <attrib name="REMOTEFILE" type="TEXT"/>
+    <attrib name="ASCIIEXTENSIONLIST" type="TEXT"/>
+    <attrib name="ATTRIBUTES" type="TEXT"/>
+    <attrib name="TRANSFERMODE" type="ENUMERATED">
+      <attriboption value="ASCII"/>
+      <attriboption value="AUTO"/>
+      <attriboption value="BINARY"/>
+    </attrib>
+    <attrib name="FAILIFEXISTS" type="ENUMERATED">
+      <attriboption value="Yes"/>
+      <attriboption value="No"/>
+    </attrib>
+    <attrib name="EXISTING" type="TEXT"/>
+    <attrib name="NEW" type="TEXT"/>
+    <attrib name="ITEM" type="TEXT"/>
+	<attrib name="RESULT" type="TEXT"/>
+  </attributes>
+  <attribcategories>
+    <attribgroup name="General" elements="connection,directory,localfile,remotefile,item,action,transfermode,result" />
+    <attribgroup name="Listdir" elements="name" />
+    <attribgroup name="GetPutfile" elements="asciiextensionlist,attributes,failifexists" />
+    <attribgroup name="Rename" elements="existing,new" />
+    <attribgroup name="Server Info" elements="proxyserver,server,username,password,port,timeout,retrycount,stoponerror,passive" />
+  </attribcategories>
+</tag>

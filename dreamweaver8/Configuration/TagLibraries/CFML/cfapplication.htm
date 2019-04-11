@@ -1,0 +1,107 @@
+<!-- Copyright 2001, 2002, 2003, 2004 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFAPPLICATION</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var LOGINSTORAGELIST;
+var theUIObjects;
+
+/****************************************************************/
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj,theUIObjects);
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj,theUIObjects);
+}
+
+function initializeUI()
+{
+  LOGINSTORAGELIST = new ListControl("theloginStorage");
+  theUIObjects  = new Array(LOGINSTORAGELIST);
+
+  tagDialog.populateDropDownList(LOGINSTORAGELIST, theLoginStorageCap, theLoginStorageVal, 0);
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<div name="CFAPPLICATION 标签">
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+	    <td align="right" nowrap="nowrap">应用程序名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:cfapplication:name" attname="name" required="true" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+	    <td align="right" nowrap="nowrap">阶段超时: </td>
+      <td nowrap="nowrap">
+        <input name="thesessiontimeout" type="text" class="basicTextField" id="attr:cfapplication:sessiontimeout" attname="sessiontimeout" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+	    <td align="right" nowrap="nowrap">应用程序超时: </td>
+      <td nowrap="nowrap">
+        <input name="theapplicationtimeout" type="text" class="basicTextField" id="attr:cfapplication:applicationtimeout" attname="applicationtimeout" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+	    <td align="right" nowrap="nowrap">客户端存储: </td>
+      <td nowrap="nowrap">
+        <input name="theclientstorage" type="text" class="basicTextField" id="attr:cfapplication:clientstorage" attname="clientstorage" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+	    <td align="right" nowrap="nowrap">登录存储: </td>
+      <td nowrap="nowrap">
+        <select name="theloginStorage" class="oneWordOptionList" id="attr:cfapplication:loginStorage" attname="loginStorage" editable="false">
+        </select>
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">脚本保护: </td>
+      <td nowrap="nowrap"><input name="thescriptprotect" type="text" class="basicTextField" id="attr:cfapplication:scriptprotect" attname="scriptprotect" />
+      </td>
+    </tr>
+    <tr>
+      <td nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfapplication:theclientmanagement" name="theclientmanagement" attname="clientmanagement" truevalue="yes" />
+        启用客户端变量</td>
+    </tr>
+    <tr>
+      <td nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfapplication:sessionmanagement" name="thesessionmanagement" attname="sessionmanagement" truevalue="yes" />
+        启用阶段变量</td>
+    </tr>
+    <tr>
+      <td nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfapplication:setclientcookies" name="thesetclientcookies" attname="setclientcookies" truevalue="yes" />
+        设置客户端 Cookie</td>
+    </tr>
+    <tr>
+      <td nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfapplication:setdomaincookies" name="thesetdomaincookies" attname="setdomaincookies" truevalue="yes" />
+        设置域 Cookie</td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

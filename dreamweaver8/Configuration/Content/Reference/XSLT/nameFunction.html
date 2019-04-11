@@ -1,0 +1,158 @@
+<html>
+<head>
+<title>name() Function</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">name() Function</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+Returns the qualified name of a node. The qualified name includes the appropriate namespace prefix. For information on the namespace URI (not the prefix), XPath provides the <span class="LITERAL">namespace-uri()</span> function.</td></tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Inputs</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>An optional node-set. If no node-set is given, the <span class="LITERAL">name()</span> function creates a node-set with the context node as its only member. </p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Output</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>The expanded name of the node. If the argument node-set is empty, or if the first node in the node-set does not have an expanded name, an empty string is returned. </p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Defined in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>XPath section 4.1, Node Set Functions.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>Here is the XML document we'll use to demonstrate the <span class="LITERAL">name()</span> function:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;report&gt;
+  &lt;title&gt;Miles Flown in 2001&lt;/title&gt;
+  &lt;month sequence="01"&gt;
+    &lt;miles-flown&gt;12379&lt;/miles-flown&gt;
+    &lt;miles-earned&gt;35215&lt;/miles-earned&gt;
+  &lt;/month&gt;
+  &lt;month sequence="02"&gt;
+    &lt;miles-flown&gt;32857&lt;/miles-flown&gt;
+    &lt;miles-earned&gt;92731&lt;/miles-earned&gt;
+  &lt;/month&gt;
+  &lt;month sequence="03"&gt;
+    &lt;miles-flown&gt;19920&lt;/miles-flown&gt;
+    &lt;miles-earned&gt;76725&lt;/miles-earned&gt;
+  &lt;/month&gt;
+  &lt;month sequence="04"&gt;
+    &lt;miles-flown&gt;18903&lt;/miles-flown&gt;
+    &lt;miles-earned&gt;31781&lt;/miles-earned&gt;
+  &lt;/month&gt;
+&lt;/report&gt;</pre></span>
+<p>We'll use this stylesheet to output the value of the <span class="LITERAL">name()</span> function for each node in the XML document:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet version="1.0" 
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:months="Lookup table for month names"&gt;
+
+  &lt;months:name sequence="12"&gt;December&lt;/months:name&gt;
+  &lt;months:name sequence="01"&gt;January&lt;/months:name&gt;
+  &lt;months:name sequence="02"&gt;February&lt;/months:name&gt;
+  &lt;months:name sequence="03"&gt;March&lt;/months:name&gt;
+  &lt;months:name sequence="04"&gt;April&lt;/months:name&gt;
+  &lt;months:name sequence="05"&gt;May&lt;/months:name&gt;
+  &lt;months:name sequence="06"&gt;June&lt;/months:name&gt;
+  &lt;months:name sequence="07"&gt;July&lt;/months:name&gt;
+  &lt;months:name sequence="08"&gt;August&lt;/months:name&gt;
+  &lt;months:name sequence="09"&gt;September&lt;/months:name&gt;
+  &lt;months:name sequence="10"&gt;October&lt;/months:name&gt;
+  &lt;months:name sequence="11"&gt;November&lt;/months:name&gt;
+
+  &lt;xsl:output method="text"/&gt;
+
+  &lt;xsl:variable name="newline"&gt;
+&lt;xsl:text&gt;
+&lt;/xsl:text&gt;
+  &lt;/xsl:variable&gt;
+
+  &lt;xsl:template match="/"&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:text&gt;A test of the name() function:&lt;/xsl:text&gt;
+
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:for-each select="document('')//*"&gt;
+      &lt;xsl:text&gt;name: &lt;/xsl:text&gt;
+      &lt;xsl:value-of select="name()"/&gt;
+      &lt;xsl:value-of select="$newline"/&gt;
+    &lt;/xsl:for-each&gt;
+  &lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</pre></span>
+<p>When we transform the XML document with this stylesheet, here are the results:</p>
+<span class="PROGRAMLISTING"><pre>
+
+A test of the name() function:
+
+name: xsl:stylesheet
+name: months:name
+name: months:name
+name: months:name
+name: months:name
+name: months:name
+name: months:name
+name: months:name
+name: months:name
+name: months:name
+name: months:name
+name: months:name
+name: months:name
+name: xsl:output
+name: xsl:variable
+name: xsl:text
+name: xsl:template
+name: xsl:value-of
+name: xsl:text
+name: xsl:value-of
+name: xsl:value-of
+name: xsl:for-each
+name: xsl:text
+name: xsl:value-of
+name: xsl:value-of
+</pre></span>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

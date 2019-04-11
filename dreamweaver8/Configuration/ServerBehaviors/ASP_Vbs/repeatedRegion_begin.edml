@@ -1,0 +1,17 @@
+<participant>
+     <quickSearch><![CDATA[__numRows]]></quickSearch>
+     <insertText location="beforeSelection">
+<![CDATA[
+<% 
+While ((@@loopName@@__numRows <> 0) AND (NOT @@rsName@@.EOF)) 
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="loopName,rsName"><![CDATA[/<%\s*While\s*\(\((\w+)__numRows\s*<>\s*0\)\s*AND\s*\(NOT\s*\b(\w+)\.EOF\)\)/i]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="loopName"><![CDATA[/(\b)\w+(__numRows)/i]]></updatePattern>
+       <updatePattern paramName="rsName"><![CDATA[/(\b)\w+(\.EOF)/i]]></updatePattern>
+     </updatePatterns>
+</participant>

@@ -1,0 +1,192 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>LI</title>
+  
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var LANGUAGELIST; 
+var DIRLIST;
+var SELECTORLIST;
+var ULTYPELIST;
+var OLTYPELIST;
+
+var theUIObjects; 
+var applyType = "dynamic";
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode, SELECTORLIST); 
+}
+
+function applyTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode); 
+}
+
+function updateUI()
+{
+  var curDiv = SELECTORLIST.getValue(); 
+  tagDialog.showOnlyThisLayer(curDiv,document.layers[0]); 
+}
+
+function initializeUI()
+{
+	LANGUAGELIST = new ListControl("thelang"); 
+	DIRLIST = new ListControl("thedir"); 
+	SELECTORLIST = new ListControl("theselector");
+	ULTYPELIST = new ListControl("theultype");
+	OLTYPELIST = new ListControl("theoltype");
+	
+	theUIObjects  = new Array(LANGUAGELIST,DIRLIST,ULTYPELIST,OLTYPELIST); 
+
+  tagDialog.populateDropDownList(LANGUAGELIST, theLanguagesCap, theLanguagesVal, 1); 
+  tagDialog.populateDropDownList(DIRLIST, theDirectionCap, theDirectionVal, 1); 
+  tagDialog.populateDropDownList(SELECTORLIST, theListTypesCap, theListTypesVal, 0);
+	SELECTORLIST.setIndex(0);
+	tagDialog.populateDropDownList(ULTYPELIST, theULTypesCap, theULTypesVal, 1);
+	tagDialog.populateDropDownList(OLTYPELIST, theOLTypesCap, theOLTypesVal, 1);	
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<div name="常规">
+	<br /> 
+	<select name="theselector" class="selectorList" id="attr:li:selector" onChange="updateUI();" editable="false">
+	</select>
+	<hr width="100%" /> 
+	<br /> 
+	<div id="theol" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+		<table border="0" cellspacing="4">
+    	<tr>
+    	  <td valign="baseline" align="right" nowrap="nowrap">类型: </td>
+    	  <td nowrap="nowrap">
+    	    <select name="theoltype" class="smallNumOrCharList" id="attr:li:theoltype" attname="type" editable="false">
+    	    </select>      
+    	  </td>
+    	</tr>
+    	<tr>
+      	<td valign="baseline" align="right" nowrap="nowrap">值: </td>
+      	<td nowrap="nowrap">
+        <input name="thevalue" type="text" class="basicTextField" id="attr:li:value" attname="value" />
+     		</td>
+  		</tr>
+  	</table>
+	</div> 
+	<div id="theul" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+	  <table border="0" cellspacing="4">
+  	  <tr>
+    	  <td valign="baseline" align="right" nowrap="nowrap">类型: </td>
+      	<td nowrap="nowrap">
+        	<select name="theultype" class="oneWordOptionList" id="attr:li:theultype" attname="type" editable="false">
+        	</select>      
+      	</td>
+    	</tr>
+  	</table>
+	</div> 
+</div>
+<div name="样式表/辅助功能"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类: </td>
+      <td nowrap="nowrap">
+        <input name="theclass" type="text" class="basicTextField" id="attr:li:class" attname="class" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="attr:li:id" attname="id" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">样式: </td>
+      <td nowrap="nowrap">
+        <input name="thestyle" type="text" class="basicTextField" id="attr:li:class" attname="style" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">标题: </td>
+      <td nowrap="nowrap">
+        <input name="thetitle" type="text" class="basicTextField" id="attr:li:title" attname="title" />
+      </td>
+    </tr>
+  </table> 
+</div>
+<div name="语言"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">方向: </td>
+      <td nowrap="nowrap">
+        <select name="thedir" class="dirLangList" id="attr:li:dir" attname="dir"> 
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" nowrap="nowrap"></td>
+      <td nowrap="nowrap"></td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">语言: </td>
+      <td nowrap="nowrap">
+        <select name="thelang" class="dirLangList" id="attr:li:lang" attname="lang" editable="true"> 
+        </select>
+      </td>
+    </tr>
+  </table>
+</div>
+<div name="内容"> 
+  <textarea name="html:li:innerHTML" class="contentsField"  wrap="VIRTUAL" attname="innerHTML"></textarea>
+</div> 
+<div name="事件"> 
+  <div name="onClick"> 
+    <textarea name="theonClick" attname="onClick" id="attr:li:onclick" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onDblClick"> 
+    <textarea name="theonDblClick" attname="onDblClick" id="attr:li:ondblclick" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseDown"> 
+    <textarea name="theonMouseDown" attname="onMouseDown" id="attr:li:onmousedown" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseUp"> 
+    <textarea name="theonMouseUp" attname="onMouseUp" id="attr:li:onmouseup" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseOver"> 
+    <textarea name="theonMouseOver" attname="onMouseOver" id="attr:li:onmouseover" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseMove"> 
+    <textarea name="theonMouseMove" attname="onMouseMove" id="attr:li:onmousemove" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseOut"> 
+    <textarea name="theonMouseOut" attname="onMouseOut" id="attr:li:onmouseout" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onKeyPress"> 
+    <textarea name="theonKeyPress" attname="onKeyPress" id="attr:li:onkeypress" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onKeyDown"> 
+    <textarea name="theonKeyDown" attname="onKeyDown" id="attr:li:onkeydown" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onKeyUp"> 
+    <textarea name="theonKeyUp" attname="onKeyUp" id="attr:li:onkeyup" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+</div>
+</body>
+</html>

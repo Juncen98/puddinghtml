@@ -1,0 +1,52 @@
+<!-- Copyright 2001, 2002, 2003 Macromedia, Inc. All rights reserved. -->
+<html>
+<head>
+<title> ”Õº—°œÓ</title>
+
+<script language="JavaScript">
+function canAcceptCommand()
+{
+	var dom = dw.getDocumentDOM();
+	return (dom != null && (dom.getView() != 'browse'));
+}
+
+function getMenuID()
+{
+	var dom = dw.getDocumentDOM();
+	var menuID = '';
+	if (dom)
+	{
+		var view = dom.getView();
+		var focus = dw.getFocus();
+		if (view == 'design')
+		{
+			menuID = 'DWDesignOnlyOptionsPopup';
+		}
+		else if (view == 'split')
+		{
+			if (focus == 'textView')
+			{
+				menuID = 'DWSplitCodeOptionsPopup';
+			}
+			else
+			{
+				menuID = 'DWSplitDesignOptionsPopup';
+			}
+		}
+		else if (view == 'code')
+		{
+			menuID = 'DWCodeOnlyOptionsPopup';
+		}
+		else
+		{
+			menuID = 'DWBrowseOptionsPopup';
+		}
+	}
+	return menuID;
+}
+</script>
+</head>
+
+<body>
+</body>
+</html>

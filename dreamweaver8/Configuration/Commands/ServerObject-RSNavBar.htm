@@ -1,0 +1,47 @@
+<!-- MENU-LOCATION=NONE -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<!--  Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+
+<HTML>
+<HEAD>
+<SCRIPT src="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT src="../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT src="../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT src="../Shared/MM/Scripts/sbUtils.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/EditableRecordsetMenu.js"></SCRIPT>
+<SCRIPT SRC="ServerObject-RSNavBar.js"></SCRIPT>
+
+<TITLE>记录集导航条</TITLE>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+<form name="theForm">
+    <DIV ALIGN="center">
+      <TABLE BORDER=0>
+        <TR>
+          <TD ALIGN="right" VALIGN="baseline" NOWRAP>记录集: </TD>
+          <TD VALIGN="baseline" NOWRAP>
+            <SELECT NAME="RecordsetName" class="rsNameList" editable="true">
+            	<OPTION>*** 未找到记录集</OPTION>
+            </SELECT>
+          </TD>
+        </TR>
+		<TR>
+		  <TD colspan=2></TD>
+		</TR>
+		<TR>
+		  <TD ALIGN="right" NOWRAP>显示方式: </TD>
+		  <TD ALIGN="left"> <INPUT TYPE="radio" NAME="DisplayType" value"Text" CHECKED> 文本</TD>
+		 </TR>
+		 <TR>
+		   <TD></TD>
+		   <TD ALIGN="left"><INPUT TYPE="radio" NAME="DisplayType" value"Images"> 图像</TD>
+		</TR>
+      </TABLE>
+    </DIV>
+</form>
+</BODY>
+</HTML>

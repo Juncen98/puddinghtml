@@ -1,0 +1,7 @@
+<participant version="5.0">
+	<insertText location="nodeAttribute" nodeParamName="input_type_radio__tag"><![CDATA[ <?php if (!(strcmp(@@DynValue@@,"@@RadioButtonValue@@"))) {echo "@@checked@@";} ?>]]></insertText>
+	<searchPatterns whereToSearch="tag+input/radio">
+		<searchPattern paramNames="DynValue,RadioButtonValue,checked" isOptional="false" limitSearch="all"><![CDATA[/\<\?php if \(!\(strcmp\(([^\r\n]*?),"([^\r\n]*?)"\)\)\) \{echo "([^\r\n]*?)";\} \?>/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>";}</quickSearch>
+</participant>

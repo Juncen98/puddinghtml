@@ -1,0 +1,10 @@
+<participant>
+     <quickSearch><![CDATA[CHECKED]]></quickSearch>
+     <insertText location="nodeAttribute" nodeParamName="radioNode">
+<![CDATA[<%If (CStr(@@expression1@@) = CStr(@@expression2@@)) Then Response.Write("CHECKED") : Response.Write("")%>]]>
+     </insertText>
+     <searchPatterns whereToSearch="tag+input/radio">
+       <searchPattern paramNames="theName" limitSearch="attribute+name"></searchPattern>
+       <searchPattern paramNames="expression1,expression2"><![CDATA[/<%\s*If\s*\((.*)\s*=\s*(.*)\)\s+Then\s+Response\.Write\("CHECKED"\)\s*\:\s*Response\.Write\(""\)\s*%>/i]]></searchPattern>
+     </searchPatterns>
+</participant>

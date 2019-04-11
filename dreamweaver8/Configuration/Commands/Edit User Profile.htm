@@ -1,0 +1,124 @@
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<html>
+<head>
+<title>Edit User Profile</title>
+
+<script language="JavaScript" src="Edit User Profile.js"></script>
+
+</head>
+<body onLoad="UI = new UiManager()">
+<form name="theForm">
+  <p><b>Persona</b>: 
+    <select name="persona" onChange="UI.changePersona()">
+      <option value="0" selected>0 - direct contributor</option>
+      <option value="1">1: contributor with review</option>
+      <option value="2">2: Reviewer</option>
+      <option value="3">3: QA direct contributor</option>
+      <option value="4">4: QA contributor with review</option>
+      <option value="5">5: QA reviewer</option>
+    </select>
+    <br>
+  </p>
+  <table width="100%" border="1" cellspacing="0" cellpadding="2">
+    <tr>
+      <td>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr valign="baseline"> 
+            <td nowrap> 
+              <div align="right">Ãû³Æ:</div>
+            </td>
+            <td nowrap> 
+              <input type="text" name="contributorName" size="50">
+            </td>
+          </tr>
+          <tr valign="baseline"> 
+            <td nowrap> 
+              <div align="right">Email address:</div>
+            </td>
+            <td nowrap> 
+              <input type="text" name="contributorEmail" size="50">
+            </td>
+          </tr>
+          <tr> 
+            <td colspan=2 height="40"> 
+              <hr>
+            </td>
+          </tr>
+          <tr> 
+            <td align="left" NOWRAP>Debug settings</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr valign="baseline"> 
+            <td align="right" NOWRAP>Review mode settings:</td>
+            <td> 
+              <input type="checkbox" name="reviewEnabled" onClick="UI.allowReviewSettings()">
+              Enable Review Mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              <input type="checkbox" name="reviewer">
+              I am a reviewer </td>
+          </tr>
+          <tr valign="baseline"> 
+            <td nowrap> 
+              <div align="right">Friendly root URL:</div>
+            </td>
+            <td> 
+              <input type="text" name="friendlyRootURL" size="80">
+            </td>
+          </tr>
+          <tr valign="baseline"> 
+            <td nowrap> 
+              <div align="right">Local site root (in config):</div>
+            </td>
+            <td> 
+              <input type="text" name="siteRoot" size="80">
+            </td>
+          </tr>
+          <tr valign="baseline"> 
+            <td nowrap> 
+              <div align="right">Initial home page:</div>
+            </td>
+            <td> 
+              <input type="text" name="homePage" size="80">
+            </td>
+          </tr>
+          <tr valign="baseline"> 
+            <td nowrap> 
+              <div align="right">Shared site root:</div>
+            </td>
+            <td> 
+              <input type="text" name="sharedSiteRoot" size="80">
+            </td>
+          </tr>
+          <tr valign="baseline"> 
+            <td nowrap> 
+              <div align="right"> Shadow root:</div>
+            </td>
+            <td> 
+              <input type="text" name="shadowRoot" size="80">
+            </td>
+          </tr>
+          <tr valign="baseline"> 
+            <td nowrap> 
+              <div align="right">Contributor private site root:</div>
+            </td>
+            <td> 
+              <input type="text" name="contributorPrivateSiteRoot" size="80">
+            </td>
+          </tr>
+          <tr valign="baseline"> 
+            <td nowrap> 
+              <div align="right">Reviewer private site root:</div>
+            </td>
+            <td> 
+              <input type="text" name="reviewerPrivateSiteRoot" size="80">
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <p>&nbsp; </p>
+  </form>
+</body>
+</html>

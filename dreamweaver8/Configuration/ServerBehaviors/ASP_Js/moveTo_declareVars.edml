@@ -1,0 +1,30 @@
+<participant>
+     <quickSearch><![CDATA[MM_rs]]></quickSearch>
+     <insertText location="aboveHTML+81">
+<![CDATA[
+<%
+// *** Move To Record and Go To Record: declare variables
+
+var MM_rs        = @@rsName@@;
+var MM_rsCount   = @@rsName@@_total;
+var MM_size      = @@rsName@@_numRows;
+var MM_uniqueCol = "@@col@@";
+    MM_paramName = "@@paramName@@";
+var MM_offset = 0;
+var MM_atTotal = false;
+var MM_paramIsDefined = (MM_paramName != "" && String(Request(MM_paramName)) != "undefined");
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName"><![CDATA[/var\s*MM_rs\s*=\s*(\w+)\s*;/]]></searchPattern>
+       <searchPattern paramNames="col"><![CDATA[/MM_uniqueCol\s*=\s*"([^"]*)"/]]></searchPattern>
+       <searchPattern paramNames="paramName"><![CDATA[/MM_paramName\s*=\s*"([^"]*)"/]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="rsName"><![CDATA[/(var\s*MM_rs\s*=\s*)\w+(;)/g]]></updatePattern>
+       <updatePattern paramName="rsName"><![CDATA[/(\W)\w+(_total|_numRows)/g]]></updatePattern>
+       <updatePattern paramName="col"><![CDATA[/(var\s*MM_uniqueCol\s*=\s*")[^"]*(";)/g]]></updatePattern>
+       <updatePattern paramName="paramName"><![CDATA[/(MM_paramName\s*=\s*")[^"]*(";)/g]]></updatePattern>
+     </updatePatterns>
+</participant>

@@ -1,0 +1,129 @@
+<!-- MENU-LOCATION=NONE -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<head>
+<!-- Include the UI helper functions -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<!-- Include DOM functions -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<script src="../Shared/MM/Scripts/Cmn/string.js"></script>
+<script src="../Shared/Common/Scripts/ListControlClass.js"></script>
+<SCRIPT src="../Shared/Common/Scripts/ImageButtonClass.js"></SCRIPT>
+<script src="../Shared/MM/Scripts/Class/FileClass.js"></script>
+<script src="ShortcutClass.js"></script> 
+<script src="../Shared/MM/Scripts/keyCodes.js"></script> 
+<script src="EditableTagAttributes.js"></script>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/templateUtils.js"></SCRIPT>
+<SCRIPT>
+<!--Copyright 2001-2002 Macromedia, Inc. All rights reserved.-->
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_newAttr = "请输入新属性的名称以插入到此 %s 标签中。";
+var MSG_newAttrTitle = "新标签属性";
+
+var MSG_paramExists = "已经存在类型为 \"%s\" 且名为 \"%s\" 的模板设置。您想使用它吗？\n警告：点击'否'将覆盖现有设置的值或类型。";
+var MSG_exprWarning = "警告：您不能在此处输入表达式，只能输入标签。是否要将 '%s' 用作标签？";
+var MSG_notEditableMessage= "该属性当前不可编辑。如果要使它可编辑并控制它在该模板的实例文件中的显示方式，请点击'使属性可编辑”复选框。";
+//--------------- END LOCALIZEABLE   ---------------
+
+
+//---------------    END JAVASCRIPT    ---------------
+
+
+
+</SCRIPT>
+
+
+<style type="text/css">
+<!--
+.hiddenSpan      { position:absolute; left:10px; top:250px; width:330px; height:0px; z-index:8; visibility:hidden ;}
+.hiddenSpan2      { position:absolute; left:-10px; top:-250px; width:330px; height:0px; z-index:8; visibility:hidden ;}
+-->
+</style>
+
+
+<title>可编辑标签属性</title>
+
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="initializeUI();" valign=top>
+
+
+<form name="theForm">
+
+<TABLE BORDER=0 width="260">
+	<TR><TD colspan=2>
+		<span name="messageSpan">选择此 %s 标签的哪些属性应是可编辑的。 </span>
+	</TD></TR> 
+	<TR>
+		<TD align=right nowrap>
+			属性:
+		</TD><TD nowrap>
+			<SELECT NAME="tagAttr" class="oneWordOptionList" onChange="updateUI('tagAttr')">
+				<OPTION>这是长选项</option>
+         	</SELECT>
+         	<INPUT TYPE="button" value="添加..." onClick="addAttribute()">
+		</TD>
+	</TR><TR>
+		<TD>
+		</TD><TD>
+			<INPUT TYPE="checkbox" NAME="editCheck" VALUE="true" onClick="updateUI('editCheck')">令属性可编辑
+		</TD></TR>
+    <TR>
+		<TD align=right nowrap>
+			标签:
+		</TD><TD>
+			<INPUT NAME="label" TYPE="text" class="medTField" onBlur="updateUI('label')" VALUE="">
+		</TD>
+	</TR><TR>
+		<TD align=right nowrap>
+			类型:
+		</TD><TD>
+			<select NAME="attrType" class="dataTypeList" onChange="updateUI('attrType')">
+				<option value="text">文本</option>
+				<option value="URL">URL</option>
+				<option value="color">颜色</option>
+				<option value="boolean">真/假</option>
+				<option value="number">数字</option>
+			</select>
+		</TD>
+	</TR><TR>
+		<TD align=right nowrap>
+			默认:
+		</TD><TD>
+			<INPUT NAME="defaultValue" TYPE="text" class="medTField" onBlur="updateUI('defaultValue')" VALUE="">
+		</TD>
+	</TR><TR>
+		<TD COLSPAN=2>
+			要在基于该模板的页面中更改此属性的值，请选择“修改”>“模板属性”。
+		</TD>
+	</TR><TR>
+		<TD COLSPAN=2>
+			要更改该属性是否可编辑，请再次使用“使属性可编辑”命令。
+		</TD>
+	</TR>
+</TABLE>
+
+
+
+
+<!-- 
+<span name="hiddenControls" class="hiddenSpan2"> 
+   <TABLE border=0>
+    <TR>
+      <TD colspan=2>
+		This attribute is not currently editable. Click on the 'Make Attribute Editable' checkbox if you want to make it editable
+		and control how it appears in the instance files for this template. 
+      </TD>
+   </TR>
+</TABLE>
+</span>
+-->
+
+</form>
+</body>
+</html>

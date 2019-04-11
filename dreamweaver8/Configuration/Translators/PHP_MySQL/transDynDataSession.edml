@@ -1,0 +1,25 @@
+<participant name="transDynDataSession">
+  <translator priority=400>
+    <searchPatterns>
+      <searchPattern><![CDATA[echo]]></searchPattern>
+      <searchPattern><![CDATA[_SESSION]]></searchPattern>
+      <searchPattern paramNames=",rs,col"><![CDATA[/echo (\w+\s*\(\s*)?\$(?:HTTP)?_(SESSION)(?:_VARS)?\[["'](\w+)["']\]\s*\)?;?/i]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="directive" translationType="dynamic data">
+        <openTag>MM_DYNAMIC_CONTENT</openTag>
+        <attributes>
+          <attribute><![CDATA[SOURCE=Session]]></attribute>
+          <attribute><![CDATA[BINDING="@@col@@"]]></attribute>
+        </attributes>
+        <display><![CDATA[{Session.@@col@@}]]></display>
+        <closeTag>MM_DYNAMIC_CONTENT</closeTag>
+      </translation>
+      <translation whereToSearch="tag+INPUT" limitSearch="attribute+VALUE" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="VALUE={Session.@@col@@}"]]></attribute>
+        </attributes>
+      </translation>
+    </translations>
+  </translator>
+</participant>

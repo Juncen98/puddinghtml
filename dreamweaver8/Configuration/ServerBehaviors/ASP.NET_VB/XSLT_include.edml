@@ -1,0 +1,8 @@
+<participant version="7.0.1">
+	<insertText location="aboveHTML+6"><![CDATA[<%@ Assembly Src="@@relPath@@includes/MM_XSLTransform/MM_XSLTransform.vb" %>]]></insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="relPath" isOptional="false" limitSearch="all"><![CDATA[/<%@ Assembly Src="([^\r\n]*?)includes\/MM_XSLTransform\/MM_XSLTransform\.vb" %>/i]]></searchPattern>
+		<searchPattern paramNames="xslLibrary_url" isOptional="true" limitSearch="all"><![CDATA[/<%@ Assembly Src\s*=\s*["|']([^"^']*)["|']\s*%>/i]]></searchPattern>		
+	</searchPatterns>
+	<quickSearch>includes/MM_XSLTransform/MM_XSLTransform.vb"</quickSearch>
+</participant>

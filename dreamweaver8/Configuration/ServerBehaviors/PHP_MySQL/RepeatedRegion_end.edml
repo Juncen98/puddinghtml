@@ -1,0 +1,8 @@
+<participant version="6.0">
+	<insertText location="afterSelection">
+	  <![CDATA[<?php } while ($row_@@RecordsetName@@ = mysql_fetch_assoc($@@RecordsetName@@)); ?>]]></insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="RecordsetName" isOptional="false" limitSearch="all"><![CDATA[/\} while \(\$row_([^\r\n]*?) = mysql_fetch_assoc\(\$[^\r\n]*?\)\); (?=\r\n|\r|\n|\?>)/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>mysql_fetch_assoc($</quickSearch>
+</participant>

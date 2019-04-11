@@ -1,0 +1,24 @@
+<tag name="CFLOCK" endtag="yes">
+<tagformat nlbeforetag="1" nlbeforecontents="1" nlaftercontents="1" nlaftertag="1" indentcontents="yes"/>
+<tagdialog file="cflock.htm" />
+  <attributes>
+    <attrib name="NAME" type="TEXT"/>
+    <attrib name="TIMEOUT" type="TEXT"/>
+    <attrib name="THROWONTIMEOUT" type="ENUMERATED">
+      <attriboption value="Yes"/>
+      <attriboption value="No"/>
+    </attrib>
+    <attrib name="TYPE" type="ENUMERATED">
+      <attriboption value="EXCLUSIVE"/>
+      <attriboption value="READONLY"/>
+    </attrib>
+    <attrib name="SCOPE" type="ENUMERATED">
+      <attriboption value="SESSION"/>
+      <attriboption value="APPLICATION"/>
+      <attriboption value="SERVER"/>
+    </attrib>
+  </attributes>
+	<attribcategories>
+		<attribgroup name="General" elements="name,timeout,throwontimeout,type,scope" />
+	</attribcategories>
+</tag>

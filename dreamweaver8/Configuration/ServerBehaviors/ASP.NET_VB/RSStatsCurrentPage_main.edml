@@ -1,0 +1,7 @@
+<participant VERSION="5.0">
+	<insertText location="afterSelection"><![CDATA[<%= @@RecordsetName@@.CurrentPage + 1 %>]]></insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="RecordsetName" isOptional="false" limitSearch="all"><![CDATA[/<%= ([^\r\n]*?)\.CurrentPage\s*\+\s*1 %>/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>.CurrentPage</quickSearch>
+</participant>

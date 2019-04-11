@@ -1,0 +1,63 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+
+<SCRIPT>
+// Copyright 2001-2002 Macromedia, Inc. All rights reserved.
+var HELP_DOC = MM.HELP_ssGoToRelatedPage;
+var PROP_TYPE = "goToRelatedPage";
+</SCRIPT>
+
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/RecordsetMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/RecordsetColumnMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/TagMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/TextField.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Go To Page.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm" ACTION="">
+    <TABLE>
+      <TR>
+        <TD ALIGN="right" VALIGN="baseline" NOWRAP>链接: </TD>
+        <TD VALIGN="baseline" NOWRAP>
+          <SELECT NAME="linkNode" class="tagList" onChange="updateUI('linkNode')">
+            <OPTION SELECTED>*** No Link Found</OPTION>
+          </SELECT>
+        </TD>
+      </TR>
+      <TR>
+        <TD ALIGN="right" VALIGN="baseline" NOWRAP>相关页: </TD>
+        <TD VALIGN="baseline" NOWRAP>
+          <input name="url" type="text" class="largeTField">
+          <input type="button" value="浏览..." onClick="dwscripts.browseFile(document.url,true);focus(this)">
+        </TD>
+      </TR>
+      <TR><TD HEIGHT="1"></TD></TR>
+      <TR>
+        <TD ALIGN="right" NOWRAP>传递现有参数: </TD>
+        <TD NOWRAP>
+          <input type="checkbox" name="keepURL" checked> URL 参数
+        </TD>
+      </TR>
+      <TR><TD HEIGHT="1"></TD></TR>
+      <TR>
+        <TD ALIGN="right" NOWRAP>&nbsp;</TD>
+        <TD NOWRAP>
+          <input type="checkbox" name="keepForm" checked> 表单参数
+        </TD>
+      </TR>
+    </TABLE>
+  </FORM>
+</BODY>
+</HTML>

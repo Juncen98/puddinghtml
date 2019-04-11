@@ -1,0 +1,262 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFFORM</title>
+  <link rel="stylesheet" href="mmres://user_interface_dialog.css">
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../TagLibraries/Html/loc_strings.js"></script>
+<script src="../../TagLibraries/Html/strings.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+var TARGETLIST;
+var METHODLIST;
+var LANGUAGELIST;
+var DIRLIST;
+var ENCTYPELIST;
+var SKINLIST;
+
+var theUIObjects; 
+var theGetTypes; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj) {
+	tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj) {
+	tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function updateEncTypeList(submissionMethod) {
+	// Remember old value if there was one
+	var oldValue = ENCTYPELIST.getValue();
+	
+	// Null out the list first, then add the new values.
+	if (submissionMethod == 'get'){
+		ENCTYPELIST.setAll(new Array(0),new Array(0));
+		tagDialog.populateDropDownList(ENCTYPELIST, theFormEncTypeGetVal, theFormEncTypeGetVal, 1);
+	}else{
+		ENCTYPELIST.setAll(new Array(0),new Array(0));
+		tagDialog.populateDropDownList(ENCTYPELIST, theFormEncTypePostVal, theFormEncTypePostVal, 1);
+	}
+	
+	// If the user had already chosen application/x-www-form-urlencoded
+	// and then changed from get to post, leave the enctype field as-is.
+	// If instead she'd chosen multipart/form-data and changed from post
+	// to get, choose the blank item (multipart/form-data is not a valid
+	// enctype for get).
+	if (submissionMethod == 'get' && oldValue == 'multipart/form-data'){
+		ENCTYPELIST.pickValue("");
+	}else{
+		ENCTYPELIST.pickValue(oldValue);
+	}
+}
+
+function initializeUI() {
+	TARGETLIST = new ListControl("thetarget"); 
+	METHODLIST = new ListControl("themethod"); 
+	LANGUAGELIST = new ListControl("thelang"); 
+	DIRLIST = new ListControl("thedir"); 
+	ENCTYPELIST = new ListControl("theenctype"); 
+	SKINLIST = new ListControl("theSkin");
+	FORMATLIST = new ListControl("theFormat");
+
+	theUIObjects  = new Array(LANGUAGELIST,DIRLIST,TARGETLIST,METHODLIST,ENCTYPELIST,SKINLIST,FORMATLIST); 
+
+	tagDialog.populateDropDownList(LANGUAGELIST, theLanguagesCap, theLanguagesVal, 1); 
+	tagDialog.populateDropDownList(DIRLIST, theDirectionCap, theDirectionVal, 1); 
+	tagDialog.populateDropDownList(TARGETLIST, theTargetVal, theTargetVal, 1); 
+	tagDialog.populateDropDownList(METHODLIST, new Array("get","post"), new Array("get","post"), 0); 
+	tagDialog.populateDropDownList(ENCTYPELIST, theFormEncTypeGetVal, theFormEncTypeGetVal, 1); 
+	tagDialog.populateDropDownList(FORMATLIST, theFormFormatCap, theFormFormatVal, 1); 
+	tagDialog.populateDropDownList(SKINLIST, theSkinListCap, theSkinListVal, 1);
+		
+}
+
+function updateSkinList() {
+	if (FORMATLIST.getValue() == 'xml') {
+		tagDialog.populateDropDownList(SKINLIST, theXMLSkinListCap, theXMLSkinListVal, 1);
+		dwscripts.findDOMObject('theSkin').disabled = false;
+		} else if (FORMATLIST.getValue() == 'flash'){
+		dwscripts.findDOMObject('theSkin').disabled = false;
+		tagDialog.populateDropDownList(SKINLIST, theSkinListCap, theSkinListVal, 1);
+		} else if (FORMATLIST.getValue() == 'html'){
+		dwscripts.findDOMObject('theSkin').disabled = true;
+		}
+
+}
+
+</script>
+</head>
+
+<body onLoad="initializeUI()">
+
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">操作: </td>
+      <td nowrap="nowrap">
+        <input type="text" id="attr:form:action" name="theaction" attname="action" style="width:200px" />&nbsp;
+        <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('theaction');focus(this)">
+      </td> 
+    </tr> 
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">方法: </td>
+      <td nowrap="nowrap">
+        <select name="themethod" id="attr:form:method" attname="method" editable="false" style="width:200px" onChange="updateEncTypeList(METHODLIST.getValue())"> 
+        </select>
+      </td> 
+    </tr> 
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">编码类型: </td>
+      <td nowrap="nowrap">
+        <select name="theenctype" id="attr:form:enctype" attname="enctype" editable="true" style="width:200px"> 
+        </select>
+      </td> 
+    </tr> 
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input type="text" id="attr:form:name" name="thename" attname="name" style="width:200px" />
+      </td> 
+    </tr> 
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">目标: </td>
+      <td nowrap="nowrap">
+        <select name="thetarget" id="attr:form:target" attname="target" editable="true" style="width:150px"> 
+        </select>
+      </td> 
+    </tr> 
+	<tr>
+      <td valign="baseline" align="right" nowrap="nowrap">wMode: </td>
+      <td nowrap="nowrap">
+        <input name="thewmode" id="attr:form:wmode" attname="wmode" editable="true" style="width:150px"/> 
+      
+      </td> 
+    </tr> 
+	
+  </table>
+</div> 
+<div name="样式表/辅助功能"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类: </td>
+      <td nowrap="nowrap">
+        <input type="text" id="attr:form:class" name="theclass" attname="class" style="width:200px" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input type="text" id="attr:form:id" name="theid" attname="id" style="width:200px" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">样式: </td>
+      <td nowrap="nowrap">
+        <input type="text" id="attr:form:class" name="thestyle" attname="style" style="width:200px" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">标题: </td>
+      <td nowrap="nowrap">
+        <input type="text" id="attr:form:title" name="thetitle" attname="title" style="width:200px" />
+      </td>
+    </tr>
+  </table> 
+</div>
+<div name="语言"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">方向: </td>
+      <td nowrap="nowrap">
+	     <select name="thedir" id="attr:form:dir" attname="dir" style="width:150px"> 
+        </select>
+	</td>
+    </tr>
+    <tr>
+      <td align="right" nowrap="nowrap"></td>
+      <td nowrap="nowrap"></td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">语言: </td>
+      <td nowrap="nowrap">
+        <select name="thelang" id="attr:form:lang" attname="lang" editable="true" style="width:150px"> 
+        </select>
+      </td>
+    </tr>
+  </table>
+</div>
+<div name="其他">
+  <table border="0" cellspacing="4">
+    <tr>
+	  <td align="right" nowrap>格式:</td>
+	  <td><select name="theFormat" id="theFormat" attname="format" style="width:150px" onChange="updateSkinList();">
+      </select>
+	 </td>
+	</tr>
+    <tr>
+      <td align="right" nowrap>外观:</td>
+      <td><select name="theSkin" id="theSkin" attname="skin" style="width:150px">
+      </select></td>
+	  
+    </tr>
+    <tr>
+      <td align="right" nowrap>&nbsp;</td>
+      <td><input type="checkbox" id="attr:cfform:preserveData" name="thePreserveData" attname="preserveData" truevalue="true" falsevalue="">保留数据</td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>脚本源:</td>
+      <td><input type="text" id="theScriptSrc" name="theScriptSrc" attname="scriptSrc" style="width:200px" /></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>代码库:</td>
+      <td><input type="text" id="theCodeBase" name="theCodeBase" attname="codeBase" style="width:200px" /></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>存档:</td>
+      <td><input type="text" id="theArchive" name="theArchive" attname="archive" style="width:200px" /></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>高度:</td>
+      <td><input name="theHeight" type="text" id="theHeight" style="width:100px" attname="height" /></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>宽度:</td>
+      <td><input name="theWidth" type="text" id="theWidth" style="width:100px" attname="width" /></td>
+    </tr>
+	<tr>
+      <td align="right" nowrap>超时:</td>
+      <td><input name="theTimeout" type="text" id="theTimeout" style="width:100px" attname="timeout" /></td>
+    </tr>
+	<tr>
+      <td align="right" nowrap>预下载器:</td>
+      <td><input type="checkbox" id="attr:cffom:preloader" name="thePreloader" attname="preloader" truevalue="yes" falsevalue="no" /></td>
+    </tr>
+	
+  </table>
+</div>
+<div name="事件"> 
+  <div name="onSubmit"> 
+    <textarea name="theonSubmit" attname="onSubmit" id="attr:acronym:onSubmit" class="PROGRAMLISTING" style="width:400px; height:100px;"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onReset"> 
+    <textarea name="theonReset" attname="onReset" id="attr:acronym:onReset" class="PROGRAMLISTING" style="width:400px; height:100px;"  wrap="VIRTUAL"></textarea>
+  </div> 
+   <div name="onLoad"> 
+    <textarea name="theonLoad" attname="onLoad" id="attr:acronym:onload" class="PROGRAMLISTING" style="width:400px; height:100px;"  wrap="VIRTUAL"></textarea>
+  </div> 
+</div>
+</div>
+
+</body>
+</html>

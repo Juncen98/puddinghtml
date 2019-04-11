@@ -1,0 +1,259 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFTEXTINPUT</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var VALIDATELIST;
+var ALIGNLIST;
+var FONTLIST;
+var theUIObjects;
+
+// Color control elements
+var COLORP_BG, COLORP_TEXT;
+var TEXT_BG, TEXT_TEXT;
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects);
+  updateColors();
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects);
+}
+
+function updateUI(itemName)
+{
+  switch(itemName)
+  {
+    case "bgColorPicker":
+    {
+      tagDialog.updateColorPicker("colorPicker",COLORP_BG,TEXT_BG,true);
+      break;
+    }
+    case "bgcolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_BG,TEXT_BG,true);
+      break;
+    }
+    case "textColorPicker":
+    {
+      tagDialog.updateColorPicker("colorPicker",COLORP_TEXT,TEXT_TEXT,true);
+      break;
+    }
+    case "textcolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_TEXT,TEXT_TEXT,true);
+      break;
+    }
+  }
+}
+
+function updateColors()
+{
+  tagDialog.updateColorPicker("colorField",COLORP_BG,TEXT_BG);
+  tagDialog.updateColorPicker("colorField",COLORP_TEXT,TEXT_TEXT);
+}
+
+function initializeUI()
+{
+	VALIDATELIST = new ListControl("thevalidate");
+	ALIGNLIST = new ListControl("thealign");
+	FONTLIST = new ListControl("thefont");
+	theUIObjects = new Array(VALIDATELIST,ALIGNLIST,FONTLIST);
+
+  COLORP_BG = dwscripts.findDOMObject("bgColorPicker");
+  COLORP_TEXT = dwscripts.findDOMObject("textColorPicker");
+
+  TEXT_BG = dwscripts.findDOMObject("thebgcolor");
+  TEXT_TEXT = dwscripts.findDOMObject("thetextcolor");
+
+  updateColors();
+  tagDialog.populateDropDownList(VALIDATELIST, theTextInputValidateCap, theTextInputValidateVal, 1);
+  tagDialog.populateDropDownList(FONTLIST, dw.getSystemFontList('all'), dw.getSystemFontList('all'), 1);
+  tagDialog.populateDropDownList(ALIGNLIST, theVericalAlignmentsCap, theVericalAlignmentsVal, 1);
+}
+
+function updatePatternReqd()
+{
+  var THEPATTERN = findObject("thepattern");
+  if(VALIDATELIST.getValue() == "regular_expression")
+    THEPATTERN.setAttribute("required","true");
+  else
+    THEPATTERN.setAttribute("required","false");
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+<div name="常规">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="aspnet:cftextinput:name" attname="name" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">值: </td>
+      <td nowrap="nowrap">
+        <input name="thevalue" type="text" class="basicTextField" id="aspnet:cftextinput:value" attname="value" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">验证: </td>
+      <td nowrap="nowrap">
+        <select name="thevalidate" class="oneWordOptionList" id="attr:cftextinput:validate" attname="validate" editable="false" onChange="updatePatternReqd();">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">范围: </td>
+      <td nowrap="nowrap">
+        <input name="therange" type="text" class="basicTextField" id="aspnet:cftextinput:range" attname="range" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">消息: </td>
+      <td nowrap="nowrap">
+        <input name="themessage" type="text" class="basicTextField" id="attr:cftextinput:message" attname="message" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">对齐: </td>
+      <td nowrap="nowrap">
+        <select name="thealign" class="alignList" id="attr:aspnet:cftextinput:align" attname="align">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">大小: </td>
+      <td nowrap="nowrap">
+        <input name="thesize" type="text" class="smallNumOrChar" id="attr:cftextinput:size" attname="size" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">最大长度: </td>
+      <td nowrap="nowrap">
+        <input name="themaxlength" type="text" class="smallNumOrChar" id="attr:cftextinput:maxlength" attname="maxlength" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">高度: </td>
+      <td nowrap="nowrap">
+        <input name="theheight" type="text" class="smallNumOrChar" id="attr:cftextinput:height" attname="height" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">宽度: </td>
+      <td nowrap="nowrap">
+        <input name="thewidth" type="text" class="smallNumOrChar" id="attr:cftextinput:width" attname="width" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">垂直间距: </td>
+      <td nowrap="nowrap">
+        <input name="thevspace" type="text" class="smallNumOrChar" id="attr:cftextinput:vspace" attname="vspace" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">水平间距: </td>
+      <td nowrap="nowrap">
+        <input name="thehspace" type="text" class="smallNumOrChar" id="attr:cftextinput:hspace" attname="hspace" />
+      </td>
+    </tr>
+</table>
+</div>
+<div name="高级">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">字体: </td>
+      <td nowrap="nowrap">
+        <select name="thefont" class="fontList" id="attr:cftextinput:font" attname="font" editable="true">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">字体大小: </td>
+      <td nowrap="nowrap">
+        <input name="fontsize" type="text" class="smallNumOrChar" id="attr:cftextinput:fontsize" attname="fontsize" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">背景颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="bgColorPicker" value="" onChange="updateUI('bgColorPicker')"> <input name="thebgcolor" type="text" class="smallTField" id="att:body:bgcolor" onBlur="updateUI('bgcolor')" value="" attname="bgcolor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove -->
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">文本颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="textColorPicker" value="" onChange="updateUI('textColorPicker')"> <input name="thetextcolor" type="text" class="smallTField" id="att:cftextinput:textcolor" onBlur="updateUI('textcolor')" value="" attname="textcolor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove -->
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">图案: </td>
+      <td nowrap="nowrap">
+        <input name="thepattern" type="text" class="basicTextField" id="attr:cftextinput:pattern" attname="pattern" required="false"/>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">onValidate: </td>
+      <td nowrap="nowrap">
+        <input name="theonvalidate" type="text" class="basicTextField" id="attr:cftextinput:onvalidate" attname="onvalidate" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">onError: </td>
+      <td nowrap="nowrap">
+        <input name="theonerror" type="text" class="basicTextField" id="attr:cftextinput:onerror" attname="onerror" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">不支持: </td>
+      <td nowrap="nowrap">
+        <input name="thenotsupported" type="text" class="basicTextField" id="attr:cftextinput:notsupported" attname="notsupported" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp; </td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cftextinput:bold" name="thebold" attname="bold" truevalue="yes" falsevalue="no" />
+        粗体
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp; </td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cftextinput:italic" name="theitalic" attname="italic" truevalue="yes" falsevalue="no" />
+        斜体
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp; </td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cftextinput:required" name="therequired" attname="required" truevalue="yes" falsevalue="no" />
+        必需的
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

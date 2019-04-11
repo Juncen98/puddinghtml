@@ -1,0 +1,197 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>RANDRANGE</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">RANDRANGE</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Generates a pseudo-random integer in the range between two specified numbers.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+A pseudo-random integer.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Mathematical functions, Security functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>RandRange(number1, number2[, algorithm])
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7: Added the algorithm parameter.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+Rand, Randomize
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+Very large positive or negative values for the number1 and number2 parameters might result in poor randomness in the results. To prevent this problem, do not specify numbers outside the range -1,000,000,000 - 1,000,000,000.
+</p>
+
+<p>
+ColdFusion&#160;MX&#160;7 uses the Java Cryptography Extension (JCE) and installs a Sun Java 1.4.2 runtime that includes the Sun JCE default security provider. This provider includes the algorithms listed in the Parameters section (except the default algorithm). The JCE framework includes facilities for using other provider implementations; however, Macromedia cannot provide technical support for third-party security providers.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+The following example contains a form that requires random number range values, and lets you optionally specify a random number seed value. It uses cfform controls and attributes to specify a default range, ensure that the range fields have values, and validate that the field values are in a specified integer range. When you submit the form, it checks whether the seed field has an empty string; if the field has a value, the code uses the number to seed the random number generator. It then generates and displays the random number.
+</p>
+<pre>&lt;h3&gt;RandRange Example&lt;/h3&gt;
+
+&lt;!--- Do the following only if the form has been submitted. ---&gt;
+&lt;cfif IsDefined(&quot;Form.mySeed&quot;)&gt;
+
+   &lt;!--- Do the following only if the seed field has a non-empty string. ---&gt;
+   &lt;cfif Form.mySeed NEQ &quot;&quot;&gt;
+      &lt;cfoutput&gt;
+         &lt;b&gt;Seed value is #FORM.mySeed#&lt;/b&gt;&lt;br&gt;
+      &lt;/cfoutput&gt;
+      &lt;br&gt;
+
+      &lt;!--- Call Randomize to seed the random number generator. ---&gt;
+      &lt;cfset r = Randomize(FORM.mySeed, &quot;SHA1PRNG&quot;)&gt;
+   &lt;cfelse&gt;
+      &lt;b&gt;No Seed value submitted&lt;/b&gt;&lt;br&gt;
+   &lt;/cfif&gt;
+
+   &lt;!--- Generate and display the random number. ---&gt;
+   &lt;cfoutput&gt;&lt;p&gt;&lt;b&gt;
+      RandRange returned: #RandRange(FORM.myInt, FORM.myInt2, &quot;SHA1PRNG&quot;)#
+   &lt;/cfoutput&gt;&lt;/b&gt;&lt;/p&gt;
+&lt;/cfif&gt;
+
+&lt;!--- This form uses cfform input validation to check the input range. ---&gt;
+&lt;cfform action = &quot;#CGI.SCRIPT_NAME#&quot;&gt;
+&lt;p&gt;Enter the random number Range: From 
+&lt;cfinput type = &quot;Text&quot; name = &quot;MyInt&quot; value = &quot;1&quot; 
+   RANGE = &quot;-1000000000,1000000000&quot;
+   message = &quot;Please enter a value between -1,000,000,000 and 1,000,000,000&quot;
+   validate = &quot;integer&quot; required = &quot;Yes&quot;&gt;
+To 
+&lt;cfinput type = &quot;Text&quot; name = &quot;MyInt2&quot; value = &quot;9999&quot; 
+   RANGE = &quot;-1000000000,1000000000&quot;
+   message = &quot;Please enter a value between --1,000,000,000  and 1,000,000,000&quot;
+   validate = &quot;integer&quot; required = &quot;Yes&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Enter a number to seed the randomizer: 
+&lt;cfinput type = &quot;Text&quot; name = &quot;mySeed&quot; RANGE = &quot;-1000000000,1000000000&quot;
+   message = &quot;Please enter a value between -1,000,000,000 and 1,000,000,000&quot;
+   validate = &quot;integer&quot; required = &quot;No&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;input type = &quot;Submit&quot; name = &quot;&quot;&gt;
+&lt;/cfform&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="NUMBER1, NUMBER2">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NUMBER1, NUMBER2</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Integer numbers. If the numbers are not in the range -2,147,483,648 - 2,147,483,647, ColdFusion generates an error.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ALGORITHM">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ALGORITHM</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>(Optional) The algorithm to use to generated the random number. ColdFusion MX installs a cryptography library with the following algorithms:</p><ul>
+
+<li>CFMX_COMPAT: the algorithm used in ColdFusion MX (default).</li>
+
+<li>SHA1PRNG: generates a number using the Sun Java SHA1PRNG algorithm. This algorithm provides greater randomness than the default algorithm</li>
+
+<li>IBMSecureRandom: for IBM WebSphere (IBM JVM does not support the SHA1PRNG algorithm.)</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

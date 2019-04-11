@@ -1,0 +1,103 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>PlaceHolder</title>
+  <link rel="stylesheet" href="../../fields.css">
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Controls/Scripts/MultiStateCheckBox.js"></script>
+<script>
+  
+var theEnableViewStateMultiStateCheckBox;
+var theVisibleMultiStateCheckBox;
+
+function initializeUI(){
+  theEnableViewStateMultiStateCheckBox = new MultiStateCheckBox("theenableviewstate");
+  theEnableViewStateMultiStateCheckBox.initializeUI(); 
+  theVisibleMultiStateCheckBox = new MultiStateCheckBox("thevisible");
+  theVisibleMultiStateCheckBox.initializeUI(); 
+}
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj); 
+}
+
+function updateUI(itemName)
+{
+  switch(itemName)
+  {
+    case "enableviewstate":
+	{
+	  theEnableViewStateMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+    case "visible":
+	{
+	  theVisibleMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+  }
+}
+
+</script>
+
+</head>
+
+<body onLoad="initializeUI()">
+<div name="常规"> 
+  <input type="hidden" name="therunat" attname="runat" value="server" required="true" /> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="aspnet:placeholder:id" attname="id" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theenableviewstate" attname="enableviewstate" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('enableviewstate');" > 
+        启用视图状态 
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="thevisible" attname="visible" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('visible');" > 
+        可见
+      </td>
+    </tr> 
+  </table>
+</div>
+<div name="事件"> 
+  <div name="OnDataBinding">
+    <textarea name="theOnDataBinding" attname="OnDataBinding" id="aspnet:placeholder:ondatabinding" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnDisposed">
+    <textarea name="theOnDisposed" attname="OnDisposed" id="aspnet:placeholder:ondisposed" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnInit">
+    <textarea name="theOnInit" attname="OnInit" id="aspnet:placeholder:oninit" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnLoad">
+    <textarea name="theOnLoad" attname="OnLoad" id="aspnet:placeholder:onload" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnPreRender">
+    <textarea name="theOnPreRender" attname="OnPreRender" id="aspnet:placeholder:onprerender" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnUnLoad">
+    <textarea name="theOnUnLoad" attname="OnUnLoad" id="aspnet:placeholder:onunload" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div>
+</div> 
+</body>
+</html>

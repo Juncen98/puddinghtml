@@ -1,0 +1,525 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFDIRECTORY</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFDIRECTORY</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Manages interactions with directories.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+File management tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfdirectory 
+   action = &quot;directory action&quot;
+   directory = &quot;directory name&quot;
+   name = &quot;query name&quot;
+   filter = &quot;list filter&quot;
+   mode = &quot;permission&quot;
+   sort = &quot;sort specification&quot;
+   newDirectory = &quot;new directory name&quot;
+   recurse = &quot;yes&quot; or &quot;no&quot;&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cffile
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7: Added the recurse attribute (named recursive in Alpha 1) and directory result-set column.
+</p>
+
+<p>
+ColdFusion&#160;MX: 
+</p>
+<ul>
+
+<li>Changed behavior for action = &quot;list&quot;: </li>
+<ul>
+
+<li>On Windows, cfdirectory action = &quot;list&quot; no longer returns the directory entries &quot;.&quot; (dot) or &quot;..&quot; (dot dot), which represent &quot;the current directory&quot; and &quot;the parent directory.&quot;</li>
+
+<li>On Windows, cfdirectory action = &quot;list&quot; no longer returns the values of the Archive and System attributes.</li>
+
+<li>On UNIX and Linux, cfdirectory action = &quot;list&quot; does not return any information in the mode column.</li>
+</ul>
+</ul>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+If you put ColdFusion applications on a server that is used by multiple customers, you must consider the security of files and directories that could be uploaded or otherwise manipulated with this tag by unauthorized users. For more information about securing ColdFusion tags, see Configuring and Administering ColdFusion&#160;MX.
+</p>
+
+<p>
+If action = &quot;list&quot;, cfdirectory returns the following result columns, which you can reference in a cfoutput tag:
+</p>
+<ul>
+
+<li>name&#160;Directory entry name. The entries &quot;.&quot; and &quot;..&quot; are not returned. </li>
+
+<li>directory&#160;Directory containing the entry.</li>
+
+<li>size&#160;Directory entry size.</li>
+
+<li>type&#160;File type: File, for a file; Dir, for a directory.</li>
+
+<li>dateLastModified&#160;The date that an entry was last modified.</li>
+
+<li>attributes&#160;File attributes, if applicable.</li>
+
+<li>mode&#160;Empty column; retained for backward compatibility with ColdFusion 5 applications on UNIX.</li>
+</ul>
+
+<p>
+You can use the following result columns in standard CFML expressions, preceding the result column name with the query name:
+</p>
+<pre>#mydirectory.name#
+#mydirectory.directory#
+#mydirectory.size#
+#mydirectory.type#
+#mydirectory.dateLastModified#
+#mydirectory.attributes#
+#mydirectory.mode# 
+</pre><table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>If the cfdirectory tag does not appear to work, for example, if a list operation returns an empty result set, make sure that you have correct permissions to access the directory. For example, if you run ColdFusion as a service on Windows, it operates by default as System, and cannot access directories on a remote system or mapped drive; to resolve this issue, do not run ColdFusion using the local system account.</td>
+  </tr>
+</table>
+<p>
+The filter attribute specifies a pattern of one or more characters. All names that match that pattern are included in the list. On Windows systems, pattern matching ignores text case, on UNIX and Linux, pattern matches are case-sensitive. 
+</p>
+
+<p>
+The following two characters have special meaning in the pattern and are called metacharacters: 
+</p>
+<ul>
+
+<li>*&#160;matches any zero or more characters</li>
+
+<li>?&#160;matches any single character</li>
+</ul>
+
+<p>
+The following table shows examples of patterns and file names that they match:
+</p>
+
+<p>
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr align="center">    <th>&#160;</th>
+    <th>&#160;</th>
+</tr>
+  <tr align="left">    <td>
+<p>foo.*</p></td>
+    <td>
+<p>Any file called foo with any extension; for example, foo.html, foo.cfm, and foo.xml.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>*.html</p></td>
+    <td>
+<p>All files with the suffix .html, but not files with the suffix .htm.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>??</p></td>
+    <td>
+<p>All files with two-character names.</p></td>
+</tr>
+</table>
+</div>
+<p>
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!--- EXAMPLE 1: Creating and Renaming 
+Check that the directory exists to avoid getting a 
+ColdFusion error message. ---&gt;
+&lt;cfset newDirectory = &quot;otherNewDir&quot;&gt;
+&lt;cfset currentDirectory = GetDirectoryFromPath(GetTemplatePath()) &amp; &quot;newDir&quot;&gt;
+&lt;!--- Check to see if the Directory exists. ---&gt;
+&lt;cfif DirectoryExists(currentDirectory)&gt;
+&lt;!--- If TRUE then rename the directory. ---&gt; 
+   &lt;cfdirectory action = &quot;rename&quot; directory = &quot;#currentDirectory#&quot; newDirectory 
+= &quot;#newDirectory#&quot; &gt;
+   &lt;cfoutput&gt;
+   &lt;p&gt;The directory existed and the name has been changed to: #newDirectory#&lt;/
+p&gt;
+   &lt;/cfoutput&gt;
+&lt;cfelse&gt;
+   &lt;!--- If FALSE, create the directory. ---&gt;
+   &lt;cfdirectory action = &quot;create&quot; directory = &quot;#currentDirectory#&quot; &gt;
+   &lt;cfoutput&gt;&lt;p&gt;Your directory has been created.&lt;/p&gt;&lt;/cfoutput&gt;
+&lt;/cfif&gt;
+
+&lt;!--- EXAMPLE 2: Deleting a directory 
+Check that the directory exists and that files are not in the directory
+to avoid getting ColdFusion error messages. ---&gt;
+
+&lt;cfset currentDirectory = GetDirectoryFromPath(GetTemplatePath()) &amp; 
+&quot;otherNewDir&quot;&gt;
+&lt;!--- Check to see if the Directory exists. ---&gt;
+&lt;cfif DirectoryExists(currentDirectory)&gt;
+   &lt;!--- If TRUE, check to see if there are files in the directory before 
+deleting. ---&gt;
+   &lt;cfdirectory action=&quot;list&quot; directory=&quot;#currentDirectory#&quot; 
+   name=&quot;myDirectory&quot;&gt;
+   &lt;cfif myDirectory.recordcount gt 0&gt;
+   &lt;!--- If TRUE, delete the files from the directory. ---&gt;
+      &lt;cfoutput&gt;
+      &lt;p&gt;Files exist in this directory. Either delete the files or code 
+         something to do so.&lt;/P&gt;
+      &lt;/cfoutput&gt; 
+   &lt;cfelse&gt;
+   &lt;!--- Directory is empty - just delete the directory. ---&gt;
+      &lt;cfdirectory action = &quot;delete&quot; directory = &quot;#currentDirectory#&quot;&gt;
+      &lt;cfoutput&gt;
+      &lt;p&gt;The directory existed and has been deleted.&lt;/P&gt;
+      &lt;/cfoutput&gt;
+   &lt;/cfif&gt; 
+&lt;cfelse&gt;
+   &lt;!--- If FALSE, post message or do some other function. ---&gt;
+   &lt;cfoutput&gt;&lt;p&gt;The directory did NOT exist.&lt;/p&gt;&lt;/cfoutput&gt;
+&lt;/cfif&gt; 
+&lt;!---EXAMPLE 3: List directories 
+The following example creates both an array of directory names and a query that
+contains entries for the directories only. ---&gt;
+
+&lt;cfdirectory directory=&quot;C:/temp&quot; name=&quot;dirQuery&quot; action=&quot;LIST&quot;&gt;
+
+&lt;!--- Get an array of directory names. ---&gt;
+&lt;cfset dirsArray=arraynew(1)&gt;
+&lt;cfset i=1&gt;
+&lt;cfloop query=&quot;dirQuery&quot;&gt;
+&lt;cfif dirQuery.type IS &quot;dir&quot;&gt;
+   &lt;cfset dirsArray[i]=dirQuery.name&gt;
+   &lt;cfset i = i + 1&gt;
+&lt;/cfif&gt;
+&lt;/cfloop&gt;
+&lt;cfdump var=&quot;#dirsArray#&quot;&gt;
+&lt;br&gt;
+&lt;!--- Get all directory information in a query of queries.---&gt;
+&lt;cfquery dbtype=&quot;query&quot; name=&quot;dirsOnly&quot;&gt;
+SELECT * FROM dirQuery
+WHERE TYPE=&#39;Dir&#39;
+&lt;/cfquery&gt;
+&lt;cfdump var=&quot;#dirsOnly#&quot;&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="ACTION">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ACTION</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "List"
+
+<ul>
+
+<li>list: returns a query record set of the files in the specified directory. The directory entries &quot;.&quot; (dot) and &quot;..&quot; (dot dot), which represent the current directory and the parent directory, are not returned. </li>
+
+<li>create</li>
+
+<li>delete</li>
+
+<li>rename</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DIRECTORY">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DIRECTORY</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Absolute pathname of directory against which to perform action. </p>
+<p>You can use an IP address, as in the following example:</p><pre>&lt;cfdirectory directory=&quot;//12.3.123.123/c_drive/&quot; 
+name=&quot;dirQuery&quot; action=&quot;LIST&quot;&gt;
+</pre>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="NAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required if action = &quot;list&quot;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name for output record set. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="FILTER">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">FILTER</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional if action = &quot;list&quot;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>File extension filter applied to returned names; for example, *.cfm. One filter can be applied. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="MODE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">MODE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Used with action = &quot;create&quot;. Permissions. Applies only to UNIX and Linux. Octal values of chmod command. Assigned to owner, group, and other, respectively. For example: </p><ul>
+
+<li>644: assigns read/write permission to owner; read permission to group and other.</li>
+
+<li>777: assigns read/write/execute permission to all.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SORT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SORT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; used if action = &quot;list&quot;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "ASC"
+
+
+<p>Query column(s) by which to sort directory listing. Delimited list of columns from query output. </p>
+<p>To qualify a column, use:</p><ul>
+
+<li>asc: ascending (a to z) sort order. </li>
+
+<li>desc: descending (z to a) sort order. </li>
+</ul>
+
+<p>For example:</p>
+<p>sort = &quot;directory ASC, size DESC, datelastmodified&quot;</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="NEWDIRECTORY">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NEWDIRECTORY</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required if action = &quot;rename&quot;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>New name for directory.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="RECURSE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">RECURSE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+
+<p>Whether ColdFusion performs the action on subdirectories:</p><ul>
+
+<li>yes </li>
+
+<li>no</li>
+</ul>
+
+<p>Valid for action=&quot;list&quot; and action=&quot;delete&quot;.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

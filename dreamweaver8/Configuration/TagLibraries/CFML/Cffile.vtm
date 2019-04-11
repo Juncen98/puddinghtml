@@ -1,0 +1,75 @@
+<tag name="CFFILE" endtag="no">
+<tagformat nlbeforetag="1" nlaftertag="1"/>
+<tagdialog file="cffile.htm" />
+  <attributes>
+    <attrib name="ACCEPT" type="TEXT"/>
+    <attrib name="ACTION" type="ENUMERATED">
+      <attriboption value="UPLOAD"/>
+      <attriboption value="COPY"/>
+      <attriboption value="MOVE"/>
+      <attriboption value="RENAME"/>
+      <attriboption value="DELETE"/>
+      <attriboption value="APPEND"/>
+      <attriboption value="WRITE"/>
+      <attriboption value="READ"/>
+      <attriboption value="READBINARY"/>
+    </attrib>
+    <attrib name="ADDNEWLINE" type="ENUMERATED">
+      <attriboption value="Yes"/>
+      <attriboption value="No"/>
+    </attrib>
+    <attrib name="ATTRIBUTES" type="ENUMERATED">
+      <attriboption value="ReadOnly"/>
+      <attriboption value="Temporary"/>
+      <attriboption value="Archive"/>
+      <attriboption value="Hidden"/>
+      <attriboption value="System"/>
+      <attriboption value="Normal"/>
+    </attrib>
+    <attrib name="CHARSET" type="enumerated">
+      <attriboption value="big5" caption="big5"/>
+      <attriboption value="euc-cn" caption="euc-cn"/>
+      <attriboption value="euc-jp" caption="euc-jp"/>
+      <attriboption value="euc-kr" caption="euc-kr"/>
+      <attriboption value="hz-gb-2312" caption="hz-gb-2312"/>
+      <attriboption value="iso-2022-jp" caption="iso-2022-jp"/>
+      <attriboption value="iso-2022-kr" caption="iso-2022-kr"/>
+      <attriboption value="iso-8859-1" caption="iso-8859-1"/>
+      <attriboption value="iso-8859-2" caption="iso-8859-2"/>
+      <attriboption value="iso-8859-3" caption="iso-8859-3"/>
+      <attriboption value="iso-8859-4" caption="iso-8859-4"/>
+      <attriboption value="iso-8859-5" caption="iso-8859-5"/>
+      <attriboption value="iso-8859-6" caption="iso-8859-6"/>
+      <attriboption value="iso-8859-7" caption="iso-8859-7"/>
+      <attriboption value="iso-8859-8" caption="iso-8859-8"/>
+      <attriboption value="iso-8859-9" caption="iso-8859-9"/>
+      <attriboption value="shift_jis" caption="shift_jis"/>
+      <attriboption value="us-ascii" caption="us-ascii"/>
+      <attriboption value="utf-16" caption="utf-16"/>
+      <attriboption value="utf-8" caption="utf-8"/>
+      <attriboption value="windows-1252" caption="windows-1252"/>
+    </attrib>
+    <attrib name="DESTINATION" type="DIRECTORY"/>
+    <attrib name="FILE" type="FILEPATH"/>
+    <attrib name="FILEFIELD" type="TEXT"/>
+    <attrib name="MODE" type="Text"/>
+    <attrib name="NAMECONFLICT" type="ENUMERATED">
+      <attriboption value="ERROR"/>
+      <attriboption value="SKIP"/>
+      <attriboption value="OVERWRITE"/>
+      <attriboption value="MAKEUNIQUE"/>
+    </attrib>
+    <attrib name="OUTPUT" type="TEXT"/>
+    <attrib name="SOURCE" type="FILEPATH"/>
+    <attrib name="VARIABLE" type="TEXT"/>
+    <attrib name="RESULT" type="TEXT">
+    <attrib name="FIXNEWLINE" type="ENUMERATED">
+      <attriboption value="Yes"/>
+      <attriboption value="No"/>
+	</attrib>
+  </attributes>
+	<attribcategories>
+		<attribgroup name="General" elements="destination,attributes,mode,source,file,addnewline,variable,action,charset" />
+		<attribgroup name="Upload" elements="filefield,accept,nameconflict" />
+	</attribcategories>
+</tag>

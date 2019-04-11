@@ -1,0 +1,49 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>·­ÒëÆ÷</TITLE>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+<!--
+	function receiveArguments()
+	{
+		var translatorName = arguments[0];
+		dw.getDocumentDOM('document').runTranslator(translatorName); // the id is the name of the translator
+	}
+
+	function canAcceptCommand()
+	{
+		var bHaveDocument = dw.getDocumentDOM('document') != null;
+		return !site.windowIsFrontmost() && bHaveDocument && dw.getFocus() == 'document';
+	}
+
+	// getDynamicContent returns the contents of a dynamically generated menu.
+	// returns an array of strings to be placed in the menu, with a unique
+	// identifier for each item separated from the menu string by a semicolon.
+	//
+	// return null from this routine to indicate that you are not adding any
+	// items to the menu
+	function getDynamicContent(itemID)
+	{
+		var translators = null;
+		var Trans = null;
+		var i;
+		translators = new Array();
+		Trans = dw.getTranslatorList();
+		if (Trans.length > 0)
+		{
+			for (i=0; i<Trans.length; i++)
+			{
+				translators[i] = new String(Trans[i]);
+				translators[i] += ";id='"+escQuotes(Trans[i])+"'";
+			}
+		}
+		return translators;
+	}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

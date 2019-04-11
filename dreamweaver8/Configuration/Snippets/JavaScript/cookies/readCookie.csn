@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "读取 Cookie" description = "返回给定 Cookie 名称的 Cookie 值的函数。" preview="code" type="block">
+<insertText location="beforeSelection">
+<![CDATA[// Example:
+// alert( readCookie("myCookie") );
+function readCookie(name)
+{
+  var cookieValue = "";
+  var search = name + "=";
+  if(document.cookie.length > 0)
+  { 
+    offset = document.cookie.indexOf(search);
+    if (offset != -1)
+    { 
+      offset += search.length;
+      end = document.cookie.indexOf(";", offset);
+      if (end == -1) end = document.cookie.length;
+      cookieValue = unescape(document.cookie.substring(offset, end))
+    }
+  }
+  return cookieValue;
+}
+]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

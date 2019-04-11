@@ -1,0 +1,49 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<HTML>
+<HEAD>
+<TITLE>OLE DB 连接</TITLE>
+<SCRIPT SRC="../../../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/MM/Scripts/CMN/enableControl.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Connection_common.js"></SCRIPT>
+<SCRIPT SRC="default_oledb.js"></SCRIPT>
+<link href="../../../fields.css" rel="stylesheet" type="text/css">
+<SCRIPT LANGUAGE="Javascript">
+// Copyright 2001-2002 Macromedia, Inc. All rights reserved.
+//-------------------- GLOBALS -----------------------
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+//--------------- END LOCALIZEABLE   ---------------
+
+//---------------    END JAVASCRIPT    ---------------
+</SCRIPT>
+</HEAD>
+<BODY onLoad="initializeUI()">
+<form NAME="theForm" ACTION="">
+  <table border=0>
+	<tr>
+	  <td align="right" valign="baseline" nowrap>连接名称: </td>
+	  <td colspan=2 align="left"><input name="ConnectionName" type="text" class="medTField"></td>
+	</tr>
+	<tr valign="top">	
+	  <td align="right" valign="top" nowrap>
+	    <table border=0 cellspacing=1>
+		  <tr><td nowrap></td></tr>
+          <tr><td nowrap></td></tr>
+		  <tr><td nowrap>连接字符串:</td></tr>
+		</table>
+	  </td>
+	  <td align="left" nowrap><textarea type="text" style="width:250px;height:150px" name="ConnectionString" /></td>
+	  <td><input type="button" name="templateButton" style="width:85px" value="模板..." onClick="templateClicked()"></td>
+	</tr>
+    <tr valign="top"> 
+      <td colspan="3">连接信息保存在站点的本地根文件夹中的 web.config 文件中。如果测试服务器不是该计算机，且其中有 web.config 版本，您可能希望在继续操作前将此版本拷贝到该计算机中。创建连接后，将 web.config 的本地版本拷贝回测试服务器中。</td>
+    </tr>
+  </table>
+</form>
+</BODY>
+</HTML>

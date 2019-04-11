@@ -1,0 +1,729 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">&lt;FRAMESET&gt;</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">&lt;FRAMESET&gt;...&lt;/FRAMESET&gt;</p>
+					</td><td valign="top" nowrap class="requirements">HTML End Tag: Required&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Defines the layout of a multiple-frame presentation in a
+browser's application window. The primary duty of
+the <span class="literal">frameset</span> element is to specify the
+geographical layoutin a row and column arrayof
+rectangular frames. Attributes defined in a
+<span class="literal">frameset</span> element apply to all
+<span class="literal">frame</span> elements nested within (unless overridden by
+a similar attribute for a specific <span class="literal">frame</span>). A
+<span class="literal">frameset</span> element's tag takes the
+place in an HTML document that is normally devoted to the
+<span class="literal">body</span> element.
+</p><p>You may nest a <span class="literal">frameset</span> element within a
+<span class="literal">frameset</span> element. This tactic allows you to
+subdivide a frame from the outer <span class="literal">frameset</span> element
+into two or more frames. For example, if you define one
+<span class="literal">frameset</span> element with three rows and two columns,
+you get a total of six frames:
+</p><p>Figure 8-1 shows the resulting frame organization.</p><p>On the other hand, if you nest a frameset where a frame definition
+goes, that frame is divided into whatever frame organization is
+defined by that nested frameset. Consider the following nested
+frameset:
+</p><p>This produces the frame organization shown in Figure 8-2.</p><p>You may nest <span class="literal">frameset</span> elements as deeply as your
+page design requires. Be aware that frames can devour memory
+resources of browsers on some operating systems. Not all users
+appreciate frames that display borders, even when such a structure
+may make logical sense for your page design.
+</p><p>The outermost frameset document is the one whose
+<span class="literal">title</span> attribute governs the display in the browser
+window title bar. Documents loaded into individual frames have no
+control over title bar display, although for reasons of scripting and
+potential application in future browsers, the
+<span class="literal">title</span> attribute of framed documents should be set
+anyway.
+</p><p>If you wish to offer an option for a user to remove a frameset, you
+can supply a link or button that invokes a script. The script should
+set the <span class="literal">top.location.href</span> property to the URL of
+the single most important document of the pages loaded into frames
+(the primary content).
+</p><p>Strict DTDs for HTML 4 and XHTML explicitly exclude support for
+<span class="literal">frameset</span> and <span class="literal">frame</span> elements
+(and <span class="literal">target</span> attributes of other elements that
+point to frames). These document type definitions treat frames as
+outside the scope of pure document markup. You can validate a
+framesetting document with the HTML 4 transitional and frameset DTDs
+or the XHTML frameset DTD.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;FRAMESET cols="150,*"&gt;
+    &lt;FRAME name="navbar" id="navbar" src="nav.html"&gt;
+    &lt;FRAME name="main" id="main" src="page1.html"&gt;
+&lt;/FRAMESET&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID)</span></pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Element-Specific Attributes</span></td>
+				</tr>
+				<tr>
+      <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+    </tr><tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">border</span></td><td><span class="literal">bordercolor</span></td><td><span class="literal">cols</span></td><td><span class="literal">frameborder</span></td><td><span class="literal">framespacing</span></td><td><span class="literal">rows</span></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Element-Specific Event Handler Attributes</span></td>
+				</tr>
+				<tr>
+      <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+    </tr><tr>
+					<td>
+						<table border="1"><tbody><th>Handler</th><th>NN</th><th>IE</th><th>HTML</th><tr><td>onload</td><td>2</td><td>3</td><td>4</td>
+								</tr>
+								<tr><td>onunload</td><td>2</td><td>3</td><td>4</td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+			</table>
+		</div><div id="border">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">border</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">border="<span class="replaceable">pixelCount</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Frames display 3-D borders by default. The default thickness of that
+border varies with browser and operating system. You can adjust this
+thickness by assigning a different value to the
+<span class="literal">border</span> attribute of the frameset. Only the
+outermost <span class="literal">frameset</span> element of a system of nested
+framesets responds to the <span class="literal">border</span> attribute
+setting. Note that this attribute controls inter-frame borders, and
+not a border around the frameset.
+</p><p>Navigator 4 is consistent across Windows and Macintosh platforms by
+displaying a default border that is the same thickness as when the
+<span class="literal">border</span> attribute is set to 5. For IE, the default
+value is 6 in Windows and 1 on the Mac (although the actual rendering
+is far more than one pixel wide). Any single setting you make for the
+<span class="literal">border</span> attribute therefore does not look the same
+on all browsers. Moreover, at smaller settings, some browsers react
+strangely. IE 6 won't display a border in Windows
+when the value is 4 or less; Navigator loses its 3-D effect when the
+value is 2 or less. Navigator 4 also has a nasty habit of rendering
+an odd divot in the center of frame bars on the Macintosh.
+</p><p>This hodge-podge deployment of frame borders may make you shy away
+from using them altogether (set the <span class="literal">border</span>
+attribute to <span class="literal">0</span>). In some cases, however, borders
+provide reassuring visual contexts for frame content that requires a
+scrollbar. Having a scrollbar appear floating in a browser window
+might be disconcerting to some viewers.
+</p><p>That the HTML 4 specification does not include a
+<span class="literal">border</span> attribute might lead one to believe it
+prefers the use of style sheet borders instead of borders tied only
+to frames. At most, however, a border-related CSS style attribute
+affects only a border around the entire frameset, and has no impact
+on borders between frames.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;FRAMESET cols="150,*" border="0"&gt;...&lt;/FRAMESET&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>An integer value. A setting of zero eliminates the border entirely.
+Although the value is supposed to represent the precise pixel
+thickness of borders in the frameset, this is not entirely true for
+all operating systems or browsers.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>See description.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID)</span>.border</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="bordercolor">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">bordercolor</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">bordercolor="<span class="replaceable">colorTripletOrName</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Establishes the rendering color for all visible borders in a
+frameset. A <span class="literal">bordercolor</span> setting in an outermost
+<span class="literal">frameset</span> element may be overridden by a
+<span class="literal">bordercolor</span> attribute of a nested
+<span class="literal">frameset</span> element (for the nested
+frameset's frames only) or an individual
+<span class="literal">frame</span> element. Browsers resolve conflicts of
+colors assigned to adjacent frames differently. Test your color
+combinations carefully if you mix border colors.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;FRAMESET cols="150,*" bordercolor="salmon"&gt;...&lt;/FRAMESET&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>A hexadecimal triplet or plain-language color name. See Appendix A for acceptable plain-language color names.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>Browser default, usually a shade of gray with black or blue
+highlighting for the 3-D effect.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID)</span>.borderColor</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="cols">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">cols</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">cols="<span class="replaceable">columnLengthsList</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Defines the sizes or proportions of the column arrangement of frames
+in a frameset. If you intend to use the <span class="literal">frameset</span>
+element to create frames in multiple columns, you must assign a list
+of values to the <span class="literal">cols</span> attribute, with one value
+per column.
+</p><p>Column size is defined in one of three ways:</p><p>Use an absolute pixel size when you want the width of a frame to be
+the same no matter how the user has sized the overall browser window.
+This is especially useful when the frame is to display an object of
+fixed width, such as an image. Use a percentage when you want the
+frame width to be a certain proportion of the
+frameset's width, no matter how the user has
+adjusted the size of the overall browser window. If you use all
+percentage values for the <span class="literal">cols</span> attribute, they
+should add up to 100%. If the values don't add up to
+100%, the browser makes the columns fit anyway. Finally, use the
+asterisk wildcard value to let the browser calculate the width of one
+frame when all other frames in the frameset have fixed or percentage
+values assigned to them. Separate the values within the attribute
+value string with commas.
+</p><p>You can mix and match all three types of values in the attribute
+string. For example, consider a three-column frameset. If you want
+the leftmost column to be exactly 150 pixels wide, but the middle
+column must be 50% of the total frameset width, set the value as
+follows:
+</p><p>The precise width of the two rightmost frames is different with each
+browser window's width adjustment. The rightmost
+frame width in this example is roughly equal to one half the width of
+the frameset minus the 150 pixels reserved for the leftmost frame.
+</p><p>You may define an invisible column to the right. Use percentage
+values for visible columns, and make sure they total 100%. Then
+assign the asterisk value for the final column.
+</p><p>To create a regular grid of frames, assign values to both the
+<span class="literal">cols</span> and <span class="literal">rows</span> attributes in the
+<span class="literal">frameset</span> element's tag. For an
+irregular array, you must nest <span class="literal">frameset</span> elements,
+as shown in the description of the <span class="literal">frameset</span>
+element, earlier in this section.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;FRAMESET cols="25%,50%,25%"&gt;...&lt;/FRAMESET&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Comma-separated list of pixel, percentage, or wildcard
+(<span class="literal">*</span>) values. Internet Explorer 4 for the Macintosh
+exhibits incorrect behavior with some combinations that include a
+wildcard value.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">100%</span></p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID)</span>.cols</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="frameborder">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">frameborder</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">3</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">frameborder="<span class="replaceable">borderSwitch</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Controls whether all frames within the frameset display a border
+(acting as dividers between frame edges). The
+<span class="literal">frameborder</span> attribute of <span class="literal">frame</span>
+elements can override the <span class="literal">frameset</span>
+element's setting for this attribute, but some frame
+organizations don't lend themselves well to
+eliminating frames from subgroups of frames. Override the
+<span class="literal">frameset</span> element's attribute with
+caution, and test on all browsers and operating system platforms.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;FRAMESET cols="25%,50%,25%" frameborder="no"&gt;...&lt;/FRAMESET&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>On-off values for this attribute vary with the browser. Navigator
+uses <span class="literal">yes</span> and <span class="literal">no</span>. Internet
+Explorer 4 and later accepts both <span class="literal">yes</span> |
+<span class="literal">no</span> and <span class="literal">1</span> |
+<span class="literal">0</span>. For cross-browser compatibility, use the
+<span class="literal">yes</span>/<span class="literal">no</span> pairing.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">yes</span></p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID)</span>.frameBorder</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="framespacing">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">framespacing</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">3</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">framespacing="<span class="replaceable">pixelLength</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The Internet Explorer <span class="literal">framespacing</span> attribute is an
+older version of the <span class="literal">border</span> attribute. The older
+attribute is supported in current IE versions for backward
+compatibility. The behavior of the <span class="literal">framespacing</span>
+attribute is more uniform across operating system versions of IE: a
+setting of 10 pixels generates a border between frames that is
+essentially identical in both Windows and Mac versions. For an
+IE-only deployment, the <span class="literal">framespacing</span> attribute is
+a more accurate way to create borders that look the same across
+operating system versions.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;FRAMESET cols="25%,50%,25%" framespacing="7"&gt;...&lt;/FRAMESET&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>A positive integer. Unlike the <span class="literal">border</span> attribute,
+however, a setting of zero does not remove the border. Use the
+<span class="literal">frameborder</span> attribute to hide borders entirely.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">2</span></p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID)</span>.frameSpacing</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="rows">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">rows</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">rows="<span class="replaceable">rowLengthsList</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Defines the sizes or proportions of the row arrangement of frames in
+a frameset. If it is the intent to use the
+<span class="literal">frameset</span> element to create frames with multiple
+rows, you must assign a list of values to the <span class="literal">rows</span>
+attribute, with one value per row.
+</p><p>Row size is defined in one of three ways:</p><p>Use an absolute pixel size when you want the height of a frame row to
+be the same no matter how the user has sized the overall browser
+window. This is especially useful when the frame is to display an
+object of fixed height, such as an image. Use a percentage when you
+want the frame height to be a certain proportion of the
+frameset's height, no matter how the user has
+adjusted the size of the overall browser window. If you use all
+percentage values for the <span class="literal">rows</span> attribute, they
+should add up to 100%. If the values don't add up to
+100%, the browser makes the rows fit anyway. Finally, use the
+asterisk wildcard value to let the browser calculate the height of
+one row when all other rows in the frameset have fixed or percentage
+values assigned to them. Separate the values within the attribute
+value string with commas.
+</p><p>You can mix and match all three types of values in the attribute
+string. For example, consider a three-row frameset. If you want the
+bottom row to be exactly 80 pixels high to accommodate a navigation
+bar, but the middle row must be 50% of the total frameset height, set
+the value as follows:
+</p><p>The precise height of the two topmost frames is different with each
+browser window's height adjustment. The topmost
+frame height in this example is roughly equal to one half the height
+of the frameset minus the 80 pixels reserved for the bottom row.
+</p><p>You may define an invisible row at the bottom. Use percentage values
+for visible rows, and make sure they total 100%. Then assign the
+asterisk value for the final row.
+</p><p>To create a regular grid of frames, assign values to both the
+<span class="literal">cols</span> and <span class="literal">rows</span> attributes in the
+<span class="literal">frameset</span> element's tag. For an
+irregular array, you must nest <span class="literal">frameset</span> elements,
+as shown in the description of the <span class="literal">frameset</span>
+element, earlier in this section.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;FRAMESET rows="25%,50%,25%"&gt;...&lt;/FRAMESET&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Comma-separated list of pixel, percentage, or wildcard
+(<span class="literal">*</span>) values. Internet Explorer 4 for the Macintosh
+exhibits incorrect behavior with some combinations that include a
+wildcard value.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">100%</span></p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID)</span>.rows</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div>
+		<div id="style">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">style</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal">style="<span class="replaceable">styleSheetProperties</span>"</p>
+							</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>This attribute lets you set one or more style sheet rule property
+		assignments for the current element. You may use the CSS or (for
+		Navigator 4 only) JavaScript syntax for assigning style attributes.
+		Use the <span class="literal">style</span> attribute only with visible
+		(renderable) elements.
+		</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>&lt;SPAN style="color:green; font-size:18px"&gt;Big, green, and bold&lt;/SPAN&gt;</pre>
+								</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+						</tr>
+						<tr>
+							<td><p>An entire CSS-syntax style sheet rule is enclosed in quotes. Multiple
+		style attribute settings are separated by semicolons. Style sheet
+		attributes are detailed in Chapter 11.
+		</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+						</tr>
+						<tr>
+							<td><p>None.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID).</span>style</pre>
+								</span></td>
+						</tr>
+					</table>
+		</div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "十进制到十六进制" description = "将十进制数字 (0-255) 转换为十六进制数字。" preview="code" type="block">
+<insertText location="beforeSelection">
+<![CDATA[function decToHex(dec)
+{
+  var hexStr = "0123456789ABCDEF";
+  var low = dec % 16;
+  var high = (dec - low)/16;
+  hex = "" + hexStr.charAt(high) + hexStr.charAt(low);
+  return hex;
+}
+]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

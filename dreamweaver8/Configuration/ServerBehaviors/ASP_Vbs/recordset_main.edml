@@ -1,0 +1,40 @@
+<participant>
+     <quickSearch><![CDATA[ADODB.Recordset]]></quickSearch>
+     <insertText location="aboveHTML+50">
+<![CDATA[
+<%
+Dim @@rsName@@
+Dim @@rsName@@_numRows
+
+Set @@rsName@@ = Server.CreateObject("ADODB.Recordset")
+@@rsName@@.ActiveConnection = MM_@@cname@@_STRING
+@@rsName@@.Source = "@@encodedSQL@@"
+@@rsName@@.CursorType = @@cursorType@@
+@@rsName@@.CursorLocation = @@cursorLocation@@
+@@rsName@@.LockType = @@lockType@@
+@@rsName@@.Open()
+
+@@rsName@@_numRows = 0
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName"><![CDATA[/Set\s+\b(\w+)\s*=\s*Server\.CreateObject\("ADODB.Recordset"\)/i]]></searchPattern>
+       <searchPattern paramNames="cname"><![CDATA[/\.ActiveConnection\s*=\s*MM_(\w+)_STRING/]]></searchPattern>
+       <searchPattern paramNames="encodedSQL"><![CDATA[/\.Source\s*=\s*"([^\r\n]*)"[ \t]*[\r\n]/]]></searchPattern>
+       <searchPattern paramNames="cursorType"><![CDATA[/\.CursorType\s*=\s*(\d+)/]]></searchPattern>
+       <searchPattern paramNames="cursorLocation"><![CDATA[/\.CursorLocation\s*=\s*(\d+)/]]></searchPattern>
+       <searchPattern paramNames="lockType"><![CDATA[/\.LockType\s*=\s*(\d+)/]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="rsName"><![CDATA[/(set\s+\b)\w+(\s*=\s*Server\.CreateObject\("ADODB.Recordset"\))/i]]></updatePattern>
+       <updatePattern paramName="rsName"><![CDATA[/(\b)\w+(\.ActiveConnection|\.Source|\.CursorType|\.CursorLocation|\.LockType|\.Open|\.CacheSize|\.PageSize)/i]]></updatePattern>
+       <updatePattern paramName="rsName"><![CDATA[/(\b)\w+(_numRows\s*=)/i]]></updatePattern>
+       <updatePattern paramName="cname"><![CDATA[/(MM_)\w+(_STRING)/i]]></updatePattern>
+       <updatePattern paramName="encodedSQL"><![CDATA[/(\.Source\s*=\s*")[^\r\n]*("[ \t]*[\r\n])/i]]></updatePattern>
+       <updatePattern paramName="cursorType"><![CDATA[/(\.CursorType\s*=\s*)\d+(\b)/i]]></updatePattern>
+       <updatePattern paramName="cursorLocation"><![CDATA[/(\.CursorLocation\s*=\s*)\d+(\b)/i]]></updatePattern>
+       <updatePattern paramName="lockType"><![CDATA[/(\.LockType\s*=\s*)\d+(\b)/i]]></updatePattern>
+     </updatePatterns>
+
+</participant>

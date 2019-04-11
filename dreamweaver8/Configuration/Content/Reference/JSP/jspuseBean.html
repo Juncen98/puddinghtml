@@ -1,0 +1,197 @@
+<html>
+<head>
+<title>&lt;jsp:useBean&gt;</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">&lt;jsp:useBean&gt;</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+<p>The <span class="LITERAL">&lt;jsp:useBean&gt;</span> action associates a Java
+bean with a name in one of the JSP scopes and makes it available as a
+scripting variable. An attempt is first made to find a bean with the
+specified name in the specified scope. If it's not found, a new
+instance of the specified class is created.
+</p>
+
+<p>Of the optional attributes, at least one of <span class="LITERAL">class</span>
+or <span class="LITERAL">type</span> must be specified. If both are specified,
+<span class="LITERAL">class</span> must be assignable to
+<span class="LITERAL">type</span>. The <span class="LITERAL">beanName</span> attribute
+must be combined with the <span class="LITERAL">type</span> attribute and is
+not valid with the <span class="LITERAL">class</span> attribute.
+</p>
+
+<p>The action is processed in these steps:</p>
+
+<ol><li>
+<p>Attempt to locate an object based on the <span class="LITERAL">id</span> and
+<span class="LITERAL">scope</span> attribute values.
+</p>
+</li><li>
+<p>Define a scripting language variable with the given
+<span class="LITERAL">id</span> of the specified <span class="LITERAL">type</span> or
+<span class="LITERAL">class</span>.
+</p>
+</li><li>
+<p>If the object is found, initialize the variable's value with a
+reference to the located object, cast to the specified
+<span class="LITERAL">type</span>. This completes the processing of the action.
+If the action element has a nonempty body, it is ignored.
+</p>
+</li><li>
+<p>If the object is not found in the specified scope and neither
+<span class="LITERAL">class</span> nor <span class="LITERAL">beanName</span> is
+specified, an <span class="LITERAL">InstantiationException</span> is thrown.
+This completes the processing of the action.
+</p>
+</li><li>
+<p>If the object is not found in the specified scope and the
+<span class="LITERAL">class</span> attribute specifies a nonabstract class with
+a public no-args constructor, a new instance of the class is created
+and associated with the scripting variable and the specified name in
+the specified scope. After this, step 7 is performed.
+</p>
+
+<p>If the object is not found and the specified class doesn't
+fulfill the requirements, an
+<span class="LITERAL">InstantiationException</span> is thrown. This completes
+the processing of the action.
+</p>
+</li><li>
+<p>If the object is not found in the specified scope and the
+<span class="LITERAL">beanName</span> attribute is specified, the
+<span class="LITERAL">instantiate()</span> method of the
+<span class="LITERAL">java.beans.Beans</span> class is invoked with the
+<span class="LITERAL">ClassLoader</span> of the JSP implementation class
+instance and the <span class="LITERAL">beanName</span> as arguments. If the
+method succeeds, the new object reference is associated with the
+scripting variable and the specified name in the specified scope.
+After this, step 7 is performed.
+</p>
+</li><li>
+<p>If the action element has a nonempty body, the body is processed. The
+scripting variable is initialized and available within the scope of
+the body. The text of the body is treated as elsewhere: if there is
+template text, it is passed through to the response; scriptlets and
+action tags are evaluated.
+</p>
+
+<p>A nonempty body is commonly used to complete initialization of the
+created instance. In such a case, the body typically contains
+<span class="LITERAL">&lt;jsp:setProperty&gt;</span> actions and scriptlets.
+This completes the processing of the action.
+</p>
+</li></ol>
+<p>Example:</p>
+
+<span class="PROGRAMLISTING"><pre>&lt;jsp:useBean id="clock" class="java.util.Date" /&gt;</pre></span>
+
+</td></tr>
+</table>
+</div>
+
+<div id="beanName">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">beanName</td>
+<td valign="top" class="COMPATIBILITY"><span class="LITERAL">String</span></td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage">Request-time value accepted: yes</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Optional. The name of the bean, as expected by the <span class="LITERAL">instantiate()</span> method of the <span class="LITERAL">Beans</span> class in the <span class="LITERAL">java.beans</span> package.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="class">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">class</td>
+<td valign="top" class="COMPATIBILITY"><span class="LITERAL">String</span></td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage">Request-time value accepted: no</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Optional. The fully qualified class name for the bean.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="id">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">id</td>
+<td valign="top" class="COMPATIBILITY"><span class="LITERAL">String</span></td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage">Request-time value accepted: no</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Mandatory. The name to assign to the bean in the specified scope and the name of the scripting variable.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="scope">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">scope</td>
+<td valign="top" class="COMPATIBILITY"><span class="LITERAL">String</span></td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage">Request-time value accepted: no</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Optional. The scope for the bean: one of <span class="LITERAL">page</span>, <span class="LITERAL">request</span>, <span class="LITERAL">session</span>, or <span class="LITERAL">application</span>. The default is <span class="LITERAL">page</span>.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="type">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">type</td>
+<td valign="top" class="COMPATIBILITY"><span class="LITERAL">String</span></td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage">Request-time value accepted: no</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Optional. The fully qualified type name for the bean (i.e., a superclass or an interface implemented by the bean's class).
+</p></td>
+</tr>
+</table>
+</div>
+</body>
+</html>

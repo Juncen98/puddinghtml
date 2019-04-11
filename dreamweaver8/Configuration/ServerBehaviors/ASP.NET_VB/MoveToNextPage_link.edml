@@ -1,0 +1,8 @@
+<participant version="5.0">
+	<insertText location="nodeAttribute+href" nodeParamName="a__tag"><![CDATA[<%# Request.ServerVariables("SCRIPT_NAME") %>?@@RecordsetName@@_currentPage=<%# Math.Min(@@RecordsetName@@.CurrentPage + 1, @@RecordsetName@@.LastPage) %>]]></insertText>
+	<searchPatterns whereToSearch="tag+a">
+		<searchPattern paramNames="RecordsetName" isOptional="false" limitSearch="attribute+href"><![CDATA[/<%# Request\.ServerVariables\("SCRIPT_NAME"\) %>\s*\?([^\r\n]*?)_currentPage=\s*<%#\s*Math\.Min\(\s*[^\r\n]*?\.CurrentPage\s*\+\s*1,\s*[^\r\n]*?\.LastPage\s*\)\s*%>/i]]></searchPattern>
+	</searchPatterns>
+	<delete deleteType="tagOnly" />
+	<quickSearch>Request.ServerVariables("SCRIPT_NAME")</quickSearch>
+</participant>

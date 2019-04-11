@@ -1,0 +1,77 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<title>重复项</title>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<script language="javascript" src="../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<script language="javascript" src="../Shared/MM/Scripts/CMN/string.js"></script>
+<script language="javascript" src="../Shared/MM/Scripts/CMN/TemplateUtils.js"></script>
+<!-- End removal area. -->
+
+<script language="javascript">
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_noRepeat = "此时在剪贴板上没有重复项。";
+var MSG_cantPasteRepeat = "您只能将重复项粘贴到重复区域中。";
+
+
+//--------------- END LOCALIZEABLE   ---------------
+
+var targetDom = null; 
+var altKeyDown = false; 
+
+function isDOMRequired() {
+	return true;
+}
+
+function canAcceptCommand()
+	{	
+	return true; 
+	} //canAcceptCommand
+
+
+function receiveArguments()
+	{
+	targetDom = null; 
+	if ( arguments.length > 0)
+		targetDom =  arguments[0]; 
+
+	if (targetDom == null)
+		targetDom = dw.getDocumentDOM();
+	
+		
+	altKeyDown = window.event.altKey; 
+	}
+	
+function DoCommand()
+	{
+	if (!clipIsRepeatEntry(targetDom))
+		{
+		alert( MSG_noRepeat ); 
+		targetDom = null;
+		altKeyDown = false; 
+		return; 
+		}
+	
+	if (!canPasteRepeatEntry(targetDom) )
+		{
+		alert( MSG_cantPasteRepeat ); 
+		targetDom = null;
+		altKeyDown = false; 
+		return; 
+		}
+		
+ 	doPasteRepeatEntry(targetDom, altKeyDown);
+	targetDom = null;
+	altKeyDown = false; 
+	}
+	
+</script>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="DoCommand()">
+
+</body>
+</html>

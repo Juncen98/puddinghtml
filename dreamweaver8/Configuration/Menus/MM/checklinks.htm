@@ -1,0 +1,33 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>Á´½Ó¼ì²é²Ëµ¥</TITLE>
+<SCRIPT LANGUAGE="javascript">
+<!--
+	function receiveArguments()
+	{
+		if (dw.getFocus(true) == 'site')
+		{
+			site.checkLinks("selection");
+		}
+		else
+		{
+			site.checkLinks("document");
+		}
+   }
+
+   function canAcceptCommand()
+   {
+		if (dw.getFocus(true) == 'site')
+			return site.getFocus() != 'remote' && site.getSelection().length > 0;
+		else
+			return (dw.getDocumentDOM() != null && dw.getDocumentDOM().getParseMode() == 'html');
+   }
+
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

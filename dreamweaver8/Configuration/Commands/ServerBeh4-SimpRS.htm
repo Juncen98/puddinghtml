@@ -1,0 +1,135 @@
+<!-- MENU-LOCATION=NONE -->
+
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+<!-- Copyright 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<TITLE>记录集</TITLE>
+
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+
+<SCRIPT SRC="ServerBeh4-SimpRS.js"></SCRIPT>
+<SCRIPT SRC="ServerBeh4-RsShared.js"></SCRIPT>
+<SCRIPT SRC="../ServerBehaviors/Shared/RSSeverModelSwitches.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/SQLTypes.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/SQLStatementClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ParseSimpleSQL.js"></SCRIPT>
+<SCRIPT SRC="../ServerBehaviors/Shared/CheckDupeObjName.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/enableControl.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/docInfo.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/niceName.js"></SCRIPT>
+<script src="../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../Shared/Common/Scripts/dwscripts.js"></script>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssClasses.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ReservedWords.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/helper.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/RecordsetDialogClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/RsTypeMenu.js"></SCRIPT>
+
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+  <form>
+    <table border="0">
+      <tr valign="baseline">
+        <td align="right" nowrap>名称:</td>
+        <td nowrap>
+          <input name="RecordsetName" type="text" class="basicTextField">
+          <select name="RsTypeParameter" style="position:absolute; width:80px; visibility:hidden;" wrap="virtual" onChange="rsTypeChanged()">
+          </select>
+        </td>
+      </tr>
+	  <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>连接:</td>
+        <td nowrap>
+          <select name="ConnectionList" class="connNameList" onChange="ConnectionChanged()" wrap="virtual">
+          </select>
+          <input type="button"  value="定义..." onClick="LaunchConnectionManager()" name="button">
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>表格: </td>
+        <td nowrap>
+          <select name="TableList" class="connRSTableList" onChange="TableChanged()" wrap="virtual">
+          </select>
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr>
+        <td align="right" nowrap>列:</td>
+        <td width="1%" nowrap>
+          <input type="radio" name="RadioButton" value="all" checked onClick="RadioChanged()">
+          全部
+          <img src="../Shared/MM/Images/transparent.gif" height="3" width="10">
+          <input type="radio" name="RadioButton" value="some" onClick="RadioChanged()">
+          选定的:
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td nowrap>
+          <select name="ColumnList" size="5" multiple style="width:250px;" wrap="virtual">
+          </select>
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>筛选: </td>
+        <td nowrap>
+          <select name="ColumnDropDown"  style="width:124px" onChange="FilterColChanged(); focus(this);">
+            <option value="">无</option>
+          </select>
+          <select disabled name="OperatorDropDown" style="width:124px">
+            <option value="=" selected>=</option>
+            <option value=">" >&gt;</option>
+            <option value="<" >&lt;</option>
+            <option value=">=" >&gt;=</option>
+            <option value="<=" >&lt;=</option>
+            <option value="<>" >&lt;&gt;</option>
+            <option value="开始于" >begins with</option>
+            <option value="结束于" >ends with</option>
+            <option value="包含" >contains</option>
+          </select>
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td></td>
+        <td nowrap>
+          <select disabled name="ParameterTypeDropDown"  style="width:124px">
+          </select>
+          <input disabled  type=text name="ParameterValue"  style="width:124px">
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>排序:</td>
+        <td nowrap>
+          <select name="SortByColumnDropDown"  style="width:124px" onChange="SortColChanged()">
+            <option value="">无</option>
+          </select>
+          <select disabled name="SortByTypeDropDown" style="width:124px">
+            <option value="ASC" selected>升序</option>
+            <option value="DESC">降序</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+  </form>
+</BODY>
+</HTML>
+

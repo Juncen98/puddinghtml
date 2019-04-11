@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "预先载入图像" description = "用于按顺序预先载入多个图像文件的代码。" preview="code" type="block">
+<insertText location="beforeSelection">
+<![CDATA[Example: preloadImages('file.gif', 'http://www.x.com/y.gif');
+function preloadImages()
+{
+  if(document.images)
+  {
+    if(!document.imageArray) document.imageArray = new Array();
+    var i,j = document.imageArray.length, args = preloadImages.arguments;
+    
+    for(i=0; i<args.length; i++)
+    {
+      if (args[i].indexOf("#")!=0)
+      {
+        document.imageArray[j] = new Image;
+        document.imageArray[j++].src = args[i];
+      }
+    }
+  }
+}
+]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

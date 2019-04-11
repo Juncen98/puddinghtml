@@ -1,0 +1,184 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//pi">
+<!-- tag:*LOCKED*, attrName:type, attrValue:DynamicSource, priority:1, selection:within,hline,vline ,serverModel:JSP-->
+<html>
+<head>
+<!-- Copyright 2000-2002 Macromedia, Inc. All rights reserved. -->
+<title>记录集</title>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<!-- End removal area. -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/enableControl.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/helper.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT src="../ServerBehaviors/Jsp/JSPResultsetMasks.js"></SCRIPT>
+<SCRIPT src="../ServerBehaviors/Shared/CheckDupeObjName.js"></SCRIPT>
+<SCRIPT src="../ServerBehaviors/Shared/Recordset.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssClasses.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/sbManager.js"></SCRIPT>
+<SCRIPT SRC="_pi_common.js"></SCRIPT>
+<SCRIPT SRC="recordset.js"></SCRIPT>
+</head>
+
+<body onLoad="initializeUI()">
+
+<span id="image" style="position:absolute; width:23px; height:17px; z-index:16; left: 0px; top: 2px"><img src="rs_pi.gif" width="36" height="36"></span>
+<div id="RecordsetNameLayer" style="position:absolute; width:80px; height:15px; z-index:1; left: 40px; top: 2px"> 
+<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		  <td></td>
+		  <td valign="baseline" align="left" width="85">记录集</td>
+		</tr>
+		<tr>
+		  <td align="left" valign="baseline" nowrap colspan=2>
+
+        <input type="text" name="RecordsetName" style="width:65px" onBlur="updateRSRec('rsName')">
+		  </td>
+		</tr>
+	</table>
+</div>
+
+<!--<div id="MaxRowsTimeOutlabel" style="position:absolute; width:335px; height:18px; z-index:31; left:100px; top: 64px">
+	<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td valign="baseline" align="right" width="75">Max Rows</td>
+			<td align="left">
+				<input type="text" name="MaxRows" style="width:30px" onBlur="CheckForInvalidInt(this,MM.MSG_ValueGreaterThanZero)">
+			</td>
+			<td valign="baseline" align="right" width="113">TimeOut</td>
+			<td align="left">
+				<input type="text" name="TimeOut" style="width:30px" onBlur="CheckForInvalidInt(this,MM.MSG_InvalidTimeout)">
+			</td>
+		</tr>
+	</table>
+</div>
+-->
+<!-- original stuff
+<div id="ResultsetNameLayer" style="position:absolute; width:170px; height:15px; z-index:1; left: 2px; top: -3px">
+	<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		  <td valign="baseline" align="right" width="50">Resultset</td>
+		  <td align="right" valign="baseline" nowrap>
+			<input type="text" name="ResultsetName" style="width:110px" onBlur="CheckForDuplicates()">
+		  </td>
+		</tr>
+	</table>
+</div>
+
+<div id="ConnectionNameLayer" style="position:absolute; width:170px; height:15px; z-index:4; left: 2px; top: 14px">
+	<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td valign="baseline" align="right" width="50">Connection</td>
+			<td align="right" valign="baseline" nowrap>
+				<select name="ConnectionList" style="width:90px;" onChange="UpdateResultset()">
+				</select></td>
+			<td valign="baseline" align="top">
+				<input type="button" name="ConnectionButton" style="width:15px; height:15px;" value="..." onClick="dw.popupServerBehavior()
+">
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="SQLLayer" style="position:absolute; width:20px; height:18px; z-index:5; left:180px; top:3px">
+	<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td valign="baseline" align="right" width="20">SQL</td>
+		</tr>
+		<tr>
+			<td valign="baseline" align="top">
+				<input type="button" name="SQLButton" style="width:15px; height:15px;" value="..." onClick="dw.popupServerBehavior()
+">
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+<div id="SQLEdit" style="position:absolute; width:255px; height:38px; z-index:26; left: 203px; top:-3px">
+	<textarea name="SQL" style="left:0px;top:-7px; width:250px; height:34px" onBlur="CheckForInvalidSQL()"></textarea>
+</div>
+
+
+<div id="ResultsetTypelabel" style="position:absolute; width:80px; height:18px; z-index:27; left: 3px; top: 48px"> Resultset type
+  <div id="ResultsetTypeSelection" style="position:absolute; width:82px; height:22px; z-index:28; left: 62px; top:-1px">
+    <select type="text" name="ResultsetType" style="width:80px" onChange="UpdateResultset()">
+		<option value=0>Forward Only</option>
+		<option value=1>Scroll Sensitive</option>
+		<option value=2>Scroll Insensitive</option>
+	</select>
+  </div>
+</div>
+
+<div id="ResultsetConlabel" style="position:absolute; width:77px; height:18px; z-index:31; left:154px; top: 48px"> Concurrency
+  <div id="ResultsetConSelection" style="position:absolute; width:82px; height:22px; z-index:32; left:68px; top:-1px">
+    <select type="text" name="ResultsetCon" style="width:80px" onChange="UpdateResultset()">
+		<option value=0>Read Only</option>
+		<option value=1>Updateable</option>
+	</select>
+  </div>
+</div>
+
+
+<div id="MaxRowslabel" style="position:absolute; width:55px; height:18px; z-index:35; left: 310px; top: 48px"> MaxRows
+  <div id="MaxRowsSelection" style="position:absolute; width:82px; height:22px; z-index:36; left: 45px; top:-9px">
+	<input type="text" name="MaxRows" style="width:30px" onBlur="CheckForInvalidInt(this,MM.MSG_ValueGreaterThanZero)">
+  </div>
+</div>
+
+<div id="TimeOutlabel" style="position:absolute; width:55px; height:18px; z-index:35; left: 395px; top: 48px"> TimeOut
+  <div id="TimeOutSelection" style="position:absolute; width:82px; height:22px; z-index:36; left: 45px; top:-9px">
+	<input type="text" name="TimeOut" style="width:30px" onBlur="CheckForInvalidInt(this,MM.MSG_InvalidTimeout)">
+  </div>
+</div>-->
+<div id="topLayer" style="position:absolute; left:135px; top:2px; width:450px; height:48px; z-index:17"> 
+  <table width="79%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+      <td width="17%" align="right" nowrap>连接&nbsp;</td>
+      <td width="56%" nowrap> 
+        <input type="text" name="ConnectionList" style="width:245px;" DISABLED="true" onBlur="updateRSRec()"></td>
+      <td width="27%" nowrap> &nbsp; 
+        <input type="button" name="ConnectionButton" style="height:15px;" value="编辑..." onClick="editServerBehavior();updateRSRec()" ></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>SQL&nbsp;</td>
+      <td nowrap>
+        <input type="text" name="SQL" style="width:245px" onBlur="updateRSRec('sql')"></td>
+      <td nowrap>&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<div id="bottomLayer" style="position:absolute; left:134px; top:52px; width:451px; height:39px; z-index:18"> 
+  <table border="o" cellspacing="0" cellpadding="0">
+<tr>
+      <td width="23%" align="right" nowrap>记录集类型&nbsp;</td>
+      <td width="29%" nowrap> 
+        <select type="text" name="CursorType" style="width:92px" onChange="updateRSRec()">
+          <option value=0 SELECTED>默认</option>
+          <option value=1>仅向前</option>
+          <option value=2>滚动关联的</option>
+          <option value=3>非滚动关联的</option>
+        </select></td>
+      <td width="21%" align="right" nowrap>&nbsp;&nbsp;&nbsp;并发&nbsp;</td>
+      <td width="27%" nowrap> 
+        <select type="text" name="LockType" style="width:92px" onChange="updateRSRec()">
+          <option value=0 SELECTED>默认</option>
+          <option value=1>只读</option>
+          <option value=2>可更新</option>
+        </select></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>最大行数&nbsp;</td>
+      <td nowrap> 
+        <input type="text" name="MaxRows" style="width:30px" onBlur="updateRSRec('maxRows')"></td>
+      <td align="right" nowrap>超时&nbsp;</td>
+      <td nowrap> 
+        <input type="text" name="TimeOut" style="width:30px" onBlur="updateRSRec('timeOut')"></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

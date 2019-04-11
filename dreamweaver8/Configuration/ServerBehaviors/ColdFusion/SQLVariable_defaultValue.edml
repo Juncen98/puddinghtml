@@ -1,0 +1,9 @@
+<participant version="5.0">
+  <insertText location="none">
+<![CDATA[<cfif IsDefined("@@Variable@@") AND #@@Variable@@# NEQ "">@@RuntimeValue@@<cfelse>@@DefaultValue@@</cfif>]]>
+  </insertText>
+  <searchPatterns whereToSearch="tag+CFIF">
+    <searchPattern paramNames="Variable,RuntimeValue,DefaultValue" isOptional="false" limitSearch="all"><![CDATA[/(?:<cfif\s+IsDefined\("([^\r\n]*?)"\)\s+AND\s+#[^#]*?#\s+NEQ\s+"">\s*([^\r\n]*?)\s*<cfelse>\s*([^\r\n]*?)\s*<\/cfif>\s*)/i]]></searchPattern>
+  </searchPatterns>
+  <quickSearch>AND</quickSearch>
+</participant>

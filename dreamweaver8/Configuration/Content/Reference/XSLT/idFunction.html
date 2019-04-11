@@ -1,0 +1,208 @@
+<html>
+<head>
+<title>id() Function</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">id() Function</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+Returns the node in the source tree whose ID attribute matches the value passed in as input. </td></tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Inputs</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>An object. If the input object is a node-set, the result is a node-set that contains the result of applying the <span class="LITERAL">id()</span> function to the string value of each node in the argument node-set. Usually, the argument is some other node type, which is (or is converted to) a string. That string is then used as the search value while all attributes of type ID are searched. </p>
+<p>Remember that a limitation of the XML <span class="LITERAL">ID</span> datatype is that a single set of names across all attributes is declared to be of type <span class="LITERAL">ID</span>. The XSLT <span class="LITERAL">key()</span> function and the associated <span class="LITERAL">&lt;xsl:key&gt;</span> element address this and other limitations; see the <span class="LITERAL">key()</span> function and <span class="LITERAL">&lt;xsl:key&gt;</span> for more information.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Output</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>A node-set containing all nodes whose attributes of type <span class="LITERAL">ID</span> match the string values of the input node-set. In practice, this node-set is a single node, the node whose attribute of type <span class="LITERAL">ID</span> matches a string value. </p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Defined in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>XPath section 4.1, Node Set Functions.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>For our example, we'll take this shortened version of the glossary we discussed earlier:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0" ?&gt;
+&lt;!DOCTYPE glossary SYSTEM "glossary.dtd"&gt;
+&lt;glossary&gt;
+  &lt;glentry&gt;
+    &lt;term id="applet"&gt;applet&lt;/term&gt;
+    &lt;defn&gt;
+      An application program,
+      written in the Java programming language, that can be 
+      retrieved from a web server and executed by a web browser. 
+      A reference to an applet appears in the markup for a web 
+      page, in the same way that a reference to a graphics
+      file appears; a browser retrieves an applet in the same 
+      way that it retrieves a graphics file. 
+      For security reasons, an applet's access rights are limited
+      in two ways: the applet cannot access the filesystem of the 
+      client upon which it is executing, and the applet's 
+      communication across the network is limited to the server 
+      from which it was downloaded. 
+      Contrast with &lt;xref refid="servlet"/&gt;.
+    &lt;/defn&gt;
+  &lt;/glentry&gt;
+
+  &lt;glentry&gt;
+    &lt;term id="servlet"&gt;servlet&lt;/term&gt;
+    &lt;defn&gt;
+      An application program, written in the Java programming language, 
+      that is executed on a web server. A reference to a servlet 
+      appears in the markup for a web page, in the same way that a 
+      reference to a graphics file appears. The web server executes
+      the servlet and sends the results of the execution (if there are
+      any) to the web browser. Contrast with &lt;xref refid="applet" /&gt;.
+    &lt;/defn&gt;
+  &lt;/glentry&gt;
+&lt;/glossary&gt;</pre></span>
+<p>Here's the stylesheet we'll use to resolve the references:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+&lt;xsl:output method="html" indent="yes"/&gt;
+&lt;xsl:strip-space elements="*"/&gt;
+
+  &lt;xsl:template match="/"&gt;
+    &lt;xsl:apply-templates select="glossary"/&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match="glossary"&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;
+          &lt;xsl:text&gt;Glossary Listing &lt;/xsl:text&gt;
+        &lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;h1&gt;
+          &lt;xsl:text&gt;Glossary Listing &lt;/xsl:text&gt;
+        &lt;/h1&gt;
+        &lt;xsl:apply-templates select="glentry"/&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match="glentry"&gt;
+    &lt;p&gt;
+      &lt;b&gt;
+        &lt;a&gt;
+          &lt;xsl:attribute name="name"&gt;
+            &lt;xsl:value-of select="term/@id" /&gt;
+          &lt;/xsl:attribute&gt;
+        &lt;/a&gt;
+<!--<?troff .Nd 10?>-->
+        &lt;xsl:value-of select="term"/&gt;
+        &lt;xsl:text&gt;: &lt;/xsl:text&gt;
+      &lt;/b&gt;
+      &lt;xsl:apply-templates select="defn"/&gt;
+    &lt;/p&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match="defn"&gt;
+    &lt;xsl:apply-templates 
+     select="*|comment()|processing-instruction()|text()"/&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match="xref"&gt;
+    &lt;a&gt;
+      &lt;xsl:attribute name="href"&gt;
+        &lt;xsl:text&gt;#&lt;/xsl:text&gt;&lt;xsl:value-of select="@refid"/&gt;
+      &lt;/xsl:attribute&gt;
+      &lt;xsl:choose&gt;
+        &lt;xsl:when test="id(@refid)/@xreftext"&gt;
+          &lt;xsl:value-of select="id(@refid)/@xreftext"/&gt;
+        &lt;/xsl:when&gt;
+        &lt;xsl:otherwise&gt;
+          &lt;xsl:value-of select="id(@refid)"/&gt;
+        &lt;/xsl:otherwise&gt;
+      &lt;/xsl:choose&gt;
+    &lt;/a&gt;
+  &lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</pre></span>
+<p>Our stylesheet generates these results:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;META http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+&lt;title&gt;Glossary Listing &lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Glossary Listing &lt;/h1&gt;
+&lt;p&gt;
+&lt;b&gt;&lt;a name="applet"&gt;&lt;/a&gt;applet: &lt;/b&gt;
+      An application program,
+      written in the Java programming language, that can be 
+      retrieved from a web server and executed by a web browser. 
+      A reference to an applet appears in the markup for a web 
+      page, in the same way that a reference to a graphics
+      file appears; a browser retrieves an applet in the same 
+      way that it retrieves a graphics file. 
+      <!--<?troff .Nd 10?>-->
+      For security reasons, an applet's access rights are limited
+      in two ways: the applet cannot access the filesystem of the 
+      client upon which it is executing, and the applet's 
+      communication across the network is limited to the server 
+      from which it was downloaded. 
+      Contrast with &lt;a href="#servlet"&gt;servlet&lt;/a&gt;.
+    &lt;/p&gt;
+&lt;p&gt;
+&lt;b&gt;&lt;a name="servlet"&gt;&lt;/a&gt;servlet: &lt;/b&gt;
+      An application program, written in the Java programming language, 
+      that is executed on a web server. A reference to a servlet 
+      appears in the markup for a web page, in the same way that a 
+      reference to a graphics file appears. The web server executes
+      the servlet and sends the results of the execution (if there are
+      any) to the web browser. Contrast with &lt;a href="#applet"&gt;applet&lt;/a&gt;.
+    &lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></span>
+<p>When rendered in a browser, our hyperlinked document looks like <link linkend="xslt-appc-c4">Figure C-4</link>.</p>
+<figure id="xslt-appc-c4" label="C-4">
+        <p class="TITLE">Generated HTML glossary</p>
+        <graphic depth="299" width="481" fileref="figs/xslt.ac04.gif"/>
+      </figure>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

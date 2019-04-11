@@ -1,0 +1,70 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<title>ASP:TextBox 控件</title>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/flashObjects.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dotNetUtils.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../../TagLibraries/ASPNet/strings.js"></SCRIPT>
+<SCRIPT SRC="../../TagLibraries/ASPNet/loc_strings.js"></SCRIPT>
+<SCRIPT SRC="asp.net_textbox.js"></SCRIPT>
+<script language="javascript" src="../../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<SCRIPT>
+// Copyright 2001-2002 Macromedia, Inc. All rights reserved.
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+//--------------- END LOCALIZEABLE   ---------------
+</SCRIPT>
+</head>
+
+<body onLoad="initializeUI()">
+<form name="theForm">
+  <table border="0" cellpadding="0" cellspacing="4">
+    <tr> 
+      <td align="right" nowrap>ID:</td>
+      <td colspan="3"><input name="idField" type="text" id="idField" style="width:100px"  onBlur="updateUI('idField')"></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="25" align="right" nowrap>文本:</td>
+      <td height="25" colspan="3" nowrap><input name="textField" type="text" id="text" style="width:200px">
+      </td>
+      <td height="25" nowrap><input type="image" src="../../Shared/MM/Images/Bolt.gif" width="15" height="14" alt="绑定动态数据" onClick="dotNetUtils.getDynamicData(TEXT_TEXT);"></td>
+    </tr>
+    <tr> 
+      <td align="right" nowrap>工具提示:</td>
+      <td colspan="3"><input name="toolTip" type="text" id="toolTip" style="width:200px"></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>文本模式:</td>
+      <td colspan="3"><select name="textMode" type="text" id="textMode" style="width:200px"  onChange="updateUI('textMode')"></select>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>列数:</td>
+      <td><input type="text" name="cols" style="width:35px" value="" onBlur="updateUI('cols')"></td>
+<td align="right" nowrap><input type="checkbox" name="postBack" value="checkbox">自动回发</td>
+
+
+      <td align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right">行数:</td>
+      <td align="left"><input type="text" name="rows" style="width:35px" value="" disabled="true" onBlur="updateUI('rows')"></td>
+      <td align="right" nowrap>&nbsp;</td>
+      <td align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>最大长度:</td>
+      <td><input type="text" name="maxLen" style="width:35px" value="" onBlur="updateUI('maxLen')"></td>
+      <td align="right" nowrap>&nbsp;</td>
+      <td align="right">&nbsp;</td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

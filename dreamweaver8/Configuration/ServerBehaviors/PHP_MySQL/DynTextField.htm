@@ -1,0 +1,49 @@
+<!-- Copyright 2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+<TITLE>动态文本字段</TITLE>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+
+<SCRIPT SRC="../../Shared/Controls/Scripts/TagMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/DynamicTextField.js"></SCRIPT>
+
+<SCRIPT SRC="DynTextField.js"></SCRIPT>
+
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+<FORM NAME="theForm">
+  <TABLE BORDER=0>
+    <TR>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP>
+        文本域:
+      </TD>
+      <TD VALIGN="baseline" NOWRAP>
+        <SELECT NAME="input_type_text__tag" class="tagList">
+          <OPTION SELECTED>*** 无标签</OPTION>
+        </SELECT>
+      </TD>
+    </TR>
+    <TR><TD HEIGHT="1"></TD></TR>
+    <TR>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP>
+        将值设置为: 
+      </TD>
+      <TD VALIGN="baseline" NOWRAP>
+        <INPUT NAME="expression1" TYPE="text" class="basicTextField" SIZE="45">
+        <input type="image" src="../../Shared/UltraDev/Images/Boltup.gif" onClick="_expression1.launchDynamicData()" name="image">
+      </TD>
+    </TR>
+    <TR><TD HEIGHT="1"></TD></TR>
+  </TABLE>
+</FORM>
+</BODY>
+</HTML>
+

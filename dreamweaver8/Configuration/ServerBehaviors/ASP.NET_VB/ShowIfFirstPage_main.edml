@@ -1,0 +1,10 @@
+<participant version="5.0">
+	<insertText location="wrapSelection" nodeParamName="__tag"><![CDATA[<MM:If runat="server" Expression='<%# (@@RecordsetName@@.CurrentPage = 0) %>'><ContentsTemplate>]]></insertText>
+	<searchPatterns whereToSearch="tag+mm:if">
+		<searchPattern isOptional="false"></searchPattern>
+		<searchPattern paramNames="RecordsetName" isOptional="false" limitSearch="tagOnly"><![CDATA[/Expression='<%# \(([^\r\n]*?)\.CurrentPage = 0\) %>'>/i]]></searchPattern>
+			<searchPattern paramNames="" isOptional="false" limitSearch="innerOnly"><![CDATA[/<ContentsTemplate>/i]]></searchPattern>
+			<searchPattern paramNames="" isOptional="false" limitSearch="innerOnly"><![CDATA[/<\/ContentsTemplate>/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>MM:If</quickSearch>
+</participant>

@@ -1,0 +1,28 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved. -->
+
+<title><MMString:LoadString id="insertbar/trademark" /></TITLE>
+<SCRIPT SRC="characters.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+
+function isDOMRequired() { 
+	// Return false, indicating that this object is available in code view.
+	return false;
+}
+
+function objectTag() {
+	checkEncoding();
+  // Return the html tag that should be inserted
+  // <!ENTITY trade    CDATA "&#8482;" -- trade mark sign, U+2122 ISOnum -->
+  return "&#8482;";	  // Supported starting in 4.0 browsers, valid HTML
+  //return "&trade;"; // Supported starting in 5.0 browsers, valid HTML 
+  //return "&#153;";  // Generally supported, but not valid HTML (refers to windows specific character)
+}
+</SCRIPT>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+</BODY>
+</HTML>

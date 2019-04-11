@@ -1,0 +1,54 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<TITLE>µ¼³ö HTML</TITLE>
+<SCRIPT LANGUAGE="javascript" src="../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+<!--
+function canAcceptCommand()
+{
+	if ( dw.getFocus() != 'browser' && dw.getDocumentDOM() != null && dw.getDocumentDOM().getParseMode() == 'html' )
+		return true;
+	if ( dw.canSaveDocument( dw.getDocumentDOM() ) )
+		return true;
+	return false;
+}
+function receiveArguments()
+{
+}
+function run()
+{
+	var ext = dw.getDocumentDOM().getExtension();
+
+	if ( ext.match( /.xls/i ) )
+	{
+		var path = dw.getExportPath( ".xls", "Excel Document (*.xls)" );
+		if ( path.length > 0 )
+			dw.exportEmbedded( path );
+	}
+	else if ( ext.match( /.doc/i ) )
+	{
+		var path = dw.getExportPath( ".doc", "Word Document (*.doc)" );
+		if ( path.length > 0 )
+			dw.exportEmbedded( path );
+	}
+	else if ( ext.match( /.htm/i ) )
+	{
+		var path = dw.getExportPath( ext, "HTML Document (*.htm)" );
+		if ( path.length > 0 )
+			dw.getDocumentDOM().saveCopyAs( path );
+	}
+	else
+	{
+		var path = dw.getExportPath( ext, "*" + ext );
+		if ( path.length > 0 )
+			dw.getDocumentDOM().saveCopyAs( path );
+	}
+}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY onload="run()">
+</BODY>
+</HTML>

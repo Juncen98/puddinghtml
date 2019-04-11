@@ -1,0 +1,269 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>GETTOKEN</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">GETTOKEN</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Determines whether a token of the list in the delimiters parameter is present in a string.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+The token found at position index of the string, as a string. If index is greater than the number of tokens in the string, returns an empty string.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+String functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>GetToken(string, index [, delimiters ])
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+Left, Right, Mid, SpanExcluding, SpanIncluding
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+The following examples show how this function works.
+</p>
+
+<p>
+Example A: Consider the following code:
+</p>
+<pre>GetToken(&quot;red,blue:;red,black,tan:;red,pink,brown:;red,three&quot;, 2, &quot;:;&quot;)
+</pre>
+<p>
+This function call requests element number 2 from the string, using the delimiter &quot;:;&quot;. The output is as follows: 
+</p>
+<pre>red,black,tan
+</pre>
+<p>
+Example B: Consider the following code:
+</p>
+<pre>&lt;cfset mystring = &quot;four,&quot; 
+&amp; #chr(32)# &amp; #chr(9)# &amp; #chr(10)# 
+&amp; &quot;,five, nine,zero:;&quot;
+&amp; #chr(10)# 
+&amp; &quot;nine,ten:, eleven:;twelve:;thirteen,&quot; 
+&amp; #chr(32)# &amp; #chr(9)# &amp; #chr(10)# 
+&amp; &quot;,four&quot;&gt;
+&lt;cfoutput&gt;
+#mystring#&lt;br&gt;&lt;br&gt;
+&lt;/cfoutput&gt;
+</pre>
+<p>
+The output is as follows:
+</p>
+<pre>four,
+,five, nine,zero:;
+nine,ten:, eleven:;twelve:;thirteen, 
+,four
+</pre>
+<p>
+The GetToken function recognizes explicit spaces, tabs, or newline characters as the parameter delimiters (To specify a space character, the code is chr(32); a tab character, chr(9); and a newline character, chr(10).)
+</p>
+
+<p>
+In the example string mystring, there is:
+</p>
+<ul>
+
+<li>A forced space between the substrings &quot;four,&quot; and &quot;,five&quot;</li>
+
+<li>A literal space between &quot;five,&quot; and &quot;nine&quot;</li>
+
+<li>A literal space between &quot;ten:,&quot; and &quot;eleven,&quot;</li>
+
+<li>A forced space between &quot;thirteen,&quot; and &quot;,four&quot;</li>
+</ul>
+
+<p>
+In the following call against mystring, no spaces are specified in delimiters (it is omitted), so the function uses the space character as the string delimiter:
+</p>
+<pre>&lt;br&gt;
+&lt;cfoutput&gt;
+GetToken(mystring, 3) is : #GetToken(mystring, 3)#
+&lt;/cfoutput&gt;&lt;br&gt;
+</pre>
+<p>
+The output of this code is as follows:
+</p>
+<pre>GetToken(mystring, 3) is : nine,zero:;
+</pre>
+<p>
+The function finds the third delimiter, and returns the substring just before it that is between the second and third delimiter. This substring is &quot;nine,zero:;&quot;.
+</p>
+
+<p>
+Example C: Consider the following code:
+</p>
+<pre>&lt;cfset mystring2 = &quot;four,&quot; 
+&amp;#chr(9)# &amp; #chr(10)# 
+&amp; &quot;,five,nine,zero:;&quot; 
+&amp; #chr(10)# 
+&amp; &quot;nine,ten:,eleven:;twelve:;thirteen,&quot;
+&amp; #chr(9)# &amp; #chr(10)# &amp; &quot;,four&quot;&gt;
+&lt;cfoutput&gt;
+#mystring2#&lt;br&gt;
+&lt;/cfoutput&gt;
+</pre>
+<p>
+The output is as follows:
+</p>
+<pre>four,
+,five,nine,zero:; 
+nine,ten:,eleven:;twelve:;thirteen, 
+,four
+</pre>
+<p>
+The following is a call against mystring2: 
+</p>
+<pre>&lt;cfoutput&gt;
+GetToken(mystring2, 2) is : #GetToken(mystring2, 2)#
+&lt;/cfoutput&gt; 
+</pre>
+<p>
+The output is as follows:
+</p>
+<pre>GetToken(mystring2, 2) is : ,five,nine,zero:;
+</pre>
+<p>
+The function finds the second delimiter, and returns the substring just before it that is between the first and second delimiter. This substring is &quot;,five,nine,zero:;&quot;.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;GetToken Example&lt;/h3&gt;
+&lt;cfif IsDefined(&quot;FORM.yourString&quot;)&gt;
+&lt;!--- set delimiter ---&gt;
+&lt;cfif FORM.yourDelimiter is not &quot;&quot;&gt;
+      &lt;cfset yourDelimiter = FORM.yourDelimiter&gt;
+   &lt;cfelse&gt;
+      &lt;cfset yourDelimiter = &quot; &quot;&gt;
+&lt;/cfif&gt;
+&lt;!--- check whether number of elements in list is greater than or 
+equal to the element sought to return ---&gt;
+&lt;cfif ListLen(FORM.yourString, yourDelimiter) GTE FORM.returnElement&gt;
+   &lt;cfoutput&gt;
+   &lt;p&gt;Element #FORM.ReturnElement# in #FORM.yourString#,
+   delimited by &quot;#yourDelimiter#&quot;
+   &lt;br&gt;is:#GetToken(FORM.yourString, FORM.returnElement, yourDelimiter)#
+   &lt;/cfoutput&gt;
+...
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="STRING">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STRING</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A string or a variable that contains one. String in which to search. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="INDEX">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">INDEX</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Positive integer or a variable that contains one. The position of a token. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DELIMITERS">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DELIMITERS</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A string or a variable that contains one. A delimited list of delimiters. Elements may consist of multiple characters.</p>
+<p>Default list of delimiters: space character, tab character, newline character; or their codes: &quot;chr(32)&quot;, &quot;chr(9)&quot;, chr(10). </p>
+<p>Default list delimiter: comma character. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

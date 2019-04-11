@@ -1,0 +1,151 @@
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<HTML>
+<HEAD>
+<TITLE>主详细页集</TITLE>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/sbUtils.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/RecordsetMenu.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/RecordsetFieldsOrderedList.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/RecordsetFieldMenu.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/NumRecButtons.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/URLTextField.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/CheckBox.js"></SCRIPT>
+<SCRIPT SRC="ServerObject-MasterDetail.js"></SCRIPT>
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY onLoad="initializeUI()">
+<FORM NAME="theForm">
+  <TABLE BORDER=0>
+    <TR>
+      <TD height="43" ALIGN="right" VALIGN="baseline" NOWRAP> 记录集: </TD>
+      <TD VALIGN="baseline" NOWRAP>
+        <p>
+          <SELECT NAME="RecordsetName" class="rsNameList">
+            <OPTION SELECTED>*** 未找到记录集</OPTION>
+          </SELECT>
+        </p>
+      </TD>
+    </TR>
+    <TR>
+      <TD ALIGN="right" VALIGN="top" NOWRAP> 主页字段:  </TD>
+      <TD VALIGN="baseline" NOWRAP>
+        <table border=0>
+          <tr>
+            <td valign="baseline" width="107">
+              <input type="image" name="AddButtonMaster" src="../Shared/MM/Images/btnAdd.gif"  onClick = "_MasterPageFields.updateUI('addField'); updateUI('masterFieldsLength');focus(this)" >
+              <input type="image" name="RemoveButtonMaster" src="../Shared/MM/Images/btnDel.gif"  onClick = "_MasterPageFields.updateUI('removeField');updateUI('masterFieldsLength');focus(this)" >
+            </td>
+            <td valign="baseline" align="right" nowrap width="88">
+              <input type="image" name="MoveUpButtonMaster"  border="0" src="../Shared/MM/Images/btnUp.gif"  onclick = "_MasterPageFields.updateUI('moveFieldUp');focus(this)" >
+              <input type="image" name="MoveDownButtonMaster"  border="0" src="../Shared/MM/Images/btnDown.gif" onclick = "_MasterPageFields.updateUI('moveFieldDown');focus(this)" >
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" colspan=2>
+              <select name="MasterPageFields" size="6" multiple class="itemList">
+              </select>
+            </td>
+          </tr>
+        </table>
+      </TD>
+    </TR>
+    <TR>
+      <TD HEIGHT="1"></TD>
+    </TR>
+    <TR>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP> 以此链接到详细信息: </TD>
+      <TD VALIGN="baseline" NOWRAP>
+        <SELECT NAME="LinkField" class="dataSourceList">
+          <OPTION SELECTED>*** 未找到任何字段</OPTION>
+        </select>
+      </TD>
+    </TR>
+    <TR>
+      <TD HEIGHT="1"></TD>
+    </TR>
+    <TR>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP> 传递唯一键: </TD>
+      <TD VALIGN="baseline" NOWRAP>
+        <SELECT NAME="UniqueKeyField" class="dataSourceList">
+          <OPTION SELECTED>*** 未找到任何字段</OPTION>
+        </select>
+        <input name="Numeric" type="checkbox" value="checkbox" checked>
+        数字</TD>
+    </TR>
+    <TR>
+      <TD HEIGHT="1"></TD>
+    </TR>
+    <TR>
+      <TD ALIGN="right" VALIGN="top" NOWRAP> 显示: </TD>
+      <TD VALIGN="baseline" NOWRAP>
+        <table border="0">
+          <tr>
+            <td valign="baseline" nowrap>
+              <input type="radio" name="NumRecs" value="Count" onClick="_NumRecs.updateUI('countButton')" checked>
+              <input name="tf_NumRecs" type="text" class="smallNumOrChar" onBlur="_NumRecs.updateUI('numRecField')" value="10" maxlength="5">
+              记录</td>
+          </tr>
+          <tr>
+            <td valign="baseline" nowrap>
+              <input type="radio" name="NumRecs" value="All" onClick="_NumRecs.updateUI('allButton')">
+              所有记录 </td>
+          </tr>
+        </table>
+      </TD>
+    </TR>
+    <TR>
+      <TD HEIGHT="1"></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" ALIGN="right" VALIGN="baseline" NOWRAP>
+        <hr>
+      </TD>
+    </TR>
+    <TR>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP> 详细页名称: </TD>
+      <TD VALIGN="baseline" NOWRAP>
+        <INPUT NAME="DetailPageName" TYPE="text" class="medTField">
+        <input type="button" value="浏览..." onClick="_DetailPageName.browseForFile();focus(this)">
+      </TD>
+    </TR>
+    <TR>
+      <TD HEIGHT="1"></TD>
+    </TR>
+    <TR>
+      <TD ALIGN="right" VALIGN="top" NOWRAP>详细页字段: </TD>
+      <TD VALIGN="baseline" NOWRAP>
+        <table border=0>
+          <tr>
+            <td valign="baseline" width="107">
+              <input type="image" name="AddButtonDetail" src="../Shared/MM/Images/btnAdd.gif"  onClick = "_DetailPageFields.updateUI('addField');focus(this)" >
+              <input type="image" name="RemoveButtonDetail" src="../Shared/MM/Images/btnDel.gif"  onClick = "_DetailPageFields.updateUI('removeField');focus(this)" >
+            </td>
+            <td valign="baseline" align="right" nowrap width="89">
+              <input type="image" name="MoveUpButtonDetail"  border="0" src="../Shared/MM/Images/btnUp.gif"  onClick = "_DetailPageFields.updateUI('moveFieldUp');focus(this)" >
+              <input type="image" name="MoveDownButtonDetail"  border="0" src="../Shared/MM/Images/btnDown.gif" onClick = "_DetailPageFields.updateUI('moveFieldDown');focus(this)" >
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" colspan=2>
+              <select name="DetailPageFields" size="6" multiple class="itemList">
+              </select>
+            </td>
+          </tr>
+        </table>
+      </TD>
+    </TR>
+    <TR>
+      <TD HEIGHT="1"></TD>
+    </TR>
+  </TABLE>
+</FORM>
+</BODY>
+</HTML>

@@ -1,0 +1,161 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<title>插入 Flash 按钮</title>
+
+<script src="Flash Button.js"></script>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<!--<SCRIPT SRC="../Shared/MM/Scripts/CMN/docInfo.js"></SCRIPT>-->
+<script src="../Shared/MM/Scripts/Class/FileClass.js"></script>
+<script src="../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../Shared/MM/Scripts/Cmn/string.js"></script>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/flashObjects.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT>
+<!--Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved.-->
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var BTN_SaveAsText = "另存为文本...";
+var BTN_GetMoreStyles = "获取更多样式..."
+var LABEL_Select = "选择文件";
+var LABEL_LocalFileURL = "本地文件URL";
+var LABEL_SiteRelativeLink = "站点相对链接";
+var MSG_SaveAsFieldIsEmpty = "在创建新按钮前请填写另存为域.";
+var MSG_PleaseSaveDocument = "在创建新按钮前请保存当前文档。";
+var MSG_FileAlreadyExists = "%s 已经存在,你要替换该文件吗?";
+var MSG_InvalidLink = '"%s" 是一个 %s.请使用绝对链接或文档相对链接 ';
+var MSG_TemplateNotFound = '"%s"按钮样式不存在,请选择其他的样式.';
+var MSG_InvalidFileName = '"%s" 是一个无效文件名, 或者文件路径或文件名中含有中文字符. 请输入一个不同的名称或路径.';
+var MSG_InvalidColor = '"%s" 不是有效的颜色值。请输入一个十六进制值 (#RRGGBB) 或一个标准的颜色名称。';
+var MSG_FrameNotFound = '目标名称"%s" 在页面中不存在,请选择其他的目标.';
+var MSG_InvalidButtonStyle = '"%s"是一个非法的按钮样式.';
+var MSG_InitGeneratorFailed = "不能创建 Flash 按钮因为Dreamweaver 的一个组件丢失,请重新安装Dreamweaver";
+var MSG_InitGeneratorFailedMac = "不能创建Flash按钮. 请确定Mac OS Runtime for Java (MRJ) 2.2 或更高版本及Dreamweaver均已正确安装,你可以在 http://www.apple.com/java下载到MRJ";
+var MSG_InvalidData = "非法数据";
+var MSG_OutOfMemory = "没有足够的内存完成该操作.";
+var MSG_UnknownError = "未知错误";
+var MSG_NoTemplatesFound = "你的系统中没有按钮样式,请重新安装Dreamweaver.";
+var MSG_FilenameStartWithSpace = "文件名称不能以空格开头.";
+var MSG_ReadOnlyFile = "%s是一个只读文件.请选择其他的名称.";
+var MSG_SiteRelLinkWarning = "站点相对链接在 Flash 影片中不能工作";
+var MSG_LocalURLLinkWarning = "本地文件URLs在Flash影片中不能工作.";
+var MSG_DocRelLinkWarning = "如果你需要将按钮保存到其他文件夹,";
+var MSG_FontDoesNotExist = '名为 "%s"的字体在你的系统中不存在.请选择其他的字体';
+var MSG_NoFlashTextDocRelLinkDiffFolder = "不能创建 Flash 对象，因为如果 Flash 影片没有保存在与 HTML 文档相同的文件夹中，文档相对链接就不能在任何浏览器中工作。"
+var MSG_DefaultFontDoesNotExist = '该按钮样式(%s)的默认字体在你系统中不存在.';
+var LABEL_MoreStylesURL = "http://www.macromedia.com/go/dw_fl_buttons";
+var LABEL_DefaultSystemFontMac = "Osaka";						// needs relavant fonts for J, K, C
+var LABEL_DefaultSystemFontWin = "MS UI Gothic";
+//--------------- END LOCALIZEABLE   ---------------
+//---------------    END JAVASCRIPT    ---------------
+</SCRIPT>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()" onReloadFontList="reloadFonts();">
+<form name="theForm">
+  <table width="75" border="0" cellspacing="2" cellpadding="4">
+    <tr>
+      <td valign="top">
+        <div align="right">范例:</div>
+      </td>
+      <td align="center" valign="middle" colspan="4" >
+        <table width="225" border="0">
+          <tr>
+            <td height="50" bgcolor="#FFFFFF">
+              <div align="center"><embed src="" menu="false" type="application/x-shockwave-flash" width="205" height="50" name="swfPreview" quality="high" play="true" pluginspage="http://www.macromedia.com/shockwave/download/" >
+                </embed></div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="5" height="5"> </td>
+    </tr>
+    <tr>
+      <td valign="top" height="5"> </td>
+      <td rowspan="2" colspan="4">
+        <select name="stylesList" size="6" class="multiWordOptionList" onChange="updateUI('stylesList')">
+          <option>加载样式中...</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline">
+        <div align="right">样式:</div>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" nowrap>
+        <div align="right">按钮文本:</div>
+      </td>
+      <td valign="baseline" colspan="4">
+        <input name="labelField" type="text" class="largeTField" value="" maxlength="50">
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline">
+        <div align="right">字体:</div>
+      </td>
+      <td valign="baseline">
+        <select name="fontMenu" class="fontList">
+          <option selected></option>
+        </select>
+      </td>
+      <td valign="baseline"> <img src="../Shared/MM/Images/transparent.gif" width="5" height="8"></td>
+      <td valign="baseline" nowrap>大小: </td>
+      <td valign="baseline">
+        <input name="sizeField" type="text" class="smallNumOrChar" onBlur="updateUI('sizeField')" value="" maxlength="3" >
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline">
+        <div align="right">链接: </div>
+      </td>
+      <td valign="baseline" nowrap colspan="4">
+        <input name="linkField" type="text" class="medTField" onBlur="updateUI('linkField')" value="">
+        <input type="button" name="linkButton" value="浏览..." onclick="updateUI('linkButton');focus()">
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline">
+        <div align="right">目标:</div>
+      </td>
+      <td valign="baseline" colspan="4">
+        <select name="targetMenu" class="targetList">
+          <option selected></option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" nowrap>
+        <div align="right">背景色:</div>
+      </td>
+      <td valign="baseline" colspan="4"> <img src="../Shared/MM/Images/transparent.gif" width="3" height="1">
+        <input type="mmcolorbutton" name="bgColorPicker" value="" onChange='updateUI("bgColorPicker")'>
+        <input name="bgColorField" type="text" class="smallTField" onBlur="updateUI('bgColorField')" value="" maxlength="7">
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" nowrap>
+        <div align="right">另存为:</div>
+      </td>
+      <td valign="baseline" colspan="4">
+        <input name="saveAsField" type="text" class="medTField" onBlur="updateUI('saveAsField')" value="">
+        <input type="button" name="saveAsButton" value="浏览..." onClick="updateUI('saveAsButton');focus()">
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td valign="baseline" height="40" colspan="4"><br>
+        <span name="warningMsg" style="width:300px;"><br>
+        <br>
+        </span></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

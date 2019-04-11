@@ -1,0 +1,127 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<SCRIPT src="Fireworks HTML.js"></SCRIPT>
+<SCRIPT src="../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT src="../Shared/MM/Scripts/insertFireworksHTML.js"></SCRIPT>
+<SCRIPT src="../Shared/MM/Scripts/Class/FileClass.js"></SCRIPT>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<SCRIPT LANGUAGE="Javascript">
+// Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved.
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var LABEL_selectFW = "选择 Fireworks HTML 文件";
+var LABEL_selectFolder = "复制图像文件至";
+var LABEL_noSavedDoc = "这个文件尚未储存。";
+var LABEL_noDefinedSite = "没有定义站点。";
+
+var MSG_selectFWFile =
+		"请选择一个 Fireworks HTML 文件";
+var MSG_selectValidFile =
+		"不能找到文件 \"%s\"。\n" +
+		"请选择一个现存的 Fireworks HTML 文件。";
+var MSG_notFWFile =
+		"选定文件格式不正确。\n" +
+		"请选择一个从 Fireworks 输出的HTML文件。";
+var MSG_notExportedForDW =
+		"选定文件格式不正确。\n" +
+		"请使用 Dreamweaver 样式从 Fireworks 重新导出 HTML。";
+var MSG_behNotSupported =
+		"选定文件包含有 Dreamweaver 不支持的 JavaScript 函数。\n" +
+		"请手工插入 HTML 以确保正常运作。";
+var MSG_cantRemoveHTML =
+		"不能删除 Fireworks HTML 文件 \"%s\"。";
+
+var MSG_folderNotUnderSite =
+		"你选定的文件夹不在站点根文件夹下。\n\n" +
+		"你的根文件夹是:\n%s\n\n" +
+		"请在站点内选择一个文件夹。";
+
+var MSG_docUnsaved =
+		"为了生成对您要导入的文件的正确引用，\n" +
+		"您必须保存您的文档。\n\n" +
+		"单击“确定”以立即保存文档，或单击“取消'在不保存的情况下\n" +
+		"继续。";
+
+/*
+var MSG_copyFilesToSite =
+		"一些引用文件位于站点'%s'的根文件夹之外。\n" +
+		"当你发布该站点时,它们可能不能访问。\n\n" +
+		"被引用文件是:\n%s\n\n" +
+		"你的根文件夹是:\n%s\n\n" +
+		"将这些文件复制到站点?";
+var MSG_overwriteFiles =
+		"正要复制的一些文件在选定文件夹中已经存在。\n\n" +
+		"现存文件是:\n%s\n\n" +
+		"你要替换现存文件吗?";
+*/
+
+var MSG_copyFailed =
+		"一些文件不能复制到选定文件夹中。\n\n" +
+		"没有复制的文件是:\n%s";
+
+
+// Shorter versions which work on the Mac
+var MSG_copyFilesToSite =
+		"一些引用文件位于站点'%s'的根文件夹之外。\n" +
+		"当你发布该站点时,它们可能不能访问。\n\n" +
+		"将这些文件复制到站点?";
+var MSG_overwriteFiles =
+		"正要复制的一些文件在选定文件夹中已经存在。\n\n" +
+		"你要替换现存文件吗?";
+
+//--------------- END LOCALIZEABLE   ---------------
+//---------------    END JAVASCRIPT    ---------------
+</SCRIPT>
+
+<TITLE>插入 Fireworks HTML</TITLE>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+<form name="theForm">
+  <table cellpadding="4" cellspacing="2">
+    <tr>
+      <td align="right" valign="baseline" nowrap>Fireworks HTML 文件:</td>
+      <td valign="baseline" nowrap>
+        <input name="htmlFile" type="text" class="largeTField">
+        <input type="button" value="浏览..." name="browseHtml" onClick="updateUI('browseHtml');focus(this)">
+      </td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>选项:</td>
+      <td nowrap>
+        <input type="checkbox" name="delHtml">
+        插入后删除文件
+      </td>
+    </tr>
+ <!--
+    <tr><td height="7"></td></tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap>URL's Relative To:</td>
+      <td valign="baseline" nowrap>
+        <select name="urlRelTo" style="width:100px" onChange="updateUI('urlRelTo')">
+          <option selected>Document</option>
+          <option>Site Root</option>
+        </select>
+        &nbsp;<span id="linkRelName"></span>
+      </td>
+    </tr>
+  -->
+ <!--
+    <tr>
+      <td align="right" nowrap></td>
+      <td nowrap>
+        <input type="checkbox" name="siteRel">
+        Make URL's relative to site root
+      </td>
+    </tr>
+  -->
+  </table>
+</form>
+</BODY>
+</HTML>

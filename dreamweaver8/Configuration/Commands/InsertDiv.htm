@@ -1,0 +1,49 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Copyright 2003 Macromedia, Inc. All rights reserved. -->
+<title>插入 Div 标签</title>
+<script language="javascript" src="../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="InsertDiv.js"></script>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<script language="javascript" src="../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<!-- End removal area. -->
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="initializeUI()">
+<form name="theForm">
+  <table border="0" cellpadding="2" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap>插入:</td>
+      <td nowrap><select name="divInsertWhere" class="medTField" onChange="updateInsertDropdown();">
+          <option value="cursel" name="cursel" selected>在插入点</option>
+          <option value="before" name="before">在标签之前</option>
+          <option value="insideStart" name="insideStart">在开始标签之后</option>
+          <option value="insideEnd" name="insideEnd">在结束标签之前</option>
+          <option value="after" name="after">在标签之后</option>
+        </select>
+          <select name="divInsertAtTag" class="medTField" disabled>
+          </select>
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap>类:</td>
+      <td> 
+        <select name="divClass" class="propertyList" editable="true"></select>
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap>ID:</td>
+      <td> 
+        <select name="divID" class="propertyList" editable="true"></select>
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap>&nbsp;</td>
+      <td nowrap><input type="submit" name="Submit" onclick="buttonClicked()" value="新建 CSS 样式"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

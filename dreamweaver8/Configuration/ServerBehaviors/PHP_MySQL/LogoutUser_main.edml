@@ -1,0 +1,41 @@
+<participant>
+  <quickSearch><![CDATA[doLogout]]></quickSearch>
+  <insertText location="aboveHTML+8">
+<![CDATA[
+<?php
+//initialize the session
+if (!isset($_SESSION)) {
+  session_start();
+}
+
+// ** Logout the current user. **
+$logoutAction = $_SERVER['PHP_SELF']."?doLogout=true";
+if ((isset($_SERVER['QUERY_STRING'])) && ($_SERVER['QUERY_STRING'] != "")){
+  $logoutAction .="&". htmlentities($_SERVER['QUERY_STRING']);
+}
+
+if ((isset($_GET['doLogout'])) &&($_GET['doLogout']=="true")){
+  //to fully log out a visitor we need to clear the session varialbles
+  $_SESSION['@@MM_username@@'] = NULL;
+  $_SESSION['@@MM_userAuthorization@@'] = NULL;
+  $_SESSION['PrevUrl'] = NULL;
+  unset($_SESSION['@@MM_username@@']);
+  unset($_SESSION['@@MM_userAuthorization@@']);
+  unset($_SESSION['PrevUrl']);
+	
+  $logoutGoTo = "@@redirectPage@@";
+  if ($logoutGoTo) {
+    header("Location: $logoutGoTo");
+    exit;
+  }
+}
+?>
+]]>
+	</insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="" limitSearch="all"><![CDATA[/\$(?:HTTP)?_GET(?:_VARS)?\[\s*'doLogout'\s*]\)/]]></searchPattern>
+		<searchPattern paramNames="redirectPage" limitSearch="all"><![CDATA[/\$logoutGoTo\s*=\s*"([^\r\n]*)"/]]></searchPattern>
+		<searchPattern paramNames="redirectPage_url" limitSearch="all"><![CDATA[/\$logoutGoTo\s*=\s*"([^\r\n]*)"/]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>unset(</quickSearch>
+</participant>

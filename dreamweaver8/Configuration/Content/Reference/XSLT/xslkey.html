@@ -1,0 +1,165 @@
+<html>
+<head>
+<title>&lt;xsl:key&gt;</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">&lt;xsl:key&gt;</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+Defines an index against the current document. The element is defined with three attributes: a <span class="LITERAL">name</span>, which names this index; a <span class="LITERAL">match</span>, an XPath expression that describes the nodes to be indexed; and a <span class="LITERAL">use</span> attribute, an XPath expression that defines the property used to create the index.</td></tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Category</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>Top-level element</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Required Attributes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<dl>
+<dt>
+name
+</dt>
+<dd>
+Defines a name for this key.
+<P></p>
+<dt>
+match
+</dt>
+<dd>
+Represents an XPath expression that defines the nodes to be indexed by this key.
+<P></p>
+<dt>
+use
+</dt>
+<dd>
+Represents an XPath expression that defines the property of the indexed nodes that will be used to retrieve nodes from the index.
+<P></p>
+</dl>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Optional Attributes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>None.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Content</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>None. <span class="LITERAL">&lt;xsl:key&gt;</span> is an empty element.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Appears in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p> <span class="LITERAL">&lt;xsl:key&gt;</span> is a top-level element and can only appear as a child of <span class="LITERAL">&lt;xsl:stylesheet&gt;</span>. </p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Defined in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>XSLT section 12.2, Keys. </p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>Here is a stylesheet that defines two <span class="LITERAL">&lt;xsl:key&gt;</span> relations against an XML document:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+&lt;xsl:output method="html" indent="yes"/&gt;
+&lt;xsl:strip-space elements="*"/&gt;
+
+  &lt;xsl:key name="language-index" match="defn" use="@language"/&gt;
+  &lt;xsl:key name="term-ids"       match="term" use="@id"/&gt;
+
+  &lt;xsl:param name="targetLanguage"/&gt;
+
+  &lt;xsl:template match="/"&gt;
+    &lt;xsl:apply-templates select="glossary"/&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match="glossary"&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;
+          &lt;xsl:text&gt;Glossary Listing: &lt;/xsl:text&gt;
+          &lt;xsl:value-of select="key('language-index', 
+        $targetLanguage)[1]/preceding-sibling::term"/&gt;
+          &lt;xsl:text&gt; - &lt;/xsl:text&gt;
+          &lt;xsl:value-of select="key('language-index', 
+        $targetLanguage)[last()]/preceding-sibling::term"/&gt;
+        &lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;h1&gt;
+          &lt;xsl:text&gt;Glossary Listing: &lt;/xsl:text&gt;
+          &lt;xsl:value-of select="key('language-index', 
+        $targetLanguage)[1]/ancestor::glentry/term"/&gt;
+          &lt;xsl:text&gt; - &lt;/xsl:text&gt;
+          &lt;xsl:value-of select="key('language-index', 
+        $targetLanguage)[last()]/ancestor::glentry/term"/&gt;
+        &lt;/h1&gt;
+        &lt;xsl:for-each select="key('language-index', $targetLanguage)"&gt;
+          &lt;xsl:apply-templates select="ancestor::glentry"/&gt;
+        &lt;/xsl:for-each&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+  &lt;/xsl:template&gt;
+
+  ...
+
+&lt;/xsl:stylesheet&gt;</pre></span>
+<p>For a complete discussion of this stylesheet, illustrating how
+the <span class="LITERAL">&lt;xsl:key&gt;</span> relations are used, see <link linkend="xslt-CHP-5-SECT-2.3">Section 5.2.3</link> in <link linkend="xslt-CHP-5">Chapter 5</link>.</p>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

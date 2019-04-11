@@ -1,0 +1,101 @@
+<!-- MENU-LOCATION=NONE -->
+
+<html>
+
+<head>
+
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<title>≤Â»Î÷ÿ∏¥«¯”Ú</title>
+
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+
+<script language="javascript" src="../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<script language="javascript" src="../Shared/MM/Scripts/CMN/TemplateUtils.js"></script>
+
+<!-- End removal area. -->
+
+
+
+<script language="javascript" src="InsertRepeatingContent.js">
+
+//this command takes: 
+
+//	
+
+//	dialogParams - object with a 'returnValue' field which is set to true or false, and a 
+
+//				  content type field. 
+
+//				   contentType - "editable", "repeating" or "optional" 
+
+//	targetDom	- the target DOM to look in, or null
+
+
+
+
+
+var targetDom = null; 
+
+var dialogParams; 
+
+
+
+function receiveArguments()
+
+	{
+
+	dialogParams = arguments[0]; 
+
+	if (typeof dialogParams.returnValue == 'undefined')
+
+		{
+
+		dialogParams.returnValue = false; 
+
+		dialogParams.contentType = "editable";
+
+		}
+
+		
+
+	targetDom = arguments[1]; 
+
+	} //receiveArguments
+
+
+
+
+
+//Return true if we can make the current selection in the current dom repeating.
+
+function canMakeTemplateContent_glue()
+
+	{
+
+	dialogParams.returnValue = canMakeTemplateContent(dialogParams.contentType, targetDom); 
+
+	} //canMakeTemplateContent
+
+
+
+
+
+canMakeTemplateContent_glue();
+
+
+
+</script>
+
+</head>
+
+
+
+<body>
+
+
+
+</body>
+
+</html>
+

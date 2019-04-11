@@ -1,0 +1,83 @@
+<!-- Copyright 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>STYLE</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var TYPELIST;
+var theUIObjects; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function initializeUI()
+{
+	TYPELIST = new ListControl("thetype");
+
+	theUIObjects  = new Array(TYPELIST); 
+
+  tagDialog.populateDropDownList(TYPELIST, theLinkTypesVal, theLinkTypesVal, 0); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类型:</td>
+      <td nowrap="nowrap">
+        <select name="thetype" class="mimeTypesList" id="attr:style:type" attname="type" editable="true" required="true">
+           
+        </select>
+      </td> 
+    </tr> 
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">媒体: </td>
+      <td nowrap="nowrap">
+        <input name="themedia" type="text" class="basicTextField" id="attr:style:media" attname="media" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:style:disabled" name="thedisabled" attname="disabled" truevalue="disabled" falsevalue="" /> 已禁用 &nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;4+
+      </td> 
+    </tr> 
+  </table>
+</div> 
+<div name="辅助功能"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">标题: </td>
+      <td nowrap="nowrap">
+        <input name="thetitle" type="text" class="basicTextField" id="attr:style:title" attname="title" />
+      </td>
+    </tr>
+  </table> 
+</div>
+<div name="内容"> 
+  <textarea name="html:style:innerHTML"  wrap="VIRTUAL" class="contentsField" attname="innerHTML"></textarea>
+</div> 
+</body>
+</html>

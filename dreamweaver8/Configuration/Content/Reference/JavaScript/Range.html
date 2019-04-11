@@ -1,0 +1,1642 @@
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr><html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">Range</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>The W3C DOM <span class="literal">Range</span> objectsimilar in concept
+to the IE <span class="literal">TextRange</span> objectrepresents a
+sequence of zero or more rendered text characters in a document. When
+a text range consists of zero characters, it represents an insertion
+point between two characters (or before the first or after the last
+character of the document). The <span class="literal">Range</span> object
+automatically keeps track of the node and character offset references
+for the start and end points of the range, so its methods can copy
+existing content, delete the range's contents, or
+insert new contents (in node form) into the existing range while
+maintaining the integrity of the document tree at every step.
+Nodeness is important to the <span class="literal">Range</span> object, but
+most of those concerns are handled for you.
+</p>
+							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			A <span class="literal">Range</span> object is created via the
+<span class="literal">document.createTextRange( )</span> method or by turning a
+user selection into a range via
+<span class="literal">window.getSelection( ).getRangeAt(0)</span>. Once a text
+range is created, use its methods to adjust its start and end point
+to encompass a desired segment of the text. The choose from a set of
+additional methods to act on the range. See Chapter 5 for details and examples of using the
+<span class="literal">Range</span> object and how its syntax varies from that
+of the IE <span class="literal">TextRange</span> object.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>document.createRange( )</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificproperties"><span class="title">Object-Specific Properties</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">collapsed</span></td><td><span class="literal">commonAncestorContainer</span></td><td><span class="literal">endContainer</span></td>
+								</tr>
+								<tr><td><span class="literal">endOffset</span></td><td><span class="literal">startContainer</span></td><td><span class="literal">startOffset</span></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificmethods"><span class="title">Object-Specific Methods</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">cloneContents( )</span></td><td><span class="literal">cloneRange( )</span></td><td><span class="literal">collapse( )</span></td>
+								</tr>
+								<tr><td><span class="literal">compareBoundaryPoints( )</span></td><td><span class="literal">compareNode( )</span></td><td><span class="literal">comparePoint( )</span></td>
+								</tr>
+								<tr><td><span class="literal">createContextualFragment( )</span></td><td><span class="literal">deleteContents( )</span></td><td><span class="literal">detach( )</span></td>
+								</tr>
+								<tr><td><span class="literal">extractContents( )</span></td><td><span class="literal">insertNode( )</span></td><td><span class="literal">intersectsNode( )</span></td>
+								</tr>
+								<tr><td><span class="literal">isPointInRange( )</span></td><td><span class="literal">selectNode( )</span></td><td><span class="literal">selectNodeContents( )</span></td>
+								</tr>
+								<tr><td><span class="literal">setEnd( )</span></td><td><span class="literal">setEndAfter( )</span></td><td><span class="literal">setEndBefore( )</span></td>
+								</tr>
+								<tr><td><span class="literal">setStart( )</span></td><td><span class="literal">setStartAfter( )</span></td><td><span class="literal">setStartBefore( )</span></td>
+								</tr>
+								<tr><td><span class="literal">surroundContents( )</span></td><td><span class="literal">toString( )</span></td><td></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificeventhandlerproperties"><span class="title">Object-Specific Event Handler Properties</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="collapsed">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">collapsed</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns Boolean <span class="literal">true</span> if the
+range's start and end points are at the same
+location, encompassing zero characters. A collapsed range can be
+located anywhere within the document.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>if (rng.collapsed) {
+    // act on collapsed text range
+}</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Boolean value: <span class="literal">true</span> | <span class="literal">false</span>.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="commonAncestorContainer">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">commonAncestorContainer</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a reference to a document tree node that is the next
+outermost container that encompasses the current
+range's start and end points. If the start and end
+points are, themselves, in the same node (for example, the same text
+node), the <span class="literal">commonAncestorContainer</span> property
+returns a reference to that node's parent node. IE
+<span class="literal">TextRange</span> equivalent is <span class="literal">parentElement(
+)</span>.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var containingElem = rng.commonAncestorContainer;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to a node object (commonly an element node type).</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="endContainer">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">endContainer</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a reference to a document tree node that contains the current
+range's end point.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var containingElemRight = rng.endContainer;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to a node object.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="endOffset">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">endOffset</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns an integer count of characters or nodes for the end
+point's location within the node reported by the
+<span class="literal">endContainer</span> property. If the
+<span class="literal">endContainer</span> is a text node, the
+<span class="literal">endOffset</span> property counts the number of characters
+to the right of the first character of that text node. If the
+<span class="literal">endContainer</span> is an element node, the
+<span class="literal">endOffset</span> property counts the number of nodes
+between the start of the containing node's content
+and the end point.
+</p>
+							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>As an example, consider the following document segment that shows a
+text range in boldface characters, with the start and end points
+signified by pipe characters:
+</p>
+<span class="PROGRAMLISTING"><pre>&lt;&gt;One paragraph with |p<em>a</em>&lt;span&gt; <em>nested</em>&lt;/spa&gt;| element inside.&lt;/p&gt;n</pre></span>
+							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			Note that the start point is within a text node, while the end point
+sits just outside the <span class="literal">span</span> element end tag. The
+<span class="literal">Range</span> object's properties report
+values as shown in the following table.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>
+								<table border="1"><tbody><tr><th>Property</th><th>Value</th><th>Description</th></tr>
+										<tr><td><span class="literal">commonAncestorContainer</span></td><td><span class="literal">[object</span> <span class="literal">HTMLParagraphElement]</span></td><td>The <span class="literal">p</span> element embraces both the start and end
+points.
+</td>
+										</tr>
+										<tr><td><span class="literal">startContainer</span></td><td><span class="literal">[object Text]</span></td><td>Start point is within a text node.</td>
+										</tr>
+										<tr><td><span class="literal">startOffset</span></td><td><span class="literal">19</span></td><td>Start point is at the 20th (zero-based index of 19) character from
+the start of its container, the text node.
+</td>
+										</tr>
+										<tr><td><span class="literal">endContainer</span></td><td><span class="literal">[object</span> <span class="literal">HTMLParagraphElement]</span></td><td>End point is designated as the end of the <span class="literal">span</span>
+element, which makes the next outer <span class="literal">p</span> element the
+end point's container.
+</td>
+										</tr>
+										<tr><td><span class="literal">endOffset</span></td><td><span class="literal">2</span></td><td>End point is at the 3rd (zero-based index of 2) node in the context
+of its <span class="literal">endContainer</span> <span class="literal">p</span> element
+(first node is a text node; second node is the
+<span class="literal">span</span> element; end point is at the start of the
+third node of the <span class="literal">p</span> element).
+</td>
+										</tr>
+									</tbody></table>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var rngEndOff = rng.endOffset;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="startContainer">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">startContainer</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a reference to a document tree node that contains the current
+range's start point.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var containingElemLeft = rng.startContainer;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to a node object.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="startOffset">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">startOffset</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns an integer count of characters or nodes for the start
+point's location within the node reported by the
+<span class="literal">startContainer</span> property. If the
+<span class="literal">startContainer</span> is a text node, the
+<span class="literal">startOffset</span> property counts the number of
+characters to the right of the first character of that text node. If
+the <span class="literal">startContainer</span> is an element node, the
+<span class="literal">startOffset</span> property counts the number of nodes
+between the start of the containing node's content
+and the start point. See <span class="literal">endOffset</span> for more
+details.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var rngStartOff = rng.startOffset;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="cloneContents( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">cloneContents( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">7</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a <span class="literal">DocumentFragment</span> node containing a copy
+of the contents from the current range. Any dangling nodes are
+resolved as part of the cloning process.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to a node of a document fragment type.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="cloneRange( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">cloneRange( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a <span class="literal">Range</span> object that is a carbon copy of
+the current range, including references to associated containers.
+This method lets you preserve a copy of a <span class="literal">Range</span>
+object's specifications while creating a new
+<span class="literal">Range</span> object. Similar to the IE
+<span class="literal">TextRange</span> object's
+<span class="literal">duplicate( )</span> method.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to a <span class="literal">Range</span> object.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="collapse( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">collapse( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">collapse(<span class="replaceable">toStartFlag</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Shrinks the current range to an insertion point (start and end points
+are in the same node at the same offset). The Boolean parameter
+controls whether the range collapses to the start point
+(<span class="literal">true</span>) or end point (<span class="literal">false</span>) of
+the current range. A script working its way through a document (e.g.,
+using the <span class="literal">String.indexOf( )</span> method to search for
+the next instance of a string) usually collapses to the end point
+before shifting the end point to the end of the body to perform the
+next <span class="literal">String.indexOf( )</span> search.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Boolean value that controls whether collapse occurs at the start
+point (<span class="literal">true</span>) or end point
+(<span class="literal">false</span>) of the current range.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="compareBoundaryPoints( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">compareBoundaryPoints( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">compareBoundaryPoints(<span class="replaceable">compareType</span>,
+<span class="replaceable">sourceRangeRef</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns an integer code indicating the relative positioning of one
+boundary point of the current range's against a
+boundary point of a different text range. In the simplest case, the
+two end points (one from each range) share the same ancestor
+container. In such a case, the first parameter determines which end
+points from the two ranges get compared. Use the constants supplied
+with every <span class="literal">Range</span> object, as shown in the following
+table.
+</p>
+							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			If the first boundary in the comparison occurs earlier in the
+document than the second boundary, the returned value is -1; if the
+first boundary comes after the second boundary, the returned value is
+1; if the two boundaries are in the identical position, the returned
+value is 0. Similar to the IE <span class="literal">TextRange</span>
+object's <span class="literal">compareEndPoints( )</span>
+method.
+</p>
+							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			But the situation can be more complex if the boundary points being
+compared have different ancestor container nodes. The offset values
+with respect to container nodes influence the comparison results. Due
+to the variety of results that can occur with numerous relationships
+between the compared end points, your scripts will need to perform an
+intricate analysis of boundaries to assure comparisons report the
+desired sequence. On the other hand, simply looking for unanimity of
+boundary points is a much simpler prospect. You may prefer to limit
+your comparisons to looking only for return values of zero (or any
+other value) for a more binary determination of boundary comparisons.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>
+								<table border="1"><tbody><tr><th>Comparison type</th><th>Description</th></tr>
+										<tr><td><span class="replaceable">rng</span><span class="literal">.START_TO_START</span></td><td>Comparing the start position of the current range against the start
+position of the source range
+</td>
+										</tr>
+										<tr><td><span class="replaceable">rng</span><span class="literal">.START_TO_END</span></td><td>Comparing the start position of the current range against the end
+position of the source range
+</td>
+										</tr>
+										<tr><td><span class="replaceable">rng</span><span class="literal">.END_TO_END</span></td><td>Comparing the end position of the current range against the end
+position of the source range
+</td>
+										</tr>
+										<tr><td><span class="replaceable">rng</span><span class="literal">.END_TO_START</span></td><td>Comparing the end poisition of the current range against the start
+position of the source range
+</td>
+										</tr>
+									</tbody></table>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Integer values from <span class="literal">0</span> to <span class="literal">3</span>
+corresponding to comparison types. Integer values are not aligned
+with the W3C DOM standard in Netscape 6 or 7, but the plain-language
+constants (such as
+<span class="replaceable">rng</span><span class="literal">.START_TO_START</span>,
+shown in the table above) produce the correct comparisons.
+</li><li><span class="literal"></span>Reference to a second, previously defined <span class="literal">Range</span>
+object, perhaps preserved through the <span class="literal">cloneRange(
+)</span> method.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer values <span class="literal">-1</span>, <span class="literal">0</span>, or
+<span class="literal">1</span>.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="compareNode( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">compareNode( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">compareNode(<span class="replaceable">nodeReference</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>A Netscape-only method that returns an integer code indicating the
+relative position of some other node with respect to the current
+range. Four plain-language constants are members of every Netscape
+<span class="literal">Range</span> object, and can be used for comparisons of
+values returned by the <span class="literal">compareNode( )</span> method. Note
+that the returned values are from the point of view of the node
+passed as a parameter, rather than from that of the current range.
+</p>
+							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			Returned values and constants are as follows.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>
+								<table border="1"><tbody><tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+										<tr><td><span class="replaceable">rng</span><span class="literal">.NODE_BEFORE</span></td><td><span class="literal">0</span></td><td>Entire node comes before the range.</td>
+										</tr>
+										<tr><td><span class="replaceable">rng</span><span class="literal">.NODE_AFTER</span></td><td><span class="literal">1</span></td><td>Entire node comes after the range.</td>
+										</tr>
+										<tr><td><span class="replaceable">rng</span><span class="literal">.NODE_BEFORE_AND_AFTER</span>
+</td><td><span class="literal">2</span></td><td>Node starts before the current range and ends after it.</td>
+										</tr>
+										<tr><td><span class="replaceable">rng</span><span class="literal">.NODE_INSIDE</span></td><td><span class="literal">3</span></td><td>Node is contained in its entirety within the scope of the range.</td>
+										</tr>
+									</tbody></table>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			By way of example:</p>
+<span class="PROGRAMLISTING"><pre>if (rng.compareNode(document.getElementById(&quot;myElem&quot;)) == rng.NODE_INSIDE) {
+    // process for myElem node being contained by the range
+}</pre></span>
+							</td>
+						</tr>
+
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Reference to any node in the document tree.</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer values <span class="literal">0</span>, <span class="literal">1</span>,
+<span class="literal">2</span>, or <span class="literal">3</span>.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="comparePoint( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">comparePoint( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">compareNode(<span class="replaceable">nodeReference</span>,
+<span class="replaceable">offset</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>A Netscape-only method that returns an integer code indicating the
+relative position of some other node and offset within that node with
+respect to the current range. Note that the returned values are from
+the point of view of the node (more specifically, the point signified
+by the offset within the node) passed as parameters, rather than from
+that of the current range.
+</p>
+							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			Returned values are as follows.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>
+								<table border="1"><tbody><tr><th>Value</th><th>Description</th></tr>
+										<tr><td><span class="literal">-1</span></td><td>Point comes before the start of the range.</td>
+										</tr>
+										<tr><td><span class="literal">0</span></td><td>Point is located within the range.</td>
+										</tr>
+										<tr><td><span class="literal">1</span></td><td>Point comes after the end of the range.</td>
+										</tr>
+									</tbody></table>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			By way of example:</p>
+							<span class="PROGRAMLISTING"><pre>if (rng.comparePoint(document.getElementById(&quot;myElem&quot;), 2) == 0) {
+    // process for offset of 2 within myElem node being contained by the range
+}</pre></span>
+</td>
+						</tr>
+
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Reference to any node in the document tree.</li><li><span class="literal"></span>Integer offset, counting either nested nodes within an element or
+characters within a text node.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer values <span class="literal">-1</span>, <span class="literal">0</span>,
+<span class="literal">1</span>.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="createContextualFragment( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">createContextualFragment( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">createContextualFragment(<span class="replaceable">contentString</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>The <span class="literal">createContextualFragment( )</span> method was
+initially designed as an alternative to the
+<span class="literal">innerHTML</span> convenience property (because the W3C
+DOM provides little in the way of support for content strings
+consisting of tags). This method accepts any stringincluding
+tagged contentas a parameter, and returns a
+<span class="literal">DocumentFragment</span> type of node, ready for appending
+or inserting into the document tree. Subsequent adoption of the
+<span class="literal">innerHTML</span> property by the Mozilla browser makes
+this method redundant, except that it is more consistent with the
+overall nodeness of the W3C DOM.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Document content in string form, including tags and attributes.</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to a document fragment type of node outside of the document
+tree. This node can then be applied to the document tree.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="deleteContents( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">deleteContents( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Removes the contents of the current text range from the document
+tree. If the range is an element node (e.g., with boundaries
+established via the <span class="literal">selectNode( )</span> method),
+invoking <span class="literal">deleteContents( )</span> on the range removes
+the node from the document tree and collapses the range. The
+<span class="literal">Range</span> object remains in memory, but without any
+content. If you want to capture the content prior to its deletion, do
+so with other <span class="literal">Range</span> object methods (such as
+<span class="literal">cloneRange( )</span> and, when it works correctly,
+<span class="literal">cloneContents( )</span>).
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="detach( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">detach( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Destroys the current <span class="literal">Range</span> object to the extent
+that invoking most methods on the object or accessing its properties
+throw a <span class="literal">RangeException</span> of type
+<span class="literal">INVALID_STATE_ERR</span>.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="extractContents( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">extractContents( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a <span class="literal">DocumentFragment</span> node containing the
+contents of the current range, after removing the contents from the
+document tree. Not working in Netscape as of Version 6.2 except when
+the range boundaries are set via the <span class="literal">selectNodeContents(
+)</span> method.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to a node of a document fragment type.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="insertNode( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">insertNode( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">insertNode(<span class="replaceable">nodeReference</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Inserts a node at the start of the current text range. Most useful
+when the range is already collapsed as a text insertion pointer. The
+node being inserted can be created fresh (via
+<span class="literal">document.createElement( )</span>) or fetched from
+elsewhere in the document tree, in which case it is removed from its
+old position and inserted into the current range. If you insert a
+text node adjacent to a spot that also happens to be an existing text
+node, you can wind up with two adjacent text nodes. Invoke the
+<span class="literal">normalize( )</span> method on the parent to consolidate
+the text nodes.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Reference to any text, element, or document fragment node to be
+inserted into the range.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Nothing</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="intersectsNode( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">intersectsNode( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">intersectsNode(<span class="replaceable">nodeReference</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns Boolean <span class="literal">true</span> if any part of the current
+range overlaps with the text or element node that is passed as a
+parameter. If your script detects an intersection, it can use the
+<span class="literal">compareNode( )</span> method to obtain more detail about
+the intersection.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Reference to any text or element in the document tree.</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Boolean value: <span class="literal">true</span> | <span class="literal">false</span>.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="isPointInRange( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">isPointInRange( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">isPointInRange(<span class="replaceable">nodeReference</span>,
+<span class="replaceable">offset</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns Boolean <span class="literal">true</span> if the location denoted by
+the parameter values (a node in the document tree and an offset
+location within that node) is within the current range.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Reference to any text or element in the document tree.</li><li><span class="literal"></span>Integer offset, counting either nested nodes within an element or
+characters within a text node.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Boolean value: <span class="literal">true</span> | <span class="literal">false</span>.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="selectNode( ), selectNodeContents( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">selectNode( ), selectNodeContents( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">selectNode(<span class="replaceable">nodeReference</span>)
+selectNodeContents(<span class="replaceable">nodeReference</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Sets the range's boundary points to encompass a node
+or just the node's contents. Despite the
+methods' names, no body text in the rendered
+document is highlighted.
+</p>
+							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			Your choice of method impacts the way the range's
+<span class="literal">startContainer</span> and <span class="literal">endContainer</span>
+properties are filled. In the following sequence, you see what
+happens to the range and its properties when an element node and a
+text node are parameters to these methods. The initial HTML segment
+is:
+</p>
+<span class="PROGRAMLISTING"><pre>&lt;&gt;One paragraph with a &lt;span id=&quot;myspan&quot;&gt;nested&lt;/span&gt; element inside.&lt;/p&gt;p</pre></span>
+							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			Selecting the <span class="literal">span</span> element (with the
+<span class="literal">rng.selectNode(document.getElementById("myspan"))</span>
+method) sets the range to:
+</p>
+<span class="PROGRAMLISTING"><pre>&lt;&gt;One paragraph with a |&lt;span id=&quot;myspan&quot;&gt;p<em>nested</em>&lt;/spa&gt;| element inside.&lt;/p&gt;n</pre></span>
+							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			The <span class="literal">Range</span> object's properties
+report values as follows.
+</p>
+							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			Using the
+<span class="literal">rng.selectNodeContents(document.getElementById("myspan"))</span>
+method to select the <span class="literal">span</span>
+element's contents sets the range to:
+</p>
+<span class="PROGRAMLISTING"><pre>&lt;&gt;One paragraph with a &lt;span id=&quot;myspan&quot;&gt;|p<em>nested</em>&lt;/span&gt; element inside.&lt;/p&gt;|</pre></span>
+							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			The <span class="literal">Range</span> object's properties
+report values as follows.
+</p>
+							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			Using the
+<span class="literal">rng.selectNode(document.getElementById("myspan").firstChild)</span>
+method to select the text node inside the span element sets the range
+to:
+</p>
+<span class="PROGRAMLISTING"><pre>&lt;&gt;One paragraph with a &lt;span id=&quot;myspan&quot;&gt;|p<em>nested</em>&lt;/span&gt; element inside.&lt;/p&gt;|</pre></span>
+							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			Even though the node passed as a parameter is different (and a
+different node type), the new range selection looks the same as the
+previous one. In fact, due to the way the node tree is structured,
+the <span class="literal">Range</span> object's properties
+report identical values as follows.
+</p>
+							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			Using the
+<span class="literal">rng.selectNodeContents(document.getElementById("myspan"))</span>
+method to select the contents of the text node inside the span
+element sets the range to:
+</p>
+<span class="PROGRAMLISTING"><pre>&lt;&gt;One paragraph with a &lt;span id=&quot;myspan&quot;&gt;||nested&lt;/span&gt; element inside.&lt;/p&gt;p</pre></span>
+							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			In other words, the range collapses to an insertion point at the
+start of the text node (this may be a bug in Netscape 6), and the
+text node becomes the container, as shown in the following property
+enumeration.
+</p>
+							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			Element nodes tend to be the most practical parameter values to pass
+to either method.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>
+								<table border="1"><tbody><tr><th>Property</th><th>Value</th><th>Description</th></tr>
+										<tr><td><span class="literal">startContainer</span></td><td><span class="literal">[object HTMLParagraphElement]</span></td><td>Start point is right before the <span class="literal">span</span> element.</td>
+										</tr>
+										<tr><td><span class="literal">startOffset</span></td><td><span class="literal">1</span></td><td>Start point is at the 2nd (zero-based index of 1) node inside the
+<span class="literal">p</span> element.
+</td>
+										</tr>
+										<tr><td><span class="literal">endContainer</span></td><td><span class="literal">[object</span> <span class="literal">HTMLParagraphElement]</span></td><td>End point is immediately after the <span class="literal">span</span> element.</td>
+										</tr>
+										<tr><td><span class="literal">endOffset</span></td><td><span class="literal">2</span></td><td>End point is at the 3rd (zero-based index of 2) node in the context
+of its <span class="literal">endContainer</span> <span class="literal">p</span> element.
+</td>
+										</tr>
+									</tbody></table>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>
+								<table border="1"><tbody><tr><th>Property</th><th>Value</th><th>Description</th></tr>
+										<tr><td><span class="literal">startContainer</span></td><td><span class="literal">[object HTMLSpanElement]</span></td><td>Start point is just inside the <span class="literal">span</span> element.</td>
+										</tr>
+										<tr><td><span class="literal">startOffset</span></td><td><span class="literal">0</span></td><td>Start point is at the 1st (zero-based index of 0) node inside the
+<span class="literal">span</span> element.
+</td>
+										</tr>
+										<tr><td><span class="literal">endContainer</span></td><td><span class="literal">[object</span> <span class="literal">HTMLSpanElement]</span></td><td>End point is immediately after the <span class="literal">span</span>
+element's content.
+</td>
+										</tr>
+										<tr><td><span class="literal">endOffset</span></td><td><span class="literal">1</span></td><td>End point is at a position where the 2nd (zero-based index of 1)
+node, if present, would be in the context of its
+<span class="literal">endContainer</span> <span class="literal">span</span> element.
+</td>
+										</tr>
+									</tbody></table>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>
+								<table border="1"><tbody><tr><th>Property</th><th>Value</th><th>Description</th></tr>
+										<tr><td><span class="literal">startContainer</span></td><td><span class="literal">[object HTMLSpanElement]</span></td><td>Start point is just inside the <span class="literal">span</span> element.</td>
+										</tr>
+										<tr><td><span class="literal">startOffset</span></td><td><span class="literal">0</span></td><td>Start point is at the 1st (zero-based index of 0) node inside the
+<span class="literal">span</span> element.
+</td>
+										</tr>
+										<tr><td><span class="literal">endContainer</span></td><td><span class="literal">[object</span> <span class="literal">HTMLSpanElement]</span></td><td>End point is immediately after the <span class="literal">span</span>
+element's content.
+</td>
+										</tr>
+										<tr><td><span class="literal">endOffset</span></td><td><span class="literal">1</span></td><td>End point is at a position where the 2nd (zero-based index of 1)
+node, if present, would be in the context of its
+<span class="literal">endContainer</span> <span class="literal">span</span> element.
+</td>
+										</tr>
+									</tbody></table>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>
+								<table border="1"><tbody><tr><th>Property</th><th>Value</th><th>Description</th></tr>
+										<tr><td><span class="literal">startContainer</span></td><td><span class="literal">[object Text]</span></td><td>Start point is at the beginning of the text node.</td>
+										</tr>
+										<tr><td><span class="literal">startOffset</span></td><td><span class="literal">0</span></td><td>Start point is at the 1st (zero-based index of 0) position of the
+text node.
+</td>
+										</tr>
+										<tr><td><span class="literal">endContainer</span></td><td><span class="literal">[object Text]</span></td><td>End point is collapsed.</td>
+										</tr>
+										<tr><td><span class="literal">endOffset</span></td><td><span class="literal">0</span></td><td>End point is collapsed.</td>
+										</tr>
+									</tbody></table>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Reference to any text or element in the document tree.</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="setEnd( ), setStart( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">setEnd( ), setStart( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">setEnd(<span class="replaceable">nodeReference</span>, <span class="replaceable">offset</span>)
+setStart(<span class="replaceable">nodeReference</span>, <span class="replaceable">offset</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Establish the document tree locations for the individual boundary
+points of an existing <span class="literal">Range</span> object. Similar to the
+IE <span class="literal">TextRange</span> object's
+<span class="literal">setEndPoint( )</span> method. The mapping of a location
+relies upon a node reference and an offset value relative to that
+node's starting point and type. Offset values count
+child nodes when the <span class="replaceable">nodeReference</span> is an
+element node; they count characters when the
+<span class="replaceable">nodeReference</span> is a text node. To set a
+boundary at a node edge, the associated methods
+(<span class="literal">setEndAfter( )</span> and three others) are more
+convenient.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Reference to any element or text node in the document tree.</li><li><span class="literal"></span>Integer offset, counting either nested nodes within an element or
+characters within a text node.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="setEndAfter( ), setEndBefore( ), setStartAfter( ), setStartBefore( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">setEndAfter( ), setEndBefore( ), setStartAfter( ), setStartBefore( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">setEndAfter(<span class="replaceable">nodeReference</span>)
+setEndBefore(<span class="replaceable">nodeReference</span>)
+setStartAfter(<span class="replaceable">nodeReference</span>)
+setStartBefore(<span class="replaceable">nodeReference</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Establish the document tree locations for the individual boundary
+points of an existing <span class="literal">Range</span> object with respect to
+a node's edges. These methods assume that you are
+interested in setting a range's boundaries to places
+immediately before or after an existing node, and not concerned with
+other kinds of offsets. Range boundaries do not have to be
+symmetrical, allowing you to specify the start boundary relative to
+one node and the end boundary relative to a completely different node
+later in the document.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Reference to any element or text node in the document tree.</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="surroundContents( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">surroundContents( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">7</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">surroundContents(<span class="replaceable">parentNodeReference</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Encapsulates the current range with a new container, usually a new
+element node created via the <span class="literal">document.createElement(
+)</span> method. End points of the current range should have the
+same parent container prior to applying this method.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Reference to a node that becomes the new containing parent for the
+range.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="toString( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">toString( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a string of the body content contained by the range. No tags
+or attributes accompany the returned value.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			String.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+</body>
+</html>

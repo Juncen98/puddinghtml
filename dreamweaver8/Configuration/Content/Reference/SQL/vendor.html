@@ -1,0 +1,4972 @@
+<html>
+<head>
+<link rel="stylesheet" href="josh.css">
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<DIV id="DESCRIPTION">
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td valign="top" class="name">Vendor Extensions</td>
+<td valign="top" nowrap class="compatibility"> </td>
+</tr>
+ <tr>
+     <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+     <td valign="top" colspan="2" class="description">
+<p>The following section
+provides a full listing and description of each vendor-supported
+function. These functions are vendor-specific. Thus, a MySQL
+function, for example, is not guaranteed to be supported by any other
+vendor. MySQL functions are provided to give an idea of the
+capabilities available within the various products. Refer to the
+vendor's documentation for exact syntax usage.</p>
+</td>
+</tr>
+</table>
+</DIV>
+
+<DIV id="MICROSOFT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" class="name">Microsoft SQL Server-Supported Functions </td>
+<td valign="top" nowrap class="compatibility"> </td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+      <tr>
+	      <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+  <td>
+<table border="1" >
+<tr>
+<th>
+<p>Function</p>
+</th>
+<th>
+<p>Description</p>
+</th>
+</tr>
+
+<tr>
+<td>
+<p>abs(numeric_expression)</p>
+</td>
+<td>
+<p>Returns absolute value.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>acos( float_expression)</p>
+</td>
+<td>
+<p>Returns angle (in radians) whose cosine is the specified argument.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>app_name(  )</p>
+</td>
+<td>
+
+<p>Returns application name for current session; set by application.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>ascii(character_expression)</p>
+</td>
+<td>
+<p>Converts character to a numeric ASCII code.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>asin( float_expression)</p>
+</td>
+<td>
+<p>Returns angle (in radians) whose sine is the specified argument.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>atan( float_expression)</p>
+</td>
+<td>
+<p>Returns angle (in radians) whose tangent is the specified argument.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>atn2( float_expression, float_expressioin)</p>
+</td>
+<td>
+<p>Returns angle (in radians) whose tangent is argument1/argument1.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>avg([ All| Distinct] Expression)</p>
+</td>
+<td>
+<p>Computes average of a column.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>binary_checksum(* | expression [,...n])</p>
+</td>
+<td>
+<p>Returns binary checksum for list of expressions or row of a table.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>cast(Expression as Data Type)</p>
+</td>
+<td>
+<p>Converts a valid SQL Server expression to the specified datatype.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>ceiling(numeric_expression)</p>
+</td>
+<td>
+<p>Returns smallest integer greater than or equal to the argument.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>char(integer_expression)</p>
+</td>
+<td>
+<p>Converts a numeric ASCII code to a character.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>charindex(expression1, expression2 [,
+start_location])</p>
+</td>
+<td>
+<p>Returns position of the first occurrence of a substring in a string.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>checksum(* | expression [,...n])</p>
+</td>
+<td>
+<p>Returns checksum value (computed over row values or expressions
+provided).</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>checksum_agg([ALL | Distinct] expression)</p>
+</td>
+<td>
+<p>Returns checksum of the values in group.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>coalesce(expression [,...n])</p>
+</td>
+<td>
+<p>Returns the first non-NULL argument from a list of arguments.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>col_length(`table',
+`column')</p>
+</td>
+<td>
+<p>Returns column length in bytes.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>col_name(table_id, column_id)</p>
+</td>
+<td>
+<p>Returns column name, given table ID and column ID.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>contains({column | },
+`contains_search_condition'})</p>
+</td>
+<td>
+
+<p>Searches columns on exact or "fuzzy" matches of
+<span class="emphasis">contains_seach_criteria</span>. It is an elaborate
+function used to perform full-text searches. Refer to the vendor
+documentation for more information.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>containsable(table, column,
+contains_search_condition)</p>
+</td>
+<td>
+<p>Returns a table with exact and "fuzzy" matches of
+<span class="emphasis">contains_search_condition</span>. It is an elaborate
+function used to perform full-text searches. Refer to the vendor
+documentation for more information.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>convert(data_type [(length)], expression [,
+style])</p>
+</td>
+<td>
+<p>Converts data from one datatype to another.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>cos(float_expression)</p>
+</td>
+<td>
+<p>Returns cosine.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>cot(float_expression)</p>
+</td>
+<td>
+<p>Returns cotangent.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>count({[All | Distinct] expression]| *})</p>
+</td>
+<td>
+<p>Counts rows.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>count(*)</p>
+</td>
+<td>
+<p>Computes the number of  rows, including those with NULL values.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>count( DISTINCT expression )</p>
+</td>
+<td>
+<p>Calculates the number of distinct non-NULL values in a column or expression. Each group of rows with the same value of <span class="emphasis">expression</span> adds 1 to the result.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>count( expression )</p>
+</td>
+<td>
+<p>Returns the number of rows with non-NULL values in a certain column
+or expression.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>count_big([All | Distinct] expression)</p>
+</td>
+<td>
+<p>Same as <span class="emphasis">count</span> except returns big integer.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>current_timestamp</p>
+</td>
+<td>
+<p>Returns current date and time.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>current_user</p>
+</td>
+<td>
+<p>Returns username in the current database of the current session.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>datalength(expression)</p>
+</td>
+<td>
+<p>Returns number of bytes in a character or binary string.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>databasepropertyex(database, property)</p>
+</td>
+<td>
+<p>Returns database option or property.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>dateadd(datepart, number, date)</p>
+</td>
+<td>
+<p>Adds a number of dateparts (e.g., days) to a datetime value.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>datediff(datepart, startdate, enddate)</p>
+</td>
+<td>
+<p>Calculates difference between two datetime values expressed in
+certain dateparts.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>datename(datepart, date)</p>
+</td>
+<td>
+<p>Returns name of a datepart (e.g., month) of a datetime argument.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>datepart(datepart, date)</p>
+</td>
+<td>
+<p>Returns value of a datepart (e.g., hour) of a datetime argument.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>day(date)</p>
+</td>
+<td>
+<p>Returns an integer value representing the day of the date provided as
+a parameter.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>db_id(`[database_name]')</p>
+</td>
+<td>
+<p>Returns database ID and given name.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>db_name(database_id)</p>
+</td>
+<td>
+<p>Returns the database name.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>degrees(numeric_expression)</p>
+</td>
+<td>
+<p>Converts radians to degrees.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>difference(character_expression,
+character_expression)</p>
+</td>
+<td>
+<p>Compares how two arguments sound and returns a number from 0 to 4. Higher result indicates better phonetic match.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>exp(float_expression)</p>
+</td>
+<td>
+<p>Returns exponential value.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>floor(numeric_expression)</p>
+</td>
+<td>
+<p>Returns largest integer less than or equal to the argument.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>file_id(`file_name')</p>
+</td>
+<td>
+<p>Returns the file ID for the logical filename.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>file_name(file_id)</p>
+</td>
+<td>
+<p>Returns the logical filename for file ID.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>filegroup_id(`filegroup_name')</p>
+</td>
+<td>
+<p>Returns filegroup ID for the logical filegroup name.</p>
+</tr>
+
+<tr>
+<td>
+<p>filegroup_name(filegroup_id)</p>
+</td>
+<td>
+<p>Returns the logical filegroup name for filegroup ID.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>filegroupproperty(filegroup_name, property)</p>
+</td>
+<td>
+<p>Returns filegroup property value for the specified property.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>fileproperty(file, property)</p>
+</td>
+<td>
+
+<p>Returns file property value for the specified property.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>fulltextcatalogproperty(catalog_name, property)</p>
+</td>
+<td>
+<p>Returns full-text catalog properties.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>fulltextserviceproperty(property)</p>
+</td>
+<td>
+<p>Returns full-text service level properties.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>formatmessage(msg_number, pm_value [,... n ])</p>
+</td>
+<td>
+<p>Constructs a message from an existing message in <b role="bold">SYSMESSAGES</span> table (similar to RAISERROR).</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>freetexttable(table { column |*},
+`freetext_string' [, top_n_by_rank])</p>
+</td>
+<td>
+<p>Used for full-text search; returns a table with columns that match
+the meaning but don't exactly match value of
+<span class="emphasis">freetext_string</span>.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>getdate(  )</p>
+</td>
+<td>
+<p>Returns current date and time.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>getansinull([`database'])</p>
+</td>
+<td>
+<p>Returns default nullability setting for new columns.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>getutcdate(  )</p>
+</td>
+<td>
+<p>Returns Universal Time Coordinate (UTC) date.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>grouping(column_name)</p>
+</td>
+<td>
+<p>Returns 1 when the row is added by CUBE or ROLLUP; otherwise, returns
+0.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>host_id(  )</p>
+</td>
+<td>
+<p>Returns workstation ID of a given process.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>host_name(  )</p>
+</td>
+<td>
+<p>Returns process hostname.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>ident_incr(`table_or_view')</p>
+</td>
+<td>
+<p>Returns identity-column increment value.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>ident_seed(`table_or_view')</p>
+</td>
+<td>
+<p>Returns identity seed value.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>ident_current(`table_name')</p>
+</td>
+<td>
+<p>Returns the last identity value generated for the specified table.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>identity(data_type [, seed, increment]) As
+column_name</p>
+</td>
+<td>
+<p>Used in <span class="emphasis">SELECT INTO</span> statement to insert an
+identity column into the destination table.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>index_col(`table', index_id, key_id)</p>
+</td>
+<td>
+
+<p>Returns index column name, given table ID, index ID, and column
+sequential number in the index key.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>indexproperty(table_id, index, property)</p>
+</td>
+<td>
+<p>Returns index property (such as Fillfactor).</p>
+</td>
+
+</tr>
+<tr>
+<td>
+
+<p>isdate(expression)</p>
+</td>
+<td>
+<p>Validates if a character string can be converted to DATETIME.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>is_member({`group' |
+`role'})</p>
+</td>
+<td>
+<p>Returns true or false (1 or 0) depending on whether user is a member
+of NT group or SQL Server role.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>is_srvrolemember(`role'
+[,'login'])</p>
+</td>
+<td>
+
+<p>Returns true or false (1 or 0) depending on whether user is a member
+of specified server role.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>isnull(check_expression, replacement_value)</p>
+</td>
+<td>
+<p>Returns the first argument if it is not NULL; otherwise, returns the
+second argument.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>isnumeric(expression)</p>
+</td>
+<td>
+<p>Validates if a character string can be converted to NUMERIC.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>left(character_expression, integer_expression)</p>
+</td>
+<td>
+<p>Returns a portion of a character expression, starting at
+<span class="emphasis">integer_expression</span> from left.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>len(string_expression)</p>
+</td>
+<td>
+<p>Returns the number of characters in the expression.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>log(float_expression)</p>
+</td>
+<td>
+<p>Returns natural logarithm.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>log10(float_expression)</p>
+</td>
+<td>
+<p>Returns base-10 logarithm.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>lower(character_expression)</p>
+</td>
+<td>
+<p>Converts a string to lowercase.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>ltrim(character_expression)</p>
+</td>
+<td>
+<p>Trims leading-space characters.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>max([All | Distinct] expression)</p>
+</td>
+<td>
+<p>Finds maximum value in a column.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>min([All | Distinct] expression)</p>
+</td>
+<td>
+<p>Finds minimum value in a column.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>month(date)</p>
+</td>
+<td>
+<p>Returns month part of the date provided.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>nchar(integer_expression)</p>
+</td>
+<td>
+<p>Returns the unicode character with the given integer code.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>newid(  )</p>
+</td>
+<td>
+<p>Creates a new unique identifier of type
+<span class="emphasis">uniqueidentifier</span>.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>nullif(expression, expression)</p>
+</td>
+<td>
+<p>Returns NULL if two specified expressions are equivalent.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>object_id(`object')</p>
+</td>
+<td>
+<p>Returns object ID and given name.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>object_name(object_id)</p>
+</td>
+<td>
+<p>Returns object name and given ID.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>objectproperty(id, property)</p>
+</td>
+<td>
+<p>Returns properties of objects in the current database.<indexterm id="IXTR3-45" class="endofrange" startref="ch04-idx-1000007870-1"/></p>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+</DIV>
+
+<DIV id="MYSQL">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" class="name">MySQL-Supported Functions</td>
+<td valign="top" nowrap class="compatibility"> </td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+      <tr>
+	      <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+  <td>
+<p>Table 4.8 provides an alphabetical listing of MySQL-supported functions. </p>
+
+<table border="1" >
+<tr>
+<th>
+<p>Function</p>
+</th>
+<th>
+<p>Description</p>
+</th>
+</tr>
+
+<tr>
+<td>
+<p>abs(X)</p>
+</td>
+<td>
+<p>Returns the absolute value of <span class="emphasis">X</span>.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>acos(X)</p>
+</td>
+<td>
+<p>Returns the arc cosine of <span class="emphasis">X</span>, i.e., the value
+whose cosine is <span class="emphasis">X</span>; returns NULL if
+<span class="emphasis">X</span> is not in the range -1 to 1.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>ascii(str)</p>
+</td>
+<td>
+<p>Returns the ASCII code value of the leftmost character of the string
+<span class="emphasis">str</span>; returns
+if <span class="emphasis">str</span> is the empty string; returns NULL if
+<span class="emphasis">str</span> is NULL.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>asin(X)</p>
+</td>
+<td>
+<p>Returns the arc sine of <span class="emphasis">X</span>, i.e., the value whose
+sine is <span class="emphasis">X</span>; returns NULL if
+<span class="emphasis">X</span> is not in the range -1 to 1.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>atan(X)</p>
+</td>
+<td>
+<p>Returns the arctangent of <span class="emphasis">X</span>, i.e., the value
+whose tangent is <span class="emphasis">X</span>.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>atan2(X,Y)</p>
+</td>
+<td>
+<p>Returns the arctangent of the two variables <span class="emphasis">X</span>
+and <span class="emphasis">Y</span>.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>avg(expr)</p>
+</td>
+<td>
+<p>Returns the average value of expr.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>benchmark(count,expr)</p>
+</td>
+<td>
+<p>Executes the expression expr
+<span class="emphasis">count</span> times. It may be used to time how fast
+MySQL processes the expression. The result value is always 0.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>binary</p>
+</td>
+<td>
+<p>Casts the string following it to a binary string.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>bin(N)</p>
+</td>
+<td>
+<p>Returns a string representation of the binary value of
+<span class="emphasis">N</span>, where <span class="emphasis">N</span> is a long
+(BIGINT ) number.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>bit_count(N)</p>
+</td>
+<td>
+<p>Returns the number of bits that are set in the argument
+N.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>bit_and(expr)</p>
+</td>
+<td>
+<p>Returns the bitwise AND of all bits in
+expr. The calculation is performed with 64-bit
+(BIGINT ) precision.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>bit_or(expr)</p>
+</td>
+<td>
+<p>Returns the bitwise OR of all bits in
+expr. The calculation is performed with 64-bit
+(BIGINT  ) precision.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>CASE value WHEN [compare-value] THEN result [WHEN
+[compare-value] THEN result ...] [ELSE result] END</p>
+
+<p>CASE WHEN [condition] THEN result [WHEN [condition] THEN
+result ...] [ELSE result] END</p>
+</td>
+<td>
+
+
+<p>The first version returns the result where
+value=compare-value. The second version returns
+the result for the first condition that is true.</p>
+
+
+<p>If there is no matching result value, then the result after
+ELSE is returned. If there is no
+ELSE part, NULL is returned.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>ceiling(X)</p>
+</td>
+<td>
+<p>Returns the smallest integer value not less than
+X.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>char(N,...)</p>
+</td>
+<td>
+<p>Interprets the arguments as integers and returns a string consisting
+of the characters given by the ASCII code values of those integers.
+NULL values are skipped.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>coalesce(list)</p>
+</td>
+<td>
+<p>Returns first non-NULL element in the list.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>concat(str1,str2,...)</p>
+</td>
+<td>
+<p>Returns the string that results from concatenating the arguments.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>concat_ws(septor, str1, str2,...)</p>
+</td>
+<td>
+<p>Stands for CONCAT With Septor and is a special form of
+CONCAT( ). The first argument is the septor
+for the rest of the arguments. The septor and the rest of the
+arguments can be a string. If the septor is NULL, the result is
+NULL. The function skips any NULLs and empty strings after the
+septor argument. The septor is added between the strings to be
+concatenated.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>connection_id(  )</p>
+</td>
+<td>
+<p>Returns the connection ID (thread_id ) for the
+connection. Every connection has its own unique ID.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>conv(N,from_base,to_base)</p>
+</td>
+<td>
+<p>Converts numbers between different number bases; returns a string
+representation of the number <span class="emphasis">N</span>, converted from
+base <span class="emphasis">from_base</span> to base
+<span class="emphasis">to_base</span> ; returns NULL if any argument is NULL.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>cos(X)</p>
+</td>
+<td>
+<p>Returns the cosine of <span class="emphasis">X</span>, where
+<span class="emphasis">X</span> is given in radians.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>cot(X)</p>
+</td>
+<td>
+<p>Returns the cotangent of <span class="emphasis">X</span>.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>count(DISTINCT expr,[expr...])</p>
+</td>
+<td>
+<p>Returns a count of the number of different values.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>count(expr)</p>
+</td>
+<td>
+<p>Returns a count of the number of non-NULL values in the rows
+retrieved by a SELECT statement.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>curdate(  )</p>
+</td>
+<td>
+
+<p>current_date</p>
+<p>Returns today's date as a value in `YYYY-MM-DD' or
+YYYYMMDD format, depending on whether the function is used in a
+string or numeric context.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>curtime(  )</p>
+</td>
+<td>
+
+<p>current_time</p>
+
+<p>Returns the current time as a value in `HH:MM:SS' or
+HHMMSS format, depending on whether the function is used in a string
+or numeric context.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>database(  )</p>
+</td>
+<td>
+<p>Returns the current database name.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>date_add(date,INTERVAL expr type)</p>
+
+
+<p>date_sub(date,INTERVAL expr type)</p>
+
+
+<p>adddate(date,INTERVAL expr type)</p>
+
+
+<p>subdate(date,INTERVAL expr type)</p>
+</td>
+<td>
+<p>These functions perform date arithmetic. ADDDATE(
+) and SUBDATE( ) are synonyms for
+DATE_ADD( ) and DATE_SUB( ).
+date is a DATETIME or
+DATE value specifying the starting date.
+expr is an expression specifying the interval
+value to be added or subtracted from the starting date.
+expr may start with a - for negative intervals.
+type indicates how the expression should be
+interpreted.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<p>date_ format(date, format)</p>
+</td>
+<td>
+<p>Formats the date value according to the format string.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>dayname(date)</p>
+</td>
+<td>
+<p>Returns the name of the weekday for date.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+<p>dayofmonth(date)</p>
+</td>
+<td>
+<p>Returns the day of the month for date, in the range 1 to 31.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+<p>dayofweek(date)</p>
+</td>
+<td>
+<p>Returns the weekday index for date (1 = Sunday, 2 = Monday, . . . 7 =
+Saturday).</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+<p>dayofyear(date)</p>
+</td>
+<td>
+<p>Returns the day of the year for date, in the range 1 to 366.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>decode(crypt_str,pass_str)</p>
+</td>
+<td>
+<p>Decrypts the encrypted string crypt_str using
+pass_str as the password.
+crypt_str should be a string returned from
+ENCODE( ).</p>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<p>degrees(X)</p>
+</td>
+<td>
+<p>Returns the argument <span class="emphasis">X</span>, converted from radians
+to degrees.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>elt(N,str1,str2,str3,...)</p>
+</td>
+<td>
+<p>Returns <span class="emphasis">str1</span> if <span class="emphasis">N</span> = 1,
+<span class="emphasis">str2</span> if <span class="emphasis">N</span> = 2, and so on.
+Returns NULL if N is less than 1 or greater than
+the number of arguments. ELT( ) is the
+complement of FIELD( ).</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>encode(str,pass_str)</p>
+</td>
+<td>
+<p>Encrypts str using pass_str
+as the password. To decrypt the result, use DECODE(
+). The result is a binary string the same length as the
+string.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>encrypt(str[,salt])</p>
+</td>
+<td>
+
+<p>Encrypts str using the Unix crypt(
+) system call. The salt argument
+should be a string with two characters.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+<p>exp(X)</p>
+</td>
+<td>
+<p>Returns the value of <span class="emphasis">e</span> (the base of natural
+logarithms) raised to the power of <span class="emphasis">X</span>.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>export_set(bits,on,off,[septor,[number_of_bits]])</p>
+</td>
+<td>
+<p>Returns a string where every bit set in `bit' gets an
+`on' string and every reset bit gets an `off
+' string. Each string is septed with `septor'
+(default `,') and only `number_of_bits'
+(default 64) of `bits' is used.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>field(str,str1,str2,str3,...)</p>
+</td>
+<td>
+<p>Returns the index of str in the
+str1, str2,
+str3, . . . list. Returns
+if str is not found. FIELD(
+) is the complement of ELT( ).</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+<p>find_in_set(str,strlist)</p>
+</td>
+<td>
+
+<p>Returns a value 1 to <span class="emphasis">N</span> if the string
+<span class="emphasis">str</span> is in the list <span class="emphasis">strlist</span>
+consisting of <span class="emphasis">N</span> substrings. A string list is a
+string composed of substrings septed by `,'
+characters. Returns
+if str is not in strlist or
+if strlist is the empty string. Returns NULL if
+either argument is NULL. This function does not work properly if the
+first argument contains a `,'.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>floor(X)</p>
+</td>
+<td>
+<p>Returns the largest integer value not greater than
+<span class="emphasis">X</span>.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+<p>format(X,D)</p>
+</td>
+<td>
+
+<p>Formats the number X to a format like
+`#,###,###.##', rounded to D
+decimals. If D is 0, the result has no decimal
+point or fractional part.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+<p>from_days(N)</p>
+</td>
+<td>
+<p>Given a daynumber N, returns a
+DATE value. Not intended for use with values
+that precede the advent of the Gregorian calendar (1582), due to the
+days lost when the calendar was changed.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<p>from_unixtime(unix_timestamp)</p>
+</td>
+<td>
+<p>Returns a representation of the unix_timestamp
+argument as a value in `YYYY-MM-DD HH:MM:SS' or
+YYYYMMDDHHMMSS format, depending on whether the function is used in a
+string or numeric context.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>from_unixtime(unix_timestamp,format)</p>
+</td>
+<td>
+<p>Returns a string representation of the
+unix_timestamp, formatted according to the
+format string. Format may contain the same specifiers as those listed
+in the entry for the DATE_FORMAT( ) function.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>get_lock(str,timeout)</p>
+</td>
+<td>
+<p>Tries to obtain a lock with a name given by the string
+str, with a timeout of
+<span class="emphasis">timeout</span> seconds. Returns 1 if the lock is
+obtained successfully,
+if the attempt times out, or NULL if an error occurs.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>greatest(X,Y,...)</p>
+</td>
+<td>
+<p>Returns the largest (maximum-valued) argument.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>hex(N)</p>
+</td>
+<td>
+
+<p>Returns a string representation of the hexadecimal value of
+<span class="emphasis">N</span>, where <span class="emphasis">N</span> is a long
+(BIGINT  ) number. This is equivalent to
+CONV(N,10,16). Returns NULL if
+<span class="emphasis">N</span> is NULL.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>interval(N,N1,N2,N3,...)</p>
+</td>
+<td>
+
+<p>Returns 0 if <span class="emphasis">N</span> &lt; <span class="emphasis">N1</span>, 1 if
+<span class="emphasis">N</span> &lt; <span class="emphasis">N2</span>, and so on. All
+arguments are treated as integers. It is required that
+<span class="emphasis">N1</span> &lt; <span class="emphasis">N2</span> &lt;
+<span class="emphasis">N3</span> &lt; . . . &lt; <span class="emphasis">Nn</span> for
+this function to work correctly.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>hour(time)</p>
+</td>
+<td>
+
+
+<p>Returns the hour for time, in the range 0 to 23.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>if(expr1,expr2,expr3)</p>
+</td>
+<td>
+
+<p>If expr1 is TRUE (<span class="emphasis">expr1</span>
+&lt;&gt;
+and <span class="emphasis">expr1</span> &lt;&gt; NULL), then IF(
+) returns expr2, else it returns
+expr3. IF( ) returns a
+numeric or string value, depending on the context in which it is
+used.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>ifnull(expr1,expr2)</p>
+</td>
+<td>
+
+<p>If expr1 is not NULL, IFNULL(
+) returns <span class="emphasis">expr1</span>; otherwise it returns
+expr2. IFNULL( ) returns a
+numeric or string value, depending on the context in which it is
+used.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>isnull(expr)</p>
+</td>
+<td>
+<p>If <span class="emphasis">expr</span> is NULL, ISNULL( )
+returns 1; otherwise it returns 0.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>insert(str,pos,len,newstr)</p>
+</td>
+<td>
+<p>Returns the string str. The substring begins at
+position pos and is 10 characters long, replaced
+by the string newstr.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>instr(str,substr)</p>
+</td>
+<td>
+
+<p>Returns the position of the first occurrence of substring
+substr in string str.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>last_insert_id([expr])</p>
+</td>
+<td>
+
+<p>Returns the last automatically generated value that was inserted into
+an AUTO_INCREMENT column.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>lcase(str)</p>
+
+
+<p>lower(str)</p>
+</td>
+<td>
+
+
+<p>Returns the string str with all characters
+changed to lowercase according to the current character-set mapping
+(default is ISO-8859-1 Latin1).</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>least(X,Y,...)</p>
+</td>
+<td>
+
+<p>With two or more arguments, returns the smallest (minimum-valued)
+argument.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>left(str,len)</p>
+</td>
+<td>
+
+
+<p>Returns the leftmost len characters from the
+string str.</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td>
+
+<p>length(str)</p>
+<p>octet_length(str)</p>
+<p>char_length(str)</p>
+<p>character_length(str)</p>
+</td>
+<td>
+<p>These functions return the length of the string
+str.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>load_ file(file_name)</p>
+</td>
+<td>
+
+<p>Reads the file and returns the file contents as a string. The file
+must be on the server, and the user must specify the full pathname to
+the file and have the file privilege.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>locate(substr,str)</p>
+<p>position(substr IN str)</p>
+</td>
+<td>
+
+<p>Returns the position of the first occurrence of substring
+<span class="emphasis">substr</span> in string str.
+Returns
+if substr is not in str.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>locate(substr,str,pos)</p>
+</td>
+<td>
+
+<p>Returns the position of the first occurrence of substring
+<span class="emphasis">substr</span> in string str,
+starting at position <span class="emphasis">pos</span>; returns
+if substr is not in str.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>log(X)</p>
+</td>
+<td>
+
+<p>Returns the natural logarithm of <span class="emphasis">X</span>.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>log10(X)</p>
+</td>
+<td>
+
+
+<p>Returns the base-10 logarithm of <span class="emphasis">X</span>.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>lpad(str,len,padstr)</p>
+</td>
+<td>
+
+
+<p>Returns the string str, left-padded with the
+string padstr until str is
+10 characters long.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>ltrim(str)</p>
+</td>
+<td>
+
+<p>Returns the string str with leading-space
+characters removed.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>make_set(bits,str1,str2, . . . )</p>
+</td>
+<td>
+
+<p>Returns a set (a string containing substrings septed by
+`,' characters) consisting of the strings that have the
+corresponding bits in bit set. str1 corresponds
+to bit 0, str2 to bit 1, etc. NULL strings in
+str1, str2, . . . are not appended to the
+result.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>md5(string)</p>
+</td>
+<td>
+<p>Calculates a MD5 checksum for the string. Value
+is returned as a 32-long hex number.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<p>min(expr)</p>
+<p>max(expr)</p>
+</td>
+<td>
+
+<p>Returns the minimum or maximum value of <span class="emphasis">expr</span>.
+MIN( ) and MAX( ) may take
+a string argument; in such cases they return the minimum or maximum
+string value.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>minute(time)</p>
+</td>
+<td>
+
+<p>Returns the minute for time, in the range 0 to 59.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>mod(N,M)</p>
+</td>
+<td>
+
+<p>% Modulo (like the % operator in C); returns the remainder of
+<span class="emphasis">N</span> divided by <span class="emphasis">M</span>.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>month(date)</p>
+</td>
+<td>
+
+<p>Returns the month for date, in the range 1 to 12.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>monthname(date)</p>
+</td>
+<td>
+
+<p>Returns the name of the month for date.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>now(  )</p>
+
+
+<p>sysdate(  )</p>
+
+
+<p>current_timestamp</p>
+</td>
+<td>
+
+<p>Returns the current date and time as a value in `YYYY-MM-DD
+HH:MM:SS' or YYYYMMDDHHMMSS format, depending on whether the
+function is used in a string or numeric context.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>nullif(expr1,expr2)</p>
+</td>
+<td>
+
+<p>If expr1 = expr2 is true, returns NULL;
+otherwise returns <span class="emphasis">expr1</span>.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>oct(N)</p>
+</td>
+<td>
+
+<p>Returns a string representation of the octal value of
+<span class="emphasis">N</span>, where <span class="emphasis">N</span> is a long
+number. This is equivalent to CONV(N,10,8).
+Returns NULL if <span class="emphasis">N</span> is NULL.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>ord(str)</p>
+</td>
+<td>
+
+
+<p>If the leftmost character of the string str is a
+multibyte character, returns the code of multibyte character by
+returning the ASCII code value of the character in the format of:</p>
+
+
+<p><literal>((first byte ASCII code)*256+(second byte ASCII
+code))[*256+third byte ASCII code...]</literal> </p>
+
+
+<p>If the leftmost character is not a multibyte character, returns the
+same value as the ASCII( ) function does.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>password(str)</p>
+</td>
+<td>
+
+
+<p>Calculates a password string from the plain-text password
+str. This is the function that is used for
+encrypting MySQL passwords for storage in the <b role="bold">Password</span> column of the user grant table.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>period_add(P,N)</p>
+</td>
+<td>
+
+<p>Adds N months to period P
+(in the format YYMM or YYYYMM). Returns a value in the format YYYYMM.
+Note that the period argument P is not a date
+value.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>period_diff(P1,P2)</p>
+</td>
+<td>
+
+<p>Returns the number of months between periods P1
+and P2. P1 and
+P2 should be in the format YYMM or YYYYMM. Note
+that the period arguments P1 and
+P2 are not date values.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>pi(  )</p>
+</td>
+<td>
+
+<p>Returns the value of -&#960;.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>pow(X,Y)</p>
+
+
+<p>power(X,Y)</p>
+</td>
+<td>
+
+<p>Returns the value of <span class="emphasis">X</span> raised to the power of
+<span class="emphasis">Y</span>.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>quarter(date)</p>
+</td>
+<td>
+
+<p>Returns the quarter of the year for date, in the range 1 to 4.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>radians(X)</p>
+</td>
+<td>
+
+<p>Returns the argument <span class="emphasis">X</span>, converted from degrees
+to radians.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>rand(  )</p>
+
+<p>rand(N)</p>
+</td>
+<td>
+
+<p>Returns a random floating-point value in the range 0 to 1.0.</p>
+
+
+<p>If an integer argument <span class="emphasis">N</span> is specified, it is
+used as the seed value.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>release_lock(str)</p>
+</td>
+<td>
+
+
+<p>Releases the lock named by the string <span class="emphasis">str</span> that
+was obtained with GET_LOCK( ). Returns 1 if the
+lock is released,
+if the lock isn't locked by this thread (in which case the lock
+is not released), and NULL if the named lock doesn't exist.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>repeat(str,count)</p>
+</td>
+<td>
+
+<p>Returns a string consisting of the string <span class="emphasis">str</span>
+repeated <span class="emphasis">count</span> times. If
+<span class="emphasis">count</span> &lt;= 0, returns an empty string. Returns
+NULL if <span class="emphasis">str</span> or <span class="emphasis">count</span> are
+NULL.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>replace(str, from_str,to_str)</p>
+</td>
+<td>
+
+<p>Returns the string <span class="emphasis">str</span> with all occurrences of
+the string from_str replaced by the string
+to_str.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>reverse(str)</p>
+</td>
+<td>
+
+<p>Returns the string str with the order of the
+characters reversed.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>right(str,ten)</p>
+</td>
+<td>
+
+<p>Returns the rightmost 10 characters from the string
+str.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>round(X)</p>
+</td>
+<td>
+
+<p>Returns the argument <span class="emphasis">X</span>, rounded to an integer.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>round(X,D)</p>
+</td>
+<td>
+
+<p>Returns the argument <span class="emphasis">X</span>, rounded to a number with
+<span class="emphasis">D</span> decimals. If <span class="emphasis">D</span> is 0, the
+result has no decimal point or fractional part.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>rpad(str,len,padstr)</p>
+</td>
+<td>
+
+<p>Returns the string str, right-padded with the
+string padstr until str is
+ten characters long.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>rtrim(str)</p>
+</td>
+<td>
+
+<p>Returns the string str with trailing space
+characters removed.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>sec_to_time(seconds)</p>
+</td>
+<td>
+
+<p>Returns the seconds argument, converted to hours, minutes, and
+seconds, as a value in `HH:MM:SS' or HHMMSS format,
+depending on whether the function is used in a string or numeric
+context.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>second(time)</p>
+</td>
+<td>
+
+<p>Returns the second for time, in the range 0 to 59.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>sign(X)</p>
+</td>
+<td>
+
+<p>Returns the sign of the argument as -1, 0, or 1, depending on whether
+<span class="emphasis">X</span> is negative, zero, or positive.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>sin(X)</p>
+</td>
+<td>
+<p>Returns the sine of <span class="emphasis">X</span>, where
+<span class="emphasis">X</span> is given in radians.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>soundex(str)</p>
+</td>
+<td>
+
+<p>Returns a <span class="emphasis">soundex</span> string from
+<span class="emphasis">str</span>. Two strings that sound "about the
+same" should have identical <span class="emphasis">soundex</span>
+
+strings.</p>
+
+<p>A "standard" <span class="emphasis">soundex</span> string is four
+characters long, but the SOUNDEX( ) function
+returns an arbitrarily long string. A SUBSTRING(
+) can be used on the result to get a
+"standard" <span class="emphasis">soundex</span> string. All
+non-alphanumeric characters are ignored in the given string. All
+international alphabetic characters outside the A-Z range are treated
+as vowels.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>space(N)</p>
+</td>
+<td>
+
+<p>Returns a string consisting of <span class="emphasis">N</span> space
+characters.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>sqrt(X)</p>
+</td>
+<td>
+
+<p>Returns the nonnegative square root of <span class="emphasis">X</span>.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>std(expr)</p>
+
+<p>stddev(expr)</p>
+</td>
+<td>
+<p>Returns the standard deviation of <span class="emphasis">expr</span>. The
+STDDEV( ) form of this function is provided for
+Oracle compatability.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>strcmp(expr1,expr2)</p>
+</td>
+<td>
+
+<p>STRCMP( ) returns
+if the strings are the same, -1 if the first argument is smaller than
+the second according to the current sort order, and 1 otherwise.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>substring(str,pos,len)</p>
+
+
+<p>substring(str FROM pos FOR len)</p>
+
+
+<p>mid(str,pos,len)</p>
+</td>
+<td>
+
+
+<p>Returns a substring 10 characters long from string
+<span class="emphasis">str</span>, starting at position
+<span class="emphasis">pos</span>. The variant form that uses
+FROM is ANSI SQL92 syntax.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>substring_index(str,delim,count)</p>
+</td>
+<td>
+
+<p>Returns the substring from string <span class="emphasis">str</span> after
+<span class="emphasis">count</span> occurrences of the delimiter
+<span class="emphasis">delim</span>. If <span class="emphasis">count</span> is
+positive, everything to the left of the final delimiter (counting
+from the left) is returned. If <span class="emphasis">count</span> is
+negative, everything to the right of the final delimiter (counting
+from the right) is returned.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>substring(str,pos)</p>
+
+
+<p>substring(str FROM pos)</p>
+</td>
+<td>
+
+
+<p>Returns a substring from string str starting at
+position pos.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>sum(expr)</p>
+</td>
+<td>
+
+<p>Returns the sum of expr. Note that if the return
+set has no rows, it returns NULL.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>tan(X).</p>
+</td>
+<td>
+
+<p>Returns the tangent of <span class="emphasis">X</span>, where
+<span class="emphasis">X</span> is given in radians.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>time_ format(time, format)</p>
+</td>
+<td>
+
+<p>This is used like DATE_FORMAT( ), but the format
+string may contain only those format specifiers that handle hours,
+minutes, and seconds. Other specifiers produce a NULL value or 0.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>time_to_sec(time)</p>
+</td>
+<td>
+<p>Returns the time argument, converted to seconds.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>to_days(date)</p>
+</td>
+<td>
+
+<p>Given a date, returns a daynumber (the number of days since year 0).</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>trim([[BOTH | LEADING | TRAILING] [remstr] FROM]
+str)</p>
+</td>
+<td>
+
+<p>Returns the string str with all
+remstr prefixes and/or suffixes removed. If none
+of the specifiers BOTH,
+LEADING, or TRAILING are
+given, BOTH is assumed. If
+remstr is not specified, spaces are removed.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>truncate(X,D)</p>
+</td>
+<td>
+
+<p>Returns the number <span class="emphasis">X</span>, truncated to
+<span class="emphasis">D</span> decimals. If <span class="emphasis">D</span> is 0, the
+result has no decimal point or fractional part.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>ucase(str)</p>
+
+
+<p>upper(str)</p>
+</td>
+<td>
+
+<p>Returns the string <span class="emphasis">str</span> with all characters
+changed to uppercase according to the current character set mapping
+(default is ISO-8859-1 Latin1).</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+<p>unix_timestamp(  )</p>
+
+
+<p>unix_timestamp(date)</p>
+</td>
+<td>
+
+<p>If called with no argument, returns a Unix timestamp (seconds since
+`1970-01-01 00:00:00' GMT). If UNIX_TIMESTAMP(
+) is called with a date argument, it returns the value of
+the argument as seconds since `1970-01-01 00:00:00' GMT.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>user(  )</p>
+
+
+<p>system_user(  )</p>
+
+
+<p>session_user(  )</p>
+</td>
+<td>
+<p>These functions return the current MySQL username.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>version(  )</p>
+</td>
+<td>
+<p>Returns a string indicating the MySQL server version.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>week(date)</p>
+<p>week(date, first)</p>
+</td>
+<td>
+
+<p>With a single argument, returns the week for date, in the range
+to 53. (The beginning of a week 53 is possible during some years.)
+The two-argument form of WEEK( ) allows the user to specify whether
+the week starts on Sunday (0) or Monday (1).</p>
+</td>
+</tr>
+
+<tr>
+<td>
+
+<p>weekday(date)</p>
+</td>
+<td>
+
+<p>Returns the weekday index for date (0 = Monday, 1 = Tuesday, . . . 6
+= Sunday).</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>year(date)</p>
+</td>
+<td>
+
+<p>Returns the year for date, in the range 1000 to 9999.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>yearweek(date)</p>
+
+
+<p>yearweek(date, first)</p>
+</td>
+<td>
+
+<p>Returns year and week for a date. The second argument works exactly
+like the second argument to WEEK( ). Note that
+the year may be different from the year in the date argument for the
+first and the last week of the year.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</DIV>
+
+<DIV id="ORACLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" class="name">Oracle SQL-Supported Functions</td>
+<td valign="top" nowrap class="compatibility"> </td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+      <tr>
+	      <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+  <td>
+<p>Table 4.9 provides an alphabetical listing of the SQL functions specific to Oracle.</p>
+
+<table  border="1" align="center">
+
+<tr>
+<th>
+<p>Function</p>
+</th>
+<th>
+<p>Description</p>
+</th>
+</tr>
+<tr>
+<td>
+
+<p>abs(number)</p>
+</td>
+<td>
+
+<p>Returns the absolute value of number.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>acos(number)</p>
+</td>
+<td>
+
+<p>Returns the arc cosine of number ranging from -1
+to 1. The result ranges from 0 to &#960; and is expressed in radians.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>add_months(date, int)</p>
+</td>
+<td>
+
+<p>Returns the date <span class="emphasis">date</span> plus
+int months.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>ascii(string)</p>
+</td>
+<td>
+
+<p>Returns the decimal value in the database character set of the first
+character of string; returns an ASCII value when
+the database character set is 7-bit ASCII; returns EBCDIC values if
+the database character set is EBCDIC Code Page 500.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>asin(number)</p>
+</td>
+<td>
+
+<p>Returns the arc sine of number<span class="emphasis">
+</span>ranging from -1 to 1. The resulting value ranges from -&#960;/2 to &#960;/2 and is expressed in radians.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>atan(number)</p>
+</td>
+<td>
+
+<p>Returns the arctangent of any number. The resulting value ranges from -&#960;/2 to &#960;/2 and is expressed in radians.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>atan2(number,nbr)</p>
+</td>
+<td>
+
+<p>Returns the arctangent of <span class="emphasis">number</span> and <span class="emphasis">nbr</span>. The values for number and nbr are not restricted, but the results range from -&#960; to &#960; and are expressed in radians.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>avg([DISTINCT ] expression) over (analytics)</p>
+</td>
+<td>
+
+<p>Returns the average value of expr. It can be
+used as an aggregate or analytic function (analytic functions are
+beyond the scope of this text).</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>bfilename(`directory','filename')</p>
+</td>
+<td>
+
+<p>Returns a BFILE locator associated with a
+physical LOB binary filename on the
+server's filesystem in directory.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>ceil(number)</p>
+</td>
+<td>
+
+<p>Returns smallest integer greater than or equal to
+number.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>chartotrid(char)</p>
+</td>
+<td>
+
+<p>Converts a value from a character datatype (CHAR
+or VARCHAR2 datatype) to
+trID datatype.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>chr(number [USING NCHAR_CS])</p>
+</td>
+<td>
+
+<p>Returns the character having the binary equivalent to
+number in either the database character set (if
+USING NCHAR_CS is not included) or the national
+character set (if USING NCHAR_CS is included).</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>concat(string1, string2)</p>
+</td>
+<td>
+
+<p>Returns string1<span class="emphasis">
+</span>concatenated with string2. It is
+equivalent to the concatenation operator (||).</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>convert(char_value, target_char_set,
+source_char_set)</p>
+</td>
+<td>
+
+<p>Converts a character string from one character set to another;
+returns the char_value in the
+target_char_set after converting
+char_value from the
+source_char_set.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>corr(expression1, expression2) over (analytics)</p>
+</td>
+<td>
+
+<p>Returns the correlation coefficient of a set of numbered pairs
+(expressions 1 and 2). It can be used as an
+aggregate or analytic function (analytic functions are beyond the
+scope of this text).</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>cos(number)</p>
+</td>
+<td>
+
+<p>Returns the cosine of number as an angle
+expressed in radians.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>cosh(number)</p>
+
+</td>
+<td>
+<p>Returns the hyperbolic cosine of number.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>count</p>
+</td>
+<td>
+
+<p>Returns the number of rows in the query; refer to the earlier section
+on COUNT for more information.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>covar_pop(expression1, expression2)
+over(analytics)</p>
+</td>
+<td>
+
+<p>Returns the population covariance of a set of number pairs
+(expressions 1 and 2). It can be used as an
+aggregate or analytic function (analytic functions are beyond the
+scope of this text).</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>covar_samp(expression1, expression2)
+over(analytics)</p>
+</td>
+<td>
+
+
+
+<p>Returns the sample covariance of a set of number pairs
+(expressions 1 and 2). It can be used as an
+aggregate or analytic function (analytic functions are beyond the
+scope of this text).</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>cume_dist( ) ( [OVER (query)] ORDER BY...)</p>
+</td>
+<td>
+
+<p>The cumulative distribution function computes the relative position
+of a specified value in a group of values.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>decode(expr  search , result [,. n] [,default])</p>
+</td>
+<td>
+
+<p>Compares expr to the search value; if
+expr is equal to a search, returns the result.
+Without a match, DECODE returns default, or
+NULL if default is omitted. Refer to Oracle
+documentation for more details.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>dense_rank( ) ( [OVER (query)] ORDER BY...)</p>
+</td>
+<td>
+
+<p>Computes the rank of each row returned from a query with respect to
+the other rows, based on the values of the
+value_exprs in the
+ORDER_BY_clause.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>deref(expression)</p>
+</td>
+<td>
+
+<p>Returns the object reference of expression,
+where expression must
+return a REF to an object.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>dump(expression [,return_ format [, starting_at [,length]]]
+)</p>
+</td>
+<td>
+
+<p>Returns a VARCHAR2 value containing a datatype
+code, length in bytes, and internal representation of
+expression. The resulting value is returned in
+the format of return_ format.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>empth[B | C]lob( )</p>
+</td>
+<td>
+
+<p>Returns an empty LOB locator that can be used to initialize a LOB
+variable. It can also be used to initialize a LOB column or attribute
+to empty in an INSERT or
+UPDATE statement.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>exp(number)</p>
+</td>
+<td>
+
+<p>Returns E raised to the number
+ed power, where E = 2.71828183.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>first_value( expression) over (analytics)</p>
+</td>
+<td>
+
+<p>Returns the first value in an ordered set of values.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>floor(number)</p>
+</td>
+<td>
+
+<p>Returns largest integer equal to or less than
+number.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>greatest(expression [,...n])</p>
+</td>
+<td>
+
+<p>Returns the greatest of the list of expressions.
+All expressions after the first are implicitly
+converted to the datatype of the first
+expression before the
+comparison.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>grouping(expression)</p>
+</td>
+<td>
+
+<p>Distinguishes null cause by a super-aggregation in GROUP
+BY extension from an actual null value.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>hextoraw(string)</p>
+</td>
+<td>
+
+<p>Converts string containing
+hexadecimal digits into a raw value.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>initcap(string)</p>
+</td>
+<td>
+
+<p>Returns string, with the first letter of each
+word in uppercase and all other letters in lowercase.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>instr(string1, string2, start_at, occurrence)</p>
+</td>
+<td>
+
+<p>Searches one character string for another character string.
+INSRT search
+char1 with a starting
+position of start_at (an integer) looking for
+the numeric occurrence within
+string2<bsis>.</span> Returns the
+position of the character in string1<span class="emphasis">
+</span>that is the first character of this occurrence.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>instrb(string1, string2, [start_a[t,
+occurrence]])</p>
+</td>
+<td>
+
+<p>The same as INSTR, except that
+start_at and the return
+value are expressed in bytes instead of characters.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>lag(expression [,offset][,default])
+over(analytics)</p>
+</td>
+<td>
+
+<p>Provides access to more than one row of a table at the same time
+without a self join; refer to the vendor documentation for more
+information.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>last_day(date)</p>
+</td>
+<td>
+
+<p>Returns the date of the last day of the month that contains
+date.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>last_value(expression) over (analytics)</p>
+</td>
+<td>
+
+<p>Returns the last value in an ordered set of values; refer to the
+vendor documentation for more information.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>lead(expression [,offset][,default])
+over(analytics)</p>
+</td>
+<td>
+
+<p>Provides access to more than one row of a table at the same time
+without a self join. Analytic functions are beyond the scope of this
+text.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>least(expression [,...n])</p>
+</td>
+<td>
+
+<p>Returns the least of the list of expressions.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>length(string)</p>
+</td>
+<td>
+
+<p>Returns the integer length of string, or null if
+string is null.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>lengthb(string)</p>
+</td>
+<td>
+
+<p>Returns the length of char<span class="emphasis">
+</span>in bytes; otherwise, the same as
+LENGTH.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>ln(number)</p>
+</td>
+<td>
+
+<p>Returns the natural logarithm of number, where
+the number is greater than
+0.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>log(base_number, number)</p>
+</td>
+<td>
+
+<p>Returns the logarithm of any base_number of
+number.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>lower(string)</p>
+</td>
+<td>
+
+<p>Returns string in the same datatype as it was
+supplied with all characters lowercase.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>lpad(string1, number [,string2])</p>
+</td>
+<td>
+
+<p>Returns string1, left-padded to length
+number using characters in
+string2; string2<span class="emphasis">
+</span>defaults to a single blank.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>ltrim(string[, set])</p>
+</td>
+<td>
+
+<p>Removes all characters in set from the left of
+string. Set<span class="emphasis">
+</span>defaults to a single blank.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>make_ref({table_name | view_name} , key [,...n])</p>
+</td>
+<td>
+
+<p>Creates a reference (REF ) to a row of an object
+view or a row in an object table whose object identifier is primary
+key-based.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>max([DISTINCT] expression) over (analytics)</p>
+</td>
+<td>
+
+<p>Returns maximum value of expression. It can be
+used as an aggregate or analytic function (analytic functions are
+beyond the scope of this text).</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>min([DISTINCT] expression) over (analytics)</p>
+</td>
+<td>
+
+<p>Returns minimum value of expression. It can be
+used as an aggregate or analytic function (analytic functions are
+beyond the scope of this text).</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>mod(dividend, divider)</p>
+</td>
+<td>
+
+<p>Returns remainder of dividend<span class="emphasis">
+</span>divided by divider ; returns the
+dividend if
+divider is 0.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>months_between(date1, date2)</p>
+</td>
+<td>
+
+<p>Returns number of months between dates
+date1 and
+date2. When date1<span class="emphasis">
+</span>is later than date2, the result is
+positive. If it is earlier, the result is negative.</p>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>new_time(date, time_zone1, time_zone2)</p>
+</td>
+<td>
+
+<p>Returns the date and time in
+time_zone2 when date and
+time in time_zone1 are
+date. Time_zones 1 and 2
+may be any of these text strings:</p>
+
+
+<itemizedlist><listitem><p>AST, ADT: Atlantic Standard or Daylight
+Time</p></listitem>
+<listitem><p>BST, BDT: Bering Standard or Daylight Time</p></listitem>
+<listitem><p>CST, CDT: Central Standard or Daylight Time</p></listitem>
+<listitem><p>EST, EDT: Eastern Standard or Daylight Time</p></listitem></itemizedlist>
+<itemizedlist><listitem><p>GMT: Greenwich Mean Time</p></listitem>
+<listitem><p>HST, HDT: Alaska-Hawaii Standard Time or Daylight Time</p></listitem>
+<listitem><p>MST, MDT: Mountain Standard or Daylight
+Time</p></listitem>
+<listitem><p>NST: Newfoundland Standard Time</p></listitem>
+<listitem><p>PST, PDT: Pacific Standard or Daylight Time</p></listitem>
+<listitem><p>YST, YDT: Yukon Standard or Daylight Time</p></listitem></itemizedlist>
+</td>
+
+</tr>
+
+<tr>
+<td>
+
+<p>next_day(date, string)</p>
+</td>
+<td>
+
+<p>Returns the date of the first weekday named by
+string that is later than
+date. The argument string
+ must be either the full name or the
+abbreviation of a day of the week in the date language of the
+session.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>nls_charset_decl_len(bytecnt, csid)</p>
+</td>
+<td>
+<p>Returns the declaration width (bytecnt) of an
+NCHAR column using the character set ID
+(csid ) of the column.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>nls_charset_id(text)</p>
+</td>
+<td>
+<p>Returns the NLS character set ID number corresponding to
+text.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>nls_charset_name(number)</p>
+</td>
+<td>
+<p>Returns the VARCHAR2 name for the NLS character
+set corresponding to the ID number.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>nls_initcap(string [,'nlspmeter'])</p>
+</td>
+<td>
+<p>Returns string with the first letter of each
+word in uppercase and all other letters in lowercase. The
+nlspmeter offers special linguistic sorting
+features.</p>
+</td>
+</tr>
+
+
+<tr>
+<td>
+<p>nls_lower(string, [,'nlspmeter'])</p>
+</td>
+<td>
+<p>Returns string with all letters lowercase. The
+nlspmeter offers special linguistic sorting
+features.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>nlssort(string [,'nlspmeter'])</p>
+</td>
+<td>
+<p>Returns the string of bytes used to sort string.
+The nlspmeter offers special linguistic
+sorting features.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>nls_upper string [,'nlspmeter'])</p>
+</td>
+<td>
+<p>Returns string with all letters uppercase. The
+nlspmeter offers special linguistic sorting
+features.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>ntile(expression) over ( query_partition ORDER
+BY...)</p>
+</td>
+<td>
+<p>Divides an ordered data set into a number of buckets numbered 1 to
+expression and assigns the
+appropriate bucket number to each tr.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>numtodsinterval(number, `string')</p>
+</td><td>
+<p>Converts number to an
+INTERVAL DAY TO SECOND literal, where
+number is a number or an
+expression resolving to a number, such as a numeric datatype column.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>numtoyminterval(number, `string')</p>
+</td><td>
+<p>Converts number to an
+INTERVAL DAY TO MONTH literal, where
+number is a number or an
+expression resolving to a number, such as a numeric datatype column.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>nvl(expression1, expression2)</p>
+</td><td>
+<p>If expression1 is null,
+expression2 is returned in the place of a null
+value. Otherwise, expression1 is returned. The
+expressions may be any datatype.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>nvl2(expression1, expression2, expression3)</p>
+</td>
+<td>
+<p>Similar to NLV, except that if
+expression1 is not null, expression2
+is returned. If expression1 is null,
+expression3 is returned. The expressions may be
+any datatype, except LONG.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>percent_rank( ) over ( query_partition ORDER
+BY...)</p>
+</td><td>
+<p>Similar to the CUME_DIST  analytical function.
+Rather than return the cumulative distribution, it returns the
+percentage rank of a row compared to the others in its result set.
+Refer to the vendor documentation for more assistance.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>power(number, power)</p>
+</td><td>
+<p>Returns number raised to the nth
+power. The base and the exponent can be any
+numbers, but if number is
+negative, power must be an
+integer.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>rank (value_expression) over ( query_partition ORDER BY
+...)</p>
+</td><td>
+<p>Computes the rank of each row returned from a query with respect to
+the other rows returned by the query, based on the values of the
+value_expression in the
+ORDER_BY_clause.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>ratio_to_report (value_exprs) over (
+query_partition)</p>
+</td>
+<td>
+<p>Computes the ratio of a value to the sum of a set of values. If
+values_expr is null, the
+ratio-to-report value also is null.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>rawtohex(raw)</p>
+</td><td>
+<p>Converts a raw value to a
+string (character datatype) of its hexadecimal equivalent.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>ref(table_alias)</p>
+</td><td>
+<p>REF takes a table alias associated with a tr
+from a table or view. A special reference value is returned for the
+object instance that is bound to the variable or tr.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>reftohex(expression)</p>
+</td><td>
+<p>Converts argument expression to a character
+value containing its hexadecimal equivalent.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>regr_ xxx(expression1, expression2) over
+(analytics)</p>
+</td><td>
+<p>Linear regression functions fit an ordinary-least-squares regression
+line to a set of number pairs where expression1
+is the dependent variable and expression2 is the
+independent variable. The linear regression functions are:</p>
+
+
+<itemizedlist><listitem><p>REGR_SLOPE: returns the slope of the line</p></listitem>
+<listitem><p>REGR_INTERCEPT: returns the y-intercept of the regression line</p></listitem>
+<listitem><p>REGR_COUNT: returns the number of non-null pairs fitting the
+regression line</p></listitem>
+<listitem><p>REGR_R2: returns the coefficient of determination for the regression</p></listitem>
+<listitem><p>REGR_AVGX: returns the average of the independent variable</p></listitem>
+<listitem><p>REGR_AVGY: returns the average of the dependent variable</p></listitem>
+<listitem><p>REGR_SXX: calculates REGR_COUNT(exp1, exp2) *
+VAR_POP(exp2)</p></listitem>
+<listitem><p>REGR_SYY: calculates REGR_COUNT(exp1, exp2) *
+VAR_POP(exp1)</p></listitem>
+<listitem><p>REGR_SXY: calculates REGR_COUNT(exp1, exp2) *
+COVAR_POP(exp1, exp2)</p></listitem></itemizedlist>
+<p>These can be used as aggregate or analytic functions.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>replace(string, search_string
+[,replacement_string])</p>
+</td><td>
+<p>Returns string with every
+occurrence of search_string<span class="emphasis">
+</span>replaced with replacement_string.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>round (number, decimal)</p>
+</td><td>
+<p>Returns number rounded to
+decimal places right of the
+decimal point. When decimal<span class="emphasis">
+</span>is omitted, number<span class="emphasis">
+</span>is rounded to
+places. Note that decimal, an integer, can be
+negative to round off digits left of the decimal point.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>round (date[, format])</p>
+</td><td>
+<p>Returns the date rounded to
+the unit specified by the format model format.
+When format is omitted,
+date is rounded to the
+nearest day.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>tr_number ( ) over ( query_partition ORDER BY ...
+)</p>
+</td>
+<td>
+<p>Assigns a unique number to each row where it is applied in the
+ordered sequence of rows specified by the
+ORDER_BY_clause, beginning with 1.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>tridtochar(trid)</p>
+</td><td>
+<p>Converts a trid value to
+VARCHAR2 datatype, 18 characters long.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>rpad(string1, number [, string2])</p>
+</td><td>
+<p>Returns string1, right-padded to length
+
+number with the value of
+string2, repeated as needed.
+String2 defaults to a
+single blank.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>rtrim(string[,set])</p>
+</td>
+<td>
+<p>Returns string, with all the rightmost
+characters that appear in set<span class="emphasis">
+</span>removed; set<span class="emphasis">
+</span>defaults to a single blank.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>sign(number)</p>
+</td><td>
+<p>When number &lt; 0, returns -1. When
+number = 0, returns 0. When
+number &gt; 0, returns 1.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>sin(number)</p>
+</td><td>
+<p>Returns the sine of number as an angle expressed
+in radians.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>sinh(number)</p>
+</td><td>
+<p>Returns the hyperbolic sine of number.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>soundex(string)</p>
+</td><td>
+<p>Returns a character string containing the phonetic representation of
+string. This function allows words that are
+spelled differently but sound alike in English to be compared for
+equality.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>sqrt(number)</p>
+</td><td>
+<p>Returns square root of number, a nonnegative
+number.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>stddev( [DISTINCT] expression) over (analytics)</p>
+</td><td>
+<p>Returns sample standard deviation of a set of numbers shown
+as expression.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>stdev_pop(expression) over (analytics)</p>
+</td><td>
+<p>Computes the population standard deviation and returns the square
+root of the population variance.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>seddev_samp(expression) over (analytics)</p>
+</td>
+<td>
+<p>Computes the cumulative sample standard deviation and returns the
+square root of the sample variance.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>substr(extraction_string [FROM starting_position] [FOR
+length])</p>
+</td>
+<td>
+<p>Refer to the earlier section on SUBSTR.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>substrb(extraction_string [FROM starting_position] [FOR
+length])</p>
+</td><td>
+
+<p>SUBSTRB is the same as
+SUBSTR, except that the arguments
+<span class="emphasis">m</span>
+starting_position and
+length are expressed in
+bytes, rather than in characters.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>sum([DISTINCT ] expression) over (analytics)</p>
+</td>
+<td>
+<p>Returns sum of values of expr ; refer to vendor
+documentation for assistance with analytics and the
+OVER subclause.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>sys_context(`namespace','attribute'[,length])</p>
+</td><td>
+<p>Returns the value of attribute<span class="emphasis">
+</span>associated with the context
+namespace, usable in both SQL and PL/SQL
+statements.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>sys_guid( )</p>
+</td><td>
+<p>Generates and returns a globally unique identifier
+<literal>(</literal>RAW value) made up of 16
+bytes.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>sysdate</p>
+</td><td>
+<p>Returns the current date and time, requiring no arguments.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>tan(number)</p>
+</td><td>
+<p>Returns the tangent of number as an angle
+expressed in radians.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>tanh(number)</p>
+</td><td>
+<p>Returns the hyperbolic tangent of number</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>to_char (date [, format [,
+`nls_pmeter']])</p>
+</td><td>
+
+<p>Converts date to a
+VARCHAR2 in the format specified by the date
+format format. When fmt is
+omitted, date is converted
+to the default date format. The nls_pmeter
+option offers additional control over formatting options.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>to_char (number [, format [,
+`nls_pmeter']])</p>
+</td><td>
+<p>Converts number to a
+VARCHAR2 in the format specified by the number
+format format. When fmt is
+omitted, number is
+converted to a string long enough to hold the
+number. The nls_pmeter
+option offers additional control over formatting options.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>to_date(string [, format [,
+`nls_pmeter']])</p>
+</td><td>
+<p>Converts string (in
+CHAR or VARCHAR2) to a
+DATE datatype. The
+nls_pmeter option offers additional control
+over formatting options.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>to_lob(long_column)</p>
+</td><td>
+<p>Usable only by LONG or LONG
+RAW expressions, it converts LONG or
+LONG RAW values in the column
+long_column to LOB values.
+It is usable only in the SELECT list of a
+subquery in an INSERT statement.</p>
+</td></tr>
+
+<tr>
+<td>
+<p>to_multi_byte(string)</p>
+</td><td>
+<p>Returns string with all of its single-byte
+characters converted to their corresponding multi-byte characters.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>to_number(string [, format
+[,'nls_pmeter']])</p>
+</td><td>
+<p>Converts a numeric string (of
+CHAR or VARCHAR2 datatype)
+to a value of a NUMBER datatype in the format specified by the
+optional format model format. The
+nls_pmeter option offers additional control
+over formatting options.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>to_single_byte(string)</p>
+</td><td>
+<p>Returns string with all of
+its multi-byte characters converted to their corresponding
+single-byte characters.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>translate(`char_value',
+`from_text', `to_text')</p>
+</td><td>
+<p>Returns char_value with all
+occurrences of each character in
+from_text replaced by its
+corresponding character in to_text; refer to <link linkend="ch04-_Toc484170304">CONVERT and TRANSLATE</link> earlier in this
+chapter for more information on TRANSLATE.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>translate (text USING [CHAR_CS | NCHAR_CS] )</p>
+</td><td>
+<p>Converts text into the
+character set specified for conversions between the database
+character set or the national character set.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>trim({[LEADING | TRAILING | BOTH] trim_char | trim_char
+}</p>
+
+
+<p>FROM trim_source} )</p>
+</td><td>
+<p>Enables leading or trailing characters (or both) to be trimmed from a
+character string.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>trunc (base [, number])</p>
+</td><td>
+<p>Returns base truncated to
+number decimal places. When
+number is omitted,
+base is truncated to
+places. Number can be
+negative to truncate (make zero)
+number digits left of the
+decimal point.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>trunc (date [, format])</p>
+</td><td>
+<p>Returns date with any time data truncated to the
+unit specified by format. When
+format is omitted,
+date is truncated to the
+nearest whole day.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>upper(string)</p>
+</td><td>
+<p>Returns string with all letters in uppercase.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>user</p>
+
+</td><td><p>Returns the name of the session user who logged on in
+VARCHAR2.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>userenv(option)</p>
+</td><td>
+<p>Returns information about the current session in
+VARCHAR2.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>value(table_alias)</p>
+</td><td>
+<p>Takes as a table alias associated with a row in an object table and
+returns object instances stored within the object table.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>var_pop(expression) over (analytics)</p>
+</td><td>
+<p>Returns the population variance of a set of numbers after discarding
+the nulls in the expression number
+set. Analytic functions are covered in the vendor
+documentation.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>var_samp(expression) over (analytics)</p>
+</td>
+<td>
+<p>Returns the sample variance of a set of numbers after discarding the
+nulls in the expression number
+set. Analytic functions are covered in the vendor
+documentation.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>variance([DISTINCT] expression) over (analytics)</p>
+</td><td>
+<p>Returns variance of expression calculated as
+follows:</p>
+
+
+
+<itemizedlist><listitem><p>0 if the number of rows in expression = 1</p></listitem>
+<listitem><p>VAR_SAMP if the number of rows in
+expression &gt; 1</p></listitem></itemizedlist>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>vsize(expression)</p>
+</td><td>
+<p>Returns the number of bytes in the internal representation of
+expression. When expression
+is null, it returns null.</p>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+</DIV>
+
+<DIV id="POSTGRESQL">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="top" class="name">PostgreSQL-Supported Functions</td>
+<td valign="top" nowrap class="compatibility"> </td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+      <tr>
+	      <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+  <td>
+
+<p>Table 4.10 lists the functions specific to PostgreSQL. </p>
+
+
+<table  border="1" align="center" width="100%">
+
+<tr>
+<th>
+<p>Function</p>
+</th>
+<th>
+<p>Description</p>
+</th>
+</tr>
+<tr>
+<td>
+<p>abstime(timestamp)</p>
+</td><td>
+<p>Converts to abstime</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>abs(float8)</p>
+</td><td>
+<p>Returns absolute value</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>acos(float8)</p>
+</td><td>
+<p>Returns arccosine</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>age(timestamp)</p>
+</td>
+<td>
+<p>Preserves months and years</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>age(timestamp,</p>
+
+
+<p>timestamp)</p>
+</td>
+<td>
+<p>Preserves months and years</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>area(object)</p>
+</td><td>
+<p>Returns area of item</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>asin(float8)</p>
+</td><td>
+<p>Returns arcsine</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>atan(float8)</p>
+</td><td>
+<p>Returns arctangent</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>atan2(float8,float8)</p>
+</td><td>
+<p>Returns arctangent</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>box(box,box)</p>
+</td><td>
+<p>Returns intersection box</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>box(circle)</p>
+</td><td>
+<p>Converts circle to box</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>box(point,point)</p>
+</td><td>
+<p>Returns points to box</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>box(polygon)</p>
+</td><td>
+<p>Converts polygon to box</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>broadcast(cidr)</p>
+</td>
+<td>
+
+<p>Constructs broadcast address as text</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>broadcast(inet)</p>
+</td>
+<td>
+<p>Constructs broadcast address as text</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>CASE WHEN expr THEN expr [...] ELSE expr END</p>
+</td><td>
+<p>Returns expression for first true WHEN clause</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>cbrt(float8)</p>
+</td><td>
+<p>Returns cube root</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>center(object)</p>
+</td><td>
+<p>Returns center of item</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>char(text)</p>
+</td><td>
+<p>Converts text to char type</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>char(varchar)</p>
+</td><td>
+<p>Converts varchar to char type</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>char_length(string)</p>
+</td><td>
+<p>Returns length of string</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>character_length(string)</p>
+</td><td>
+<p>Returns length of string</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>circle(box)</p>
+</td>
+<td>
+<p>Converts to circle</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>circle(point,float8)</p>
+</td><td>
+<p>Converts point to circle</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>COALESCE(list)</p>
+</td><td>
+
+<p>Returns first non-NULL value in list</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>cos(float8)</p>
+</td><td>
+<p>Returns cosine</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>cot(float8)</p>
+</td><td>
+<p>Returns cotangent</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>date_part(text,timestamp)</p>
+</td><td>
+<p>Returns portion of date</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>date_part(text,interval)</p>
+</td><td>
+<p>Returns portion of time</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>date_trunc(text,timestamp)</p>
+</td><td>
+<p>Truncates date</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>degrees (float8)</p>
+</td>
+<td>
+<p>Converts radians to degrees</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>diameter(circle)</p>
+</td><td>
+<p>Returns diameter of circle</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>exp(float8)</p>
+</td><td>
+<p>Raises e to the specified exponent</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>float(int)</p>
+</td><td>
+<p>Converts integer to floating point</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>float4(int)</p>
+</td><td>
+<p>Converts integer to floating point</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>height(box)</p>
+</td><td>
+<p>Returns vertical size of box</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>host(inet)</p>
+</td><td>
+<p>Extracts host address as text</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>initcap(text)</p>
+</td><td>
+<p>Converts first letter of each word to uppercase</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>interval(reltime)</p>
+</td><td>
+<p>Converts to interval</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>integer(float)</p>
+</td><td>
+<p>Converts floating point to integer</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>isclosed(path)</p>
+</td><td>
+<p>Returns a closed path</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>isopen(path)</p>
+</td><td>
+<p>Returns an open path</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>isfinite(timestamp)</p>
+</td><td>
+<p>Returns a finite time</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>isfinite(interval)</p>
+</td><td>
+<p>Returns a finite time</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>length(object)</p>
+</td><td>
+<p>Returns length of item</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>ln(float8)</p>
+</td>
+<td>
+<p>Returns natural logarithm</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>log(float8)</p>
+</td>
+<td>
+<p>Returns base-10 logarithm</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>lower(string)</p>
+</td><td>
+<p>Converts string to lowercase</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>lseg(box)</p>
+</td><td>
+<p>Converts box diagonal to lseg</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>lseg(point,point)</p>
+</td><td>
+<p>Converts points to lseg</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>lpad(text,int,text)</p>
+</td><td>
+<p>Returns left-pad string to specified length</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>ltrim(text,text)</p>
+</td><td>
+<p>Returns left-trim characters from text</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>masklen(cidr)</p>
+</td><td>
+<p>Calculates netmask length</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>masklen(inet)</p>
+</td><td>
+<p>Calculates netmask length</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>netmask(inet)</p>
+</td><td>
+<p>Constructs netmask as text</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>npoint(path)</p>
+</td><td>
+<p>Returns number of points</p>
+</td>
+</tr>
+
+<tr>
+
+<td>
+<p>NULLIF(input,value)</p>
+
+</td><td><p>Returns NULL if input = value, else returns input</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>octet_length(string)</p>
+</td><td>
+<p>Returns storage length of string</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>path(polygon)</p>
+</td>
+<td>
+<p>Converts polygon to path</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>pclose(path)</p>
+</td><td>
+<p>Converts path to closed</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>pi(  )</p>
+</td><td>
+<p>Returns fundamental constant</p>
+</td>
+</tr>
+
+<tr>
+
+<td>
+<p>polygon(box)</p>
+</td><td>
+<p>Returns 12-point polygon</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>polygon(circle)</p>
+</td><td>
+<p>Returns 12-point polygon</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>polygon(npts,circle)</p>
+</td><td>
+<p>Returns npts polygon</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>polygon(path)</p>
+</td><td>
+<p>Converts path to polygon</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>point(circle)</p>
+</td><td>
+<p>Returns center</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>point(lseg,lseg)</p>
+</td><td>
+<p>Returns intersection</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>point(polygon)</p>
+</td><td>
+<p>Returns center</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>position(string in string)</p>
+</td><td>
+<p>Returns location of specified substring</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>pow (float8,float8)</p>
+</td><td>
+<p>Raises a number to the specified exponent</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>popen(path)</p>
+</td><td>
+<p>Converts path to open path</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>reltime(interval)</p>
+</td><td>
+<p>Converts to reltime</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>radians(float8)</p>
+</td><td>
+<p>Converts degrees to radians</p>
+
+</td>
+</tr>
+
+<tr>
+<td>
+<p>radius(circle)</p>
+</td>
+<td>
+<p>Returns radius of circle</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>round(float8)</p>
+</td><td>
+<p>Rounds to nearest integer</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>rpad(text,int,text)</p>
+</td><td>
+<p>Converts right pad string to specified length</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>rtrim(text,text)</p>
+</td>
+<td>
+<p>Converts right trim characters from text</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>sin(float8)</p>
+</td><td>
+<p>Returns sine</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>sqrt(float8)</p>
+</td><td>
+<p>Returns square root</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>substring(string [from int] [for int])</p>
+</td><td>
+<p>Extracts specified substring</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>substr(text,int[,int])</p>
+</td><td>
+<p>Extracts specified substring</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>tan(float8)</p>
+
+</td><td><p>Returns tangent</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>text(char)</p>
+</td><td>
+<p>Converts char to text type</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>text(varchar)</p>
+</td><td>
+<p>Converts varchar to text type</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>textpos(text,text)</p>
+</td><td>
+<p>Locates specified substring</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>timestamp(date)</p>
+</td><td>
+<p>Converts to timestamp</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>timestamp(date,time)</p>
+</td><td>
+<p>Converts to timestamp</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>to_char(timestamp, text)</p>
+</td><td>
+<p>Converts timestamp to string</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>to_char(int, text)</p>
+</td><td>
+<p>Converts int4/int8 to string</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>to_char(float, text)</p>
+</td>
+<td>
+<p>Converts float4/float8 to string</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>to_char(numeric, text)</p>
+</td><td>
+<p>Converts numeric to string</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>to_date(text, text)</p>
+</td><td>
+<p>Converts string to date</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>to_number(text, text)</p>
+</td><td>
+<p>Converts string to numeric</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>to_timestamp(text, text)</p>
+</td>
+<td>
+<p>Converts string to timestamp</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>translate(text,from,to)</p>
+</td><td>
+<p>Converts character in string</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>trim([leading|trailing|both] [string] from
+string)</p>
+</td><td>
+<p>Trims characters from string</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>trunc(float8)</p>
+</td><td>
+<p>Truncates (towards zero)</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>upper(text)</p>
+</td><td>
+<p>Converts text to uppercase</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>varchar(char)</p>
+</td><td>
+<p>Converts char to varchar type</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>varchar(text)</p>
+</td><td>
+<p>Converts text to varchar type</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>width(box)</p>
+</td><td>
+<p>Returns<indexterm id="IXTR3-48" class="endofrange" startref="ch04-idx-1000007912-1"/> horizontal<indexterm id="IXTR3-49" class="endofrange" startref="ch04-idx-1000007839-1"/> <indexterm id="IXTR3-50" class="endofrange" startref="ch04-idx-1000007839-2"/> <indexterm id="IXTR3-51" class="endofrange" startref="ch04-idx-1000007839-3"/> <indexterm id="IXTR3-52" class="endofrange" startref="ch04-idx-1000007839-4"/> size<indexterm id="IXTR3-53" class="endofrange" startref="ch04-idx-1000007557-1"/></p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</DIV>

@@ -1,0 +1,225 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFFILE</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFFILE</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Manages interactions with server files. 
+</p>
+
+<p>
+The following sections describe the actions of the cffile tag:
+</p>
+<ul>
+
+<li>cffile action = &quot;append&quot; on&#160;page&#160;383</li>
+
+<li>cffile action = &quot;copy&quot; on&#160;page&#160;385</li>
+
+<li>cffile action = &quot;delete&quot; on&#160;page&#160;387</li>
+
+<li>cffile action = &quot;move&quot; on&#160;page&#160;388</li>
+
+<li>cffile action = &quot;read&quot; on&#160;page&#160;390</li>
+
+<li>cffile action = &quot;readBinary&quot; on&#160;page&#160;392</li>
+
+<li>cffile action = &quot;rename&quot; on&#160;page&#160;393</li>
+
+<li>cffile action = &quot;upload&quot; on&#160;page&#160;395</li>
+
+<li>cffile action = &quot;write&quot; on&#160;page&#160;398</li>
+</ul>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>To execute, this tag must be enabled in the ColdFusion Administrator. For more information, see Configuring and Administering ColdFusion&#160;MX.</td>
+  </tr>
+</table>
+<p>
+If your ColdFusion applications run on a server used by multiple customers, consider the security of the files that could be uploaded or manipulated by cffile. For more information, see Configuring and Administering ColdFusion&#160;MX.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+File management tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span>
+<p>
+The tag syntax depends on the action attribute value. See the following sections.
+</p>
+<ul>
+
+<li>cffile action = &quot;append&quot;</li>
+
+<li>cffile action = &quot;copy&quot;</li>
+
+<li>cffile action = &quot;delete&quot;</li>
+
+<li>cffile action = &quot;move&quot;</li>
+
+<li>cffile action = &quot;read&quot;</li>
+
+<li>cffile action = &quot;readBinary&quot;</li>
+
+<li>cffile action = &quot;rename&quot;</li>
+
+<li>cffile action = &quot;upload&quot;</li>
+
+<li>cffile action = &quot;write&quot;</li>
+</ul>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfdirectory
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7: Added the result attribute, which allows you to specify an alternate variable in which to receive result parameters. Used for action = &quot;upload&quot; action.
+</p>
+
+<p>
+ColdFusion MX&#160;6.1: 
+</p>
+<ul>
+
+<li>Changed file path requirements: if you do not specify an absolute file path, the path is relative to the ColdFusion temporary directory, which is returned by the GetTempDirectory function.</li>
+
+<li>Changed behavior for action=&quot;read&quot;: if the file starts with a byte order mark (BOM) ColdFusion uses it to determine the character encoding.</li>
+
+<li>Changed behavior for action=&quot;upload&quot; nameConflict=&quot;MakeUnique&quot; ColdFusion now makes filenames unique by appending a incrementing number, 1 for the first file, 2 for the second and so on, to the name. In ColdFusion MX filenames were made unique by appending an additional &quot;1&quot; for each file, as in 1, 11, 111, and so on.</li>
+</ul>
+
+<p>
+ColdFusion&#160;MX:
+</p>
+<ul>
+
+<li>Changed use of slashes in paths: you can use forward (/) or backward (\) slashes in paths on both UNIX and Windows systems.</li>
+
+<li>Changed file hierarchy requirements: ColdFusion does not require that you put files and directories that you manipulate with this tag below the root of the web server document directory. </li>
+
+<li>Changed directory path requirements for the destination attribute: a directory path that you specify in the destination attribute does not require a trailing slash. </li>
+
+<li>Deprecated the system value of the attributes attribute. </li>
+
+<li>Deprecated the temporary value of the attributes attribute. In ColdFusion MX, it is a synonym for normal. It might not work in later releases. </li>
+
+<li>Changed the action attribute options read, write, append and move: they support a new attribute, charset.</li>
+
+<li>The archive value of the attributes attribute is obsolete and has no effect.</li>
+</ul>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!--- This shows how to write, read, update, and delete a file using CFFILE.
+This is a view-only example. ---&gt;
+&lt;!--- 
+&lt;cfif IsDefined(&quot;form.formsubmit&quot;) is &quot;Yes&quot;&gt; 
+   &lt;!--- The form has been submitted, now do the action. ---&gt; 
+   &lt;cfif form.action is &quot;new&quot;&gt; 
+      &lt;!--- make a new file ---&gt; 
+      &lt;cffile          action=&quot;Write&quot; 
+         file=&quot;#GetTempDirectory()#foobar.txt&quot; 
+         output=&quot;#form.the_text#&quot;&gt; 
+   &lt;/cfif&gt; 
+   &lt;cfif form.action is &quot;read&quot;&gt; 
+      &lt;!--- read existing file ---&gt; 
+      &lt;cffile          action=&quot;Read&quot; 
+            file=&quot;#GetTempDirectory()#foobar.txt&quot; 
+            variable=&quot;readText&quot;&gt; 
+   &lt;/cfif&gt; 
+
+   &lt;cfif form.action is &quot;add&quot;&gt; 
+      &lt;!--- update existing file ---&gt; 
+      &lt;cffile          action=&quot;Append&quot; 
+         file=&quot;#GetTempDirectory()#foobar.txt&quot; 
+         output=&quot;#form.the_text#&quot;&gt; 
+   &lt;/cfif&gt; 
+
+   &lt;cfif form.action is &quot;delete&quot;&gt; 
+      &lt;!--- delete existing file ---&gt; 
+      &lt;cffile       action=&quot;Delete&quot; 
+         file=&quot;#GetTempDirectory()#foobar.txt&quot;&gt; 
+   &lt;/cfif&gt; 
+&lt;/cfif&gt; 
+&lt;!--- Set some variables. ---&gt; 
+&lt;cfparam    name=&quot;fileExists&quot;    default=&quot;no&quot;&gt; 
+&lt;cfparam name=&quot;readText&quot; default=&quot;&quot;&gt; 
+&lt;!--- First, check whether canned file exists. ---&gt; 
+&lt;cfif FileExists(&quot;#GetTempDirectory()#foobar.txt&quot;) is &quot;Yes&quot;&gt; 
+   &lt;cfset fileExists=&quot;yes&quot;&gt; 
+&lt;/cfif&gt; 
+&lt;!--- Now, make the form that runs the example. ---&gt; 
+&lt;form action=&quot;index.cfm&quot; method=&quot;POST&quot;&gt; 
+&lt;h4&gt;Type in some text to include in your file:&lt;/h4&gt; &lt;p&gt; 
+&lt;cfif fileExists is &quot;yes&quot;&gt; 
+   &lt;p&gt;A file exists (foobar.txt, in &lt;cfoutput&gt;#GetTempDirectory()#&lt;/cfoutput&gt;). 
+   You may add to it, read from it, or delete it. &lt;/p&gt;
+&lt;/cfif&gt; 
+&lt;!--- If reading from a form, let that information display in textarea. ---&gt; 
+&lt;textarea name=&quot;the_text&quot; cols=&quot;40&quot; rows=&quot;5&quot;&gt; 
+   &lt;cfif readText is not &quot;&quot;&gt; 
+      &lt;cfoutput&gt;#readText#&lt;/cfoutput&gt; 
+   &lt;/cfif&gt;&lt;/textarea&gt; 
+&lt;!--- Select from the actions depending on whether the file exists. ---&gt; 
+&lt;select name=&quot;action&quot;&gt; 
+&lt;cfif fileExists is &quot;no&quot;&gt; 
+   &lt;option value=&quot;new&quot;&gt;Make new file 
+&lt;/cfif&gt; 
+&lt;cfif fileExists is &quot;yes&quot;&gt; 
+   &lt;option value=&quot;add&quot;&gt;Add to existing file 
+   &lt;option value=&quot;delete&quot;&gt;Delete file 
+   &lt;option value=&quot;read&quot;&gt;Read existing file 
+&lt;/cfif&gt; 
+&lt;/select&gt; 
+&lt;input type=&quot;Hidden&quot; name=&quot;formsubmit&quot; value=&quot;yes&quot;&gt; 
+&lt;input type=&quot;Submit&quot; name=&quot;&quot; value=&quot;make my changes&quot;&gt; 
+&lt;/form&gt; ---&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+
+  </body>
+</html>

@@ -1,0 +1,359 @@
+<!-- Copyright 2000, 2001, 2002, 2003 Macromedia, Inc. All rights reserved. -->
+
+<html>
+
+<head>
+
+<title>关于配置文件夹</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<style type="text/css">
+
+<!--
+
+th {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt; font-weight: bold}
+
+h2 {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 18pt}
+
+td,p {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt}
+
+code {  font-size: 11pt}
+
+.grey {  color: #666666}
+
+.red {  color: #FF0000}
+
+-->
+
+</style>
+
+</head>
+
+
+
+<body bgcolor="#FFFFFF">
+
+
+
+<h2>配置文件夹</h2>
+
+
+<p>Dreamweaver 8 的许多功能都是用 JavaScript 和 HTML 开发的扩展功能。配置文件夹包含了这些扩展功能。如果您自定义或扩展 Dreamweaver 产品，可修改这些文件或将代码的源文件添加到一个或多个配置文件夹中。熟悉了这些文件夹后，您就能找到扩展功能的“界面”以及每种扩展功能类型的有效范例了。</p>
+
+<p><i><b class="red">警告：</b> 配置文件夹中的文件构成了 Dreamweaver 产品的大部分内容。<b>请勿修改、删除这些文件或者将文件加入到它们当中，除非您知道如何自定义和扩展 Dreamweaver。</b> 在您尝试自定义 Dreamweaver 之前，请阅读</i>“扩展 Dreamweaver”<i>（“帮助”&nbsp;>“扩展功能”&nbsp;>“扩展 Dreamweaver”）和 </i>Dreamweaver API 参考<i>（“帮助”&nbsp;>“扩展功能”&nbsp;>“API 参考”）。 </i></p>
+
+<p>某些文件夹的名称是清楚明了的。例如，对象保存在 Objects 子文件夹中；行为保存在 Behaviors 文件夹中。未与特定的扩展功能类型对应的一个文件夹是 Shared 文件夹。Shared 文件夹是所有扩展功能常用的实用程序函数、类和图像的中央存储库。</p>
+
+<p>以后每次安装 Dreamweaver 8 时都会产生另一个版本的配置目录。Dreamweaver 会在每个旧的配置文件夹后加上一个版本编号（例如“配置-1”、“配置-2”等），而编号越大，文件夹就越旧。配置目录的最新版本总是只称为“配置”。</font></p>
+
+
+
+<p>以下的配置文件和文件夹对应于 Dreamweaver 8 功能的组织方式：</p>
+
+
+
+<table width="100%" border="1" cellpadding="5" cellspacing="0">
+  <tr align="left"> 
+<th bgcolor="#99FF00" valign="top">文件/文件夹名</th>
+<th bgcolor="#99FF00" colspan="2">内容</th>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">ActiveXNames.txt</th>
+<td colspan="2">ActiveX 类 ID 的列表；用于填充 ActiveX 检查器中的 ClassID 弹出菜单。 </td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">fields.css</th>
+<td colspan="2">支持函数和对话框内容的样式表。 
+    </td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Extensions.txt</th>
+<td colspan="2"> <p>Dreamweaver 可识别的文件扩展名的列表。 </p>
+<p>如果在此文件中添加了一个扩展名，则在“站点”面板中双击带有该扩展名的文件时，会在 Dreamweaver 中打开该文件。</p>
+<p>Extensions.txt 还决定着在“文件”>“打开”对话框中显示哪些文件类型。要想让特定类型的文件在默认情况下显示在该对话框中，可将适当的扩展名添加到 Extensions.txt 的第一行。有关详细信息，请参阅<cite>“扩展 Dreamweaver”</cite>。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">FTPExtensionMap.txt</th>
+<td colspan="2"> <p>文件扩展名以及与其关联的传输模式的列表。</p>
+<p>此文件决定 Dreamweaver 如何上传和下载文件：以 ASCII 模式还是 Binary 模式。可以向此列表添加项目或更改现有项目的模式。在 Macintosh 上，此文件还用于设置从非 Macintosh 服务器下载的文件的文件类型和创建程序。 </p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">version.xml</font></th>
+<td colspan="2"> <p>version.xml 文件包含有关 Dreamweaver 安装的信息。请勿编辑或删除此文件。</p></td>
+  </tr>
+  <tr> 
+<th align="left" bgcolor="#CCFF99" valign="top">Behaviors</th>
+<td colspan="2">行为检查器使用的文件。</td>
+  </tr>
+  <tr> 
+    <th align="left" valign="top">&nbsp;</th>
+<th align="left" bgcolor="#CCFF99" valign="top">Actions</th>
+<td> <p>显示在行为检查器中“动作”(+) 弹出菜单中的项目。</p>
+<p> 出于本地化的目的，每个动作都被分为两个文件（一个 .js 文件和一个 .htm 文件）。HTML 文件包含行为的界面：在您从“动作”弹出菜单中选择动作时，显示在对话框中的文本和表单字段。可以修改此文件，使表单字段变得更大或更小。JavaScript 文件包含将行为插入到文档中的 JavaScript 代码。请勿更改此文件，除非您精通 JavaScript 并且熟悉<cite>“扩展 Dreamweaver”</cite>中包含的行为 API 文档的内容。</p></td>
+  </tr>
+  <tr> 
+    <th align="left" valign="top">&nbsp;</th>
+<th align="left" bgcolor="#CCFF99" valign="top">Events</th>
+<td> <p>显示在行为检查器顶部的“显示事件”弹出菜单中的项目。 </p>
+<p>每个文件均以其代表的浏览器命名，并且包含 HTML 元素的列表，以及文件名中所有浏览器为每种元素提供支持的事件的列表。例如，对于 <code>A</code> 标签，Microsoft Internet Explorer (IE) 3.0 支持 <code>onMouseMove</code> 和 <code>onMouseOver</code> 事件，而 Netscape Navigator 3.0 支持 <code>onClick</code>、<code>onMouseOut</code> 和 <code>onMouseOver</code> 事件。3.0 and Later Browsers.htm 文件只为 <code>A</code> 标签列出了 <code>onMouseOver</code>，这是因为此事件是 IE 3.0 和 Netscape Navigator 3.0 唯一为该标签提供支持的事件。 </p>
+<p>对于每种元素，都会有一个标有星号的事件（例如 <code>onClick="*"</code>）。这是元素的默认事件。除非在动作文件中另有指定，否则在您将行为应用到元素时，默认的事件会显示在行为检查器的“事件”列中。例如，在 Netscape 3.0.htm 文件中，<code>onClick</code> 是 <code>A</code> 标签的默认事件。如果在“文档”窗口中选择一个链接，从行为检查器的“显示事件”弹出菜单中选择“Netscape 3.0”，再从“动作”弹出菜单中选择“调用 JavaScript”，则在您单击对话框中的“确定”时，<code>onClick</code> 会自动显示在“事件”列中。如果更喜欢 <code>onMouseOver</code> 作为 Netscape Navigator 3.0 中链接的默认事件，则可在 Netscape 3.0.htm 文件中将星号从 <code>onClick</code> 移到 <code>onMouseOver</code>。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">BrowserProfiles</th>
+<td align="left" colspan="2" valign="top"> <p>“检查目标浏览器”功能使用的文件。</p>
+<p>此文件夹中的每个文件均以其代表的浏览器命名，并且包含有关该浏览器支持或不支持的标签的信息。有关浏览器配置文件的详细信息，请参阅<cite>“扩展 Dreamweaver”</cite>。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">BuiltIn</font></th>
+<td align="left" colspan="2" valign="top"> <p>用于创建各种文档的模板，包括不同的页和框架集布局，以及预先格式化的层叠样式表。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Classes</th>
+<td align="left" colspan="2" valign="top"> <p>用于将 JavaBeans 作为数据源读取的文件。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">CodeColoring</font></th>
+<td align="left" colspan="2" valign="top"> <p>包含为文档的代码视图指定的颜色的 XML 文件。CodeColoring 目录还包含特定的文件，在这些与受支持的脚本撰写语言（Javascript、VBScript、C# 和 Visual Basic）相对应的文件中，代码块和关键字被指定了各种颜色。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">CodeHints</th>
+<td align="left" colspan="2" valign="top">XML 文件，它包含在代码视图中编辑时用于提供代码提示的关联和内容。 </td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Commands</th>
+<td align="left" colspan="2" valign="top"> <p>显示在“命令”菜单以及 Dreamweaver 内其它菜单中的项目。</p>
+<p>出于本地化的目的，此文件夹中的许多命令都被分为两个文件（一个 .js 文件和一个 .htm 文件）。HTML 文件包含命令的界面：在您从菜单中选择命令时，显示在对话框中的文本和表单字段。可以修改此文件，使表单字段变得更大或更小。JavaScript 文件包含使命令工作的 JavaScript 代码；不要更改此文件，除非您精通 JavaScript。</p>
+<p>您可能会注意到，Commands 文件夹与 Objects 文件夹中的某些项目都具有相同的名称。这是因为某些对象会启动命令。命令比对象更为灵活，但只有对象才能显示在“对象”面板中。通过从对象文件中调用命令，Dreamweaver 可以从这两种扩展功能中获得最大的好处。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Components</font></th>
+<td align="left" colspan="2" valign="top"> <p>对于每个受支持的服务器模型（ASP.Net/C#、ASP.Net/VisualBasic、ASP/JavaScript、ASP/VBScript、ColdFusion、JSP 和 PHP/MySQL），Components 目录都具有一个子目录。这些目录中的文件建立用于管理与服务器的连接的菜单项。ColdFusion 子目录还包含用于定义 ColdFusion 数据源、组件 (CFC) 和 Web 服务的支持文件。</p></td>
+  </tr>
+  <tr> 
+<td align="left" bgcolor="#CCFF99" valign="top"><b>Connections</b></td>
+<td colspan="2"> <p>此目录中的文件决定显示在数据库面板的加号 (+) 弹出菜单中的项目。此目录还包含用于从服务器中检索数据的脚本（存储在 Scripts 子目录中）。有关数据连接的详细信息，请参阅<cite>“扩展 Dreamweaver”</cite>中的“数据库 API”。 </p></td>
+  </tr>
+  <tr> 
+<td align="left" bgcolor="#CCFF99" valign="top"><strong>Content</strong></font></th> 
+<td align="left" colspan="2" valign="top"><p>Content 文件夹包含用于拼写字典的文件，以及用于这些字典的所有参考资料。</font></p></td>
+  </tr>
+  <tr> 
+<td height="115" align="left" valign="top" bgcolor="#CCFF99"><b>Data Sources</b></td>
+    <td colspan="2" align="left" valign="top">
+<p>由“动态数据”对话框和“绑定”面板使用的文件。 </p>
+<p>在这些用户界面的加号 (+) 弹出菜单中，显示哪些动态数据对象是根据为站点指定的服务器模型而定的。有关编辑 Data Sources 文件的详细信息，请参阅<cite>“扩展 Dreamweaver”</cite>中的“数据源 API”。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Debugger</font></th>
+<td align="left" colspan="2" valign="top"> <p>用于 JavaScript 调试器模块的支持文件。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">DocumentTypes</font></th>
+<td align="left" colspan="2" valign="top"> <p>用于每种受支持的文档类型的基本模板。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Encodings</th>
+<td align="left" colspan="2" valign="top"> <p>Dreamweaver 的其它字符编码；用于填充“页面属性”对话框中的“文档编码”弹出菜单。</p>
+<p>默认情况下，Dreamweaver 支持几种编码，包括西欧语系 (Latin1)、日语（Shift JIS、JIS、EUC）、繁体中文、简体中文和韩文。这些编码总是会显示在“文档编码”弹出菜单中，并且无法删除。此文件夹中的文件提供了对其它语言和字符集（包括西里尔字符、希腊字符和冰岛字符）的支持。 </p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">ExtensionData</th>
+<td align="left" colspan="2" valign="top"> <p><b  class="grey">注：</b> 此目录中的文件只是为了向后兼容性才被包括在内，而在使用扩展功能的当前方法中并未使用这些文件。 </p>
+<p>XML 元数据：用于扩展的组和参与者数据，包括服务器行为。</p></td>
+  </tr>
+  <tr> 
+    <th align="left" valign="top">&nbsp;</th>
+<th align="left" bgcolor="#CCFF99" valign="top">MM</th>
+<td> <p>Dreamweaver 自带的 XML 组和参与者扩展数据文件。 
+      </p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Flash Objects</th>
+<td align="left" colspan="2" valign="top"> <p>用于创建新的 Flash 对象的文件。Flash 按钮和 Flash 文本功能是使用此 API 建立的。</p></td>
+  </tr>
+  <tr> 
+    <th align="left" valign="top">&nbsp;</th>
+<th align="left" bgcolor="#CCFF99" valign="top">Flash Buttons</th>
+<td> <p>Flash 按钮模板文件。</p></td>
+  </tr>
+  <tr> 
+    <th align="left" valign="top">&nbsp;</th>
+<th align="left" bgcolor="#CCFF99" valign="top">Flash Buttons Preview</th>
+<td> <p>Flash 按钮模板文件的预览。</p></td>
+  </tr>
+  <tr> 
+    <th align="left" valign="top">&nbsp;</th>
+<th align="left" bgcolor="#CCFF99" valign="top">Flash Text</th>
+<td> <p>Flash 文本模板文件。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Flash Player</th>
+<td align="left" colspan="2" valign="top"> <p>欢迎信息和其它交互式信息的 SWF。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Floaters</th>
+<td align="left" colspan="2" valign="top"> <p>自定义的浮动面板。</p>
+<p>如果创建或下载自定义的浮动面板，应将它存储在此文件夹中。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Formatters</th>
+<td align="left" colspan="2" valign="top">用于应用各种显示格式的脚本，如不同的日期/时间显示格式或将文本设置为全部大写或全部小写。</td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Generator</th>
+<td align="left" colspan="2" valign="top"> <p>在 Dreamweaver 中使用 Flash 对象时所需的文件，包括用于与 Dreamweaver 集成的自定义 Generator 对象。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Inspectors</th>
+<td align="left" colspan="2" valign="top"> <p>自定义的属性检查器。</p>
+<p>Dreamweaver 中的绝大多数属性检查器都是以硬编码方式写进产品中的。但是，用于 <code>HEAD</code> 中的项目（如 <code>META</code>、<code>TITLE</code> 和 <code>LINK</code> 标签）的检查器是用 HTML 和 JavaScript 编写的自定义检查器。出于本地化的目的，此文件夹中的属性检查器都被分为两个文件（一个 .js 文件和一个 .htm 文件）。HTML 文件包含检查器的界面：显示在属性检查器的浮动面板中的文本和表单字段。JavaScript 文件包含使检查器工作的 JavaScript 代码；请勿更改此文件，除非您精通 JavaScript 并且熟悉<cite>“扩展 Dreamweaver”</cite>中包含的属性检查器 API 文档的内容。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">JDBCDrivers</th>
+<td align="left" colspan="2" valign="top"> 可用于存储客户端 JDBC 驱动程序的目录，这些驱动程序在 Dreamweaver 中用于为 JSP 文件建立本地连接。</td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">JSExtensions</th>
+<td align="left" colspan="2" valign="top"> <p>自定义的共享库。</p>
+<p>通过添加新的 JavaScript 函数，此文件夹中的自定义共享库使 Dreamweaver 的扩展功能更为强大并更为灵活。因为 Translators 和 Commands 文件夹中的某些文件依赖于这些共享库，所以不得删除这些库。要将自己的共享库添加到 Dreamweaver 中，请参阅<cite>“扩展 Dreamweaver”</cite>中有关 C 级扩展性的部分。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Menus</th>
+<td align="left" colspan="2" valign="top"> <p>定义 Dreamweaver 整个菜单结构的文件 (menus.xml) 以及该文件的备份副本 (menus.bak)，利用备份副本可以恢复默认菜单。 </p>
+<p>menus.xml 文件指定 Dreamweaver 中所有菜单和菜单项的名称和行为。它还指定 Dreamweaver 使用的所有快捷键和助记键。有关 menus.xml 的信息，请参阅<cite>“扩展 Dreamweaver”</cite>。</p>
+<p>要添加自己的菜单命令，请在 Menus 中单独创建一个文件夹，然后将您的菜单命令文件存储在该文件夹中。有关创建菜单命令的详细信息，请参阅<cite>“扩展 Dreamweaver”</cite>中的“菜单命令”部分。</p></td>
+  </tr>
+  <tr> 
+    <th align="left" valign="top">&nbsp;</th>
+<th align="left" bgcolor="#CCFF99" valign="top">Custom Sets</th>
+<td> <p>对 menu.xml 文件所作的自定义设置，它们提供与其它产品相似的快捷键。</p></td>
+  </tr>
+  <tr> 
+    <th align="left" valign="top">&nbsp;</th>
+<th align="left" bgcolor="#CCFF99" valign="top">MM</th>
+<td> <p>控制 Dreamweaver 中许多菜单项的行为的文件（称为菜单命令）。</p>
+<p>此文件夹保留用于 Dreamweaver 自带的菜单命令。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Objects</th>
+<td align="left" colspan="2" valign="top"> <p>显示在“插入”菜单和“对象”面板中的项目。</p>
+<p>要想对象显示在“对象”面板或“插入”菜单中，所有对象文件都必须存储在 Objects 文件夹的子文件夹中。有关修改这些文件的详细信息，请参阅<cite>“扩展 Dreamweaver”</cite>中的“对象”API。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Plugins</th>
+<td align="left" colspan="2" valign="top"> <p>Dreamweaver 不支持的插件列表 (UnsupportedPlugins.txt)，以及将用于在 Dreamweaver 中播放插件内容的任何插件。</p>
+<p>在您要播放插件内容时，Dreamweaver 会自动在硬盘驱动器上扫描任何浏览器的插件文件夹，以便找到合适的插件。因此，不一定要在此文件夹中存储插件。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Queries</th>
+<td align="left" colspan="2" valign="top"> <p>您保存在“查找或替换”对话框中的搜索模式。默认情况下，此文件夹为空。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Reports</th>
+<td align="left" colspan="2" valign="top"> <p>用于 Dreamweaver 报告的扩展功能。</p></td>
+  </tr>
+  <tr> 
+<td align="left" bgcolor="#CCFF99" valign="top"> <p><b>Server Behaviors</b></p></td>
+<td colspan="2"> <p>服务器行为检查器使用的文件。每个服务器模型（ASP.Net/C#、ASP.Net/VisualBasic、ASP/JavaScript、ASP/VBScript、ColdFusion、JSP 和 PHP/MySQL）都具有一个对应的子目录。</p>
+<p>服务器行为创建 Web 应用程序需要的功能，如根据用户的条件过滤记录、翻阅记录、将结果列表链接到详细信息页，以及将记录插入到结果集中。有关编辑 Server Behaviors 文件的详细信息，请参阅<cite>“扩展 Dreamweaver”</cite>中的“服务器行为”。</p>
+<p><b class="grey">注：</b> 文件“ServerBehaviors.xml”（此目录中每个服务器模型文件夹中的一个文件）决定在“服务器行为”面板的加号 (+) 菜单中显示的项目。 </p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">ServerDebugOutput</font></th>
+<td align="left" colspan="2" valign="top"> <p>用于 ColdFusion 调试的支持文件。</p></td>
+  </tr>
+  <tr> 
+<td align="left" bgcolor="#CCFF99" valign="top" height="243"> <p><b>Server Formats</b></p></td>
+<td colspan="2"> <p>用于格式化动态数据的文件。文件“Formats.xml”定义“格式”菜单，而且您可以手工编辑该文件（请小心进行）。每种服务器格式（ASP.Net/C#、ASP.Net/VisualBasic、ASP/JavaScript、ASP/VBScript、ColdFusion、JSP 和 PHP/MySQL）都具有一个对应的子目录。 </p>
+<p>通过使用“动态数据”对话框或“绑定”面板中的“格式”弹出菜单，用户可以先更改动态数据的格式，然后才在 HTML 文档中使用它。格式类型收集了格式类别的所有常用参数，从而使您可以简化创建新格式时要做的工作。<br> 有关编辑 Server Formats 文件的详细信息，请参阅<cite>“扩展 Dreamweaver”</cite>中的“数据格式化”。</p></td>
+  </tr>
+  <tr> 
+<td align="left" bgcolor="#CCFF99" valign="top"><b>Server Models</b></td>
+<td colspan="2"> <p>定义可用的服务器模型的文件。每种服务器格式（ASP.Net/C#、ASP.Net/VisualBasic、ASP/JavaScript、ASP/VBScript、ColdFusion、JSP 和 PHP/MySQL）都具有一个包含配置信息的 HTML 文件和一个对应的子目录，该子目录存储每个服务器模型的某些功能的具体实现。<br>有关编辑 Server Model 文件的详细信息，请参阅<cite>“扩展 Dreamweaver”</cite>中的“服务器模型”。 </p></td>
+  </tr>
+  <tr> 
+<td align="left" bgcolor="#CCFF99" valign="top" height="116"> <p><b>Shared</b></p></td>
+<td colspan="2"> <p>由多个扩展功能共享的文件。</p>
+<p>这些子文件夹保留用于 Dreamweaver 自带的共享文件，但任何扩展功能都可以引用这些目录中的文件。要添加自己的共享文件，请在 Shared 目录中单独创建一个文件夹，然后将您的文件存储在该文件夹中。 </p></td>
+  </tr>
+  <tr> 
+    <th align="left" valign="top">&nbsp;</th>
+<th align="left" bgcolor="#CCFF99" valign="top">Common</th>
+<td> <p>在第三方扩展功能中使用的共享脚本和类。</p></td>
+  </tr>
+  <th align="left" valign="top">&nbsp;</th>
+<th align="left" bgcolor="#CCFF99" valign="top">Controls</th>
+<td> <p>用于建立服务器行为的控件。这些控件包括用于文本和记录集菜单的界面。</p></td>
+  </tr>
+  <th align="left" valign="top">&nbsp;</th>
+<th align="left" bgcolor="#CCFF99" valign="top">Fireworks</th>
+<td> <p>用于 Fireworks 集成的支持文件。</p></td>
+  <tr> 
+    <th align="left" valign="top">&nbsp;</th>
+<th align="left" bgcolor="#CCFF99" valign="top">MM</th>
+<td> <p>Dreamweaver 自带的扩展功能使用的共享脚本、图像和类。</p></td>
+  </tr>
+  <tr> 
+    <th align="left" valign="top">&nbsp;</th>
+<th align="left" bgcolor="#CCFF99" valign="top">UltraDev</th>
+<td> <p>Dreamweaver 自带的扩展功能使用的共享脚本、图像和类。</p>
+      <p></p></td>
+  </tr>
+  <tr> 
+    <th align="left" valign="top">&nbsp;</th>
+<th align="left" bgcolor="#CCFF99" valign="top">UsableNet_508ASOEM</th>
+<td>用于辅助功能报告的支持文件。</td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Snippets</font></th>
+<td align="left" colspan="2" valign="top"> <p>用于“代码片断”面板的支持文件和默认内容。</font></p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Startup</th>
+<td align="left" colspan="2" valign="top"> <p>在 Dreamweaver 启动时运行的脚本。 </p>
+<p>有关创建启动脚本的详细信息，请参阅<cite>“扩展 Dreamweaver”</cite>中的“文档对象模型”。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Strings</font></th>
+<td align="left" colspan="2" valign="top"> <p>Strings 目录包含 XML 文件，这些文件指定用于填充各种消息和对话框的内容。</font></p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">TagLibIntrospection</font></th>
+<td align="left" colspan="2" valign="top">用于标签库标签导入程序的支持文件（标签导入程序在 TagLibraries/TagImporters 目录中）。</td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99" height="48">TagLibraries</font></th>
+<td align="left" colspan="2" valign="top">包含标签数据库 (TagLibraries.vtm) 和标签定义文件，它们用于 Dreamweaver 支持的标记和脚本撰写语言。</font></p> 这些文件夹还包含用于对话界面的文件，该对话界面是用户在 Dreamweaver 中看到的用于编辑标签的界面。有关详细信息，请参阅<cite>“扩展 Dreamweaver”</cite>中的“标签库和对话框”。 </td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99" height="48">Third Party Source Code </th>
+<td align="left" colspan="2" valign="top">为 Dreamweaver 提供功能并且来自 Macromedia 外部来源的文件。例如，此文件夹包含 Dreamweaver 使用的 JavaScript 翻译程序。</td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">ThirdPartyTags</th>
+<td align="left" colspan="2" valign="top"> <p>定义第三方标记（如 ASP、PHP 和自定义的 HTML）的语法和标签名称的文件。</p>
+<p>第三方标签定义文件是 XML 文件。每个 XML 文件都包含一个或多个标签规范 (tagspecs)，而每个标签规范都可能有一个用于定义标记的图标的关联 GIF 文件。有关第三方标签和标签规范的详细信息，请参阅<cite>“扩展 Dreamweaver”</cite>。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Toolbars</font></th>
+<td align="left" colspan="2" valign="top"><p>定义可用的工具栏以及每个工具栏上的图标和命令。</p></td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Translators</th>
+<td align="left" colspan="2" valign="top">数据转换支持文件。数据转换器将专用的标记服务器端嵌入、有条件的 JavaScript 语句或其它代码（如 PHP3、JSP、CFML 或 ASP）转换为 Dreamweaver 可以读取和显示的代码。</td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">Validators</th>
+<td align="left" colspan="2" valign="top">用于将文本字段项目验证添加到表单中的支持脚本。 </td>
+  </tr>
+  <tr> 
+<th align="left" valign="top" bgcolor="#CCFF99">WebServices</font></th>
+<td align="left" colspan="2" valign="top"> <p>用于特定的 Web 服务连接的支持文件。</font></p></td>
+  </tr>
+</table>
+
+</body>
+
+</html>
+

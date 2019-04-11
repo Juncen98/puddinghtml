@@ -1,0 +1,14 @@
+<participant>
+     <quickSearch><![CDATA[BOF]]></quickSearch>
+     <insertText location="afterSelection">
+<![CDATA[
+<% } // end !@@rsName@@.EOF || !@@rsName@@.BOF %>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName"><![CDATA[/\}\s*\/\/ end\s*!(\w+)\.EOF \|\| !\w+\.BOF/]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="rsName"><![CDATA[/(\b)\w+(\.EOF|\.BOF)/]]></updatePattern>
+     </updatePatterns>
+</participant>

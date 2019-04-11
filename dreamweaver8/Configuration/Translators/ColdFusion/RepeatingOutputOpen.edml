@@ -1,0 +1,12 @@
+<participant name="RepeatingOutputOpen">
+  <translator priority=400>
+    <searchPatterns>
+      <searchPattern paramNames="orig,,expression"><![CDATA[/(<cfoutput[^>]*?(query)\s*=\s*("[^"]+"|[^>"\s\r\n]+)[^>]*?>)/gi]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="tag+cfoutput" limitSearch="tagOnly" translationType="tabbed region start">
+       <display><![CDATA[%3Ccfoutput%3E]]></display>
+      </translation>
+    </translations>
+  </translator>
+</participant>

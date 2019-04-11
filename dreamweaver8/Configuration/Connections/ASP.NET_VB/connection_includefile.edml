@@ -1,0 +1,18 @@
+<participant>
+    <quickSearch><![CDATA[// HTTP=]]></quickSearch>
+    <insertText location="aboveHTML+2">
+<![CDATA[
+		<add key="MM_CONNECTION_HANDLER_@@cnameHandler@@" value="@@handler@@" />
+		<add key="MM_CONNECTION_STRING_@@cname@@" value=@@string@@ />
+		<add key="MM_CONNECTION_DATABASETYPE_@@cnameDBType@@" value="@@databaseType@@" />
+		<add key="MM_CONNECTION_SCHEMA_@@cnameSchema@@" value="@@schema@@" />
+		<add key="MM_CONNECTION_CATALOG_@@cnameCatalog@@" value="@@catalog@@" />]]>
+    </insertText>
+    <searchPatterns whereToSearch="directive">
+      <searchPattern paramNames="cnameHandler,handler"><![CDATA[/<add\s+key="MM_CONNECTION_HANDLER_(\w*)"\s+value="([^"]*)"\s*\/>/]]></searchPattern>
+      <searchPattern paramNames="cname,string"><![CDATA[/<add\s+key="MM_CONNECTION_STRING_(\w*)"\s+value="([^"]*)"\s*\/>/]]></searchPattern>
+      <searchPattern paramNames="cnameDBType,databaseType"><![CDATA[/<add\s+key="MM_CONNECTION_DATABASETYPE_(\w*)"\s+value="([^"]*)"\s*\/>/]]></searchPattern>
+      <searchPattern paramNames="cnameSchema,schema"><![CDATA[/<add\s+key="MM_CONNECTION_SCHEMA_(\w*)"\s+value="([^"]*)"\s*\/>/]]></searchPattern>
+      <searchPattern paramNames="cnameCatalog,catalog"><![CDATA[/<add\s+key="MM_CONNECTION_CATALOG_(\w*)"\s+value="([^"]*)"\s*\/>/]]></searchPattern>
+    </searchPatterns>
+</participant>

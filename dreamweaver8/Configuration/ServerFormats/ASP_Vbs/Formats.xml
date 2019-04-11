@@ -1,0 +1,70 @@
+<formats id="DWMenu_ServerFormatDef_ASP_2">
+	<separator />
+	<menu name = "日期/时间" id="DWMenu_ServerFormatDef_ASP_2_DATETIME">
+		<format	file="日期/时间"	title="日期/时间 - 常规格式"		expression="<%\s*=.*DoDateTime\(.*, 0, -1\)\s*[^%>]*%>"		strNamedFormat="generalDate"	nLCID="-1"	id="DWMenu_ServerFormatDef_ASP_2_DT1"/>
+		<format	file="日期/时间"	title="日期/时间 - 长日期格式"		expression="<%\s*=.*DoDateTime\(.*, 1, -1\)\s*[^%>]*%>"		strNamedFormat="longDate"	nLCID="-1" id="DWMenu_ServerFormatDef_ASP_2_DT2"	/>
+		<format	file="日期/时间"	title="日期/时间 - 短日期格式"		expression="<%\s*=.*DoDateTime\(.*, 2, -1\)\s*[^%>]*%>"		strNamedFormat="shortDate"	nLCID="-1"	id="DWMenu_ServerFormatDef_ASP_2_DT3"/>
+		<format	file="日期/时间"	title="日期/时间 - 长时间格式"		expression="<%\s*=.*DoDateTime\(.*, 3, -1\)\s*[^%>]*%>"		strNamedFormat="longTime"	nLCID="-1" id="DWMenu_ServerFormatDef_ASP_2_DT14"	/>
+		<format	file="日期/时间"	title="日期/时间 - 短时间格式"		expression="<%\s*=.*DoDateTime\(.*, 4, -1\)\s*[^%>]*%>"		strNamedFormat="shortTime"	nLCID="-1" id="DWMenu_ServerFormatDef_ASP_2_DT15"	/>
+		<format	file="日期/时间"	title="日期/时间 - 下午 2:35:18"	expression="<%\s*=.*DoDateTime\(.*, 3, 1033\)\s*[^%>]*%>"		strNamedFormat="longTime"	nLCID="1033"	id="DWMenu_ServerFormatDef_ASP_2_DT16"/>
+		<format	file="日期/时间"	title="日期/时间 - 14:35:18"		expression="<%\s*=.*DoDateTime\(.*, 3, 2057\)\s*[^%>]*%>"		strNamedFormat="longTime"	nLCID="2057"	id="DWMenu_ServerFormatDef_ASP_2_DT17"/>
+		<format	file="日期/时间"	title="日期/时间 - 下午 02:35:18"	expression="<%\s*=.*DoDateTime\(.*, 3, 16394\)\s*[^%>]*%>"		strNamedFormat="longTime"	nLCID="16394"	id="DWMenu_ServerFormatDef_ASP_2_DT18"/>
+		<format	file="日期/时间"	title="日期/时间 - 14:35"		expression="<%\s*=.*DoDateTime\(.*, 4, 1033\)\s*[^%>]*%>"		strNamedFormat="shortTime"	nLCID="1033"	id="DWMenu_ServerFormatDef_ASP_2_DT19"/>
+	</menu>
+	<separator />
+	<menu name = "货币" id="DWMenu_ServerFormatDef_ASP_2_CURRENCY">
+		<format	file="货币"		title="货币 - 默认值"	expression="<%\s*=.*FormatCurrency\(.*, -1, -2, -2, -2\)\s*[^%>]*%>|<%\s*=.*DoCurrency\(.*, -1, -2, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_ASP_2_CY1"/>
+		<format	file="货币"		title="货币 - 2 个小数位"		expression="<%\s*=.*FormatCurrency\(.*, 2, -2, -2, -2\)\s*[^%>]*%>|<%\s*=.*DoCurrency\(.*, 2, -2, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="2"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_ASP_2_CY2"/>
+		<format	file="货币"		title="货币 - 舍入为整数"	expression="<%\s*=.*FormatCurrency\(.*, 0, -2, -2, -2\)\s*[^%>]*%>|<%\s*=.*DoCurrency\(.*, 0, -2, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="0"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_ASP_2_CY3"/>
+		<format	file="货币"		title="货币 - 若为分数则有前导 0"	expression="<%\s*=.*FormatCurrency\(.*, -1, -1, -2, -2\)\s*[^%>]*%>|<%\s*=.*DoCurrency\(.*, -1, -1, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="-1"	UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_ASP_2_CY4"/>
+		<format	file="货币"		title="货币 - 若为分数则无前导 0"	expression="<%\s*=.*FormatCurrency\(.*, -1, 0, -2, -2\)\s*[^%>]*%>|<%\s*=.*DoCurrency\(.*, -1, 0, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="0"	UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_ASP_2_CY5"/>
+		<format	file="货币"		title="货币 - 若为负数则使用 ()"		expression="<%\s*=.*FormatCurrency\(.*, -1, -2, -1, -2\)\s*[^%>]*%>|<%\s*=.*DoCurrency\(.*, -1, -2, -1, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="-1"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_ASP_2_CY6"/>
+		<format	file="货币"		title="货币 - 若为负数则使用减号"	expression="<%\s*=.*FormatCurrency\(.*, -1, -2, 0, -2\)\s*[^%>]*%>|<%\s*=.*DoCurrency\(.*, -1, -2, 0, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="0"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_ASP_2_CY7"/>
+		<format	file="货币"		title="货币 - 将位分组"			expression="<%\s*=.*FormatCurrency\(.*, -1, -2, -2, -1\)\s*[^%>]*%>|<%\s*=.*DoCurrency\(.*, -1, -2, -2, -1\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="-2"	GroupDigits="-1"	id="DWMenu_ServerFormatDef_ASP_2_CY8"/>
+		<format	file="货币"		title="货币 - 不将位分组"	expression="<%\s*=.*FormatCurrency\(.*, -1, -2, -2, 0\)\s*[^%>]*%>|<%\s*=.*DoCurrency\(.*, -1, -2, -2, 0\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="-2"	GroupDigits="0"	id="DWMenu_ServerFormatDef_ASP_2_CY9"/>
+	</menu>
+	<menu name = "数字" id="DWMenu_ServerFormatDef_ASP_2_NUMBER">
+		<format	file="数字"		title="数字 - 默认值"	expression="<%\s*=.*FormatNumber\(.*, -1, -2, -2, -2\)\s*[^%>]*%>|<%\s*=.*DoNumber\(.*, -1, -2, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_ASP_2_NO1"/>
+		<format	file="数字"		title="数字 - 2 个小数位"		expression="<%\s*=.*FormatNumber\(.*, 2, -2, -2, -2\)\s*[^%>]*%>|<%\s*=.*DoNumber\(.*, 2, -2, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="2"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_ASP_2_NO2"/>
+		<format	file="数字"		title="数字 - 舍入为整数"		expression="<%\s*=.*FormatNumber\(.*, 0, -2, -2, -2\)\s*[^%>]*%>|<%\s*=.*DoNumber\(.*, -2, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="0"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_ASP_2_NO3"/>
+		<format	file="数字"		title="数字 - 若为分数则有前导 0"	expression="<%\s*=.*FormatNumber\(.*, -1, -1, -2, -2\)\s*[^%>]*%>|<%\s*=.*DoNumber\(.*, -1, -1, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="-1"	UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_ASP_2_NO4"/>
+		<format	file="数字"		title="数字 - 若为分数则无前导 0"	expression="<%\s*=.*FormatNumber\(.*, -1, 0, -2, -2\)\s*[^%>]*%>|<%\s*=.*DoNumber\(.*, -1, 0, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="0"	UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_ASP_2_NO5"/>
+		<format	file="数字"		title="数字 - 若为负数则使用 ()"			expression="<%\s*=.*FormatNumber\(.*, -1, -2, -1, -2\)\s*[^%>]*%>|<%\s*=.*DoNumber\(.*, -1, -2, -1, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="-1"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_ASP_2_NO6"/>
+		<format	file="数字"		title="数字 - 若为负数则使用减号"		expression="<%\s*=.*FormatNumber\(.*, -1, -2, 0, -2\)\s*[^%>]*%>|<%\s*=.*DoNumber\(.*, -1, -2, 0, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="0"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_ASP_2_NO7"/>
+		<format	file="数字"		title="数字 - 将位分组"			expression="<%\s*=.*FormatNumber\(.*, -1, -2, -2, -1\)\s*[^%>]*%>|<%\s*=.*DoNumber\(.*, -1, -2, -2, -1\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="-2"	GroupDigits="-1"	id="DWMenu_ServerFormatDef_ASP_2_NO8"/>
+		<format	file="数字"		title="数字 - 不将位分组"	expression="<%\s*=.*FormatNumber\(.*, -1, -2, -2, 0\)\s*[^%>]*%>|<%\s*=.*DoNumber\(.*, -1, -2, -2, 0\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="-2"	GroupDigits="0"	id="DWMenu_ServerFormatDef_ASP_2_NO9"/>
+	</menu>
+	<menu name = "百分比" id="DWMenu_ServerFormatDef_ASP_2_PERCENT">
+		<format	file="百分比"		title="百分比 - 默认值"	expression="<%\s*=.*FormatPercent\(.*, -1, -2, -2, -2\)\s*[^%>]*%>|<%\s*=.*DoPercent\(.*, -1, -2, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_ASP_2_PT1"/>
+		<format	file="百分比"		title="百分比 - 2 个小数位"		expression="<%\s*=.*FormatPercent\(.*, 2, -2, -2, -2\)\s*[^%>]*%>|<%\s*=.*DoPercent\(.*, 2, -2, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="2"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_ASP_2_PT2"/>
+		<format	file="百分比"		title="百分比 - 舍入为整数"			expression="<%\s*=.*FormatPercent\(.*, 0, -2, -2, -2\)\s*[^%>]*%>|<%\s*=.*DoPercent\(.*, -2, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="0"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="-2"	GroupDigits="-2" id="DWMenu_ServerFormatDef_ASP_2_PT3"	/>
+		<format	file="百分比"		title="百分比 - 若为分数则有前导 0"	expression="<%\s*=.*FormatPercent\(.*, -1, -1, -2, -2\)\s*[^%>]*%>|<%\s*=.*DoPercent\(.*, -1, -1, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="-1"	UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_ASP_2_PT4"/>
+		<format	file="百分比"		title="百分比 - 若为分数则无前导 0"	expression="<%\s*=.*FormatPercent\(.*, -1, 0, -2, -2\)\s*[^%>]*%>|<%\s*=.*DoPercent\(.*, -1, 0, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="0"	UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_ASP_2_PT5"/>
+		<format	file="百分比"		title="百分比 - 若为负数则使用 ()"		expression="<%\s*=.*FormatPercent\(.*, -1, -2, -1, -2\)\s*[^%>]*%>|<%\s*=.*DoPercent\(.*, -1, -2, -1, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="-1"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_ASP_2_PT6"/>
+		<format	file="百分比"		title="百分比 - 若为负数则使用减号"	expression="<%\s*=.*FormatPercent\(.*, -1, -2, 0, -2\)\s*[^%>]*%>|<%\s*=.*DoPercent\(.*, -1, -2, 0, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="0"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_ASP_2_PT7"/>
+		<format	file="百分比"		title="百分比 - 将位分组"			expression="<%\s*=.*FormatPercent\(.*, -1, -2, -2, -1\)\s*[^%>]*%>|<%\s*=.*DoPercent\(.*, -1, -2, -2, -1\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="-2"	GroupDigits="-1"	id="DWMenu_ServerFormatDef_ASP_2_PT8"/>
+		<format	file="百分比"		title="百分比 - 不将位分组"	expression="<%\s*=.*FormatPercent\(.*, -1, -2, -2, 0\)\s*[^%>]*%>|<%\s*=.*DoPercent\(.*, -1, -2, -2, 0\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	IncludeLeadingDigit="-2"	UseParensForNegativeNumbers="-2"	GroupDigits="0"	id="DWMenu_ServerFormatDef_ASP_2_PT9"/>
+	</menu>
+	<separator />
+	<menu name = "AlphaCase" id="DWMenu_ServerFormatDef_ASP_2_ALPHACASE">
+		<format	file="AlphaCase"	title="AlphaCase - 大写"	expression="<%\s*=.*UCase\(.*\)\s*[^%>]*%>|<%\s*=.*\.toUpperCase\(\)\s*[^%>]*%>"			uppercase="true"	id="DWMenu_ServerFormatDef_ASP_2_CASEUPPER"/>
+		<format	file="AlphaCase"	title="AlphaCase - 小写"	expression="<%\s*=.*LCase\(.*\)\s*[^%>]*%>|<%\s*=.*\.toLowerCase\(\)\s*[^%>]*%>"			uppercase="false"	id="DWMenu_ServerFormatDef_ASP_2_CASELOWER"/>
+	</menu>
+	<menu name = "修整" id="DWMenu_ServerFormatDef_ASP_2_TRIM">
+		<format	file="修整"			title="修整 - 左"		expression="<%\s*=.*LTrim\(.*\)\s*[^%>]*%>|<%\s*=.*DoTrim\(.*,0\)\s*[^%>]*%>"		side="left"	id="DWMenu_ServerFormatDef_ASP_2_TRIMLEFT"/>			
+		<format	file="修整"			title="修整 - 右"	expression="<%\s*=.*RTrim\(.*\)\s*[^%>]*%>|<%\s*=.*DoTrim\(.*,1\)\s*[^%>]*%>"	side="right" id="DWMenu_ServerFormatDef_ASP_2_TRIMRIGHT"/>
+		<format	file="修整"			title="修整 - 两侧"		expression="<%\s*=.*Trim\(.*\)\s*[^%>]*%>|<%\s*=.*DoTrim\(.*, 2\)\s*[^%>]*%>"		side="both"	id="DWMenu_ServerFormatDef_ASP_2_TRIMBOTH"/>
+	</menu>
+	<separator />
+	<format	file="数学"			title="绝对值"	expression="<%\s*=.*Abs\(.*\)\s*[^%>]*%>|<%\s*=.*Math\.abs\(.*\)\s*[^%>]*%>"				func="abs"	id="DWMenu_ServerFormatDef_ASP_2_ABS"/>
+	<format	file="数学"			title="舍入整数"	expression="<%\s*=.*Round\(.*\)\s*[^%>]*%>|<%\s*=.*Math\.round\(.*\)\s*[^%>]*%>"			func="round" id="DWMenu_ServerFormatDef_ASP_2_ROUND"	/>
+	<separator />
+	<format	file="简单"		title="编码 - Server.HTMLEncode"		expression="<%\s*=.*Server\.HTMLEncode\(.*\)\s*[^%>]*%>"	func="Server.HTMLEncode" id="DWMenu_ServerFormatDef_ASP_2_HTMLENCODE"/>
+	<format	file="简单"		title="编码 - Server.URLEncode"		expression="<%\s*=.*Server\.URLEncode\(.*\)\s*[^%>]*%>"		func="Server.URLEncode"	id="DWMenu_ServerFormatDef_ASP_2_URLENCODE"/>
+	<format	file="简单"		title="路径 - Server.MapPath"			expression="<%\s*=.*Server\.MapPath\(.*\)\s*[^%>]*%>"		func="Server.MapPath"	id="DWMenu_ServerFormatDef_ASP_2_SERVERPATH"/>
+	<menu name = "记录集统计信息" visibility="hidden" id="DWMenu_ServerFormatDef_ASP_2_RECSET">
+		<format	file="FirstRSstat"	title="记录集统计信息 - 第一个索引"			visibility="hidden" expression="<%\s*=\s*\(\s*\w+_first\s*\)\s*%>" id="DWMenu_ServerFormatDef_ASP_2_FIRSTREC"	/>
+    <format file="LastRSstat"   title = "记录集统计信息 - 最后一个索引"      visibility="hidden" expression="<%\s*=\s*\(\s*\w+_last\s*\)\s*%>"  id="DWMenu_ServerFormatDef_ASP_2_LASTREC" />
+    <format file="TotalRSstat"  title = "记录集统计信息 - 记录总数"   visibility="hidden" expression="<%\s*=\s*\(\s*\w+_total\s*\)\s*%>" id="DWMenu_ServerFormatDef_ASP_2_TOTALREC" />
+	</menu>
+</formats>

@@ -1,0 +1,55 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFMODULE</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script>
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj);
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj);
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<div name="常规">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">模板: </td>
+      <td nowrap="nowrap">
+        <input name="thetemplate" type="text" class="basicTextField" id="attr:cfmodule:template" attname="template" />&nbsp;
+		<input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('thetemplate');focus(this)" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">标签名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:cfmodule:name" attname="name" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">属性集合: </td>
+      <td nowrap="nowrap">
+        <input name="theattributecollection" type="text" class="medTField" id="attr:cfmodule:attributecollection" attname="attributecollection" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">属性名称: </td>
+      <td nowrap="nowrap">
+        <input name="theattribute_name" type="text" class="medTField" id="attr:cfmodule:attribute_name" attname="attribute_name" />
+      </td>
+    </tr>
+  </table>
+</div>
+
+</html>

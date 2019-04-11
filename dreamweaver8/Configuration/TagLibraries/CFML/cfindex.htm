@@ -1,0 +1,301 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFINDEX</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var UPDATE_TYPELIST;
+var UPDATE_LANGUAGELIST;
+var REFRESH_TYPELIST;
+var REFRESH_LANGUAGELIST;
+var SELECTORLIST;
+var theUIObjects;
+var applyType = "dynamic"; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode, SELECTORLIST); 
+}
+
+function applyTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode); 
+}
+
+function updateUI()
+{
+  var curDiv = SELECTORLIST.getValue(); 
+
+  tagDialog.showOnlyThisLayer(curDiv); 
+}
+
+function initializeUI()
+{
+  REFRESH_TYPELIST = new ListControl("therefreshtype"); 
+  UPDATE_TYPELIST = new ListControl("theupdatetype"); 
+  REFRESH_LANGUAGELIST = new ListControl("therefreshlanguage"); 
+  UPDATE_LANGUAGELIST = new ListControl("theupdatelanguage"); 
+  SELECTORLIST = new ListControl("theselector"); 
+
+  theUIObjects = new Array(REFRESH_LANGUAGELIST,REFRESH_TYPELIST,UPDATE_LANGUAGELIST,UPDATE_TYPELIST,SELECTORLIST); 
+
+  tagDialog.populateDropDownList(REFRESH_LANGUAGELIST, theLanCollectionCap, theLanCollectionVal, 1); 
+  tagDialog.populateDropDownList(REFRESH_TYPELIST, theIndexTypeCap, theIndexTypeVal, 1); 
+  tagDialog.populateDropDownList(UPDATE_LANGUAGELIST, theLanCollectionCap, theLanCollectionVal, 1); 
+  tagDialog.populateDropDownList(UPDATE_TYPELIST, theIndexTypeCap, theIndexTypeVal, 1); 
+  tagDialog.populateDropDownList(SELECTORLIST, theSelIndexCap, theSelIndexVal, 0); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+<div name="常规"> 
+<br /> 
+操作: 
+<select name="theselector" class="selectorList" id="attr:cfindex:selector" onChange="updateUI();" attname="action" editable="false">
+</select>
+<hr width="100%" /> 
+  <div id="theupdate" style="position:absolute; width:350px; height:330px; z-index:1; left: 0px; top: 55px; visibility: hidden;"> 
+    <table border="0" cellspacing="4">
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">项类型: </td>
+        <td nowrap="nowrap"> <select name="theupdatetype" class="oneWordOptionList" id="attr:cfindex:updatetype" attname="type" editable="true">
+          </select> </td>
+      </tr>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">集合: </td>
+        <td nowrap="nowrap"> <input name="thecollection" type="text" class="basicTextField" id="attr:cfindex:collection" attname="collection" required="true" /> 
+        </td>
+      </tr>
+      <tr valign="baseline">
+        <td align="right" nowrap="nowrap">关键字: </td>
+        <td nowrap="nowrap"> <input name="thekey" type="text" class="basicTextField" id="attr:cfindex:key" attname="key" required="true" /> 
+        </td>
+      </tr>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">标题: </td>
+        <td nowrap="nowrap"> <input name="thetitle" type="text" class="basicTextField" id="attr:cfindex:title" attname="title" /> 
+        </td>
+      </tr>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">查询: </td>
+        <td nowrap="nowrap"> <input name="thequery" type="text" class="basicTextField" id="attr:cfindex:query" attname="query" /> 
+        </td>
+      </tr>
+	   <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">状态: </td>
+        <td nowrap="nowrap"> <input name="thestatus" type="text" class="basicTextField" id="attr:cfindex:status" attname="status" /> 
+        </td>
+      </tr>
+	  <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">类别: </td>
+        <td nowrap="nowrap"> <input name="thecategory" type="text" class="medTField" id="attr:cfindex:category" attname="category" /> 
+        </td>
+      </tr>
+	  <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">类别树: </td>
+        <td nowrap="nowrap"> <input name="thecategorytree" type="text" class="medTField" id="attr:cfindex:categorytree" attname="categorytree" /> 
+        </td>
+      </tr>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">正文: </td>
+        <td nowrap="nowrap"> <input name="thebody" type="text" class="basicTextField" id="attr:cfindex:body" attname="body" /> 
+        </td>
+      </tr>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">URL 路径: </td>
+        <td nowrap="nowrap"> <input name="theurlpath" type="text" class="basicTextField" id="attr:cfindex:urlpath" attname="urlpath" /> 
+        </td>
+      </tr>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">扩展名: </td>
+        <td nowrap="nowrap"> <input name="theextensions" type="text" class="basicTextField" id="attr:cfindex:extensions" attname="extensions" /> 
+        </td>
+      </tr>
+      <tr valign="baseline"> 
+        <td nowrap="nowrap" align="right">语言:</td>
+        <td nowrap="nowrap"><select name="theupdatelanguage" class="dirLangList" id="attr:cffile:updatelanguage" attname="language">
+          </select></td>
+      </tr>
+      <tr valign="baseline"> 
+        <td width="0" align="right" nowrap="nowrap">自定义字段1: 
+        </td>
+        <td width="0" nowrap="nowrap"> <input name="thecustom1" type="text" class="medTField" id="attr:cfindex:custom1" attname="custom1" /> 
+        </td>
+      </tr>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">自定义字段2: </td>
+        <td nowrap="nowrap"> <input name="thecustom2" type="text" class="medTField" id="attr:cfindex:custom2" attname="custom2" /> 
+        </td>
+      </tr>
+	  <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">自定义字段 3: </td>
+        <td nowrap="nowrap"> <input name="thecustom3" type="text" class="medTField" id="attr:cfindex:custom3" attname="custom3" /> 
+        </td>
+      </tr>
+	  <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">自定义字段 4: </td>
+        <td nowrap="nowrap"> <input name="thecustom4" type="text" class="medTField" id="attr:cfindex:custom4" attname="custom4" /> 
+        </td>
+      </tr>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">&nbsp;</td>
+              <td width="0" nowrap="nowrap"> <input type="checkbox" id="attr:cfindex:recurse" name="therecurse" attname="recurse" truevalue="yes" falsevalue=""  />
+          递归目录 </td>
+      </tr>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">&nbsp;</td>
+        <td nowrap="nowrap"> <input type="checkbox" id="attr:cfindex:external" name="theexternal" attname="external" truevalue="yes" falsevalue="" />
+          外部 </td>
+      </tr>
+    </table>
+</div>
+  <div id="therefresh" style="position:absolute; width:350px; height:330px; z-index:2; left: 0px; top: 55px; visibility: visible;"> 
+    <table border="0" cellspacing="4">
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">项类型: </td>
+        <td nowrap="nowrap"> <select name="therefreshtype" class="oneWordOptionList" id="attr:cffile:refreshtype" attname="type" editable="true">
+          </select> </td>
+      </tr>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">集合: </td>
+        <td nowrap="nowrap"> <input name="thecollection" type="text" class="basicTextField" id="attr:cfindex:collection" attname="collection" required="true" /> 
+        </td>
+      </tr>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">关键字: </td>
+        <td nowrap="nowrap"> <input name="thekey" type="text" class="basicTextField" id="attr:cfindex:key" attname="key" required="true" /> 
+        </td>
+      </tr>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">标题: </td>
+        <td nowrap="nowrap"> <input name="thetitle" type="text" class="basicTextField" id="attr:cfindex:title" attname="title" /> 
+        </td>
+      </tr>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">查询: </td>
+        <td nowrap="nowrap"> <input name="thequery" type="text" class="basicTextField" id="attr:cfindex:query" attname="query" /> 
+        </td>
+      </tr>
+	    <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">状态: </td>
+        <td nowrap="nowrap"> <input name="thestatus" type="text" class="basicTextField" id="attr:cfindex:status" attname="status" /> 
+        </td>
+      </tr>
+	  <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">类别: </td>
+        <td nowrap="nowrap"> <input name="thecategory" type="text" class="medTField" id="attr:cfindex:category" attname="category" /> 
+        </td>
+      </tr>
+	  <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">类别树: </td>
+        <td nowrap="nowrap"> <input name="thecategorytree" type="text" class="medTField" id="attr:cfindex:categorytree" attname="categorytree" /> 
+        </td>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">正文: </td>
+        <td nowrap="nowrap"> <input name="thebody" type="text" class="basicTextField" id="attr:cfindex:body" attname="body" /> 
+        </td>
+      </tr>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">URL 路径: </td>
+        <td nowrap="nowrap"> <input name="theurlpath" type="text" class="basicTextField" id="attr:cfindex:urlpath" attname="urlpath" /> 
+        </td>
+      </tr>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">扩展名: </td>
+        <td nowrap="nowrap"> <input name="theextensions" type="text" class="basicTextField" id="attr:cfindex:extensions" attname="extensions" /> 
+        </td>
+      </tr>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">语言:</td>
+        <td nowrap="nowrap"><select name="therefreshlanguage" class="dirLangList" id="attr:cffile:refreshlanguage" attname="language" editable="true">
+          </select></td>
+      </tr>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">自定义字段1: </td>
+        <td nowrap="nowrap"> <input name="thecustom1" type="text" class="medTField" id="attr:cfindex:custom1" attname="custom1" /> 
+        </td>
+      </tr>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">自定义字段2: </td>
+        <td nowrap="nowrap"> <input name="thecustom2" type="text" class="medTField" id="attr:cfindex:custom2" attname="custom2" /> 
+        </td>
+      </tr>
+	   <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">自定义字段 3: </td>
+        <td nowrap="nowrap"> <input name="thecustom3" type="text" class="medTField" id="attr:cfindex:custom3" attname="custom3" /> 
+        </td>
+      </tr>
+	  <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">自定义字段 4: </td>
+        <td nowrap="nowrap"> <input name="thecustom4" type="text" class="medTField" id="attr:cfindex:custom4" attname="custom4" /> 
+        </td>
+      </tr>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">&nbsp;</td>
+        <td nowrap="nowrap"> <input type="checkbox" id="attr:cfindex:recurse" name="therecurse" attname="recurse" truevalue="yes" falsevalue="" />
+          递归目录</td>
+      </tr>
+      <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">&nbsp;</td>
+        <td nowrap="nowrap"><input type="checkbox" id="attr:cfindex:external" name="theexternal" attname="external" truevalue="yes" falsevalue="" />
+          外部 </td>
+      </tr>
+    </table>
+</div>
+<div id="thedelete" style="position:absolute;width:200px;height:330px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">集合: </td>
+      <td nowrap="nowrap">
+        <input name="thecollection" type="text" class="basicTextField" id="attr:cfindex:collection" attname="collection" required="true"  />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">关键字: </td>
+      <td nowrap="nowrap">
+        <input name="thekey" type="text" class="basicTextField" id="attr:cfindex:key" attname="key" required="true"  />
+      </td>
+    </tr>
+	 <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">状态: </td>
+        <td nowrap="nowrap"> <input name="thestatus" type="text" class="basicTextField" id="attr:cfindex:status" attname="status" /> 
+        </td>
+      </tr>
+  </table>
+</div>
+<div id="thepurge" style="position:absolute;width:350px;height:330px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">集合: </td>
+      <td nowrap="nowrap">
+        <input name="thecollection" type="text" class="basicTextField" id="attr:cfindex:collection" attname="collection" required="true" />
+      </td>
+    </tr>
+	 <tr valign="baseline"> 
+        <td align="right" nowrap="nowrap">状态: </td>
+        <td nowrap="nowrap"> <input name="thestatus" type="text" class="basicTextField" id="attr:cfindex:status" attname="status" /> 
+        </td>
+      </tr>
+  </table>
+</div>
+</div>
+</body>
+</html>

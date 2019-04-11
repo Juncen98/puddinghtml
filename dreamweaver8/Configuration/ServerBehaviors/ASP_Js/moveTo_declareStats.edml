@@ -1,0 +1,37 @@
+<participant>
+     <quickSearch><![CDATA[.RecordCount]]></quickSearch>
+     <insertText location="aboveHTML+70">
+<![CDATA[
+<%
+// *** Recordset Stats, Move To Record, and Go To Record: declare stats variables
+
+// set the record count
+var @@rsName@@_total = @@rsName@@.RecordCount;
+
+// set the number of rows displayed on this page
+if (@@rsName@@_numRows < 0) {            // if repeat region set to all records
+  @@rsName@@_numRows = @@rsName@@_total;
+} else if (@@rsName@@_numRows == 0) {    // if no repeat regions
+  @@rsName@@_numRows = 1;
+}
+
+// set the first and last displayed record
+var @@rsName@@_first = 1;
+var @@rsName@@_last  = @@rsName@@_first + @@rsName@@_numRows - 1;
+
+// if we have the correct record count, check the other stats
+if (@@rsName@@_total != -1) {
+  @@rsName@@_numRows = Math.min(@@rsName@@_numRows, @@rsName@@_total);
+  @@rsName@@_first   = Math.min(@@rsName@@_first, @@rsName@@_total);
+  @@rsName@@_last    = Math.min(@@rsName@@_last, @@rsName@@_total);
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName"><![CDATA[/\b(\w+)_total\s*=\s*\w+\.RecordCount/]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="rsName"><![CDATA[/(\W)\w+(_total|_first|_last|_numRows|\.RecordCount)/g]]></updatePattern>
+     </updatePatterns>
+</participant>

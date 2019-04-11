@@ -1,0 +1,42 @@
+<tag name="CFQUERY" endtag="yes">
+<tagdialog file="cfquery.htm">
+<tagformat nlbeforetag="1" nlbeforecontents="1" nlaftercontents="1" nlaftertag="1"/>
+  <attributes>
+    <attrib name="NAME" type="TEXT"/>
+    <attrib name="DATASOURCE" type="TEXT"/>
+    <attrib name="DBTYPE" type="ENUMERATED">
+      <attriboption value="query"/>
+      <attriboption value="dynamic"/>
+      <attriboption value="text/html"/>
+      <attriboption value="ODBC"/>
+      <attriboption value="OLEDB"/>
+      <attriboption value="Oracle73"/>
+      <attriboption value="Oracle80"/>
+      <attriboption value="Sybase11"/>
+      <attriboption value="DB2"/>
+      <attriboption value="Informix73"/>
+    </attrib>
+    <attrib name="MAXROWS" type="TEXT"/>
+    <attrib name="TIMEOUT" type="TEXT"/>
+    <attrib name="BLOCKFACTOR" type="TEXT"/>
+    <attrib name="DEBUG" type="ENUMERATED">
+      <attriboption value="Yes"/>
+      <attriboption value="No"/>
+    </attrib>
+    <attrib name="$$TAGBODY"/>
+    <attrib name="USERNAME" type="TEXT"/>
+    <attrib name="PASSWORD" type="TEXT"/>
+    <attrib name="DBSERVER" type="TEXT"/>
+    <attrib name="DBNAME" type="TEXT"/>
+    <attrib name="PROVIDER" type="TEXT"/>
+    <attrib name="PROVIDERDSN" type="TEXT"/>
+    <attrib name="CACHEDAFTER" type="TEXT"/>
+    <attrib name="CACHEDWITHIN" type="TEXT"/>
+	<attrib name="RESULT" type="TEXT"/>
+   </attributes>
+	<attribcategories>
+		<attribgroup name="General" elements="name,datasource,username,password,result" />
+		<attribgroup name="Connection" elements="thedbserver,dbname,provider,providerdsn,connectstring,maxrows,timeout,blockfactor,debug,dbtype" />
+		<attribgroup name="Persistent Queries" elements="cachedafter,cachedwithin" />
+	</attribcategories>
+</tag>

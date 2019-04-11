@@ -1,0 +1,21 @@
+<participant name="CfForm">
+  <translator priority=350>
+    <searchPatterns>
+      <searchPattern paramNames="attrHeight" isOptional="true"><![CDATA[/height="(\d*)"/gi]]></searchPattern>
+	  <searchPattern paramNames="attrWidth" isOptional="true"><![CDATA[/width="(\d*)"/gi]]></searchPattern>
+	  <searchPattern paramNames="attrStyle" isOptional="true"><![CDATA[/style="([^"])"/gi]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="tag+CFFORM" limitSearch="tagOnly" translationType="as is">
+        <attributes>
+          <attribute><![CDATA[ mmTranslatedValueStyle="style=%22display:block; padding:5px; width:@@attrHeight@@px; height:@@attrWidth@@px; @@escape(attrStyle)@@%22"]]></attribute>
+        </attributes>
+      </translation>
+	  <translation whereToSearch="tag+CFFORMGROUP" limitSearch="tagOnly" translationType="as is">
+        <attributes>
+          <attribute><![CDATA[ mmTranslatedValueStyle="style=%22display:block; padding:5px; width:@@attrHeight@@px; height:@@attrWidth@@px; @@escape(attrStyle)@@%22"]]></attribute>
+        </attributes>
+      </translation>
+    </translations>
+  </translator>
+</participant>

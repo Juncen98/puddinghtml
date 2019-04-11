@@ -1,0 +1,9 @@
+<participant version="5.0">
+	<insertText location="aboveHTML+49"><![CDATA[<@if (@@StatusCodeVarName@@)@><CFSET @@StatusCodeVarName@@=CFSTOREDPROC.STATUSCODE><@endif@>]]></insertText>
+	<searchPatterns whereToSearch="tag+CFSET">
+    <searchPattern paramNames="StatusCodeVarName" limitSearch="all" isOptional="false">
+      <![CDATA[/<CFSET\s*(\w+)\s*=\s*CFSTOREDPROC\.STATUSCODE>/i]]>
+    </searchPattern>
+	</searchPatterns>
+	<quickSearch>CFSTOREDPROC.STATUSCODE</quickSearch>
+</participant>

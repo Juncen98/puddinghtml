@@ -1,0 +1,47 @@
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<head>
+<title>编辑预存过程变量</title>
+
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="Add CF StoredProc Variable.js"></SCRIPT>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="initializeUI()">
+<form>
+  <table border="0">
+    <tr VALIGN="baseline">
+      <td ALIGN="right" nowrap>名称: </td>
+      <td nowrap><input name="DBVarName" type="text" class="basicTextField" ></td>
+    </tr>
+    <tr VALIGN="baseline">
+      <td ALIGN="right" nowrap>方向: </td>
+      <td nowrap><select name="VarType" class="sqlTypeList"  onChange="updateUI('VarType','onChange')" wrap="virtual">
+        </select></td>
+    </tr>
+    <tr VALIGN="baseline">
+      <td ALIGN="right" nowrap>SQL 类型: </td>
+      <td nowrap><select name="CFSQLType" class="sqlTypeList"  onChange="updateUI('CFSQLType','onChange')" wrap="virtual">
+        </select></td>
+    </tr>
+    <tr VALIGN="baseline">
+      <td ALIGN="right" nowrap>返回变量: </td>
+      <td nowrap><input name="CFVarName" type="text" class="basicTextField" ></td>
+    </tr>
+    <tr VALIGN="baseline">
+      <td ALIGN="right" nowrap>运行时值:  </td>
+      <td nowrap><input name="Value" type="text" class="basicTextField" ></td>
+    </tr>
+    <tr VALIGN="baseline">
+      <td ALIGN="right" nowrap>测试值: </td>
+      <td nowrap><input name="TestValue" type="text" class="basicTextField" ></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

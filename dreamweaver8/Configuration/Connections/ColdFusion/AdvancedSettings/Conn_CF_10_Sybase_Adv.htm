@@ -1,0 +1,51 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+	<body>
+		<table border="0" width="600">
+			<tr valign="baseline">
+				<td width="21%" align="right" valign="top" nowrap>选择方法:</td>
+				<td width="37%" colspan="2" align="left">
+					<select name="theSelectMethod" style="width:160px">
+						<option value="Direct" label="Direct" selected>直接</option>
+						<option value="Cursor" label="Cursor">光标</option>
+					</select>
+				</td>
+				<td align="left">&nbsp;</td>
+				<td align="left">&nbsp;</td>
+				<td align="left">&nbsp;</td>
+			</tr>
+			<tr valign="baseline">
+				<td align="right" nowrap>限制连接:</td>
+				<td align="left"><input type="checkbox" name="theLimitConnections" value="checkbox">
+				</td>
+				<td align="left">&nbsp;</td>
+				<td colspan="2" align="right">将连接限制为:</td>
+				<td align="left"><input type="text" name="theRestrictConnectionsTo" style="width:60px"></td>
+			</tr>
+			<tr valign="baseline">
+				<td align="right" nowrap>维护连接:</td>
+				<td colspan="3" align="left" nowrap><input name="theMaintainConnections" type="checkbox" value="checkbox" checked>
+					- 跨客户端请求维护连接。
+				</td>
+				<td align="left">&nbsp;</td>
+				<td align="left">&nbsp;</td>
+			</tr>
+			<tr valign="baseline">
+				<td align="right" nowrap>字符串格式:</td>
+				<td colspan="5" align="left" nowrap><input name="theStringFormat" type="checkbox" id="theStringFormat" value="checkbox">
+					- 对于为非拉丁字符配置的数据源启用 Unicode</td>
+			</tr>
+			<tr valign="baseline">
+				<td align="right" nowrap>可容纳语句最大数:</td>
+				<td align="left">
+					<input name="theMaxPooledStatements" type="text" id="theMaxPooledStatements" style="width:60px"
+						value="1000">
+				</td>
+				<td align="right" nowrap>超时（分钟）:</td>
+				<td align="left"><input name="theTimeout" type="text" id="theTimeout" style="width:60px" value="20"></td>
+				<td align="right" nowrap>间隔（分钟）:</td>
+				<td align="left"><input name="theInterval" type="text" id="theInterval" style="width:60px" value="7"></td>
+			</tr>
+		</table>
+	</body>
+</html>

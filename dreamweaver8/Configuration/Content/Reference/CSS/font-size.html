@@ -1,0 +1,150 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">font-size</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">4</span> CSS <span class="emphasis">1</span></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Inherited: Yes</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Determines the font size of the element. The font size can be set in
+several ways. A collection of constants (<span class="literal">xx-small</span>,
+<span class="literal">x-small</span>, <span class="literal">small</span>,
+<span class="literal">medium</span>, <span class="literal">large</span>,
+<span class="literal">x-large</span>, <span class="literal">xx-large</span>) defines what
+are known as absolute sizes. In truth, these are absolute as far as a
+single browser in a single operating system goes because the
+reference point for these sizes varies with browser and operating
+system (analogous to the old HTML font sizes of 1 through 7). See
+Figure 11-4 and Figure 11-5 for
+size comparisons viewed on the same video monitors. But they let the
+author have confidence that one element set to
+<span class="literal">large</span> is rendered larger than another set to
+<span class="literal">medium</span>.
+</p><p>Another collection of constants (<span class="literal">larger</span>,
+<span class="literal">smaller</span>) are known as relative sizes. Because the
+<span class="literal">font-size</span> attribute is inherited from the parent
+element, these relative sizes are applied to the parent element to
+determine the font size of the current element. It is up to the
+browser to determine exactly how much larger or smaller the font size
+is, and a lot depends on how the parent element's
+font size is set. If it is set with one of the absolute sizes
+(<span class="literal">large</span>, for example), a child's
+font size of <span class="literal">larger</span> means that the font is
+rendered in the browser's <span class="literal">x-large</span>
+size. The increments are not as clear cut when the parent font size
+is set with a length or percentage.
+</p><p>If you elect to use a length value for the
+<span class="literal">font-size</span> attribute, choose a unit that makes the
+most sense for fonts rendered on the output medium, such as pixels
+(<span class="literal">px</span>) for screen display and points
+(<span class="literal">pt</span>) or ems (<span class="literal">em</span>) for printed
+output. Em values are calculated relative to the size of the parent
+element's font size. Finally, you can set the
+<span class="literal">font-size</span> to a percentage, which is calculated
+based on the size of the parent element's font size.
+</p><p>Some browsers hijack your best efforts at precisely sizing fonts,
+using their own (or user) settings to establish a
+"medium" size. That is why many
+designers prefer to rely on the relative-size constants for their
+<span class="literal">font-size</span> specification schemes. This choice means
+giving up a level of control over rendering from one browser and
+operating system to the next, but attempting too strict control on
+uniform rendering generally leads to utter frustration.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="csssyntax"><span class="title">CSS Syntax</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>font-size: <span class="replaceable">absoluteSize</span> | <span class="replaceable">relativeSize</span> | <span class="replaceable">length</span> | <span class="replaceable">percentage</span></pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>For an absolute size, one of the following constants:
+<span class="literal">xx-small</span> | <span class="literal">x-small</span> |
+<span class="literal">small</span> | <span class="literal">medium</span> |
+<span class="literal">large</span> | <span class="literal">x-large</span> |
+<span class="literal">xx-large</span>. For a relative size, one of the
+following constants: <span class="literal">larger</span> |
+<span class="literal">smaller</span>. For a length, see the discussion about
+length values at the beginning of this chapter. For a percentage, the
+percentage value and the <span class="literal">%</span> symbol.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="initvalue"><span class="title">Initial Value</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">medium</span> (for <span class="literal">BODY</span> element); the
+parent element's <span class="literal">font-size</span> value
+(for all others).
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>body {font-size: 14pt}
+p.teeny {font-size: x-small}
+em {font-size: larger}
+span.larger {font-size: 150%}</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="appliesto"><span class="title">Applies To</span></td>
+				</tr>
+				<tr>
+					<td><p>All elements.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById("<span class="replaceable">elementID</span>").style.fontSize</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div>
+</body>
+</html>

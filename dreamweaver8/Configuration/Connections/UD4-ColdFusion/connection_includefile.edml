@@ -1,0 +1,26 @@
+<participant name="connection_includefile">
+    <quickSearch><![CDATA[-- Type=]]></quickSearch>
+    <insertText location="aboveHTML+2">
+<![CDATA[<!--- FileName="@@filename@@" "@@designtime@@" --->
+<!--- Type="@@type@@" --->
+<!--- DesigntimeType="@@designtimeType@@" --->
+<!--- Catalog="@@catalog@@" --->
+<!--- Schema="@@schema@@" --->
+<!--- HTTP="@@http@@" --->
+<CFSET MM_@@cname@@_DSN = "@@dsn@@">
+<CFSET MM_@@cname@@_USERNAME = "@@username@@">
+<CFSET MM_@@cname@@_PASSWORD = "@@password@@">
+]]>
+    </insertText>
+    <searchPatterns whereToSearch="directive">
+	  <searchPattern paramNames="filename,designtime"><![CDATA[/\s*FileName="([^"]*)"\s"([^"]*)"/]]></searchPattern>	
+      <searchPattern paramNames="type"><![CDATA[/\s+Type="(\w*)"/]]></searchPattern>
+      <searchPattern paramNames="designtimeType" isOptional="true"><![CDATA[/\s*DesigntimeType="(\w*)"/]]></searchPattern>
+      <searchPattern paramNames="catalog"><![CDATA[/\s*Catalog="(\w*)"/]]></searchPattern>
+      <searchPattern paramNames="schema"><![CDATA[/\s*Schema="(\w*)"/]]></searchPattern>
+      <searchPattern paramNames="http"><![CDATA[/\s*HTTP="(\w*)"/]]></searchPattern>
+      <searchPattern paramNames="cname,dsn"><![CDATA[/<CFSET\s+MM_(\w*)_DSN\s*=\s*"([^"]*)"\s*>/]]></searchPattern>
+	  <searchPattern paramNames="cname,username"><![CDATA[/<CFSET\s+MM_(\w*)_USERNAME\s*=\s*"([^"]*)"\s*>/]]></searchPattern>
+	  <searchPattern paramNames="cname,password"><![CDATA[/<CFSET\s+MM_(\w*)_PASSWORD\s*=\s*"([^"]*)"\s*>/]]></searchPattern>
+    </searchPatterns>
+</participant>

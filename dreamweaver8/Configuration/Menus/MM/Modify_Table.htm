@@ -1,0 +1,48 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>应用源格式</TITLE>
+<SCRIPT LANGUAGE="javascript">
+<!--
+   function receiveArguments()
+   {
+      if (arguments[0] == "clearheights")
+         dw.getDocumentDOM('document').removeAllTableHeights();
+      if (arguments[0] == "clearwidths")
+         dw.getDocumentDOM('document').removeAllTableWidths();
+      if (arguments[0] == "wtopixels")
+         dw.getDocumentDOM('document').convertWidthsToPixels();
+      if (arguments[0] == "wtopercent")
+         dw.getDocumentDOM('document').convertWidthsToPercent();
+      if (arguments[0] == "htopixels")
+         dw.getDocumentDOM('document').convertHeightsToPixels();
+      if (arguments[0] == "htopercent")
+         dw.getDocumentDOM('document').convertHeightsToPercent();
+	  return true;
+   }
+
+   // not checking the itemID here because we enable all the menu
+   // items with the same code
+   function canAcceptCommand()
+   {
+	  var result = false;
+    if (dw.getDocumentDOM() != null){
+      var selarray = dw.getDocumentDOM().getSelection(true);
+      var obj = dw.getDocumentDOM().offsetsToNode(selarray[0],selarray[1]);
+   
+   
+      if (selarray.length == 2 && obj.nodeType == Node.ELEMENT_NODE)
+	    {
+	       if (obj.tagName == "TABLE")
+		      result = true;
+	    }
+    }
+    return result;
+   }
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

@@ -1,0 +1,316 @@
+<html>
+<head>
+<title>&lt;jsp:plugin&gt;</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">&lt;jsp:plugin&gt;</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+
+
+<p>The <span class="LITERAL">&lt;jsp:plugin&gt;</span> action generates HTML
+<span class="LITERAL">&lt;embed&gt;</span> or <span class="LITERAL">&lt;object&gt;</span>
+elements (depending on the browser type) that result in the download
+of the Java Plug-in software (if required) and subsequent execution
+of the specified Java applet or JavaBeans<graphic align="absmiddle" fileref="figs/U2122.gif"/> component. The body
+of the action can contain a <span class="LITERAL">&lt;jsp:params&gt;</span>
+element to specify applet parameters and a
+<span class="LITERAL">&lt;jsp:fallback&gt;</span> element to specify the text
+that will be shown in browsers that do not support the
+<span class="LITERAL">&lt;embed&gt;</span> or <span class="LITERAL">&lt;object&gt;</span>
+HTML elements. For more information about the Java Plug-in, see
+<systemitem role="url">http://java.sun.com/products/plugin/</systemitem>.
+</p>
+<p>Example:</p>
+
+<span class="PROGRAMLISTING"><pre>&lt;jsp:plugin type="applet" code="Clock2.class" 
+  codebase="applet" 
+  jreversion="1.2" width="160" height="150" &gt;
+  &lt;jsp:params&gt;
+    &lt;jsp:param name="bgcolor" value="ccddff" /&gt;
+  &lt;/jsp:params&gt;
+  &lt;jsp:fallback&gt;
+    Plug-in tag OBJECT or EMBED not supported by 
+    browser.
+  &lt;/jsp:fallback&gt;
+&lt;/jsp:plugin&gt;</pre></span>
+
+</td></tr>
+</table>
+</div>
+<div id="align">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">align</td>
+<td valign="top" class="COMPATIBILITY"><span class="LITERAL">String</span></td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage">Request-time value accepted: no</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Optional. The alignment of the applet area, one of <span class="LITERAL">bottom</span>, <span class="LITERAL">middle</span>, or <span class="LITERAL">top</span>.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="archive">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">archive</td>
+<td valign="top" class="COMPATIBILITY"><span class="LITERAL">String</span></td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage">Request-time value accepted: no</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Optional. A comma-separated list of URIs for archives containing classes and other resources that will be "preloaded." The classes are loaded using an instance of an <span class="LITERAL">AppletClassLoader</span> with the given <span class="LITERAL">codebase</span>. Relative URIs for archives are interpreted with respect to the applet's <span class="LITERAL">codebase</span>.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="code">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">code</td>
+<td valign="top" class="COMPATIBILITY"><span class="LITERAL">String</span></td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage">Request-time value accepted: no</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Mandatory. The fully qualified class name for the object.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="codebase">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">codebase</td>
+<td valign="top" class="COMPATIBILITY"><span class="LITERAL">String</span></td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage">Request-time value accepted: no</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Mandatory. The relative URL for the directory that contains the class file. According to the HTML 4.0 specification, the directory must be a subdirectory of the directory containing the page.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="height">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">height</td>
+<td valign="top" class="COMPATIBILITY"><span class="LITERAL">String</span></td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage">Request-time value accepted: no</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Optional. The height of the applet area, in pixels or percentage.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="hspace">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">hspace</td>
+<td valign="top" class="COMPATIBILITY"><span class="LITERAL">String</span></td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage">Request-time value accepted: no</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Optional. The amount of whitespace to be inserted to the left and right of the applet area, in pixels.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="iepluginurl">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">iepluginurl</td>
+<td valign="top" class="COMPATIBILITY"><span class="LITERAL">String</span></td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage">Request-time value accepted: no</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Optional. The URL for the location of the Internet Explorer Java Plug-in. The default is implementation-dependent.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="jreversion">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">jreversion</td>
+<td valign="top" class="COMPATIBILITY"><span class="LITERAL">String</span></td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage">Request-time value accepted: no</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Optional. The specification version number of the JRE the component requires in order to operate. The default is 1.1.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="name">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">name</td>
+<td valign="top" class="COMPATIBILITY"><span class="LITERAL">String</span></td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage">Request-time value accepted: no</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Optional. The applet name, used by other applets on the same page that need to communicate with it.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="nspluginurl">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">nspluginurl</td>
+<td valign="top" class="COMPATIBILITY"><span class="LITERAL">String</span></td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage">Request-time value accepted: no</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Optional. The URL for the location of the Netscape Java Plug-in. The default is implementation-dependent.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="title">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">title</td>
+<td valign="top" class="COMPATIBILITY"><span class="LITERAL">String</span></td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage">Request-time value accepted: no</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Optional. The text to be rendered in some way by the browser for the applet (e.g., as a "tool tip").
+</p></td>
+</tr>
+</table>
+</div>
+<div id="type">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">type</td>
+<td valign="top" class="COMPATIBILITY"><span class="LITERAL">String</span></td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage">Request-time value accepted: no</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Mandatory. The type of object to embed, one of <span class="LITERAL">applet</span> or <span class="LITERAL">bean</span>.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="vspace">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">vspace</td>
+<td valign="top" class="COMPATIBILITY"><span class="LITERAL">String</span></td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage">Request-time value accepted: no</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Optional. The amount of whitespace to be inserted above and below the applet area, in pixels.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="width">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">width</td>
+<td valign="top" class="COMPATIBILITY"><span class="LITERAL">String</span></td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage">Request-time value accepted: no</td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Optional. The width of the applet area, in pixels or percentage.
+</p></td>
+</tr>
+</table>
+</div>
+</body>
+</html>

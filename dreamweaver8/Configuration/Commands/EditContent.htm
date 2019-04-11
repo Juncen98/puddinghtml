@@ -1,0 +1,31 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<title>±à¼­ÄÚÈÝ</title>
+<script>
+function commandButtons(){
+  return new Array(MM.BTN_OK,"Eval()",MM.BTN_Cancel,"window.close()");
+}
+
+function Eval(){
+MM.retVal="OK";
+MM.editContents = document.forms[0].textfield.value;
+window.close();
+}
+
+function initializeUI(){
+document.forms[0].textfield.value = MM.editContents;
+}
+</script>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<form method="post" action="">
+ÄÚÈÝ:
+  <textarea name="textfield" cols="75" rows="16"></textarea>
+</form>
+</body>
+</html>
+

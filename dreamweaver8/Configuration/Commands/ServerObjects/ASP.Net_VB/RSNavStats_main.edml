@@ -1,0 +1,7 @@
+<participant version="5.0">
+  <insertText location="afterSelection">
+<![CDATA[
+@@beforeFirst@@ <%= IIf((@@RecordsetName@@.RecordCount = 0), 0, (@@RecordsetName@@.StartRecord + 1)) %> @@beforeLast@@ <%= @@RecordsetName@@.EndRecord %> @@beforeTotal@@ <%= @@RecordsetName@@.RecordCount %> @@afterTotal@@
+]]>
+</insertText>
+</participant>

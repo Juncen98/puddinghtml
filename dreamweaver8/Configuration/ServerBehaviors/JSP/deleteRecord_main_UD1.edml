@@ -1,0 +1,58 @@
+<participant>
+     <quickSearch><![CDATA[MM_delete]]></quickSearch>
+     <insertText location="aboveHTML+20">
+<![CDATA[
+<%
+// *** Delete Record: construct a sql delete statement and execute it
+MM_editAction = request.getRequestURI();
+if (request.getQueryString() != null && request.getQueryString().length() > 0) MM_editAction += "?" + request.getQueryString();
+if (request.getParameter("MM_delete") != null &&
+    request.getParameter("MM_recordId") != null) {
+
+  String MM_tableName = "@@table@@";
+  String MM_tableCol = "@@col@@";
+  String MM_recordId = "@@colQuote@@" + request.getParameter("MM_recordId") + "@@colQuote@@";
+  String MM_redirectPage = "@@url@@";
+
+  // create the delete sql statement
+  String MM_deleteStr = "delete from " + MM_tableName + " where " + MM_tableCol + " = " + MM_recordId;
+
+  // finish the sql and execute it
+  Driver MM_driver = (Driver)Class.forName("@@driver@@").newInstance();
+  Connection MM_connection = DriverManager.getConnection("@@conn@@", "@@username@@", "@@password@@");
+  PreparedStatement MM_deleteStatement = MM_connection.prepareStatement(MM_deleteStr);
+  MM_deleteStatement.setQueryTimeout(0);
+  MM_deleteStatement.executeUpdate();
+  MM_connection.close();
+
+  // redirect with URL parameters
+  if (MM_redirectPage.length() == 0) MM_redirectPage = request.getRequestURI();
+  if (MM_redirectPage.indexOf('?') == -1 && request.getQueryString() != null)
+    MM_redirectPage += "?" + request.getQueryString();
+  response.sendRedirect(response.encodeRedirectURL(MM_redirectPage));
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="conn"><![CDATA[/getConnection\(\s*"([^"]*)"/]]></searchPattern>
+       <searchPattern paramNames="username"><![CDATA[/getConnection\([^,]*,\s*"([^"]*)"/]]></searchPattern>
+       <searchPattern paramNames="password"><![CDATA[/getConnection\([^,]*,[^,]*,\s*"([^"]*)"/]]></searchPattern>
+       <searchPattern paramNames="driver"><![CDATA[/Class\.forName\("([^"]*)"\)/]]></searchPattern>
+       <searchPattern paramNames="table"><![CDATA[/MM_tableName\s*=\s*"([^"]*)";/]]></searchPattern>
+       <searchPattern paramNames="col"><![CDATA[/MM_tableCol\s*=\s*"([^"]*)";/]]></searchPattern>
+       <searchPattern paramNames="colQuote"><![CDATA[/MM_recordId\s*=\s*"([^"]*)"/]]></searchPattern>
+       <searchPattern paramNames="url"><![CDATA[/MM_redirectPage\s*=\s*"([^"]*)";/]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="conn"><![CDATA[/(getConnection\(\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="username"><![CDATA[/(getConnection\([^,]*,\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="password"><![CDATA[/(getConnection\([^,]*,[^,]*,\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="driver"><![CDATA[/(Class\.forName\(")[^"]*("\))/g]]></updatePattern>
+       <updatePattern paramName="table"><![CDATA[/(MM_tableName\s*=\s*")[^"]*(";)/g]]></updatePattern>
+       <updatePattern paramName="col"><![CDATA[/(MM_tableCol\s*=\s*")[^"]*(";)/g]]></updatePattern>
+       <updatePattern paramName="colQuote"><![CDATA[/(MM_recordId\s*=\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="colQuote"><![CDATA[/(request\.getParameter\("MM_recordId"\)\s*\+\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="url"><![CDATA[/(MM_redirectPage\s*=\s*")[^"]*(";)/g]]></updatePattern>
+     </updatePatterns>
+</participant>

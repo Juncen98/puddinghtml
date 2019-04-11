@@ -1,0 +1,46 @@
+<participant>
+     <quickSearch><![CDATA[MM_editAction]]></quickSearch>
+     <insertText location="aboveHTML+15">
+<![CDATA[
+<%
+// *** Edit Operations: declare variables
+
+// set the form action variable
+String MM_editAction = request.getRequestURI();
+if (request.getQueryString() != null && request.getQueryString().length() > 0) {
+  String queryString = request.getQueryString();
+  String tempStr = "";
+  for (int i=0; i < queryString.length(); i++) {
+    if (queryString.charAt(i) == '<') tempStr = tempStr + "&lt;";
+    else if (queryString.charAt(i) == '>') tempStr = tempStr + "&gt;";
+    else if (queryString.charAt(i) == '"') tempStr = tempStr +  "&quot;";
+    else tempStr = tempStr + queryString.charAt(i);
+  }
+  MM_editAction += "?" + tempStr;
+}
+
+// connection information
+String MM_editDriver = null, MM_editConnection = null, MM_editUserName = null, MM_editPassword = null;
+
+// redirect information
+String MM_editRedirectUrl = null;
+
+// query string to execute
+StringBuffer MM_editQuery = null;
+
+// boolean to abort record edit
+boolean MM_abortEdit = false;
+
+// table information
+String MM_editTable = null, MM_editColumn = null, MM_recordId = null;
+
+// form field information
+String[] MM_fields = null, MM_columns = null;
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern><![CDATA[/String\s+MM_editAction\s*=\s*request\.getRequestURI\(\);/]]></searchPattern>
+       <searchPattern><![CDATA[/StringBuffer\s+MM_editQuery\s*=\s*null;/]]></searchPattern>
+     </searchPatterns>
+  </participant>

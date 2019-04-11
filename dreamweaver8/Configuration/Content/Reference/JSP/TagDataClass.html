@@ -1,0 +1,246 @@
+<html>
+<head>
+<title>TagData Class</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">TagData Class</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Class name:</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+<p><span class="LITERAL">javax.servlet.jsp.tagext.TagData</span></p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Extends:</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+<p>None</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Implements:</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+<p><span class="LITERAL">Cloneable</span></p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Implemented by:</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+<p>Internal container-dependent class. Most containers use the reference
+implementation of the class (developed in the Apache Jakarta
+project).
+</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+<p><span class="LITERAL">TagData</span> instances are created by the web container
+during the translation phase. They provide information about the
+attribute values specified for a custom action to the
+<span class="LITERAL">TagExtraInfo</span> subclass for the corresponding tag
+handler, if any.
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>After the web container has checked everything it can on its own
+based on attribute information in the TLD, it looks for a
+<span class="LITERAL">TagExtraInfo</span> subclass, defined by the
+<span class="LITERAL">&lt;teiclass&gt;</span> element, for the custom action.
+If one is defined, it puts all the attribute information in an
+instance of the <span class="LITERAL">TagData</span> class and calls the
+<span class="LITERAL">TagExtraInfo isValid()</span> method:
+</p>
+
+<span class="PROGRAMLISTING"><pre>public boolean isValid(TagData data) {
+    // Mutually exclusive attributes
+    if (data.getAttribute("attr1") != null &amp;
+        data.getAttribute("attr2" != null) {
+        return false;
+    }
+
+    // Dependent optional attributes
+    if (data.getAttribute("attr3") != null &amp;
+        data.getAttribute("attr4" == null) {
+        return false;
+    }
+    return true;
+}</pre></span>
+
+<p>A <span class="LITERAL">TagExtraInfo</span> subclass can use the
+<span class="LITERAL">TagData</span> instance to verify that all attribute
+dependencies are okay, as in this example. Unfortunately, in JSP 1.1
+there's no way to generate an appropriate error message; the
+method can only return <span class="LITERAL">false</span> to indicate that
+something is not quite right. This will hopefully be rectified in a
+future version of JSP.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="TagDataObject">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">TagData()</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"> </td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage"><span class="LITERAL">public TagData(Object[][] atts)</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Creates a new instance with the attribute name/value pairs specified by the <span class="LITERAL">Object[][]</span>. Element 0 of each <span class="LITERAL">Object[]</span> contains the name; element 1 contains the value or <span class="LITERAL">REQUEST_TIME_VALUE</span> (if the attribute value is defined as a request-time value, or JSP expression).
+</p></td>
+</tr>
+</table>
+</div>
+<div id="TagDataHashtable">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">TagData()</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"> </td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage"><span class="LITERAL">public TagData(java.util.Hashtable attrs)</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Creates a new instance with the attribute name/value pairs specified by the <span class="LITERAL">Hashtable</span>.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="getAttribute">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">getAttribute()</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"> </td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage"><span class="LITERAL">public Object getAttribute(String attName)</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Returns the specified attribute value as a <span class="LITERAL">String</span> or as the <span class="LITERAL">REQUEST_TIME_VALUE</span> object (if the attribute value is defined as a request-time value, or JSP expression).
+</p></td>
+</tr>
+</table>
+</div>
+<div id="getAttributeString">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">getAttributeString()</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"> </td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage"><span class="LITERAL">public String getAttributeString(String attName)</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Returns the specified attribute value as a <span class="LITERAL">String</span>. A <span class="LITERAL">ClassCastException</span> is thrown if the attribute value is defined as a request-time value (a JSP expression).
+</p></td>
+</tr>
+</table>
+</div>
+<div id="getId">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">getId()</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"> </td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage"><span class="LITERAL">public String getId()</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Returns the attribute named <span class="LITERAL">id</span> as a <span class="LITERAL">String</span>, or <span class="LITERAL">null</span> if it is not found.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="setAttribute">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">setAttribute()</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"> </td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage"><span class="LITERAL">public void setAttribute(String attName, Object value)</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Sets the specified attribute to the specified value.
+</p></td>
+</tr>
+</table>
+</div>
+</body>
+</html>

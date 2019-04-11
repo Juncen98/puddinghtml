@@ -1,0 +1,55 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Copyright 2000 Macromedia, Inc. All rights reserved. -->
+<title>绘制布局表格</title>
+	
+<script language="javascript">
+
+//---------------     API FUNCTIONS    ---------------
+
+function isDOMRequired() {
+	// Return false, indicating that this is enabled when focus is in the code view.
+	return false;
+}
+
+function objectTag() {
+  // Return the html tag that should be inserted
+  return "";
+}
+
+function objectToolMode() {
+  return "layout table";	// Layout Table
+}
+
+function objectTagMarquee(left, top, width, height) {
+  // Ignore this if DW is just trying to determine if the object tag
+  // function exists.
+  if (left == "")
+  {
+    return "";
+  }
+
+  MM.layoutBoxArgsLeft = parseInt(left);
+  MM.layoutBoxArgsTop = parseInt(top);
+  MM.layoutBoxArgsWidth = Math.abs(parseInt(width));
+  MM.layoutBoxArgsHeight = Math.abs(parseInt(height));
+
+  dw.popupCommand("Layout Table.htm");
+
+  // Zero out the arguments, in case someone tries to replay the command.
+  MM.layoutBoxArgsLeft = 0;
+  MM.layoutBoxArgsTop = 0;
+  MM.layoutBoxArgsWidth = 0;
+  MM.layoutBoxArgsHeight = 0;
+
+  return "";
+}
+
+</script>
+	
+</head>
+
+<body>
+</body>
+</html>

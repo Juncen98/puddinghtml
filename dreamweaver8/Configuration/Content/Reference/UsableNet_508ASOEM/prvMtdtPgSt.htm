@@ -1,0 +1,197 @@
+<html xmlns:un="http://usablenet.com/namespaces/508_rules">
+   <link rel="stylesheet" href="josh.css">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Detailed View for rule: Provide metadata to pages and sites</title>
+      <!--
+  508/W3C Accessibility Suite OEM V2 for Macromedia Dreamweaver
+  (C) Copyright 2001-2005 UsableNet Inc. All rights reserved.
+  -->
+   </head>
+   <body bgcolor="#ffffff">
+      <div id="Description">
+         <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+            <tr>
+               <td valign="top" nowrap="true" class="name">Provide metadata to pages and sites</td>
+               <td valign="top" nowrap="true" class="compatibility">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+            </tr>
+            <tr>
+               <td valign="top" align="right" nowrap="true" colspan="2" class="requirements">WAI / WCAG 1.0 Priority 2 checkpoint 13.2</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Description</b><br>
+                  
+                  
+                  <p>
+                     The page does not contain, in its HEAD section, any LINK element that
+                     specifies relations between this page and other documents or
+                     information items.
+                     	 
+                  </p>
+                  
+                  <p> For example, use RDF to indicate the document's author, the type
+                     of content, etc. Some HTML user agents can build navigation tools
+                     from document relations described by the HTML LINK element and
+                     "rel" or "rev" attributes (e.g., rel="next", rel="previous",
+                     rel="index", etc.).
+                     
+                  </p>    
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>How to fix</b>
+                  
+                  
+                  <p>
+                     Consider adding LINK elements to the HEAD section to represent
+                     relationships between this page and other documents.
+                     	 
+                  </p>
+                  
+                  
+                  <p>
+                     The list of possible relationships between documents that
+                     can be represented by the LINK element from <strong>HTML 4.01 Specification</strong>
+                     [http://www.w3.org/TR/html401/types.html#type-links]
+                     .
+                     
+                  </p>
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Explanation</b><br>
+                  
+                  
+                  <p>
+                     The LINK element defines a link that is not shown to the user, but it
+                     is used by the browser for special purposes. It conveys information
+                     that the browser can process in several ways (for example Mozilla can display
+                     a special navigation bar; lynx presents these links in a special
+                     section of its display).
+                     
+                  </p>
+                  
+                  <p>
+                     In general LINK represents a relationship between the current document
+                     and something else. An example is the relationship between the current
+                     HTML document and an external CSS file. Another example is to
+                     represent the next and previous document in a sequence of documents
+                     (like for different chapters in a tutorial).
+                     
+                  </p>
+                  
+                  <p>
+                     Consider the following example by the W3C (<strong>HTML 4.01 Specification</strong>
+                     [http://www.w3.org/TR/html401struct/links.html#h-12.3]
+                     ):
+                     
+                  </p>
+                  
+                  <pre>
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd"&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+  &lt;TITLE&gt;Chapter 2&lt;/TITLE&gt;
+
+  &lt;LINK rel="Index" href="../index.html"&gt;
+  &lt;LINK rel="Next"  href="Chapter3.html"&gt;
+  &lt;LINK rel="Prev"  href="Chapter1.html"&gt;
+&lt;/HEAD&gt;
+...the rest of the document...
+</pre>
+                  
+                  <p>In the following example, also taken from the same source, the
+                     HREFLANG attribute to tell search engines where to find Dutch,
+                     Portuguese, and Arabic versions of a document.  Note the use of the
+                     CHARSET attribute for the Arabic manual. Note also the use of the LANG
+                     attribute to indicate that the value of the title attribute for the
+                     LINK element designating the French manual is in French.
+                     
+                  </p>
+                  
+                  <pre>
+&lt;HEAD&gt;
+&lt;TITLE&gt;The manual in English&lt;/TITLE&gt;
+&lt;LINK title="The manual in Dutch"
+      type="text/html"
+      rel="alternate"
+      hreflang="nl" 
+      href="http://someplace.com/manual/dutch.html"&gt;
+&lt;LINK title="The manual in Portuguese"
+      type="text/html"
+      rel="alternate"
+      hreflang="pt" 
+      href="http://someplace.com/manual/portuguese.html"&gt;
+&lt;LINK title="The manual in Arabic"
+      type="text/html"
+      rel="alternate"
+      charset="ISO-8859-6"
+      hreflang="ar" 
+      href="http://someplace.com/manual/arabic.html"&gt;
+&lt;LINK lang="fr" title="La documentation en Fran&amp;ccedil;ais"
+      type="text/html"
+      rel="alternate"
+      hreflang="fr"
+      href="http://someplace.com/manual/french.html"&gt;
+&lt;/HEAD&gt;
+</pre>
+                  
+                  <p>In the following example, search engines are told where to find the printed
+                     version of a manual.
+                  </p>
+                  
+                  <pre>
+&lt;HEAD&gt;
+&lt;TITLE&gt;Reference manual&lt;/TITLE&gt;
+&lt;LINK media="print" title="The manual in postscript"
+      type="application/postscript"
+      rel="alternate"
+      href="http://someplace.com/manual/postscript.ps"&gt;
+
+&lt;/HEAD&gt;
+</pre>
+                  
+                  <p>And here where to find the front
+                     page of a collection of documents.
+                  </p>
+                  
+                  <pre>
+&lt;HEAD&gt;
+&lt;TITLE&gt;Reference manual -- Page 5&lt;/TITLE&gt;
+&lt;LINK rel="Start" title="The first page of the manual"
+      type="text/html"
+      href="http://someplace.com/manual/start.html"&gt;
+
+&lt;/HEAD&gt;
+</pre>    
+                  </td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

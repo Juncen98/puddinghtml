@@ -1,0 +1,10 @@
+<participant>
+     <quickSearch><![CDATA[CHECKED]]></quickSearch>
+     <insertText location="nodeAttribute" nodeParamName="radioNode">
+<![CDATA[<%=((@@expression1@@.toString().equals((@@expression2@@).toString()))?"CHECKED":"")%>]]>
+     </insertText>
+     <searchPatterns whereToSearch="tag+input/radio">
+       <searchPattern paramNames="theName" limitSearch="attribute+name"></searchPattern>
+       <searchPattern paramNames="expression1,expression2"><![CDATA[/<%=\(\((.*)\.toString\(\)\.equals\((.*)\)\)\?"CHECKED"\:""\)%>/]]></searchPattern>
+     </searchPatterns>
+</participant>

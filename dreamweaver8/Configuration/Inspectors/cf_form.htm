@@ -1,0 +1,76 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 6.0//pi">
+<!-- tag:cfform, priority:1, selection:exact,hline,vline ,serverModel:Cold Fusion -->
+<!-- Copyright 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<html>
+<head>
+<title>CFINPUT</title>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/TagEditClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<script src="../TagLibraries/CFML/strings.js"></script>
+<script src="../TagLibraries/CFML/loc_strings.js"></script>
+<script src="../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../TagLibraries/Html/loc_strings.js"></script>
+<script src="../TagLibraries/Html/strings.js"></script>
+<script src="cf_form.js"></script>
+<link href="_pi_common.css" rel="stylesheet" type="text/css">
+</head>
+<body class="piBody">
+<img id="piImage" name="piImage" src="Img/form.gif">
+<div id="idBoxLayer">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="left" height="17" NOWRAP>CFFORM</td>
+    </tr>
+    <tr>
+      <td align="left" nowrap><input name="theName" type="text" id="theName" onBlur="updateTag('name')">
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="topLayer">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="15%" align="right" nowrap>动作&nbsp;</td>
+      <td align="left" nowrap><input name="theAction" type="text" id="theAction" style="width:160px; margin:0px" onBlur="updateTag('action')">
+        <input name="folderImage" type="image" onClick="fileBrowser(ACTION); updateTag('action')" src="../Shared/MM/Images/folder.gif" width="15" height="14" alt="浏览文件"></td>
+      <td width="16%" align="right" nowrap>目标&nbsp;</td>
+      <td width="24%" align="left" nowrap><select name="theTarget" id="theTarget" style="width:150px; margin-right:0px;" editable="false" onChange="updateTag('target')"></select></td>
+    </tr>
+    <tr>
+      <td width="15%" align="right" nowrap>方法&nbsp;</td>
+      <td width="23%" nowrap><select name="theMethod" id="theMethod" style="width:100px; margin:1px;" editable="false" onChange="updateTag('method')"></select></td>
+      <td width="27%" align="right" nowrap>编码类型&nbsp;</td>
+      <td width="35%" nowrap><select name="theEnctype" id="theEnctype" style="width:150px; margin-right:0px; margin-top:1px;" editable="false" onChange="updateTag('enctype')"></select></td>
+    </tr>
+  </table>
+</div>
+<div id="bottomLayer">
+  <table width="100%" border="0" cellpadding="1" cellspacing="0">
+    <tr>
+      <td align="right" nowrap>&nbsp;&nbsp;格式&nbsp;</td>
+      <td align="left" valign="middle" nowrap><select name="theFormat" id="theFromat" style="width:72px; margin-left:3px;" onChange="updateTag('format')"></select></td>
+      <td align="right" valign="middle" nowrap>Flash/xml 外观&nbsp;</td>
+      <td align="left" valign="middle" nowrap><select name="theSkin" id="theSkin" onChange="updateTag('skin')" style="width:100px"></select></td>
+      <td align="right" nowrap>&nbsp;&nbsp;脚本源文件&nbsp;</td>
+      <td nowrap><input name="theScriptSrc" type="text" id="theScriptSrc" style="width:70px" onBlur="updateTag('scriptSrc')"></td>
+      <td align="right" nowrap>&nbsp;&nbsp;高度&nbsp;</td>
+      <td align="left" nowrap><input name="theHeight" type="text" id="theHeight2" style="width:30px" onBlur="updateTag('height')"></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>样式&nbsp;</td>
+      <td align="left" valign="middle" nowrap><input name="theStyle" type="text" id="theStyle" style="width:70px; margin-left:0px;" onBlur="updateTag('style')"></td>
+      <td align="right" valign="middle" nowrap>&nbsp;&nbsp;保留数据&nbsp;</td>
+      <td align="left" valign="middle" nowrap><select name="thePreserveData" id="thePreserveData" onChange="updateTag('preserveData')" style="width:60px; margin-top:1px;"></select></td>
+      <td align="right" nowrap>存档&nbsp;</td>
+      <td nowrap><input name="theArchive" type="text" id="theArchive" style="width:70px" onBlur="updateTag('archive')"></td>
+      <td align="right" nowrap>宽度&nbsp;</td>
+      <td align="left" nowrap><input name="theWidth" type="text" id="theWidth2" style="width:30px" onBlur="updateTag('width')"></td>
+      <td align="right" width="40" nowrap><input type="image" src="Img/tagDialog.gif" name="more" id="more2" title="Display Tag Editor for cfform" onClick="displayTagDialog()" alt="为 cfform 显示标签编辑器"></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

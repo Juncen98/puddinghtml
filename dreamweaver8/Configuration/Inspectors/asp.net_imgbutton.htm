@@ -1,0 +1,81 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 6.0//pi">
+<!-- tag:asp:imagebutton, priority:1, selection:exact,hline,vline ,serverModel:ASP.NET -->
+<html>
+<head>
+<!-- Copyright 2002 Macromedia, Inc. All rights reserved. -->
+<title>ASP.NET ImageButton</title>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/TagEditClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dotNetUtils.js"></SCRIPT>
+<SCRIPT SRC="../TagLibraries/ASPNet/loc_strings.js"></SCRIPT>
+<SCRIPT SRC="../TagLibraries/ASPNet/strings.js"></SCRIPT>
+<script src="asp.net_imgbutton.js"></script>
+<script language="JavaScript">
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+//--------------- END LOCALIZEABLE   ---------------
+</script>
+</head>
+<body marginwidth="0" marginheight="0">
+<span id="image" style="position:absolute; width:36px; height:36px; z-index:16; left: 5px; top: 9px"><img src="imagebutton.gif" width="36" height="36"></span>
+<div id="idBoxLayer" style="position:absolute; width:66px; height:38px; z-index:1; left: 44px; top: 9px; visibility: visible;"> 
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		  <td height="17" align="left" NOWRAP>&nbsp;图像按钮</td>
+		</tr>
+		<tr>
+		  <td nowrap>
+
+        <input name="buttonID" type="text" id="buttonID" style="width:65px" onBlur="updateTag('id')">
+		  </td>
+		</tr>
+  </table>
+</div>
+<div id="topLayer" style="position:absolute; left:125px; top:2px; width:410px; height:38px; z-index:31; visibility: visible;">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="right" nowrap>URL&nbsp;</td>
+      <td nowrap> <input name="imgURL" type="text" id="imgURL" style="width:125px;" onBlur="updateTag('imgURL')"> </td>
+      <td nowrap><form name="form1" method="post" action="">
+        <input name="imageField" type="image" onClick="updateTag('folderIcon')" src="../Shared/MM/Images/folder.gif" alt="浏览查找图像 URL" width="16" height="16" border="0">
+      </form></td>
+      <td align="right" nowrap>边框&nbsp;</td>
+      <td nowrap><input type="text" name="border" id="border" onBlur="updateTag('border')" style="width:30px"> </td>
+      <td align="right" nowrap>工具提示&nbsp;</td>
+      <td nowrap><input type="text" name="tooltip" id="tooltip" onBlur="updateTag('toolTip')" style="width:82px"> </td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>Alt&nbsp;</td>
+      <td nowrap> <input name="altText" type="text" id="altText" style="width:125px" onBlur="updateTag('altText')"> </td>
+      <td nowrap>&nbsp;</td>
+      <td align="right" nowrap="NOWRAP">边框样式&nbsp;</td>
+      <td colspan="3" nowrap><select name="borderStyle" id="borderStyle" onChange="updateTag('borderStyle')" style="width:166px"> </select></td>
+    </tr>
+  </table>
+</div>
+<div id="bottomLayer" style="position:absolute; left:26px; top:55px; z-index:22; width: 495px; height: 38px;">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="right" nowrap>宽&nbsp;</td>
+      <td nowrap> <input name="buttonWidth" type="text" id="buttonWidth" style="width:30px" onBlur="updateTag('width')"> </td>
+      <td align="right" nowrap>命令&nbsp;</td>
+      <td nowrap> <input name="cmd" type="text" id="cmd" style="width:150px" onBlur="updateTag('commandName')"> </td>
+      <td align="right" nowrap>Tab 键索引&nbsp;</td>
+      <td nowrap><input type="text" name="tabix" id="tabix" onBlur="updateTag('tabIndex')" style="width:30px"> </td>
+      <td align="right" nowrap>边框&nbsp;<input type="mmcolorbutton" name="bdrColor" id="bdrColor" onChange="TEXT_BDRCOLOR.value=this.value;updateTag('borderColor')">&nbsp;<input name="bdrColorField" type="text" id="bdrColorField" style="width:60px" onBlur="CP_BDRCOLOR.value=this.value;updateTag('borderColor')"></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap="NOWRAP">高&nbsp;</td>
+      <td nowrap><input name="buttonHeight" type="text" id="buttonHeight" style="width:30px" onBlur="updateTag('height')"></td>
+      <td align="right" nowrap>命令参数&nbsp;</td>
+      <td nowrap> <input name="cmdArg" type="text" id="cmdArg" style="width:150px" onBlur="updateTag('commandArgument')"> </td>
+      <td align="right" nowrap>访问键&nbsp;</td>
+      <td nowrap><input type="text" name="akey" id="akey" onBlur="updateTag('accessKey')" style="width:30px"> </td>
+      <td align="right" nowrap><input type="image" src="tagDialog.gif" name="more" id="more" title="Display Tag Editor for asp:ImageButton" onClick="dotNetUtils.displayTagDialog()" alt="显示 asp:ImageButton 的标签编辑器"></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

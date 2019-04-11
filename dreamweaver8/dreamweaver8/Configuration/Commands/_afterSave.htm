@@ -1,0 +1,47 @@
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2000, 2001, 2002, 2003 Macromedia, Inc. All rights reserved. -->
+
+<HTML>
+
+<HEAD>
+
+<TITLE>Before Save</TITLE>
+<SCRIPT LANGUAGE="javascript">
+
+// Don't require syncing the DOM during File Save
+function isDOMRequired()
+{
+  return false;
+}
+
+// Function: afterSave
+//
+// Description: Dispatching _afterSave command. The command executes every command
+//   file ending with "_afterSave.htm" which exists in the command folder.
+//
+// Notes: Do not replace this file. This file must be named "_afterSave.htm"
+//  Rename any required _afterSave commands by prepending a descriptive name.
+//  To prevent the renamed command from displaying in the commands menu add
+//  the MENU-LOCATION=NONE comment as the first line of your .htm file.
+function afterSave() {
+  if (!MM.afterSaveFileList)
+  {
+	  // Search for all files ending with the _beforeSave name.
+	  var filePath = dw.getConfigurationPath()+'/Commands/';
+	  var fileFilter = '?*_afterSave.htm';
+	  MM.afterSaveFileList = DWfile.listFolder(filePath+fileFilter, 'files');
+  }
+  for (var i = 0; i < MM.afterSaveFileList.length; i++) {
+    // Call each specified command file.
+    dw.popupCommand(MM.afterSaveFileList[i]);
+  }
+}
+
+</SCRIPT>
+
+</HEAD>
+
+<BODY onLoad="afterSave()">
+</BODY>
+
+</HTML>

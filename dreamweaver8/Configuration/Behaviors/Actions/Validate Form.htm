@@ -1,0 +1,98 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- SAFE-IN-TEMPLATES -->
+<HTML>
+<HEAD>
+<SCRIPT SRC="Validate Form.js"></SCRIPT>
+<SCRIPT SRC="MM_findObj.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/docInfo.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/menuItem.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/niceName.js"></SCRIPT>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<SCRIPT LANGUAGE="javascript">
+// Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved.
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_FldNotFound = '无法找到设定给 %s的域 "%s" 。';
+var MSG_NoSelection = "请先选择一个文本域。";
+var MSG_InvalidRange = "请输入正确的数字范围，第一个小于第二个。";
+var MSG_UnnamedField = "只能检验 *已命名的* 域。 请点击「取消」，使用属性检查器将您的域命名。";
+var MSG_NoFieldsSet = "没有任何可用物件,请至少标志一个域以供验证,或者点击取消。"
+//--------------- END LOCALIZEABLE   ---------------
+//---------------    END JAVASCRIPT    ---------------
+</SCRIPT>
+<TITLE>检查表单</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm" ACTION="">
+    
+  <TABLE cellpadding="4" cellspacing="2">
+        <TR>
+          
+        <TD>
+          <TD NOWRAP ROWSPAN=2 COLSPAN=3>
+            <SELECT NAME="fieldMenu" SIZE=4 class="namedObjectsList" onChange="displaySelection()">
+              
+          <OPTION>**** 无法找到栏位 *****************
+            </select></TD>
+        </TR><TR>
+          <TD ALIGN="right" VALIGN="top" NOWRAP>
+            命名的栏位:</TD>
+        </TR>
+    <TR valign="baseline">
+          
+        
+      <TD ALIGN="right" NOWRAP>
+            值:</TD>
+          
+      <TD NOWRAP COLSPAN=3>
+            <INPUT TYPE="checkbox" NAME="isReqd" onClick="saveCheckToMenu('required')">
+            必需的</TD>
+        </TR>
+    <TR valign="baseline">
+          
+        
+      <TD>
+        </TR>
+    <TR valign="baseline">
+          
+        
+      <TD ALIGN="right" NOWRAP>
+            可接受:</TD>
+          
+      <TD NOWRAP>
+            <INPUT TYPE="radio" NAME="theCheck" value="anything" CHECKED onClick="saveCheckToMenu('')">
+            任何东西</TD>
+          
+      <TD NOWRAP COLSPAN=2>
+            <INPUT TYPE="radio" NAME="theCheck" onClick="saveCheckToMenu('isNum')">
+            数字</TD>
+        </TR>
+    <TR valign="baseline">
+          
+        
+      <TD></TD>
+          
+      <TD NOWRAP>
+            <INPUT TYPE="radio" NAME="theCheck" onClick="saveCheckToMenu('isEmail')">
+            电子邮件地址</TD>
+          
+      <TD NOWRAP>
+            <INPUT TYPE="radio" NAME="theCheck" onClick="saveRangeToMenu('inRange',true)">
+            数字从
+          
+      <TD NOWRAP>
+            <INPUT NAME="fromNum" TYPE="text" class="smallNumOrChar" onBlur="saveRangeToMenu('inRange')">
+            &nbsp;到&nbsp;
+            <INPUT NAME="toNum" TYPE="text" class="smallNumOrChar" onBlur="saveRangeToMenu('inRange')"></TD>
+        </TR>
+      </TABLE>
+  </FORM>
+</BODY>
+</HTML>

@@ -1,0 +1,153 @@
+<!-- MENU-LOCATION=NONE -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<head>
+
+<!-- Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<title>创建网站相册</title>
+<script SRC="../Shared/MM/Scripts/CMN/UI.js"></script>
+<script SRC="../Shared/MM/Scripts/CMN/string.js"></script>
+<script src="Create Web Photo Album.js"></script>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<script language="JavaScript">
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var gFireworksTrialURL = "http://www.macromedia.com/cn/software/fireworks/trial/";
+
+var MSG_GENERIC_ERROR = "出现错误。";
+var MSG_SUCCESS = "相册已经建立。";
+var MSG_CHOOSEFOLDER = "请选择一个文件夹";
+var MSG_FailOrCancel = "创建Web相册未完成。可能是由于发生了任意一个错误\n"
++ 		"或命令被取消。";
+var MSG_FILE_EXISTS = "已经存在。点击确定替换该文件。"
+var DIR_IMAGES = "images";
+var DIR_PAGES = "pages";
+var DIR_THUMBS = "thumbnails";
+
+// Note following messages end with a space.
+var MSG_CHECK_FW3 = "您必须安装 Fireworks 4 或更高版本才能使用该命令。请从 www.macromedia.com/cn 下载 Fireworks 的免费试用版本。";
+var MSG_CHECK_TITLE = "您必须指定相册标题。 ";
+var MSG_CHECK_SRC = "请浏览到一个合法的源文件夹。";
+var MSG_CHECK_DST = "请浏览到一个合法的目的地文件夹。";
+var MSG_CHECK_COL = "你必须指定要使用多少列。 ";
+var MSG_CHECK_SCALE = "您必须设定大型图像的缩放比例。 ";
+var MSG_FileNameToLong = "一个或多个文件无法添加到相册因为文件名称太长。";
+var MSG_NoFilesFound = "源档案文件夹中找不到任何图像档案。";
+var MSG_Error = "发生错误。";
+
+var HTM_Next = "下一个";
+var HTM_Prev = "前一个";
+var HTM_Home = "首页";
+
+//--------------- END LOCALIZEABLE   ---------------
+
+</script>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="initUI()">
+  
+<div id="Layer1" style="position:absolute; width:441px; height:115px; z-index:1; left: 5; top: 5; visibility: visible;"> 
+  <form name="MainForm">
+<table border="0" cellspacing="4">
+  <tr valign="baseline">
+    <td align="right" nowrap> 相册标题: </td>
+    <td  nowrap>
+      <input type="text" name="sitename" class="basicTextField">
+    </td>
+  </tr>
+  <tr valign="baseline">
+    <td align="right" nowrap> 副标信息: </td>
+    <td  nowrap>
+      <input name="author" type="text" class="basicTextField">
+    </td>
+  </tr>
+  <tr valign="baseline">
+    <td align="right" nowrap> 其他信息: </td>
+    <td  nowrap>
+      <input name="datefield" type="text" class="basicTextField">
+    </td>
+  </tr>
+  <tr valign="baseline">
+    <td align="right" nowrap> 源图像文件夹: </td>
+    <td nowrap >
+      <input name="folder" type="text" class="basicTextField">
+
+      <input type="button" name="Browse" onClick="browseFile('folder');focus(this)" value="浏览...">
+    </td>
+  </tr>
+  <tr valign="baseline">
+    <td align="right" nowrap> 目标文件夹: </td>
+    <td nowrap >
+      <input name="destination" type="text" class="basicTextField">
+
+      <input type="button" name="Button" value="浏览..." onClick="browseFile('destination');focus(this)">
+    </td>
+  </tr>
+  <tr valign="baseline">
+    <td align="right" nowrap> 缩略图大小: </td>
+    <td  nowrap>
+      <select name="thumbsize" class="oneWordOptionList">
+        <option value="36"> 36 x 36 </option>
+        <option value="72"> 72 x 72 </option>
+        <option selected value="100"> 100 x 100 </option>
+        <option value="144"> 144 x 144 </option>
+        <option value="200"> 200 x 200 </option>
+      </select>
+      <input type="checkbox" name="showfilenames" value="checkbox" checked>
+      显示文件名称 </td>
+  </tr>
+  <tr valign="baseline">
+    <td align="right" nowrap> 列: </td>
+    <td  nowrap>
+      <input name="columns" type="text" class="smallNumOrChar" value="5" >
+    </td>
+  </tr>
+  <tr valign="baseline">
+    <td align="right" nowrap> 缩略图格式: </td>
+    <td  nowrap>
+      <select name="thumbformat" class="imageFormatList">
+        <option value="gifwebsnap128"> GIF 接近网页 128 色 </option>
+        <option value="gifwebsnap256"> GIF 接近网页 256 色 </option>
+        <option selected value="jpegbetterquality"> JPEG - 较高品质 </option>
+        <option value="jpegsmallerfile"> JPEG - 较小文件 </option>
+      </select>
+    </td>
+  </tr>
+  <tr valign="baseline">
+    <td align="right" nowrap> 相片格式: </td>
+    <td nowrap align="left">
+      <select name="sourceimageformat" class="imageFormatList">
+        <option value="gifwebsnap128"> GIF 接近网页 128 色 </option>
+        <option value="gifwebsnap256"> GIF 接近网页 256 色 </option>
+        <option selected value="jpegbetterquality"> JPEG - 较高品质 </option>
+        <option value="jpegsmallerfile"> JPEG - 较小文件 </option>
+      </select>
+       小数位数:
+          <input name="imgsize" type="text" class="smallNumOrChar" value="100">
+      % </td>
+  </tr>
+  <tr valign="baseline">
+    <td align="right" nowrap></td>
+    <td  nowrap>
+      <input type="checkbox" name="createpages" value="checkbox" checked>
+      为每张相片建立导览页面 </td>
+  </tr>
+</table>
+   </form>
+  </div>
+  
+<div id="Layer2" style="position:absolute; width:441px; height:310px; z-index:2; left: 5; top: 5; visibility: hidden"> 
+  <center>
+    <br>
+    <br>
+    <br>
+    您的机器中装有 Fireworks 4 或更高版本才能使用这个命令。
+    <br>
+    <br>
+    <input type="button" name="Button" value="下载 Fireworks 试用版" onClick="dw.browseDocument(gFireworksTrialURL); window.close()">
+  </center>
+  </div>
+
+</body>
+</html>

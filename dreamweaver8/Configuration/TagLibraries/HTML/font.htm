@@ -1,0 +1,177 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>字体</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var LANGUAGELIST; 
+var DIRLIST; 
+var FONTLIST; 
+var SIZELIST; 
+
+var theUIObjects; 
+
+// Color control elements
+var COLORP_COLOR; 
+var TEXT_COLOR; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+  updateColors();
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+
+function updateUI(itemName)
+{
+  switch(itemName)
+  {
+    case "colorColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_COLOR,TEXT_COLOR);
+      break;
+    }
+    case "color":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_COLOR,TEXT_COLOR);
+      break;
+    }
+  }
+}
+
+function updateColors()
+{
+  tagDialog.updateColorPicker("colorField",COLORP_COLOR,TEXT_COLOR);
+}
+
+function updateFontList(){
+	// Remember old value if there was one
+	var oldValue = FONTLIST.getValue();
+	
+	// Null out the list first, then add the new values.
+	FONTLIST.setAll(new Array(0),new Array(0));
+  tagDialog.populateDropDownList(FONTLIST, dw.getFontList(), dw.getFontList(), 1); 
+	FONTLIST.pickValue(oldValue);
+}
+
+function initializeUI()
+{
+	LANGUAGELIST = new ListControl("thelang"); 
+	DIRLIST = new ListControl("thedir"); 
+	FONTLIST = new ListControl("theface"); 
+	SIZELIST = new ListControl("thesize"); 
+
+	theUIObjects  = new Array(FONTLIST,SIZELIST,LANGUAGELIST,DIRLIST); 
+
+  COLORP_COLOR = dwscripts.findDOMObject("colorColorPicker");
+  TEXT_COLOR = dwscripts.findDOMObject("thecolor");
+  
+  updateColors(); 
+  tagDialog.populateDropDownList(FONTLIST, dw.getFontList(), dw.getFontList(), 1); 
+  tagDialog.populateDropDownList(SIZELIST, theFontSizesFontCap, theFontSizesFontVal, 0); 
+  tagDialog.populateDropDownList(LANGUAGELIST, theLanguagesCap, theLanguagesVal, 1); 
+  tagDialog.populateDropDownList(DIRLIST, theDirectionCap, theDirectionVal, 1); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">字体: </td>
+      <td nowrap="nowrap">
+        <select name="theface" class="fontGroupList" id="attr:font:face" attname="face" editable="true">
+           
+        </select>
+        &nbsp;
+				<input type="button" name="editFontList" value="编辑字体列表..." onClick="dw.editFontList();updateFontList()" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">大小: </td>
+      <td nowrap="nowrap">
+        <select name="thesize" class="smallNumOrCharList" id="attr:font:size" attname="size"> 
+        </select>    
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="colorColorPicker" value="" onChange="updateUI('colorColorPicker')"> 
+        <input name="thecolor" type="text" class="smallTField" id="html:font:color" onBlur="updateUI('color')" value="" attname="color">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>
+  </table> 
+</div> 
+<div name="样式表/辅助功能"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类: </td>
+      <td nowrap="nowrap">
+        <input name="theclass" type="text" class="basicTextField" id="attr:acronym:class" attname="class" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="attr:acronym:id" attname="id" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">样式: </td>
+      <td nowrap="nowrap">
+        <input name="thestyle" type="text" class="basicTextField" id="attr:acronym:class" attname="style" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">标题: </td>
+      <td nowrap="nowrap">
+        <input name="thetitle" type="text" class="basicTextField" id="attr:acronym:title" attname="title" />
+      </td>
+    </tr>
+  </table> 
+</div>
+<div name="语言"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">方向: </td>
+      <td nowrap="nowrap">
+        <select name="thedir" class="dirLangList" id="attr:acronym:dir" attname="dir"> 
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" nowrap="nowrap"></td>
+      <td nowrap="nowrap"></td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">语言: </td>
+      <td nowrap="nowrap">
+        <select name="thelang" class="dirLangList" id="attr:acronym:lang" attname="lang" editable="true"> 
+        </select>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

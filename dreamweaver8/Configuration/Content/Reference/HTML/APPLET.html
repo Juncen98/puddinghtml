@@ -1,0 +1,1061 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">&lt;APPLET&gt;</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span>  HTML <span class="emphasis">3.2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">&lt;APPLET&gt;...&lt;/APPLET&gt;</p>
+					</td><td valign="top" nowrap class="requirements">HTML End Tag: Required&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>You can embed an executable chunk of Java code in an HTML document in
+the form of an applet. An applet occupies a rectangular area of the
+page, even if it is only one-pixel square. An applet may require that
+some initial values be set from the HTML document. One or more
+<span class="literal">param</span> elements can be used to pass parameters to
+the applet before the applet starts running (provided the applet is
+written to accept these parameters). <span class="literal">param</span>
+elements go between the start and end tags of an
+<span class="literal">applet</span> element.
+</p><p>Applets are compiled by their authors into class files (filename
+suffix <span class="emphasis">.class</span>). An applet class file must be in
+the same directory as, or a subdirectory of, the HTML document that
+loads the applet. Key attributes of the <span class="literal">applet</span>
+element direct the browser to load a particular class file from the
+necessary subdirectory.
+</p><p>All user interface design for the applet is programmed into the
+applet in the Java language. One of the roles of attributes in the
+<span class="literal">applet</span> element is to define the size and other
+geographical properties of the applet for its rendering on the page.
+Recent browsers allow JavaScript scripts to communicate with the
+applet, as well as allowing applets to access document elements (not
+implemented in Netscape 6).
+</p><p>Note that HTML 4 deprecates the <span class="literal">applet</span> element in
+favor of the more generic <span class="literal">object</span> element. Support
+for embedding applets via the <span class="literal">object</span> element is
+still spotty. Browser support for the <span class="literal">applet</span>
+element will continue for some time to come, however.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;APPLET code="simpleClock.class" name="myClock" width="400" height="50"&gt;
+&lt;PARAM name="bgColor" value="black"&gt;
+&lt;PARAM name="fgColor" value="yellow"&gt;
+&lt;/APPLET&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.applets[i]
+[window.]document.<span class="replaceable">appletName</span>
+[window.]document.getElementById(<span class="replaceable">elementID</span>)</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Element-Specific Attributes</span></td>
+				</tr>
+				<tr>
+      <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+    </tr><tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">align</span></td><td><span class="literal">alt</span></td><td><span class="literal">archive</span></td><td><span class="literal">code</span></td><td><span class="literal">codebase</span></td>
+								</tr>
+								<tr><td><span class="literal">datafld</span></td><td><span class="literal">datasrc</span></td><td><span class="literal">height</span></td><td><span class="literal">hspace</span></td><td><span class="literal">mayscript</span></td>
+								</tr>
+								<tr><td><span class="literal">name</span></td><td><span class="literal">object</span></td><td><span class="literal">src</span></td><td><span class="literal">vspace</span></td><td><span class="literal">width</span></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Element-Specific Event Handler Attributes</span></td>
+				</tr>
+				<tr>
+      <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+    </tr><tr>
+					<td>
+						<table border="1"><tbody><th>Handler</th><th>NN</th><th>IE</th><th>HTML</th><tr><td>onafterupdate</td><td>n/a</td><td>4</td><td>n/a</td>
+								</tr>
+								<tr><td>onbeforeupdate</td><td>n/a</td><td>4</td><td>n/a</td>
+								</tr>
+								<tr><td>ondataavailable</td><td>n/a</td><td>4</td><td>n/a</td>
+								</tr>
+								<tr><td>ondatasetchanged</td><td>n/a</td><td>4</td><td>n/a</td>
+								</tr>
+								<tr><td>ondatasetcomplete</td><td>n/a</td><td>4</td><td>n/a</td>
+								</tr>
+								<tr><td>onerrorupdate</td><td>n/a</td><td>4</td><td>n/a</td>
+								</tr>
+								<tr><td>onrowenter</td><td>n/a</td><td>4</td><td>n/a</td>
+								</tr>
+								<tr><td>onrowexit</td><td>n/a</td><td>4</td><td>n/a</td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+			</table>
+		</div><div id="align">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">align</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span>  HTML <span class="emphasis">3.2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">align="<span class="replaceable">alignmentConstant</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The <span class="literal">align</span> attribute determines how the rectangle
+of the applet aligns within the context of surrounding content. See
+the Section 8.1.5,
+earlier in this chapter for description of the possibilities defined
+in both Navigator and Internet Explorer for this attribute.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;APPLET code="simpleClock.class" name="myClock" align="absmiddle"
+width="400" height="50"&gt;&lt;/APPLET&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-insensitive constant value.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">bottom</span></p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.applets[i].align
+[window.]document.<span class="replaceable">appletName</span>.align
+[window.]document.getElementById(<span class="replaceable">elementID</span>).align</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="alt">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">alt</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">3</span>  HTML <span class="emphasis">3.2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">alt="<span class="replaceable">textMessage</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>If a browser does not have the facilities to load and run Java
+applets or if the browser has Java support turned off in its
+preferences, the text assigned to the <span class="literal">alt</span>
+attribute is supposed to display in the document where the
+<span class="literal">applet</span> element's tag appears.
+Typically, this text provides advice on what the page visitor is
+missing by not being able to load the Java applet. Unlike the
+<span class="literal">noscript</span> or <span class="literal">noframes</span> elements,
+there is no corresponding element for an absent Java applet
+capability. In practice, browsers don't necessarily
+display this message for applets that fail to load for a variety of
+reasons.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;APPLET code="simpleClock.class" name="myClock" align="absmiddle"
+alt="A Java clock applet." width="400" height="50"&gt;&lt;/APPLET&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Any quoted string of characters.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.  </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="archive">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">archive</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">6</span>  HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">archive="<span class="replaceable">archiveFileURL</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The precise meaning of the <span class="literal">archive</span> attribute
+varies between the generic HTML 4 recommendation and
+Netscape's specific implementation. The basic idea
+behind Netscape's <span class="literal">archive</span>
+attribute is that an author can package multiple class files into a
+single uncompressed <span class="emphasis">.zip</span> archive file and let
+the browser load the entire set of classes at one time. This can
+offer a performance improvement over loading just the main class file
+(specified by the <span class="literal">code</span> attribute) and then letting
+the class loader fetch each additional class file as needed.
+</p><p>In addition to specifying the <span class="literal">archive</span> attribute,
+be sure to include a <span class="literal">code</span> attribute that names the
+main class to load. Navigator first looks for the presence of that
+class file in the archive. If the file is missing from the archive,
+Navigator loads the <span class="literal">code</span> class file separately.
+(That class may then load additional supporting class files
+individually.) Navigator requires that the archive file have a
+<span class="emphasis">.zip</span> filename extension. The URL must also be
+relative to the <span class="literal">codebase</span> location.
+</p><p>The HTML specification allows multiple URLs to be specified (in a
+space-delimited list) for additional class or other resource files.
+This design anticipates the use of the same attribute with the
+<span class="literal">object</span> element, which the W3C has deemed the
+successor to the <span class="literal">applet</span> element. IE 6 supports the
+existence of the attribute for compatibility only, but it is not
+operable.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;APPLET code="ScriptableClock.class" archive="myClock.zip" width="400" height="50"&gt;
+&lt;/APPLET&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-sensitive URI.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.  </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.applets[i].archive
+[window.]document.<span class="replaceable">appletName</span>.archive
+[window.]document.getElementById(<span class="replaceable">elementID</span>).archive</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="code">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">code</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span>  HTML <span class="emphasis">3.2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">code="<span class="replaceable">fileName.class</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Required&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The name of the main class file that starts and runs the applet. If
+the <span class="literal">codebase</span> attribute is not specified, the
+<span class="literal">code</span> attribute must include a path from the
+directory that stores the HTML document loading the applet. You might
+get away with omitting the <span class="emphasis">.class</span> filename
+extension, but don't take any chances: be complete
+with the class name. Most servers are case-sensitive, so also match
+case of the actual class filename.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;APPLET code="applets/ScriptableClock.class" width="400" height="50"&gt;
+&lt;/APPLET&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-sensitive <span class="emphasis">.class</span> filename or complete path
+relative to the HTML document.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.applets[i].code
+[window.]document.<span class="replaceable">appletName</span>.code
+[window.]document.getElementById(<span class="replaceable">elementID</span>).code</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="codebase">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">codebase</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span>  HTML <span class="emphasis">3.2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">codebase="<span class="replaceable">path</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Path to the directory holding the class file designated in either the
+<span class="literal">code</span> or <span class="literal">archive</span> attribute. The
+<span class="literal">codebase</span> attribute does not name the class file,
+just the path. You can make this attribute a complete URL to the
+directory, but don't try to access a codebase
+outside of the domain of the current document: security restrictions
+may prevent the class from loading. A full path and filename can be
+set together in the <span class="literal">code</span> or
+<span class="literal">object</span> attribute, eliminating the need for the
+<span class="literal">codebase</span> attribute setting.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;APPLET code="ScriptableClock.class" codebase="applets/" width="400" height="50"&gt;
+&lt;/APPLET&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-sensitive pathname, usually relative to the directory storing
+the current HTML document.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.applets[i].codeBase
+[window.]document.<span class="replaceable">appletName</span>.codeBase
+[window.]document.getElementById(<span class="replaceable">elementID</span>).codeBase</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="datafld, datasrc">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">datafld, datasrc</td><td valign="top" nowrap class="compatibility">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>See the <span class="literal">param</span> element for IE data binding to Java
+applets.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="height, width">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">height, width</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span>  HTML <span class="emphasis">3.2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">width="<span class="replaceable">pixels</span>"
+height="<span class="replaceable">pixels</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Required&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The size that a Java applet occupies in a document is governed by the
+<span class="literal">height</span> and <span class="literal">width</span> attribute
+settings. Some browser versions might allow you to get away without
+assigning these attributes, letting the applet's own
+user interface design determine the height and width of its visible
+rectangle. As with images, however, it is more efficient for the
+browser's rendering engine when you explicitly
+specify the object's dimensions. Make a habit of
+supplying these values for all applets, as you should for all images
+or other visible external objects.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;APPLET code="ScriptableClock.class" width="400" height="50"&gt;&lt;/APPLET&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Positive integer pixel values. You cannot entirely hide an applet by
+setting values to zero, but you can reduce its height and width to
+one pixel in each dimension. If you want to hide an applet, do so
+with DHTML by setting its positioning <span class="literal">display</span>
+attribute to <span class="literal">none</span>.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.applets[i].height
+[window.]document.<span class="replaceable">appletName</span>.height
+[window.]document.getElementById(<span class="replaceable">elementID</span>).height
+[window.]document.applets[i].width
+[window.]document.<span class="replaceable">appletName</span>.width
+[window.]document.getElementById(<span class="replaceable">elementID</span>).width</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="hspace, vspace">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">hspace, vspace</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span>  HTML <span class="emphasis">3.2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">hspace="<span class="replaceable">pixels</span>"
+vspace="<span class="replaceable">pixels</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>You can put some empty space
+("air") between an applet and any
+surrounding content by assigning pixel values to the
+<span class="literal">hspace</span> and <span class="literal">vspace</span> attributes.
+The <span class="literal">vspace</span> attribute governs space above and below
+the applet; the <span class="literal">hspace</span> attribute governs space to
+the left and right of the applet. For browsers that are style sheet
+savvy, you are perhaps better served by using the padding and/or
+margin style attributes to gain control down to individual sides, if
+you so desire.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;APPLET code="ScriptableClock.class" width="400" height="50" hspace="3" vspace="4"&gt;
+&lt;/APPLET&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Positive integer pixel values (optionally quoted).</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">0</span></p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.applets[i].hspace
+[window.]document.<span class="replaceable">appletName</span>.hspace
+[window.]document.getElementById(<span class="replaceable">elementID</span>).hspace
+[window.]document.applets[i].vspace
+[window.]document.<span class="replaceable">appletName</span>.vspace
+[window.]document.getElementById(<span class="replaceable">elementID</span>).vspace</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="id">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">id</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span>  HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">id="<span class="replaceable">elementIdentifier</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>A unique identifier that distinguishes this element from all the rest
+in the document. Can be used to associate a single element with a
+style rule naming this attribute value as an ID selector. An element
+can have an ID assigned for uniqueness as well as a class for
+inclusion within a group. See Chapter 3.
+</p><p>If you assign an <span class="literal">id</span> attribute and not a
+<span class="literal">name</span> attribute, the value of the
+<span class="literal">id</span> attribute can be used as the
+applet's name in script reference forms that use the
+element name (<span class="literal">document.appletName</span>).
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;APPLET id="clocker" code="ScriptableClock.class" width="400" height="50"&gt;
+&lt;/APPLET&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-sensitive identifier.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.applets[i].id
+[window.]document.<span class="replaceable">appletName</span>.id
+[window.]document.getElementById(<span class="replaceable">elementID</span>).id</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="mayscript">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">mayscript</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span>  HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">mayscript</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Navigator 3 introduced a technology called LiveConnect, which allowed
+scripts to communicate with Java applets and vice versa (not yet
+implemented in Mozilla-based browsers). For security reasons, an
+applet's communications facilities with scripts must
+be explicitly switched on by the page author. By adding the
+<span class="literal">mayscript</span> attribute to the
+applet's tag, an applet that is written to take
+advantage of the document objects and scripts can address those
+items. In other words, the HTML is granting the applet the ability to
+reach scripts in the document. This attribute is a simple switch:
+when the attribute name is present, it is turned on.
+</p><p>One more step is required for an applet to communicate with
+JavaScript. The applet code must import a special Netscape class
+called <span class="emphasis">JSObject.class</span>. This class file and its
+companion exception class are built into the Java support in the
+Windows version of Internet Explorer 4 and later. Although the
+execution is not perfect in IE, applets can perform basic
+communication with scripts.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;APPLET code="ScriptableClock.class" width="400" height="50" mayscript&gt;
+&lt;/APPLET&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>No value assigned to the attribute. The presence of the attribute
+name sets turns on applet-to-script communication.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>Off.  </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="name">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">name</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span>  HTML <span class="emphasis">3.2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">name="<span class="replaceable">elementIdentifier</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>If you are scripting an applet, it is usually more convenient to
+create a reference to the applet by using a unique name you assign to
+the applet. Then, if you edit the page and move or delete multiple
+applets on the page, you do not have to worry about adjusting index
+values to array-style references. In IE 4 and later, you have the
+option of omitting the <span class="literal">name</span> attribute and using
+the <span class="literal">id</span> attribute value in script references to the
+<span class="literal">applet</span> object.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;APPLET name="clock2" code="ScriptableClock.class" width="400" height="50"&gt;
+&lt;/APPLET&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-sensitive identifier.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.applets[i].name
+[window.]document.<span class="replaceable">appletName</span>.name
+[window.]document.getElementById(<span class="replaceable">elementID</span>).name</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="object">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">object</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span>  HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">object="<span class="replaceable">filename</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Reference to the name of the file (relative to the codebase URI) that
+preserves the applet's state between sessions. When
+supported properly, this attribute replaces the
+<span class="literal">code</span> attribute, and the data file points to the
+applet's startup class file.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;APPLET name="clock2" object="clockData.dat" width="400" height="50"&gt;
+&lt;/APPLET&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-sensitive filename.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.applets[i].object
+[window.]document.<span class="replaceable">appletName</span>.object
+[window.]document.getElementById(<span class="replaceable">elementID</span>).object</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="src">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">src</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span>  HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">src="<span class="replaceable">URL</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Internet Explorer defines this attribute as the URL for an
+"associated file." This may be the
+same as the <span class="literal">archive</span> attribute defined in HTML and
+Navigator specifications. The <span class="literal">src</span> attribute is not
+a substitute for the <span class="literal">code</span> and/or
+<span class="literal">codebase</span> attributes.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>A complete or relative URL.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.applets[i].src
+[window.]document.<span class="replaceable">appletName</span>.src
+[window.]document.getElementById(<span class="replaceable">elementID</span>).aex</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="vspace">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">vspace</td><td valign="top" nowrap class="compatibility">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>See hspace.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="width">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">width</td><td valign="top" nowrap class="compatibility">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>See height. </p>
+					</td>
+				</tr>
+			</table>
+		</div>
+</body>
+</html>

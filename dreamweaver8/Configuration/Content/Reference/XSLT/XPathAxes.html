@@ -1,0 +1,230 @@
+<html>
+<head>
+<title>XPath Axes</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME" colspan="2">XPath Axes</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+
+    <p>
+<!--<primary>axes</primary>
+  <secondary>XPath</secondary>-->
+<!--<primary>XPath</primary>
+  <secondary>axes</secondary>-->
+
+
+The XPath specification defines thirteen different axes; each axis
+    contains various nodes. The nodes that are in a given axis depend
+    on the context node. All 13 axes, excerpted from our more involved
+    discussion in <link linkend="xslt-CHP-3-SECT-1">Section 3.1</link> in <link linkend="xslt-CHP-3">Chapter 3</link>, are listed here.</p>
+    <dl>
+<dt>
+<span class="LITERAL">
+child
+</span>
+axis
+</dt>
+<dd>
+Contains the children of the context node. As we've already mentioned, the XPath expressions
+<span class="LITERAL">
+child::lines/child::line
+</span>
+and
+<span class="LITERAL">
+lines/line
+</span>
+are equivalent. If an XPath expression (such as
+<span class="LITERAL">
+/sonnet
+</span>
+) doesn't have an axis specifier, the
+<span class="LITERAL">
+child
+</span>
+axis is used by default.
+<P></p>
+<dt>
+<span class="LITERAL">
+parent
+</span>
+axis
+</dt>
+<dd>
+Contains the parent of the context node, if there is one. (If the context node is the root node, the parent axis returns an empty node-set.) This axis can be abbreviated with a double period (
+<span class="LITERAL">
+..
+</span>
+). The expressions
+<span class="LITERAL">
+parent::sonnet
+</span>
+and
+<span class="LITERAL">
+../sonnet
+</span>
+are equivalent. If the context node does not have a
+<span class="LITERAL">
+&lt;
+sonnet
+&gt;
+</span>
+element as its parent, these XPath expressions return an empty node-set.
+<P></p>
+<dt>
+<span class="LITERAL">
+self
+</span>
+axis
+</dt>
+<dd>
+Contains the context node itself. The
+<span class="LITERAL">
+self
+</span>
+axis can be abbreviated with a single period (
+<span class="LITERAL">
+.
+</span>
+).
+<P></p>
+<dt>
+<span class="LITERAL">
+attribute
+</span>
+axis
+</dt>
+<dd>
+Contains the attributes of the context node. If the context node is not an element node, this axis is empty. The
+<span class="LITERAL">
+attribute
+</span>
+axis can be abbreviated with the at sign (
+<span class="LITERAL">
+@
+</span>
+). The expressions
+<span class="LITERAL">
+attribute::type
+</span>
+and
+<span class="LITERAL">
+@type
+</span>
+are equivalent.
+<P></p>
+<dt>
+<span class="LITERAL">
+ancestor
+</span>
+axis
+</dt>
+<dd>
+Contains the parent of the context node, the parent's parent, and so on. The
+<span class="LITERAL">
+ancestor
+</span>
+axis always contains the root node, unless the context node is the root node.
+<P></p>
+<dt>
+<span class="LITERAL">
+ancestor-or-self
+</span>
+axis
+</dt>
+<dd>
+Contains the context node, its parent, its parent's parent, and so on. This axis always includes the root node.
+<P></p>
+<dt>
+<span class="LITERAL">
+descendant
+</span>
+axis
+</dt>
+<dd>
+Contains all children of the context node, all children of all the children of the context node, and so on. Be aware that the
+<span class="LITERAL">
+descendant
+</span>
+axis does not include any attribute or namespace nodes. (As we discussed earlier, an attribute node has an element node as its parent, even though the attribute node is not considered a child of its parent.)
+<P></p>
+<dt>
+<span class="LITERAL">
+descendant-or-self
+</span>
+axis
+</dt>
+<dd>
+Contains the context node and all children of the context node, all children of all the children of the context node, and so on.
+<P></p>
+<dt>
+<span class="LITERAL">
+preceding-sibling
+</span>
+axis
+</dt>
+<dd>
+Contains all of the preceding siblings of the context node—in other words, all nodes that have the same parent as the context node and appear before the context node in the XML document. If the context node is an attribute node or a namespace node, the
+<span class="LITERAL">
+preceding-sibling
+</span>
+axis is empty.
+<P></p>
+<dt>
+<span class="LITERAL">
+following-sibling
+</span>
+axis
+</dt>
+<dd>
+Contains all of the following siblings of the context node—in other words, all nodes that have the same parent as the context node and appear after the context node in the XML document. If the context node is an attribute node or a namespace node, the
+<span class="LITERAL">
+following-sibling
+</span>
+axis is empty.
+<P></p>
+<dt>
+<span class="LITERAL">
+preceding
+</span>
+axis
+</dt>
+<dd>
+Contains all nodes that appear before the context node in the document, except any ancestors, attribute nodes, and namespace nodes.
+<P></p>
+<dt>
+<span class="LITERAL">
+following
+</span>
+axis
+</dt>
+<dd>
+Contains all nodes that appear after the context node in the document, except any descendants, attribute nodes, and namespace nodes.
+<P></p>
+<dt>
+<span class="LITERAL">
+namespace
+</span>
+axis
+</dt>
+<dd>
+Contains the namespace nodes of the context node. If the context node is not an element node, this axis is empty.
+<P></p>
+</dl>
+<!--<?troff .hw name-space?>-->
+    <p>The five axes <span class="LITERAL">ancestor</span>, <span class="LITERAL">descendant</span>, <span class="LITERAL">following</span>, <span class="LITERAL">preceding</span>, and <span class="LITERAL">self</span> partition everything in the XML document (with the exception of any attribute or namespace nodes). Any node in the XPath tree appears in one of these five axes, and the five axes do not overlap.
+
+
+</p>
+</td></tr>
+</table>
+</div>
+</body>
+</html>

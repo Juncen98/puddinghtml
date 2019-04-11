@@ -1,0 +1,175 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>IFRAME</title>
+  
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var SCROLLINGLIST;
+var ALIGNLIST;
+
+var theUIObjects;
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function initializeUI()
+{
+	SCROLLINGLIST = new ListControl("thescrolling");
+	ALIGNLIST = new ListControl("thealign");
+	
+	theUIObjects = new Array(SCROLLINGLIST,ALIGNLIST);
+	
+  tagDialog.populateDropDownList(SCROLLINGLIST, theFrameScrollingCap, theFrameScrollingVal, 0);
+  tagDialog.populateDropDownList(ALIGNLIST, theAlignObjectCap, theAlignObjectVal, 1); 
+	SCROLLINGLIST.pickValue('auto'); 
+
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">源: </td>
+      <td nowrap="nowrap">
+        <input type="text" id="attr:iframe:src" name="thesrc" attname="src" style="width:200px" required="true" />&nbsp;
+        <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('thesrc');focus(this)">
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:iframe:name" attname="name" />
+      </td> 
+    </tr> 
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">宽度: </td>
+      <td nowrap="nowrap">
+        <input name="thewidth" type="text" class="smallNumOrChar" id="attr:iframe:width" attname="width" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">高度: </td>
+      <td nowrap="nowrap">
+        <input name="theheight" type="text" class="smallNumOrChar" id="attr:iframe:height" attname="height" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边距宽度: </td>
+      <td nowrap="nowrap">
+        <input name="themarginwidth" type="text" class="smallNumOrChar" id="attr:iframe:marginwidth" attname="marginwidth" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边距高度: </td>
+      <td nowrap="nowrap">
+        <input name="themarginheight" type="text" class="smallNumOrChar" id="attr:iframe:marginheight" attname="marginheight" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">对齐: </td>
+      <td nowrap="nowrap">
+        <select name="thealign" class="alignList" id="attr:iframe:align" attname="align"> 
+        </select>
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">滚动: </td>
+      <td nowrap="nowrap">
+        <select name="thescrolling" class="oneWordOptionList" id="attr:iframe:scrolling" attname="scrolling">
+           
+        </select>
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:iframe:frameborder" name="theframeborder" attname="frameborder" truevalue="" falsevalue="0" checked="true" /> 显示边框
+      </td>
+    </tr>
+	</table>
+</div>
+<div name="浏览器特定的"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">水平间距: </td>
+      <td nowrap="nowrap">
+        <input name="thehspace" type="text" class="smallNumOrChar" id="attr:iframe:hspace" attname="hspace" />&nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;3+
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">垂直间距: </td>
+      <td nowrap="nowrap">
+        <input name="thevspace" type="text" class="smallNumOrChar" id="attr:iframe:vspace" attname="vspace" />&nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;3+
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:iframe:allowtransparency" name="theallowtransparency" attname="allowtransparency" truevalue="true" falsevalue="" /> 允许透明&nbsp;&nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;5.5+
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:iframe:application" name="theapplication" attname="application" truevalue="true" falsevalue="" /> 框架包含应用程序&nbsp;&nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;5+
+      </td>
+    </tr>
+	</table>
+</div>
+<div name="样式表/辅助功能"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">类: </td>
+      <td nowrap="nowrap">
+        <input name="theclass" type="text" class="basicTextField" id="attr:iframe:class" attname="class" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="attr:iframe:id" attname="id" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">样式: </td>
+      <td nowrap="nowrap">
+        <input name="thestyle" type="text" class="basicTextField" id="attr:iframe:class" attname="style" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">标题: </td>
+      <td nowrap="nowrap">
+        <input name="thetitle" type="text" class="basicTextField" id="attr:iframe:title" attname="title" />
+      </td>
+    </tr>
+  </table> 
+</div>
+<div name="替代内容"> 
+ 	<textarea name="thealtcontent" attname="innerHTML" id="attr:iframe:altcontent" class="contentsField"  wrap="VIRTUAL"></textarea>
+</div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<html>
+<head>
+<title>服务器对象编辑屏幕</title>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<p><font color="#FF0000"><b>文本</b></font></p>
+<table border=0 name="text">
+  <tr>
+    <td nowrap valign="baseline" align="right">文本:</td>
+    <td nowrap align="left" valign="baseline">
+      <input name="Text" type="text" style="width:250px" onBlur="_ColumnNames.getRowValue().displayAs.text = this.value;_ColumnNames.getRowValue().defaultStr = this.value" >
+      <input type="image" src="../Shared/UltraDev/Images/Boltup.gif" width="15" height="14" align="absbottom" onClick="displayDynamicDataDialog(dwscripts.findDOMObject('Text'));_ColumnNames.getRowValue().displayAs.text = dwscripts.findDOMObject('Text').value;_ColumnNames.getRowValue().defaultStr = dwscripts.findDOMObject('Text').value" >
+    </td>
+  </tr>
+</table>
+<p><b><font color="#FF0000">文本字段、文本区域和隐藏字段</font></b></p>
+<table border=0 name="textField">
+  <tr>
+    <td nowrap valign="baseline" align="right">默认值:</td>
+    <td nowrap align="left" valign="baseline">
+      <input name="SetValueTo" type="text" style="width:250px" onBlur="_ColumnNames.getRowValue().displayAs.value = this.value;
+	  if (_ColumnNames.getRowValue().displayAs.type == 'passwordField') {
+	    _ColumnNames.getRowValue().passwordStr = this.value;
+	  } else {
+	    _ColumnNames.getRowValue().defaultStr = this.value}" >
+      <input type="image" src="../Shared/UltraDev/Images/Boltup.gif" width="15" height="14" align="absbottom" onClick="displayDynamicDataDialog(dwscripts.findDOMObject('SetValueTo'));_ColumnNames.getRowValue().displayAs.value = dwscripts.findDOMObject('SetValueTo').value;_ColumnNames.getRowValue().defaultStr = dwscripts.findDOMObject('SetValueTo').value">
+    </td>
+  </tr>
+</table><p><font color="#FF0000"><b>复选框更新</b></font></p>
+<table border=0 name="dynamicCheckBox">
+  <tr>
+    <td nowrap valign="baseline" align="right">选取，如果: </td>
+    <td nowrap align="left">
+      <input name="CheckIf" type="text" style="width:250px" onBlur="_ColumnNames.getRowValue().displayAs.checkIf = this.value;_ColumnNames.getRowValue().defaultStr = this.value"">
+      <input type="image" src="../Shared/UltraDev/Images/Boltup.gif" width="15" height="14" onClick="displayDynamicDataDialog(dwscripts.findDOMObject('CheckIf'));_ColumnNames.getRowValue().displayAs.checkIf = dwscripts.findDOMObject('CheckIf').value" >
+    </td>
+  </tr>
+  <tr>
+    <td nowrap valign="baseline" align="right">等于: </td>
+    <td nowrap align="left">
+      <input name="EqualTo" type="text" style="width:150px" onBlur = "_ColumnNames.getRowValue().displayAs.equalTo = this.value">
+    </td>
+  </tr>
+</table><p><font color="#FF0000"><b>复选框插入</b></font></p>
+<table border="0" name="checkBox">
+  <tr valign="baseline">
+    <td align="right">
+      <p>初始状态:</p>
+      </td>
+    <td>
+      <input type="radio" name="InitialState" value="radiobutton" onClick="_ColumnNames.getRowValue().displayAs.checked = true">
+      已选中<br>
+      <input type="radio" name="InitialState" value="radiobutton" onClick="_ColumnNames.getRowValue().displayAs.checked = false" checked>
+      未选中</td>
+  </tr>
+</table><p><b><font color="#FF0000">菜单</font></b></p>
+<table border="0" name="menu">
+  <tr>
+    <td valign="baseline">&nbsp; </td>
+    <td valign="baseline">
+      <input type="submit" name="Submit" value="菜单属性" onClick="popUpFormFieldPropertiesDialog('Menu')">
+    </td>
+  </tr>
+</table>
+<p><font color="#FF0000"><b>单选</b></font></p>
+<table border="0" name="radio">
+  <tr>
+    <td valign="baseline">&nbsp; </td>
+    <td valign="baseline">
+      <input type="submit" name="Submit2" value="单选按钮组属性" onClick="popUpFormFieldPropertiesDialog('Radio')">
+    </td>
+  </tr>
+</table>
+<p><font color="#FF0000"><b>无元素（在连接等于“无”时使用）</b></font></p>
+<table border="0" name="none">
+  <tr>
+    <td valign="baseline">&nbsp; </td>
+    <td valign="baseline">&nbsp; </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

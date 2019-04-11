@@ -1,0 +1,7 @@
+<participant version="5.0">
+	<insertText location="replaceSelection"><![CDATA[<%# @@sourceName@@.FieldValue("@@bindingName@@", Container) %>]]></insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="sourceName,bindingName" isOptional="false" limitSearch="all"><![CDATA[/([^\r\n\W]*?)\.FieldValue\("([^\r\n]*?)", Container\)/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>.FieldValue(</quickSearch>
+</participant>

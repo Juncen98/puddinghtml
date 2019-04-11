@@ -1,0 +1,97 @@
+<html>
+<head>
+<TITLE>数字</TITLE>
+
+<script>
+// Copyright 2001 Macromedia, Inc. All rights reserved.
+var helpDoc         = MM.HELP_fmt_ASP_Number;
+
+// the following strings need to match the title and file = attribute in the formats.xml file 
+var CURRENCY = "货币";
+var PERCENT =  "百分比";
+</script>
+
+<script src="../../Shared/UltraDev/scripts/ssCmnElements.js"></script>
+<script src="../../Shared/UltraDev/scripts/ssClasses.js"></script>
+<script src="../../Shared/MM/Scripts/CMN/dom.js"></script>
+<script src="../../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<script src="../../Shared/UltraDev/scripts/ssDocManager.js"></script>
+<script src="FormatsSupport.js"></script>
+<script src="Number.js"></script>
+<script src="Numeric.js"></script>
+</head>
+
+<body>
+<form method="post" action="">
+  <table width="41%" border="0">
+    <tr valign="baseline">
+      <td width="60%" align="right" nowrap>小数点后的位数: </td>
+      <td width="40%" nowrap>
+        <div align="left">
+          <select name="NumDigitsAfterDecimal">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+          </select>
+        </div>
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td width="60%" align="right" nowrap> 前导零（如果是小数）: </td>
+      <td width="40%" nowrap>
+        <div align="left">
+          <select name="IncludeLeadingDigit">
+            <option value="-1">是</option>
+            <option value="0">否</option>
+            <option value="-2" selected>区域设置默认值</option>
+          </select>
+        </div>
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td width="60%" align="right" nowrap> 负数: </td>
+      <td width="40%" nowrap>
+        <div align="left">
+          <select name="UseParensForNegativeNumbers">
+            <option value="-1">括号</option>
+            <option value="0">减号</option>
+            <option value="-2" selected>区域设置默认值</option>
+          </select>
+        </div>
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td width="60%" align="right" nowrap> 组位数: </td>
+      <td width="40%" nowrap>
+        <div align="left">
+          <select name="GroupDigits">
+            <option value="-1">是</option>
+            <option value="0">否</option>
+            <option value="-2" selected>区域设置默认值</option>
+          </select>
+        </div>
+      </td>
+    </tr>
+  </table>
+  </form>
+<p>&nbsp;</p>
+</body>
+</html>

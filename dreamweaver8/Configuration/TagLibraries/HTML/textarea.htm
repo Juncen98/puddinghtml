@@ -1,0 +1,180 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>TEXTAREA</title>
+  
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var LANGUAGELIST; 
+var DIRLIST;
+var WRAPLIST;
+var theUIObjects; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function initializeUI()
+{
+	LANGUAGELIST = new ListControl("thelang"); 
+	DIRLIST = new ListControl("thedir"); 
+	WRAPLIST = new ListControl("thewrap"); 
+
+	theUIObjects  = new Array(LANGUAGELIST,DIRLIST,WRAPLIST); 
+
+  tagDialog.populateDropDownList(LANGUAGELIST, theLanguagesCap, theLanguagesVal, 1); 
+  tagDialog.populateDropDownList(DIRLIST, theDirectionCap, theDirectionVal, 1); 
+  tagDialog.populateDropDownList(WRAPLIST, theWrapTACap, theWrapTAVal, 0);
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:textarea:name" attname="name"  required="true" />
+      </td> 
+    </tr> 
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">列: </td>
+      <td nowrap="nowrap">
+        <input name="thecols" type="text" class="smallNumOrChar" id="attr:textarea:cols" attname="cols" required="true" />
+      </td> 
+    </tr> 
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">行数: </td>
+      <td nowrap="nowrap">
+        <input name="therows" type="text" class="smallNumOrChar" id="attr:textarea:rows" attname="rows" required="true" />
+      </td> 
+    </tr> 
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">换行: </td>
+      <td nowrap="nowrap">
+        <select name="thewrap" class="oneWordOptionList" id="attr:textarea:wrap" attname="wrap" editable="false">
+        </select>
+      </td> 
+    </tr> 
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp; </td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="html:textarea:disabled" name="thedisabled" attname="disabled" truevalue="disabled" falsevalue="" /> 已禁用
+      </td> 
+    </tr> 
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp; </td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="html:textarea:readonly" name="thereadonly" attname="readonly" truevalue="readonly" falsevalue="" /> 只读
+      </td> 
+    </tr> 
+  </table>
+</div>
+<div name="样式表/辅助功能"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类: </td>
+      <td nowrap="nowrap">
+        <input name="theclass" type="text" class="basicTextField" id="attr:textarea:class" attname="class" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="attr:textarea:id" attname="id" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">样式: </td>
+      <td nowrap="nowrap">
+        <input name="thestyle" type="text" class="basicTextField" id="attr:textarea:style" attname="style" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">访问键: </td>
+      <td nowrap="nowrap">
+        <input name="theaccesskey" type="text" class="smallNumOrChar" id="attr:textarea:accesskey" maxlength="1" attname="accesskey" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">Tab 键索引: </td>
+      <td nowrap="nowrap">
+        <input name="thetabindex" type="text" class="smallNumOrChar" id="attr:textarea:tabindex" attname="tabindex" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">标题: </td>
+      <td nowrap="nowrap">
+        <input name="thetitle" type="text" class="basicTextField" id="attr:textarea:title" attname="title" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">标签: </td>
+      <td nowrap="nowrap">
+        <input name="thelabel" type="text" class="basicTextField" id="attr:textarea:label" attname="label" />
+      </td>
+    </tr>
+  </table> 
+</div>
+<div name="语言"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">方向: </td>
+      <td nowrap="nowrap">
+        <select name="thedir" class="dirLangList" id="attr:textarea:dir" attname="dir"> 
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" nowrap="nowrap"></td>
+      <td nowrap="nowrap"></td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">语言: </td>
+      <td nowrap="nowrap">
+        <select name="thelang" class="dirLangList" id="attr:textarea:lang" attname="lang" editable="true"> 
+        </select>
+      </td>
+    </tr>
+  </table>
+</div>
+<div name="内容"> 
+  <textarea name="html:textarea:innerHTML" class="contentsField"  wrap="VIRTUAL" attname="innerHTML"></textarea>
+</div>
+<div name="事件"> 
+  <div name="onBlur"> 
+    <textarea name="theonBlur" attname="onBlur" id="attr:textarea:onblur" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onChange"> 
+    <textarea name="theonChange" attname="onChange" id="attr:textarea:onchange" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onFocus"> 
+    <textarea name="theonFocus" attname="onFocus" id="attr:textarea:onfocus" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onSelect"> 
+    <textarea name="theonSelect" attname="onSelect" id="attr:textarea:onselect" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+
+</div>
+</body>
+</html>

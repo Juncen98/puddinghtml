@@ -1,0 +1,230 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>STRUCTSORT</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">STRUCTSORT</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Returns a sorted array of the top level keys in a structure. Sorts using alphabetic or numeric sorting, and can sort based on the values of any structure element.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+An array of top-level key names (strings), sorted by the value of the specified subelement. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Structure functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>StructSort(base, sortType, sortOrder, pathToSubElement)
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+Structure functions; "Structure functions" in Chapter&#160;5, "Using Arrays and Structures," in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+The pathToSubElement string does not support array notation, and only supports substructures of structures.
+</p>
+
+<p>
+This function does not sort or change the structure.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;cfscript&gt;
+   salaries = StructNew() ;
+   employees = StructNew() ;
+   departments = StructNew() ;
+   for ( i=1; i lt 6; i=i+1 )
+   {
+      salary = 120000 - i*10000 ;
+      salaries[&quot;employee#i#&quot;] = salary ;
+      
+      employee = StructNew() ;
+      employee[&quot;salary&quot;] = salary ; 
+      // employee.salary = salary ;
+      employees[&quot;employee#i#&quot;] = employee ;
+      
+      departments[&quot;department#i#&quot;] = StructNew() ;
+      departments[&quot;department#i#&quot;].boss = employee ;      
+   }
+&lt;/cfscript&gt;
+
+&lt;cfoutput&gt;
+&lt;p&gt;list of employees based on the salary (text search): &lt;br&gt;
+1) #ArrayToList( StructSort( salaries ) )#&lt;br&gt;
+2) #ArrayToList( StructSort( salaries, &quot;text&quot;, &quot;ASC&quot; ) )#&lt;br&gt;
+3) #ArrayToList( StructSort( salaries, &quot;textnocase&quot;, &quot;ASC&quot; ) )#&lt;br&gt;
+4) #ArrayToList( StructSort( salaries, &quot;text&quot;, &quot;DESC&quot; ) )#&lt;br&gt;
+&lt;p&gt;list of employees based on the salary (numeric search): &lt;br&gt;
+5) #ArrayToList( StructSort( salaries, &quot;numeric&quot;, &quot;ASC&quot; ) )#&lt;br&gt;
+6) #ArrayToList( StructSort( salaries, &quot;numeric&quot;, &quot;DESC&quot; ) )#&lt;br&gt;
+&lt;p&gt;list of employees based on the salary (subfield search): &lt;br&gt;
+7) #ArrayToList( StructSort( employees, &quot;numeric&quot;, &quot;DESC&quot;, &quot;salary&quot; ) )#&lt;br&gt;
+8) #ArrayToList( StructSort( employees, &quot;text&quot;, &quot;ASC&quot;,  &quot;salary&quot; ) )#&lt;br&gt;
+&lt;p&gt;list of departments based on the salary (sub-sub-field search): &lt;br&gt;
+9) #ArrayToList( StructSort( departments, &quot;text&quot;, &quot;ASC&quot;, &quot;boss.salary&quot; ) 
+)#&lt;br&gt;
+&lt;/cfoutput&gt;
+
+&lt;!--- add an invalid element and test that it throws an error ---&gt;
+&lt;p&gt;&lt;p&gt;
+&lt;cfset employees[ &quot;employee4&quot; ] = StructNew()&gt;
+&lt;cftry&gt;
+   &lt;cfset temp = StructSort( employees, &quot;text&quot;, &quot;ASC&quot;, &quot;salary&quot; )&gt;
+   &lt;cfoutput&gt;We have a problem - this was supposed to throw an exception!&lt;br&gt;
+&lt;/cfoutput&gt;
+&lt;cfcatch type=&quot;any&quot;&gt;
+   &lt;cfoutput&gt;
+      ERROR: &lt;b&gt;This error was expected!&lt;/b&gt;&lt;br&gt;
+      #cfcatch.message# - #cfcatch.detail#&lt;br&gt;
+   &lt;/cfoutput&gt;
+&lt;/cfcatch&gt;
+&lt;/cftry&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="BASE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">BASE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A ColdFusion struct with one field (an associative array).</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SORTTYPE ">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SORTTYPE </td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+<ul>
+
+<li>numeric</li>
+
+<li>text: case-sensitive (all lowercase letters precede the first uppercase letter). Default.</li>
+
+<li>textnocase</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SORTORDER">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SORTORDER</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+<ul>
+
+<li>asc: ascending (a to z) sort order. Default.</li>
+
+<li>desc: descending (z to a) sort order</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="PATHTOSUBELEMENT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PATHTOSUBELEMENT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>String or a variable that contains one.</p>
+<p>Path to apply to each top-level key, to reach element value by which to sort. The default value is nothing (top-level entries sorted by their own values).</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

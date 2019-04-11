@@ -1,0 +1,115 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>META</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var NAMELIST; 
+var HTTPLIST;
+var theUIObjects; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+
+  // be smart about disabling controls if we're inspecting preexisting attribute values
+  // http-equiv and type are mutually exclusive attributes. 
+  if (tagNodeObj.getAttribute("http-equiv")){
+    if (tagNodeObj.getAttribute("http-equiv") != ""){
+      dwscripts.findDOMObject("thename").setAttribute("disabled","true");   
+    }
+  }
+
+  if (tagNodeObj.getAttribute("name")){
+    if (tagNodeObj.getAttribute("name") != ""){
+      dwscripts.findDOMObject("thehttp-equiv").setAttribute("disabled","true");   
+    }
+  } 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+// be smart about disabling controls if we're inspecting preexisting attribute values
+// http-equiv and type are mutually exclusive attributes. 
+function updateUI(itemname)
+{
+  switch (itemname){
+    case "thename": 
+    {
+      // if typelist is set to None, enable 
+      if (NAMELIST.getIndex() == 0){
+        dwscripts.findDOMObject("thehttp-equiv").removeAttribute("disabled"); 
+      }
+      else {
+        dwscripts.findDOMObject("thehttp-equiv").setAttribute("disabled", "true");       
+      }
+    }
+    case "thehttp-equiv": 
+    {
+      // if typelist is set to None, enable 
+      if (HTTPLIST.getIndex() == 0){
+        dwscripts.findDOMObject("thename").removeAttribute("disabled"); 
+      }
+      else {
+        dwscripts.findDOMObject("thename").setAttribute("disabled", "true");       
+      }      
+      break;  
+    }
+  }
+}
+
+function initializeUI()
+{
+	NAMELIST = new ListControl("thename"); 
+	HTTPLIST = new ListControl("thehttp-equiv"); 
+	theUIObjects  = new Array(NAMELIST,HTTPLIST); 
+
+  tagDialog.populateDropDownList(NAMELIST, theNameMetaCap, theNameMetaVal, 0); 
+  tagDialog.populateDropDownList(HTTPLIST, theHTTPMetaCap, theHTTPMetaVal, 0); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <select name="thename" class="oneWordOptionList" id="attr:meta:name" onChange="updateUI('thename');" attname="name" editable="true">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">HTTP-Equiv: </td>
+      <td nowrap="nowrap">
+        <select name="thehttp-equiv" class="oneWordOptionList" id="attr:meta:http-equiv"  onChange="updateUI('thehttp-equiv');" attname="http-equiv" editable="true">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">内容: </td>
+      <td nowrap="nowrap">
+        <input name="thecontent" type="text" class="basicTextField" id="attr:meta:content" attname="content" />
+      </td>
+    </tr> 
+  </table> 
+</div> 
+</body>
+</html>

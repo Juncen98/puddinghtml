@@ -1,0 +1,86 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>jrun:input</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var INPUTTYPELIST;
+var theUIObjects;
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function initializeUI()
+{
+  INPUTTYPELIST = new ListControl("thetype"); 
+  theUIObjects = new Array(INPUTTYPELIST); 
+
+  tagDialog.populateDropDownList(INPUTTYPELIST, theInputTypesCap, theInputTypesVal, 1);
+  INPUTTYPELIST.setIndex(11);
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:jrun:input:name" attname="name" required="true" /></td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类型: </td>
+      <td nowrap="nowrap">
+        <select name="thetype" class="oneWordOptionList" id="attr:jrun:input:type" attname="type" required="true">
+           
+        </select>
+      </td> 
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">值: </td>
+      <td nowrap="nowrap">
+        <input name="thevalue" type="text" class="basicTextField" id="attr:jrun:input:value" attname="action" /></td>
+    </tr>
+    <tr>
+      <td valign="top" align="right" nowrap="nowrap">onError: </td>
+      <td nowrap="nowrap">
+        <textarea name="theonError"  wrap="VIRTUAL" class="stringOrMsgField" id="attr:jrun:input:onError" attname="onError"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="right" nowrap="nowrap">onValidate: </td>
+      <td nowrap="nowrap">
+        <textarea name="theonValidate"  wrap="VIRTUAL" class="stringOrMsgField" id="attr:jrun:input:onValidate" attname="onValidate"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:jrun:input:required" name="therequired" attname="required" truevalue="true" falsevalue="" /> 必需的
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

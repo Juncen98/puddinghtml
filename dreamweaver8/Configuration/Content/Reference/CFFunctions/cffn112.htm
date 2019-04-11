@@ -1,0 +1,241 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>GETMETRICDATA</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">GETMETRICDATA</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Gets server performance metrics.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+ColdFusion structure that contains metric data, depending on the mode value.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+System functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>GetMetricData(<i>mode</i>)
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX: Deprecated the cachepops parameter. It might not work, and it might cause an error, in later releases.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+If mode = &quot;perf_monitor&quot;, the function returns a structure with these data fields:
+</p>
+
+<p>
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr align="center">    <th>&#160;</th>
+    <th>&#160;</th>
+</tr>
+  <tr align="left">    <td>
+<p>InstanceName</p></td>
+    <td>
+<p>The name of the ColdFusion server. The default value is cfserver.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>PageHits</p></td>
+    <td>
+<p>Number of HTTP requests received since ColdFusion&#160;MX was started.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>ReqQueued</p></td>
+    <td>
+<p>Number of HTTP requests in the staging queue, waiting for processing.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>DBHits</p></td>
+    <td>
+<p>Number of database requests since the server was started.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>ReqRunning</p></td>
+    <td>
+<p>Number of HTTP requests currently running. </p>
+<p>In the ColdFusion Administrator, you can set the maximum number of requests that run concurrently.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>ReqTimedOut</p></td>
+    <td>
+<p>Number of HTTP requests that timed out while in the staging queue or during processing.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>BytesIn</p></td>
+    <td>
+<p>Number of bytes in HTTP requests to ColdFusion&#160;MX.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>BytesOut</p></td>
+    <td>
+<p>Number of bytes in HTTP responses from ColdFusion&#160;MX.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>AvgQueueTime</p></td>
+    <td>
+<p>For the last two HTTP requests (current and previous), the average length of time the request waited in the staging queue.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>AvgReqTime</p></td>
+    <td>
+<p>For the last two HTTP requests (current and previous), the average length of time the server required to process the request</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>AvgDBTime</p></td>
+    <td>
+<p>For the last two HTTP requests (current and previous), the average length of time the server took to process CFQueries in the request.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>cachepops</p></td>
+    <td>
+<p>This parameter is deprecated. ColdFusion automatically sets its value to -1.</p></td>
+</tr>
+</table>
+</div>
+<p>
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!--- This example gets and displays metric data from Windows NT PerfMonitor -
+--&gt;
+&lt;cfset pmData = GetMetricData( &quot;PERF_MONITOR&quot; ) &gt;
+&lt;cfoutput&gt;
+   Current PerfMonitor data is: &lt;p&gt;
+   InstanceName:   #pmData.InstanceName# &lt;p&gt;
+   PageHits:      #pmData.PageHits# &lt;p&gt;
+   ReqQueued:       #pmData.ReqQueued# &lt;p&gt;
+   DBHits:    #pmData.DBHits# &lt;p&gt;
+   ReqRunning:       #pmData.ReqRunning# &lt;p&gt;
+   ReqTimedOut: #pmData.ReqTimedOut# &lt;p&gt;
+   BytesIn:       #pmData.BytesIn# &lt;p&gt;
+   BytesOut:       #pmData.BytesOut# &lt;p&gt;
+   AvgQueueTime: #pmData.AvgQueueTime# &lt;p&gt;
+   AvgReqTime:       #pmData.AvgReqTime# &lt;p&gt;
+   AvgDBTime:       #pmData.AvgDBTime# &lt;p&gt;
+&lt;/cfoutput&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="MODE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">MODE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>perf_monitor</p>
+
+<p>Returns internal data, in a structure.</p>
+<p>To receive data, you must enable PerfMonitor in ColdFusion Administrator before executing the function. </p>
+<p>On Windows, this data is otherwise displayed in the Windows PerfMonitor. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+<p>&#160;</p>
+
+<p>simple_load</p>
+
+<p>Returns an integer value that is computed from the state of the server&#39;s internal queues. Indicates the overall server load.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+<p>&#160;</p>
+
+<p>prev_req_time</p>
+
+<p>Returns the time, in milliseconds, that it took the server to process the previous request.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+<p>&#160;</p>
+
+<p>avg_req_time</p>
+
+<p>Returns the average time, in milliseconds, that it takes the server to process a request.</p>
+<p>Changing the setting to 0 prevents the server from calculating the average and removes overhead associated with gathering data.</p>
+<p>The default value is 120 seconds. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

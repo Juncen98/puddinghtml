@@ -1,0 +1,14 @@
+<participant version="7.0.1">
+	<insertText location="aboveHTML+50"><![CDATA[<cfinvoke
+  component="@@CfcName@@"
+  method="@@CfcMethod@@"
+  returnvariable="@@RecordsetName@@">
+<!--- CFC Query ---><@ loop (@@extraArgKeys@@,@@extraArgValues@@) @>
+  <cfinvokeargument name="@@extraArgKeys@@" value="@@extraArgValues@@"><@ endloop @>
+</cfinvoke>]]></insertText>
+	<searchPatterns whereToSearch="tag+cfinvoke">
+		<searchPattern paramNames="CfcName,CfcMethod,RecordsetName,MM_loop1" isOptional="false" limitSearch="all"><![CDATA[/<cfinvoke[^>]+component="([^\r\n]*?)"[^>]+method="([^\r\n]*?)"[^>]+returnvariable="([^\r\n]*?)"[^>]*>\s*<!--- CFC Query --->\s*((?:\s*<cfinvokeargument[^>]+name="[^\r\n]*"[^>]+value="[^\r\n]*"[^>]*>\s*)*?)\s*<\/cfinvoke>/i]]></searchPattern>
+		<searchPattern paramNames="extraArgKeys,extraArgValues" limitSearch="@@MM_loop1@@" isOptional="true" searchType="multiple"><![CDATA[/\s*<cfinvokeargument[^>]+name="([^\r\n]*?)"[^>]+value="([^\r\n]*?)"[^>]*>\s*/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>returnvariable="</quickSearch>
+</participant>

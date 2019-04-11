@@ -1,0 +1,237 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFSETTING</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFSETTING</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Controls aspects of page processing, such as the output of HTML code in pages. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Page processing tags, Variable manipulation tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfsetting 
+   enableCFoutputOnly = &quot;yes&quot; or &quot;no&quot; 
+   showDebugOutput = &quot;yes&quot; or &quot;no&quot; 
+   requestTimeOut = &quot;value in seconds&quot; &gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfcache, cfflush, cfheader, cfhtmlhead, cfinclude, cfprocessingdirective, cfsilent; "Controlling debugging output with the cfsetting tag" in Chapter&#160;18, "Debugging and Troubleshooting Applications," in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion MX&#160;6.1: Changed behavior: if the tag has a body, ColdFusion executes its contents.
+</p>
+
+<p>
+ColdFusion&#160;MX:
+</p>
+<ul>
+
+<li>Added the requestTimeOut attribute. </li>
+
+<li>The catchExceptionsByPattern attribute is obsolete. It does not work, and causes an error, in releases later than ColdFusion 5.</li>
+
+<li>Changed exception handling: the structured exception manager searches for the best-fit cfcatch handler. (In earlier releases, an exception was handled by the first cfcatch block that could handle an exception of its type.) </li>
+</ul>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+The cfsetting requestTimeout attribute replaces the use of requestTimeOut within a URL. To enforce a page timeout, detect the URL variable and use code such as the following to change the page timeout: 
+</p>
+<pre>&lt;cfsetting RequestTimeout = &quot;#URL.RequestTimeout#&quot;&gt; 
+</pre>
+<p>
+You can use this tag to manage whitespace in ColdFusion output pages. 
+</p>
+
+<p>
+If you nest cfsetting tags: to make HTML output visible, you must match each enableCFoutputOnly = &quot;Yes&quot; statement with an enableCFoutputOnly = &quot;No&quot; statement. For example, after five enableCFoutputOnly = &quot;Yes&quot; statements, to enable HTML output, you must have five corresponding enableCFoutputOnly = &quot;No&quot; statements. 
+</p>
+
+<p>
+If HTML output is enabled (no matter how many enableCFoutputOnly = &quot;No&quot; statements have been processed) the first enableCFoutputOnly = &quot;Yes&quot; statement blocks output.
+</p>
+
+<p>
+If the debugging service is enabled and showDebugOutput =&quot; Yes&quot;, the IsDebugMode function returns Yes; otherwise, No. 
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>Releases after ColdFusion&#160;MX allow a &lt;/cfsetting&gt; end tag; however, this end tag does not affect processing. The cfsetting attributes affect code inside and outside the cfsetting tag body. ColdFusion&#160;MX ignored code between cfsetting start and end tags.</td>
+  </tr>
+</table>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;p&gt;CFSETTING is used to control the output of HTML code in ColdFusion pages. 
+   This tag can be used to minimize the amount of generated whitespace.
+
+&lt;cfsetting enableCFoutputOnly = &quot;Yes&quot;&gt;
+   This text is not shown
+&lt;cfsetting enableCFoutputOnly = &quot;No&quot;&gt;
+   &lt;p&gt;This text is shown
+&lt;cfsetting enableCFoutputOnly = &quot;Yes&quot;&gt;
+   &lt;cfoutput&gt;
+      &lt;p&gt;Text within cfoutput is always shown
+   &lt;/cfoutput&gt;   
+&lt;cfsetting enableCFoutputOnly = &quot;No&quot;&gt;
+   &lt;cfoutput&gt;
+      &lt;p&gt;Text within cfoutput is always shown
+   &lt;/cfoutput&gt;   
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="ENABLECFOUTPUTONLY">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ENABLECFOUTPUTONLY</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<ul>
+
+<li>Yes: blocks output of HTML that is outside cfoutput tags.</li>
+
+<li>No: displays HTML that is outside cfoutput tags.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SHOWDEBUGOUTPUT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SHOWDEBUGOUTPUT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Yes"
+
+<ul>
+
+<li>Yes: if debugging is enabled in the Administrator, displays debugging information.</li>
+
+<li>No: suppresses debugging information that would otherwise display at the end of the generated page. </li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="REQUESTTIMEOUT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">REQUESTTIMEOUT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<ul>
+
+<li>Integer; number of seconds. Time limit, after which ColdFusion processes the page as an unresponsive thread. Overrides the timeout set in the ColdFusion Administrator.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

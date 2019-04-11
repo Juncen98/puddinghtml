@@ -1,0 +1,140 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">page-break-after, page-break-before</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">7</span> IE <span class="emphasis">4</span> CSS <span class="emphasis">2</span></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Inherited: No</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Defines how content should treat a page break around an element when
+the document is sent to a printer. Page breaks are not rendered in
+the visual browser as they may be in word processing programs; on
+screen, long content flows in one continuous scroll.
+</p><p>Proper handling of pages for printers relies on the CSS2 concept of
+the <span class="emphasis">page box</span>, which is a rectangular region that
+ultimately reaches a printed page. Page break style attributes help
+the browser control the precise content of each page box. Without any
+assistance (or with the <span class="literal">auto</span> setting), the browser
+divides pages for printing much as it has in the past by doing a
+best-fit for the content to fill up as much of each page as there is
+space for it.
+</p><p>To force a page break above an element, associate a
+<span class="literal">page-break-before:always</span> style setting with the
+element. Similarly, to force a break after an element, use
+<span class="literal">page-break-after:always</span>. For example, if you want
+a special class of <span class="literal">br</span> elements to break after
+them, you could set up a class selector style rule as follows:
+</p><p>Then, whenever you want to force a page break in the document,
+include the following tag:
+</p><p>Attribute settings for <span class="literal">left</span> and
+<span class="literal">right</span> assume that the browser is equipped to
+detect left-facing from right-facing pages for double-sided printing
+(as specified in CSS2). Because you are likely to set different
+margins for each side of the gutter, indicating how pages break to
+start a new section requires forcing sufficient page breaks to plant
+new sections on the desired page. For example, if you want each
+<span class="literal">h1</span> element to begin on a right-facing page, you
+would set a page break style for it as follows:
+</p><p>This attribute forces the browser to at least one and at most two
+page breaks before the <span class="literal">h1</span> element to make sure it
+starts on a right-facing page. When the browser generates a second
+page break for the left or right value, it means that the browser
+generates a blank page box for the second page break.
+</p><p>Implementation of these attributes is limited. Although working to
+some degree in IE 4, you should target IE 5 or later. Even so, the
+only supported settings for recent IE versions and Netscape 7 are
+<span class="literal">always</span> and <span class="literal">auto</span> (or you can
+assign an empty string via script to operate the same as the CSS
+<span class="literal">avoid</span> value).
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="csssyntax"><span class="title">CSS Syntax</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>page-break-after: <span class="replaceable">breakType</span>
+page-break-before: <span class="replaceable">breakType</span></pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Internet Explorer 4 recognizes four constant values:
+<span class="literal">always</span> | <span class="literal">auto</span> |
+<span class="literal">left</span> | <span class="literal">right</span> (but treats
+<span class="literal">left</span> and <span class="literal">right</span> the same as
+<span class="literal">always</span>). CSS2 adds <span class="literal">avoid</span>, which
+urges the browser to avoid breaking the page in that element if at
+all possible.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="initvalue"><span class="title">Initial Value</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">auto</span></p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>div.titlePage {page-break-before: always; page-break-after: always}</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="appliesto"><span class="title">Applies To</span></td>
+				</tr>
+				<tr>
+					<td><p>Block-level elements.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById("<span class="replaceable">elementID</span>").style.pageBreakAfter
+[window.]document.getElementById("<span class="replaceable">elementID</span>").style.pageBreakBefore</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div>
+</body>
+</html>

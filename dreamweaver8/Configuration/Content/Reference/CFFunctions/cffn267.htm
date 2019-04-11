@@ -1,0 +1,153 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>STRUCTKEYEXISTS</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">STRUCTKEYEXISTS</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Determines whether a specific key is present in a structure. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+True, if key is in structure; if structure does not exist, ColdFusion throws an exception.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Decision functions, Structure functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>StructKeyExists(structure, &quot;key&quot;)
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+Structure functions; "Structure functions" in Chapter&#160;5, "Using Arrays and Structures," in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+This function can sometimes be used in place of the IsDefined function, when working with the URL and Form scopes, which are structures. The following pieces of code are equivalent: 
+</p>
+<pre>cfif IsDefined(&quot;Form.JediMaster&quot;)&gt;
+&lt;cfif StructKeyExists(Form,&quot;JediMaster&quot;)&gt;
+</pre>
+<p>
+A structure's keys are unordered. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!--- This example shows the use of StructKeyExists. ---&gt;
+&lt;p&gt;This file is similar to addemployee.cfm, which is called by StructNew,
+StructClear, and StructDelete. To test, copy the &amp;LT;CFELSEif&amp;GT;
+statement to the appropriate place in addemployee.cfm. It is a custom tag
+to add employees. Employee information is passed through the employee
+structure (the EMPINFO attribute). In UNIX, you must also add the Emp_ID.
+
+&lt;cfswitch expression = &quot;#ThisTag.ExecutionMode#&quot;&gt;
+  &lt;cfcase value = &quot;start&quot;&gt;
+   &lt;cfif StructIsEmpty(attributes.EMPINFO)&gt;
+    &lt;cfoutput&gt;Error. No employee data was passed.&lt;/cfoutput&gt;
+     &lt;cfexit method = &quot;ExitTag&quot;&gt;
+   &lt;cfelseIf NOT StructKeyExists(attributes.EMPINFO, &quot;department&quot;)&gt;
+    &lt;cfscript&gt;StructUpdate(attributes.EMPINFO, &quot;department&quot;,
+      &quot;Unassigned&quot;);
+      &lt;/cfscript&gt;
+    &lt;cfexit method = &quot;ExitTag&quot;&gt;
+         &lt;cfelse&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="STRUCTURE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STRUCTURE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Name of structure to test</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="KEY">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">KEY</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Key to test</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

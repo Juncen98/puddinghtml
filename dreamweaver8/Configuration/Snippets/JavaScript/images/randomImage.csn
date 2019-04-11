@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name="随机图像" description="从一组 URL 随机显示图像。" preview="code" type="block">
+<insertText location="beforeSelection">
+<![CDATA[// Example:
+// randomImage(['0.gif',50,50,'1.gif',25,25,'2.gif',50,25]); 
+// * Dependencies * 
+// this function requires the following snippet:
+// JavaScript/Randomizers/randomNumber
+function randomImage(imgArr)
+{
+  var imgSrc, imgW, imgH, r;
+  r = randomNumber(imgArr.length / 3)-1;
+  
+  imgSrc = imgArr[r * 3];
+  imgW = imgArr[(r * 3)+1];
+  imgH = imgArr[(r * 3)+2];
+  document.write('<IMG SRC='+imgSrc+' WIDTH='+imgW+' HEIGHT='+imgH+'>');
+}
+]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

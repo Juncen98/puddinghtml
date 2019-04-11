@@ -1,0 +1,103 @@
+<html xmlns:un="http://usablenet.com/namespaces/508_rules">
+   <link rel="stylesheet" href="josh.css">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Detailed View for rule: Avoid JavaScript links</title>
+      <!--
+  508/W3C Accessibility Suite OEM V2 for Macromedia Dreamweaver
+  (C) Copyright 2001-2005 UsableNet Inc. All rights reserved.
+  -->
+   </head>
+   <body bgcolor="#ffffff">
+      <div id="Description">
+         <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+            <tr>
+               <td valign="top" nowrap="true" class="name">Avoid JavaScript links</td>
+               <td valign="top" nowrap="true" class="compatibility">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+            </tr>
+            <tr>
+               <td valign="top" align="right" nowrap="true" colspan="2" class="requirements">WAI / WCAG 1.0 Priority 2 checkpoint 6.5</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Description</b><br>
+                  
+                  
+                  <p>
+                     The page contains a link that can be followed only by browsers that
+                     support JavaScript.
+                     
+                  </p>
+                  
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>How to fix</b>
+                  
+                  
+                  <p>
+                     Replace the link that directly starts the script with other
+                     ways to start it, like defining a button, separately defining the
+                     script (remember also the NOSCRIPT element) and binding an event (like
+                     ONKEYPRESS and ONCLICK) on the button to the script.
+                     
+                  </p>
+                  
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Explanation</b><br>
+                  
+                  
+                  <p>
+                     Links that activate scripts can only be followed by browsers capable
+                     of executing JavaScript. Not all browsers are able to execute
+                     JavaScript.  Consider for
+                     example textual browsers like <strong>lynx</strong>
+                     [http://lynx.browser.org]
+                     , or browsers coupled with
+                     screen readers, or browsers for PDAs or cellular phones.
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     
+                     A user with such browsers would not be able to navigate the page. Even
+                     if other ways to reach that destination are available (i.e. links or
+                     buttons), the user would face such a link, and assume that it would
+                     work as any other does.  However, the browser's failure to follow it
+                     the link could possibly increase user frustration and confusion.
+                     
+                  </p>
+                  
+                  
+               </td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

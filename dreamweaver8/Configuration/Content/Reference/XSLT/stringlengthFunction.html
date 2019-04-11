@@ -1,0 +1,143 @@
+<html>
+<head>
+<title>string-length() Function</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">string-length() Function</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+Returns the number of characters in the string passed in as the argument to this function. If no argument is specified, the context node is converted to a string and the length of that string is returned.</td></tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Inputs</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>An optional string. </p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Output</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>The number of characters defined in the string. </p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Defined in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>XPath section 4.2, String Functions.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>The following example demonstrates the results of invoking the <span class="LITERAL">string-length()</span> function against various argument types. Here's the XML document we'll use for our example:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;test&gt;
+  &lt;p&gt;This is a test XML document used by several 
+  of our sample stylesheets.&lt;/p&gt;
+  &lt;question&gt;
+    &lt;text&gt;When completed, the Eiffel Tower was the 
+    tallest building in the world.&lt;/text&gt;
+    &lt;true&gt;You're correct!  The Eiffel Tower was the 
+    world's tallest building until 1930.&lt;/true&gt;
+    &lt;false&gt;No, the Eiffel Tower was the world's 
+    tallest building for over 30 years.&lt;/false&gt;
+  &lt;/question&gt;
+  &lt;question&gt;
+    &lt;text&gt;New York's Empire State Building knocked 
+    the Eiffel Tower from its pedestal.&lt;/text&gt;
+    &lt;true&gt;No, that's not correct.&lt;/true&gt;
+    &lt;false&gt;Correct!  New York's Chrysler Building, 
+    completed in 1930, became the world's tallest.&lt;/false&gt;
+  &lt;/question&gt;
+&lt;/test&gt;</pre></span>
+<p>We'll process this document with the following stylesheet:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+
+<!--<?troff .Nd 10?>-->
+  &lt;xsl:output method="text"/&gt;
+
+  &lt;xsl:variable name="newline"&gt;
+&lt;xsl:text&gt;
+&lt;/xsl:text&gt;
+  &lt;/xsl:variable&gt;
+
+  &lt;xsl:template match="/"&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:text&gt;Tests of the string-length() function:&lt;/xsl:text&gt;
+
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:text&gt;   string-length(/test)=&lt;/xsl:text&gt;
+    &lt;xsl:value-of select="string-length(/test)"/&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:text&gt;   string-length(/true)=&lt;/xsl:text&gt;
+    &lt;xsl:value-of select="string-length(/true)"/&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:text&gt;   string-length(//true)=&lt;/xsl:text&gt;
+    &lt;xsl:value-of select="string-length(//true)"/&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:text&gt;   string-length(//test|//true|//text)=&lt;/xsl:text&gt;
+    &lt;xsl:value-of select="string-length(//test|//true|//text)"/&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:for-each select="/test/question"&gt;
+      &lt;xsl:text&gt;   Question #&lt;/xsl:text&gt;
+      &lt;xsl:value-of select="position()"/&gt;
+      &lt;xsl:text&gt; contains &lt;/xsl:text&gt;
+      &lt;xsl:value-of select="string-length()"/&gt;
+      &lt;xsl:text&gt; characters.&lt;/xsl:text&gt;
+      &lt;xsl:value-of select="$newline"/&gt;
+    &lt;/xsl:for-each&gt;
+  &lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</pre></span>
+<p>Here are the results of our stylesheet:</p>
+<span class="PROGRAMLISTING"><pre>
+
+Tests of the string-length() function:
+
+   string-length(/test)=522
+   string-length(/true)=0
+   string-length(//true)=78
+   string-length(//test|//true|//text)=522
+
+   Question #1 contains 239 characters.
+   Question #2 contains 203 characters.
+</pre></span>
+<p>When we invoked the <span class="LITERAL">string-length()</span> function without any arguments, the context node was converted to a string, then the length of that string was returned. The two <span class="LITERAL">&lt;question&gt;</span> elements were handled this way inside the <span class="LITERAL">&lt;xsl:for-each&gt;</span> element. </p>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//pi">
+<!-- tag:MM_REPEATEDREGION, priority:1, selection:insideLock,vline, hline ,serverModel:JSP -->
+<!-- The above comment line must be the first line in this file. DO NOT MOVE IT. -->
+<html>
+<head>
+<!-- Copyright 2000,2001,2002 Macromedia, Inc. All rights reserved. -->
+<title>重复的区域</title>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<!-- End removal area. -->
+<SCRIPT LANGUAGE="javascript" SRC="_pi_common.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="repeatedregion.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/RecordsetMenu.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../Shared/MM/Scripts/CMN/helper.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssClasses.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/sbManager.js"></SCRIPT>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+</head>
+<body onLoad="initializeUI()">
+
+<span id="image" style="position:absolute; width:23px; height:17px; z-index:16; left: 0px; top: 2px"><img src="rr_pi.gif" width="36" height="36"></span>
+
+
+<div id="loopNameLayer" style="position:absolute; width:78px; height:15px; z-index:1; left: 38px; top: 2px"> 
+<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		  
+      <td height="18"></td>
+		  
+      <td width="55" align="left" valign="baseline" nowrap>重复区域</td>
+		</tr>
+		<tr>
+		  <td align="left" valign="baseline" nowrap colspan=2>
+
+        <input type="text" name="LoopName" style="width:65px" onBlur="updateRepeatedRegion('regionName')">
+		  </td>
+		</tr>
+	</table>
+</div>
+
+<div id="Layer1" style="position:absolute; left:125px; top:2px; width:411px; height:43px; z-index:17"> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr> 
+      <td width="18%" align="right">记录集&nbsp;</td>
+      <td width="31%"> 
+        <select name="rsName" style="width:110px;" onChange="updateRepeatedRegion()">
+        </select></td>
+      <td width="14%" align="right">显示&nbsp;</td>
+      <td width="5%"> 
+        <input type="radio" name="NumCount" value="NumCount" onClick="setRadioGroup(2);updateRepeatedRegion()"></td>
+      <td width="9%"> 
+        <input type="text" name="NumValue" style="width:30px" onBlur="updateRepeatedRegion('numRecs')"></td>
+      <td width="23%">记录</td>
+    </tr>
+    <tr> 
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><input type="radio" name="AllCount" value="AllCount" onClick="setRadioGroup(1);updateRepeatedRegion()"></td>
+      <td colspan="2">所有记录</td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

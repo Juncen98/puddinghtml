@@ -1,0 +1,110 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>SCRIPT</title>
+  
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var LANGUAGELIST; 
+var TYPELIST;
+var CONTENTS;
+var theUIObjects; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+
+	if (CONTENTS.innerHTML.indexOf('&lt;!--') >= 0){
+		dwscripts.findDOMObject("includeComments").checked = true; 
+	}	
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function includeComments(isChecked){
+	var codeStr = null;
+
+	if (isChecked == true){
+		if (CONTENTS.innerHTML.indexOf('&lt;!--') == -1){
+			CONTENTS.innerHTML = '&lt;!--\n' + CONTENTS.innerHTML + '\n\/\/--&gt;'
+		}
+	}else{
+		var commentStart = CONTENTS.innerHTML.indexOf('&lt;!--');
+		var commentEnd = CONTENTS.innerHTML.indexOf('\/\/--&gt;');
+			if (commentStart > -1 && commentEnd > -1){
+			var newContents = CONTENTS.innerHTML.replace(/&lt;!--[\n\r]{1,2}/,'');
+			newContents = newContents.replace(/[\n\r]{1}\/\/--&gt;/,'');
+			CONTENTS.innerHTML = newContents;
+		}
+	}
+}
+
+function initializeUI(){
+	LANGUAGELIST = new ListControl("thelanguage"); 
+	TYPELIST = new ListControl("thetype"); 
+	CONTENTS = dwscripts.findDOMObject("theinnerHTML");
+
+	theUIObjects  = new Array(LANGUAGELIST,TYPELIST); 
+
+  tagDialog.populateDropDownList(LANGUAGELIST, theLanguageScriptVal, theLanguageScriptVal, 1); 
+  tagDialog.populateDropDownList(TYPELIST, theTypeScriptVal, theTypeScriptVal, 1);
+}
+
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="initializeUI()">
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">语言: </td>
+      <td nowrap="nowrap">
+        <select name="thelanguage" class="dirLangList" id="attr:script:language" attname="language" editable="true">
+        </select> 
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类型: </td>
+      <td nowrap="nowrap">
+        <select name="thetype" class="mimeTypesList" id="attr:script:type" attname="type" editable="true">
+        </select> 
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">源: </td>
+      <td nowrap="nowrap">
+        <input name="thesrc" type="text" class="basicTextField" id="attr:script:src" attname="src" />&nbsp;
+		<input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('thesrc');focus(this)">       
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" name="thedefer" id="attr:script:defer" attname="defer" truevalue="defer" falsevalue="" /> 推迟&nbsp;&nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;4+
+      </td>
+    </tr>
+  </table>
+</div>
+<div name="内容"> 
+  <textarea name="theinnerHTML" id="html:script:innerHTML" class="contentsField"  wrap="VIRTUAL" attname="innerHTML"></textarea>
+
+<p>
+<input type="checkbox" name="includeComments" onClick="includeComments(this.checked)" /> HTML 注释中内容换行
+</p>
+</div> 
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!-- MENU-LOCATION=NONE -->
+<!--
+  508/W3C Accessibility Suite OEM V2 for Macromedia Dreamweaver
+  (C) Copyright 2001-2005 UsableNet Inc. All rights reserved.
+  $Id: CheckAccessibility.htm,v 1.13 2005/03/18 10:29:38 malex Exp $
+-->
+
+<html>
+<head>
+<title>检查当前页面的辅助功能</title>
+<!-- <script src="../Shared/mm/scripts/TraceConsole.js"></script> -->
+<script src="../Shared/UsableNet_508ASOEM/dwas_config.js"></script>
+<script src="../Reports/Reports.js"></script>
+<script src="../Shared/UsableNet_508ASOEM/RuleSettings.js"></script>
+<script src="../Shared/UsableNet_508ASOEM/xmlparse.js"></script>
+<script src="../Shared/UsableNet_508ASOEM/basic.js"></script>
+<script src="../Shared/UsableNet_508ASOEM/utilities.js"></script>
+<script src="../Shared/UsableNet_508ASOEM/CSSAnalyzer.js"></script>
+<script src="../Shared/UsableNet_508ASOEM/rules/508_rules.js"></script>
+<script src="../Shared/UsableNet_508ASOEM/rules/wcagp2_rules.js"></script>
+<script src="../Reports/HTML Reports/Evaluate_508ASOEM.js"></script>
+<script language="Javascript">
+
+// Command to check accessibility of current page
+//   enabled only if there is a current page
+//   runs rules according to current settings
+
+// **************************************************
+// localizable section
+
+// this has to be the same as the one used in the Reference pages
+// and in .../Reports/HTML Reports/Evaluate.htm
+var DWAS_REFERENCE_BOOK = dw.loadString("508asoem/reference_book");
+
+// end of localizable section
+// **************************************************
+
+// global var
+if (typeof (App.constructor.un508asoem != 'object'))
+    App.constructor.un508asoem == null;
+
+function canAcceptCommand()
+{
+  var theDOM = dw.getDocumentDOM();
+  if(! validDocStatus(theDOM)) {
+    return false;
+  }
+  return true;
+}
+
+
+
+function check_page()
+{
+  var theDOM = dw.getDocumentDOM();
+  if(! validDocStatus(theDOM)) {
+    return;
+  }
+  beginReporting();
+  processFile(theDOM.URL);
+  endReporting();
+}
+
+function validDocStatus(theDOM)
+{
+  if(theDOM == null) {
+     return false;
+  }
+
+  // Skip if the document is 'new'
+  if(! theDOM.URL) { 
+     return false;
+  }
+
+  // Skip if document doesn't have focus
+  if (dw.getFocus(true) != 'html' && dw.getFocus() != 'textView' && dw.getFocus() != 'document') { 
+     return false;
+  }
+
+  // Skip if the document is unsaved
+  if(dw.canSaveDocument(theDOM)) { 
+     return false;
+  }
+  return true;
+}
+
+</script>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="check_page()">
+
+</body>
+</html>

@@ -1,0 +1,357 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">&lt;PRE&gt;</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">all</span> IE <span class="emphasis">all</span> HTML <span class="emphasis">all</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">&lt;PRE&gt;...&lt;/PRE&gt;</p>
+					</td><td valign="top" nowrap class="requirements">HTML End Tag: Required&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The <span class="literal">pre</span> element defines a block of preformatted
+text. Preformatted text is usually rendered by default in a monospace
+font and, more importantly, it preserves the whitespace (multiple
+spaces between words and new lines) entered into the source code for
+the content. Unlike the deprecated <span class="literal">plaintext</span>
+element, the <span class="literal">pre</span> element doesn't
+ignore HTML tags. Instead, it passes such tags onto the browser for
+normal rendering. If you want to display HTML tags in a block of
+preformatted text, use entities for the less-than
+(<span class="literal">&amp;lt;</span>) and greater-than
+(<span class="literal">&amp;gt;</span>) symbols. This prevents the HTML tags
+from being interpreted as genuine tags but renders the symbols within
+the preformatted text block.
+</p><p>Browsers are supposed to ignore a whitespace line break immediately
+following a <span class="literal">pre</span> element start tag in case you wish
+to start the content on a new line in the source code. By and large,
+the Version 4 browsers follow this rule (with the exception of IE 4
+for the Mac).
+</p><p>The HTML 4 specification is adamant about the <span class="literal">pre</span>
+element maintaining its monospaced font size and line spacing. It
+lists the following elements that should not be included inside a
+<span class="literal">pre</span> element: <span class="literal">applet</span>,
+<span class="literal">basefont</span>, <span class="literal">big</span>,
+<span class="literal">font</span>, <span class="literal">img</span>,
+<span class="literal">object</span>, <span class="literal">small</span>,
+<span class="literal">sub</span>, and <span class="literal">sup</span>. Any one of these
+destroys the fixed-size pitch of the <span class="literal">pre</span> element.
+The recommendation also encourages authors to avoid overriding the
+monospaced font settings with style sheets.
+</p><p>One last admonition concerns using tab characters to indent or align
+text within a <span class="literal">pre</span> element. Not all browsers render
+tab characters the same way. Avoid potential problems by using space
+characters and let the <span class="literal">pre</span>
+element's preservation of whitespace do the job. No
+nonbreaking space entities (<span class="literal">&amp;nbsp;</span>) are
+necessary in a <span class="literal">pre</span> element.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;P&gt;Here is the script example:&lt;/P&gt;
+&lt;PRE&gt;
+&amp;lt;script language="JavaScript"&amp;gt;
+   document.write("Hello, world.")
+&amp;lt;/script&amp;gt;
+&lt;/PRE&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID</span>)</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Element-Specific Attributes</span></td>
+				</tr>
+				<tr>
+      <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+    </tr><tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">cols</span></td><td><span class="literal">width</span></td><td><span class="literal">wrap</span></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Element-Specific Event Handler Attributes</span></td>
+				</tr>
+				<tr>
+					<td><p>None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="cols">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">cols</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">all</span> IE <span class="emphasis">n/a</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">cols="<span class="replaceable">columnCount</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The maximum number of characters per line of preformatted code. This
+Navigator-specific attribute automatically sets the
+<span class="literal">wrap</span> attribute to <span class="literal">true</span>. Without
+this attribute, the source code formatting (or
+<span class="literal">width</span> attribute, where supported) governs the line
+width.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;PRE cols="80"&gt;...&lt;/PRE&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Any positive integer.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None. </p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="lang">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">lang</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal">lang="<span class="replaceable">languageCode</span>"</p>
+							</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>The language being used for the element's attribute
+		values and content. A browser can use this information to assist in
+		proper rendering of content with respect to details such as treatment
+		of ligatures (when supported by a particular font or required by a
+		written language), quotation marks, and hyphenation. Other
+		applications and search engines might use this information to aid the
+		selection of spell-checking dictionaries and the creation of indices.
+		</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>&lt;SPAN lang="de"&gt;Deutsche Bundesbahn&lt;/SPAN&gt;</pre>
+								</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+						</tr>
+						<tr>
+							<td><p>Case-insensitive language code.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+						</tr>
+						<tr>
+							<td><p>Browser default.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID).</span>lang</pre>
+								</span></td>
+						</tr>
+					</table>
+				</div>
+
+		<div id="width">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">width</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">n/a</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">width="<span class="replaceable">columnCount</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The HTML 4 specification introduces the <span class="literal">width</span>
+attribute to allow you to set a maximum number of characters to be
+rendered on a preformatted line of text. Presumably, browsers that
+support this attribute in the future will wrap lines so that words do
+not break in the middle. Without this attribute, the source code
+formatting governs the line width. Navigator provides this
+functionality with the <span class="literal">cols</span> attribute. Note that
+the CSS <span class="literal">width</span> attribute does not affect this
+element in IE 5/Mac or IE 6/Windows. Even when it does, however, the
+units of measure do not include a character count.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;PRE width="80"&gt;...&lt;/PRE&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Any positive integer.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="wrap">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">wrap</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">all</span> IE <span class="emphasis">n/a</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">wrap</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The presence of the <span class="literal">wrap</span> attribute instructs
+Navigator to wrap preformatted text so that text does not run beyond
+the right edge of the browser window or frame.
+<span class="literal">wrap</span> is set to <span class="literal">true</span>
+automatically when the <span class="literal">cols</span> attribute is set.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;PRE wrap&gt;...&lt;/PRE&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>The presence of the attribute sets its value to
+<span class="literal">true</span>.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">false</span> </p>
+					</td>
+				</tr>
+			</table>
+		</div>
+</body>
+</html>

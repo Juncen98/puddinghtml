@@ -1,0 +1,808 @@
+<?xml version="1.0"?>
+<!DOCTYPE toolbarset SYSTEM "-//Macromedia//DWExtension toolbar 5.0">
+<toolbarset>
+    <!-- main toolbar -->
+
+    <toolbar id="DW_Toolbar_Main" label="文档" backgroundStyle="gradient">
+
+
+	   <radiobutton id="DW_CodeView"
+            image="Toolbars/images/MM/codeView.png"
+            disabledImage="Toolbars/images/MM/codeView_dis.png"
+            imageMac="dwres:18055"
+            disabledImageMac="dwres:18078"
+            tooltip="显示代码视图"
+			domRequired="FALSE"
+			label="代码"
+			buttonGroup="Document View"
+            enabled="dw.getDocumentDOM() != null"
+            checked="dw.getDocumentDOM() != null && dw.getDocumentDOM().getView() == 'code'"
+            command="dw.getDocumentDOM().setView('code')"
+            update="onViewChange"/>
+
+
+        <radiobutton id="DW_SplitView"
+            image="Toolbars/images/MM/splitView.png"
+            disabledImage="Toolbars/images/MM/splitView_dis.png"
+            imageMac="dwres:18054"
+            disabledImageMac="dwres:18079"
+            tooltip="显示代码视图和设计视图"
+			label="拆分"
+			domRequired="FALSE"
+			buttonGroup="Document View"
+            enabled="dw.getDocumentDOM() != null && dw.canShowDesignView(dw.getDocumentDOM())"
+            checked="dw.getDocumentDOM() != null && dw.getDocumentDOM().getView() == 'split'"
+            command="dw.getDocumentDOM().setView('split')"
+            update="onViewChange"/>
+
+
+        <radiobutton id="DW_DesignView"
+            image="Toolbars/images/MM/designView.png"
+            disabledImage="Toolbars/images/MM/designView_dis.png"
+            imageMac="dwres:18053"
+            disabledImageMac="dwres:18077"
+			label="设计"
+            tooltip="显示设计视图"
+			domRequired="FALSE"
+			buttonGroup="Document View"
+            enabled="dw.getDocumentDOM() != null && dw.canShowDesignView(dw.getDocumentDOM())"
+            checked="dw.getDocumentDOM() != null && dw.getDocumentDOM().getView() == 'design'"
+            command="dw.getDocumentDOM().setView('design')"
+            update="onViewChange"/>
+
+
+        <checkbutton id="DW_LiveDataView"
+            image="Toolbars/images/MM/liveDataView.png"
+            disabledImage="Toolbars/images/MM/liveDataView_dis.png"
+            imageMac="dwres:18087"
+            disabledImageMac="dwres:18088"
+            tooltip="动态数据视图"
+		    enabled="!site.serverActivity() && dw.getDocumentDOM() != null && dw.canShowDesignView(dw.getDocumentDOM())"
+			checked="dw.getLiveDataMode()"
+			command="dw.setLiveDataMode(!dw.getLiveDataMode())"
+			showIf="dw.getDocumentDOM() && dw.getDocumentDOM().getServerNameFromDoc() != '' && dw.getDocumentDOM().getServerNameFromDoc() != 'XSLT'"
+            update="onViewChange,onLiveDataModeChange"/>
+
+
+        <checkbutton id="DW_LiveDebug"
+			platform="win"
+            image="Toolbars/images/MM/liveDebug.png"
+            disabledImage="Toolbars/images/MM/liveDebug_dis.png"
+            imageMac="dwres:773"
+            disabledImageMac="dwres:18063"
+            tooltip="服务器调试"
+            enabled="dw.getDocumentDOM() != null && dw.canLiveDebug() && dw.canShowDesignView(dw.getDocumentDOM())"
+            checked="dw.getDocumentDOM() != null && dw.getDocumentDOM().getView() == 'browse'"
+            command="dw.toggleLiveDebug()"
+			showIf="dw.getDocumentDOM() != null && dw.canLiveDebug()"
+	        update="onEveryIdle"/>
+
+
+        <editcontrol id="DW_SetTitle"
+            label="   标题: "
+            tooltip="文档标题"
+            width="150"
+            file="Toolbars/MM/EditTitle.htm"/>
+
+
+        <menubutton id="DW_ValidatorErrors"
+            image="Toolbars/images/MM/validatornoerrors.png"
+            disabledImage="Toolbars/images/MM/validator_dis.png"
+            imageMac="dwres:6319"
+            disabledImageMac="dwres:6320"
+			arguments="'valmenu'"
+            tooltip="浏览器目标检查"
+			file="Toolbars/MM/ValidatorErrors.htm"
+            update="onViewChange,onValidationChange"/>
+
+
+        <menubutton id="DW_Validator"
+            image="Toolbars/images/MM/T_Validator_Lg_N.png"
+            disabledImage="Toolbars/images/MM/T_Validator_Lg_D.png"
+            tooltip="验证标记"
+			menuID="DWValidateTabStart" 
+            enabled="dw.getDocumentDOM() != null"
+            update="onViewChange"/>
+
+
+        <menubutton id="DW_FileTransfer"
+            image="Toolbars/images/MM/fileTransfer.png"
+            disabledImage="Toolbars/images/MM/fileTransfer_dis.png"
+            imageMac="dwres:18056"
+            disabledImageMac="dwres:6316"
+            tooltip="文件管理"
+            enabled="dw.getDocumentDOM() != null"
+            menuID="DWDocStatePopup"/>
+
+
+        <menubutton id="DW_Preview"
+            image="Toolbars/images/MM/preview.png"
+            disabledImage="Toolbars/images/MM/preview_dis.png"
+            imageMac="dwres:18058"
+            disabledImageMac="dwres:18071"
+            tooltip="在浏览器中预览/调试"
+            enabled="dw.getDocumentDOM() != null"
+            menuID="DWPIBPopup"/>
+
+        <separator/>
+
+        <button id="DW_DocRefresh"
+            image="Toolbars/images/MM/refresh.png"
+            disabledImage="Toolbars/images/MM/refresh_dis.png"
+            imageMac="dwres:18059"
+            disabledImageMac="dwres:18074"
+            tooltip="刷新设计视图 (F5)"
+            enabled="((dw.getDocumentDOM() != null) && (dw.getDocumentDOM().getView() != 'browse') && (!dw.getDocumentDOM().isDesignViewUpdated()))"
+            command="dw.getDocumentDOM().synchronizeDocument()"
+            update="onViewChange,onCodeViewSyncChange"/>
+
+<!--		
+
+        <button id="DW_Reference"
+            image="Toolbars/images/MM/reference.png"
+            disabledImage="Toolbars/images/MM/reference_dis.png"
+            imageMac="dwres:18060"
+            disabledImageMac="dwres:6317"
+            tooltip="参考"
+            enabled="dw.getDocumentDOM() != null"
+            domRequired="false"
+            command="dw.updateReference()"
+			update="onViewChange"/>
+
+
+        <menubutton id="DW_CodeNav"
+            image="Toolbars/images/MM/codenav.png"
+            disabledImage="Toolbars/images/MM/codenav_dis.png"
+            imageMac="dwres:18067"
+            disabledImageMac="dwres:18080"
+            tooltip="代码导航"
+            enabled="dw.getFocus() == 'textView' || dw.getFocus() == 'html'"
+            menuID="DWCodeNavPopup"
+			update="onViewChange"/>
+
+-->
+
+        <menubutton id="DW_ViewOptions"
+            image="Toolbars/images/MM/viewoptions.png"
+            disabledImage="Toolbars/images/MM/viewoptions_dis.png"
+            imageMac="dwres:18057"
+            disabledImageMac="dwres:6318"
+            tooltip="视图选项"
+			file="Toolbars/MM/ViewOptionsMenu.htm"
+			update="onViewChange"/>
+
+
+        <menubutton id="DW_VisualAids"
+            image="Toolbars/images/MM/T_VisualAids_Lg_N.png"
+            disabledImage="Toolbars/images/MM/T_VisualAids_Lg_D.png"
+            enabled="dw.getDocumentDOM() != null && (dw.getDocumentDOM().getView() == 'split' || dw.getDocumentDOM().getView() == 'design')"
+            tooltip="可视化助理"
+			update="onViewChange,onEveryIdle"
+			menuID="DWDesignVisualAidsPopup"/>
+
+	</toolbar>
+	
+    <!-- Standard toolbar -->
+
+    <toolbar id="Standard_Toolbar" label="标准" initiallyVisible="false" backgroundStyle="gradient">
+
+
+        <button id="DW_New"
+            image="Toolbars/images/MM/new.gif"
+            imageMac="dwres:6300"
+            tooltip="新建"
+			domRequired="FALSE"
+            command="dw.newDocument()"/>
+
+		<separator/>
+       
+
+        <button id="DW_Open"
+            image="Toolbars/images/MM/open.gif"
+            imageMac="dwres:6301"
+            tooltip="打开"
+			domRequired="FALSE"
+            command="dw.openDocument()"/>
+
+
+        <button id="DW_Save"
+            image="Toolbars/images/MM/save.gif"
+            disabledImage="Toolbars/images/MM/save_dis.gif"
+            imageMac="dwres:6302"
+            disabledImageMac="dwres:6303"
+            tooltip="保存"
+            file="Menus/MM/File_Save.htm"
+			domRequired="FALSE"
+			update="onEveryIdle"/>
+
+
+        <button id="DW_SaveAll"
+            image="Toolbars/images/MM/saveall.gif"
+            disabledImage="Toolbars/images/MM/saveall_dis.gif"
+            imageMac="dwres:6304"
+            disabledImageMac="dwres:6305"
+            tooltip="全部保存"
+            enabled="dw.canSaveAll()"
+			domRequired="FALSE"
+            command="dw.saveAll()"/>
+
+
+        <button id="DW_PrintCode"
+            image="Toolbars/images/MM/T_Print_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_Print_Sm_D.png"
+            tooltip="打印代码"
+			domRequired="false" 
+			enabled="dw.getFocus() != 'site' && dw.getFocus()!='browser' && dw.getDocumentDOM() != null" 
+			command="dw.printCode(true, dw.getDocumentDOM())"/>
+
+		<separator/>
+
+		<button id="DW_Cut"
+            image="Toolbars/images/MM/cut.gif"
+            disabledImage="Toolbars/images/MM/cut_dis.gif"
+            imageMac="dwres:6306"
+            disabledImageMac="dwres:6307"
+            tooltip="剪切"
+			enabled="dw.canClipCut()"
+			domRequired="FALSE"
+            command="dw.clipCut()"
+			update="onEveryIdle"/>
+
+
+        <button id="DW_Copy"
+            image="Toolbars/images/MM/copy.gif"
+            disabledImage="Toolbars/images/MM/copy_dis.gif"
+            imageMac="dwres:6308"
+            disabledImageMac="dwres:6309"
+            tooltip="复制"
+			enabled="dw.canClipCopy()"
+			domRequired="FALSE"
+            command="dw.clipCopy()"
+			update="onEveryIdle"/>
+
+
+        <button id="DW_Paste"
+            image="Toolbars/images/MM/paste.gif"
+            disabledImage="Toolbars/images/MM/paste_dis.gif"
+            imageMac="dwres:6310"
+            disabledImageMac="dwres:6311"
+            tooltip="粘贴"
+			enabled="dw.canClipPaste()"
+			domRequired="FALSE"
+            command="dw.clipPaste()"
+			update="onEveryIdle"/>
+
+		<separator/>
+
+        <button id="DW_Undo"
+            image="Toolbars/images/MM/undo.gif"
+            disabledImage="Toolbars/images/MM/undo_dis.gif"
+            tooltip="撤消"
+            imageMac="dwres:6312"
+            disabledImageMac="dwres:6313"
+            file="Menus/MM/Edit_Clipboard.htm"
+			arguments="'undo'"
+			update="onEveryIdle"/>
+
+
+        <button id="DW_Redo"
+            image="Toolbars/images/MM/redo.gif"
+            disabledImage="Toolbars/images/MM/redo_dis.gif"
+            imageMac="dwres:6314"
+            disabledImageMac="dwres:6315"
+            tooltip="重做"
+            file="Menus/MM/Edit_Clipboard.htm"
+			arguments="'redo'"
+			update="onEveryIdle"/>
+
+	</toolbar>
+    <!-- Browser nav toolbar -->
+
+    <toolbar id="Browser_Toolbar" label="浏览器导航" container="document" initiallyVisible="false" backgroundStyle="gradient" platform="win">
+
+
+      <button id="Browse_Back"
+            image="Toolbars/images/MM/back.gif"
+			      disabledImage="Toolbars/images/MM/back_dis.gif"
+            tooltip="后退"
+			      label="后退"
+            enabled="dw.getDocumentDOM().browser.isCmdEnabled('back')"
+            command="dw.getDocumentDOM().browser.backPage()"
+            update="onEveryIdle"/>
+
+
+        <button id="Browse_Forward"
+            image="Toolbars/images/MM/forward.gif"
+			      disabledImage="Toolbars/images/MM/forward_dis.gif"
+            tooltip="向前"
+			      label="向前"
+            enabled="dw.getDocumentDOM().browser.isCmdEnabled('forward')"
+            command="dw.getDocumentDOM().browser.forwardPage()"
+            update="onEveryIdle"/>
+
+
+        <button id="Browse_Stop"
+            image="Toolbars/images/MM/stop.gif"
+			      disabledImage="Toolbars/images/MM/stop_dis.gif"
+            tooltip="停止"
+						label="停止"
+            enabled="dw.getDocumentDOM().browser.getPageBusy()"
+            command="dw.getDocumentDOM().browser.stopPage()"
+            update="onBrowserPageBusyChange"/>
+
+
+        <button id="Browse_Refresh"
+            image="Toolbars/images/MM/browserRefresh.gif"
+            tooltip="刷新"
+						label="刷新"
+            enabled="true"
+            command="dw.getDocumentDOM().browser.refreshPage()"/>
+
+    
+		<separator/>
+
+        <combobox id="Address_URL"
+            width="300"
+            tooltip="地址"
+            label="地址:"
+	          file="Toolbars/MM/AddressURL.htm"
+	          update="onBrowserPageBusyChange"/>
+
+    </toolbar>
+    
+    <!-- Code view toolbar -->
+
+    <toolbar id="DW_CodeView_Toolbar" label="编码" container="Code View" initiallyVisible="true" backgroundStyle="gradient">
+
+
+        <menubutton id="DW_OpenDocuments"
+            image="Toolbars/images/MM/T_OpenDocs_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_OpenDocs_Sm_D.png"
+            tooltip="打开文档"
+            enabled="dw.getDocumentDOM() != null"
+            menuID="DWOpenDocumentsPopup"
+            update="onViewChange" />
+
+        <separator/>
+
+        <button id="DW_CollapseFullTag"
+            image="Toolbars/images/MM/T_CollapseTag_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_CollapseTag_Sm_D.png"
+            tooltip="折叠整个标签（按 Alt 键可折叠外部标签）"
+            domRequired="false" 
+            enabled="true" 
+            command="if (dw.getKeyState('Alt')) { dw.getDocumentDOM().collapseFullTagInverse(!dw.getKeyState('Cmd')); } else { dw.getDocumentDOM().collapseFullTag(!dw.getKeyState('Cmd')); }"
+            update="onViewChange" />
+
+
+        <button id="DW_CollapseSelection"
+            image="Toolbars/images/MM/T_CollapseSel_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_CollapseSel_Sm_D.png"
+            tooltip="折叠所选（按 Alt 键可折叠外部所选）"
+            domRequired="false" 
+            enabled="true" 
+            command="if (dw.getKeyState('Alt')) { dw.getDocumentDOM().collapseSelectedCodeFragmentInverse(!dw.getKeyState('Cmd')); } else { dw.getDocumentDOM().collapseSelectedCodeFragment(!dw.getKeyState('Cmd')); }"
+            update="onViewChange" />
+
+
+        <button id="DW_ExpandAll"
+            image="Toolbars/images/MM/T_ExpandAll_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_ExpandAll_Sm_D.png"
+            tooltip="扩展全部"
+            domRequired="false" 
+            enabled="true" 
+            command="dw.getDocumentDOM().expandAllCodeFragments();"
+            update="onViewChange" />
+
+        <separator/>
+
+        <button id="DW_SelectParentTag"
+            image="Toolbars/images/MM/T_SelectParent_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_SelectParent_Sm_D.png"
+            tooltip="选择父标签"
+            domRequired="false" 
+            enabled="dw.getDocumentDOM() != null && (dw.getFocus() == 'document' && dw.getDocumentDOM().getFocus() != 'head') || (dw.getFocus(true) != 'document')" 
+            command="if (dw.getFocus(true) == 'textView' || dw.getFocus(true) == 'html') { dw.getDocumentDOM().source.selectParentTag(); } else { dw.getDocumentDOM().selectParent(); }"
+            update="onViewChange,onSelChange" />
+
+
+        <button id="DW_BalanceBraces"
+            image="Toolbars/images/MM/T_BalanceBraces_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_BalanceBraces_Sm_D.png"
+            tooltip="选取当前代码段"
+            domRequired="false" 
+            enabled="dw.getFocus(true) != 'document'" 
+            command="dw.getDocumentDOM().source.balanceBracesTextView()"
+            update="onViewChange,onSelChange" />
+
+<!--
+
+        <button id="DW_GotoLine"
+            image="Toolbars/images/MM/T_GotoLine_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_GotoLine_Sm_D.png"
+            tooltip="转到行"
+            domRequired="false" 
+            enabled="dw.getFocus(true) != 'document'" 
+            command="dw.setFocus('textView');dw.runCommand('GoToLine.htm')" 
+            update="onViewChange" />
+
+-->
+        <separator/>
+
+        <checkbutton id="DW_ShowLineNumbers"
+            image="Toolbars/images/MM/T_LineNumbers_Sm_N.png"
+            tooltip="行号"
+            domRequired="false" 
+            enabled="true" 
+            checked="dw.getDocumentDOM() != null && dw.getDocumentDOM().getShowLineNumbers()" 
+            command="dw.getDocumentDOM().setShowLineNumbers(!dw.getDocumentDOM().getShowLineNumbers())"
+            update="onEveryIdle" />
+
+
+        <checkbutton id="DW_ShowInvalidHTML"
+            image="Toolbars/images/MM/T_InvalidCode_Sm_N.png"
+            tooltip="高亮显示无效代码"
+            domRequired="false" 
+            enabled="true" 
+            checked="dw.getDocumentDOM() != null && dw.getDocumentDOM().getShowInvalidHTML()"
+            command="dw.getDocumentDOM().setShowInvalidHTML(!dw.getDocumentDOM().getShowInvalidHTML())"
+            update="onEveryIdle" />
+
+<!--
+
+        <checkbutton id="DW_WordWrap"
+            image="Toolbars/images/MM/T_WordWrap_Sm_N.png"
+            tooltip="自动换行"
+            domRequired="false" 
+            enabled="true" 
+            checked="dw.getDocumentDOM().getShowWordWrap()" 
+            command="dw.getDocumentDOM().setShowWordWrap(!dw.getDocumentDOM().getShowWordWrap())"
+            update="onEveryIdle" />
+
+-->
+<!--
+
+        <checkbutton id="DW_ShowHiddenCharacters"
+            image="Toolbars/images/MM/T_HiddenChar_Sm_N.png"
+            tooltip="隐藏的字符"
+            domRequired="false" 
+            enabled="true" 
+            checked="dw.getDocumentDOM().getShowHiddenCharacters()" 
+            command="dw.getDocumentDOM().setShowHiddenCharacters(!dw.getDocumentDOM().getShowHiddenCharacters())"
+            update="onEveryIdle" />
+
+-->
+<!--
+
+        <checkbutton id="DW_SyntaxColoring"
+            image="Toolbars/images/MM/T_SyntaxColoring_Sm_N.png"
+            tooltip="语法颜色"
+            domRequired="false" 
+            enabled="true" 
+            checked="dw.getDocumentDOM().getShowSyntaxColoring()"
+            command="dw.getDocumentDOM().setShowSyntaxColoring(!dw.getDocumentDOM().getShowSyntaxColoring())"
+            update="onEveryIdle" />
+
+-->
+<!--
+
+        <checkbutton id="DW_AutoIndent"
+            image="Toolbars/images/MM/T_AutoIndent_Sm_N.png"
+            tooltip="自动缩进"
+            domRequired="false" 
+            enabled="true" 
+            checked="dw.getDocumentDOM().getShowAutoIndent()" 
+            command="dw.getDocumentDOM().setShowAutoIndent(!dw.getDocumentDOM().getShowAutoIndent())" 
+            update="onEveryIdle" />
+
+-->
+        <separator/>
+
+        <menubutton id="DW_ApplyComment"
+            image="Toolbars/images/MM/T_Comment_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_Comment_Sm_D.png"
+            tooltip="应用注释"
+            enabled="dw.getDocumentDOM() != null"
+            menuID="DWCommentCodePopup"
+            update="onViewChange" />
+
+
+        <button id="DW_RemoveComment"
+            image="Toolbars/images/MM/T_UnComment_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_UnComment_Sm_D.png"
+            tooltip="删除注释"
+            domRequired="false" 
+            enabled="dw.getFocus(true) != 'document'"
+            command="dw.getDocumentDOM().source.removeComment()" 
+            update="onViewChange,onSelChange" />
+
+
+        <button id="DW_WrapTag"
+            image="Toolbars/images/MM/T_WrapTag_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_WrapTag_Sm_D.png"
+            tooltip="环绕标签"
+            domRequired="false" 
+            file="Toolbars/MM/WrapTag.htm" 
+            update="onEveryIdle" />
+
+
+        <menubutton id="DW_RecentSnippets"
+            image="Toolbars/images/MM/T_Snippets_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_Snippets_Sm_D.png"
+            tooltip="最近的代码片断"
+            domRequired="false" 
+            enabled="true"
+            menuID="DWRecentSnippetsPopup"
+            update="onViewChange" />
+
+        <separator/>
+
+        <button id="DW_IndentCode"
+            image="Toolbars/images/MM/T_Indent_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_Indent_Sm_D.png"
+            tooltip="缩进代码"
+            domRequired="false" 
+            enabled="dw.getFocus(true) != 'document'"
+            command="dw.setFocus('textView');dw.getDocumentDOM().source.indentTextView()"
+            update="onViewChange,onSelChange" />
+
+
+        <button id="DW_OutdentCode"
+            image="Toolbars/images/MM/T_Outdent_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_Outdent_Sm_D.png"
+            tooltip="凸出代码"
+            domRequired="false" 
+            enabled="dw.getFocus(true) != 'document'"
+            command="dw.setFocus('textView');dw.getDocumentDOM().source.outdentTextView()"
+            update="onViewChange,onSelChange" />
+
+
+        <menubutton id="DW_FormatSource"
+            image="Toolbars/images/MM/T_FormatCode_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_FormatCode_Sm_D.png"
+            tooltip="格式化源代码"
+            enabled="dw.getDocumentDOM() != null"
+            menuID="DWFormatCodePopup"
+            update="onViewChange" />
+
+<!--
+
+        <menubutton id="DW_ConvertTools"
+            image="Toolbars/images/MM/T_CodeConversion_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_CodeConversion_Sm_D.png"
+            tooltip="代码转换"
+            enabled="dw.getDocumentDOM() != null"
+            menuID="DWConversionToolsPopup"
+            update="onViewChange" />
+
+-->
+	</toolbar>
+    
+    <!-- Code inspector toolbar -->
+
+    <toolbar id="DW_CodeInspector_Toolbar" label="代码编写工具栏" container="Code Inspector" initiallyVisible="true" backgroundStyle="gradient">
+
+
+        <menubutton id="DW_CodeInspector_OpenDocuments"
+            image="Toolbars/images/MM/T_OpenDocs_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_OpenDocs_Sm_D.png"
+            tooltip="打开文档"
+            enabled="dw.getDocumentDOM() != null"
+            menuID="DWOpenDocumentsPopup"
+            update="onViewChange" />
+
+        <separator/>
+
+        <button id="DW_CodeInspector_CollapseFullTag"
+            image="Toolbars/images/MM/T_CollapseTag_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_CollapseTag_Sm_D.png"
+            tooltip="折叠整个标签（按 Alt 键可折叠外部标签）"
+            domRequired="false" 
+            enabled="true" 
+            command="if (dw.getKeyState('Alt')) { dw.htmlInspector.collapseFullTagInverse(!dw.getKeyState('Cmd')); } else { dw.htmlInspector.collapseFullTag(!dw.getKeyState('Cmd')); }"
+            update="onViewChange" />
+
+
+        <button id="DW_CodeInspector_CollapseSelection"
+            image="Toolbars/images/MM/T_CollapseSel_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_CollapseSel_Sm_D.png"
+            tooltip="折叠所选（按 Alt 键可折叠外部所选）"
+            domRequired="false" 
+            enabled="true" 
+            command="if (dw.getKeyState('Alt')) { dw.htmlInspector.collapseSelectedCodeFragmentInverse(!dw.getKeyState('Cmd')); } else { dw.htmlInspector.collapseSelectedCodeFragment(!dw.getKeyState('Cmd')); }"
+            update="onViewChange" />
+
+
+        <button id="DW_CodeInspector_ExpandAll"
+            image="Toolbars/images/MM/T_ExpandAll_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_ExpandAll_Sm_D.png"
+            tooltip="扩展全部"
+            domRequired="false" 
+            enabled="true" 
+            command="dw.htmlInspector.expandAllCodeFragments();"
+            update="onViewChange" />
+
+        <separator/>
+
+        <button id="DW_CodeInspector_SelectParentTag"
+            image="Toolbars/images/MM/T_SelectParent_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_SelectParent_Sm_D.png"
+            tooltip="选择父标签"
+            domRequired="false" 
+            enabled="(dw.getFocus() == 'document' && dw.getDocumentDOM().getFocus() != 'head') || (dw.getFocus(true) != 'document')" 
+            command="if (dw.getFocus(true) == 'textView' || dw.getFocus(true) == 'html') { dw.getDocumentDOM().source.selectParentTag(); } else { dw.getDocumentDOM().selectParent(); }"
+            update="onViewChange,onSelChange" />
+
+
+        <button id="DW_CodeInspector_BalanceBraces"
+            image="Toolbars/images/MM/T_BalanceBraces_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_BalanceBraces_Sm_D.png"
+            tooltip="选取当前代码段"
+            domRequired="false" 
+            enabled="dw.getFocus(true) != 'document'" 
+            command="dw.getDocumentDOM().source.balanceBracesTextView()"
+            update="onViewChange,onSelChange" />
+
+<!--
+
+        <button id="DW_CodeInspector_GotoLine"
+            image="Toolbars/images/MM/T_GotoLine_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_GotoLine_Sm_D.png"
+            tooltip="转到行"
+            domRequired="false"
+            enabled="dw.getFocus(true) != 'document'" 
+            command="dw.setFocus('html');dw.runCommand('GoToLine.htm')" 
+            update="onViewChange" />
+
+-->
+        <separator/>
+
+        <checkbutton id="DW_CodeInspector_ShowLineNumbers"
+            image="Toolbars/images/MM/T_LineNumbers_Sm_N.png"
+            tooltip="行号"
+            domRequired="false" 
+            enabled="true" 
+            checked="dw.htmlInspector.getShowLineNumbers()" 
+            command="dw.htmlInspector.setShowLineNumbers(!dw.htmlInspector.getShowLineNumbers())"
+            update="onEveryIdle" />
+
+
+        <checkbutton id="DW_CodeInspector_ShowInvalidHTML"
+            image="Toolbars/images/MM/T_InvalidCode_Sm_N.png"
+            tooltip="高亮显示无效代码"
+            domRequired="false" 
+            enabled="true" 
+            checked="dw.htmlInspector.getShowInvalidHTML()"
+            command="dw.htmlInspector.setShowInvalidHTML(!dw.htmlInspector.getShowInvalidHTML())"
+            update="onEveryIdle" />
+
+<!--
+
+        <checkbutton id="DW_CodeInspector_WordWrap"
+            image="Toolbars/images/MM/T_WordWrap_Sm_N.png"
+            tooltip="自动换行"
+            domRequired="false" 
+            enabled="true" 
+            checked="dw.htmlInspector.getShowWordWrap()" 
+            command="dw.htmlInspector.setShowWordWrap(!dw.htmlInspector.getShowWordWrap())"
+            update="onEveryIdle" />
+
+-->
+<!--
+
+        <checkbutton id="DW_CodeInspector_ShowHiddenCharacters"
+            image="Toolbars/images/MM/T_HiddenChar_Sm_N.png"
+            tooltip="隐藏的字符"
+            domRequired="false" 
+            enabled="true" 
+            checked="dw.htmlInspector.getShowHiddenCharacters()" 
+            command="dw.htmlInspector.setShowHiddenCharacters(!dw.htmlInspector.getShowHiddenCharacters())"
+            update="onEveryIdle" />
+
+-->
+<!--		
+
+        <checkbutton id="DW_CodeInspector_SyntaxColoring"
+            image="Toolbars/images/MM/T_SyntaxColoring_Sm_N.png"
+            tooltip="语法颜色"
+            domRequired="false" 
+            enabled="true" 
+            checked="dw.htmlInspector.getShowSyntaxColoring()"
+            command="dw.htmlInspector.setShowSyntaxColoring(!dw.htmlInspector.getShowSyntaxColoring())"
+            update="onEveryIdle" />
+
+-->
+<!--
+
+        <checkbutton id="DW_CodeInspector_AutoIndent"
+            image="Toolbars/images/MM/T_AutoIndent_Sm_N.png"
+            tooltip="自动缩进"
+            domRequired="false" 
+            enabled="true" 
+            checked="dw.htmlInspector.getShowAutoIndent()" 
+            command="dw.htmlInspector.setShowAutoIndent(!dw.htmlInspector.getShowAutoIndent())" 
+            update="onEveryIdle" />
+
+-->
+        <separator/>
+
+        <menubutton id="DW_CodeInspector_ApplyComment"
+            image="Toolbars/images/MM/T_Comment_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_Comment_Sm_D.png"
+            tooltip="应用注释"
+            enabled="dw.getDocumentDOM() != null"
+            menuID="DWCommentCodePopup"
+            update="onViewChange" />
+
+
+        <button id="DW_CodeInspector_RemoveComment"
+            image="Toolbars/images/MM/T_UnComment_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_UnComment_Sm_D.png"
+            tooltip="删除注释"
+            domRequired="false" 
+            enabled="dw.getFocus(true) != 'document'"
+            command="dw.getDocumentDOM().source.removeComment()" 
+            update="onViewChange,onSelChange" />
+
+
+        <button id="DW_CodeInspector_WrapTag"
+            image="Toolbars/images/MM/T_WrapTag_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_WrapTag_Sm_D.png"
+            tooltip="环绕标签"
+            domRequired="false" 
+            file="Toolbars/MM/WrapTag.htm" 
+            update="onEveryIdle" />
+
+
+        <menubutton id="DW_CodeInspector_RecentSnippets"
+            image="Toolbars/images/MM/T_Snippets_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_Snippets_Sm_D.png"
+            tooltip="最近的代码片断"
+            domRequired="false" 
+            enabled="true"
+            menuID="DWRecentSnippetsPopup"
+            update="onViewChange" />
+
+        <separator/>
+
+        <button id="DW_CodeInspector_IndentCode"
+            image="Toolbars/images/MM/T_Indent_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_Indent_Sm_D.png"
+            tooltip="缩进代码"
+            domRequired="false" 
+            enabled="dw.getFocus(true) != 'document'"
+            command="dw.setFocus('html');dw.getDocumentDOM().source.indentTextView()"
+            update="onViewChange,onSelChange" />
+
+
+        <button id="DW_CodeInspector_OutdentCode"
+            image="Toolbars/images/MM/T_Outdent_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_Outdent_Sm_D.png"
+            tooltip="凸出代码"
+            domRequired="false" 
+            enabled="dw.getFocus(true) != 'document'"
+            command="dw.setFocus('html');dw.getDocumentDOM().source.outdentTextView()"
+            update="onViewChange,onSelChange" />
+
+
+        <menubutton id="DW_CodeInspector_FormatSource"
+            image="Toolbars/images/MM/T_FormatCode_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_FormatCode_Sm_D.png"
+            tooltip="格式化源代码"
+            enabled="dw.getDocumentDOM() != null"
+            menuID="DWFormatCodePopup"
+            update="onViewChange" />
+
+<!--
+
+        <menubutton id="DW_CodeInspector_ConvertTools"
+            image="Toolbars/images/MM/T_CodeConversion_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_CodeConversion_Sm_D.png"
+            tooltip="代码转换"
+            enabled="dw.getDocumentDOM() != null"
+            menuID="DWConversionToolsPopup"
+            update="onViewChange" />
+
+-->
+	</toolbar>
+</toolbarset>

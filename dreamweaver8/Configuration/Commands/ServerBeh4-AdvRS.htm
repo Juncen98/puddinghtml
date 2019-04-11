@@ -1,0 +1,116 @@
+<!-- MENU-LOCATION=NONE -->
+
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+<!-- Copyright 2002 Macromedia, Inc. All rights reserved. -->
+
+<TITLE>记录集</TITLE>
+
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+
+<SCRIPT SRC="ServerBeh4-AdvRS.js"></SCRIPT>
+<SCRIPT SRC="ServerBeh4-RsShared.js"></SCRIPT>
+<SCRIPT SRC="../ServerBehaviors/Shared/RSSeverModelSwitches.js"></SCRIPT>
+<SCRIPT SRC="../ServerBehaviors/Shared/CheckDupeObjName.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/SQLTypes.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ParseSimpleSQL.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/docInfo.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/niceName.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssClasses.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/DBTreeControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ReservedWords.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/PlusMinusButton.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/Class/GridControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/helper.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/RecordsetDialogClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/RsTypeMenu.js"></SCRIPT>
+
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+  <form>
+    <table border=0>
+      <tr valign="baseline">
+        <td align="right" nowrap>名称:</td>
+        <td colspan=2 nowrap>
+          <input name="RecordsetName" type="text" class="basicTextField" style="width:200px">
+          <select name="RsTypeParameter" style="position:absolute; width:80px; visibility:hidden;" wrap="virtual" onChange="rsTypeChanged()"></select>
+        </td>
+      </tr>
+	  <TR><TD HEIGHT="1"></TD></TR>
+      <tr valign="baseline">
+        <td align="right" nowrap>连接:</td>
+        <td nowrap colspan=2>
+          <select name="ConnectionList" class="connNameList"  onChange="ConnectionChanged()" wrap="virtual">
+          </select>
+          <input type="button" value="定义..." onClick="LaunchConnectionManager();focus(this)">
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr>
+        <td align="right" valign="top" nowrap>
+          <img src="../Shared/MM/Images/transparent.gif" height="2" width="20"><br>
+          SQL:
+        </td>
+        <td colspan=2 valign="top">
+          <textarea name="theSQL" style="width:420px;height:75px" wrap="VIRTUAL"></textarea>
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr>
+        <td align="right" valign="top" nowrap>变量: </td>
+        <td colspan=2>
+          <input type="image" name="plusButton" src="../Shared/UltraDev/Images/PlusButton.gif" value="+"  onClick="AddParam();">
+          <input type="image" name="minusButton" src="../Shared/UltraDev/Images/MinusButtonEnabled.gif" value="-" onClick="DeleteParam();">
+          <br>
+          <select name="ParamList" style="width:420px;" type=mmparameterlist columns="名称,默认值,运行值" columnWidths="100,100" size=5></select>
+        </td>
+      </tr>
+      <tr><td colspan=3><hr></td></tr>
+      <tr>
+        <td align="right" valign="top" rowspan="5" nowrap>数据库项: </td>
+        <td valign="top" rowspan="5">
+          <select name="DBTree" style="width:300px;height:110px" type=mmdatabasetree connection="" onChange="UpdateTreeSelection()"></select>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" align="left">
+          <input type="hidden" name="TreeSelection">添加到 SQL: 
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" align="left">
+          <input type=button style="width:100px" name="SelectButton" value="SELECT" onClick="AddToSelect();focus(this)">
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" align="left">
+          <input type=button style="width:100px" name="WhereButton" value="WHERE" onClick="ColumnAddToWhere();focus(this)">
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" align="left">
+          <input type=button style="width:100px" name="OrderByButton" value="ORDER BY" onClick="AddToOrderBy();focus(this)">
+        </td>
+      </tr>
+    </table>
+  </form>
+</BODY>
+</HTML>
+

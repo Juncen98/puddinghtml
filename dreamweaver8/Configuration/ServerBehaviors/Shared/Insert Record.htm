@@ -1,0 +1,124 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+
+<SCRIPT>
+// Copyright 2001-2002 Macromedia, Inc. All rights reserved.
+var EDIT_TYPE       = "MM_insert";
+var HELP_DOC        = MM.HELP_ssInsertRecord;
+var PROP_TYPE       = "insertRecord";
+</SCRIPT>
+
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/EditOperations.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/SQLTypes.js"></SCRIPT>
+
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+  <FORM name="theForm">
+    <TABLE border="0">
+      <tr valign="baseline">
+        <td align="right" nowrap>连接:</td>
+        <td nowrap>
+          <select name="connectionList" class="connNameList" onChange="updateUI('connectionList')" wrap="virtual">
+            <OPTION selected></OPTION>
+          </select>
+          <input type="button" value="定义..." onClick="updateUI('defineConnection')">
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td align="right">插入到表格: </td>
+        <td>
+          <select name="tableList" class="connRSTableList" onChange="updateUI('tableList')" wrap="virtual">
+            
+          <OPTION selected></OPTION>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap>插入后，转到:</td>
+        <td valign="baseline" nowrap>
+          <input name="redirectURL" type="text" class="largeTField">
+          <input type="button" value="浏览..." onClick="updateUI('browseForFile');focus(this)">
+        </td>
+      </tr>
+      <tr><td colspan=2><hr></td></tr>
+      <TR>
+        <TD align="right" valign="baseline" nowrap>获取值自: </TD>
+        <TD valign="baseline" nowrap>
+          <SELECT name="formList" class="tagList" onChange="updateUI('formList')">
+            
+          <OPTION selected></OPTION>
+          
+        </select>
+          (在提交时) </TD>
+      </TR>
+      <tr><td height="1"></td></tr>
+      <TR>
+        <TD align="right" valign="top" nowrap>
+          <img src="../../Shared/MM/Images/transparent.gif" height="3" width="20"><br>
+          表单元素: </TD>
+        <TD valign="baseline" nowrap>
+          <SELECT name="fieldsList" size="6" class="columnNameMultiList"  style="width:315px" onChange="updateUI('fieldsList')">
+            
+          <OPTION selected></OPTION>
+          </select>
+        </TD>
+      </TR>
+      <tr valign="baseline">
+        <td align="right"></td>
+        <td>
+          <table border="0">
+            
+          <tr>
+              
+            <td align="right" valign="baseline" nowrap>列: </td>
+            <td valign="baseline" nowrap>
+                <select name="fieldColList" class="columnNameList"  onChange="updateUI('fieldColList')" wrap="virtual">
+                  
+                <OPTION selected></OPTION>
+                
+              </select>
+                
+              </td>
+          </tr>
+          <tr>
+            <td align="right" valign="baseline" nowrap>提交为: </td>
+            <td valign="baseline" nowrap><select name="fieldColFormat" class="dataTypeList"  onChange="updateUI('fieldColFormat')">
+                  
+                <!-- Format values: value="char to wrap with, alt value if not wrapping, default value if empty" -->
+                  
+                <option value="',none,''" selected>文本</option>
+                  
+                <option value="none,none,NULL"    >数字</option>
+                  
+                <option value="',none,NULL"       >日期</option>
+                  
+                <option value="#,none,NULL"       >日期 MS Access</option>
+                  
+                <option value="none,'Y','N'"      >复选框 Y,N</option>
+                  
+                <option value="none,1,0"          >复选框 1,0</option>
+                  
+                <option value="none,-1,0"         >复选框 -1,0</option>
+                  
+                <option value="none,Yes,No"       >复选框 MS Access</option>
+                </select></td>
+          </tr>
+          </table>
+        </td>
+      </tr>
+    </TABLE>
+  </FORM>
+</BODY>
+</HTML>

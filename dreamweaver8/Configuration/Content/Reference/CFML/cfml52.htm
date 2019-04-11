@@ -1,0 +1,2433 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFGRID</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFGRID</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Used within the cfform tag. Puts a grid control (a table of data) in a ColdFusion form. To specify grid columns and row data, use the cfgridcolumn and cfgridrow tags, or use the query attribute, with or without cfgridcolumn tags.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Forms tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfgrid 
+   name = &quot;name&quot;
+   format = &quot;applet&quot; or &quot;Flash&quot; or &quot;xml&quot;
+   height = &quot;integer&quot;
+   width = &quot;integer&quot;
+   query = &quot;query_name&quot;
+   selectMode = &quot;mode&quot;
+   insert = &quot;yes&quot; or &quot;no&quot;
+   delete = &quot;yes&quot; or &quot;no&quot;
+   font = &quot;column_font&quot;
+   fontSize = &quot;size&quot;
+   italic = &quot;yes&quot; or &quot;no&quot;
+   bold = &quot;yes&quot; or &quot;no&quot;
+   textColor = &quot;web color&quot;
+   gridLines = &quot;yes&quot; or &quot;no&quot;
+   rowHeight = &quot;pixels&quot;
+   colHeaders = &quot;yes&quot; or &quot;no&quot;
+   colHeaderFont = &quot;font_name&quot;
+   colHeaderFontSize = &quot;size&quot;
+   colHeaderItalic = &quot;yes&quot; or &quot;no&quot;
+   colHeaderBold = &quot;yes&quot; or &quot;no&quot;
+   colHeaderTextColor = &quot;web color&quot;
+   bgColor = &quot;web color&quot;
+   maxRows = &quot;number&quot;
+   The following works in Flash format only
+   style= &quot;style specification&quot;
+   enabled = &quot;Yes&quot; or &quot;No&quot;
+   visible = &quot;Yes&quot; or &quot;No&quot;
+   toolTip = &quot;Tip text&quot;
+onChange = &quot;ActionScript&quot;
+   The following work in applet and XML format only
+autoWidth = &quot;yes&quot; or &quot;no&quot;
+   vSpace = &quot;integer&quot;
+   hSpace = &quot;integer&quot;
+   align = &quot;value&quot;
+   sort = &quot;yes&quot; or &quot;no&quot;
+   href = &quot;URL&quot;
+   hrefKey = &quot;column_name&quot;
+   target = &quot;URL_target&quot;
+   appendKey = &quot;yes&quot; or &quot;no&quot;
+   highlightHref = &quot;yes&quot; or &quot;no&quot;
+   onValidate = &quot;javascript_function&quot;
+   onError = &quot;text&quot;
+   gridDataAlign = &quot;position&quot;
+   rowHeaders = &quot;yes&quot; or &quot;no&quot;
+   rowHeaderAlign = &quot;position&quot;
+   rowHeaderFont = &quot;font_name&quot;
+   rowHeaderFontSize = &quot;size&quot;
+   rowHeaderItalic = &quot;yes&quot; or &quot;no&quot;
+   rowHeaderBold = &quot;yes&quot; or &quot;no&quot;
+   rowHeaderTextColor = &quot;web color&quot;
+   colHeaderAlign = &quot;position&quot;
+   selectColor = &quot;web color&quot;
+   notSupported = &quot;text&quot;
+   pictureBar = &quot;yes&quot; or &quot;no&quot;
+   insertButton = &quot;text&quot;
+   deleteButton = &quot;text&quot;
+   sortAscendingButton = &quot;text&quot;
+   sortDescendingButton = &quot;text&quot;&gt;
+zero or more cfgridcolumn and cfgridrow tags
+&lt;/cfgrid&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfapplet, cfcalendar, cfgridcolumn, cfgridrow, cfgridupdate, cfform, cfformgroup, cfformitem, cfgrid, cfinput, cfselect, cfslider, cftextarea, cftree
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7: 
+</p>
+<ul>
+
+<li>Added the format attribute and support for Flash and XML output.</li>
+
+<li>Added enabled, onChange, style, tooltip, and visible attributes (Flash format only).</li>
+</ul>
+
+<p>
+ColdFusion&#160;MX: Changed the rowHeaderWidth attribute: ColdFusion does not use the rowHeaderWidth attribute. You can omit it.
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>In XML format, ColdFusion MX passes all attributes to the XML. The supplied XSLT skins do not handle or display XML format grids, but do display applet and Flash format grids.</td>
+  </tr>
+</table>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+This tag must be in a cfform tag block. 
+</p>
+
+<p>
+An applet format grid requires the client to download a Java applet. Also, if the client does not have an up-to-date Java plugin installed, the system might also have to download an updated Java plugin to display the an applet format grid. A Flash format grid generates a Flash control, and can be embedded in an HTML format cfform tag. For this tag to work properly in either Flash or applet format, the browser must also be JavaScript-enabled.
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>If you specify Flash format for this tag in an HTML format form, and you do not specify height and width attributes, Flash takes up more than the remaining visible area on the screen. If any other output follows the grid, including any form controls, users must scroll to see it. Therefore, if you follow a Flash grid in an HTML form with additional output, specify height and width values.</td>
+  </tr>
+</table>
+<p>
+You can populate a cfgrid with data from a cfquery. If you do not specify any cfgridcolumn tags in the cfgrid body, ColdFusion generates a grid with the following:
+</p>
+<ul>
+
+<li>A column for each column in the query. </li>
+
+<li>A default header for each column, created by replacing hyphen or underscore characters in the table column name with spaces. The first character, and any character after a space, are changed to uppercase; all other characters are lowercase.</li>
+</ul>
+
+<p>
+This tag requires an end tag.
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>Clicking the submit button while editing a grid cell occasionally causes the cell changes to be lost. To ensure that changes are submitted properly, Macromedia recommends that after user updates data in a cell, they click another cell before submitting the form. </td>
+  </tr>
+</table>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">How data is returned from cfgrid</span>
+<p>
+This tag returns data by setting form variables in the data submitted to the form&#39;s action page, as an HTML form control does. Because the data can vary, depending on the tag's SelectMode attribute value, the form variables that are returned also vary depending on this value. 
+</p>
+
+<p>
+In general, the data returned falls into one of these categories: 
+</p>
+<ul>
+
+<li>Simple data, returned from simple select operations </li>
+
+<li>Complex data, returned from insert, update and delete operations</li>
+</ul>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Simple selection data (SelectMode = Single, Column, or Row)</span>
+<p>
+The data that form variables return to the cfform&#39;s action page contains information about which cells the user selected. In general, ColdFusion makes this data available in the action page, as ColdFusion variables in the Form scope, with the naming convention form.#GridName#.#ColumnName#
+</p>
+
+<p>
+Each SelectMode returns these form variable(s):
+</p>
+<ul>
+
+<li>SelectMode=&quot;single&quot;</li>
+<pre>form.#GridName#.#ColumnName# = &quot;SelectedCellValue&quot;
+</pre>
+<li>SelectMode=&quot;column&quot;</li>
+<pre>form.#GridName#.#ColumnName# = &quot;ValueOfCellRow1, 
+ValueOfCellRow2, ValueOfCellRowN&quot;
+</pre>
+<li>SelectMode=&quot;row&quot;</li>
+<pre>form.#GridName#.#Column1Name# = &quot;ValueOfCellInSelectedRow&quot;
+form.#GridName#.#Column2Name# = &quot;ValueOfCellInSelectedRow&quot;
+form.#GridName#.#ColumnNName# = &quot;ValueOfCellInSelectedRow&quot;
+</pre></ul>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Complex update data (SelectMode = Edit)</span>
+<p>
+The grid returns a large amount of data, to inform the action page of inserts, updates or deletes that the user made to the grid. In most cases, you can use the cfgridupdate tag to automatically gather the data from the form variables; the tag collects data, writes SQL calls, and updates the data source. 
+</p>
+
+<p>
+If you cannot use cfgridupdate (if, for example, you must distribute the returned data to more than one data source), you must write code to read form variables. In this mode, ColdFusion creates the following array variables in the Form scope for each cfgrid:
+</p>
+<pre>form.#GridName#.#ColumnName#
+form.#GridName#.original.#ColumnName#
+form.#GridName#.RowStatus.Action
+</pre>
+<p>
+Each table row that contains an update, insert, or deletion has a parallel entry in each of these arrays. To view all the information for all the changes, you can traverse the arrays, as in this example. To make it work with a cfgrid on a submitted cfform, set the GridName variable to the name of the grid and the ColNameList to a list of the grid columns.
+</p>
+<pre>&lt;cfloop index=&quot;ColName&quot; list=&quot;#ColNameList#&quot;&gt;
+   &lt;cfif IsDefined(&quot;form.#GridName#.#ColName#&quot;)&gt;   
+      &lt;cfoutput&gt;&lt;br&gt;form.#GridName#.#ColName#:&lt;br&gt;&lt;/cfoutput&gt;
+      
+      &lt;cfset Array_New = form.[#GridName#][#ColName#]&gt;
+      &lt;cfset Array_Orig = form[#GridName#]['original'][#ColName#]&gt;
+      &lt;cfset Array_Action = form[#GridName#]RowStatus.Action&gt;
+      
+      &lt;cfif NOT IsArray(Array_New)&gt;
+         &lt;b&gt;The form variable is not an array!&lt;/b&gt;&lt;br&gt;
+      &lt;cfelse&gt;
+         &lt;cfset size = ArrayLen(Array_New)&gt;
+         &lt;cfoutput&gt; 
+         Result Array Size is #size#.&lt;br&gt;
+         Contents:&lt;br&gt;
+         &lt;/cfoutput&gt;
+         
+         &lt;cfif size IS 0&gt;
+            &lt;b&gt;The array is empty.&lt;/b&gt;&lt;br&gt;
+         &lt;cfelse&gt;
+            &lt;table BORDER=&quot;yes&quot;&gt;
+               &lt;tr&gt; 
+                  &lt;th&gt;Loop Index&lt;/TH&gt;
+                  &lt;th&gt;Action&lt;/TH&gt; 
+                  &lt;th&gt;Old Value&lt;/TH&gt; 
+                  &lt;th&gt;New Value&lt;/TH&gt;
+               &lt;/tr&gt;
+               &lt;cfloop index=&quot;LoopCount&quot; from=&quot;1&quot; to=#size#&gt;   
+                   &lt;cfset Val_Orig   = Array_Orig[#LoopCount#]&gt;   
+                   &lt;cfset Val_New    = Array_New[#LoopCount#]&gt;   
+               &lt;cfset Val_Action   = Array_Action[#LoopCount#]&gt;
+               &lt;cfoutput&gt;
+               &lt;tr&gt;
+                  &lt;td&gt;#LoopCount#&lt;/td&gt;
+                  &lt;td&gt;#Val_Action#&lt;/td&gt;
+                  &lt;td&gt;#Val_Orig#&lt;/td&gt;
+                  &lt;td&gt;#Val_New#&lt;/td&gt;
+               &lt;/tr&gt;
+               &lt;/cfoutput&gt;
+               &lt;/cfloop&gt;
+            &lt;/table&gt;            
+         &lt;/cfif&gt;         
+      &lt;/cfif&gt;   
+
+   &lt;cfelse&gt;
+      &lt;cfoutput&gt;form.#GridName#.#ColName#: NotSet!&lt;/cfoutput&gt;&lt;br&gt;   
+   &lt;/cfif&gt;   
+&lt;/cfloop&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Using the href attribute</span>
+<p>
+When specifying a URL with grid items using the href attribute, the selectMode attribute value determines whether the appended key value is limited to one grid item or extends to a grid column or row. When a user clicks a linked grid item, a cfgridkey variable is appended to the URL, in this form:
+</p>
+<pre>http://myserver.com?cfgridkey=selection
+</pre>
+<p>
+If the appendKey attribute is set to no, no grid values are appended to the URL. 
+</p>
+
+<p>
+The value of <i>selection</i> is determined by the value of the selectMode and attribute:
+</p>
+<ul>
+
+<li>If you specify a hrefKey attribute, selection is the field value of the column specified by the attribute. Otherwise, it is one of the following:</li>
+
+<li>If selectMode=&quot;Single&quot;, <i>selection </i>is the value of the column clicked.</li>
+
+<li>If selectMode=&quot;Row&quot;, <i>selection</i> is a comma-delimited list of column values in the clicked row, beginning with the value of the first cell in the row.</li>
+
+<li>If selectMode=&quot;Column&quot;, <i>selection</i> is a comma-delimited list of row values in the clicked column, beginning with the value of the first cell in the column.</li>
+</ul>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+The following example creates a Flash form that displays a set of available courses from the CourseList table in the cfdocexamples database. For more complex examples that use the cfgrid tag, see cfgridcolumn, cfgridrow, and cfgridupdate. 
+</p>
+<pre>&lt;!--- Query the database to fill up the grid. ---&gt;
+&lt;cfquery name = &quot;GetCourses&quot; dataSource = &quot;cfdocexamples&quot;&gt;
+SELECT Course_ID, Dept_ID, CorNumber,
+CorName, CorLevel
+FROM CourseList
+ORDER by Dept_ID ASC, CorNumber ASC
+&lt;/cfquery&gt;
+
+&lt;h3&gt;cfgrid Example&lt;/h3&gt;
+&lt;I&gt;Currently available courses&lt;/i&gt;
+&lt;!--- cfgrid must be inside a cfform tag. ---&gt;
+&lt;cfform&gt;
+   &lt;cfgrid name = &quot;FirstGrid&quot; format=&quot;Flash&quot;
+      height=&quot;320&quot; width=&quot;580&quot;
+      font=&quot;Tahoma&quot; fontsize=&quot;12&quot;
+      query = &quot;GetCourses&quot;&gt;
+   &lt;/cfgrid&gt;
+&lt;/cfform&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="NAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of the grid control.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="FORMAT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">FORMAT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "applet"
+
+<ul>
+
+<li>applet: generates a Java applet.</li>
+
+<li>Flash: generates a Flash grid control.</li>
+
+<li>xml: generates an XML representation of the grid. In XML format forms, includes the generated XML in the form.In HTML format forms, puts the XML in a string variable with the name specified by the name attribute.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="HEIGHT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">HEIGHT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "300 (applet only)"
+
+
+<p>Height of the control, in pixels.</p>
+<p>If you omit the attribute in Flash format, the grid sizes automatically..</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="WIDTH">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">WIDTH</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "300 (applet only)"
+
+
+<p>Width of the control, in pixels.</p>
+<p>If you omit the attribute in Flash format, the grid sizes automatically.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="QUERY">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">QUERY</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of the query associated with the control. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SELECTMODE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SELECTMODE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Applet format: Browse;"
+<strong>Default value:</strong> "Flash format: Row"
+
+
+<p>Selection mode for items in the control. </p><ul>
+
+<li>Edit: user can edit grid data. Selecting a cell opens the editor for the cell type. </li>
+
+<li>Row: user selections automatically extend to the row that contains selected cell. </li>
+</ul>
+
+<p>The following are used in applet format only; Flash interprets these as Row:</p><ul>
+
+<li>Single: user selections are limited to selected cell. </li>
+
+<li>Column: user selections automatically extend to column that contains selected cell. </li>
+
+<li>Browse: user can only browse grid data.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="FONT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">FONT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Font of text. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="FONTSIZE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">FONTSIZE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Size of text, in points.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ITALIC">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ITALIC</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+<ul>
+
+<li>yes: displays text in italics.</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="BOLD">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">BOLD</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+<ul>
+
+<li>yes: displays text in bold.</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TEXTCOLOR">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TEXTCOLOR</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Black"
+
+
+<p>Color of text. Can be a hexadecimal value or a named color. </p>
+<p>For a hexadecimal value, use the form &quot;##xxxxxx&quot;, where x = 0-9 or A-F; use two number signs or none. </p>
+<p>For a list of the supported named colors, see cfchart.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SELECTCOLOR">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SELECTCOLOR</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Background color for a selected item. </p><ul>
+
+<li>Options: same as for textColor attribute</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="GRIDLINES">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">GRIDLINES</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "yes"
+
+<ul>
+
+<li>yes: enables row and column rules.</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ROWHEIGHT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ROWHEIGHT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Minimum row height, in pixels. Used with cfgridcolumn type = &quot;Image&quot;; defines space for graphics to display in row.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="COLHEADERS">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">COLHEADERS</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "yes"
+
+<ul>
+
+<li>yes: displays column headers.</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="COLHEADERFONT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">COLHEADERFONT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Font of column header. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="COLHEADERFONTSIZE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">COLHEADERFONTSIZE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Size of column header text, in points.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="COLHEADERITALIC">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">COLHEADERITALIC</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+<ul>
+
+<li>yes: displays column headers in italics.</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="COLHEADERBOLD">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">COLHEADERBOLD</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+<ul>
+
+<li>yes: displays column headers in bold.</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="COLHEADERTEXTCOLOR">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">COLHEADERTEXTCOLOR</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Color of column headers. </p><ul>
+
+<li>Options: same as for textColor attribute.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="BGCOLOR">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">BGCOLOR</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Background color of the control. </p><ul>
+
+<li>Options: for applet format, same as for textColor attribute; for Flash format, must be a hexadecimal value.</li>
+
+<li>Flash format only: to specify background colors for alternating rows, separate the two colors with a comma. </li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="MAXROWS">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">MAXROWS</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional; All</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Maximum number of rows to display in the grid.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="STYLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STYLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Flash</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Must be a style specification in CSS format. Ignored for type=&quot;text&quot;.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ENABLED">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ENABLED</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Flash</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Yes"
+
+<strong>Default value:</strong> "Flash format only: Boolean value specifying whether the control is enabled. A disabled control appears in light gray."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="VISIBLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">VISIBLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Flash</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Yes"
+
+<strong>Default value:</strong> "Flash format only: Boolean value specifying whether to show the control. Space that would be occupied by an invisible control is blank."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TOOLTIP">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TOOLTIP</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Flash</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<strong>Default value:</strong> "Flash format only: text to display when the mouse pointer hovers over the control."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ONCHANGE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ONCHANGE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Flash</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<strong>Default value:</strong> "ActionScript to run when the control changes due to user action in the control."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="AUTOWIDTH">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">AUTOWIDTH</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+<ul>
+
+<li>yes: sets column widths so that all columns display within the grid width. Widths are equal or the proportions are determined by the relative cfgridcolumn width attribute values. Horizontal scroll bars are not available.</li>
+
+<li>no: sets columns to equal widths or the values specified in the cfgridcolumn width attributes. </li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="VSPACE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">VSPACE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Vertical space above and below the control, in pixels.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="HSPACE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">HSPACE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Horizontal space to the left and right of the control, in pixels.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ALIGN">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ALIGN</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Alignment of the grid cell contents: </p><ul>
+
+<li>Top</li>
+
+<li>Left</li>
+
+<li>Bottom</li>
+
+<li>Baseline</li>
+
+<li>Texttop</li>
+
+<li>Absbottom</li>
+
+<li>Middle</li>
+
+<li>Absmiddle</li>
+
+<li>Right</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="INSERT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">INSERT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+<ul>
+
+<li>yes: users can insert row data in the grid; takes effect only if selectmode=&quot;edit&quot;.</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DELETE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DELETE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+<ul>
+
+<li>yes: users can delete row data from the grid; takes effect only if selectmode=&quot;edit&quot;.</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SORT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SORT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+
+<p>Adds sort buttons to perform simple text sorts on a user-selected column:</p><ul>
+
+<li>yes: put sort buttons on the grid control. </li>
+
+<li>no</li>
+</ul>
+
+<p>Independent of this setting, users can sort columns by clicking the column head. If selectMode=&quot;browse&quot;, the table cannot be sorted.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="HREF">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">HREF</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>URL or name of a query column that contains URLs to hyperlink each grid cell with. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TARGET">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TARGET</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>The target frame or window in which to display the href URL; for example, &quot;_blank&quot;.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="APPENDKEY">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">APPENDKEY</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "yes"
+
+<ul>
+
+<li>yes: when used with href, appends &quot;CFGRIDKEY=&quot; and information about the selected items. For details see "Using the href attribute".</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="HREFKEY">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">HREFKEY</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>A query column to use for the value appended to the href URL of each cell, if appendKey=&quot;True&quot;. If you use cfgridcolumn tags, the column must be specified in one of these tags.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="HIGHLIGHTHREF">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">HIGHLIGHTHREF</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "yes"
+
+<ul>
+
+<li>yes: highlights links associated with an href attribute value.</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ONVALIDATE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ONVALIDATE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>A JavaScript function to validate user input. The form object, input object, and input object value are passed to the function, which must return True if validation succeeds; False otherwise. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ONERROR">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ONERROR</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>A JavaScript function to execute if validation fails.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="GRIDDATAALIGN">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">GRIDDATAALIGN</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Left"
+
+<ul>
+
+<li>Left: left-aligns data within the column.</li>
+
+<li>Right: right-aligns data within the column.</li>
+
+<li>Center: centers data within the column.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ROWHEADERS">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ROWHEADERS</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "yes"
+
+<ul>
+
+<li>yes: displays a column of numeric row labels.</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ROWHEADERALIGN">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ROWHEADERALIGN</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Left"
+
+<ul>
+
+<li>Left: left-aligns the row header text.</li>
+
+<li>Right: right-aligns the row header text.</li>
+
+<li>Center: centers the row header text.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ROWHEADERFONT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ROWHEADERFONT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Font for the row labels.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ROWHEADERFONTSIZE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ROWHEADERFONTSIZE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Text size of the row labels, in points.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ROWHEADERITALIC">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ROWHEADERITALIC</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+<ul>
+
+<li>yes: displays row label text in italics.</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ROWHEADERBOLD">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ROWHEADERBOLD</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+<ul>
+
+<li>yes: displays row label text in bold.</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ROWHEADERTEXTCOLOR">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ROWHEADERTEXTCOLOR</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Black"
+
+
+<p>Text color of grid control row headers. </p><ul>
+
+<li>Options: same as for the textColor attribute.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="COLHEADERALIGN">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">COLHEADERALIGN</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Left"
+
+<ul>
+
+<li>Left: left-aligns the column header text.</li>
+
+<li>Right: right-aligns the column header text.</li>
+
+<li>Center: centers the column header text.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="NOTSUPPORTED">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NOTSUPPORTED</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "(See Description)"
+
+
+<p>Text to display if the browser does not support Java or has Java support disabled. </p>
+<p>Default: &quot;&lt;b&gt; Browser must support Java to view ColdFusion Java Applets&lt;/b&gt;&quot;</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="PICTUREBAR">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PICTUREBAR</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+<ul>
+
+<li>yes: puts images (and no text) on the Insert, Delete, and Sort buttons.</li>
+
+<li>no: puts text (and no images) on the Insert, Delete, and Sort buttons.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="INSERTBUTTON">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">INSERTBUTTON</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Insert"
+
+
+<p>Insert button text; takes effect only if selectmode=&quot;edit&quot;.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DELETEBUTTON">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DELETEBUTTON</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Delete"
+
+
+<p> Delete button text; takes effect only if selectmode=&quot;edit&quot;.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SORTASCENDINGBUTTON">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SORTASCENDINGBUTTON</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "A -&gt; Z"
+
+
+<p>Sort button text.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SORTDESCENDINGBUTTON">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SORTDESCENDINGBUTTON</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">applet</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Z -&gt; A"
+
+
+<p>Sort button text.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

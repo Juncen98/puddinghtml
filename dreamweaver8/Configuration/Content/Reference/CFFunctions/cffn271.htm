@@ -1,0 +1,166 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>STRUCTUPDATE</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">STRUCTUPDATE</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Updates a key with a value. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+True, on successful execution; if the structure does not exist, ColdFusion throws an error.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Structure functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>StructUpdate(structure, key, value)
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+Structure functions; "Modifying a ColdFusion XML object" in Chapter&#160;35, "Using XML and WDDX," in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX: Changed behavior: this function can be used on XML objects.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!--- This example shows the use of StructUpdate. ---&gt;
+&lt;p&gt;This file is similar to addemployee.cfm, which is called by StructNew,
+StructClear, and StructDelete. To test this file, copy the
+&amp;LT;CFELSEIF&amp;GT; statement to the appropriate place in 
+addemployee.cfm. It is an example of a custom tag used to add 
+employees. Employee information is passed through the employee 
+structure (the EMPINFO attribute). In UNIX, you must also add the Emp_ID.
+
+&lt;cfswitch expression = &quot;#ThisTag.ExecutionMode#&quot;&gt;
+  &lt;cfcase value = &quot;start&quot;&gt;
+   &lt;cfif StructIsEmpty(attributes.EMPINFO)&gt;
+    &lt;cfoutput&gt;Error. No employee data was passed.&lt;/cfoutput&gt;
+      &lt;cfexit method = &quot;ExitTag&quot;&gt;
+   &lt;cfelseIf StructFind(attributes.EMPINFO, &quot;department&quot;) EQ &quot;&quot;&gt;
+    &lt;cfscript&gt;
+     StructUpdate(attributes.EMPINFO, &quot;department&quot;, &quot;Unassigned&quot;);
+    &lt;/cfscript&gt;
+    &lt;cfexit method = &quot;ExitTag&quot;&gt;
+         &lt;cfelse&gt; 
+
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="STRUCTURE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STRUCTURE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Structure to update</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="KEY">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">KEY</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Key, the value of which to update</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="VALUE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">VALUE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>New value</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

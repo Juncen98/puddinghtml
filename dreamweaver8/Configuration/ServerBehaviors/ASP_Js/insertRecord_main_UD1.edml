@@ -1,0 +1,64 @@
+<participant>
+     <quickSearch><![CDATA[MM_insert]]></quickSearch>
+     <insertText location="aboveHTML+20">
+<![CDATA[
+<%
+// *** Insert Record: construct a sql insert statement and execute it
+var MM_editAction = Request.ServerVariables("URL") + '?' + Request.QueryString;
+if (String(Request("MM_insert")) != "undefined") {
+
+  var MM_tableName = "@@table@@";
+  var MM_fields = "@@elemStr@@";
+  var MM_redirectPage = "@@url@@";
+
+  // create the insert sql statement
+  var MM_tableValues = "", MM_dbValues = "";
+  var MM_fieldsArray = MM_fields.split(",");
+  for (var i=0; i+4 < MM_fieldsArray.length; i+=5) {
+    var formVal = String(Request.Form(MM_fieldsArray[i]));
+    var delim =    (MM_fieldsArray[i+2] != "none") ? MM_fieldsArray[i+2] : "";
+    var altVal =   (MM_fieldsArray[i+3] != "none") ? MM_fieldsArray[i+3] : "";
+    var emptyVal = (MM_fieldsArray[i+4] != "none") ? MM_fieldsArray[i+4] : "";
+    if (formVal == "" || formVal == "undefined") {
+      formVal = emptyVal;
+    } else {
+      if (altVal != "") {
+        formVal = altVal;
+      } else if (delim == "'") { // escape quotes
+        formVal = "'" + formVal.replace(/'/g,"''") + "'";
+      } else {
+        formVal = delim + formVal + delim;
+      }
+    }
+    MM_tableValues += ((i != 0) ? "," : "") + MM_fieldsArray[i+1];
+    MM_dbValues += ((i != 0) ? "," : "") + formVal;
+  }
+  var MM_insertStr = 'insert into ' + MM_tableName + ' (' + MM_tableValues + ') values (' + MM_dbValues + ')';
+
+  // finish the sql and execute it
+  var MM_insertCmd = Server.CreateObject("ADODB.Command");
+  MM_insertCmd.ActiveConnection = "@@conn@@";
+  MM_insertCmd.CommandText = MM_insertStr;
+  MM_insertCmd.Execute();
+
+  // redirect with URL parameters
+  if (MM_redirectPage == '') MM_redirectPage = Request.ServerVariables('URL');
+  if (String(MM_redirectPage).indexOf('?') == -1) MM_redirectPage += '?' + Request.QueryString;
+  Response.Redirect(MM_redirectPage);
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="conn"><![CDATA[/ActiveConnection\s*=\s*"([^"]*)";/]]></searchPattern>
+       <searchPattern paramNames="table"><![CDATA[/MM_tableName\s*=\s*"([^"]*)";/]]></searchPattern>
+       <searchPattern paramNames="elemStr"><![CDATA[/MM_fields\s*=\s*"([^"]*)";/]]></searchPattern>
+       <searchPattern paramNames="url"><![CDATA[/MM_redirectPage\s*=\s*"([^"]*)";/]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="conn"><![CDATA[/(ActiveConnection\s*=\s*")[^"]*(";)/g]]></updatePattern>
+       <updatePattern paramName="table"><![CDATA[/(MM_tableName\s*=\s*")[^"]*(";)/g]]></updatePattern>
+       <updatePattern paramName="elemStr"><![CDATA[/(MM_fields\s*=\s*")[^"]*(";)/g]]></updatePattern>
+       <updatePattern paramName="url"><![CDATA[/(MM_redirectPage\s*=\s*")[^"]*(";)/g]]></updatePattern>
+     </updatePatterns>
+</participant>

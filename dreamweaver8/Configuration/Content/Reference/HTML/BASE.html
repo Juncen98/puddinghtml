@@ -1,0 +1,272 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">&lt;BASE&gt;</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">all</span> IE <span class="emphasis">all</span> HTML <span class="emphasis">all</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">&lt;BASE&gt;</p>
+					</td><td valign="top" nowrap class="requirements">HTML End Tag: Forbidden&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>A <span class="literal">base</span> element is defined inside a
+document's <span class="literal">head</span> element to
+instruct the browser about the URL path to the current document. This
+path is used as the basis for all relative URLs used to specify
+various <span class="literal">src</span> and <span class="literal">href</span> attributes
+in the document. The <span class="literal">base</span>
+element's URL should be a complete URL, including
+the document name (though browsers tend to support URLs to
+directories, too). The browser calculates the base URL path to the
+directory holding the document. If you specify
+<span class="literal">&lt;BASE</SPAN>
+<SPAN class="literal">href="http://www.megacorp.com/products/index.html"&gt;</span>,
+the <span class="literal">href</span> attribute of a link on that page to
+<span class="emphasis">widgets/framitz801.html</span> resolves to the full URL
+of
+<span class="emphasis">http://www.megacorp.com/products/widgets/framitz801.html</span>.
+Similarly, a relative URL can walk up the hierarchy with the dot
+syntax. For example, from the <span class="literal">base</span> element defined
+earlier, an <span class="literal">img</span> element in the
+<span class="emphasis">index.html</span> page might be set for
+<span class="literal">src="../images/logo.jpg"</span>. That reference resolves
+to <span class="emphasis">http://www.megacorp.com/images/logo.jpg</span>.
+</p><p>By and large, today's browsers automatically
+calculate the base URL of the currently loaded document, thus
+allowing use of relative URLs without specifying a
+<span class="literal">base</span> element. This is especially helpful when you
+are developing pages locally and don't want to
+change the <span class="literal">base</span> element settings when you deploy
+the pages. The HTML 4 specification states that a document lacking a
+<span class="literal">base</span> element should by default use the current
+document's URL as the <span class="literal">base</span> URL.
+Of course, this is only for true web pages, rather than HTML-enhanced
+documents such as email messages, which have no default
+<span class="literal">base</span> URL.
+</p><p>You can also use the <span class="literal">base</span> element to define a
+default target for any link-type element in the document. Therefore,
+if all links are supposed to load documents into another frame, you
+can specify this target frame once in the <span class="literal">base</span> tag
+and not worry about <span class="literal">target</span> attributes elsewhere in
+the document. If you wish to override the default for a single link,
+you may do so by specifying the <span class="literal">target</span> attribute
+for that element (but see the note in the <span class="literal">target</span>
+attribute).
+</p><p>The only attribute this element has in common with other elements is
+the <span class="literal">id</span> attribute.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;HEAD&gt;
+&lt;BASE href="http://www.megacorp.com/index.html" target="_top"&gt;
+&lt;/HEAD&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID</span>)</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Element-Specific Attributes</span></td>
+				</tr>
+				<tr>
+      <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+    </tr><tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">href</span></td><td><span class="literal">target</span></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Element-Specific Event Handler Attributes</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="href">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">href</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">all</span> IE <span class="emphasis">all</span> HTML <span class="emphasis">all</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">href="<span class="replaceable">URL</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The <span class="literal">href</span> attribute is a URL of a document whose
+server path is to be used as the base URL for all relative references
+in the document. This is typically the URL of the current document,
+but it can be set to another path if it makes sense to your document
+organization and directory structure.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;BASE href="http://www.megacorp.com/products/index.html"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>This should be a full and absolute URL to a document.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>Current document pathname.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementsByTagName("base")[0].href
+[window.]document.getElementById(<span class="replaceable">elementID</span>).href</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="target">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">target</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">all</span> IE <span class="emphasis">all</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">target="<span class="replaceable">windowOrFrameName</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>If all or most links and area maps on a page load documents into a
+separate window or frame, you can set the <span class="literal">target</span>
+attribute of the <span class="literal">base</span> element to take care of
+targeting for all of those elements. You can set the
+<span class="literal">target</span> attribute without setting the
+<span class="literal">href</span> attribute if you want to set only the base
+target reference.
+</p><p>Strict DTDs for HTML 4 and XHTML do not support the
+<span class="literal">target</span> attribute of any element because frames and
+windows are outside the scope of pure document markup. In fact,
+framesetting documents will not validate in the strict
+environmentthus the purpose of the separate frameset DTDs for
+HTML 4 and XHTML. If your documents must validate with these strict
+DTDs, and you wish to support targets, use scripts to set
+<span class="literal">target</span> properties of links, image maps, and forms
+after the page has loaded.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;BASE target="rightFrame"&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-sensitive identifier when the frame or window name has been
+assigned via the target element's
+<span class="literal">name</span> attribute. Four reserved target names act as
+constants:
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">_self</span></p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementsByTagName("base")[0].target
+[window.]document.getElementById(<span class="replaceable">elementID</span>).target</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div>
+</body>
+</html>

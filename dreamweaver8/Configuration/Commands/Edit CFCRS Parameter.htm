@@ -1,0 +1,38 @@
+<!-- MENU-LOCATION=NONE -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<html>
+<head>
+<title>编辑参数</title>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/TextField.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/ParamTypesList.js"></SCRIPT>
+
+<SCRIPT SRC="Edit CFCRS Parameter.js"></SCRIPT> 
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head> 
+<body onLoad="initializeUI()">
+<form> 
+  <table border="0" cellpadding="4" cellspacing="2">
+    <tr VALIGN="baseline"> 
+      <td ALIGN="right" nowrap>名称: </td>
+      <td nowrap> 
+        <input type="text" name="CFParamName" disabled="true"/>
+      </td>
+    </tr>
+    <tr VALIGN="baseline"> 
+      <td ALIGN="right" nowrap>值: </td>
+      <td nowrap> 
+        <select name="CFParamType" onChange="updateUI('CFParamType','onChange')" style="width:120px">
+        </select>
+        <input type="text" name="CFParamValue" />
+      </td>
+    </tr>
+    <tr VALIGN="baseline"> 
+      <td ALIGN="right" nowrap>默认值: </td>
+      <td nowrap><input name="CFParamDefValue" type="text" ></td>
+    </tr>
+  </table>
+</form> 
+</body>
+</html>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "浏览器重定向" description = "根据访问者浏览器的类型进行简单的四向重定向。" preview="code" type="block">
+<insertText location="beforeSelection">
+<![CDATA[function browserRedirect()
+{
+  var ns4 = document.layers;
+  var ns6 = document.getElementById && !document.all;
+  var ie4 = document.all;
+  
+  if(ns4) URLStr = "1.html";
+  else if(ns6) URLStr = "2.html";
+  else if(ie4) URLStr = "3.html";
+  else URLStr = "4.html";
+  location = URLStr;
+}
+]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

@@ -1,0 +1,1722 @@
+<html>
+<head>
+<title>Server Object</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">Server Object</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+
+
+
+
+
+
+
+<p>The <!--<primary>Server object</primary>-->
+<!--<primary>web
+servers</primary>-->Server object provides several
+miscellaneous functions that you can use in your Active Server Page
+applications. Although most of its methods are esoteric and seldom
+used, three methods, CreateObject, Execute, and Transfer, and the
+Server object's single property, ScriptTimeout, are invaluable.
+You will use these in many of your scripts.</p>
+
+
+
+
+<p>The Server object, as its name implies, represents the web server
+itself, and much of the functionality it provides is simply
+functionality the web server itself uses in the normal processing of
+client requests and server responses.</p>
+
+
+
+
+<!--
+<p class="TITLE">Server Object Summary</p>
+
+
+
+
+<dl>
+<dt>Properties</dt>
+<dd><p>ScriptTimeout</p></dd>
+
+
+
+
+<dt>Collections</dt>
+<dd><p>None</p></dd>
+
+
+
+
+<dt>Methods</dt>
+<dd><p>CreateObject</p>
+
+
+
+
+
+
+<p>Execute</p>
+
+
+
+
+<p>GetLastError</p>
+
+
+
+
+<p>HTMLEncode</p>
+
+
+
+
+<p>MapPath</p>
+
+
+
+
+<p>Transfer</p>
+
+
+
+
+<p>URLEncode</p>
+</dd>
+
+
+
+
+<dt>Events</dt>
+<dd><p>None</p></dd>
+
+</dl>
+
+
+
+-->
+</td></tr>
+</table>
+</div>
+<div id="CommentsTroubleshooting">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Comments/Troubleshooting</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2">&nbsp;</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+
+
+<p>Use of the Server object's property and methods is
+straightforward. Typically, if you are using the Server
+object's functionality with the correct syntax, you will
+experience the expected outcome. If you experience errors, it
+typically indicates a problem with IIS itself either in its
+configuration or in its installation.</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="ScriptTimeout">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+ScriptTimeout</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Server.ScriptTimeout</span><!--<primary>ScriptTimeout property (Server)</primary>-->
+<!--<primary>Server object</primary><secondary>ScriptTimeout property</secondary>-->
+<!--<primary>expiring</primary><secondary>script processing on server</secondary>--> <span class="LITERAL">[</span> <span class="LITERAL">=</span> <var class="replaceable">lngNumSeconds</var><span class="LITERAL">]</span>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>Specifies the maximum amount of time the web server will continue
+processing your script. If you do not set a value for this property,
+the default value is 90 seconds.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">lngNumSeconds</var></dt>
+<dd><p>The number of seconds you want the web server to continue processing
+your script before it times out, sending the client an ASP error.</p></dd>
+
+</dl>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%
+
+' The following code sets the amount of time before the
+' script times out to 100 seconds. If the script takes
+' more time than 100 seconds, the script will time out and 
+' a timeout error will be sent to the client.
+Server.ScriptTimeout = 100
+
+%&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>The number used in setting the ScriptTimeout property's value
+must be greater than or equal to that set in the
+<!--<primary>AspScriptTimeout
+property</primary>-->AspScriptTimeout property in the IIS
+metabase or the setting will be ignored. For example, the default
+setting of AspScriptTimeout in the IIS metabase is 90 seconds. If you
+use the ScriptTimeout property to decrease this time to 10 seconds
+without first changing the setting in the metabase, the script will
+still time out after 90 seconds.</p>
+
+
+
+
+<p>You should consider decreasing the AspScriptTimeout property in the
+IIS metabase. 90 seconds is a long time to wait for processing a web
+request. Show me a user who is willing to wait for a minute and a
+half, and I'll show you a user who has fallen asleep. However,
+if your application requires a longer timeout setting, consider using
+an interim "Please wait . . ." page whose OnLoad event
+will in turn call the longer script or ASP page. This will give the
+user some notice that her wait will be a long one.</p>
+
+
+
+
+<p>This technique is demonstrated in the following code. Assume that you
+must call the <filename>InfoSearch.ASP</filename> script, and you
+know that it takes a single parameter, <var class="replaceable">strSrchItem
+</var>, and that it takes up to two minutes to complete its
+tasks. Instead of calling <filename>InfoSearch.ASP</filename>
+immediately, you could call the following page instead:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;Search Wait&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY LANGUAGE="VBScript" OnLoad = "PageLoad( )"&gt;
+Please wait, your request is being processed...
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+Sub PageLoad( )
+Parent.Location.HREF = _
+"InfoSearch.ASP?&lt;%=Request.ServerVariables("QUERY_STRING")%&gt;"
+End Sub
+&lt;/SCRIPT&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;</pre></span>
+
+
+
+
+<p>As you can see, when this script loads, it calls the page with the
+long script, sending the original query string (retrieved from the
+ServerVariables collection of the Request object; see <link linkend="ch07-1-fm2xml">Chapter 7</link>, for more details). This gives the user
+immediate feedback without forcing him to sit watching a blank screen
+waiting for a script to complete processing.</p>
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="CreateObject">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+CreateObject</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Set</span> <var class="replaceable">objMyObject</var> <span class="LITERAL">= Server.CreateObject(</span><var class="replaceable">strProgId</var><span class="LITERAL">)</span>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p><!--<primary>CreateObject method
+(Server)</primary>--> <!--<primary>Server
+object</primary><secondary>methods
+reference</secondary>-->Instantiates an object on the
+server. Once instantiated, this object's properties and methods
+can be used just as you can use the properties and methods of the
+built-in objects that come with ASP. The DLLs from which these
+objects are instantiated must be installed and registered on the web
+server machine separately from your installation of IIS.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">objMyObject</var></dt>
+<dd><p>The name of a variable that will contain a reference to the object
+you are instantiating.</p></dd>
+
+
+
+
+<dt><var class="replaceable">strProgId</var></dt>
+<dd><p>The programmatic ID for the class from which you would like to
+instantiate an object. The format for the
+<var class="replaceable">strProgId</var> parameter is:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>[LibraryName.]Component[.Version]</pre></span>
+
+
+
+
+
+<p>This value is found in the registry and represents how the
+component's DLL is registered there. Although it sometimes
+contains the DLL name, it often does not. For example, the DLL from
+which you instantiate the Ad Rotator object is
+<filename>adrot.dll</filename>. However, its ProgID is
+<span class="LITERAL">MSWC.AdRotator.1</span>, as defined by the default value
+of the following registry key:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>HKEY_CLASSES_ROOT\CLSID\{1621F7C0-60AC-11CF-9427-444553540000}\ProgID</pre></span>
+
+
+
+
+<p>As you will note, this is the ProgID for the registered DLL and
+contains version information in addition to its registered name.
+Sometimes, however, you may have several different versions of the
+same DLL registered on your machine. In this case, you can use the
+default value of the <span class="LITERAL">VersionIndependentProgID</span>
+registry key to instantiate the most recent version of the DLL. In
+our example (the ad rotator), the version-independent ProgID is
+<span class="LITERAL">MSWC.AdRotator</span>.</p></dd>
+
+</dl>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;% 
+
+' The following code uses the CreateObject method of 
+' the Server object to instantiate an Ad Rotator object 
+' on the server.
+Dim objAdRotator
+
+Set objAdRotator = Server.CreateObject("MSWC.AdRotator")
+
+%&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p><!--<primary>objects</primary><secondary>instantiating</secondary>-->When
+a client browser requests an ASP script containing objects, ASP
+instantiates the objects (thus triggering their default constructor
+functions, if they exist) and then immediately—before any
+script is processed—calls the OnStartPage method of every
+object on the page that has a defined OnStartPage event handler. The
+OnStartPage method allows the object to use the ObjectContext object
+to retrieve pointers to the built-in ASP objects. The details behind
+the ObjectContext object and the OnStartPage methods of server
+components is beyond the scope of this book. For more information on
+this, see Shelley Powers' book, <citetitle>Developing ASP
+Components</citetitle>, published by O'Reilly &amp; Associates.</p>
+
+
+
+
+<p>Using the CreateObject method creates a server-side object with
+<!--<primary>page-level scope, creating objects
+with</primary>-->
+<!--<primary>scope</primary><secondary>creating objects with
+CreateObject</secondary>-->
+<!--<primary>application-level
+scope</primary><secondary>creating objects
+with</secondary>--> <!--<primary>session-level
+scope</primary><secondary>creating objects
+with</secondary>-->
+<!--<primary>objects</primary><secondary>creating with
+page-level scope</secondary>-->page-level
+<!--<primary>web pages</primary><secondary>scope
+of</secondary><see>page-level scope</see>-->scope, unless
+CreateObject is called in the Application_<!--<primary>OnStart
+event</primary><secondary>calling CreateObject
+in</secondary>-->
+<!--<primary>events</primary><secondary>Application
+object</secondary><tertiary>creating objects
+in</tertiary>-->
+<!--<primary>events</primary><secondary>Session
+object</secondary><tertiary>creating objects
+in</tertiary>-->OnStart or Session_OnStart events, in which
+case the object will be instantiated with application- or
+session-level scope, respectively. Objects with page-level
+<!--<primary>web pages</primary><secondary>scope
+of</secondary>-->scope are destroyed and the memory they
+occupy is released at the end of the page.</p>
+
+
+
+
+<p>To create an object with application scope, you must call the
+CreateObject method in the Application_OnStart event (see <link linkend="ch04-40130">Chapter 4</link>, for more details) or use the
+<span class="LITERAL">&lt;OBJECT&gt;</span> tag in the
+<filename>GLOBAL.ASA</filename> file and set the
+<span class="LITERAL">SCOPE</span><!--<primary>SCOPE
+parameter</primary>--> parameter to Application. (For more
+details on the <filename>GLOBAL.ASA</filename> file, see <link linkend="ch11-1-fm2xml">Chapter 11</link>.)</p>
+
+
+
+
+<p>Likewise, to create an object with session scope, you must call the
+CreateObject method in the Session_OnStart event (see <link linkend="ch10-1-fm2xml">Chapter 10</link>, for more details) or use the
+<span class="LITERAL">&lt;OBJECT&gt;</span> tag in the
+<filename>GLOBAL.ASA</filename> file and set the
+<span class="LITERAL">SCOPE</span> parameter to Session. Also, you can use a
+Session variable to hold the object instantiated using CreateObject,
+as in the following example:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Set Session("objMyAdRot") = _
+    Server.CreateObject("MSWC.AdRotator")</pre></span>
+
+
+
+
+<p>Objects with application-level scope are not destroyed until the
+Application_OnEnd event is fired. Session-scoped objects are
+similarly destroyed at the end of a user's session or when the
+Abandon method of the Session object is called; see <link linkend="ch10-1-fm2xml">Chapter 10</link> for more details.</p>
+
+
+
+
+<p>Once an object is instantiated, it can be destroyed by setting its
+value to the keyword <span class="LITERAL">Nothing</span>, as in the following
+example code:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Set objMyAdRot = Nothing</pre></span>
+
+
+
+
+<p>You also can simply replace the value of the object variable to
+release the memory being used for the original object:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Set objMyAdRot = strSomeOtherValue</pre></span>
+
+
+
+
+<p>You cannot use CreateObject to create an instance of one of the
+built-in objects. For example the following code will generate a
+runtime error:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Set objMySession = Server.CreateObject("Session") ' WRONG</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Execute">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Execute</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Server.Execute</span> <span class="LITERAL">(</span><var class="replaceable">strPath</var><span class="LITERAL">)</span>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>The <!--<primary>Execute
+method</primary><secondary>Server
+object</secondary>-->Execute method allows you to call and
+execute an <!--<primary>ASP (Active Server
+Pages)</primary><secondary>scripts calling
+themselves</secondary><tertiary>and
+executing</tertiary>-->ASP script from within another ASP
+script. When the called script has finished executing, control
+returns to the ASP page that issued the Server.Execute method call.
+Using the Execute method, you can break complex applications down
+into modular, reusable components that can be called when needed. The
+Execute method is new to ASP 3.0/IIS 5.0.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">strPath</var></dt>
+<dd><p>The absolute or relative path to the ASP script you wish to execute.
+Only scripts within the current application's application space
+can be executed using this method.</p></dd>
+
+</dl>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>In this example, the second script, which displays a text
+advertisement, is called (using the Execute method) by the first
+script only if the current user has not entered the "No
+Ad" club.</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>**** BEGIN ExecuteExamplePage.ASP ********
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;
+Execute Example Form
+&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;% 
+' This script executes an advertisement if the current
+' user is not a member of the "No advertisement" club.
+
+' Dimension Local variables.
+Dim blnNoAdClub
+
+' Test Session variable.
+Session("blnNoAdClub") = False
+
+' Set variables.
+blnNoAdClub = Session("blnNoAdClub")
+
+' If the user belongs in the "No Ad" club don't show an ad.		
+If Not(blnNoAdClub) Then
+	<strong class="userinput">Server.Execute ("DisplayAdvertisement.asp")</strong>
+End If
+%&gt;
+
+FROM HERE DOWN IS ALL CONTENT FROM ExecuteExampleForm.asp&lt;BR&gt;
+
+This page may or may not have an advertisement line at the top.
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+**** END ExecuteExamplePage.ASP ********
+
+**** BEGIN DisplayAdvertisement.ASP ********
+&lt;%
+Dim intSal
+Dim strPos
+Dim strAdString
+
+' Test Session variable.
+Session("intSal") = 4
+Session("strPos") = "vp"
+
+intSal = Session("intSal")
+strPos = Session("strPos")
+
+' Initialize first part of ad banner text.
+strAdString = "Click here to request a credit card"
+
+' Add credit limit phrase to ad.
+Select Case intSal
+	Case 0 ' From $10K to $20K in salary.
+		strAdString = strAdString &amp; " with a limit of up to $5000"
+	Case 1 ' From $20K+ to $40K in salary.
+		strAdString = strAdString &amp; " with a limit of up to $10000"
+	Case 2 ' From $40K+ to $60K in salary.
+		strAdString = strAdString &amp; " with a limit of up to $20000"
+	Case 3 ' From $60K+ to $80K in salary.
+		strAdString = strAdString &amp; " with a limit of up to $50000"
+	Case 4 ' From $80K+ in salary.
+		strAdString = strAdString &amp; " with a limit of up to $100000"
+	Case Else ' Assume lowest salary range.
+		strAdString = strAdString &amp; " with no limit"
+End Select
+
+' Add exclusivity phrase if necessary.
+If UCase(strPos) = "VP" Then
+	strAdString = strAdString &amp; " just for executives!"
+Else
+	strAdString = strAdString &amp; "!"
+End If
+
+' Display advertisement text string.
+Response.Write "&lt;FONT SIZE="5" COLOR = "red"&gt;" &amp; strAdString &amp; "&lt;/FONT&gt;&lt;BR&gt;&lt;BR&gt;"
+
+%&gt;
+**** END DisplayAdvertisement.ASP ********</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>The Execute method provides ASP developers an excellent opportunity
+to break up their applications into manageable, reusable components
+of code that can be called only when necessary. In the past, an ASP
+developer was forced to either programmatically redirect the
+execution of a page to another page (a costly exercise in execution
+speed, since it required that a header be sent to the browser to
+redirect the browser's request) or include another file using
+the <span class="LITERAL">#INCLUDE</span> pre-processor directive. Neither
+alternative was very useful. As previously mentioned, the Redirect
+method of the Server object (see later in this chapter) calls for
+another server-to-client-server round of calls for a page that was
+slow. The <span class="LITERAL">#INCLUDE</span> directive forces the ASP ISAPI
+filter to retrieve the included file from the file system, insert it
+into the current script, and interpret all the included code even if
+it is never used by the including script.</p>
+
+
+
+
+<p>The Execute method, on the other hand, allows you to execute other
+scripts programmatically only when the logic in the calling script
+requires it. That is, the Execute method allows you to dynamically
+include scripts.</p>
+
+
+
+
+<p>Note that just as with other scripts, scripts called through the
+Execute method can add or modify HTTP headers included in the
+response. However, just as with standalone scripts, if the called
+script adds or modifies any HTTP headers after any response is sent,
+an error will be generated.</p>
+
+
+
+
+<p>As you might expect, the variable scope for each script (calling
+script and called script) is distinct. For example, in the following
+code, you have a variable called <span class="LITERAL">strName</span> in both
+scripts.</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>CALLING SCRIPT
+&lt;%
+Dim strName
+strName = "Sam"
+Server.Execute("CalledScript.asp")
+%&gt;
+
+CalledScript.asp
+&lt;%
+Dim strName
+Response.Write strName
+%&gt;</pre></span>
+
+
+
+
+<p>In the preceding example, <var class="replaceable">strName</var> is
+declared in both scripts. However, it is not initialized in the
+second script. In this example, Response.Write would result in
+nothing being written to the Response, as the value of
+<var class="replaceable">strName</var> in the called script is undefined.</p>
+
+
+
+
+<p>When an ASP page calls Server.Execute to branch to another ASP page,
+all of the former's built-in ASP objects are passed to the
+called script. For example, any values in the Request object's
+Form collection are available to the ASP page invoked by the call to
+the Server object's Execute method.</p>
+
+
+
+
+<p>Note that according to the Microsoft documentation, the Execute
+method will allow you to add a <!--<primary>QueryString
+parameter, adding with Execute method
+(Server)</primary>-->QueryString parameter to the end of the
+called URL. However, as of the writing of this addition of this book
+(March 2000), adding a QueryString to a URL will generate an error.
+According to Microsoft Technical Support, this is a known bug in IIS
+5.0 and a fix is in development.</p>
+
+
+
+
+<p>Finally, if you call a script using the Execute method from within a
+script that you have set to transactional and the called script
+causes the transaction to be aborted, the OnTransactionAbort event on
+the called page will be called first and then, after the called
+script has completed execution, the OnTransactionAbort event on the
+calling page is executed. For example, suppose the following script,
+<em>CallingScript.ASP</em>, calls the
+<em>CalledScript.ASP</em> script further.</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>CALLINGSCRIPT.ASP
+&lt;%@ TRANSACTION=Required%&gt;
+&lt;%
+Server.Execute "CalledScript.asp?strName=bob"
+Sub OnTransactionAbort( )
+	'Clean up code for CallingScript.asp.
+End Sub
+
+Sub OnTransactionCommit( )
+	Commit code for CalledScript.asp.
+End Sub
+
+
+CALLEDSCRIPT.ASP
+&lt;%@ TRANSACTION=Required%&gt;
+&lt;%
+.
+.
+.
+'Processing code....
+.
+.
+.
+OnTransactionAbort( )
+	'Clean up code for CalledScript.asp.
+End Sub
+
+OnTransactionCommit( )
+	Commit code for CalledScript.asp.
+End Sub</pre></span>
+
+
+
+
+<p>If in <filename>CalledScript.ASP</filename> script, an error occurs
+that forces the transaction to abort, then the OnTransactionAbort
+event code for <em>CalledScript.ASP</em> would be
+executed and then the OnTransactionAbort event code for
+<em>CallingScript.ASP</em> would be executed.</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="GetLastError">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+GetLastError</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Set</span> <var class="replaceable">objASPErr</var> <span class="LITERAL">= Server.GetLastError ()</span>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>The <!--<primary>GetLastError
+method</primary><secondary>Server object</secondary>-->
+<!--<primary>errors</primary><secondary>displaying
+information about</secondary>-->GetLastError method of the
+Server object allows you to display information about any error that
+occurs in your script. The GetLastError method returns a single
+ASPError object (see <link linkend="ch05-1-fm2xml">Chapter 5</link>. You
+can use the returned ASPError object to display or programmatically
+respond to error information. The GetLastError method is new to ASP
+3.0/IIS 5.0</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">objASPErr</var></dt>
+<dd><p>The name of the ASPError object returned by the GetLastError method.</p></dd>
+
+</dl>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%
+' Instantiate an ASPError object using the GetLastError method of the 
+' Server object.
+Set objASPError = Server.GetLastError
+%&gt;
+.
+.
+.
+HTML Display Etc.
+&lt;%
+' Use the properties of the ASPError object (returned by the GetLastError 
+' object) to display information about the error.
+
+' *** FOR MORE INFORMATION, SEE THE ASPERROR OBJECT CHAPTER.
+
+Response.Write Server.HTMLEncode(objASPError.Category)
+If objASPError.ASPCode &gt; " Then
+    Response.Write Server.HTMLEncode(", " &amp; objASPError.ASPCode)
+End If
+Response.Write Server.HTMLEncode(" (0x" &amp; Hex(objASPError.Number) &amp; ")" ) 
+&amp; "&lt;br&gt;"
+If objASPError.ASPDescription &gt; " Then 
+   Response.Write Server.HTMLEncode(objASPError.ASPDescription) &amp; "&lt;br&gt;"
+ElseIf (objASPError.Description &gt; ") Then 
+   Response.Write Server.HTMLEncode(objASPError.Description) &amp; "&lt;br&gt;" End if
+  .
+  .
+  .</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>In this code example (derived from the default
+<filename>500-100.ASP</filename> script that comes with IIS 5.0), the
+script begins by instantiating an ASPError object using the
+GetLast-Error method. It then displays information about the last
+error by using the properties of the ASPError object. For more
+information on the properties of the ASPError object, see <link linkend="ch05-1-fm2xml">Chapter 5</link>.</p>
+
+
+
+
+<p>It is important to note that you cannot use the GetLastError method
+in the script in which the error occurs. For example, the following
+code will not work as you might expect it to:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%
+On Error Resume Next
+Session("MyVar"3333) = "keyton"
+Set objError = Server.GetLastError( )
+Response.Write objError.ASPCode
+%&gt;</pre></span>
+
+
+
+
+<p>You might expect that, because you had used the <span class="LITERAL">On Error
+Resume Next</span> statement, you could then react to errors later
+in the script by using the GetLastError method. Unfortunately, this
+is not the case. IIS 5.0 responds instantly to errors and redirects
+the client using the Server.Transfer method ("behind the
+scenes") to an error-handling page. By default, this error page
+is <filename>/iisHelp/Common/500-100.ASP</filename>. It is in this
+page that you can customize error handling using the GetLastError
+method.</p>
+
+
+
+
+<p>For more information on the <filename>500-100.ASP</filename>
+error-handling page and on error-handling in your scripts in general,
+see <link linkend="ch05-1-fm2xml">Chapter 5</link><filename>.</filename></p>
+
+
+
+
+<p>The GetLastError method works for preprocessing errors, script
+compilation errors, and run-time errors.</p>
+
+
+
+
+<p>It is important to note that the GetLastError method will only return
+error information successfully if no content has been sent to the
+client. If content has already been sent to the client, the
+GetLastError method itself causes an error. For this reason, if you
+have scripts within which you feel that you will need to handle
+various errors, it is a good idea to set the Buffer property of the
+Response object to <span class="LITERAL">True</span> (See <link linkend="ch08-1-fm2xml">Chapter 8</link>):</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Response.Buffer = True</pre></span>
+
+
+
+
+<p>For more information on the GetLastError method and the ASPError
+object it returns, see <link linkend="ch05-1-fm2xml">Chapter 5</link>. </p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="HTMLEncode">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+HTMLEncode</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Server.HTMLEncode</span><!--<primary>HTMLEncode method (Server)</primary>-->
+<!--<primary>encoding</primary><secondary>HTML for display</secondary>-->
+<!--<primary>web browsers</primary><secondary>encoding</secondary><tertiary>HTML for</tertiary>-->
+<!--<primary>HTML (Hypertext Markup Language)</primary><secondary>encoding for browser display</secondary>--> (<var class="replaceable">strHTMLString</var><command role="literal">)</command>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>If you ever need to display the actual HTML code involved in an HTML
+page or ASP script, you must use the HTMLEncode method of the Server
+object. The HTMLEncode method of the Server object allows you to
+encode the HTML string so that, when it is displayed in the browser,
+the browser does not simply interpret the HTML as instructions for
+text layout.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">strHTMLString</var></dt>
+<dd><p>The string whose HTML code you wish to encode for display on the
+client machine.</p></dd>
+
+</dl>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%
+
+' The following code encodes these HTML tags so that they can 
+' be displayed without interpretation on the client browser:
+' &lt;TABLE&gt;&lt;TR&gt;&lt;TD&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+Dim strOldHTML
+Dim strNeutralCode
+
+strOldHTML = "&lt;TABLE&gt;&lt;TR&gt;&lt;TD&gt;"
+strNeutralCode = Server.HTMLEncode(strOldHTML)
+
+' The variable strNeutralCode now holds the following code:
+' &amp;lt;TABLE&amp;gt;&amp;lt;TR&amp;gt;&amp;lt;TD&amp;gt;
+' but will be displayed on the client's machine as
+' &lt;TABLE&gt;&lt;TR&gt;&lt;TD&gt;
+' and the &amp;lt;TABLE&amp;gt;&amp;lt;TR&amp;gt;&amp;lt;TD&amp;gt; will be
+' seen only if you view the source code on the client.
+Response.Write strNeutralCode
+
+%&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>The HTMLEncode method is a straightforward method that is simple to
+use. It makes it possible to display the source code of your HTML
+page or to demonstrate the use of various HTML tags in a web page. It
+is also invaluable for displaying the output of database queries.</p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="MapPath">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+MapPath</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Server.MapPath</span> (<var class="replaceable">strPath</var><command role="literal">)</command>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>The <!--<primary>MapPath method (Server)</primary>-->
+<!--<primary>paths</primary><secondary>determining with
+MapPath()</secondary>--> <!--<primary>virtual
+paths</primary><secondary>determining with
+MapPath()</secondary>--> <!--<primary>web
+servers</primary><secondary>paths
+on</secondary><see>paths</see>-->MapPath method allows you
+to determine the physical path on the server, given a virtual or
+relative path.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">strPath</var></dt>
+<dd><p>A complete virtual path or a path relative to the path of the current
+script's home directory on the server. The method determines
+how to interpret the string depending on if it starts with either a
+slash (/) or a backslash (\). If the
+<var class="replaceable">strPath</var> parameter begins with either of
+these characters, the string is assumed to be a complete virtual
+path. Otherwise, the physical path returned is the path relative to
+the current script's physical directory on the web server.</p></dd>
+
+</dl>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%
+
+' The following line of code determines the physical path
+' of the current script for later use.
+strSearchPath = _
+   Server.MapPath("/searchscripts/start/searchstart.asp")
+
+' This following code then uses the strSearchPath string to
+' determine the file attributes for the current file for 
+' display in the client-side HTML.
+Set fs = Server.CreateObject("Scripting.FileSystemObject")
+Set f = fs.GetFile(strSearchPath)
+datFileLastModified = f.DateLastModified
+%&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;MapPath Example&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+The current script was last modified &lt;%=datFileLastModified%&gt;.
+&lt;/BODY&gt;
+&lt;/HTML&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>There are two important facts to remember when using the MapPath
+method. The first is that it does not support the standard
+<!--<primary>MS-DOS relative directory
+notation</primary>--> <!--<primary>relative directory
+notation</primary>--> <!--<primary>directory
+notation, MS-DOS</primary>--> <!--<primary sortas="ödot and ödot@dot">. and .. for
+directories</primary>-->MS-DOS relative directory notation
+("." and ".."). For this reason, the
+following line of code will result in a runtime error:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>strSearchPath = Server.MapPath("../start/searchstart.asp")</pre></span>
+
+
+
+
+<p>Second, the MapPath method does not check to ensure whether a given
+physical directory exists. For this reason, this method is useful in
+determining the physical path for a new file to be created by the web
+server in response to a line of script code.</p>
+
+
+
+
+<p>Finally, to determine the physical path of the current file, you can
+use the <span class="LITERAL">PATH_INFO</span><!--<primary>PATH_INFO
+element (ServerVariables)</primary>--> element of the
+Request object's ServerVariables collection (for more details,
+see <link linkend="ch07-1-fm2xml">Chapter 7</link>). For example, assume the current
+script is <filename>searchstart.ASP</filename> and it is located in
+the <filename>/searchscripts/start/</filename> virtual directory. The
+following line of code would set the value of
+<var class="replaceable">strSearchPath</var> to
+<filename>D:\apps\searchscripts\start\searchstart.ASP</filename> :</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>strSearchPath = _
+   Server.MapPath(Request.ServerVariables("PATH_INFO"))</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Transfer">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Transfer</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Server.Transfer</span> (<var class="replaceable">strPath</var><command role="literal">)</command>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p>The <!--<primary>Transfer method
+(Server)</primary>--> <!--<primary>ASP (Active Server
+Pages)</primary><secondary>redirecting
+execution</secondary>-->Transfer method allows the developer
+to redirect execution from one script to another script without an
+HTTP response being sent to the client. All information from the
+first script, including values in the Request and other objects, is
+available in full to the second script. Unlike Server.Execute,
+Server.Transfer does not return control to the script that called the
+Transfer method when the called ASP page has Finished executing. The
+method is new to ASP 3.0/IIS 5.0.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">strPath</var></dt>
+<dd><p>The relative or absolute path to the second script to which execution
+will be redirected.</p></dd>
+
+</dl>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>******** BEGIN Transfer Example: First Script ********
+
+&lt;%
+' Transfer Example: First Script
+
+' First Script calls Second Script, which uses Transfer
+' to redirect execution to Third Script.
+%&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;
+Server.Transfer Example
+&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;FORM ACTION="TransferExample_Process1.asp?qsvalue=hannah1" METHOD="post"&gt;
+First Name: &lt;INPUT TYPE="text" NAME="txtFName" VALUE="&gt;&lt;BR&gt;
+Last Name: &lt;INPUT TYPE="text" NAME="txtLName" VALUE="&gt;&lt;BR&gt;
+Address: &lt;INPUT TYPE="text" NAME="txtAddress" VALUE="&gt;&lt;BR&gt;
+City: &lt;INPUT TYPE="text" NAME="txtCity" VALUE="&gt;&amp;nbsp
+State: &lt;INPUT TYPE="text" NAME="txtState" VALUE="&gt;&lt;BR&gt;
+Zipcode: &lt;INPUT TYPE="text" NAME="txtZipcode" VALUE="&gt;&lt;BR&gt;
+&lt;INPUT TYPE="submit" VALUE="Submit"&gt;
+&lt;/FORM&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+******** END Transfer Example: First Script ********
+
+
+
+******** BEGIN Transfer Example: Second Script ********
+&lt;%
+Application("strExample1") = "ApplicationStringValue"
+Session("strExample2") = "SessionStringValue"
+Server.Transfer "TransferExample_Process2.asp"
+Application("strExample1") = "NEWApplicationStringValue"
+Session("strExample2") = "NEWSessionStringValue"
+%&gt;
+******** END Transfer Example: Second Script ********
+
+
+
+******** Begin Transfer Example: Third Script ********
+&lt;%
+' Transfer Example: Third Page
+
+' First Page calls Second Page, which uses Transfer
+' to redirect execution to Third Page.
+%&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;
+Server.Transfer Example
+&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;%
+Response.Write "First Name: " &amp; Request.Form("txtFName") &amp; "&lt;BR&gt;"
+Response.Write "Last Name: " &amp; Request.Form("txtLName") &amp; "&lt;BR&gt;"
+Response.Write "Address: " &amp; Request.Form("txtAddress") &amp; "&lt;BR&gt;"
+Response.Write "City: " &amp; Request.Form("txtCity") &amp; "&lt;BR&gt;"
+Response.Write "State: " &amp; Request.Form("txtState") &amp; "&lt;BR&gt;"
+Response.Write "Zipcode: " &amp; Request.Form("txtZipcode") &amp; "&lt;BR&gt;&lt;BR&gt;"
+
+Response.Write "Application Variable: " &amp; Application("strExample1") &amp; "&lt;BR&gt;"
+Response.Write "Session Variable: " &amp; Session("strExample2") &amp; "&lt;BR&gt;"
+
+%&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+******** END Transfer Example: Third Script ********</pre></span>
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>If you use this code, create the three scripts, and test them in a
+browser, you will see something similar to the following as a final
+result:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>First Name: keyton
+Last Name: weissinger
+Address: 123 Main Street
+City: Somewhereville
+State: Alabama
+Zipcode: 30087
+
+Application Variable: ApplicationStringValue
+Session Variable: SessionStringValue</pre></span>
+
+
+
+
+<p>Note that the Application and Session variables are not updated by
+the code in the block after the call to the Transfer method.</p>
+
+
+
+
+<p>As demonstrated in the example, when you call the Transfer method,
+all information available to the first script from the built-in ASP
+objects is also available to the second script. Note, however, that
+this is not the case for script-level variables. If you declare and
+initialize a variable in the first script, it is not available in the
+second script.</p>
+
+
+
+
+<p>Also, if there are any variables with Application- or Session-level
+scope, the second script also has access to these—even if the
+second script is in another application space.</p>
+
+
+
+
+<p>It is important to note two things about the Transfer method. The
+first is that, as you might expect, an error will be raised if you
+attempt to use the Transfer method after some response has already
+been sent to the client, so set the Buffer property of the Response
+object to <span class="LITERAL">True</span> to avoid this problem, if
+appropriate.</p>
+
+
+
+
+<p>The second thing to note about the Transfer method is that no further
+script after the call to Transfer method is executed. For example, in
+the following example, the third and fourth lines of code will be
+completely ignored:</p>
+
+
+
+
+<span class="PROGRAMLISTING"><pre>Session("intMyVar") = 1
+Server.Transfer "SomeOtherScript.asp"
+Session("intMyVar") = 2
+Session("intMyOtherVar") = 3</pre></span>
+
+
+
+
+<p>After the execution of the preceding block of code, the Session
+variable, <var class="replaceable">intMyVar</var> will still have the
+value of 1 and the <var class="replaceable">intMyOtherVar</var> variable
+will still be undefined unless defined elsewhere before the execution
+of this block of  code.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="URLEncode">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+URLEncode</td>
+<td class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><span class="LITERAL">Server.URLEncode</span> (<var class="replaceable">strURL</var><command role="literal">)</command>
+</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+<p><!--<primary>URLEncode method (Server)</primary>-->
+<!--<primary>URLs</primary><secondary>encoding query
+strings</secondary>--> <!--<primary>query strings,
+encoding</primary>-->
+<!--<primary>encoding</primary><secondary>query strings for
+URLs</secondary>-->Encodes a string that can then be sent
+over the address line as a query string.</p>
+
+
+
+</td>
+</tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Parameters</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<dl>
+<dt><var class="replaceable">strURL</var></dt>
+<dd><p>The string value you want to encode to send over the address line as
+a query string.</p></dd>
+
+</dl>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<span class="PROGRAMLISTING"><pre>&lt;%
+
+' The following encodes the URL 
+' http://www.myserver.com/apps/search.asp
+Dim strOldURL
+Dim strNewURL
+
+strOldURL = "http://www.myserver.com/apps/search.asp"
+strNewURL = Server.URLEncode(strOldURL)
+
+' This encoding results in the following string value being
+' placed in the strNewURL variable:
+' http%3A%2F%2Fwww%2Emyserver%2Ecom%2Fapps%2Fsearch%2Easp
+
+' This new string value could be used in a query string to 
+' represent a "next script," as demonstrated here:
+
+%&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;URLEncode Example&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;FORM ACTION="/apps/CalcAndRedirect.asp?newURL=&lt;%=strNewURL%&gt;" METHOD = POST&gt;
+&lt;INPUT TYPE = TEXT NAME = "First Value"&gt;
+&lt;INPUT TYPE = TEXT NAME = "Second Value"&gt;
+&lt;INPUT TYPE = SUBMIT NAME = "Calculate Results"&gt;
+&lt;/FORM&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;</pre></span>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="DESCRIPTIONTITLE">Notes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+
+
+<p>The URLEncode method, like the HTMLEncode method, is straightforward
+and easy to use. It is imperative that you use the URLEncode method
+any time you are forced to send information over the address line
+instead of posting information using the <span class="LITERAL">POST</span>
+method. If you do not encode your information and place it into the
+QueryString collection (through the <span class="LITERAL">GET</span> method),
+its interpretation is unpredictable, depending on the data sent.</p>
+
+
+
+
+<p>If you send information in the query string (i.e., from visible frame
+to visible frame), but not over the address line, this encoding is
+done for you.  </p>
+
+
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<participant name="DynamicSource">
+		<translator>
+			<searchPatterns>
+				<searchPattern paramNames="rs"><![CDATA[/(\w+)\s*=\s*Server\.CreateObject\(\s*"ADODB.RECORDSET"\s*\)/i]]></searchPattern>
+				<searchPattern><![CDATA[/\w+\.open\b/i]]></searchPattern>
+			</searchPatterns>
+			<translations>
+				<translation whereToSearch="directive" translationType="dynamic source">
+					<openTag>MM_RECORDSET</openTag>
+					<attributes>
+						<attribute><![CDATA[NAME="@@rs@@"]]></attribute>
+					</attributes>
+					<closeTag>MM_RECORDSET</closeTag>
+				</translation>
+			</translations>
+		</translator>
+</participant>

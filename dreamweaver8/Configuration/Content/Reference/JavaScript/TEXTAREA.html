@@ -1,0 +1,1557 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">textarea</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span>  IE <span class="emphasis">3</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>The <span class="literal">textarea</span> object reflects the
+<span class="literal">textarea</span> element and is used as a form control.
+This object is the primary way of getting a user to enter multiple
+lines of text for submission to the server. Note that the
+<span class="literal">innerHTML</span> property is not available on the
+Macintosh version of Internet Explorer 4. Only a limited number of
+properties and methods shown below are available in early browsers
+that do not support addressing all HTML elements (prior to IE 4 and
+Netscape 6). IE 5 and later support the shared <span class="literal">doScroll(
+)</span> method for this object.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="htmlequivalent"><span class="title">HTML Equivalent</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;textarea&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.<span class="replaceable">formName</span>.<span class="replaceable">elementName</span>
+[window.]document.forms[i].elements[j]
+[window.]document.getElementById("<span class="replaceable">elementID</span>")</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificproperties"><span class="title">Object-Specific Properties</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">cols</span></td><td><span class="literal">dataFld</span></td><td><span class="literal">dataSrc</span></td><td><span class="literal">defaultValue</span></td><td><span class="literal">form</span></td>
+								</tr>
+								<tr><td><span class="literal">name</span></td><td><span class="literal">readOnly</span></td><td><span class="literal">rows</span></td><td><span class="literal">status</span></td><td><span class="literal">type</span></td>
+								</tr>
+								<tr><td><span class="literal">value</span></td><td><span class="literal">wrap</span></td><td></td><td></td><td></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificmethods"><span class="title">Object-Specific Methods</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">createTextRange( )</span></td><td><span class="literal">handleEvent[ ]</span></td><td><span class="literal">select( )</span></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificeventhandlerproperties"><span class="title">Object-Specific Event Handler Properties</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><th>Handler</th><th>NN</th><th>IE</th><th>DOM</th><tr><td>onblur</td><td>2</td><td>3</td><td>n/a</td>
+								</tr>
+								<tr><td>onchange</td><td>2</td><td>3</td><td>n/a</td>
+								</tr>
+								<tr><td>onfocus</td><td>2</td><td>3</td><td>n/a</td>
+								</tr>
+								<tr><td>onkeydown</td><td>4</td><td>4</td><td>n/a</td>
+								</tr>
+								<tr><td>onkeypress</td><td>4</td><td>4</td><td>n/a</td>
+								</tr>
+								<tr><td>onkeyup</td><td>4</td><td>4</td><td>n/a</td>
+								</tr>
+								<tr><td>onscroll</td><td>n/a</td><td>4</td><td>n/a</td>
+								</tr>
+								<tr><td>onselect</td><td>2</td><td>3</td><td>n/a</td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+			</table>
+		</div>
+				<div id="accessKey">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">accessKey</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal"></p>
+							</td><td valign="top" nowrap class="requirements"><span class="emphasis">Read/Write</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>			This is single character key that either gives focus to an element
+		(in some browsers) or activates a form control or link action. The
+		browser and operating system determine if the user must press a
+		modifier key (e.g., <span class="emphasis">Ctrl</span>, <span class="emphasis">Alt</span>, or <span class="emphasis">Command</span>) with the access key to activate the
+		link. In Windows versions of IE 5 and later and Netscape 6, the
+		<span class="emphasis">Alt</span> key is required and the key is
+		not case-sensitive. For Macintosh versions of IE 5 and later and
+		Netscape 6, the <span class="emphasis">Ctrl</span> modifier key is
+		required to effect the action.
+		</p>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2"><p>			Although listed here as a widely shared property, that
+		isn't strictly the case across all implementations.
+		Netscape 6 (per the W3C DOM) recognizes this property only for the
+		following elements: <span class="literal">a</span>, <span class="literal">area</span>,
+		<span class="literal">button</span>, <span class="literal">input</span>,
+		<span class="literal">label</span>, <span class="literal">legend</span>, and
+		<span class="literal">textarea</span>. To this list, IE 4 adds
+		<span class="literal">applet</span>, <span class="literal">body</span>,
+		<span class="literal">div</span>, <span class="literal">embed</span>,
+		<span class="literal">isindex</span>, <span class="literal">marquee</span>,
+		<span class="literal">object</span>, <span class="literal">select</span>,
+		<span class="literal">span</span>, <span class="literal">table</span>, and
+		<span class="literal">td</span> (but removes <span class="literal">label</span> and
+		<span class="literal">legend</span>). IE 5 adds every other renderable element,
+		but with a caution. Except for <span class="literal">input</span> and other
+		form-related elements, you must also assign a
+		<span class="literal">tabindex</span> attribute or <span class="literal">tabIndex</span>
+		property value to the IE 5 and later element (even if
+		it's simply a value of zero for all) to let the
+		accelerator key combination bring focus to the element. As of Version
+		7, Netscape does not alter UI behavior if a script changes the
+		property's value.
+		</p>
+									</td>
+	</tr>
+
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>document.links[3].accessKey = "n";</pre>
+								</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Single alphanumeric (and punctuation) keyboard character.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Empty string. </p>
+							</td>
+						</tr>
+					</table>
+		</div>
+		<div id="blur( )">
+					<table cellpadding="0" cellspacing="0"
+
+		border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">blur(
+
+		)</td><td valign="top" nowrap class="compatibility">NN <span
+
+		class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span
+
+		class="emphasis">1</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap
+
+		class="usage"><p class="literal"></p>
+							</td><td valign="top" nowrap
+
+		class="requirements"></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2"
+
+		class="description">
+								<tr>
+									<td colspan="2"><p>			Removes
+
+		focus from the current object, at which time the
+		object's <span class="literal">onblur</span> event fires. Note
+		that the range of elements capable of focus and blur (both the event
+		and method) is limited in all browsers except for more recent
+		versions of IE (see the shared <span class="literal">tabindex</span>
+
+		attribute
+		in Chapter 8). Most reliably for backward
+		compatibility, apply the <span class="literal">blur( )</span> method to
+		blatantly focusable elements, such as text <span
+
+		class="literal">input</span>
+		and <span class="literal">textarea</span> elements. Assigning the
+
+		attribute
+		<span class="literal">onfocus="this.blur( );"</span> to a text
+		<span class="literal">input</span> element, for instance, is a crude
+
+		but
+		effective backward-compatible way to largely disable a field for
+		browsers that do not provide genuine element disabling.
+		</p>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2"><p>			Use
+
+		<span class="literal">blur( )</span> and <span class="literal">focus(
+
+		)</span>
+		methods in moderation on the same page. You can inadvertently trigger
+		endless loops of blurring and focusing if alert dialog boxes are
+		involved along the way. Moreover, be aware that when you invoke the
+		<span class="literal">blur( )</span> method on one object, some other
+
+		object
+		(perhaps the <span class="literal">window</span> object) receives an
+		<span class="literal">onfocus</span> event.
+		</p>
+									</td>
+	</tr>
+
+						<tr>
+							<td valign="top" colspan="2"
+
+		class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2"
+
+		class="parameters"><span class="title">Parameters</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			None.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2"
+
+		class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2"
+
+		class="returnedvalue"><span class="title">Returned Value</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			None.</p>
+							</td>
+						</tr>
+					</table>
+		</div>
+		<div id="clientHeight, clientWidth">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">clientHeight, clientWidth</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">7</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal"></p>
+							</td><td valign="top" nowrap class="requirements"><span class="emphasis">Read-only</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>			Broadly speaking, these provide the height and width of the
+		element's content, but with minor variations with
+		respect to element padding among various operating system versions of
+		IE and compatibility modes controlled by the
+		<span class="literal">DOCTYPE</span> declaration. Not available for all element
+		types in IE for Macintosh. For Netscape 7, values are zero except
+		when an element's content overflows the viewable
+		area, in which case the values reveal the dimensions of the viewable
+		area (e.g., the browser window's content region for
+		the <span class="literal">document.body</span> element). See the Section 9.2 at the beginning of
+		this chapter for details.
+		</p>
+									</td>
+	</tr>
+
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>var midHeight = document.body.clientHeight/2;</pre>
+								</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Integer pixel value.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			<span class="literal">0</span> </p>
+							</td>
+						</tr>
+					</table>
+		</div>
+
+		<div id="clientLeft, clientTop">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">clientLeft, clientTop</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal"></p>
+							</td><td valign="top" nowrap class="requirements"><span class="emphasis">Read-only</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>			Broadly speaking, these provide the left and top coordinates of the
+		element's content within the box that includes the
+		element's padding, but with minor variations among
+		various operating system versions of IE. Not available for all
+		element types in IE for Macintosh. See the Section 9.2 at the beginning of
+		this chapter for details. More useful information for inline element
+		positioning generally comes from the <span class="literal">offsetLeft</span>
+		and <span class="literal">offsetTop</span> properties (including Netscape 6).
+		For CSS-positioned elements (including changing an
+		element's position), use <span class="literal">style</span>
+		object properties, such as <span class="literal">left</span> and
+		<span class="literal">top</span>, and (in IE only) <span class="literal">pixelLeft</span>
+		and <span class="literal">pixelTop</span>.
+		</p>
+									</td>
+	</tr>
+
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Integer pixel value.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			<span class="literal">0</span> </p>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+		<div id="cols">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">cols</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Specifies the width of the editable space of the
+<span class="literal">textarea</span> element. The value represents the number
+of monofont characters that are to be displayed within the width.
+When the font size can be influenced by style sheets, the actual
+width changes accordingly.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>document.forms[0].comments.cols = 60;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Varies with browser and operating system. </p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="disabled">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">disabled</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal"></p>
+							</td><td valign="top" nowrap class="requirements"><span class="emphasis">Read/Write</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>			Specifies whether the element is available for user interaction. When
+		set to <span class="literal">true</span>, the element cannot receive focus or
+		be modified by the user, and it typically appears grayed out on the
+		page. This property is available for all HTML element objects in IE
+		5.5 for Windows and later. For IE 4 and IE 5, it applies only to form
+		controls, while Netscape 6 and later recognize the property for form
+		controls and the <span class="literal">style</span> element object. A disabled
+		form control's name/value pair is not submitted with
+		its form.
+		</p>
+									</td>
+	</tr>
+
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>document.getElementById("myButton").disabled = true;</pre>
+								</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Boolean value: <span class="literal">true</span> | <span class="literal">false</span>.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			<span class="literal">false</span></p>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+		<div id="dataFld">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">dataFld</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Used with IE data binding to associate a remote data source column
+name to a <span class="literal">textarea</span> object's
+<span class="literal">value</span> property. A <span class="literal">datasrc</span>
+attribute must also be set for the element. Setting both the
+<span class="literal">dataFld</span> and <span class="literal">dataSrc</span> properties
+to empty strings breaks the binding between element and data source.
+Works only with text file data sources in IE 5/Mac.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>document.myForm.myTextArea.dataFld = "description";</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Case-sensitive identifier of the data source column.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="dataSrc">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">dataSrc</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Used with IE data binding to specify the ID of the
+page's <span class="literal">object</span> element that loads
+the data source object for remote data access. Content from the data
+source is specified via the <span class="literal">datafld</span> attribute.
+Setting both the <span class="literal">dataFld</span> and
+<span class="literal">dataSrc</span> properties to empty strings breaks the
+binding between element and data source. Works only with text file
+data sources in IE 5/Mac.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>document.myForm.myTextArea.dataSrc = "DBSRC3";</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Case-sensitive identifier of the data source.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="defaultValue">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">defaultValue</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Specifies the default text for the <span class="literal">textarea</span>
+element, as established by the text between the start and end tags in
+the page's source code.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var txtAObj = document.forms[0].myTextArea;
+if (txtAObj.value != txtAObj.defaultValue ) {
+    ...
+}</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Any string value.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="focus( )">
+					<table cellpadding="0" cellspacing="0"
+
+		border="0" width="100%" class="main">
+						<tr><td valign="top"
+
+		class="name">focus( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span
+
+		class="emphasis">3</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap
+
+		class="usage"><p class="literal"></p>
+							</td><td valign="top" nowrap
+
+		class="requirements"></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2"
+
+		class="description">
+								<tr>
+									<td colspan="2"><p>			Gives
+
+		focus from the current object, at which time the
+		object's <span class="literal">onfocus</span> event fires.
+		Note that the range of elements capable of focus and blur (both the
+		event and method) is limited in all browsers except for more recent
+		versions of IE (see the shared <span class="literal">tabindex</span>
+
+		attribute
+		in Chapter 8). Most reliably for backward
+		compatibility, apply the <span class="literal">focus( )</span> method
+
+		to
+		blatantly focusable elements, such as text <span
+
+		class="literal">input</span>
+		and <span class="literal">textarea</span> elements.
+		</p>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2"><p>			To give
+
+		a text box focus and pre-select all the text in the box, use
+		the sequence of <span class="literal">focus( )</span> and <span
+
+		class="literal">select(
+		)</span> methods on the element. If this sequence is to occur
+		after windows change (such as after an alert dialog box closes),
+		place the methods in a separate function, and invoke this function
+		through the <span class="literal">setTimeout( )</span> method following
+
+		the
+		<span class="literal">alert( )</span> method for the dialog. This
+
+		allows
+		IE/Windows to sequence statement execution correctly.
+		</p>
+									</td>
+	</tr>
+
+						<tr>
+							<td valign="top" colspan="2"
+
+		class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2"
+
+		class="parameters"><span class="title">Parameters</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			None. </p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2"
+
+		class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2"
+
+		class="returnedvalue"><span class="title">Returned Value</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			None.</p>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+		<div id="form">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">form</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">1a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a reference to the <span class="literal">form</span> element that
+contains the current element. When processing an event from this
+element, the event handler function automatically has access to the
+<span class="literal">select</span> element (as the event
+object's <span class="literal">target</span> or
+<span class="literal">srcElement</span> property). By reading the
+<span class="literal">form</span> property, the script can easily access other
+controls within the same form.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var theForm = evt.srcElement.form;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">form</span> element object reference.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="name">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">name</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>This is the identifier associated with the form control. The value of
+this property is submitted as one-half of the name/value pair when
+the form is submitted to the server. Names are hidden from user view,
+since control labels are assigned via other means, depending on the
+control type. Form control names may also be used by script
+references to the objects. Despite the modern
+standards' preference for the <span class="literal">id</span>
+attribute, many browsers still require that a control be assigned a
+<span class="literal">name</span> attribute to allow the
+control's value to be submitted.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>document.orderForm.myTextArea.name = "customerComment";</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Case-sensitive identifier that follows the rules of identifier
+naming: it may contain no whitespace, cannot begin with a numeral,
+and should avoid punctuation except for the underscore character.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="readOnly">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">readOnly</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Indicates whether the form element can be edited on the page by the
+user. A form control that has its <span class="literal">readOnly</span>
+property set to <span class="literal">true</span> may still be modified by
+scripts, even though the user may not alter the content.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>document.forms[0].myTextArea.readOnly = "true";</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Boolean value: <span class="literal">true</span> | <span class="literal">false</span>.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">false</span></p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="rows">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">rows</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Specifies the height of the <span class="literal">textarea</span> element based
+on the number of lines of text that are to be displayed without
+scrolling. The value represents the number of monofont character
+lines that are to be displayed within the height before the scrollbar
+becomes active. When the font size can be influenced by style sheets,
+the actual height changes accordingly.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>document.forms[0].comments.rows = 6;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">2</span> (IE/Windows); <span class="literal">1</span>
+(IE/Macintosh); <span class="literal">-1</span> (Netscape 6, meaning that the
+attribute or property hasn't been set).
+</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="scrollHeight, scrollWidth">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">scrollHeight, scrollWidth</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">7</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal"></p>
+							</td><td valign="top" nowrap class="requirements"><span class="emphasis">Read-only</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>			Originally implemented in IE 4 for elements that either scrolled or
+		influenced an element's scroll
+		(<span class="literal">body</span>, <span class="literal">button</span>,
+		<span class="literal">caption</span>, <span class="literal">div</span>,
+		<span class="literal">fieldset</span>, <span class="literal">legend</span>,
+		<span class="literal">marquee</span>, and <span class="literal">textarea</span>), these
+		properties return the pixel dimensions of an element, including
+		elements that are larger than the viewable area in the browser
+		window. This is in contrast to the <span class="literal">clientHeight</span>
+		and <span class="literal">clientWidth</span> properties for scrollable
+		elements, which return dimensions of only visible portions of the
+		element. IE for the Macintosh, however, interprets the intent of the
+		scroll- properties differently, returning the dimensions of the
+		visible portion.
+		</p>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2"><p>			Starting in IE 5 for Windows, all HTML elements have these
+		properties, and the values for nonscrolling elements are the same as
+		the <span class="literal">offsetHeight</span> and
+		<span class="literal">offsetWidth</span> properties. Netscape 7 implements
+		these properties for all elements, returning the height and width of
+		the element, whether or not it's in view. The
+		important point is that for key elements, such as the
+		<span class="literal">body</span>, the properties mean different things and can
+		disrupt cross-platform operation.
+		</p>
+									</td>
+	</tr>
+
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>var midPoint = document.body.scrollHeight/2;</pre>
+								</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Positive integer or zero.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			None. </p>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+		<div id="scrollLeft, scrollTop">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">scrollLeft, scrollTop</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">7</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal"></p>
+							</td><td valign="top" nowrap class="requirements"><span class="emphasis">Read/Write</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>			Provide the distance in pixels between the actual left or top edge of
+		the element's physical content and the left or top
+		edge of the visible portion of the content. Setting these properties
+		allows you to use a script to adjust the scrolling of content within
+		a scrollable container, such as text in a <span class="literal">textarea</span>
+		element or an entire document in the browser window or frame. When
+		the content is not scrolled, both values are zero. Setting the
+		<span class="literal">scrollTop</span> property to 15 scrolls the document
+		upward by 15 pixels in the window; the <span class="literal">scrollLeft</span>
+		property is unaffected unless explicitly changed. The property values
+		change as the user adjusts the scrollbars. This is important for some
+		event-driven positioning tasks in IE for Windows because the
+		coordinate system for event offset measurements are with respect to
+		the visible area of a page in the browser window. You must add
+		<span class="literal">document.body</span> scrolling factors to align event
+		coordinates with body content positions (see the element dragging
+		example in Chapter 6). Starting with IE 5 for
+		Windows, the <span class="literal">scrollLeft</span> and
+		<span class="literal">scrollTop</span> properties are available for all HTML
+		element objects, but values for unscrollable elements are zero.
+		</p>
+									</td>
+	</tr>
+
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>document.body.scrollTop = 40;</pre>
+								</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Positive integer or zero.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			<span class="literal">0</span></p>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+		<div id="status">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">status</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>This is implemented in IE, but has no function for the textarea
+object.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Boolean value: <span class="literal">true</span> | <span class="literal">false</span>; or
+<span class="literal">null</span>.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">null</span></p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="tabIndex">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">tabIndex</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal"></p>
+							</td><td valign="top" nowrap class="requirements"><span class="emphasis">Read/Write</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>			This is a number that indicates the sequence of this element within
+		the tabbing order of all focusable elements in the document. Tabbing
+		order follows a strict set of rules. Elements that have values other
+		than zero assigned to their <span class="literal">tabIndex</span> properties
+		are first in line when a user starts tabbing in a page. Focus starts
+		with the element with the lowest <span class="literal">tabIndex</span> value
+		and proceeds in order to the highest value, regardless of physical
+		location on the page or in the document. If two elements have the
+		same <span class="literal">tabIndex</span> values, the element that comes
+		earlier in the document receives focus first. Next come all elements
+		that either don't support the
+		<span class="literal">tabIndex</span> property or have the value set to zero.
+		These elements receive focus in the order in which they appear in the
+		document.
+		</p>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2"><p>			The W3C DOM and Netscape 6 limit the <span class="literal">tabIndex</span>
+		property to the following element objects: <span class="literal">a</span>,
+		<span class="literal">area</span>, <span class="literal">button</span>,
+		<span class="literal">input</span>, <span class="literal">object</span>,
+		<span class="literal">select</span>, <span class="literal">textarea</span>. To this list,
+		IE 4 adds <span class="literal">applet</span>, <span class="literal">body</span>,
+		<span class="literal">div</span>, <span class="literal">embed</span>,
+		<span class="literal">isindex</span>, <span class="literal">marquee</span>,
+		<span class="literal">span</span>, <span class="literal">table</span>, and
+		<span class="literal">td</span>. IE 5 adds every other renderable element. A
+		negative value in IE (only) removes an element from tabbing order
+		entirely.
+		</p>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2"><p>			Links and anchors cannot be tabbed to with the Mac version of IE 4,
+		so the <span class="literal">tabIndex</span> property for <span class="literal">a</span>
+		element objects is ignored in that version.
+		</p>
+									</td>
+	</tr>
+
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>document.getElementById("link3").tabIndex = 6;</pre>
+								</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Integer.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			<span class="literal">0</span> </p>
+							</td>
+						</tr>
+					</table>
+		</div>
+		<div id="type">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">type</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns the type of form control element. The value is returned in
+all lowercase letters. It may be necessary to cycle through all form
+elements in search of specific types to do some processing on (e.g.,
+emptying all form controls of type <span class="literal">"textarea"</span>
+while leaving other controls untouched).
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>if (document.forms[0].elements[3].type == "textarea") {
+    ...
+}</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Any of the following constants (as a string):
+<span class="literal">button</span> | <span class="literal">checkbox</span> |
+<span class="literal">file</span> | <span class="literal">hidden</span> |
+<span class="literal">image</span> | <span class="literal">password</span> |
+<span class="literal">radio</span> | <span class="literal">reset</span> |
+<span class="literal">select-multiple</span> | <span class="literal">select-one</span> |
+<span class="literal">submit</span> | <span class="literal">text</span> |
+<span class="literal">textarea</span>.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">textarea</span></p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="value">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">value</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Specifies the current value associated with the form control that is
+submitted with the name/value pair for the element. All values are
+strings.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var comment = document.forms[0].myTextArea.value;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			String.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="wrap">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">wrap</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read/Write&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Indicates whether the browser should wrap text in a
+<span class="literal">textarea</span> element and whether wrapped text should
+be submitted to the server with soft returns converted to hard
+carriage returns. A value of <span class="literal">hard</span> engages
+word-wrapping and converts soft returns to CR-LF characters in the
+value submitted to the server. A value of <span class="literal">soft</span>
+turns on word-wrapping, but does not include the CR-LF characters in
+the text submitted with the form. A value of <span class="literal">off</span>
+turns word-wrapping off.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>document.forms[0].comments.wrap = "soft";</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			One of the constant values (as a string): <span class="literal">hard</span> |
+<span class="literal">off</span> | <span class="literal">soft</span>.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">soft</span></p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="createTextRange( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">createTextRange( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Creates a <span class="literal">TextRange</span> object from the content of the
+<span class="literal">textarea</span> object. See the
+<span class="literal">TextRange</span> object for details.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			<span class="literal">TextRange</span> object.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="handleEvent[ ]">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">handleEvent[ ]</td><td valign="top" nowrap class="compatibility">NN |<span class="emphasis">4|</span> IE <span class="emphasis">n/a</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">handleEvent(<span class="replaceable">event</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Instructs the object to accept and process the event whose
+specifications are passed as the parameter to the method. The object
+must have an event handler for the event type to process the event.
+Navigator 4 only.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>A Navigator 4 <span class="literal">event</span> object. </li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="select( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">select( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Selects all the text displayed in the form element. To position the
+insertion pointer in a specific location inside a
+<span class="literal">textarea</span> element in IE, see the
+<span class="literal">TextRange</span> object.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<html xmlns:un="http://usablenet.com/namespaces/508_rules">
+   <link rel="stylesheet" href="josh.css">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Detailed View for rule: Use a public text identifier in a DOCTYPE statement</title>
+      <!--
+  508/W3C Accessibility Suite OEM V2 for Macromedia Dreamweaver
+  (C) Copyright 2001-2005 UsableNet Inc. All rights reserved.
+  -->
+   </head>
+   <body bgcolor="#ffffff">
+      <div id="Description">
+         <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+            <tr>
+               <td valign="top" nowrap="true" class="name">Use a public text identifier in a DOCTYPE statement</td>
+               <td valign="top" nowrap="true" class="compatibility">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+            </tr>
+            <tr>
+               <td valign="top" align="right" nowrap="true" colspan="2" class="requirements">WAI / WCAG 1.0 Priority 2 checkpoint 3.2</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Description</b><br>
+                  
+                  
+                  <p>
+                     The DOCTYPE element is missing or is not valid.
+                     
+                  </p>
+                  
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>How to fix</b>
+                  
+                  
+                  <p>
+                     If the DOCTYPE element is missing, then add one. If it is not valid,
+                     then edit and correct it. <br>
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     Check the validity of the DOCTYPE by using the Validator.
+                     
+                  </p>
+                  
+                  
+                  
+                  
+                  <p>
+                     The DOCTYPE should contain the HTML language version that is used. For example, HTML 4.01 can be based on three different
+                     variants (i.e. three DTDs). It is important to include one of the 
+                     following document type declarations in the documents. 
+                     The DTDs vary in the elements they support.<br>
+                     To define the DOCTYPE of the page include one of the following 
+                     just before the <strong>HTML</strong> tag, at the beginning 
+                     of the document:
+                     <pre>
+  &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+       "http://www.w3.org/TR/html4/strict.dtd"&gt;
+</pre> 
+                     <pre>
+  &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+       "http://www.w3.org/TR/html4/loose.dtd"&gt;
+</pre> 
+                     <pre>
+  &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" 
+       "http://www.w3.org/TR/html4/frameset.dtd"&gt;
+</pre> 
+                     
+                     The following DOCTYPE is for XHMTL strict (and similar ones exist for
+                     the Transitional and Frameset flavors: see the <strong>XHTML 1.0 page</strong>
+                     [http://www.w3.org/MarkUp/#xhtml1]
+                      by W3C):
+                     
+                     <pre>
+  &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+</pre>
+                     </p>
+                  
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Explanation</b><br>
+                  
+                  
+                  <p>
+                     According to HTML standards, each HTML document requires a Document
+                     Type Declaration. The "DOCTYPE" begins the HTML document
+                     and tells which version of HTML to expect when processing the
+                     document.
+                     
+                  </p>
+                  
+                  <p>
+                     The DOCTYPE declaration identifies the computer language and version
+                     in which the document has been coded. With this information
+                     browsers can interpret accessibility features in the document
+                     correctly. <br> This requirement is important for accessibility
+                     because assistive technologies may rely on this declaration to
+                     determine how to process the document.
+                     
+                  </p>
+                  
+                  <p>
+                     When using non-HTML documents (for example when using SMIL or
+                     SVG) use the
+                     appropriate DOCTYPE declaration for that markup language to ensure that
+                     browsers do not attempt to interpret it incorrectly as HTML.
+                     
+                  </p>
+                  
+                  
+               </td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

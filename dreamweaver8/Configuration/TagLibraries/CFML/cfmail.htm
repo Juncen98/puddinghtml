@@ -1,0 +1,215 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFMAIL</title>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var CHARSET;
+var TYPELIST;
+var theUIObjects;
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects);
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects);
+}
+
+function initializeUI()
+{
+    CHARSETLIST = new ListControl("thecharset");
+    TYPELIST = new ListControl("thetype");
+    theUIObjects  = new Array(CHARSETLIST,TYPELIST);
+
+  tagDialog.populateDropDownList(CHARSETLIST, theCharSetCap, theCharSetVal, 1);
+  tagDialog.populateDropDownList(TYPELIST, theMailTypeCap, theMailTypeVal, 0);
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<div name="常规">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">到: </td>
+      <td nowrap="nowrap">
+        <input name="theto" type="text" class="basicTextField" id="attr:cfmail:to" attname="to" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">回复: </td>
+      <td nowrap="nowrap">
+        <input name="thereplyto" type="text" class="basicTextField" id="attr:cfmail:replyto" attname="replyto" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">未能: </td>
+      <td nowrap="nowrap">
+        <input name="thefailto" type="text" class="basicTextField" id="attr:cfmail:failto" attname="failto" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">从: </td>
+      <td nowrap="nowrap">
+        <input name="thefrom" type="text" class="basicTextField" id="attr:cfmail:from" attname="from" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">主题: </td>
+      <td nowrap="nowrap">
+        <input name="thesubject" type="text" class="basicTextField" id="attr:cfmail:subject" attname="subject" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">抄送: </td>
+      <td nowrap="nowrap">
+        <input name="thecc" type="text" class="basicTextField" id="attr:cfmail:cc" attname="cc" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">密件抄送: </td>
+      <td nowrap="nowrap">
+        <input name="thebcc" type="text" class="basicTextField" id="attr:cfmail:bcc" attname="bcc" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">字符集: </td>
+      <td nowrap="nowrap">
+	    <select name="thecharset" class="oneWordOptionList" id="attr:cfmail:charset" attname="charset" editable="true">
+        </select>
+      </td>
+    </tr>
+	 <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">假脱机启用: </td>
+      <td nowrap="nowrap">
+        <input name="thespoolenable" type="checkbox" id="attr:cfmail:spoolenable" attname="spoolenable" truevalue="yes" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div name="动态内容">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">查询名称: </td>
+      <td nowrap="nowrap">
+        <input name="thequery" type="text" class="basicTextField" id="attr:cfmail:query" attname="query" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">组字段: </td>
+      <td nowrap="nowrap">
+        <input name="thegroup" type="text" class="basicTextField" id="attr:cfmail:group" attname="group" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfmail:groupcasesensitive" name="thegroupcasesensitive" attname="groupcasesensitive" truevalue="" falsevalue="no" checked="true" /> 组区分大小写
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">起始行: </td>
+      <td nowrap="nowrap">
+        <input name="thestartrow" type="text" class="medTField" id="attr:cfmail:startrow" attname="startrow" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">最大行数: </td>
+      <td nowrap="nowrap">
+        <input name="themaxrows" type="text" class="medTField" id="attr:cfmail:maxrows" attname="maxrows" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div name="消息正文">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">消息类型: </td>
+      <td nowrap="nowrap">
+        <select name="thetype" class="oneWordOptionList" id="attr:cfmail:type" attname="type" editable="false">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="top" nowrap="nowrap">消息: </td>
+      <td nowrap="nowrap">
+        <textarea name="thecfmail"  wrap="VIRTUAL" class="stringOrMsgField" id="attr:cfml:sendmail:theinnerhtml" attname="innerHTML"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">文字自动换行: </td>
+      <td nowrap="nowrap">
+        <input name="thewraptext" type="text" class="medTField" id="attr:cfmail:wraptext" attname="wraptext" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div name="MIME 附件">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">MIME 附件: </td>
+      <td nowrap="nowrap">
+        <input name="themimeattach" type="text" class="largeTField" id="attr:cfmail:mimeattach" attname="mimeattach" />
+        &nbsp;
+        <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('themimeattach',null,true);focus(this)">
+      </td>
+    </tr>
+  </table>
+</div>
+<div name="服务器设置">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">服务器: </td>
+      <td nowrap="nowrap">
+        <input name="theserver" type="text" class="basicTextField" id="attr:cfmail:server" attname="server" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">端口: </td>
+      <td nowrap="nowrap">
+        <input name="theport" type="text" class="medTField" id="attr:cfmail:port" attname="port" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">超时: </td>
+      <td nowrap="nowrap">
+        <input name="thetimeout" type="text" class="medTField" id="attr:cfmail:timeout" attname="timeout" /> （秒）
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">用户名: </td>
+      <td nowrap="nowrap">
+        <input name="theusername" type="text" class="medTField" id="attr:cfmail:username" attname="username" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">密码: </td>
+      <td nowrap="nowrap">
+        <input name="thepassword" type="text" class="medTField" id="attr:cfmail:password" attname="password" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">邮件收发程序 ID: </td>
+      <td nowrap="nowrap">
+        <input name="themailerid" type="text" class="medTField" id="attr:cfmail:mailerid" attname="mailerid" />
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<participant>
+     <quickSearch><![CDATA[_hasData]]></quickSearch>
+     <insertText location="lastChildOfNode" nodeParamName="selectNode">
+<![CDATA[
+<%
+  @@rsName@@_hasData = @@rsName@@.next();
+}
+@@rsName@@.close();
+<@ if (@@callableName@@) @>
+@@callableName@@.execute();
+@@rsName@@ = @@callableName@@.getResultSet();
+<@ else @>
+@@rsName@@ = Statement@@rsName@@.executeQuery();
+<@ endif @>
+@@rsName@@_hasData = @@rsName@@.next();
+@@rsName@@_isEmpty = !@@rsName@@_hasData;
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName"><![CDATA[/\b(\w+)_hasData\s*=\s*\1\.next\(\);\s*}/]]></searchPattern>
+       <searchPattern paramNames="callableName" isOptional="true"><![CDATA[/\b(\w+)\.execute\(\);/]]></searchPattern>
+     </searchPatterns>
+</participant>

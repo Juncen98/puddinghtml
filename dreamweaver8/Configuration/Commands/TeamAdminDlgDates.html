@@ -1,0 +1,94 @@
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2003 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<reports xmlns:MMString="http://www.macromedia.com/schemes/data/string/">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title> 找不到下列日期之间的文件</title>
+<script language="JavaScript" src="../Shared/Common/Scripts/dwscripts.js"></script>
+<script language="JavaScript">
+
+var fromDate;
+var toDate;
+var modifiedBy;
+var bol = false;
+var condition = false;
+MM.cmdArgument = new Array();
+
+function receiveArguments(fromDate, toDate, modifiedBy, condition)
+{
+  this.fromDate = fromDate;
+  this.toDate = toDate;
+  this.modifiedBy= modifiedBy;
+  this.condition = condition;
+}
+
+function commandButtons()
+{
+  return new Array( "Yes", "applyParams()", "No",  "windowNot()" );
+}
+
+function windowNot()
+{
+  bol = true;
+  MM.cmdArgument.push(bol);
+  window.close();
+}
+
+function applyParams()
+{
+   window.close();
+}
+
+function Init()
+{
+  var myObj = findObject("cfromDate");
+  if(typeof(fromDate) == "undefined")
+    fromDate = "";
+    myObj.innerHTML = fromDate;
+
+    var myObj1 = findObject("ctoDate");
+    if(typeof(toDate) == "undefined")
+      toDate = "";
+      myObj1.innerHTML = toDate;
+
+    if (condition = true)
+    {
+	   var check = findObject ("modifedName");
+	   check.innerHTML= MM.MSG_Check;
+       var myObj2 = findObject ("cModifiedBy");
+	   if(typeof(modifiedBy) == "undefined")
+         modifiedBy = "";
+	   myObj2.innerHTML = "\"" + modifiedBy +"\"" ;
+    }
+}
+
+</script>
+</head>
+<body onLoad="Init()">
+<form name="myForm" >
+<table border="0">
+  <tr valign="baseline">
+     <td nowrap>
+	   <label><MMString:loadString id="reports_10" /></label>
+	  </td>
+  </tr>
+  <tr>
+    <td nowrap>
+	  <br>
+	    <label><MMString:loadString id="reports_15" />   </label><span id="cfromDate"></span>  <label><MMString:loadString id="reports_16" /> </label> <span id="ctoDate"></span><br>
+		<label><span id="modifedName"></span></label> <span id="cModifiedBy"></span>
+	  <br>
+	</td>
+  </tr>
+  <tr valign="baseline">
+    <td nowrap><label><MMString:loadString id="reports_14" /></label></td>
+  </tr>
+  <tr>
+    <td nowrap>&nbsp;</td>
+  </tr>
+</table>
+</form>
+</body>
+</html>

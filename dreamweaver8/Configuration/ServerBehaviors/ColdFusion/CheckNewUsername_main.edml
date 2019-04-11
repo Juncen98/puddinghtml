@@ -1,0 +1,18 @@
+<participant version="6.0">
+	<quickSearch><![CDATA[MM_search.RecordCount]]></quickSearch>
+	<insertText location="aboveHTML+18"><![CDATA[<cfif IsDefined("@@FormField@@")>
+  <cfquery name="MM_search" datasource="@@ConnectionName@@"<@ if (@@UserName@@) @> username="@@UserName@@"<@ endif @><@ if (@@Password@@) @> password="@@Password@@"<@ endif @>>
+    SELECT @@ColumnName@@ FROM @@TableName@@ WHERE @@ColumnName@@='#@@FormField@@#'
+  </cfquery>
+  <cfif MM_search.RecordCount GTE 1>
+<@ if (@@RedirectURL@@.indexOf("?") != -1) @>
+    <cflocation url="@@RedirectURL@@&requsername=#@@FormField@@#" addtoken="no">
+<@ else @>
+    <cflocation url="@@RedirectURL@@?requsername=#@@FormField@@#" addtoken="no">
+<@ endif @>
+  </cfif>
+</cfif>]]></insertText>
+	<searchPatterns whereToSearch="tag+CFIF">
+		<searchPattern paramNames="FormField,ConnectionName,UserName,Password,ColumnName,TableName,RedirectURL,RedirectURL" isOptional="false" limitSearch="all"><![CDATA[/\s*<cfif IsDefined\("([^\r\n]*?)"\)>\s*<cfquery name="MM_search" datasource="([^\r\n]*?)"(?: username="([^\r\n]*?)")?(?: password="([^\r\n]*?)")?>\s*SELECT ([^\r\n]*?) FROM ([^\r\n]*?) WHERE [^\r\n]*?='#[^\r\n]*?#'\s*<\/cfquery>\s*<cfif MM_search\.RecordCount GTE 1>\s*(?:\s*<cflocation url="([^\r\n]*?)&requsername=#[^\r\n]*?#" addtoken="no">\s*|\s*<cflocation url="([^\r\n]*?)\?requsername=#[^\r\n]*?#" addtoken="no">\s*)\s*<\/cfif>\s*<\/cfif>\s*/i]]></searchPattern>
+	</searchPatterns>
+</participant>

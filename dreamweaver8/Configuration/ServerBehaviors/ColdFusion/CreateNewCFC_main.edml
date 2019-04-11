@@ -1,0 +1,18 @@
+<participant VERSION="7.0.1">
+	<insertText location="aboveHTML+99"><![CDATA[
+@@componentComment@@
+<cfcomponent output="false">
+	@@functionComment@@
+  <cffunction name="@@FunctionName@@" output="false" access="public" returntype="query">
+    <cfset var @@Recordset@@ = "" >
+    <cfquery name="@@Recordset@@" datasource="@@Datasource@@">
+    SELECT * FROM @@TableName@@
+    </cfquery>
+    <cfreturn @@Recordset@@>
+  </cffunction>
+</cfcomponent>]]></insertText>
+	<searchPatterns whereToSearch="tag+cfcomponent">
+		<searchPattern paramNames="FunctionName,Recordset,Datasource,TableName" isOptional="false" limitSearch="all"><![CDATA[/<cfcomponent>\s*<cffunction name="([^\r\n]*?)" output="false" access="public" returntype="query">\s*<cfset var ([^\r\n]*?) = "" >\s*<cfquery name="[^\r\n]*?" datasource="([^\r\n]*?)">\s*SELECT \* FROM\s*([^\r\n]*?)\s*<\/cfquery>\s*<cfreturn [^\r\n]*?>\s*<\/cffunction>\s*<\/cfcomponent>/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>returntype="query"</quickSearch>
+</participant>

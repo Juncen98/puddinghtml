@@ -1,0 +1,530 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">attributes, NamedNodeMap</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">5</span>  DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>The object returned by the <span class="literal">attributes</span> property of
+every W3C DOM element object is a collection (array) of references to
+<span class="literal">Attr</span> (a.k.a. <span class="literal">attribute</span>)
+objects. An attribute type of node always has a name associated with
+it, which opens the way for methods of the collection of such nodes
+to access them directly by name, rather than iterating through the
+array in search of a matching node name. In the W3C DOM structure,
+the abstract representation of this array of named nodes is called
+the <span class="literal">NamedNodeMap</span> object, which shares some
+properties and methods of the IE <span class="literal">attributes</span>
+object. Since both objects refer to the same parts of a document
+tree, they are treated here together. A couple of other W3C DOM
+collections are also of the <span class="literal">NamedNodeMap</span> variety,
+but your primary contact with the <span class="literal">NamedNodeMap</span> in
+HTML documents is as a collection of <span class="literal">Attr</span> objects.
+Collection members are sorted in source code order.
+</p>
+							</td>
+						</tr>
+    <tr>
+      <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+    </tr>
+						<tr>
+							<td colspan="2"><p>			There are more direct ways to access an attribute of an element (such
+as the <span class="literal">getAttribute( )</span> or
+<span class="literal">getAttributeNode( )</span> methods of all elements). The
+property and methods shown here, however, assume that your script has
+been handed a collection of attributes independent of their host
+element, and your processing starts from that point.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre><span class="replaceable">elementReference</span>.attributes</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificproperties"><span class="title">Object-Specific Properties</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">length</span></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificmethods"><span class="title">Object-Specific Methods</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">getNamedItem( )</span></td><td><span class="literal">getNamedItemNS( )</span></td><td><span class="literal">item( )</span></td><td><span class="literal">removeNamedItem( )</span></td>
+								</tr>
+								<tr><td><span class="literal">removeNamedItemNS( )</span></td><td><span class="literal">setNamedItem( )</span></td><td><span class="literal">setNamedItemNS( )</span></td><td></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificeventhandlerproperties"><span class="title">Object-Specific Event Handler Properties</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="length">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">length</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">5</span>  DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns the number of elements in the collection.</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var howMany = document.getElementById("myTable").attributes.length;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="getNamedItem( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">getNamedItem( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">6</span>  DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">getNamedItem("<span class="replaceable">attributeName</span>")</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a single <span class="literal">Attr</span> object corresponding to the
+attribute whose node name matches the parameter value.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+					<dl>
+<dt><var class="replaceable">attributeName</var></dt>
+<dd>
+<p>String corresponding to the name portion of an
+attribute's name/value pair.
+</p>
+</dd>
+
+</dl>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to one <span class="literal">Attr</span> object. If there is no match
+to the parameter value, the returned value is
+<span class="literal">null</span>.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="getNamedItemNS( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">getNamedItemNS( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span>  DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">getNamedItemNS("<span class="replaceable">namespaceURI</span>",
+"<span class="replaceable">localName</span>")</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a single <span class="literal">Attr</span> object with a local name and
+namespace URI that match the parameter values.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+					<dl>
+<dt><var class="replaceable">namespaceURI</var></dt>
+<dd>
+<p>URI string matching a URI assigned to a label earlier in the document.</p>
+</dd>
+
+
+<dt><var class="replaceable">localName</var></dt>
+<dd>
+<p>The local name portion of the attribute. </p>
+</dd>
+
+</dl>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to one <span class="literal">Attr</span> object. If there is no match
+to the parameter values, the returned value is
+<span class="literal">null</span>.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="item( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">item( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">5</span>  DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">item(<span class="replaceable">index</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a single <span class="literal">Attr</span> object corresponding to the
+element matching the index value.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+					<dl>
+<dt><var class="replaceable">index</var></dt>
+<dd>
+<p>A zero-based integer corresponding to the specified item in source
+code order.
+</p>
+</dd>
+
+</dl>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to one <span class="literal">Attr</span> object. If there is no match
+to the index value, the returned value is <span class="literal">null</span>.
+Unlike some other collections in IE, a string index value is not
+allowed for the <span class="literal">attributes</span> object.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="removeNamedItem( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">removeNamedItem( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">6</span>  DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">removeNamedItem("<span class="replaceable">attributeName</span>")</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Removes from the collection a single <span class="literal">Attr</span> object
+corresponding to the attribute whose node name matches the parameter
+value.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+					<dl>
+<dt><var class="replaceable">attributeName</var></dt>
+<dd>
+<p>String corresponding to the name portion of an
+attribute's name/value pair.
+</p>
+</dd>
+
+</dl>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to the removed <span class="literal">Attr</span> object. If there is
+no match to the parameter value, the returned value is
+<span class="literal">null</span>.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="removeNamedItemNS( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">removeNamedItemNS( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span>  DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">removeNamedItemNS("<span class="replaceable">namespaceURI</span>",
+"<span class="replaceable">localName</span>")</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Removes from the collection a single <span class="literal">Attr</span> object
+whose local name and namespace URI match the parameter values.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+					<dl>
+<dt><var class="replaceable">namespaceURI</var></dt>
+<dd>
+<p>URI string matching a URI assigned to a label earlier in the document.</p>
+</dd>
+
+
+<dt><var class="replaceable">localName</var></dt>
+<dd>
+<p>The local name portion of the attribute. </p>
+</dd>
+
+</dl></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to the removed <span class="literal">Attr</span> object. If there is
+no match to the parameter values, the method generates an error.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="setNamedItem( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">setNamedItem( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">6</span>  DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">setNamedItem(<span class="replaceable">attrObjectReference</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Inserts a single <span class="literal">Attr</span> object into the current
+collection of attributes. If the destination of the attribute is an
+existing element, you may also use the <span class="literal">setAttributeNode(
+)</span> method on the element to insert the
+<span class="literal">Attr</span> object. When the <span class="literal">setNamedItem(
+)</span> method is invoked, the browser first looks for a match
+between the new attribute's name and existing
+attribute names within the collection. If there is a match, the new
+attribute replaces the original one; otherwise, the new attribute is
+added to the collection.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+					<dl>
+<dt><var class="replaceable">attrObjectReference</var></dt>
+<dd>
+<p>A reference to an <span class="LITERAL">Attr</span> node object created through
+<span class="LITERAL">document.createAttribute( )</span> or an
+<span class="LITERAL">Attr</span> node from another element in the document
+tree.
+</p>
+</dd>
+
+</dl>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to an <span class="literal">Attr</span> object either created anew or
+referenced from elsewhere in the document tree.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="setNamedItemNS( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">setNamedItemNS( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span>  DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">setNamedItemNS(<span class="replaceable">attrObjectReference</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Inserts a single <span class="literal">Attr</span> object into the current
+collection of attributes. If the destination of the attribute is an
+existing element, you may also use the <span class="literal">setAttributeNodeNS(
+)</span> method on the element to insert the
+<span class="literal">Attr</span> object. When the <span class="literal">setNamedItemNS(
+)</span> method is invoked, the browser first looks for a match
+between the new attribute's pairing of local name
+and namespace URI and existing attribute local names and namespace
+URIs within the collection. If there is a match, the new attribute
+replaces the original one; otherwise, the new attribute is added to
+the collection.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+					<dl>
+<dt><var class="replaceable">attrObjectReference</var></dt>
+<dd>
+<p>A reference to an <span class="LITERAL">Attr</span> node object created through
+<span class="LITERAL">document.createAttribute( )</span> or an
+<span class="LITERAL">Attr</span> node from another element in the document
+tree.
+</p>
+</dd>
+</dl>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Reference to an <span class="literal">Attr</span> object either created anew or
+referenced from elsewhere in the document tree.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+</body>
+</html>

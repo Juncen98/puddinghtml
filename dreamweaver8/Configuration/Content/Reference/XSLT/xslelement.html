@@ -1,0 +1,195 @@
+<html>
+<head>
+<title>&lt;xsl:element&gt;</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">&lt;xsl:element&gt;</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+Allows you to create an element in the output document. It works similarly to the <span class="LITERAL">&lt;xsl:attribute&gt;</span> element.</td></tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Category</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>Instruction</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Required Attributes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<dl>
+<dt>
+name
+</dt>
+<dd>
+Defines the name of this element. A value of
+<span class="LITERAL">
+name=
+"
+fred
+"
+</span>
+will produce a
+<span class="LITERAL">
+&lt;
+fred
+&gt;
+</span>
+element in the output document.
+<P></p>
+</dl>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Optional Attributes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<dl>
+<dt>
+namespace
+</dt>
+<dd>
+Defines the namespace used for this attribute.
+<P></p>
+<dt>
+use-attribute-sets
+</dt>
+<dd>
+Lists one or more attribute sets that should be used by this element. If you specify more than one attribute set, separate their names with whitespace characters.
+<P></p>
+</dl>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Content</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>An XSLT template.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Appears in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>
+<span class="LITERAL">&lt;xsl:element&gt;</span> appears inside a template.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Defined in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>XSLT section 7.1.2, Creating Elements with <span class="LITERAL">xsl:element</span>.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>We'll use a generic stylesheet that copies the input document to the result tree, with one exception: all attributes in the original documents are converted to child elements in the result tree. The name of the new element will be the name of the format attribute, and its text will be the value of the attribute. Because we don't know the name of the attribute until we process the XML source document, we must use the <span class="LITERAL">&lt;xsl:element&gt;</span> element to create the result tree. Here's how our stylesheet looks:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"&gt;
+  &lt;xsl:output method="xml"/&gt;
+
+  &lt;xsl:template match="*"&gt;
+    &lt;xsl:element name="{name()}"&gt;
+      &lt;xsl:for-each select="@*"&gt;
+        &lt;xsl:element name="{name()}"&gt;
+          &lt;xsl:value-of select="."/&gt;
+        &lt;/xsl:element&gt;
+      &lt;/xsl:for-each&gt;
+      &lt;xsl:apply-templates select="*|text()"/&gt;
+    &lt;/xsl:element&gt;
+  &lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</pre></span>
+<p>This stylesheet uses the <span class="LITERAL">&lt;xsl:element&gt;</span> element in two places: first to create a new element with the same name as the original element, and second to create a new element with the same name as each attribute. We'll apply the stylesheet to this document:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;report&gt;
+  &lt;title&gt;Miles Flown in 2001&lt;/title&gt;
+  &lt;month sequence="01"&gt;
+    &lt;miles-flown&gt;12379&lt;/miles-flown&gt;
+    &lt;miles-earned&gt;35215&lt;/miles-earned&gt;
+  &lt;/month&gt;
+  &lt;month sequence="02"&gt;
+    &lt;miles-flown&gt;32857&lt;/miles-flown&gt;
+    &lt;miles-earned&gt;92731&lt;/miles-earned&gt;
+  &lt;/month&gt;
+  &lt;month sequence="03"&gt;
+    &lt;miles-flown&gt;19920&lt;/miles-flown&gt;
+    &lt;miles-earned&gt;76725&lt;/miles-earned&gt;
+  &lt;/month&gt;
+  &lt;month sequence="04"&gt;
+    &lt;miles-flown&gt;18903&lt;/miles-flown&gt;
+    &lt;miles-earned&gt;31781&lt;/miles-earned&gt;
+  &lt;/month&gt;
+&lt;/report&gt;</pre></span>
+<p>Here are our results:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;report&gt;
+  &lt;title&gt;Miles Flown in 2001&lt;/title&gt;
+  &lt;month&gt;&lt;sequence&gt;01&lt;/sequence&gt;
+    &lt;miles-flown&gt;12379&lt;/miles-flown&gt;
+    &lt;miles-earned&gt;35215&lt;/miles-earned&gt;
+  &lt;/month&gt;
+  &lt;month&gt;&lt;sequence&gt;02&lt;/sequence&gt;
+    &lt;miles-flown&gt;32857&lt;/miles-flown&gt;
+    &lt;miles-earned&gt;92731&lt;/miles-earned&gt;
+  &lt;/month&gt;
+  &lt;month&gt;&lt;sequence&gt;03&lt;/sequence&gt;
+    &lt;miles-flown&gt;19920&lt;/miles-flown&gt;
+    &lt;miles-earned&gt;76725&lt;/miles-earned&gt;
+  &lt;/month&gt;
+  &lt;month&gt;&lt;sequence&gt;04&lt;/sequence&gt;
+    &lt;miles-flown&gt;18903&lt;/miles-flown&gt;
+    &lt;miles-earned&gt;31781&lt;/miles-earned&gt;
+  &lt;/month&gt;
+&lt;/report&gt;</pre></span>
+<!--<?troff .hw document?>-->
+<p>The <span class="LITERAL">&lt;xsl:element&gt;</span> element created all the elements in the output document, including the <span class="LITERAL">&lt;sequence&gt;</span> elements that were created from the <span class="LITERAL">sequence</span> attributes in the original document.</p>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

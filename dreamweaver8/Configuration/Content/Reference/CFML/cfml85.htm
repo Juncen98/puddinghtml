@@ -1,0 +1,242 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFMAILPART</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFMAILPART</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Specifies one part of a multipart e-mail message. Can only be used in the cfmail tag. You can use more than one cfmailpart tag within a cfmail tag.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Internet Protocol tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfmail 
+   ... &gt;
+   (Optional cfmailparam entries)
+   &lt;cfmailpart 
+      type=&quot;mime type&quot;
+      charset=&quot;character encoding&quot;
+      wraptext=&quot;number&quot;
+   &gt;
+   Mail part contents
+&lt;/cfmailpart&gt;
+   ...
+&lt;/cfmail&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion MX&#160;6.1: Added this tag.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfmail, cfmailparam, cfpop, cfftp, cfhttp, cfldap, cfcontent, Wrap; "E-mail" in Chapter&#160;17, "Developing Globalized Applications," in ColdFusion MX Developer's Guide
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+Use this tag to create mail messages with alternative versions of the message that duplicate the content in multiple formats. The most common use is to send a plain text version of the message that can be read by all mail readers followed by a version formatted in HTML for display by HTML-compatible mail readers. Specify the simplest version first, with more complex versions afterwards. For more information, see www.ietf.org/rfc/rfc2046.txt</a>.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;cfmailpart Example&lt;/h3&gt;
+&lt;cfmail from = &quot;peter@domain.com&quot; To = &quot;paul@domain.com&quot; 
+Subject = &quot;Which version do you see?&quot;&gt;
+   &lt;cfmailpart 
+      type=&quot;text&quot;
+      wraptext=&quot;74&quot;&gt;
+         You are reading this message as plain text, because your mail reader 
+         does not handle HTML text.
+   &lt;/cfmailpart&gt;&gt;
+   &lt;cfmailpart 
+      type=&quot;html&quot;&gt;
+         &lt;h3&gt;HTML Mail Message&lt;/h3&gt;
+         &lt;p&gt;You are reading this message as &lt;strong&gt;HTML&lt;/strong&gt;.&lt;/p&gt;
+         &lt;p&gt;Your mail reader handles HTML text.&lt;/p&gt;
+   &lt;/cfmailpart&gt;
+&lt;/cfmail&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="TYPE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TYPE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>The MIME media type of the part. Can be a can be valid MIME media type or one of the following:</p><ul>
+
+<li>text: specifies text/plain type.</li>
+
+<li>plain: specifies text/plain type.</li>
+
+<li>html: specifies text/html type.</li>
+</ul>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note:	</strong></td>
+    <td>For a list of all registered MIME media types, see www.iana.org/assignments/media-types/</a>.</td>
+  </tr>
+</table>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="WRAPTEXT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">WRAPTEXT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Do not wrap text"
+
+
+<p>Specifies the maximum line length, in characters of the mail text. If a line has more than the specified number of characters, replaces the last white space character, such as a tab or space, preceding the specified position with a line break. If there are no white space characters, inserts a line break at the specified position. A common value for this attribute is 72.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="CHARSET">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">CHARSET</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Character encoding specified by charset attribute of cfmail tag"
+
+
+<p>The character encoding in which the part text is encoded. The following list includes commonly used values:</p><ul>
+
+<li>utf-8</li>
+
+<li>iso-8859-1 </li>
+
+<li>windows-1252</li>
+
+<li>us-ascii</li>
+
+<li>shift_jis</li>
+
+<li>iso-2022-jp </li>
+
+<li>euc-jp</li>
+
+<li>euc-kr</li>
+
+<li>iso-2022-kr</li>
+
+<li>big5</li>
+
+<li>hz-gb-2312</li>
+
+<li>euc-cn</li>
+
+<li>utf-16</li>
+</ul>
+
+<p>For more information on character encodings, see</a>www.w3.org/International/O-charset.html. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

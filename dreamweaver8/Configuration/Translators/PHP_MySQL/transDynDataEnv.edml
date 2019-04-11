@@ -1,0 +1,25 @@
+<participant name="transDynDataEnv">
+  <translator priority=400>
+    <searchPatterns>
+      <searchPattern><![CDATA[echo]]></searchPattern>
+      <searchPattern><![CDATA[_ENV]]></searchPattern>
+      <searchPattern paramNames=",rs,col"><![CDATA[/echo (\w+\s*\(\s*)?\$(?:HTTP)?_(ENV)(?:_VARS)?\[["'](\w+)["']\]\s*\)?;?/i]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="directive" translationType="dynamic data">
+        <openTag>MM_DYNAMIC_CONTENT</openTag>
+        <attributes>
+          <attribute><![CDATA[SOURCE=Environment]]></attribute>
+          <attribute><![CDATA[BINDING="@@col@@"]]></attribute>
+        </attributes>
+        <display><![CDATA[{Environment.@@col@@}]]></display>
+        <closeTag>MM_DYNAMIC_CONTENT</closeTag>
+      </translation>
+      <translation whereToSearch="tag+INPUT" limitSearch="attribute+VALUE" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="VALUE={Environment.@@col@@}"]]></attribute>
+        </attributes>
+      </translation>
+    </translations>
+  </translator>
+</participant>

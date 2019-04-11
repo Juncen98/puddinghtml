@@ -1,0 +1,88 @@
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2001, 2002, 2003 Macromedia, Inc. All rights reserved. -->
+
+<html>
+<head>
+<!-- Include the UI helper functions -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<!-- Include DOM functions -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<script src="../Shared/MM/Scripts/Cmn/string.js"></script>
+<script src="ShortcutClass.js"></script> 
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/TemplateUtils.js"></SCRIPT>
+<SCRIPT>
+
+/* Use this command to run a generic confirmation dialog with any 
+	number of buttons in it. This command mostly exists to package data 
+	for the ConfirmDS.htm command. It's meant to be called from C++ code, 
+	where it's harder to package these params. 
+	
+	Parameters: 
+	dialogResult 	- a JS object with a field called 'result'. The result 
+						  string will be placed here (the string associated with
+						  the button clicked). If no button is clicked (which 
+						  can happen on the mac when the escape key is pressed), 
+						  this will be null. 
+	
+	message 			- this is the message string displayed in the dialog
+	preferenceKey 	- this is a dialog with a "don't show" button, so this 
+						  string is the preference string to store that setting in. 
+						  
+	defaultValue 	- default value to return if the 'don't show' checkbox has been checked. 
+	
+	buttons 			- array of button strings					
+	*/ 
+
+function isDOMRequired() {return false;}
+
+var dialogResult = null; 
+var message = null; 
+var preferenceKey = null; 
+var defaultValue = null; 
+var buttons = null; 
+
+function receiveArguments()
+	{
+	dialogResult = arguments[0]; 
+	dialogResult.result = null; 
+	
+	message = arguments[1];
+	preferenceKey = arguments[2];
+	defaultValue = arguments[3];
+	buttons = arguments[4];
+	} //receiveArguments
+	
+	
+function DoCommand()
+	{
+	if (getGlobalTemplatePref(preferenceKey, "TRUE") == "FALSE")
+		return defaultValue; 
+
+	var retVal = false;
+	var cmdName = 'ConfirmDS.htm';
+	var cmdFile = dreamweaver.getConfigurationPath() + '/Commands/' + cmdName;
+
+	var cmdDOM = dreamweaver.getDocumentDOM(cmdFile);
+		
+	if (cmdDOM) 
+		{
+		var cmdWin = cmdDOM.parentWindow;
+		cmdWin.render_array(messageString, buttons);
+		
+		MMNotes.Confirm_RESULT = true;  		 
+		dw.runCommand(cmdName);
+		dialogResult.result = MMNotes.Confirm_RESULT; 
+		
+		if (MMNotes.Confirm_DONOTSHOW) 
+			setGlobalTemplatePref(preferenceKey, 'FALSE');
+		}
+	}
+	
+</script>
+</head>
+
+<body onLoad="DoCommand()">
+
+</body>
+</html>

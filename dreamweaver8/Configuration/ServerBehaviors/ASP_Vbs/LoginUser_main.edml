@@ -1,0 +1,57 @@
+<participant>
+     <quickSearch><![CDATA[MM_valUsername]]></quickSearch>
+     <insertText location="aboveHTML+81">
+<![CDATA[
+<%
+' *** Validate request to log in to this site.
+MM_LoginAction = Request.ServerVariables("URL")
+If Request.QueryString<>"" Then MM_LoginAction = MM_LoginAction + "?" + Server.HTMLEncode(Request.QueryString)
+MM_valUsername=CStr(Request.Form("@@frmUsername@@"))
+If MM_valUsername <> "" Then
+  MM_fldUserAuthorization="@@fldAuthorization@@"
+  MM_redirectLoginSuccess="@@redirectSuccess@@"
+  MM_redirectLoginFailed="@@redirectFailed@@"
+  MM_flag="ADODB.Recordset"
+  set MM_rsUser = Server.CreateObject(MM_flag)
+  MM_rsUser.ActiveConnection = MM_@@connection@@_STRING
+  MM_rsUser.Source = "SELECT @@fldUsername@@, @@fldPassword@@"
+  If MM_fldUserAuthorization <> "" Then MM_rsUser.Source = MM_rsUser.Source & "," & MM_fldUserAuthorization
+  MM_rsUser.Source = MM_rsUser.Source & " FROM @@table@@ WHERE @@fldUsername@@='" & Replace(MM_valUsername,"'","''") &"' AND @@fldPassword@@='" & Replace(Request.Form("@@frmPassword@@"),"'","''") & "'"
+  MM_rsUser.CursorType = 0
+  MM_rsUser.CursorLocation = 2
+  MM_rsUser.LockType = 3
+  MM_rsUser.Open
+  If Not MM_rsUser.EOF Or Not MM_rsUser.BOF Then 
+    ' username and password match - this is a valid user
+    Session("@@MM_username@@") = MM_valUsername
+    If (MM_fldUserAuthorization <> "") Then
+      Session("@@MM_userAuthorization@@") = CStr(MM_rsUser.Fields.Item(MM_fldUserAuthorization).Value)
+    Else
+      Session("@@MM_userAuthorization@@") = ""
+    End If
+    if CStr(Request.QueryString("accessdenied")) <> "" And @@redirectToReferrer@@ Then
+      MM_redirectLoginSuccess = Request.QueryString("accessdenied")
+    End If
+    MM_rsUser.Close
+    Response.Redirect(MM_redirectLoginSuccess)
+  End If
+  MM_rsUser.Close
+  Response.Redirect(MM_redirectLoginFailed)
+End If
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="frmUsername" limitSearch="all"><![CDATA[/MM_valUsername\s*=\s*CStr\s*\(\s*Request\.Form\s*\(\s*"([^\r\n]*?)"\)\)/]]></searchPattern>
+       <searchPattern paramNames="fldAuthorization" limitSearch="all"><![CDATA[/MM_fldUserAuthorization\s*=\s*"([^\r\n]*?)"/]]></searchPattern>
+       <searchPattern paramNames="redirectSuccess" limitSearch="all"><![CDATA[/MM_redirectLoginSuccess\s*=\s*"([^\r\n]*?)"/]]></searchPattern>
+       <searchPattern paramNames="redirectFailed" limitSearch="all"><![CDATA[/MM_redirectLoginFailed\s*=\s*"([^\r\n]*?)"/]]></searchPattern>
+       <searchPattern paramNames="redirectSuccess_url" limitSearch="all"><![CDATA[/MM_redirectLoginSuccess\s*=\s*"([^\r\n]*?)"/]]></searchPattern>
+       <searchPattern paramNames="redirectFailed_url" limitSearch="all"><![CDATA[/MM_redirectLoginFailed\s*=\s*"([^\r\n]*?)"/]]></searchPattern>
+       <searchPattern paramNames="connection" limitSearch="all"><![CDATA[/MM_rsUser\.ActiveConnection\s*=\s*MM_(.*?)_STRING/]]></searchPattern>
+       <searchPattern paramNames="fldUsername,fldPassword" limitSearch="all"><![CDATA[/MM_rsUser\.Source\s*=\s*"SELECT\s+([^,]*)\s*,\s*([^"]*)\s*"/]]></searchPattern>
+       <searchPattern paramNames="table" limitSearch="all"><![CDATA[/MM_rsUser\.Source\s+&\s+"\s+FROM\s+([^\r\n]*?)\s+WHERE/]]></searchPattern>
+       <searchPattern paramNames="frmPassword" limitSearch="all"><![CDATA[/&\s*(?:Replace|CStr)\s*\(\s*Request\.Form\s*\(\s*"([^\r\n]*?)"\s*\)/]]></searchPattern>
+       <searchPattern paramNames="redirectToReferrer" limitSearch="all"><![CDATA[/Request\.QueryString\s*\(\s*"accessdenied"\)\)\s*<>\s*""\s+And\s+(\w+)\s+Then/]]></searchPattern>
+     </searchPatterns>
+</participant>

@@ -1,0 +1,64 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- SAFE-IN-TEMPLATES -->
+<HTML>
+<HEAD><link href="../../fields.css" rel="stylesheet" type="text/css">
+<SCRIPT SRC="Go To URL.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/file.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/menuItem.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/docInfo.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/niceName.js"></SCRIPT>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<SCRIPT LANGUAGE="javascript">
+// Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved.
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_FrameNotFound = '无法找到设定给 "%s"的框架 "%s" 。';
+var MSG_FrameUnnamed =  "只能更改 *已命名的* 框架。 请点击「取消」，然后将您的层命名。";
+var MSG_FrameMixConflict = "您可以更改主窗口或多个框架，但不能同时进行。\n请删除掉不适当的 URL。";
+var MSG_MissingURL = "请输入要前往的 URL，或点击「取消」。";
+//--------------- END LOCALIZEABLE   ---------------
+//---------------    END JAVASCRIPT    ---------------
+</SCRIPT>
+<TITLE>转到 URL</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+</HEAD>
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm" ACTION="">
+    <DIV ALIGN="center">
+      
+    <TABLE BORDER=0 cellpadding="2" cellspacing="4">
+        <TR>
+          
+        <TD></TD>
+          
+        <TD VALIGN="baseline" nowrap ROWSPAN=2>
+            <SELECT NAME="menu" SIZE=4 class="frameList" onChange="displayURL()">
+              <OPTION selected>*** 正在载入菜单... **********
+            </select></TD>
+        </TR>
+      <TR valign="baseline">
+
+        <TD ALIGN="right" nowrap> 打开在:</TD>
+        </TR>
+      <TR valign="baseline">
+          
+        <TD ALIGN="right" nowrap>
+            URL:</TD>
+          
+        <TD nowrap>
+            <INPUT NAME="theURL" TYPE="text" class="largeTField" onBlur="storeURL()">
+            <INPUT TYPE="button" value="浏览..." onClick="browseFileAndStore();focus(this)"></TD>
+        </TR>
+      </TABLE>
+    <p>&nbsp;
+    </p>
+  </DIV>
+
+  </FORM>
+</BODY>
+</HTML>

@@ -1,0 +1,94 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFPARAM</title>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var TYPELIST;
+var theUIObjects;
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function initializeUI()
+{
+	TYPELIST = new ListControl("thetype"); 
+	theUIObjects = new Array(TYPELIST); 
+
+  tagDialog.populateDropDownList(TYPELIST, theParamTypeCap, theParamTypeVal, 0)
+}
+
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+<div name="常规">
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:cfparam:name" attname="name" required="true" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">默认: </td>
+      <td nowrap="nowrap">
+        <input name="thedefault" type="text" class="basicTextField" id="attr:cfparam:default" attname="default" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类型: </td>
+      <td nowrap="nowrap">
+        <select name="thetype" class="dataTypeList" id="attr:cfparam:type" attname="type" editable="false">
+        </select>
+      </td>
+    </tr>
+	</table>
+	</div>
+	<div name="范围">
+	<table>
+	<tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">最小: </td>
+      <td nowrap="nowrap">
+        <input name="themin" type="text" class="basicTextField" id="attr:cfparam:min" attname="min" />
+      </td>
+    </tr>
+	<tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">最大: </td>
+      <td nowrap="nowrap">
+        <input name="themax" type="text" class="basicTextField" id="attr:cfparam:max" attname="max" />
+      </td>
+    </tr>
+	</table>
+	</div>
+	<div name="正则表达式">
+	<table>
+	<tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">图案: </td>
+      <td nowrap="nowrap">
+        <input name="thepattern" type="text" class="basicTextField" id="attr:cfparam:pattern" attname="pattern" />
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

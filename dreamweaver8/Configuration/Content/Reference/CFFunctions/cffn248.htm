@@ -1,0 +1,161 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>SETVARIABLE</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">SETVARIABLE</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+This function is no longer required in well-formed ColdFusion pages.
+</p>
+
+<p>
+Sets a variable in the name parameter to the value of the value parameter. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+The new value of the variable.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Dynamic evaluation functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>SetVariable(name, value)
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+DE, Evaluate, IIf 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+You can use direct assignment statements in place of this function to set values of dynamically named variables. To do so, put the dynamically named variable in quotation marks and number signs (#); for example:
+</p>
+<pre>&lt;cfset DynamicVar2 = &quot;ABD&quot;&gt; 
+&lt;cfset &quot;#DynamicVar2#&quot; = &quot;Test Value2&quot;&gt; 
+</pre>
+<p>
+Also, the following lines are equivalent:
+</p>
+<pre>&lt;cfset &quot;myVar#i#&quot; = myVal&gt;
+SetVariable(&quot;myVar&quot; &amp; i, myVal)
+</pre>
+<p>
+For more information, see Chapter&#160;4, "Using Expressions and Number Signs," in ColdFusion MX Developer's Guide.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;SetVariable Example&lt;/h3&gt;
+
+&lt;cfif IsDefined(&quot;FORM.myVariable&quot;)&gt;
+&lt;!--- strip out url, client., cgi., session., caller. ---&gt;
+&lt;!--- This example only lets you set form variables ---&gt;
+&lt;cfset myName = ReplaceList(FORM.myVariable,
+ &quot;url,client,cgi,session,caller&quot;, &quot;FORM,FORM,FORM,FORM,FORM&quot;)&gt;
+
+&lt;cfset temp = SetVariable(myName, FORM.myValue)&gt;
+&lt;cfset varName = myName&gt;
+&lt;cfset varNameValue = Evaluate(myName)&gt;
+&lt;cfoutput&gt;
+   &lt;p&gt;Your variable, #varName#
+   &lt;p&gt;The value of #varName# is #varNameValue#
+&lt;/cfoutput&gt;
+&lt;/cfif&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="NAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Variable name</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="VALUE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">VALUE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A string, the name of a string, or a number</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

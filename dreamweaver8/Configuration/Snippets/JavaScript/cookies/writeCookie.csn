@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "写入 Cookie" description = "用于将值写入 Cookie 的简单函数。“hours”参数为可选；如果忽略 hours，则 Cookie 值将在访问者的浏览器会话结束时过期。" preview="code" type="block">
+<insertText location="beforeSelection">
+<![CDATA[// Example:
+// writeCookie("myCookie", "my name", 24);
+// Stores the string "my name" in the cookie "myCookie" which expires after 24 hours.
+function writeCookie(name, value, hours)
+{
+  var expire = "";
+  if(hours != null)
+  {
+    expire = new Date((new Date()).getTime() + hours * 3600000);
+    expire = "; expires=" + expire.toGMTString();
+  }
+  document.cookie = name + "=" + escape(value) + expire;
+}
+]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

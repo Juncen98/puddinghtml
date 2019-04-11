@@ -1,0 +1,72 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 6.0//pi">
+<!-- tag:*LOCKED*, attrName:type, attrValue:command, priority:1, selection:within,hline,vline ,serverModel:ASP-->
+<html>
+<head>
+<!-- Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<title>命令</title>
+<SCRIPT LANGUAGE="javascript" SRC="_pi_common.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../Shared/MM/Scripts/CMN/enableControl.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../Shared/MM/Scripts/CMN/helper.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" src="../ServerBehaviors/ASP_VBS/ASPCommandMasks.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" src="asp_command.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssClasses.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+</head>
+<body onLoad="initializeUI()">
+<span id="image" style="position:absolute; width:23px; height:17px; z-index:16; left: 0px; top: 2px"><img src="sp_pi.gif" width="36" height="36"></span>
+<div id="CommandNameLayer" style="position:absolute; width:65px; height:15px; z-index:1; left: 40px; top: 2px"> 
+<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		  <td></td>
+		  
+      <td width="50" height="21" align="left">命令</td>
+		</tr>
+		<tr>
+		  <td align="left" valign="baseline" nowrap colspan=2>
+			<input type="text" name="CommandName" style="width:65px" onBlur="CheckForDuplicates()">
+		  </td>
+		</tr>
+  </table>
+</div>
+<div id="Layer1" style="position:absolute; left:125px; top:2px; width:519px; z-index:17"> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr> 
+      <td width="16%" align="right">连接&nbsp;</td>
+      <td width="38%"> 
+        <input type="text" name="ConnectionList" style="width:245px;" DISABLED onChange="UpdateRecordset()"></td>
+      <td width="46%" align="left" valign="middle">&nbsp; 
+        <input type="button" name="ConnectionButton" style="height:15px;" value="编辑..." onClick="editServerBehavior()">
+      </td>
+    </tr>
+    <tr> 
+      <td align="right">SQL&nbsp;</td>
+      <td colspan="2"><input type="text" name="SQL" style="width:245px" onBlur="CheckForInvalidSQL()"></td>
+    </tr>
+  </table>
+</div>
+<div id="bottomLayer" style="position:absolute; left:108px; top:54px; height:41px; z-index:18; width: 417px;"> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+      <td width="18%" align="right" nowrap>返回记录集&nbsp;</td>
+      <td width="24%" nowrap> 
+        <input type="checkbox" name="RResultset" onClick="returnResultSetCheck()"></td>
+      <td width="19%" align="right" nowrap>记录集名称&nbsp;</td>
+      <td width="39%" nowrap> 
+        <input type="text" name="RResultsetName" style="width:90px" onBlur="UpdateCommand()"></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>超时&nbsp;</td>
+      <td nowrap>
+        <input type="text" name="CommandTimeOut" style="width:90px" onBlur="CheckForInvalidCommandTimeOut()"></td>
+      <td align="right" nowrap>已准备&nbsp;</td>
+      <td nowrap>
+        <input type="checkbox" name="Prepared" onClick="UpdateCommand()"></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

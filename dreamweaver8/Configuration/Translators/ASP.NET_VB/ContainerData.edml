@@ -1,0 +1,47 @@
+<participant name="ContainerData">
+  <translator priority=400>
+    <searchPatterns>
+      <searchPattern><![CDATA[/<%#/]]></searchPattern>
+      <searchPattern><![CDATA[/Container\.DataItem/]]></searchPattern>
+      <searchPattern paramNames="col"><![CDATA[/DataBinder\.Eval\(Container.DataItem, "(\w+)"\)/i]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="directive" translationType="dynamic data">
+        <openTag>MM_DYNAMIC_CONTENT</openTag>
+        <attributes>
+          <attribute><![CDATA[SOURCE="Container"]]></attribute>
+          <attribute><![CDATA[BINDING="@@col@@"]]></attribute>
+        </attributes>
+        <display><![CDATA[{Container.@@col@@}]]></display>
+        <closeTag>MM_DYNAMIC_CONTENT</closeTag>
+      </translation>
+      <translation whereToSearch="tag+INPUT" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="@@attr@@={Container.@@col@@}"]]></attribute>
+        </attributes>
+      </translation>
+      <translation whereToSearch="tag+OPTION" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="@@attr@@={Container.@@col@@}"]]></attribute>
+        </attributes>
+      </translation>
+      <translation whereToSearch="tag+SELECT" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="@@attr@@={Container.@@col@@}"]]></attribute>
+        </attributes>
+      </translation>
+      <translation whereToSearch="tag+TEXTAREA" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="@@attr@@={Container.@@col@@}"]]></attribute>
+        </attributes>
+      </translation>
+      <translation whereToSearch="tag+IMG" limitSearch="attribute+SRC" translationType="dynamic image">
+      </translation>
+      <translation whereToSearch="tag+IMG" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="@@attr@@={Container.@@col@@}"]]></attribute>
+        </attributes>
+      </translation>
+    </translations>
+  </translator>
+</participant>

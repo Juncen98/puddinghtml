@@ -1,0 +1,55 @@
+<participant>
+     <quickSearch><![CDATA[MM_insert]]></quickSearch>
+     <insertText location="aboveHTML+20">
+<![CDATA[
+<%
+' *** Insert Record: set variables
+
+If (CStr(Request("MM_insert")) = "@@formName@@") Then
+
+  MM_editConnection = MM_@@cname@@_STRING
+  MM_editTable = "@@table@@"
+  MM_editRedirectUrl = "@@redirect__url@@"
+  MM_fieldsStr  = "@@fieldsStr@@"
+  MM_columnsStr = "@@columnsStr@@"
+
+  ' create the MM_fields and MM_columns arrays
+  MM_fields = Split(MM_fieldsStr, "|")
+  MM_columns = Split(MM_columnsStr, "|")
+  
+  ' set the form values
+  For MM_i = LBound(MM_fields) To UBound(MM_fields) Step 2
+    MM_fields(MM_i+1) = CStr(Request.Form(MM_fields(MM_i)))
+  Next
+
+  ' append the query string to the redirect URL
+  If (MM_editRedirectUrl <> "" And Request.QueryString <> "") Then
+    If (InStr(1, MM_editRedirectUrl, "?", vbTextCompare) = 0 And Request.QueryString <> "") Then
+      MM_editRedirectUrl = MM_editRedirectUrl & "?" & Request.QueryString
+    Else
+      MM_editRedirectUrl = MM_editRedirectUrl & "&" & Request.QueryString
+    End If
+  End If
+
+End If
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern><![CDATA[/Request\("MM_insert"\)/]]></searchPattern>
+       <searchPattern paramNames="formName" isOptional="true"><![CDATA[/CStr\(Request\("MM_insert"\)\)\s*=\s*"([^"]*)"/]]></searchPattern>
+       <searchPattern paramNames="cname"><![CDATA[/MM_editConnection\s*=\s*MM_(\w+)_STRING/]]></searchPattern>
+       <searchPattern paramNames="table"><![CDATA[/MM_editTable\s*=\s*"([^"]*)"/]]></searchPattern>
+       <searchPattern paramNames="fieldsStr"><![CDATA[/MM_fieldsStr\s*=\s*"([^"]*)"/]]></searchPattern>
+       <searchPattern paramNames="columnsStr"><![CDATA[/MM_columnsStr\s*=\s*"([^"]*)"/]]></searchPattern>
+       <searchPattern paramNames="redirect__url"><![CDATA[/\sMM_editRedirectUrl\s*=\s*"([^\r\n]*)"/]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="cname"><![CDATA[/(MM_editConnection\s*=\s*MM_)\w+(_STRING)/]]></updatePattern>
+       <updatePattern paramName="table"><![CDATA[/(MM_editTable\s*=\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="fieldsStr"><![CDATA[/(MM_fieldsStr\s*=\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="columnsStr"><![CDATA[/(MM_columnsStr\s*=\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="redirect__url"><![CDATA[/(\sMM_editRedirectUrl\s*=\s*")[^\r\n]*(")/g]]></updatePattern>
+       <updatePattern paramName="formName"><![CDATA[/(CStr\(Request\("MM_insert"\)\)\s*=\s*")[^"]*(")/g]]></updatePattern>
+     </updatePatterns>
+</participant>

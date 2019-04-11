@@ -1,0 +1,176 @@
+<!-- MENU-LOCATION=NONE -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+<!-- Copyright 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<TITLE>数据集</TITLE>
+
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/SBDatabaseCallClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/RecordsetDialogClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/SQLStatementClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/enableControl.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/GridControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/DBTreeControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ImageButtonClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/ConnectionMenu.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/TextField.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/Checkbox.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/RsTypeMenu.js"></SCRIPT>
+
+<SCRIPT SRC="../ServerBehaviors/Shared/ASP.Net/DatabaseCallClass.js"></SCRIPT>
+
+<SCRIPT SRC="ServerBeh-ASPNET-AdvRS.js"></SCRIPT>
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+<FORM>
+  <TABLE BORDER="0">
+    <TR VALIGN="baseline">
+      <TD ALIGN="right" NOWRAP>名称:</TD>
+    <TD COLSPAN="2" NOWRAP> <input name="RecordsetName" type="text" class="basicTextField" style="width:200px">
+	<select name="RsTypeParameter" style="position:absolute; width:80px; visibility:hidden;" wrap="virtual" onChange="updateUI('RsType','onChange')">
+    </select>
+    </TD>
+    </TR>
+    <TR>
+    <TD HEIGHT="1"></TD>
+    </TR>
+    <TR VALIGN="baseline">
+    <TD ALIGN="right" NOWRAP>连接:</TD>
+    <TD NOWRAP COLSPAN="2"> <select name="ConnectionName" class="connNameList"  onChange="updateUI('ConnectionName','onChange')" wrap="virtual">
+    </select> &nbsp; <input type="button" value="定义..." onClick="updateUI('Define','onClick')">
+    </TD>
+    </TR>
+    <TR>
+    <TD HEIGHT="1"></TD>
+    </TR>
+    <TR>
+    <TD ALIGN="right" VALIGN="top" NOWRAP>SQL: </TD>
+    <TD NOWRAP COLSPAN="2"> <textarea name="SQL" style="width:420px;height:75px" onBlur="updateUI('SQL','onBlur')" wrap="VIRTUAL"></textarea>
+    </TD>
+    </TR>
+    <TR>
+    <TD HEIGHT="1"></TD>
+    </TR>
+    <TR>
+    <TR>
+      <TD ALIGN="right" VALIGN="top" NOWRAP>
+        参数:  </TD>
+      <TD NOWRAP COLSPAN="2">
+         <img src="../Shared/MM/Images/transparent.gif" WIDTH="2" HEIGHT="1">
+          <input type="image" name="plusButton" src="../Shared/MM/Images/btnAdd.gif" onClick="updateUI('plusButton','onClick')">
+          <input type="image" name="minusButton" src="../Shared/MM/Images/btnDel.gif" onClick="updateUI('minusButton','onClick')">
+         <table cellpadding="0" cellspacing="0">
+           <tr nowrap>
+             <td valign="baseline"">
+               <select name="ParamList" size="5" class="paramNameList" onChange="updateUI('ParamList','onChange')">
+              </select>
+             </td>
+             <td width="6">&nbsp; </td>
+             <td valign="top" nowrap>
+              <table cellpadding="0" cellspacing="0" border="1" width="100%">
+                <tr nowrap><td valign="top" NOWRAP>
+                <table cellpadding="0" cellspacing="0" width="210px">
+                  <tr nowrap>
+                    <td>
+                      <span name="ParamName">-</span>
+                    </td>
+                  </tr>
+                  <tr nowrap>
+                    <td>
+                      <span name="ParamType">-</span>
+                    </td>
+                  </tr>
+                  <tr nowrap>
+                    <td>
+                      <span name="ParamValue">-</span>
+                    </td>
+                  </tr>
+                  <tr nowrap>
+                    <td height="3">
+                    </td>
+                  </tr>
+                  <tr nowrap>
+                    <td>
+                      <input name="EditParam" type="button" onClick="updateUI('EditParam')" value="编辑..." disabled="disabled">
+                    </td>
+                  </tr>
+                </table>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </TD>
+    </TR>
+    <TR>
+    <TD ALIGN="right" VALIGN="baseline" NOWRAP>如果失败，则转到:</TD>
+    <TD HEIGHT="1" COLSPAN="2" valign="baseline" NOWRAP>
+	<input name="FailureURL" type="text" class="xlargeTField">
+    <input name="FailureBrowse" type="button" onClick="updateUI('FailureURL');focus(this);" value="浏览...">
+    </TD>
+    </TR>
+    <TR>
+    <TD ALIGN="right" VALIGN="top" NOWRAP></TD>
+    <TD HEIGHT="1" COLSPAN="2" valign="baseline" NOWRAP>
+	<input name="Debug" type="checkbox" value="true" onClick="updateUI('Debug')">
+        失败时显示调试信息</TD>
+    </TR>
+    <TR>
+      <TD COLSPAN="3"><hr></TD>
+    </TR>
+    <TR>
+    <TD ALIGN="right" VALIGN="top" NOWRAP>
+    数据库项:  </TD>
+      <TD NOWRAP> 
+        <select name="DBTree" style="width:300px;height:110px" type=mmdatabasetree connection="" onChange="updateUI('DBTree','onChange')">
+    </select> </TD>
+      <TD VALIGN="top"> 
+        <TABLE BORDER="0" CELLPADDING="0" CELLSPACING ="0">
+      <TR>
+      <TD> <input type="hidden" name="TreeSelection">
+      添加到 SQL:  </TD>
+      </TR>
+      <TR>
+      <TD HEIGHT="9"></TD>
+      </TR>
+      <TR>
+      <TD> <input type=button style="width:100px" name="SelectButton" value="SELECT" onClick="updateUI('SelectButton','onClick')">
+      </TD>
+      </TR>
+      <TR>
+      <TD HEIGHT="9"></TD>
+      </TR>
+      <TR>
+      <TD> <input type=button style="width:100px" name="WhereButton" value="WHERE" onClick="updateUI('WhereButton','onClick')">
+      </TD>
+      </TR>
+      <TR>
+      <TD HEIGHT="9"></TD>
+      </TR>
+      <TR>
+      <TD> <input type=button style="width:100px" name="OrderByButton" value="ORDER BY" onClick="updateUI('OrderByButton','onClick')">
+      </TD>
+      </TR>
+    </table></TD>
+    </TR>
+    <TR>
+      <TD HEIGHT="1"></TD>
+    </TR>
+    <TR>
+      <TD COLSPAN="3" HEIGHT="32"><div name="StoredProcWarning">&nbsp;</div></TD>
+    </TR>
+  </TABLE>
+  </form>
+</BODY>
+</HTML>
+

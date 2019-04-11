@@ -1,0 +1,13 @@
+<participant>
+	<quickSearch>cfoutput</quickSearch>
+	<insertText location="lastChildOfNode" nodeParamName="selectNode">
+    <![CDATA[
+<cfoutput query="@@rsName@@"></cfoutput>
+]]>
+  </insertText>
+	<searchPatterns whereToSearch="tag+cfoutput">
+		<searchPattern paramNames="rsName" isOptional="false" limitSearch="all">
+      <![CDATA[/<cfoutput query="([^\r\n]*?)">/i]]>
+    </searchPattern>
+	</searchPatterns>
+</participant>

@@ -1,0 +1,9 @@
+<participant version="5.0">
+  <insertText location="none">
+<![CDATA[<cfif IsDefined("@@Variable@@")>@@AltValue@@<cfelse>@@DefaultValue@@</cfif>]]>
+  </insertText>
+  <searchPatterns whereToSearch="tag+CFIF">
+    <searchPattern paramNames="Variable,AltValue,DefaultValue" isOptional="false" limitSearch="all"><![CDATA[/(?:<cfif IsDefined\("([^\r\n]*?)"\)>\s*([^\r\n]*?)\s*<cfelse>\s*([^\r\n]*?)\s*<\/cfif>)/i]]></searchPattern>
+  </searchPatterns>
+  <quickSearch>IsDefined</quickSearch>
+</participant>

@@ -1,0 +1,193 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>TBODY</title>
+  
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var LANGUAGELIST; 
+var DIRLIST;
+var ALIGNLIST;
+var VALIGNLIST;
+var theUIObjects; 
+
+// Color control elements
+var COLORP_BACK, COLORP_BORDER, COLORP_BORDERLIGHT, COLORP_BORDERDARK;  
+var TEXT_BACK, TEXT_BORDER, TEXT_BORDERLIGHT, TEXT_BORDERDARK;  
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+  updateColors();
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function updateUI(itemName)
+{
+  switch(itemName)
+  {
+    case "backColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_BACK,TEXT_BACK);
+      break;
+    }
+    case "backcolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_BACK,TEXT_BACK);
+      break;
+    }
+  }
+}
+
+function updateColors()
+{
+  tagDialog.updateColorPicker("colorField",COLORP_BACK,TEXT_BACK);
+}
+
+function initializeUI()
+{
+	LANGUAGELIST = new ListControl("thelang"); 
+	DIRLIST = new ListControl("thedir"); 
+	ALIGNLIST = new ListControl("thealign"); 
+	VALIGNLIST = new ListControl("thevalign"); 
+
+	theUIObjects  = new Array(LANGUAGELIST,DIRLIST,ALIGNLIST,VALIGNLIST); 
+
+  COLORP_BACK = dwscripts.findDOMObject("backColorPicker");
+  TEXT_BACK = dwscripts.findDOMObject("thebackcolor");
+
+  updateColors(); 
+  tagDialog.populateDropDownList(LANGUAGELIST, theLanguagesCap, theLanguagesVal, 1); 
+  tagDialog.populateDropDownList(DIRLIST, theDirectionCap, theDirectionVal, 1); 
+  tagDialog.populateDropDownList(ALIGNLIST, theHAlignCap, theHAlignVal, 1); 
+  tagDialog.populateDropDownList(VALIGNLIST, theVAlignStandardFourCap, theVAlignStandardFourVal, 1); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">水平对齐: </td>
+      <td nowrap="nowrap">
+        <select name="thealign" class="alignList" id="attr:tbody:align" attname="align">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">垂直对齐: </td>
+      <td nowrap="nowrap">
+        <select name="thevalign" class="alignList" id="attr:tbody:valign" attname="valign">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">背景颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="backColorPicker" value="" onChange="updateUI('backColorPicker')"> <input name="thebackcolor" type="text" class="smallTField" id="attr:tbody:backcolor" onBlur="updateUI('backcolor')" value="" attname="bgcolor">&nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;4+&nbsp;<img src="../../Shared/MM/Images/Netscape.gif" alt="Netscape" align="absmiddle">&nbsp;6+ 
+      </td>
+    </tr>
+  </table>
+</div>
+<div name="样式表/辅助功能"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">类: </td>
+      <td nowrap="nowrap">
+        <input name="theclass" type="text" class="basicTextField" id="attr:tbody:class" attname="class" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="attr:tbody:id" attname="id" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">样式: </td>
+      <td nowrap="nowrap">
+        <input name="thestyle" type="text" class="basicTextField" id="attr:tbody:class" attname="style" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">标题: </td>
+      <td nowrap="nowrap">
+        <input name="thetitle" type="text" class="basicTextField" id="attr:tbody:title" attname="title" />
+      </td>
+    </tr>
+  </table> 
+</div>
+<div name="语言"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">方向: </td>
+      <td nowrap="nowrap">
+        <select name="thedir" class="dirLangList" id="attr:tbody:dir" attname="dir"> 
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" nowrap="nowrap"></td>
+      <td nowrap="nowrap"></td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">语言: </td>
+      <td nowrap="nowrap">
+        <select name="thelang" class="dirLangList" id="attr:tbody:lang" attname="lang" editable="true"> 
+        </select>
+      </td>
+    </tr>
+  </table>
+</div>
+<div name="事件"> 
+  <div name="onClick"> 
+    <textarea name="theonClick" attname="onClick" id="attr:tbody:onclick" class="contentsField"  wrap="virtual"></textarea>
+  </div> 
+  <div name="onDblClick"> 
+    <textarea name="theonDblClick" attname="onDblClick" id="attr:tbody:ondblclick" class="contentsField"  wrap="virtual"></textarea>
+  </div> 
+  <div name="onMouseDown"> 
+    <textarea name="theonMouseDown" attname="onMouseDown" id="attr:tbody:onmousedown" class="contentsField"  wrap="virtual"></textarea>
+  </div> 
+  <div name="onMouseUp"> 
+    <textarea name="theonMouseUp" attname="onMouseUp" id="attr:tbody:onmouseup" class="contentsField"  wrap="virtual"></textarea>
+  </div> 
+  <div name="onMouseOver"> 
+    <textarea name="theonMouseOver" attname="onMouseOver" id="attr:tbody:onmouseover" class="contentsField"  wrap="virtual"></textarea>
+  </div> 
+  <div name="onMouseMove"> 
+    <textarea name="theonMouseMove" attname="onMouseMove" id="attr:tbody:onmousemove" class="contentsField"  wrap="virtual"></textarea>
+  </div> 
+  <div name="onMouseOut"> 
+    <textarea name="theonMouseOut" attname="onMouseOut" id="attr:tbody:onmouseout" class="contentsField"  wrap="virtual"></textarea>
+  </div> 
+  <div name="onKeyPress"> 
+    <textarea name="theonKeyPress" attname="onKeyPress" id="attr:tbody:onkeypress" class="contentsField"  wrap="virtual"></textarea>
+  </div> 
+  <div name="onKeyDown"> 
+    <textarea name="theonKeyDown" attname="onKeyDown" id="attr:tbody:onkeydown" class="contentsField"  wrap="virtual"></textarea>
+  </div> 
+  <div name="onKeyUp"> 
+    <textarea name="theonKeyUp" attname="onKeyUp" id="attr:tbody:onkeyup" class="contentsField"  wrap="virtual"></textarea>
+  </div> 
+</div>
+</body>
+</html>

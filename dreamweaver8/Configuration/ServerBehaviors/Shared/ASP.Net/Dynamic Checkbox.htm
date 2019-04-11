@@ -1,0 +1,55 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+
+<SCRIPT>
+// Copyright 2001-2002 Macromedia, Inc. All rights reserved.
+var PROP_type = "DynamicCheckbox";
+</SCRIPT>
+
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/TagEditClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/DynamicExpressionTextfield.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/TagMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dotNetUtils.js"></SCRIPT>
+<SCRIPT SRC="../Shared/ASP.Net/Dynamic Checkbox.js"></script>
+<!--<SCRIPT SRC="../Shared/DynamicCheckBoxMasks.js"></SCRIPT>-->
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/dynamicCmn.js"></script>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm" ACTION="">
+    <table border="0" cellpadding="2" cellspacing="2">
+      <tr valign="baseline">
+        <td align="right" nowrap>复选框: </td>
+        <td nowrap>
+          <select style="width:200px" name="chbxNode">
+            <option></option>
+          </select>
+        </td>
+      </tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>选取，如果: </td>
+        <td nowrap>
+          <input type="text" name="expression1" style="width:200px">
+          <input name="image" type=image onClick="launchDynamicData(document.expression1)" src="../../Shared/UltraDev/Images/Boltup.gif" width="15" height="14" alt="绑定动态数据">
+        </td>
+      </tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>等于: </td>
+        <td nowrap>
+          <input type="text" name="expression2" style="width:200px">
+        </td>
+      </tr>
+    </table>
+  </FORM>
+</BODY>
+</HTML>

@@ -1,0 +1,24 @@
+<participant version="5.0">
+  <insertText location="afterSelection">
+<![CDATA[
+<table<@if (@@Border@@) @> border="@@Border@@"<@endif@><@if (@@CellPadding@@) @> cellpadding="@@CellPadding@@"<@endif@><@if (@@CellSpacing@@) @> cellspacing="@@CellSpacing@@"<@endif@>>
+  <tr>
+<@ loop (@@FieldLabelArray@@) @>
+    <td>@@FieldLabelArray@@</td>
+<@ endloop @>
+  </tr>
+<% while ((@@rsName@@_hasData)&&(@@loopName@@__numRows-- != 0)) { %>
+  <tr>
+<@ loop (@@FieldNameArray@@) @>
+    <td><%=(((@@rsName@@_data = @@rsName@@.getObject("@@FieldNameArray@@"))==null || @@rsName@@.wasNull())?"":@@rsName@@_data)%></td>
+<@ endloop @>
+  </tr>
+<%
+  @@loopName@@__index++;
+  @@rsName@@_hasData = @@rsName@@.next();
+}
+%>
+</table>
+]]>
+  </insertText>
+</participant>

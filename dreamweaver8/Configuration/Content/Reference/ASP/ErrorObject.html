@@ -1,0 +1,734 @@
+<html>
+<head>
+<title>Error Object</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">Error Object</td>
+<td valign="top" class="COMPATIBILITY"><refpurpose/></td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+<synopsis>
+Dim <span class="replaceable">error</span> As ADODB.Error</synopsis>
+
+
+<p>The Error object contains information regarding a particular error or
+warning that was raised by a data provider during an ADO operation.</p>
+
+</td></tr>
+</table>
+</div>
+<div id="Error.Description">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Error.Description Property </td>
+<td class="COMPATIBILITY">(Versions 2.0, 2.1, 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br><span class="replaceable">description  = error</span>.Description</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The Description property describes the error or warning either ADO or
+the data provider has generated.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Datatype</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>String</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>The Description property of the Error object is read-only. It offers
+error or warning information in a String form so that you can notify
+the user of your application that an error or warning has occurred.</p>
+
+
+<p>The value of the Description property can come from either ADO or the
+provider.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Error.HelpContext">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Error.HelpContext Property/Error.HelpFile Property </td>
+<td class="COMPATIBILITY">(Versions 2.0, 2.1, 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br><span class="replaceable">helpcontext = error</span>.HelpContext<br><span class="replaceable">helpfile = error</span>.HelpFile</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The HelpContext and HelpFile properties indicate the topic and the
+name, respectively, of a particular error within an Error object.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Datatype</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<simplelist>
+
+<member>Long (HelpContext Property)</member>
+
+<member>String (HelpFile Property)</member>
+
+</simplelist>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>The HelpFile property contains a fully qualified path to a Windows
+Help file.</p>
+
+
+<p>The HelpContext property automatically displays a Help topic from the
+Windows Help file that is indicated through the HelpFile property.</p>
+
+
+<p>If no Help topic is relevant to the generated error, the HelpContext
+property returns zero, and the HelpFile property returns an empty
+string (").</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Error.NativeError">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Error.NativeError Property </td>
+<td class="COMPATIBILITY">(Versions 2.0, 2.1, 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br><span class="replaceable">nativeerror = error</span>.NativeError</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The NativeError property returns the error code supplied by the data
+provider for the current Error Object.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Datatype</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>Long</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>Use this property to retrieve error codes that pass from the data
+source to the data provider and then to ADO.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Error.Number">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Error.Number Property </td>
+<td class="COMPATIBILITY">(Versions 2.0, 2.1, 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br><span class="replaceable">number = error</span>.Number</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The Number property is used to uniquely identify the error specified
+by the current Error object.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Datatype</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>Long or ErrorValueEnum (Long)</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>The value of the Number property is a unique number that describes an
+error that has occurred. The value can be one of the ErrorValueEnum
+enumeration values shown in <link linkend="ado-APP-E-TABLE-18">Table E-18</link>.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">See Also</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>ErrorValueEnum Enumeration</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Error.Source">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Error.Source Property </td>
+<td class="COMPATIBILITY">(Versions 2.0, 2.1, 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br><span class="replaceable">source = error</span>.Source</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The Source property returns the name of an object or application that
+generated an error within ADO.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Datatype</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>The Error object returns a String.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>For the Errors object, the Source property indicates the name of the
+object or application that originally generated an error within ADO.</p>
+
+
+<p>ADO errors will have a source value beginning with the value
+<span class="LITERAL">ADODB.</span> followed by the name of the object that
+generated the error.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Error.SQLState">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Error.SQLState Property </td>
+<td class="COMPATIBILITY">(Versions 2.0, 2.1, 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br><span class="replaceable">sqlstate = error</span>.SQLState</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The SQLState property returns the SQL state of the current Error
+object.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Datatype</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>String (five characters)</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>Use this property to retrieve the five-character error code that the
+data provider returns to ADO when an error occurs processing a SQL
+statement. These error codes should be ANSI SQL standard, but they
+may not be, depending on the particular data provider.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Errors">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Errors Collection </td>
+<td class="COMPATIBILITY">(Versions 2.0, 2.1, 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br>Set <span class="replaceable">errors = connection</span>.Errors</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>See the Error Object for more information and examples pertaining to
+the Errors collection.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Objects</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<dl>
+<dt>Error</dt>
+<dd><p>Contains information regarding a particular error or warning that was
+raised by ADO during an operation.</p></dd>
+
+</dl>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Methods</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<dl>
+<dt>Clear</dt>
+<dd><p>The Clear method erases all errors stored in the Errors collection.</p></dd>
+
+</dl>
+
+
+<dl>
+<dt>Refresh</dt>
+<dd><p>The Refresh method of the Errors collection is an undocumented method
+of ADO that has been around since Version 2.0.</p></dd>
+
+</dl>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Properties</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<dl>
+<dt>Count</dt>
+<dd><p>Indicates how many Error objects belong to the associated Errors
+collection.</p></dd>
+
+</dl>
+
+
+<dl>
+<dt>Item</dt>
+<dd><p>Accesses a particular Error object belonging to the Errors collection.</p></dd>
+
+</dl>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Errors.Clear">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Errors.Clear Method </td>
+<td class="COMPATIBILITY">(Versions 2.0, 2.1, 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br><span class="replaceable">errors</span>.Clear</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The Clear method erases all errors stored in the Errors collection.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>The Clear method clears the current collection of ADO errors. When a
+new runtime error is generated, the Errors collection is
+automatically cleared and then populated with the error information.</p>
+
+
+<p>Use the Clear method when you are going to make calls to a Recordset
+object that might return multiple warnings. These calls include
+Delete, Resync, UpdateBatch, and CancelBatch. Once you have made any
+of these calls, after clearing the Errors collection, you can
+determine whether any warnings were generated by the call in
+question.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">See Also</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>Recordset.CancelBatch Method, Recordset.Delete Method,
+Recordset.Resync Method, Recordset.UpdateBatch Method</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Errors.Count">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Errors.Count Property </td>
+<td class="COMPATIBILITY">(Versions 2.0, 2.1, 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br><span class="replaceable">count = errors</span>.Count</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The Count property indicates how many Error objects belong to the
+associated Errors collection.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Datatype</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>Long</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>If the value of the Count property is zero, there are no Error
+objects within the associated Errors collection. However, Error
+objects that do belong to the associated Errors collection are
+indexed from <span class="LITERAL">0</span> to one less than the value of the
+Count property.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Errors.Item">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Errors.Item Property </td>
+<td class="COMPATIBILITY">(Versions 2.0, 2.1, 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br>Set <span class="replaceable">error = errors</span>.Item(Index)<br>Set <span class="replaceable">error = errors</span> (Index)</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The Item property accesses a particular Error object belonging to the
+Errors collection.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Datatype</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>Error object</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>The <span class="replaceable">Index</span> placeholder represents a Variant
+datatype that represents the ordinal position of an Error object
+within the Errors collection. If the Errors collection does not
+contain the item requested, an error is generated.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Note</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>Some languages do not support the Item property in its first syntax.
+For these languages, use the second syntax, without the Item method
+name.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="Errors.Refresh">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
+<td class="NAME">
+Errors.Refresh Method </td>
+<td class="COMPATIBILITY">(Versions 2.0, 2.1, 2.5, 2.6)</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td class="usage" colspan="2"><br><span class="replaceable">errors</span>.Refresh</td></tr>
+<tr><td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="description">
+
+
+<p>The Refresh method of the Errors collection is an undocumented method
+of ADO that has been around since Version 2.0.</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+
+<p>The Errors.Refresh method appears to requery for errors within ADO.</p>
+
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

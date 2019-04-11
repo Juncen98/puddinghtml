@@ -1,0 +1,9 @@
+<participant>
+     <quickSearch><![CDATA[getValue]]></quickSearch>
+     <insertText location="replaceSelection">
+<![CDATA[<%= ((session.getValue("@@bindingName@@")!=null)?session.getValue("@@bindingName@@"):"") %>]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName,bindingName"><![CDATA[/\b(session)\.getValue\(\s*"?([^\)"]+)"?\)/i]]></searchPattern>
+     </searchPatterns>
+</participant>

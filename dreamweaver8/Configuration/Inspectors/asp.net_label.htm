@@ -1,0 +1,64 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 6.0//pi">
+<!-- tag:asp:label, priority:1, selection:exact,hline,vline ,serverModel:ASP.NET -->
+<html>
+<head>
+<!-- Copyright 2002 Macromedia, Inc. All rights reserved. -->
+<title>ASP.NET Label</title>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/TagEditClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dotNetUtils.js"></SCRIPT>
+<script src="asp.net_label.js"></script>
+<script language="JavaScript">
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+//--------------- END LOCALIZEABLE   ---------------
+</script>
+</head>
+
+<body marginwidth="0" marginheight="0">
+<span id="image" style="position:absolute; width:36px; height:36px; z-index:1; left: 5px; top: 9px"><img src="asp.net_label.gif" width="36" height="36"></span>
+<div id="idBoxLayer" style="position:absolute; width:65px; height:38px; z-index:1; left: 44px; top: 9px; visibility: visible;"> 
+<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		  <td align="left" height="17" NOWRAP>标签</td>
+		</tr>
+		<tr>
+		  <td align="left" nowrap>
+
+        <input name="labelID" type="text" id="cboxID" style="width:65px" onBlur="updateTag('id')">
+		  </td>
+		</tr>
+  </table>
+</div>
+<div id="topLayer" style="position:absolute; left:125px; top:2px; width:400px; height:38px; z-index:25">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="9%" align="right" nowrap>文本&nbsp;</td>
+      <td width="52%" nowrap> <input type="text" name="text" id="text" onBlur="updateTag('text')" style="width:200px"></td>
+      <td width="11%" nowrap><input name="image" type="image" onClick="dotNetUtils.getDynamicData(TEXT_TEXT);updateTag('text')" src="../Shared/MM/Images/Bolt.gif" width="15" height="14" alt="绑定动态数据"></td>
+      <td width="28%" align="left" nowrap>访问键&nbsp;
+      <input type="text" name="akey" id="akey" onBlur="updateTag('aKey')" style="width:35px">&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>工具提示&nbsp;</td>
+      <td nowrap> <input type="text" name="tooltip" id="tooltip" onBlur="updateTag('toolTip')" style="width:200px"></td>
+      <td nowrap>&nbsp;</td>
+      <td align="left" nowrap><input type="checkbox" name="enabled" id="enabled" onClick="updateTag('enabled')">已启用</td>
+    </tr>
+  </table>
+</div>
+<div id="bottomLayer" style="position:absolute; left:505px; top:54px; z-index:22">
+<table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><input type="image" src="tagDialog.gif" name="more" id="more" title="Display Tag Editor for asp:Label" onClick="dotNetUtils.displayTagDialog()" alt="显示 asp:Label 的标签编辑器">
+        </td>
+      </tr>
+</table></div>
+</body>
+</html>

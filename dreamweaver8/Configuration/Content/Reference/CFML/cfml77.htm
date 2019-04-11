@@ -1,0 +1,247 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFLOOP: INDEX LOOP</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFLOOP: INDEX LOOP</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+An index loop repeats for a number of times that is determined by a numeric value. An index loop is also known as a FOR loop. 
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfloop 
+   index = &quot;parameter_name&quot;
+   from = &quot;beginning_value&quot;
+   to = &quot;ending_value&quot;
+   step = &quot;increment&quot;&gt;
+   ... HTML or CFML code ...
+&lt;/cfloop&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfabort, cfbreak, cfdirectory, cfexecute, cfexit, cfif, cflocation, cfrethrow, cfswitch, cfthrow, cftry; "cfloop and cfbreak" in Chapter&#160;2, "Elements of CFML," in ColdFusion MX Developer's Guide
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+Using anything other than integer values in the from and to attributes of an index loop can product unexpected results. For example, if you increment through an index loop from 1 to 2, with a step of 0.1, ColdFusion outputs &quot;1,1.1,1.2,...,1.9&quot;, but not &quot;2&quot;. This is a programming language problem regarding the internal representation of floating point numbers. 
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>The to value is evaluated once, when the cfloop tag is encountered. Any change to this value within the loop block, or within the expression that evaluates to this value, does not affect the number of times the loop is executed. </td>
+  </tr>
+</table>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+In this example, the code loops five times, displaying the index value each time:
+</p>
+<pre>&lt;cfloop index = &quot;LoopCount&quot; from = &quot;1&quot; to = &quot;5&quot;&gt;
+   The loop index is &lt;cfoutput&gt;#LoopCount#&lt;/cfoutput&gt;.&lt;br&gt;
+&lt;/cfloop&gt;
+</pre>
+<p>
+The output of this loop is as follows: 
+</p>
+<pre>The loop index is 1. 
+The loop index is 2. 
+The loop index is 3. 
+The loop index is 4. 
+The loop index is 5. 
+</pre>
+<p>
+In this example, the code loops four times, displaying the index value each time. The value of j is decreased by one for each iteration. This does not affect the value of to, because it is a copy of j that is made before entering the loop.
+</p>
+<pre>&lt;cfset j = 4&gt;
+&lt;cfloop index = &quot;LoopCount&quot; from = &quot;1&quot; to = #j#&gt;
+   &lt;cfoutput&gt;The loop index is #LoopCount#&lt;/cfoutput&gt;.&lt;br&gt;
+   &lt;cfset j = j - 1&gt;
+&lt;/cfloop&gt;
+</pre>
+<p>
+The output of this loop is as follows: 
+</p>
+<pre>The loop index is 1. 
+The loop index is 2. 
+The loop index is 3. 
+The loop index is 4. 
+</pre>
+<p>
+As before, the value of j is decremented by one for each iteration, but this does not affect the value of to, because its value is a copy of j that is made before the loop is entered.
+</p>
+
+<p>
+In this example, step has the default value, 1. The code decrements the index:
+</p>
+<pre>&lt;cfloop index = &quot;LoopCount&quot; 
+   from = &quot;5&quot; 
+   to = &quot;1&quot; 
+   step = &quot;-1&quot;&gt;
+The loop index is &lt;cfoutput&gt;#LoopCount#&lt;/cfoutput&gt;.&lt;br&gt;
+&lt;/cfloop&gt;
+</pre>
+<p>
+The output of this loop is as follows: 
+</p>
+<pre>The loop index is 5. 
+The loop index is 4. 
+The loop index is 3. 
+The loop index is 2. 
+The loop index is 1. 
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="INDEX">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">INDEX</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Index value. ColdFusion sets it to the from value and increments or decrements by step value, until it equals the to value.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="FROM">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">FROM</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Beginning value of index.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TO">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TO</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Ending value of index.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="STEP">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STEP</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "1"
+
+
+<p>Step by which to increment or decrement the index value.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

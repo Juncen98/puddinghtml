@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "设置 CSS 颜色" description = "将给定对象的 CSS 颜色样式设置为指定的前景色和背景色。" preview="code" type="block">
+<insertText location="beforeSelection">
+<![CDATA[// * Dependencies * 
+// this function requires the following snippet:
+// JavaScript/readable_MM_functions/findObj
+function setColor(objName, fg, bg)
+{
+  obj = findObj(objName);
+  if (obj.style)
+  {
+    obj.style.color = fg;
+    obj.style.backgroundColor = bg;
+  }
+}
+]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

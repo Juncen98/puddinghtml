@@ -1,0 +1,41 @@
+<tag name="APPLET" BIND="CODE" endtag="yes">
+<tagformat nlbeforetag="1" nlbeforecontents="1" nlaftercontents="1" nlaftertag="1" indentcontents="yes"/>
+<tagdialog file="applet.htm" />
+  <attributes>
+    <attrib name="NOEXTERNALDATA" type="Enumerated">
+      <attriboption value="true" caption="true"/>
+      <attriboption value="false" caption="false"/>
+    </attrib>
+    <attrib name="CODE" type="Filename"/>
+    <attrib name="CODEBASE" type="Filepath"/>
+    <attrib name="NAME"/>
+    <attrib name="ALT"/>
+    <attrib name="WIDTH"/>
+    <attrib name="HEIGHT"/>
+    <attrib name="HSPACE"/>
+    <attrib name="VSPACE"/>
+    <attrib name="ALIGN" type="Enumerated">
+      <attriboption value="left" caption="left"/>
+      <attriboption value="right" caption="right"/>
+      <attriboption value="top" caption="top"/>
+      <attriboption value="middle" caption="middle"/>
+      <attriboption value="bottom" caption="bottom"/>
+      <attriboption value="texttop" caption="texttop (browser-specific)"/>
+      <attriboption value="absmiddle" caption="absmiddle (browser-specific)"/>
+      <attriboption value="baseline" caption="baseline (browser-specific)"/>
+      <attriboption value="absbottom" caption="absbottom (browser-specific)"/>
+		</attrib>
+    <!-- LMH: I'm not sure cabbase should be here; it's for applet params, not
+      the applet tag itself. -->
+    <attrib name="CABBASE" type="Relativepath"/>
+    <attrib name="MAYSCRIPT"/>
+    <attrib name="ARCHIVE"/>
+    <attrib name="CLASS" type="cssStyle"/>
+    <attrib name="ID" type="cssId"/>
+    <attrib name="STYLE" type="Style"/>
+	</attributes>
+	<attribcategories>
+		<attribgroup name="General" elements="code,codebase,archive,name,height,width,vspace,hspace,align,mayscript" />
+		<attribgroup name="CSS/Accessibility" elements="class,id,style,title,alt" />
+	</attribcategories>
+</tag>

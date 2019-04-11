@@ -1,0 +1,112 @@
+<!-- search:"CallableStatement" -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+<TITLE>可调用（预存过程）</TITLE>
+<!-- Copyright 2000-2002 Macromedia, Inc. All rights reserved. -->
+<SCRIPT SRC="JSPCallableMasks.js"></SCRIPT>
+<SCRIPT SRC="Callable.js"></SCRIPT>
+<SCRIPT SRC="../Shared/CheckDupeObjName.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/enableControl.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/docInfo.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/niceName.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/sbManager.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssClasses.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/DBTreeControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/PlusMinusButton.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/Class/GridControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/Class/classCheckbox.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/SchemaCache.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/TempURL.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/SQLTypes.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/CMN/helper.js"></SCRIPT>
+
+<TITLE>可调用</TITLE>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+
+<form>
+  <table border=0>
+    <tr valign="baseline">
+      <td align="right" nowrap>名称:</td>
+      <td colspan=1 nowrap>
+        <input type="text" name="callableName" style="width:130px">
+	  </td>
+	  <td nowrap align="right">连接:
+        <select name="ConnectionList" class="connNameList" onChange="ConnectionChanged()" wrap="virtual">
+        </select>
+	  </td>
+	  <td>
+        <input type="button" style="width:95px" value="定义..." onClick="LaunchConnectionManager()">
+      </td>
+    </tr>
+    <tr valign="baseline">
+  	  <td></td>
+  	  <td nowrap align="left">
+  		  <input type="checkbox" name="RResultset" value="Return Resultset" onClick="checkBoxClicked()">返回记录集
+  	  </td>
+  	  <td align="right" nowrap>
+  		记录集名称: <input type="text" style="width:160px" name="RResultsetName" value="">
+  	  </td>
+  	  <td nowrap>
+  		  <input type=button name="testButton" style="width:95px" value="测试" onClick="PopUpTestDialog()">
+  	  </td>
+    </tr>
+    <tr>
+      <td HEIGHT="3"></td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>可调用文本:</td>
+  	  <td colspan=3 align="left" nowrap>
+    		<input type=text name="theCallableText" style="width:510px;">
+      </td>
+    </tr>
+    <tr>
+      <td HEIGHT="3"></td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>变量: </td>
+      <td colspan=2>
+        <input type="image" name="plusButton" src="../../Shared/UltraDev/Images/PlusButton.gif" value="+" onClick="AddParam();">
+        <input type="image" name="minusButton" src="../../Shared/UltraDev/Images/MinusButtonEnabled.gif" value="-" onClick="DeleteParam();">
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td colspan=3>
+        <select name="ParamList" size=6 class="jspParamNameList" type=mmparameterlist columns="名称,类型,方向,大小,默认值,运行值" columnWidths="80,80,60,80">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan=4><hr></td>
+    </tr>
+    <tr>
+	    <td rowspan=3 align="right" valign="top">数据库项: </td>
+      <td rowspan=3 colspan=2 valign="top">
+  		<select name="DBTree" class="dbTreeList" type=mmdatabasetree connection=""></select>
+      </td>
+    <tr valign="top">
+      <td align="left">
+  	    添加到 SQL: 
+      </td>
+    </tr>
+    <tr valign="top">
+      <td align="left">
+        <input type=button style="width:95px" value="过程" onClick="AppendToSQL()">
+      </td>
+    </tr>
+  </table>
+</form>
+</BODY>
+</HTML>
+

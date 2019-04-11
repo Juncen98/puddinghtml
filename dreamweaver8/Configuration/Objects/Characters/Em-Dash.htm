@@ -1,0 +1,29 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved. -->
+
+<title><MMString:LoadString id="insertbar/emDash" /></TITLE>
+
+<SCRIPT SRC="characters.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+
+function isDOMRequired() { 
+	// Return false, indicating that this object is available in code view.
+	return false;
+}
+
+function objectTag() {
+   checkEncoding();
+  // Return the html tag that should be inserted
+  //<!ENTITY mdash   CDATA "&#8212;" -- em dash, U+2014 ISOpub -->
+  return "&#8212;";  // Supported starting in 4.0 browsers, valid HTML
+  //return "&mdash;"; // Supported starting in 5.0 browsers, valid HTML
+  //return "&#151;";  // Generally supported, but not valid HTML (refers to windows specific character)
+}
+</SCRIPT>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+</BODY>
+</HTML>

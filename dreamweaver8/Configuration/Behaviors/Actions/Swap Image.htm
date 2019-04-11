@@ -1,0 +1,76 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<HTML>
+<HEAD><link href="../../fields.css" rel="stylesheet" type="text/css">
+<SCRIPT SRC="Swap Image.js"></SCRIPT>
+<SCRIPT SRC="MM_findObj.js"></SCRIPT>
+<SCRIPT SRC="MM_preloadImages.js"></SCRIPT>
+<SCRIPT SRC="MM_swapImgRestore.js"></SCRIPT>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/handler.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/menuItem.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/docInfo.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/niceName.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/preload.js"></SCRIPT>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<SCRIPT LANGUAGE="javascript">
+// Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved.
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_ImgNotFound = '无法找到设定给 %s的图像 "%s" 。';
+var MSG_UnnamedImg = "只能交换 *已命名的* 图像。 请点击「取消」，使用属性检查器将您的图像命名。";
+var MSG_NoImgsSelected = "请设定一些图像以交换，或点击「取消」。";
+var MSG_ImagesMustBeRenamed = "只有不同名称的图像才能交换。 要自动重新命名选取的图像，并且应用这个作用，请按「确定」。\n\n要关闭交换图像对话框，然后自己重新命名图像，请按「取消」。";
+var MSG_NoImgsSrc = "请设置图像来源,或点击取消。"
+var LABEL_Unnamed = "unnamed";
+//--------------- END LOCALIZEABLE   ---------------
+//---------------    END JAVASCRIPT    ---------------
+</SCRIPT>
+<TITLE>交换图像</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+</HEAD>
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm" ACTION="">
+    <DIV ALIGN="center">
+      
+    <TABLE BORDER=0 cellpadding="2" cellspacing="4">
+        <TR>
+          
+        <TD></TD>
+          <TD VALIGN="top" NOWRAP ROWSPAN=2>
+            <SELECT NAME="menu" SIZE=8 class="namedObjectsList" onChange="displayImgSrc()">
+              
+            <OPTION SELECTED>**** 无法找到图像 ****
+            </select></TD>
+        </TR><TR>
+          <TD ALIGN="right" VALIGN="top" NOWRAP>
+            图像:</TD>
+        </TR><TR>
+          
+        <TD ALIGN="right" NOWRAP>
+            设定原始档为:</TD>
+          
+        <TD VALIGN="top" NOWRAP>
+<input name="imgSrc" type="text" class="largeTField" onBlur="storeImgSrc()">            
+            <INPUT TYPE="button" value="浏览..." onClick="browseFileAndStore();focus(this)"></TD>
+        </TR><TR>
+          <TD></TD>
+          <TD NOWRAP>
+            <INPUT TYPE="checkbox" NAME="preload" checked>预先载入图像</TD>
+        </TR><TR>
+          <TD></TD>
+          <TD NOWRAP><SPAN NAME="restoreOption">
+            <INPUT TYPE="checkbox" NAME="restore" checked>鼠标滑开时恢复图像
+          </SPAN></TD>
+        </TR>
+      </TABLE>
+    </DIV>
+
+
+  </FORM>
+</BODY>
+</HTML>

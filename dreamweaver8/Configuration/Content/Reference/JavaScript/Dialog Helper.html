@@ -1,0 +1,353 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">Dialog Helper</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">6(Win)</span>  DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>The Dialog Helper object is an ActiveX control delivered with IE 6
+for Windows that provides a short assortment of potentially useful
+system and document information; the method also displays a color
+selector dialog from which your scripts can obtain a
+user's color choice. Most typically, it would be
+used when scripting IE's edit mode, where users need
+to make color, font, and element choices. But you might find the
+object's properties and methods useful in
+traditional browser document settings.
+</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Loading this object into the page requires the following
+<span class="literal">&lt;object&gt;</span> tag:
+</p>
+<span class="PROGRAMLISTING"><pre>&lt;object id=&quot;dlgHelper&quot; classid=&quot;clsid:3050f819-98b5-11cf-bb82-00aa00bdce0b&quot; 
+        width=&quot;0px&quot; height=&quot;0px&gt;
+&lt;/object&gt; &quot;</pre></span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Because this object is not rendered, you may place its tag in the
+head portion of your document. You may also assign your choice of
+identifier to the <span class="literal">id</span> attribute. Once the object is
+loaded, reference it as a global object in the window.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="htmlequivalent"><span class="title">HTML Equivalent</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById("<span class="replaceable">elementID</span>")</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificproperties"><span class="title">Object-Specific Properties</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">blockFormats</span></td><td><span class="literal">fonts</span></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificmethods"><span class="title">Object-Specific Methods</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">ChooseColorDlg( )</span></td><td><span class="literal">getCharset( )</span></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificeventhandlerproperties"><span class="title">Object-Specific Event Handler Properties</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="blockFormats">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">blockFormats</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">6</span>  DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a collection of plain-language names of block-level elements
+supported by the browser. Unlike other IE collections, to read the
+number of items, you must access its <span class="literal">Count</span>
+property, rather than <span class="literal">length</span> property. The names
+of items returned are strings, such as "Heading
+1" and "Numbered
+List" (corresponding to the <span class="literal">h1</span>
+and <span class="literal">ol</span> elements, respectively). Access each item
+in the collection via the collection's
+<span class="literal">item( )</span> method.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var blockList = dlgHelper.blockFormats;
+var blockNames = new Array( );
+for (var i = 0; i &lt; blockList.Count; i++) &#123;
+    blockNames[blockNames.length]= blockList.item(i);
+}</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Array of strings</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Implementation-dependent.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="fonts">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">fonts</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">6</span>  DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a collection of plain-language names of system fonts. Unlike
+other IE collections, to read the number of items, you must access
+its <span class="literal">Count</span> property, rather than
+<span class="literal">length</span> property. The names of items returned are
+strings, such as "MS Sans Serif"
+and "Verdana". Access each item in
+the collection via the collection's <span class="literal">item(
+)</span> method.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var fontList = dlgHelper.fonts;
+var fontNames = new Array( );
+for (var i = 0; i &lt; fontList.Count; i++) &#123;
+    fontNames [fontNames .length]= fontList .item(i);
+}</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Array of strings</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Implementation-dependent.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="ChooseColorDlg( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">ChooseColorDlg( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">6</span>  DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">ChooseColorDlg([<span class="replaceable">initialHexColor</span>])</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Displays a color selector dialog box, and returns a decimal number
+corresponding to the color chosen by the user. To apply the color to
+style or other color property settings, you may have to convert the
+decimal value to a suitable hexadecimal triplet value of the
+<span class="literal">#</span><span class="replaceable">RRGGBB</span> format. The
+following fragment demonstrates the sequence of obtaining the color,
+converting it to the desired base and digit count, and assigning the
+value to a style property:
+</p>
+<span class="PROGRAMLISTING"><pre>var colorChoice = dlgHelper.ChooseColorDlg( );
+var hexColor = colorChoice.toString(16);
+while (hexColor.length&lt; 6) {hexColor = &quot;0&quot; + hexColor;}
+document.body.style.color = &quot;#&quot; + hexColor; </pre></span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			If the user selects a custom color in the dialog and adds it to a
+little shortcut box, the color does not reappear in the box the next
+time the dialog appears. But a custom color can still be pre-selected
+by passing its hex value as a parameter to the method.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+<dl>
+<dt><var class="replaceable">initialHexColor</var></dt>
+<dd>
+<p>Optional hexadecimal number that presets the initially-selected color
+in the dialog box.
+</p>
+</dd>
+</dl>					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Decimal integer of the selected color (0 through as many colors of
+the client settings).
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="getCharset( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">getCharset( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">6</span>  DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">getCharset("<span class="replaceable">fontName</span>")</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns an integer corresponding to a constant associated with a
+character set known by the operating system. Among the common values
+returned for font families installed on Latin-based systems are 0
+(for plain ANSI character set) and 2 (for a symbol set). The required
+parameter is the name of a font to inspect for its character set.
+Such names may be retrieved from the fonts property of the Dialog
+Helper object:
+</p>
+<span class="PROGRAMLISTING"><pre>var setID = dlgHelper.getCharset(dlgHelper.fonts.item(4));</pre></span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Not all Windows versions have the same character set suite installed.</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+<dl>
+<dt><var class="replaceable">fontName</var></dt>
+<dd>
+<p>String name of installed system font.</p>
+</dd>
+</dl>					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>’æµ„ºÏ≤È¡¥Ω”</TITLE>
+<SCRIPT LANGUAGE="javascript">
+<!--
+
+   function receiveArguments()
+   {
+		var itemID = arguments[0];
+
+		site.checkLinks(itemID);
+   }
+
+function canAcceptCommand()
+{
+	var bCanCheckLinks = true;
+	var itemID = arguments[0];
+	var curSite = site.getCurrentSite();
+
+	if (dw.getFocus() == "browser")
+		return false;
+		
+	if (itemID == "selection")
+	{
+		if (site.getFocus() == "site map")
+		{
+			bCanCheckLinks = site.getSelection().length > 0 && DWfile.exists(site.getSelection()[0]) > 0;
+		}
+		else
+		{
+			// must be in "local" or "remote"
+			
+			var selFiles = site.getSelection();
+			var theSite;
+			
+			if (selFiles.length > 0)
+			{
+				var selFile = selFiles[0];
+
+				// do not return true if the items selected are disk volumes
+	
+				var urlPrefix = "file:///";
+				var strTemp = selFile.substr(urlPrefix.length);
+	
+				if (strTemp.indexOf("/") == -1)
+					bCanCheckLinks = false;
+
+				if (bCanCheckLinks)
+				{
+					if (DWfile.getAttributes(selFile) == "D" && selFile.lastIndexOf('/') + 1 != selFile.length)
+					{
+						selFile += '/';
+					}
+	
+					theSite = site.getSiteForURL(selFile);
+	
+					if (theSite != curSite)
+					{
+						bCanCheckLinks = false;
+					}
+					else
+					{
+						for (i = 1; i < selFiles.length; i++)
+						{
+							selFile = selFiles[i];
+
+							// do not return true if the items selected are disk volumes
+	
+							strTemp = selFile.substr(urlPrefix.length);
+	
+							if (strTemp.indexOf("/") == -1)
+							{
+								bCanCheckLinks = false;
+								break;
+							}
+
+							if (site.getSiteForURL(selFile) != theSite)
+							{
+								bCanCheckLinks = false;
+								break;
+							}
+						}
+					}
+				}
+			}
+			else
+			{
+				bCanCheckLinks = false;
+			}
+		}
+	}
+
+	return bCanCheckLinks;
+}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

@@ -1,0 +1,33 @@
+<!-- Copyright 2003 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>É¾³ýÁÙÊ±ÎÄ¼þ</title>
+<script language="JavaScript" src="../Shared/Common/Scripts/dwscripts.js"></script>
+<script language="JavaScript">
+function delTempFile()
+{
+  var folderPath = dwscripts.filePathToLocalURL(dw.getConfigurationPath()
+               + dwscripts.FILE_SEP + "Reports" + dwscripts.FILE_SEP + "Workflow"
+			   + dwscripts.FILE_SEP + "Output" + dwscripts.FILE_SEP);
+
+  DWfile.remove(folderPath+"sortTable.js");
+  DWfile.remove(folderPath+"up.gif");
+  DWfile.remove(folderPath+"down.gif");
+  DWfile.remove(folderPath+"space.gif");
+  
+  var listFiles = DWfile.listFolder(folderPath);
+  for(var i =0 ; i< listFiles.length ; i++)
+  {
+    var start = String(listFiles[i]).lastIndexOf(".html");
+	if ((String(listFiles[i]).substr(0,12) == "TMPTeamAdmin") && (String(listFiles[i]).substr(start) == ".html"))
+	{
+      DWfile.remove(folderPath + listFiles[i]);
+	}
+  }
+}
+</script>
+</head>
+<body onLoad="delTempFile()">
+</body>
+</html>

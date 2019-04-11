@@ -1,0 +1,66 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+
+
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+<TITLE>CFParam</TITLE>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/TagEditClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/TextField.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/ListMenu.js"></SCRIPT>
+<SCRIPT SRC="CFParam.js"></SCRIPT>
+
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+<FORM NAME="theForm">
+  <TABLE BORDER=0>
+    <TR>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP>
+        名称:
+      </TD>
+      <TD VALIGN="baseline" NOWRAP>
+        <INPUT NAME="ParamName" TYPE="text" class="basicTextField">
+      </TD>
+    </TR>
+    <TR><TD HEIGHT="1"></TD></TR>
+    <TR>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP>
+        默认:
+      </TD>
+      <TD VALIGN="baseline" NOWRAP>
+        <INPUT TYPE="text" NAME="Default" class="basicTextField">
+      </TD>
+    </TR>
+    <TR><TD HEIGHT="1"></TD></TR>
+    <TR>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP>
+        类型:
+      </TD>
+      <TD VALIGN="baseline" NOWRAP>
+        <SELECT NAME="ParamType" class="paramTypeList" editable="true">
+          <OPTION VALUE=""></OPTION>
+          <OPTION VALUE="Any">任意</OPTION>
+          <OPTION VALUE="Array">数组</OPTION>
+          <OPTION VALUE="Boolean">布尔型</OPTION>
+          <OPTION VALUE="Date">日期</OPTION>
+          <OPTION VALUE="Numeric">数字</OPTION>
+          <OPTION VALUE="Query">查询</OPTION>
+          <OPTION VALUE="String">字符串</OPTION>
+          <OPTION VALUE="Struct">结构</OPTION>
+          <OPTION VALUE="UUID">UUID</OPTION>
+        </select>
+      </TD>
+    </TR>
+    <TR><TD HEIGHT="1"></TD></TR>
+  </TABLE>
+</FORM>
+</BODY>
+</HTML>
+

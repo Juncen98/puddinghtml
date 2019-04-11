@@ -1,0 +1,49 @@
+<participant>
+     <quickSearch><![CDATA[(MM_paramIsDefined]]></quickSearch>
+     <insertText location="aboveHTML+82">
+<![CDATA[
+<%
+// *** Move To Specific Record: handle detail parameter
+
+if (MM_paramIsDefined && MM_rsCount != 0) {
+
+  // get the value of the parameter
+  String param = request.getParameter(MM_paramName);
+
+  // find the record with the unique column value equal to the parameter value
+  String colVal;
+  while (@@rsName@@_hasData) {
+    colVal = ((MM_rs.getObject(MM_uniqueCol)!=null)?MM_rs.getObject(MM_uniqueCol).toString():"");
+    if (colVal.equals(param)) break;
+    @@rsName@@_hasData = MM_rs.next();
+    MM_offset++;
+  }
+
+  // if not found, set the number of records and reset the cursor
+  if (!@@rsName@@_hasData) {
+    if (MM_rsCount < 0) MM_rsCount = MM_offset;
+    if (MM_size < 0 || MM_size > MM_rsCount) MM_size = MM_rsCount;
+    MM_offset = 0;
+
+    // reset the cursor to the beginning
+    @@rsName@@.close();
+    @@resetRecordsetCall@@
+    @@rsName@@_hasData = @@rsName@@.next();
+    MM_rs = @@rsName@@;
+  }
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern><![CDATA[/param\s*=\s*request\.getParameter\(MM_paramName\);/]]></searchPattern>
+       <searchPattern paramNames="rsName"><![CDATA[/\b(\w+)_hasData/]]></searchPattern>
+       <searchPattern paramNames="callableName" isOptional="true"><![CDATA[/\b(\w+)\.execute\(\);/]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="rsName"><![CDATA[/(\W)\w+(_hasData|\.close\(|\.next\()/g]]></updatePattern>
+       <updatePattern paramName="rsName"><![CDATA[/(MM_rs\s*=\s*)\w+(;)/g]]></updatePattern>
+       <updatePattern paramName="rsName"><![CDATA[/(\W)\w+(\s*=\s*MM_rs;)/g]]></updatePattern>
+       <updatePattern paramName="resetRecordsetCall"><![CDATA[/(\.close\(\);[ \t]*[\r\n]*[ \t]*)[^\r\n]*([\r\n])/g]]></updatePattern>       
+     </updatePatterns>
+</participant>

@@ -1,0 +1,381 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFTHROW</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFTHROW</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Throws a developer-specified exception, which can be caught with a cfcatch tag that has any of the following type attribute options:
+</p>
+<ul>
+
+<li>type = &quot;custom_type&quot; </li>
+
+<li>type = &quot;Application&quot; </li>
+
+<li>type = &quot;Any&quot; </li>
+</ul>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Exception handling tags, Flow-control tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfthrow 
+   type = &quot;exception_type &quot;
+   message = &quot;message&quot;
+   detail = &quot;detail_description &quot;
+   errorCode = &quot;error_code &quot;
+   extendedInfo = &quot;additional_information&quot;
+   object = &quot;java_except_object&quot;&gt;
+</pre>  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfthrow 
+   object = #object_name#&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cferror, cfrethrow, cftry, onError; Chapter&#160;14, "Handling Errors" in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX: Changed thrown exceptions: this tag can throw ColdFusion component method exceptions.
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+Use this tag within a cftry block, to throw an error. The cfcatch block can access accompanying information, as follows: 
+</p>
+<ul>
+
+<li>Message, with cfcatch.message </li>
+
+<li>Detail, with cfcatch.detail </li>
+
+<li>Error code, with cfcatch.errorcode </li>
+</ul>
+
+<p>
+To get more information, use cfcatch.tagContext. This array shows where control switches from one page to another in the tag stack (for example, cfinclude, cfmodule).
+</p>
+
+<p>
+To display the information displayed by tagContext: in the ColdFusion MX Administrator, Debugging page, select Enable CFML Stack Trace.
+</p>
+
+<p>
+<b>Using the object parameter&#160;</b>To use this tag with the object parameter, you must first use a cfobject tag that specifies a valid Java exception class. For example, the following cfobject tag defines an object, obj, of the exception class myException (which you must create in Java):
+</p>
+<pre>&lt;cfobject 
+type=&quot;java&quot; 
+action=&quot;create&quot; 
+class=&quot;myException&quot; 
+name=&quot;obj&quot;&gt;
+</pre>
+<p>
+If your exception class has constructors that take parameters, such as a message, you can use the special init method to invoke the constructor, as in the following line. If you do not need to specify any constructor attributes, you can omit this step.
+</p>
+<pre>&lt;cfset obj.init(&quot;You must save your work before preceding&quot;)&gt;
+</pre>
+<p>
+You can then use the, the cfthrow statement to throw the exception as follows: 
+</p>
+<pre>&lt;cfthrow object=#obj#&gt;
+</pre>
+<p>
+For more information on using Java objects in ColdFusion, see Chapter&#160;37, "Integrating J2EE and Java Elements in CFML Applications" in ColdFusion MX Developer's Guide.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;cfthrow Example&lt;/h3&gt;
+&lt;!--- Open a cftry block. ---&gt;
+&lt;cftry&gt;
+&lt;!--- Define a condition upon which to throw the error. ---&gt;
+&lt;cfif NOT IsDefined(&quot;URL.myID&quot;)&gt;
+   &lt;!--- throw the error ---&gt;
+   &lt;cfthrow message = &quot;ID is not defined&quot;&gt;
+&lt;/cfif&gt;
+
+&lt;!--- Perform the error catch. ---&gt;
+&lt;cfcatch type = &quot;application&quot;&gt;
+&lt;!--- Display your message. ---&gt;
+   &lt;h3&gt;You&#39;ve Thrown an &lt;b&gt;Error&lt;/b&gt;&lt;/h3&gt;
+&lt;cfoutput&gt;
+   &lt;!--- And the diagnostic feedback from the application server. ---&gt;
+  &lt;p&gt;#cfcatch.message#&lt;/p&gt;
+   &lt;p&gt;The contents of the tag stack are:&lt;/p&gt;
+   &lt;cfloop 
+      index = i 
+      from = 1 to = #ArrayLen(cfcatch.tagContext)#&gt;
+          &lt;cfset sCurrent = #cfcatch.tagContext[i]#&gt;
+             &lt;br&gt;#i# #sCurrent[&quot;ID&quot;]#
+            (#sCurrent[&quot;LINE&quot;]#,#sCurrent[&quot;COLUMN&quot;]#)
+            #sCurrent[&quot;TEMPLATE&quot;]#
+   &lt;/cfloop&gt;
+&lt;/cfoutput&gt;
+&lt;/cfcatch&gt;
+&lt;/cftry&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+The following example shows how to throw an exception from a component method:
+</p>
+<pre>&lt;cfcomponent&gt;
+   &lt;cffunction name=&quot;getEmp&quot;&gt;
+   &lt;cfargument name=&quot;lastName&quot; required=&quot;yes&quot;&gt;    
+       &lt;cfquery name=&quot;empQuery&quot; datasource=&quot;cfdocexamples&quot; &gt;
+          SELECT LASTNAME, FIRSTNAME, EMAIL
+          FROM tblEmployees
+         WHERE LASTNAME LIKE &#39;#arguments.lastName#&#39;
+       &lt;/cfquery&gt;
+       &lt;cfif empQuery.recordcount LT 1&gt;
+          &lt;cfthrow type=&quot;noQueryResult&quot; 
+            message=&quot;No results were found. Please try again.&quot;&gt;
+         &lt;cfelse&gt;
+              &lt;cfreturn empQuery&gt;
+        &lt;/cfif&gt;
+   &lt;/cffunction&gt;
+&lt;/cfcomponent&gt;
+</pre>
+<p>
+For an explanation of the example and more information, see Chapter&#160;10, "Building and Using ColdFusion Components" in ColdFusion MX Developer's Guide.
+</p>
+
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="TYPE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TYPE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Application"
+
+<ul>
+
+<li>A custom type</li>
+
+<li>Application</li>
+</ul>
+
+<p>Do not enter another predefined type; types are not generated by ColdFusion applications. If you specify Application, you need not specify a type for cfcatch.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="MESSAGE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">MESSAGE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Message that describes exception event. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DETAIL">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DETAIL</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Description of the event. ColdFusion appends error position to description; server uses this parameter if an error is not caught by your code.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ERRORCODE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ERRORCODE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>A custom error code that you supply. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="EXTENDEDINFO">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">EXTENDEDINFO</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>A custom error code that you supply. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="OBJECT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">OBJECT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Requires the value of the cfobject tag name attribute.</p>
+<p>Throws a Java exception from a CFML tag.</p>
+<p>This attribute is mutually exclusive with all other attributes of this tag.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

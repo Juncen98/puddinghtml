@@ -1,0 +1,163 @@
+<html>
+<head>
+<title>document() Function</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">document() Function</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+Allows you to process multiple source documents in a single stylesheet. This extremely powerful and flexible function is the subject of <link linkend="xslt-CHP-7">Chapter 7</link>, so we'll only include a brief overview of the function here.</td></tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Inputs</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>The <span class="LITERAL">document()</span> function most commonly takes a
+      string as its argument; that string is treated as a URI, and the
+      XSLT processor attempts to open that URI and parse it. If the
+      string is empty (the function call is
+      <span class="LITERAL">document('')</span>), the
+      <span class="LITERAL">document()</span> function parses the stylesheet
+      itself. See <link linkend="xslt-CHP-7-SECT-3">Section 7.3</link> in <link linkend="xslt-CHP-7">Chapter 7</link> for all the details on the parameters to the <span class="LITERAL">document()</span> function. </p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Output</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>A node-set containing the nodes identified by the input argument. Again, <link linkend="xslt-CHP-7">Chapter 7</link> has all the details, so we won't rehash them here.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Defined in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>XSLT section 12.1, Multiple Source Documents.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>The following example uses the <span class="LITERAL">document()</span> function with an empty string to implement a lookup table. Here is our XML document:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;report&gt;
+  &lt;title&gt;Miles Flown in 2001&lt;/title&gt;
+  &lt;month sequence="01"&gt;
+    &lt;miles-flown&gt;12379&lt;/miles-flown&gt;
+    &lt;miles-earned&gt;35215&lt;/miles-earned&gt;
+  &lt;/month&gt;
+  &lt;month sequence="02"&gt;
+    &lt;miles-flown&gt;32857&lt;/miles-flown&gt;
+    &lt;miles-earned&gt;92731&lt;/miles-earned&gt;
+  &lt;/month&gt;
+  &lt;month sequence="03"&gt;
+    &lt;miles-flown&gt;19920&lt;/miles-flown&gt;
+    &lt;miles-earned&gt;76725&lt;/miles-earned&gt;
+  &lt;/month&gt;
+  &lt;month sequence="04"&gt;
+    &lt;miles-flown&gt;18903&lt;/miles-flown&gt;
+    &lt;miles-earned&gt;31781&lt;/miles-earned&gt;
+  &lt;/month&gt;
+&lt;/report&gt;</pre></span>
+<p>We can use the <span class="LITERAL">document()</span> function to convert the <span class="LITERAL">sequence</span> attribute of the <span class="LITERAL">&lt;month&gt;</span> element into the name of the corresponding month. Here is our stylesheet:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet version="1.0" 
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:months="Lookup table for month names"&gt;
+
+  &lt;months:name sequence="01"&gt;January&lt;/months:name&gt;
+  &lt;months:name sequence="02"&gt;February&lt;/months:name&gt;
+  &lt;months:name sequence="03"&gt;March&lt;/months:name&gt;
+  &lt;months:name sequence="04"&gt;April&lt;/months:name&gt;
+  &lt;months:name sequence="05"&gt;May&lt;/months:name&gt;
+  &lt;months:name sequence="06"&gt;June&lt;/months:name&gt;
+  &lt;months:name sequence="07"&gt;July&lt;/months:name&gt;
+  &lt;months:name sequence="08"&gt;August&lt;/months:name&gt;
+  &lt;months:name sequence="09"&gt;September&lt;/months:name&gt;
+  &lt;months:name sequence="10"&gt;October&lt;/months:name&gt;
+  &lt;months:name sequence="11"&gt;November&lt;/months:name&gt;
+  &lt;months:name sequence="12"&gt;December&lt;/months:name&gt;
+
+  &lt;xsl:output method="text"/&gt;
+
+  &lt;xsl:variable name="newline"&gt;
+&lt;xsl:text&gt;
+&lt;/xsl:text&gt;
+  &lt;/xsl:variable&gt;
+
+  &lt;xsl:template match="/"&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:text&gt;A test of the document() function:&lt;/xsl:text&gt;
+
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:for-each select="/report/month"&gt;
+      &lt;xsl:text&gt;   &lt;/xsl:text&gt;
+      &lt;xsl:value-of 
+        select="document('')/*/months:name[@sequence=current()/@sequence]"/&gt;
+      &lt;xsl:text&gt; - &lt;/xsl:text&gt;
+      &lt;xsl:value-of select="format-number(miles-flown, '##,###')"/&gt;
+      &lt;xsl:text&gt; miles flown, &lt;/xsl:text&gt;
+      &lt;xsl:value-of select="format-number(miles-earned, '##,###')"/&gt;
+      &lt;xsl:text&gt; miles earned.&lt;/xsl:text&gt;
+      &lt;xsl:value-of select="$newline"/&gt;
+      &lt;xsl:text&gt;      (Averaged &lt;/xsl:text&gt;
+      &lt;xsl:value-of 
+        select="format-number(miles-earned div miles-flown, '##.#')"/&gt;
+      &lt;xsl:text&gt; miles earned for each mile flown.)&lt;/xsl:text&gt;
+<!--<?troff .Nd 10?>-->
+      &lt;xsl:value-of select="$newline"/&gt;
+      &lt;xsl:value-of select="$newline"/&gt;
+    &lt;/xsl:for-each&gt;
+  &lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</pre></span>
+<p>Here are the results, with the correct month names included in the output:</p>
+<span class="PROGRAMLISTING"><pre>
+
+A test of the document() function:
+
+   January - 12,379 miles flown, 35,215 miles earned.
+      (Averaged 2.8 miles earned for each mile flown.)
+
+   February - 32,857 miles flown, 92,731 miles earned.
+      (Averaged 2.8 miles earned for each mile flown.)
+
+   March - 19,920 miles flown, 76,725 miles earned.
+      (Averaged 3.9 miles earned for each mile flown.)
+
+   April - 18,903 miles flown, 31,781 miles earned.
+      (Averaged 1.7 miles earned for each mile flown.)
+</pre></span>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

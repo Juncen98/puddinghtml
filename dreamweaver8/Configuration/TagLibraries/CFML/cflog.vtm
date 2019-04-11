@@ -1,0 +1,37 @@
+<tag name="CFLOG" endtag="no">
+<tagformat nlbeforetag="1" nlaftertag="1"/>
+<tagdialog file="cflog.htm"/>
+  <attributes>
+    <attrib name="TEXT" CONTROL="txtText" type="TEXT"/>
+    <attrib name="TYPE" CONTROL="dropType" type="ENUMERATED">
+      <attriboption value="Information"/>
+      <attriboption value="Warning"/>
+      <attriboption value="Error"/>
+      <attriboption value="Fatal"/>
+    </attrib>
+    <attrib name="LOG" CONTROL="radioLog" type="ENUMERATED">
+      <attriboption value="APPLICATION"/>
+      <attriboption value="SCHEDULER"/>
+		</attrib>
+    <attrib name="FILE" CONTROL="txtFile" type="TEXT"/>
+    <attrib name="THREAD" CONTROL="checkThread" type="ENUMERATED">
+      <attriboption value="YES"/>
+      <attriboption value="NO"/>
+		</attrib>
+    <attrib name="DATE" CONTROL="checkDate" type="ENUMERATED">
+      <attriboption value="YES"/>
+      <attriboption value="NO"/>
+		</attrib>
+    <attrib name="TIME" CONTROL="checkTime" type="ENUMERATED">
+      <attriboption value="YES"/>
+      <attriboption value="NO"/>
+		</attrib>
+    <attrib name="APPLICATION" CONTROL="checkApplication" type="ENUMERATED">
+      <attriboption value="YES"/>
+      <attriboption value="NO"/>
+		</attrib>
+  </attributes>
+	<attribcategories>
+		<attribgroup name="General" elements="text,file,thread,date,time,application,type,log" />
+	</attribcategories>
+</tag>

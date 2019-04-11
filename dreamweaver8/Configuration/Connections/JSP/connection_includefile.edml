@@ -1,0 +1,30 @@
+<participant name="connection_includefile" version="5.0">
+  <quickSearch><![CDATA[// HTTP=]]></quickSearch>
+  <insertText location="aboveHTML+2">
+<![CDATA[<%
+// FileName="@@filename@@"
+// Type="@@type@@" "@@designtime@@"
+// DesigntimeType="@@designtimeType@@"
+// HTTP="@@http@@"
+// Catalog="@@catalog@@"
+// Schema="@@schema@@"
+String MM_@@cname@@_DRIVER = "@@driver@@";
+String MM_@@cname@@_USERNAME = "@@username@@";
+String MM_@@cname@@_PASSWORD = "@@password@@";
+String MM_@@cname@@_STRING = "@@string@@";
+%>
+]]>
+  </insertText>
+  <searchPatterns whereToSearch="directive">
+    <searchPattern paramNames="filename"><![CDATA[/\bFileName="([^"]*)"/]]></searchPattern>	
+    <searchPattern paramNames="type,designtime"><![CDATA[/\bType="(\w*)"([^\r\n]*)/]]></searchPattern>
+    <searchPattern paramNames="designtimeType" isOptional="true"><![CDATA[/\bDesigntimeType="(\w*)"/]]></searchPattern>
+    <searchPattern paramNames="http"><![CDATA[/\bHTTP="(\w+)"/]]></searchPattern>
+    <searchPattern paramNames="catalog"><![CDATA[/\bCatalog="(\w*)"/]]></searchPattern>
+    <searchPattern paramNames="schema"><![CDATA[/\bSchema="(\w*)"/]]></searchPattern>
+    <searchPattern paramNames="cname,driver"><![CDATA[/String\s+MM_(\w*)_DRIVER\s*=\s*"([^"]*)"\s*;/]]></searchPattern>
+    <searchPattern paramNames="cname,username"><![CDATA[/String\s+MM_(\w*)_USERNAME\s*=\s*"([^"]*)"\s*;/]]></searchPattern>
+    <searchPattern paramNames="cname,password"><![CDATA[/String\s+MM_(\w*)_PASSWORD\s*=\s*"([^"]*)"\s*;/]]></searchPattern>
+    <searchPattern paramNames="cname,string"><![CDATA[/String\s+MM_(\w*)_STRING\s*=\s*"([^"]*)"\s*;/]]></searchPattern>
+  </searchPatterns>
+</participant>

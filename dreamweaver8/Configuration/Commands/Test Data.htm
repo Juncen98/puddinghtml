@@ -1,0 +1,459 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<title>Game</title>
+<script>
+//----------  GLOBAL VARIABLES and CONSTANTS   ---------------
+var G;
+var ALL_COLORS = new Array("red","orange","yellow","green","blue","purple");
+var ADVANCED_LEVEL = false;
+
+//---------- Dreamweaver API  --------
+
+function commandButtons() {
+  return Array("Done","window.close()","Give Up","G.endGame()","Play Again","newGame()", "Help", "showHelp()");
+}
+
+//------------ GAME CLASS -----------
+
+//Constructor for a Game, the main object.
+function Game(tableObj) {
+  this.tableObj = tableObj;
+  this.turns = new Array();
+  this.length = 0;
+  this.turnNum = 0;
+  this.numTiles = 0;
+  this.soln = new Array();
+  
+  this.setupTurns(this.tableObj)
+  this.length = this.turns.length;
+  this.buildSoln();
+  this.playTurn();
+}
+Game.prototype.buildSoln = Game_buildSoln;
+Game.prototype.setupTurns = Game_setupTurns;
+Game.prototype.playTurn = Game_playTurn;
+Game.prototype.endTurn = Game_endTurn;
+Game.prototype.endGame = Game_endGame;
+Game.prototype.tileClicked = Game_tileClicked;
+
+
+//Generate solution color code.
+function Game_buildSoln() {
+  var numColors = getNumColors();
+  for (var i=0; i<this.numTiles; i++) {
+    var colorNum = Math.floor(Math.random()*numColors);
+
+    //for beginners, ensure each color is different.
+    if (!ADVANCED_LEVEL) {
+      var colorUsed = true;
+      while (colorUsed) {
+        colorUsed = false;
+        for (var j=0; j<i; j++) {
+          if (colorNum == this.soln[j]) {
+            colorUsed = true;
+            colorNum = Math.floor(Math.random()*numColors);
+            break;
+          }
+        }
+      }
+    }
+    this.soln[i] = (colorNum);
+  }
+}
+
+
+//Find all table elements, and initialize properties: turns, numTiles.
+function Game_setupTurns(tableObj) {
+  this.turns = new Array();
+  
+  //add turn for each unnamed table row, bottom-up
+  for (var i=tableObj.childNodes.length-1; i>=0; i--) { 
+    var rowObj = tableObj.childNodes[i];
+	  if (!rowObj.name) {
+	    this.turns.push(new Turn(rowObj));
+	  }
+  }
+  if (this.turns.length) this.numTiles = this.turns[0].numTiles;
+}
+
+
+//Play one turn.
+function Game_playTurn() {
+  this.turns[this.turnNum].playTurn();
+}
+
+
+//End the turn and display results.
+function Game_endTurn() {
+  if (this.turnNum < this.length) {
+    if (this.turns[this.turnNum].canEndTurn()) { //if can end the turn
+      var allCorrect = this.turns[this.turnNum].endTurn(this.soln);
+	    if (allCorrect) {
+	      alert("That's correct! You solved it in only "+(this.turnNum+1)+" guesses.");
+	    } else {
+        this.turnNum++;
+	      if (this.turnNum < this.length) {
+          this.playTurn();
+	      } else {
+	        this.endGame();
+	      }
+	    }
+    } else {
+      alert("Please choose a color for each gray tile before guessing");
+    }
+  } else {
+	  this.endGame();
+  }
+}
+
+
+//End the game, display the solution.
+function Game_endGame() {
+   var msg = "The solution is:";
+   for (var i=0; i<this.soln.length; i++) {
+     msg += (i>0)? ", " : " ";
+     msg += getColor(this.soln[i]);
+   }
+   alert(msg);
+}
+
+
+//A tile was clicked, pass the event to the turn object.
+function Game_tileClicked(tileNum) {
+  if (this.turnNum < this.length) {
+    this.turns[this.turnNum].tileClicked(tileNum);
+  }
+}
+
+//-------------  TURN CLASS  --------------
+
+//Constructor for a Turn. A turn manages all the tiles and hints for a single row.
+function Turn(rowObj) {
+  this.rowObj = rowObj;
+  this.tiles = new Array();
+  this.hints = new Array();
+  this.numTiles = 0;
+  this.allCorrect = false;
+  
+  //Compute numTiles: there should be tiles+hints+1 cells.
+  this.numTiles = (this.rowObj.childNodes.length - 1)/2;
+
+  //Add each tile to array
+  for (var i=0; i<this.numTiles; i++) {
+    this.tiles.push(new Tile(this.rowObj.childNodes[i]));
+  }
+  
+  //Add each hint to the array
+  for (var i=this.numTiles+1; i<rowObj.childNodes.length; i++) {
+    this.hints.push(new Hint(rowObj.childNodes[i]));
+  }
+}
+Turn.prototype.tileClicked = Turn_tileClicked;
+Turn.prototype.playTurn = Turn_playTurn;
+Turn.prototype.canEndTurn = Turn_canEndTurn;
+Turn.prototype.endTurn = Turn_endTurn;
+
+
+//A tile was clicked.
+function Turn_tileClicked(tileNum) {
+  this.tiles[tileNum].tileClicked();
+}
+
+
+//Play a turn by enabling all tiles.
+function Turn_playTurn() {
+  for (var i=0; i<this.tiles.length; i++) {
+    this.tiles[i].enable(i);
+  }
+}
+
+
+//Check if all tiles are selected and we can end the turn.
+function Turn_canEndTurn() {
+  var canEnd = true;
+  for (var i=0; i<this.tiles.length; i++) {
+    if (this.tiles[i].colorNum == -1) {
+	    canEnd = false;
+	    break;
+	  }
+  }
+  return canEnd;
+}
+
+
+//End the turn and display the hints.
+function Turn_endTurn(soln) {
+  var canEnd = this.canEndTurn();
+  if (canEnd) {
+    for (var i=0; i<this.tiles.length; i++) {
+      this.tiles[i].disable();
+    }
+	
+    //Check the guess and determine how many are correct.
+    var rightRow = new Array();     //right color in the right row
+    var rightColor = new Array();   //right color in the wrong row
+    var usedSolns = new Array(this.numTiles);
+    
+    //First, look for right row, then look for right color
+    for (var i=0; i<this.tiles.length; i++) {
+      var curColor = this.tiles[i].colorNum;
+      if (curColor == soln[i]) {
+        rightRow.push(true);
+        usedSolns[i] = true;
+      } else {
+        for (var j=0; j<soln.length; j++) {
+          //Check for right color, wrong row. If a soln hasn't been used, won't be
+          //used for an exact match, and matches the current tile, it's a rightColor.
+          if (usedSolns[j]!=true && soln[j] != this.tiles[j].colorNum && curColor == soln[j]) {
+            rightColor.push(true);
+            usedSolns[j] = true;
+            break; 
+          }
+        }
+      }
+    }
+    
+    //display the hints, right row first
+    for (var i=0; i<rightRow.length; i++) {
+      this.hints[i].rightRow();
+    }
+    for (var j=0; j<rightColor.length; j++) {
+      this.hints[i+j].rightColor();
+    }
+    this.allCorrect = (rightRow.length == this.numTiles);
+  }
+
+  return (this.allCorrect);  //returns true if game over
+}
+
+//---------------  TILE CLASS  ---------------
+
+//Constructor for a Tile. Manages a single color play tile.
+function Tile(cellObj) {
+  this.cellObj = cellObj;
+  this.colorNum = -1;
+  this.cellObj.bgColor = ""
+}
+Tile.prototype.enable = Tile_enable;
+Tile.prototype.disable = Tile_disable;
+Tile.prototype.tileClicked = Tile_tileClicked;
+
+
+//Enable a tile by setting it's color to gray, and enabling the onClick handler.
+function Tile_enable(tileNum) {
+  this.cellObj.innerHTML = this.cellObj.innerHTML.replace(/onClick=""/,"onClick=\"G.tileClicked("+tileNum+")\"");
+  this.cellObj.bgColor = "gray"
+  this.colorNum = -1;
+}
+
+
+//Disable by clearing the onClick handler.
+function Tile_disable() {
+  this.cellObj.innerHTML = this.cellObj.innerHTML.replace(/onClick=".*"/,"onClick=\"\"");
+}
+
+
+//If a tile was clicked, cycle through all the colors.
+function Tile_tileClicked(tileNum) {
+  this.colorNum++;
+  //if moved past last color, choose first color
+  if (this.colorNum > (getNumColors()-1)) this.colorNum = 0;
+  this.cellObj.bgColor = getColor(this.colorNum);
+}
+
+//-----------  HINT CLASS  ---------------
+
+//Constructor for a Hint. Manages a single color hint tile.
+function Hint(cellObj) {
+  this.cellObj = cellObj;
+  this.cellObj.bgColor = "";
+}
+Hint.prototype.rightRow   = Hint_rightRow;
+Hint.prototype.rightColor = Hint_rightColor;
+
+
+//Set a hint cell to indicate right color, right row.
+function Hint_rightRow() {
+  this.cellObj.bgColor = "black";
+}
+
+
+//Set a hint cell to indicate right color, wrong row.
+function Hint_rightColor() {
+  this.cellObj.bgColor = "white";
+}
+
+//------------  LOCAL FUNCTIONS ------
+
+function initializeUI() {
+  //Create a new game object, clearing everything.
+  G = new Game(document.theForm.theTable);
+}
+
+
+function newGame() {
+  ADVANCED_LEVEL = confirm("Would you like to play a more advanced game where there \n"
+                          +"could be more than one of the same color?");
+  initializeUI();
+}
+
+
+function getColor(colorNum) {
+  return ALL_COLORS[colorNum];
+}
+
+
+function getNumColors() {
+  return ALL_COLORS.length;
+}
+
+
+function showHelp() {
+  alert("INSTRUCTIONS\n\n"
+       +"Try and solve the secret four-color code. Choose colors by clicking the gray squares,\n"
+       +"then click \"Guess\".\n\n"
+       +"After you've guessed, you may get a few hints. Each black square indicates you've guessed\n"
+       +"a correct color in the correct row. Each white square indicates a correct color in an\n"
+       +"incorrect row. The order of the hints is meaningless.\n\n"
+       +"For the default game, all the code colors will be different. If you click \"Play Again\",\n"
+       +"you can choose the more advanced game where there can be more than one of any color. - K");
+}
+
+//------------  END JAVASCRIPT ------
+</script>
+<STYLE TYPE="text/css">
+<!--
+.tileBtn       { width:34px; height:28px;}
+.hintBtn       { width:28px;}
+-->
+</STYLE>
+</head>
+<body bgcolor="#B9A68C" text="#000000" onLoad="initializeUI()">
+<form name="theForm">
+  <table name="theTable" border="1" cellspacing="2">
+    <tr name="headerRow"> 
+      <td align="center" colspan="4"><strong>Guesses</strong></td>
+      <td>&nbsp;</td>
+      <td align="center" colspan="4"><strong>Hints</strong></td>
+    </tr>
+    <tr> 
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td>&nbsp;</td>
+      <td><img class="hintBtn" src="../Shared/MM/Images/transparent.gif"></td>
+      <td><img class="hintBtn" src="../Shared/MM/Images/transparent.gif"></td>
+      <td><img class="hintBtn" src="../Shared/MM/Images/transparent.gif"></td>
+      <td><img class="hintBtn" src="../Shared/MM/Images/transparent.gif"></td>
+    </tr>
+    <tr> 
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td><input class="tileBtn" type="image" src="../Shared/MM/Images/transparent.gif" onClick=""></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr name="infoRow"> 
+      <td name="info" colspan="4" align="center"><input type="button" value="Guess" onClick="G.endTurn()" name="button"></td>
+      <td>&nbsp;</td>
+      <td colspan="4" nowrap>Blk: correct<br>
+        Wt: wrong row</td>
+    </tr>
+  </table>
+  </form>
+</body>
+</html>

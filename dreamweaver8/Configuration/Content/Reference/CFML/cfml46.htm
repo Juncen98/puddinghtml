@@ -1,0 +1,460 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFFTP: OPENING AND CLOSING FTP SERVER CONNECTIONS</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFFTP: OPENING AND CLOSING FTP SERVER CONNECTIONS</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+To establish a connection with an FTP server, you use the open action with a connection attribute. 
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfftp 
+   action = &quot;action&quot;
+   username = &quot;name&quot;
+   password = &quot;password&quot;
+   server = &quot;server&quot;
+   timeout = &quot;timeout in seconds&quot;
+   port = &quot;port&quot;
+   connection = &quot;name&quot;
+   proxyServer = &quot;proxy server&quot;
+   retryCount = &quot;number&quot;
+   stopOnError = &quot;yes&quot; or &quot;no&quot;
+   passive = &quot;yes&quot; or &quot;no&quot;&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfhttp, cfldap, cfmail, cfpop
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+When you establish a connection with cfftp action=&quot;open&quot; and specify a name in the connection attribute, ColdFusion caches the connection so that you can reuse it to perform additional FTP operations. When you use a cached connection for subsequent FTP operations, you do not have to specify the username, password, or server connection attributes. The FTP operations that use the same connection name automatically use the information stored in the cached connection. Using a cached connection helps save connection time and improves file transfer performance. 
+</p>
+
+<p>
+You do not need to open a connection for single, simple, FTP operations, such as GetFile or PutFile.
+</p>
+
+<p>
+To keep a connection open throughout a session or longer, put the connection name in the Session or Application scope; for example, specify connection=&quot;Session.FTPConnection&quot;. However, if you do this, you must specify the full variable name in all FTP operations, and you must use the close action when you are finished. Keeping a connection open prevents others from using the FTP server; so close a connection as soon as possible. If you do not assign the connection name to Session or Application variable, the connection remains open for the current page only, and you do not have to close it manually. 
+</p>
+
+<p>
+Changes to a cached connection, such as changing retryCount or timeout values, might require reestablishing the connection. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;p&gt;cfftp lets users implement File Transfer Protocol operations. 
+By default, cfftp caches an open connection to an FTP server.
+&lt;p&gt;cfftp operations are usually of two types:
+&lt;ul&gt;
+   &lt;li&gt;Establishing a connection
+   &lt;li&gt;Performing file and directory operations
+&lt;/ul&gt;
+&lt;p&gt;This example opens and verifies a connection, lists the files in a 
+directory, and closes the connection.
+&lt;p&gt;Open a connection
+&lt;cfftp action = &quot;open&quot;
+   username = &quot;anonymous&quot;
+   connection = &quot;My_query&quot;
+   password = &quot;youremail@email.com&quot;
+   server = &quot;ftp.tucows.com&quot;
+   stopOnError = &quot;Yes&quot;&gt;
+&lt;p&gt;Did it succeed? &lt;cfoutput&gt;#cfftp.succeeded#&lt;/cfoutput&gt;
+&lt;p&gt;List the files in a directory:
+&lt;cfftp action = &quot;LISTDIR&quot;
+    stopOnError = &quot;Yes&quot;
+    name = &quot;ListFiles&quot;
+    directory = &quot;/&quot;
+    connection = &quot;my_query&quot;&gt;
+&lt;cfoutput query = &quot;ListFiles&quot;&gt;
+   #name#&lt;br&gt;
+&lt;/cfoutput&gt;
+
+&lt;p&gt;Close the connection:
+&lt;cfftp action = &quot;close&quot;
+connection = &quot;My_query&quot;
+stopOnError = &quot;Yes&quot;&gt;
+&lt;p&gt;Did it succeed? &lt;cfoutput&gt;#cfftp.succeeded#&lt;/cfoutput&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="ACTION">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ACTION</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>FTP operation to perform. </p><ul>
+
+<li>open: creates an FTP connection</li>
+
+<li>close: terminates an FTP connection</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="USERNAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">USERNAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required if action = &quot;open&quot;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>User name to pass in the FTP operation. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="PASSWORD">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PASSWORD</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required if action = &quot;open&quot;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Password to log in the user.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SERVER">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SERVER</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required if action = &quot;open&quot;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>FTP server to which to connect; for example, ftp.myserver.com</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TIMEOUT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TIMEOUT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "30"
+
+
+<p>Value in seconds for the timeout of all operations, including individual data request operations. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="PORT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PORT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "21"
+
+
+<p>Remote port to which to connect. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="CONNECTION">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">CONNECTION</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional, but always used with open or close</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of the FTP connection. If you specify the username, password, and server attributes, and if no connection exists for them, ColdFusion creates one. Calls to cfftp with the same connection name reuse the connection.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="PROXYSERVER">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PROXYSERVER</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>String. Name of proxy server (or servers) to use, if proxy access is specified. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="RETRYCOUNT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">RETRYCOUNT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "1&#160;"
+
+
+<p>Number of retries until failure is reported. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="STOPONERROR">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STOPONERROR</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+<ul>
+
+<li>yes: halts processing, displays an appropriate error.</li>
+
+<li>no: populates these variables:</li>
+<ul>
+
+<li>cfftp.succeeded - yes or no.</li>
+
+<li>cfftp.errorCode - Error number. See the IETF Network 		Working Group RFC 959: File Transfer Protocol (FTP)		www.ietf.org/rfc/rfc0959.txt</a>. </li>
+
+<li>cfftp.errorText - Message text. </li>
+</ul>
+</ul>
+
+<p>For conditional operations, use cfftp.errorCode. Do not use cfftp.errorText for this purpose.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="PASSIVE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PASSIVE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+<ul>
+
+<li>yes: enables passive mode.</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

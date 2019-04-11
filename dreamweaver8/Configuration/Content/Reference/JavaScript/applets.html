@@ -1,0 +1,237 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">applets</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span>  IE <span class="emphasis">3</span>  DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>A collection of all the Java applets in the current element, sorted
+in source code order. Navigator and Internet Explorer let you use
+array notation to access a single applet in the collection (e.g.,
+<span class="literal">document.applets[0]</span>,
+<span class="literal">document.applets["clockApplet"]</span>). Internet
+Explorer allows the index value to be placed inside parentheses
+instead of brackets (e.g., <span class="literal">document.applets(0)</span>).
+If you wish to use the applet's name as an index
+value (always as a string identifier), use the value of the
+<span class="literal">name</span> attribute rather than the
+<span class="literal">id</span> attribute. To use the <span class="literal">id</span>
+attribute in a reference to an applet, access the object via a
+<span class="literal">document.all.</span><span class="replaceable">elementID</span>
+(in IE only) or
+<span class="literal">document.getElementById("</span><span class="replaceable">elementID</span><span class="literal">")</span>
+reference.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>document.applets[i]</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificproperties"><span class="title">Object-Specific Properties</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">length</span></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificmethods"><span class="title">Object-Specific Methods</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">item( )</span></td><td><span class="literal">namedItem( )</span></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+			</table>
+		</div><div id="length">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">length</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span>  IE <span class="emphasis">3</span>  DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Read-only&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns the number of elements in the collection.</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>var howMany = document.applets.length;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="item( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">item( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">4</span>  DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">item(<span class="replaceable">index</span>[, <span class="replaceable">subindex</span>])
+item(<span class="replaceable">index</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a single applet object or collection of applet objects
+corresponding to the element matching the index value (or, optionally
+in IE, the <span class="literal">index</span> and <span class="literal">subindex</span>
+values).
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+					<dl>
+<dt><var class="replaceable">index</var></dt>
+<dd>
+<p>When the parameter is a zero-based integer, the returned value is a
+single element corresponding to the specified item in source code
+order (nested within the current element); when the parameter is a
+string (IE only), the returned value is a collection of elements
+whose <span class="LITERAL">id</span> properties match that string.
+</p>
+</dd>
+
+
+<dt><var class="replaceable">subindex</var></dt>
+<dd>
+<p>In IE only, if you specify a string value for the first parameter,
+you can use the second parameter to specify a zero-based index that
+retrieves the specified element from the collection whose
+<span class="LITERAL">id</span> properties match the first
+parameter's string value.
+</p>
+</dd>
+</dl>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			One applet object or collection (array) of applet objects. If there
+are no matches to the parameters, the returned value is
+<span class="literal">null</span>.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="namedItem( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">namedItem( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">6</span>  DOM <span class="emphasis">1</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">namedItem(<span class="replaceable">IDOrName</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns a single applet object or collection of applet objects
+corresponding to the element matching the parameter string value.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr><td colspan="2">
+<dl>
+<dt><var class="replaceable">IDOrName</var></dt>
+<dd>
+<p>The string that contains the same value as the desired
+element's <span class="LITERAL">id</span> or
+<span class="LITERAL">name</span> attribute.
+</p>
+</dd>
+
+</dl></td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			One applet object or collection (array) of applet objects. If there
+are no matches to the parameters, the returned value is
+<span class="literal">null</span>.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+</body>
+</html>

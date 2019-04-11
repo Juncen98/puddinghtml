@@ -1,0 +1,163 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>jrun:sql</title>
+  <link rel="stylesheet" href="../../fields.css">
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var SELECTORLIST;
+var theUIObjects;
+var applyType = "dynamic"; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.inspectTagCommon(tagNodeObj, null, applyType, activeDisplayNode, SELECTORLIST); 
+}
+
+function applyTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.applyTagCommon(tagNodeObj, null, applyType, activeDisplayNode); 
+}
+
+function updateUI()
+{
+  var curDiv = SELECTORLIST.getValue(); 
+
+  tagDialog.showOnlyThisLayer(curDiv,document.layers[0]); 
+}
+
+function initializeUI()
+{
+	SELECTORLIST = new ListControl("theselector"); 
+	theUIObjects = new Array(SELECTORLIST);
+
+  tagDialog.populateDropDownList(SELECTORLIST, theSelSQLVal, theSelSQLVal, 0); 
+}
+</script>
+</head>
+
+<body onLoad="initializeUI();">
+
+<div name="连接"> 
+
+操作: 
+<select name="theselector" class="selectorList" id="attr:jrun:sql:selector" onChange="updateUI();">
+</select>
+<hr width="100%"> 
+<div id="thejdbconnection" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 43px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">连接: </td>
+      <td nowrap="nowrap">
+        <input name="theconnection" type="text" class="basicTextField" id="attr:jrun:sql:connection" attname="connection" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="attr:jrun:sql:id" attname="id" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">范围: </td>
+      <td nowrap="nowrap">
+        <input name="thescope" type="text" class="basicTextField" id="attr:jrun:sql:scope" attname="scope" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="thej2eedatasource" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 43px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">数据源: </td>
+      <td nowrap="nowrap">
+        <input name="thedatasrc" type="text" class="basicTextField" id="attr:jrun:sql:datasrc" attname="datasrc" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="attr:jrun:sql:id" attname="id" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">范围: </td>
+      <td nowrap="nowrap">
+        <input name="thescope" type="text" class="basicTextField" id="attr:jrun:sql:scope" attname="scope" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">用户名: </td>
+      <td nowrap="nowrap">
+        <input name="theusername" type="text" class="basicTextField" id="attr:jrun:sql:username" attname="username" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">密码: </td>
+      <td nowrap="nowrap">
+        <input name="thepassword" type="text" class="basicTextField" id="attr:jrun:sql:password" attname="password" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="thejdbcdriver" style="position:absolute;width:200px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 43px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">驱动程序: </td>
+      <td nowrap="nowrap">
+        <input name="thedriver" type="text" class="basicTextField" id="attr:jrun:sql:driver" attname="driver" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="attr:jrun:sql:id" attname="id" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">范围: </td>
+      <td nowrap="nowrap">
+        <input name="thescope" type="text" class="basicTextField" id="attr:jrun:sql:scope" attname="scope" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">用户名: </td>
+      <td nowrap="nowrap">
+        <input name="theusername" type="text" class="basicTextField" id="attr:jrun:sql:username" attname="username" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">密码: </td>
+      <td nowrap="nowrap">
+        <input name="thepassword" type="text" class="basicTextField" id="attr:jrun:sql:password" attname="password" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">URL: </td>
+      <td nowrap="nowrap">
+        <input name="theurl" type="text" class="basicTextField" id="attr:jrun:sql:url" attname="url" />
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+<div name="SQL"> 
+  <textarea name="innerHTML" attname="innerHTML" id="attr:jrun:sql:theinnerhtml" class="contentsField" wrap="VIRTUAL"></textarea>
+</div>
+</html>

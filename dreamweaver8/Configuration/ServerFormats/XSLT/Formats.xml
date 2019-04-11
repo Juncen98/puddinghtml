@@ -1,0 +1,56 @@
+<formats id="DWMenu_ServerFormatDef_XSLT">
+	<separator />
+	
+	<menu name = "数字" id="DWMenu_ServerFormatDef_XSLT_NUMBER">
+		<format	file="数字"		title="数字 – 有前导 0，2 个小数位"		expression="^\s*format-number\((.*),\s*\'#0.00\'\)\s*"					NumDigitsAfterDecimal="2"		UseParensForNegativeNumbers="-2"	GroupDigits="-2"  strNamedFormat="#0.00"					id="DWMenu_ServerFormatDef_XSLT_NO1"/>
+
+		<format	file="数字"		title="数字 – 无前导 0，2 个小数位"		expression="^\s*format-number\((.*),\s*\'#.00\'\)\s*"					NumDigitsAfterDecimal="2"		UseParensForNegativeNumbers="-2"	GroupDigits="-2"  strNamedFormat="#.00"					id="DWMenu_ServerFormatDef_XSLT_NO1"/>
+
+	  <format file="数字"		title="数字 – 每 3 位数为一组，2 个小数位，若为负数则使用 ()"	expression="^\s*format-number\((.*),\s*\'#,###.00;\(#,###.00\)\'\)\s*" 	NumDigitsAfterDecimal="2" UseParensForNegativeNumbers="-1" GroupDigits="3" strNamedFormat="#,###.00;(#,###.00)" id="DWMenu_ServerFormatDef_XSLT_NO2"/>
+
+	  <format file="数字"		title="数字 – 每 3 位数为一组，2 个小数位，若为负数则使用减号 "	expression="^\s*format-number\((.*),\s*\'#,###.00;-#,###.00\'\)\s*" 	NumDigitsAfterDecimal="2" UseParensForNegativeNumbers="0" GroupDigits="3" strNamedFormat="#,###.00;-#,###.00" id="DWMenu_ServerFormatDef_XSLT_NO3"/>
+
+		<format	file="数字"		title="数字 - 舍入为整数"	expression="^\s*format-number\((.*),\s*\'#\'\)\s*"							NumDigitsAfterDecimal="0"		UseParensForNegativeNumbers="-2"	GroupDigits="-2"	strNamedFormat="#"						id="DWMenu_ServerFormatDef_XSLT_NO4"/>
+
+		<format	file="数字"		title="数字 - 若为负数则使用 ()"			expression="^\s*format-number\((.*),\s*\'#.##;\(#.##\)\'\)\s*" NumDigitsAfterDecimal="-1"	UseParensForNegativeNumbers="-1"	GroupDigits="-2"	strNamedFormat="#.##;(#.##)"	id="DWMenu_ServerFormatDef_XSLT_NO5"/>
+
+		<format	file="数字"		title="数字 – 若为负数则使用减号 "	expression="^\s*format-number\((.*),\s*\'#.##;-#.##\'\)\s*"		NumDigitsAfterDecimal="-1"	UseParensForNegativeNumbers="0"		GroupDigits="-2"	strNamedFormat="#.##;-#.##"	  id="DWMenu_ServerFormatDef_XSLT_NO6"/>
+
+		<format	file="数字"		title="数字 – 百分比"	expression="^\s*format-number\((.*),\s*\'##%\'\)\s*"		NumDigitsAfterDecimal="0"	UseParensForNegativeNumbers="-2"		GroupDigits="-2"	strNamedFormat="##%"	  id="DWMenu_ServerFormatDef_XSLT_NO7"/>
+	</menu>
+
+	<menu name = "货币" id="DWMenu_ServerFormatDef_XSLT_CURRENCY">
+		<format	file="货币"		title="货币 – 有前导 0，2 个小数位"		expression="^\s*format-number\((.*),\s*\'\$#0.00\'\)\s*"					NumDigitsAfterDecimal="2"		UseParensForNegativeNumbers="-2"	GroupDigits="-2"  CurrencyFormat="$" strNamedFormat="$#0.00"				id="DWMenu_ServerFormatDef_XSLT_CURR1"/>
+
+		<format	file="货币"		title="货币 – 无前导 0，2 个小数位"		expression="^\s*format-number\((.*),\s*\'\$#.00\'\)\s*"					NumDigitsAfterDecimal="2"		UseParensForNegativeNumbers="-2"	GroupDigits="-2"  CurrencyFormat="$" strNamedFormat="$#.00"				id="DWMenu_ServerFormatDef_XSLT_CURR1"/>
+
+	  <format file="货币"		title="货币 – 每 3 位数为一组，2 个小数位，若为负数则使用 ()"	expression="^\s*format-number\((.*),\s*\'\$#,###.00;\(\$#,###.00\)\'\)\s*" 	NumDigitsAfterDecimal="2" UseParensForNegativeNumbers="-1" GroupDigits="3" CurrencyFormat="$" strNamedFormat="$#,###.00;($#,###.00)" id="DWMenu_ServerFormatDef_XSLT_CURR2"/>
+
+	  <format file="货币"		title="货币 – 每 3 位数为一组，2 个小数位，若为负数则使用减号"	expression="^\s*format-number\((.*),\s*\'\$#,###.00;-\$#,###.00\'\)\s*" 	NumDigitsAfterDecimal="2" UseParensForNegativeNumbers="0" GroupDigits="3" CurrencyFormat="$" strNamedFormat="$#,###.00;-$#,###.00" id="DWMenu_ServerFormatDef_XSLT_CURR3"/>
+
+		<format	file="货币"		title="货币 - 舍入为整数"	expression="^\s*format-number\((.*),\s*\'\$#\'\)\s*"							NumDigitsAfterDecimal="0"		UseParensForNegativeNumbers="-2"	GroupDigits="-2"	CurrencyFormat="$" strNamedFormat="$#"						id="DWMenu_ServerFormatDef_XSLT_CURR4"/>
+
+		<format	file="货币"		title="货币 - 若为负数则使用 ()"			expression="^\s*format-number\((.*),\s*\'\$#.##;\(\$#.##\)\'\)\s*" NumDigitsAfterDecimal="-1"	UseParensForNegativeNumbers="-1"	GroupDigits="-2"	CurrencyFormat="$" strNamedFormat="$#.##;($#.##)"	id="DWMenu_ServerFormatDef_XSLT_CURR5"/>
+
+		<format	file="货币"		title="货币 - 若为负数则使用减号"	expression="^\s*format-number\((.*),\s*\'\$#.##;-\$#.##\'\)\s*"		NumDigitsAfterDecimal="-1"	UseParensForNegativeNumbers="0"		GroupDigits="-2"	CurrencyFormat="$" strNamedFormat="$#.##;-$#.##"	  id="DWMenu_ServerFormatDef_XSLT_CURR6"/>
+	</menu>
+
+	<menu name = "数学" id="DWMenu_ServerFormatDef_XSLT_MATH">
+		<format	file="数学"			title="数学 - 大于等于参数的最小整数"	expression="^\s*ceiling\((.*)\)\s*" 	func="ceiling"	id="DWMenu_ServerFormatDef_XSLT_MATH03"/>
+
+		<format	file="数学"			title="数学 – 小于等于参数的最大整数"		expression="^\s*floor\((.*)\)\s*" 		func="floor"	id="DWMenu_ServerFormatDef_XSLT_MATH04"/>
+
+		<format	file="数学"			title="数学 – 数字"		expression="^\s*number\((.*)\)\s*" 	func="number"	id="DWMenu_ServerFormatDef_XSLT_MATH05"/>
+
+		<format	file="数学"			title="数学 - 舍入"		expression="^\s*round\((.*)\)\s*" 		func="round"	id="DWMenu_ServerFormatDef_XSLT_MATH06"/>
+
+		<format	file="数学"			title="数学 – 求和"			expression="^\s*sum\((.*)\)\s*" 			func="sum"		id="DWMenu_ServerFormatDef_XSLT_MATH07"/>
+	</menu>
+
+	<menu name = "字符串" id="DWMenu_ServerFormatDef_XSLT_STRING">
+		<format	file="字符串"			title="字符串 – 长度"		expression="^\s*string-length\((.*)\)\s*" 		func="string-length"	id="DWMenu_ServerFormatDef_XSLT_STRING03"/>
+
+		<format	file="字符串"			title="字符串 – 字符串"		expression="^\s*string\((.*)\)\s*" 				  func="string"	id="DWMenu_ServerFormatDef_XSLT_STRING04"/>
+	</menu>
+
+</formats>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "删除重复的字符" description = "如果某个字符（如空格）在给定的字符串中连续出现多次，则删除重复的字符。" preview="code" type="block">
+<insertText location="beforeSelection">
+<![CDATA[function removeExtraSpaces(string, delimiter)
+{
+  var returnString = "";
+  splitstring = string.split(delimiter);
+  for(i = 0; i < splitstring.length; i++)
+    {
+    if (splitstring[i]!="") returnString += splitstring[i] + delimiter;
+    }
+  return returnString;
+}]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

@@ -1,0 +1,141 @@
+<html>
+<head>
+<title>count() Function</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">count() Function</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+Counts the number of nodes in a given node-set.</td></tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Inputs</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>A node-set.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Output</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>The number of nodes in the node-set. </p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Defined in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>XPath section 4.1, Node Set Functions.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Examples</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>Here's the XML document we'll use to illustrate the <span class="LITERAL">count()</span> function:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;test&gt;
+  &lt;p&gt;This is a test XML document used by 
+  several of our sample stylesheets.&lt;/p&gt;
+  &lt;question&gt;
+    &lt;text&gt;When completed, the Eiffel Tower was the 
+    tallest building in the world.&lt;/text&gt;
+    &lt;true&gt;You're correct!  The Eiffel Tower was the 
+    world's tallest building until 1930.&lt;/true&gt;
+    &lt;false&gt;No, the Eiffel Tower was the world's 
+    tallest building for over 30 years.&lt;/false&gt;
+  &lt;/question&gt;
+  &lt;question&gt;
+    &lt;text&gt;New York's Empire State Building knocked 
+    the Eiffel Tower from its pedestal.&lt;/text&gt;
+    &lt;true&gt;No, that's not correct.&lt;/true&gt;
+    &lt;false&gt;Correct!  New York's Chrysler Building, 
+    completed in 1930, became the world's tallest.&lt;/false&gt;
+  &lt;/question&gt;
+&lt;/test&gt;</pre></span>
+<p>Here's a stylesheet that illustrates the <span class="LITERAL">count()</span> function:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+
+  &lt;xsl:output method="text"/&gt;
+
+  &lt;xsl:variable name="newline"&gt;
+&lt;xsl:text&gt;
+&lt;/xsl:text&gt;
+  &lt;/xsl:variable&gt;
+
+  &lt;xsl:template match="/"&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:text&gt;Tests of the count() function:&lt;/xsl:text&gt;
+
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:text&gt;   count(/test)=&lt;/xsl:text&gt;
+    &lt;xsl:value-of select="count(/test)"/&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:text&gt;   count(/true)=&lt;/xsl:text&gt;
+    &lt;xsl:value-of select="count(/true)"/&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:text&gt;   count(//true)=&lt;/xsl:text&gt;
+    &lt;xsl:value-of select="count(//true)"/&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:text&gt;   count(//test|//true|//text)=&lt;/xsl:text&gt;
+    &lt;xsl:value-of select="count(//test|//true|//text)"/&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:variable name="numberOfQuestions" select="count(/test/question)"/&gt;
+    &lt;xsl:for-each select="/test/question"&gt;
+      &lt;xsl:text&gt;   This is question number &lt;/xsl:text&gt;
+      &lt;xsl:value-of select="position()"/&gt;
+      &lt;xsl:text&gt; of &lt;/xsl:text&gt;
+      &lt;xsl:value-of select="$numberOfQuestions"/&gt;
+<!--<?troff .Nd 10?>-->
+      &lt;xsl:value-of select="$newline"/&gt;
+    &lt;/xsl:for-each&gt;
+  &lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</pre></span>
+<p>Here are the results of our stylesheet:</p>
+<span class="PROGRAMLISTING"><pre>
+
+Tests of the count() function:
+
+   count(/test)=1
+   count(/true)=0
+   count(//true)=2
+   count(//test|//true|//text)=5
+   This is question number 1 of 2
+   This is question number 2 of 2
+</pre></span>
+<p>The first four invocations of the <span class="LITERAL">count()</span> function merely use XPath expressions to count something in the XML document. The last use of <span class="LITERAL">count()</span> counts the number of <span class="LITERAL">&lt;question&gt;</span> elements in our document and stores that value in a variable. Generating text like <quote>item x of y</quote> is a common technique; our use of the <span class="LITERAL">count()</span> and <span class="LITERAL">position()</span> is how this generation is commonly done.</p>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

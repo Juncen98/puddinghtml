@@ -1,0 +1,229 @@
+<!-- Copyright 2001, 2002, 2003, 2004 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>CFDOCUMENT</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+
+/************************* GLOBAL VARS **************************/
+var types = new Array("custom")
+var PAGETYPELIST; 
+var FORMATLIST;
+var PERMISSIONSLIST;
+var ORIENTATIONLIST;
+var UNITSLIST;
+var ENCRYPTIONLIST;
+var theUIObjects; 
+var applyType = "dynamic"; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function isValueInList(theValue, theArray) {
+	for (var i=0; i<theArray.length; i++) {
+		if (theValue == theArray[i]) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/*
+function inspectTag(tagNodeObj) {
+	var curValue = PAGETYPELIST.getValue();
+	var theAttr = PAGETYPELIST.object.getAttribute("attname");
+	var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+
+	if (isValueInList(tagNodeObj.getAttribute(theAttr), types)) {
+		tagDialog.inspectTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode, PAGETYPELIST);
+	} else {
+		updateUI();
+	}
+}
+*/
+
+/*
+function applyTag(tagNodeObj) {
+	var curValue = PAGETYPELIST.getValue(); 
+	var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+	tagDialog.applyTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode); 
+}
+*/
+
+
+function updateUI()
+{
+  var curDiv = PAGETYPELIST.getValue(); 
+
+	tagDialog.showOnlyThisLayer(curDiv, document.layers[0]); 
+  //var curDiv = PAGETYPELIST.getValue().toString(); 
+  //tagDialog.showOnlyThisLayer(curDiv);
+  
+  //if (curDiv == "custom") {
+  //object.getAttribute("attname")
+  //alert(document.General.height);
+  //document.General.height.disabled=false;
+  //} 
+}
+
+
+function initializeUI()
+{
+  FORMATLIST = new ListControl("theformat"); 
+  PAGETYPELIST = new ListControl("thepagetype");
+  PERMISSIONSLIST = new ListControl("thepermissions"); 
+  ORIENTATIONLIST = new ListControl("theorientation"); 
+  UNITLIST = new ListControl("theunit");
+  ENCRYPTIONLIST = new ListControl("theencryption");
+  
+  tagDialog.populateDropDownList(FORMATLIST, theDocumentFormatCap, theDocumentFormatVal, 1);
+  tagDialog.populateDropDownList(PAGETYPELIST, theDocumentPageTypeCap, theDocumentPageTypeVal, 1);
+  tagDialog.populateDropDownList(PERMISSIONSLIST, theDocumentPermissionsCap, theDocumentPermissionsVal, 1);
+  tagDialog.populateDropDownList(ORIENTATIONLIST, theDocumentOrientationCap, theDocumentOrientationVal, 1); 
+  tagDialog.populateDropDownList(UNITLIST, theDocumentUnitsCap, theDocumentUnitsVal, 1);
+  tagDialog.populateDropDownList(ENCRYPTIONLIST, theDocumentEncryptionCap, theDocumentEncryptionVal, 1);
+  
+  
+  theUIObjects  = new Array(FORMATLIST,PAGETYPELIST,PERMISSIONSLIST,ORIENTATIONLIST,UNITLIST,ENCRYPTIONLIST,PAGETYPELIST); 
+   
+ }
+ 
+ function isCustom(){
+ 	 if (PAGETYPELIST.getValue() == "custom") {
+		dwscripts.findDOMObject('thepageheight').disabled = false;
+		dwscripts.findDOMObject('thepagewidth').disabled = false;
+		} else {
+		dwscripts.findDOMObject('thepageheight').disabled = true;
+		dwscripts.findDOMObject('thepagewidth').disabled = true;
+		}
+ }
+
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="initializeUI();">
+
+<div id="General" name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td colspan="3" nowrap="nowrap"><input name="thename" type="text" class="largeTField" id="attr:cfdocument:name" attname="name" />
+
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">文件名称: </td>
+      <td colspan="3" nowrap="nowrap"><input name="thefilename" type="text" class="largeTField" id="attr:cfdocument:filename" attname="filename"  />
+
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">格式: </td>
+      <td colspan="3" nowrap="nowrap"><select name="theformat" class="dataTypeList" id="attr:cfdocument:format" attname="format" editable="true">
+      </select>
+      </td>
+    </tr>
+	<tr>
+      <td valign="baseline" align="right" nowrap="nowrap">页面类型: </td>
+      <td colspan="3" nowrap="nowrap"><select name="thepagetype" class="dataTypeList" id="attr:cfdocument:pagetype" attname="pagetype" editable="true" onChange="isCustom();">
+        </select>
+      </td>
+    </tr>
+
+	<tr>
+      <td align="right" valign="baseline" nowrap="nowrap">页面高度:</td>
+      <td nowrap="nowrap"><input name="thepageheight" type="text" class="xsmallTField" id="attr:cfdocument:pageheight" attname="pageheight" disabled /></td>
+	  <td align="right" valign="baseline" nowrap="nowrap">页面宽度:</td>
+      <td nowrap="nowrap"><input name="thepagewidth" type="text" class="xsmallTField" id="attr:cfdocument:pagewidth" attname="pagewidth" disabled  /></td>
+	</tr>
+	
+	<tr>
+      <td nowrap="nowrap" valign="baseline" align="right">顶部边距:</td>
+      <td nowrap="nowrap"><input name="themargintop" type="text" class="xsmallTField" id="attr:cfdocument:margintop" attname="margintop" /></td>
+      <td nowrap="nowrap valign="baseline" align="right"">底部边距:</td>
+      <td nowrap="nowrap"><input name="themarginbottom" type="text" class="xsmallTField" id="attr:cfdocument:marginbottom" attname="marginbottom" /></td>
+    </tr>
+    <tr>
+      <td nowrap="nowrap" valign="baseline" align="right">左边距:</td>
+      <td nowrap="nowrap"><input name="themarginleft" type="text" class="xsmallTField" id="attr:cfdocument:marginleft" attname="marginleft" /></td>
+      <td nowrap="nowrap" valign="baseline" align="right">右边距:</td>
+      <td nowrap="nowrap" ><input name="themarginright" type="text" class="xsmallTField" id="attr:cfdocument:marginright" attname="marginright" /></td>
+	  
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">方向:</td>
+      <td nowrap="nowrap">
+        
+          <select name="theorientation" id="attr:cfdocument:orientation" attname="orientation" editable="true">
+          </select>
+      </td>
+     
+    </tr> 
+	<tr>
+	<td valign="baseline" align="right" nowrap="nowrap">单位:</td>
+      <td nowrap="nowrap">
+        <select name="theunit" id="attr:cfdocument:unit" attname="unit" editable="true">
+        </select>
+      </td>
+	 </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">加密:</td>
+      <td colspan="2" nowrap="nowrap"><select name="theencryption" class="dataTypeList" id="attr:cfdocument:encryption" attname="encryption" editable="true">
+      </select></td>
+      <td nowrap="nowrap">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="baseline" nowrap="nowrap" align="right">权限:</td>
+      <td colspan="2" nowrap="nowrap"><select name="thepermissions" class="dataTypeList" id="attr:cfdocument:permissions" attname="permissions" editable="true">
+                        </select></td>
+      <td align="right" valign="baseline" nowrap="nowrap">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">所有者密码: </td>
+      <td colspan="3" nowrap="nowrap"><input name="theownerpassword" type="text" class="dataTypeList" id="attr:cfdocument:ownerpassword" attname="ownerpassword" /></td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">用户密码: </td>
+      <td colspan="3" nowrap="nowrap"><input name="theuserpassword" type="text" class="dataTypeList" id="attr:cfdocument:userpassword" attname="userpassword" /></td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">小数位数:</td>
+      <td colspan="3" nowrap="nowrap"><input name="thescale" type="text" class="dataTypeList" id="attr:cfdocument:scale" attname="scale" /></td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td colspan="3" nowrap="nowrap"><input type="checkbox" id="attr:cfdocument:backgroundvisible" name="thebackgroundvisible" attname="backgroundvisible" truevalue="yes" falsevalue="no" checked/>
+      背景可见 </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td colspan="3" nowrap="nowrap"><input type="checkbox" id="attr:cfdocument:overwrite" name="theoverwrite" attname="overwrite" truevalue="yes" falsevalue="no" />
+      覆盖</td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td colspan="3" nowrap="nowrap"><input type="checkbox" id="attr:cfdocument:fontembed" name="thefontembed" attname="fontembed" truevalue="yes" falsevalue="no" checked />
+      嵌入字体</td>
+    </tr>
+  </table>
+
+</div>
+
+</body>
+</html>

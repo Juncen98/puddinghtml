@@ -1,0 +1,52 @@
+<tag name="CFLDAP" endtag="no">
+<tagformat nlbeforetag="1" nlaftertag="1"/>
+<tagdialog file="cfldap.htm" />
+  <attributes>
+    <attrib name="ACTION" type="ENUMERATED">
+      <attriboption value="QUERY"/>
+      <attriboption value="ADD"/>
+      <attriboption value="MODIFY"/>
+      <attriboption value="MODIFYDN"/>
+      <attriboption value="DELETE"/>
+    </attrib>
+    <attrib name="DN" type="TEXT"/>
+    <attrib name="NAME" type="TEXT"/>
+    <attrib name="START" type="TEXT"/>
+    <attrib name="SCOPE" type="ENUMERATED">
+      <attriboption value="ONELEVEL"/>
+      <attriboption value="BASE"/>
+      <attriboption value="SUBTREE"/>
+    </attrib>
+    <attrib name="STARTROW" type="TEXT"/>
+    <attrib name="MAXROWS" type="TEXT"/>
+    <attrib name="ATTRIBUTES" type="TEXT"/>
+    <attrib name="FILTER" type="TEXT"/>
+    <attrib name="SORT" type="TEXT"/>
+    <attrib name="DELIMITER" type="TEXT"/>
+    <attrib name="SERVER" type="TEXT"/>
+    <attrib name="PORT" type="TEXT"/>
+    <attrib name="TIMEOUT" type="TEXT"/>
+    <attrib name="USERNAME" type="TEXT"/>
+    <attrib name="PASSWORD" type="TEXT"/>
+    <attrib name="FILTERFILE" type="FILENAME"/>
+    <attrib name="SEPARATOR" type="TEXT"/>
+    <attrib name="SORTCONTROL" type="TEXT"/>
+    <attrib name="MODIFYTYPE" type="ENUMERATED">
+      <attriboption value="ADD"/>
+      <attriboption value="DELETE"/>
+      <attriboption value="REPLACE"/>
+    </attrib>
+    <attrib name="REBIND" type="ENUMERATED">
+      <attriboption value="Yes"/>
+      <attriboption value="No"/>
+    </attrib>
+    <attrib name="REFERRAL" type="TEXT">   
+    <attrib name="SECURE" type="Text">
+	<attrib name="RETURNASBINARY" type="TEXT">  
+  </attributes>
+  <attribcategories>
+    <attribgroup name="General" elements="name,dn,start,attributes,separator,delimiter,action,modifytype,scope" />
+    <attribgroup name="Query" elements="filter,filterfile,startrow,maxrows,sort,sortcontrol,referral,secure,rebind,returnasbinary" />
+    <attribgroup name="Connection" elements="server,username,password,port,timeout" />
+  </attribcategories>
+</tag>

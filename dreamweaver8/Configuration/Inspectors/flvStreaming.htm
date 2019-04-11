@@ -1,0 +1,81 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 6.0//pi">
+<!-- tag:object, priority:1, selection:within,hline,vline -->
+<html>
+<head>
+<!-- Copyright 2004 Macromedia, Inc. All rights reserved. -->
+<title>Flash Video</title>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/CheckBox.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/URLTextField.js"></SCRIPT>
+<script src="_pi_flv_common.js"></script>
+<script src="flvStreaming.js"></script>
+</head>
+<body marginwidth="0" marginheight="0">
+<span id="image" style="position:absolute; width:32px; height:32px; z-index:16; left: 2px; top: 9px"><img src="flv_pi_icon.gif" width="32" height="32"></span>
+<div id="idBoxLayer" style="position:absolute; width:99px; height:38px; z-index:1; left: 44px; top: 3px; visibility: visible;">
+<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		  <td height="24" align="left" NOWRAP>&nbsp;Flash 视频</td>
+		</tr>
+		<tr>
+		  <td align="left" nowrap>
+			<input name="videoID" type="text" id="videoID" style="width:65px" onBlur="updateUI('videoID');">
+		  </td>
+		</tr>
+  </table>
+</div>
+<div id="topLayer" style="position:absolute; left:118px; top:1px; width:524px; height:38px; z-index:34; visibility: visible;">
+  <table width="100%" border="0" cellpadding="0" cellspacing="2">
+    <tr>
+      <td width="5%" align="right" nowrap>宽&nbsp;</td>
+      <td width="7%" nowrap> <input name="videoWidth" type="text" id="videoWidth" maxlength="5" style="width:45px" onFocus="this.focus();this.select()" onBlur="updateUI('videoWidth');"> </td>
+      <td width="20%" nowrap>
+        <input type="checkbox" name="videoMaintainAR" onClick="updateUI('videoMaintainAR');" checked>
+        限制高宽比&nbsp;&nbsp;<input type="button" name="resetSize" value="重置" onClick="detectSizeForStreaming();">&nbsp;&nbsp;&nbsp;</td>
+      <td width="3%" align="right" nowrap>&nbsp;</td>
+      <td width="9%" align="right" nowrap>服务器 URI&nbsp;</td>
+      <td nowrap><input name="videoServerURI" type="text" id="videoServerURI" style="width:202px" onFocus="this.focus();this.select()" onBlur="updateUI('videoServerURI');"></td>
+    </tr>
+    <tr>
+      <td width="5%" align="right" nowrap>高&nbsp;</td>
+      <td width="7%" nowrap> <input name="videoHeight" type="text" id="videoHeight" maxlength="5" style="width:45px" onFocus="this.focus();this.select()" onBlur="updateUI('videoHeight');"> </td>
+      <td width="20%" align="left" nowrap>&nbsp;包括外观:&nbsp;<span id="videoTotalDim"></span></td>
+      <td width="3%" align="right" nowrap>&nbsp;</td>
+      <td width="9%" align="right" nowrap>流&nbsp;</td>
+	  <td nowrap><input name="videoStream" type="text" id="videoStream" style="width:202px" onFocus="VIDEO_SIZE_BTN.setAttribute('disabled','true');this.select()" onBlur="updateUI('videoStream');"></td>
+    </tr>
+  </table>
+</div>
+
+<div id="bottomLayer" style="position:absolute; left:44px; top:53px; z-index:24; width: 580px; height: 38px;">
+  <table width="100%"  border="0" cellpadding="0" cellspacing="1">
+    <tr>
+      <td width="12%" nowrap>
+        <input type="checkbox" name="videoAutoPlay" onClick="updateUI('videoAutoPlay');">自动播放
+      </td>
+      <td width="2%">&nbsp;</td>
+      <td width="30%" align="left" nowrap>缓冲时间&nbsp;<input name="videoBufferTime" type="text" id="videoBufferTime" style="width:45px" onFocus="this.focus();this.select()" onBlur="updateUI('videoBufferTime');">&nbsp;秒</td>
+      <td width="5%" nowrap>&nbsp;</td>
+      <td width="9%" align="right" nowrap>外观&nbsp;</td>
+      <td width="42%" nowrap>
+	    <select  name="videoSkinName" style="width: 204px" onChange="updateUI('videoSkinName')">
+	    </select>
+	  </td>
+    </tr>
+    <tr>
+      <td width="12%" nowrap>
+        <input type="checkbox" name="videoAutoRewind" onClick="updateUI('videoAutoRewind');">自动重新播放
+      </td>
+      <td width="2%">&nbsp;</td>
+      <td width="30%" align="left" nowrap><input type="checkbox" name="videoLiveFeed" onClick="updateUI('videoLiveFeed');">实时视频输入</td>
+      <td width="5%" nowrap>&nbsp;</td>
+      <td width="9%" align="right" nowrap>&nbsp;</td>
+      <td nowrap>
+		<input type="button" name="videoUploadMedia" value="上传媒体" onClick="uploadMedia();">&nbsp;&nbsp;<a href="" onmousedown="requiredFiles()">显示所需的文件...</a>
+	  </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

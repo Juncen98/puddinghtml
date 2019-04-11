@@ -1,0 +1,18 @@
+<participant>
+     <quickSearch><![CDATA[__]]></quickSearch>
+     <insertText location="aboveHTML+50">
+<![CDATA[
+<%
+var @@rsName@@__@@varName@@ = "@@defaultValue@@";
+if (String(@@runtimeValue@@) != "undefined" && 
+    String(@@runtimeValue@@) != "") { 
+  @@rsName@@__@@varName@@ = String(@@runtimeValue@@);
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName,varName,defaultValue"><![CDATA[/var\s+\b(\w+)__(\w+)\s*=\s*"([^\r\n]*)";/]]></searchPattern>
+       <searchPattern paramNames="runtimeValue"><![CDATA[/if\s*\(String\(([^\r\n]*)\)\s*\!=\s*"undefined"(?:\)|\s*&&)/]]></searchPattern>
+     </searchPatterns>
+</participant>

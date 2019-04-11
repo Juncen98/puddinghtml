@@ -1,0 +1,194 @@
+<html>
+<head>
+<title>&lt;xsl:text&gt;</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">&lt;xsl:text&gt;</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+Allows you to write literal text to the output document. </td></tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Category</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>Instruction</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Required Attributes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>None.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Optional Attributes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<dl>
+<dt>
+disable-output-escaping
+</dt>
+<dd>
+Defines whether special characters are escaped when they are written to the output document. For example, if the literal text contains the character
+<span class="LITERAL">
+&gt;
+</span>
+, it is normally written to the output document as
+<span class="LITERAL">
+&amp;
+gt;
+</span>
+. If you code
+<span class="LITERAL">
+disable-output-escaping=
+"
+yes
+"
+</span>
+, the character
+<span class="LITERAL">
+&gt;
+</span>
+is written instead. The XSLT processor uses this attribute only if you're using the
+<span class="LITERAL">
+html
+</span>
+or
+<span class="LITERAL">
+xml
+</span>
+output methods. If you're using
+<span class="LITERAL">
+&lt;
+xsl:output method=
+"
+text
+"
+&gt;
+</span>
+, the attribute is ignored because output escaping is not done for the
+<span class="LITERAL">
+text
+</span>
+output method.
+<P></p>
+</dl>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Content</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>
+<span class="LITERAL">#PCDATA</span>, literal text, and entity references.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Appears in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>
+<span class="LITERAL">&lt;xsl:text&gt;</span> appears inside a template.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Defined in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>XSLT section 7.2, Creating Text. </p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>This sample stylesheet generates text with <span class="LITERAL">&lt;xsl:text&gt;</span>. We intermingle <span class="LITERAL">&lt;xsl:text&gt;</span> elements and <span class="LITERAL">&lt;xsl:value-of&gt;</span> elements to create a coherent sentence. In this case, we simply generate a text document, but this technique works equally well to create the text of an HTML or XML element. Here is the stylesheet:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+
+  &lt;xsl:output method="text"/&gt;
+
+  &lt;xsl:variable name="newline"&gt;
+&lt;xsl:text&gt;
+&lt;/xsl:text&gt;
+  &lt;/xsl:variable&gt;
+
+  &lt;xsl:template match="/"&gt;
+    &lt;xsl:text&gt;Your document contains &lt;/xsl:text&gt;
+    &lt;xsl:value-of select="count(//*)"/&gt;
+    &lt;xsl:text&gt; elements and &lt;/xsl:text&gt;
+    &lt;xsl:value-of select="count(//@*)"/&gt;
+    &lt;xsl:text&gt; attributes. &lt;/xsl:text&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:text disable-output-escaping="yes"&gt;&lt;Have a great day!&gt;&lt;/xsl:text&gt;
+  &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</pre></span>
+<p>Also notice our use of <span class="LITERAL">&lt;xsl:variable&gt;</span> to generate line breaks. The <span class="LITERAL">&lt;xsl:text&gt;</span> element inside the <span class="LITERAL">&lt;xsl:variable&gt;</span> element contains a line break, so writing the value of that variable to the result tree gives us the line break we want. Given this XML document:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;list xml:lang="en"&gt;
+  &lt;title&gt;Albums I've bought recently:&lt;/title&gt;
+  &lt;listitem&gt;The Sacred Art of Dub&lt;/listitem&gt;
+  &lt;listitem&gt;Only the Poor Man Feel It&lt;/listitem&gt;
+  &lt;listitem&gt;Excitable Boy&lt;/listitem&gt;
+  &lt;listitem xml:lang="sw"&gt;Aki Special&lt;/listitem&gt;
+  &lt;listitem xml:lang="en-gb"&gt;Combat Rock&lt;/listitem&gt;
+  &lt;listitem xml:lang="zu"&gt;Talking Timbuktu&lt;/listitem&gt;
+  &lt;listitem xml:lang="jz"&gt;The Birth of the Cool&lt;/listitem&gt;
+&lt;/list&gt;</pre></span>
+<p>Our stylesheet produces these results:</p>
+<span class="PROGRAMLISTING"><pre>
+Your document contains 9 elements and 5 attributes.
+&lt;Have a great day!&gt;</pre></span>
+<p>Since we use the <span class="LITERAL">text</span> output method, the <span class="LITERAL">disable-output-escaping</span> attribute has no effect. If you change the stylesheet to use <span class="LITERAL">&lt;xsl:output method="html"/&gt;</span> or <span class="LITERAL">&lt;xsl:output method="xml"/&gt;</span>, then <span class="LITERAL">disable-output-escaping</span> is used. Here are the results for <span class="LITERAL">disable-output-escaping="yes"</span>:</p>
+<span class="PROGRAMLISTING"><pre>
+Your document contains 10 elements and 2 attributes.
+&lt;Have a great day!&gt;</pre></span>
+<p>And here are the results for <span class="LITERAL">disable-output-escaping="no"</span>, the default:</p>
+<span class="PROGRAMLISTING"><pre>
+Your document contains 10 elements and 2 attributes.
+&amp;lt;Have a great day!&amp;gt;</pre></span>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<participant>
+     <quickSearch><![CDATA[MM_delete]]></quickSearch>
+     <insertText location="lastChildOfNode" nodeParamName="formNode">
+<![CDATA[
+<input type="hidden" name="MM_delete" value="@@formName@@">
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="tag+INPUT">
+       <searchPattern limitSearch="attribute+name"><![CDATA[/MM_delete/i]]></searchPattern>
+       <searchPattern paramNames="formName" limitSearch="attribute+value"></searchPattern>
+     </searchPatterns>
+</participant>

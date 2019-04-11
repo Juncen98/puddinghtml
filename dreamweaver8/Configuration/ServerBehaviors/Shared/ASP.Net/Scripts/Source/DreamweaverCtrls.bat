@@ -1,0 +1,1 @@
+csc /t:library /utf8output /R:system.web.dll /R:system.dll /R:mscorlib.dll /R:system.xml.dll /R:system.enterpriseservices.dll /R:system.data.dll /R:system.web.services.dll /R:system.drawing.dll /out:DreamweaverCtrls.dll /D:DEBUG /debug+ /optimize- /warnaserror /w:4  DreamweaverCtrls.cs

@@ -1,0 +1,1313 @@
+<html>
+<head>
+<link rel="stylesheet" href="josh.css">
+</head>
+<body bgcolor="#FFFFFF">
+<div id="Count">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">Count</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">Integer = Application.Count</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description"><p>Returns an Integer
+          containing the number of items currently in the Application collection.
+          The Count member is derived from the ICollection interface, which is
+          implemented by the <span class="literal">HttpApplicationState</span> class. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">Integer</span><br>
+&nbsp; An Integer variable that will receive the Count property value.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example adds two values to the Application collection, displays
+          the count of items in the Application collection, and then uses the
+          Count property as a looping control value to display each item:</p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Dim I as Integer
+	Application.Clear( )
+	Application(&quot;foo&quot;) = &quot;Hello,&quot;
+	Application(&quot;bar&quot;) = &quot;World!&quot;
+	Message.Text = &quot;The Application collection contains&quot; &amp;_
+		Application.Count &amp; &quot;items:&quot;
+	For I = 0 To Application.Count - 1
+		Message.Text &amp;= Application(I)
+	Next
+End Sub </pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The Count property is new for ASP.NET. In addition to using the Count
+          property for looping through the Application collection, you can use
+          the property to keep track of how many items the Application stores
+          at any given time. For example, you could write this information to
+          a log for later review. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="Item">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">Item</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">Object = Application.Item(ByVal
+          name As String) <br>
+          Application.Item(ByVal name As String) = Object <br>
+          Object = Application.Item(ByVal index As Integer) <br>
+          Application.Item(ByVal index As Integer) = Object </p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description"><br>
+        Returns or sets an Object associated with a particular name or index. </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">Object</span> <br>
+&nbsp; A variable of any type (since all .NET types are ultimately derived from
+Object) that will receive or set the item's value. </li>
+          <li><span class="literal">Name</span> <br>
+&nbsp; A String argument containing the text key to apply to the item (or by
+which to retrieve the item). </li>
+          <li><span class="literal">Index</span> <br>
+&nbsp; An Integer argument containing the index of the item whose value will
+be retrieved or modified. </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example sets the values of two items in the Application collection.
+          If these items do not already exist in the collection, they will be
+          added. The example then displays the two values. </p>
+        <span f>
+        <pre>
+Sub Page_Load( )
+	Application.Clear( )
+	Application.Item(&quot;foo&quot;)&quot;)=&quot;)=&quot;foo&quot;
+	Application.Item(&quot;foo2&quot;)&quot;)=&quot;)=&quot;foo2&quot;
+	Message.Text = Application.Item(&quot;foo&quot;) &amp; &quot;  &quot;
+	Message.Text &amp;= Application.Item(1)
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The Item property is accessed implicitly when using the syntax:</p>
+        <span class="programlisting">
+        <pre>
+Application(&quot;foo&quot;) = &quot;foo&quot;</pre>
+        </span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>This syntax is often seen in classic ASP code. Explicitly referencing
+          the Item property is not required, but listing it may make your code
+          more readable and understandable than accessing it implicitly. Note
+          that an index may only be used as an argument when modifying a value,
+          not when creating a new item, and the index must be less than the number
+          of items in the Application collection, or an exception will be thrown.</p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="AllKeys">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">AllKeys </td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">Dim StateVars(Application.Count)
+          As String <br>
+          StateVars = Application.AllKeys</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description"><br>
+        Returns a string array of key names stored in the HttpApplicationState
+          object. </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">StateVars</span> <br>
+&nbsp; A variable of type String array that will receive the array of key names. </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example displays all keys of data stored to the Application object: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Dim I as Integer
+	Dim StateVars(Application.Count -1) As String
+	StateVars = Application.AllKeys
+	For I = 0 to StateVars.Length - 1
+		Message.Text = Message.Text + StateVars(I) + &quot;&lt; /br &gt;&quot;
+	Next I
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>This property provides a list of key names assigned to all current
+          Application variables. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="Contents">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">Contents</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">HttpApplicationState
+          = Application.Contents</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description"><p>Returns a reference
+          to the current HttpApplicationState instance. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">HttpApplicationState</span> <br>
+&nbsp; A variable of type HttpApplicaitonState that will receive the Contents
+reference. </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example below calls the RemoveAll method through the Contents
+          collection reference and then writes a message: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Application.Contents.RemoveAll( )
+	Message.Text = &quot;Removed all items from current Application.&quot;
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>This property is provided for backward compatibility with classic
+          ASP. Properties such as the Item property and methods such as Remove
+          and RemoveAll were accessed via the Contents property in classic ASP.
+          In new ASP.NET development, you should access these members directly.
+          For example, instead of calling the RemoveAll method through the Contents
+          property, you can call RemoveAll method directly: </p>
+        <span class="programlisting"> Application.RemoveAll( ) </span> </td>
+    </tr>
+  </table>
+</div>
+<div id="Keys">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">Keys</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">KeysCollection
+          = Application.Keys</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns a NameObjectCollectionBase.KeysCollection containing the string
+          keys associated with all values stored in the Application collection. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">KeysCollection</span> <br>
+&nbsp; A variable of type NameObjectCollectionBase.KeysCollection that will receive
+the Keys property value. </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example loops through the collection of keys in the Application
+          collection, and then displays the key name and the value associated
+          with it by using the Text property of the Message control: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Dim Key As String Message.Text = &quot;Application Keys:&quot;
+	For Each Key in Application.Keys
+		Message.Text &amp;= &quot;&lt;br/&gt;Key:&amp;nbsp;&amp;nbsp;&amp;nbsp;&quot; &amp; Key
+		Message.Text &amp;= &quot;&lt;br/&gt;Value:&amp;nbsp;&amp;nbsp;&amp;nbsp;&quot; &amp;Application(Key)
+	Next
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The Keys property provides one of many ways to iterate over the contents
+          of the Application collection. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="StaticObjects">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">StaticObjects</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">HttpStaticObjectsCollection
+          = Application.StaticObjects </p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description"><p>Returns an <span class="literal">HttpStaticObjectsCollection</span> containing
+          all objects instantiated in <span class="emphasis">global.asax</span> using
+          the <span class="literal">&lt;object runat=&quot;server&quot;&gt;</span> syntax
+          whose <span class="literal">scope</span> attribute is set to Application. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">HttpStaticObjectsCollection</span> <br>
+&nbsp; A variable of type HttpStaticObjectsCollection that will receive the StaticObjects
+property value. </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example uses the Count property of the <span class="literal">HttpStaticObjectsCollection</span> class
+          to display the number of objects in the current application declared
+          with the <span class="literal">&lt;object scope=&quot;Application&quot; runat=&quot;server&quot;/&gt;</span> syntax
+          in <span class="emphasis">global.asax</span>. It then checks the type
+          of each object, and if it is a Web TextBox control, adds it to the
+          Controls collection of the current page. </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Dim myobj As Object
+	Message.Text = &quot;There are &quot; &amp; Application.StaticObjects.Count &amp;_
+			&quot;objects declared with the&quot; &amp;_
+			&quot;&amp;lt;object runat=&amp;quot;server&amp;quot;&amp;gt; syntax &quot; &amp;_
+			&quot;in Application scope.&quot;
+	For Each myObj in Application.StaticObjects
+		If myObj.Value.GetType.ToString() =_
+			&quot;System.Web.UI.WebControls.TextBox&quot; Then
+			Page.Controls.Add(myObj.Value)
+		End If
+	Next
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>This property is provided for backward compatibility with classic
+          ASP. You should think carefully before instantiating objects with Session
+          or Application scope because of the impact such objects have on resource
+          usage and application scalability. In most cases, it is advisable to
+          limit objects to page scope. Note that each object in the collection
+          is represented by the DictionaryEntry structure, so its key and value
+          are not directly accessible. To access the key and/or value, use the
+          Key and/or Value members of the DictionaryEntry structure. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="Add">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">Add</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">Application.Add(ByVal
+          name As String, ByVal value As Object) </p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+   <tr>
+     <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Adds a value to the Application collection.</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">Name</span> <br>
+&nbsp; A variable of type String that specifies the name of the item to be added
+to the Application collection. </li>
+          <li><span class="literal">Value</span> <br>
+&nbsp; A variable of type Object that contains the value for the item to be added
+to the Application collection. </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example adds an item to the Application collection and then displays
+          it: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Application.Add(&quot;Added&quot;, &quot;AddedValue&quot;)
+	Message.Text = Application(&quot;Added&quot;)
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The Add method, which is new in ASP.NET, provides a technique for
+          adding items to the Application collection that is consistent with
+          the technique used for adding items to other .NET collections. Of course,
+          the classic ASP syntax of directly indexing the Application object
+          by using the key name of index works correctly as well. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="Clear">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">Clear</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">Application.Clear(
+          )</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Clears the contents of the Application collection. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>None</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example clears the contents of the Application collection and
+          writes a message to the Text property of the Message control that includes
+          the current count of the collection, which should be 0: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Application.Clear( )
+	Message.Text = &quot;There are&quot; &amp; Application.Count &amp;_
+		&quot;items in the Application collection.&quot;
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The Clear method, which is new for ASP.NET, clears only the contents
+          of the Application collection itself. It does not clear the contents
+          of the StaticObjects collection. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="Get">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">Get</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">Application.Get(ByVal
+          name As String) <br>
+          Application.Get(ByVal Index As Integer)</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description"><br>
+        Gets an element of the Application collection either by name or ordinal
+          position (index) within the Application collection. Generally, the
+          name is used in calls to Get unless you need to get members of the
+          collection inside a loop. </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">Name</span> <br>
+&nbsp; A variable of type String that specifies the name of the item to be retrieved
+from the Application collection. </li>
+          <li><span class="literal">Index</span> <br>
+&nbsp; A variable of type Integer that specifies the index of the item to be
+retrieved from the Application collection. </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example below sets and gets a value from the Application collection.
+          It also uses the Get method to write a message to the Text property
+          of the Message control that includes the current value of the newly
+          added element of the Application collection. </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Application(&quot;GetTest&quot;) = &quot;Got it!&quot;
+	Message.Text = &quot;GetTest = &quot; &amp; Application.Get(&quot;GetTest&quot;)
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>You can see whether a named value is saved in the Application collection
+          by checking to ensure that its value is not null, as shown in the following
+          code: </p>
+        <span class="programlisting">
+        <pre>
+If Not Application(&quot;Foo&quot;) is Nothing then
+	Message.Text = &quot;Foo is set to &quot; &amp; Application.Get(&quot;Foo&quot;)
+End If</pre>
+        </span> </td>
+    </tr>
+  </table>
+</div>
+<div id="GetKey">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">GetKey</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">Application.GetKey(ByVal
+          Index As Integer)</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Retrieves the key name corresponding to the index of a data item stored
+          to the Application object. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">Index</span> <br>
+&nbsp; A variable of type Integer that specifies the index of the key to be retrieved
+from the Application collection. </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example removes all values from the Application collection in
+          order to start from a known state. Next, it writes a single value to
+          the Application collection. Finally, it saves the key from the first
+          element (index 0) retrieved by a call to GetKey into the Message control. </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Application.RemoveAll( )
+	Application(&quot;GetKeyTest&quot;) =&quot;Got it!&quot;
+	Message.Text = &quot;Key of Application(0) = &quot; &amp;_
+				   Application.GetKey(0) &amp;_
+				   &quot;&lt;br/&gt;(Should be GetKeyTest)&quot;
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>If Index is less than 0 or greater than Application.Count - 1, an
+          ArgumentOutOfRangeException exception will be thrown. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="Lock">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">Lock</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">Application.Lock</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description"><p>Locks access to an
+          Application collection to facilitate access synchronization. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>None </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example locks the application, sets an application page load counter
+          variable, unlocks the application, and displays the value: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Application.Lock( )
+	Application(&quot;Counter&quot;)= Application(&quot;Counter&quot;) + 1
+	Application.UnLock( )
+	Message.Text = &quot;Counter = &quot; &amp; Application(&quot;Counter&quot;)
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>In the example, note that we Lock the application, perform any operations
+          that modify values within the Application collection, and UnLock the
+          application as quickly as possible. Any read access to the Application
+          collection can safely take place outside the Lock/UnLock method calls. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="Remove">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">Remove</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">Application.Remove(ByVal
+          name As String)</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description"><p>Removes an item by
+          name from the Application collection. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">Name</span> <br>
+&nbsp; A String argument containing the name (key) of the item to remove.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example determines whether the item with the key &quot;foo&quot; exists
+          in the Application collection and, if it does, removes the item and
+          displays an appropriate message: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	If Not Application(&quot;foo&quot;) Is Nothing Then
+		Application.Remove(&quot;foo&quot;)
+		Message.Text = &quot;Item 'foo' was removed.&quot;
+	Else
+		Message.Text = &quot;Item 'foo' does not exist.&quot;
+	End If
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The Remove method is provided for backwards compatibility with classic
+          ASP. In classic ASP, this method was accessed through the Contents
+          collection. In ASP.NET, this method can be accessed either directly,
+          as shown above, or through the Contents collection. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="RemoveAll">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">RemoveAll</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">Application.RemoveAll(
+          )</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description"><p>Removes all items from
+          the Application collection. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>None </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example checks to ensure that at least one item is in the Application
+          collection, and if it is, it clears the collection by calling the RemoveAll
+          method. </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	If Application.Count &gt; 0 Then
+		Application.RemoveAll()
+		Message.Text = &quot;Application collection cleared.&quot;
+	Else
+		Message.Text = &quot;Application collection is already empty.&quot;
+	End If
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The RemoveAll method is provided for backwards compatibility with
+          classic ASP. In classic ASP, this method was accessed through the Contents
+          collection. In ASP.NET, this method can be accessed either directly,
+          as shown above, or through the Contents collection. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="RemoveAt">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">RemoveAt</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">Application.RemoveAt(ByVal
+          index As Integer) </p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description"><p>Removes an item from
+          the Application collection by index. This is a new companion to the
+          Remove method, which removes an item by key. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">Index</span> <br>
+&nbsp; An Integer argument containing the index location of the item to remove
+from the Application collection. </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p></p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	If Application.Count &gt; 0 Then
+		Application.RemoveAt(0)
+		Message.Text = &quot;The item at index 0 was removed.&quot;
+	Else
+		Message.Text = &quot;The item at index 0 does not exist.&quot;
+	End If
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The RemoveAt method allows items to be removed from the Application
+          collection by index rather than by key. As in the example above, the
+          items that follow the removed item will shift one position in the collection
+          when the item is removed. If you remove an item by index and then call
+          RemoveAt again with the same index, you will remove the item that immediately
+          followed the original removed item. If a single item is in the Application
+          collection and you call RemoveAt a second time, an ArgumentOutOfRangeException
+          exception will be thrown. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="Set">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">Set</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">Application.Set(ByVal
+          name As String, ByVal value As Object) </p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Updates the value of an object in the Application collection. This
+          new method allows you to set objects in the Application collection. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">Name</span> <br>
+&nbsp; A String argument containing the name of the object in the Application
+collection to be updated. </li>
+          <li><span class="literal">Value</span> <br>
+&nbsp; An Object argument containing the new value of the Application collection
+object to be updated. </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example uses Set twice -- once to set a new item in the Application
+          collection and again to change that value. </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Application.RemoveAll( )
+	Application.Set(&quot;TotallyNewVariable&quot;,&quot;Test!&quot;)
+	Message.Text = &quot;First:&quot; + Application(&quot;TotallyNewVariable&quot;)+ &quot;&lt;br/&gt;&quot;
+	Application.Set(&quot;TotallyNewVariable&quot;,&quot;Test again!&quot;)
+	Message.Text = Message.Text &amp; &quot;First after Set:&quot;+ Application(&quot;TotallyNewVariable&quot;) + &quot;&lt;br/&gt;&quot;
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>Set can be used to add values to the Application collection, but you
+          will normally just use the simple syntax you are used to from classic
+          ASP: </p>
+        <span class="programlisting"> Application(&quot;TotallyNewVariable&quot;)
+        = &quot;Test!&quot; </span> </td>
+    </tr>
+  </table>
+</div>
+<div id="UnLock">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">UnLock</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">Application.UnLock</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Unlocks access to an Application collection to facilitate access synchronization. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>None </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example locks the application, sets an application page load counter
+          variable, unlocks the application, and displays the value: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Application.Lock( )
+	Application(&quot;Counter&quot;) = Application(&quot;Counter&quot;) + 1
+	Application.UnLock( )
+	Message.Text = &quot;Counter = &quot; &amp;Application(&quot;Counter&quot;)
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>In the example, note that we Lock the application, perform any operations
+          that modify values within the Application collection, and UnLock the
+          application as quickly as possible. Any read access to the Application
+          collection can safely take place outside the Lock/UnLock method calls. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="Start">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">Start</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><pre class="literal">
+Sub Application_OnStart() 'Event handler logic
+End Sub</pre>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description"> <br>
+        Fired when the Application is created. The event handler for this event
+          should be defined in the <span class="emphasis">global.asax</span> application
+          file. </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>None </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example writes an entry to both the Application Event log and
+          the IIS log for the application to indicate that the Start event has
+          fired:</p>
+        <span class="programlisting">
+        <pre>
+&lt;Script language=&quot;VB&quot; runat=&quot;server&quot;&gt;
+	Sub Application_OnStart()
+		Dim EventLog1 As New System.Diagnostics.EventLog (&quot;Application&quot;,_
+			&quot;.&quot;, &quot;mySource&quot;)
+		EventLog1.WriteEntry(&quot;Application_OnStart fired!&quot;)
+		Context.Response.AppendToLog(&quot;Application_OnStart fired!&quot;)
+	End Sub
+&lt;/script&gt;</pre>
+        </span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>There is one issue with the code above. Security in the released version
+          of the .NET framework has been tightened, so writing to the event log
+          will not work by default in an ASP.NET application.</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The Start event is useful for performing initialization tasks when
+          the application is initialized. You can initialize Application variables
+          that are mostly static. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="End">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">End</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><pre class="literal">
+Sub Application_OnEnd() 'Event handler logic
+End Sub</pre>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description"> <br>
+        Fired when the application is torn down, either when the web server is
+          stopped or when the <span class="emphasis">global.asax</span> file
+          is modified. The event handler for this event should be defined in
+          the <span class="emphasis">global.asax</span> application file. </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>None </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example below writes an entry to the Application Event log to
+          indicate that the End event has fired. </p>
+        <span class="programlisting">
+        <pre>
+&lt;Script language=&quot;VB&quot; runat=&quot;server&quot;&gt;
+	Sub Application_OnEnd()
+		Dim EventLog1 As New System.Diagnostics.EventLog (&quot;Application&quot;,_
+			&quot;.&quot;, &quot;mySource&quot;)
+		EventLog1.WriteEntry(&quot;Application_OnEnd fired!&quot;)
+	End Sub
+&lt;/script&gt;</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The End event is useful for performing cleanup tasks when the Application
+          ends, either because the web service stops or the <span class="emphasis">global.asax</span> file
+          is changed. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

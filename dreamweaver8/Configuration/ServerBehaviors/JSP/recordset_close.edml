@@ -1,0 +1,15 @@
+<participant>
+     <quickSearch><![CDATA[close()]]></quickSearch>
+     <insertText location="belowHTML+50">
+<![CDATA[
+<%
+@@rsName@@.close();
+Statement@@rsName@@.close();
+Conn@@rsName@@.close();
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName"><![CDATA[/(\w+)\.close\(\);\s*(?:Statement\w+\.close\(\);)?\s*Conn\w+\.close\(\);/]]></searchPattern>
+     </searchPatterns>
+</participant>

@@ -1,0 +1,153 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFINCLUDE</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFINCLUDE</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Embeds references to ColdFusion pages in CFML. You can embed cfinclude tags recursively. For another way to encapsulate CFML, see cfmodule on&#160;page&#160;557. (A ColdFusion page was formerly sometimes called a ColdFusion template or a template.)
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Flow-control tags, Page processing tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfinclude 
+   template = &quot;template_name&quot;&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfcache, cfflush, cfheader, cfhtmlhead, cfsetting, cfsilent
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX: Changed error behavior: if you use this tag to include a CFML page whose length is zero bytes, you do not get an error. 
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+ColdFusion searches for included files in the following locations:
+</p>
+<ol type="1">
+
+<li>In the directory of the current page or a directory relative to the current page</li>
+
+<li>In directories mapped in the ColdFusion MX Administrator</li>
+</ol>
+
+<p>
+You cannot specify an absolute URL or file system path for the file to include. You can only use paths relative to the directory of the including page or a directory that is registered in the ColdFusion MX Administrator Mappings. The following cfinclude statements will work, assuming that the myinclude.cfm file exists in the specified directory:
+</p>
+<pre>&lt;cfinclude template=&quot;myinclude.cfm&quot;&gt;
+&lt;cfinclude template=&quot;../myinclude.cfm&quot;&gt;
+&lt;cfinclude template=&quot;/CFIDE/debug/myinclude.cfm&quot;&gt;
+</pre>
+<p>
+But these will not work:
+</p>
+<pre>&lt;cfinclude template=&quot;C:\CFusionMX7\wwwroot\doccomments\myinclude.cfm&quot;&gt;
+&lt;cfinclude template=&quot;http://localhost:8500/doccomments/myinclude.cfm&quot;&gt;
+</pre>
+<p>
+The included file must be a syntactically correct and complete CFML page. For example, to output data from within the included page, you must have a cfoutput tag, including the end tag, on the included page, not the referring page. Similarly, you cannot span a cfif tag across the referring page and the included page; it must be complete within the included page.
+</p>
+
+<p>
+You can specify a variable for the template attribute, as the following example shows:
+</p>
+<pre>&lt;cfset templatetouse=&quot;../header/header.cfm&quot;&gt;
+&lt;cfinclude template=&quot;#templatetouse#&quot;&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!--- This example shows the use of cfinclude to paste CFML 
+or HTML code into another page dynamically. ---&gt;
+
+&lt;h4&gt;This example includes the dochome.htm page from the CFDOCS directory. 
+The images do not display, because they are located in 
+a separate directory. However, the page appears fully rendered 
+within the contents of this page.&lt;/h4&gt;
+&lt;cfinclude template = &quot;../cfdocs/dochome.htm&quot;&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="TEMPLATE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TEMPLATE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>A logical path to a ColdFusion page.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,149 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">NodeFilter</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">7</span> IE <span class="emphasis">n/a</span>  DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>The <span class="literal">NodeFilter</span> object provides a mechanism for the
+<span class="literal">NodeIterator</span> and <span class="literal">TreeWalker</span>
+objects to determine which nodes or classes of nodes are to be
+accepted or rejected for inclusion into one of the special node
+lists. The lone <span class="literal">accept( )</span> method is invoked
+silently by the <span class="literal">NodeInterator</span> and
+<span class="literal">TreeWalker</span> objects whenever the objects are asked
+to point to the next node in sequence. The
+<span class="literal">NodeFilter</span> object is also the holder of two sets
+of constants that are used in a variety of creation method calls and
+user-defined filter functions. See the <span class="literal">TreeWalker</span>
+object for an example, and the <span class="literal">document.createTreeWalker(
+)</span> method for application of the constants.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>NodeFilter</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificproperties"><span class="title">Object-Specific Properties</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">FILTER_ACCEPT</span></td><td><span class="literal">FILTER_REJECT</span></td><td><span class="literal">FILTER_SKIP</span></td>
+								</tr>
+								<tr><td><span class="literal">SHOW_ALL</span></td><td><span class="literal">SHOW_ATTRIBUTE</span></td><td><span class="literal">SHOW_CDATA_SECTION</span></td>
+								</tr>
+								<tr><td><span class="literal">SHOW_COMMENT</span></td><td><span class="literal">SHOW_DOCUMENT</span></td><td><span class="literal">SHOW_DOCUMENT_FRAGMENT</span></td>
+								</tr>
+								<tr><td><span class="literal">SHOW_DOCUMENT_TYPE</span></td><td><span class="literal">SHOW_ELEMENT</span></td><td><span class="literal">SHOW_ENTITY</span></td>
+								</tr>
+								<tr><td><span class="literal">SHOW_NOTATION</span></td><td><span class="literal">SHOW_PROCESSING_INSTRUCTION</span></td><td><span class="literal">SHOW_TEXT</span></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificmethods"><span class="title">Object-Specific Methods</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">accept( )</span></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectspecificeventhandlerproperties"><span class="title">Object-Specific Event Handler Properties</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			None. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="accept( )">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">accept( )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">7</span>  IE <span class="emphasis">n/a</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">accept(<span class="replaceable">nodeReference</span>)</p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Returns an integer signifying whether a node is to be included in the
+<span class="literal">NodeIterator</span> or <span class="literal">TreeWalker</span>
+object's list. This method is invoked automatically
+by the objects whenever one of their pointer-moving methods is
+invoked.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td>
+						<ul><li><span class="literal"></span>Reference to the document tree node under test. Passed automatically
+to the method when invoked by the <span class="literal">NodeInterator</span>
+and <span class="literal">TreeWalker</span> objects.
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			Integer value, each of which has a corresponding constant value
+associated with the <span class="literal">NodeFilter</span> object: 1
+(<span class="literal">NodeFilter.FILTER_ACCEPT</span>); 2
+(<span class="literal">NodeFilter.FILTER_REJECT</span>); 3
+(<span class="literal">NodeFilter.FILTER_SKIP</span>).
+</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+</body>
+</html>

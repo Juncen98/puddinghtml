@@ -1,0 +1,67 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<TITLE>插入鼠标经过图像</TITLE>
+
+<SCRIPT SRC="Rollover.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/errmsg.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<SCRIPT>
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_NoImagesToInsert = "对于要插入的鼠标经过图像对象,原始图像文件和鼠标经过图像文件都必须指定.";
+var MSG_NoImageName      = "要求图像名称,一个唯一的图像名称已经产生 .";
+var MSG_NameNotUnique    = "图像名称 \"%s\" 已经在文档中存在.  一个唯一的名称已经产生.";
+//--------------- END LOCALIZEABLE   ---------------
+</SCRIPT>
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY onLoad="initializeUI()">
+<FORM NAME="rolloverForm">
+   <DIV ALIGN="center">
+    <TABLE BORDER=0 cellpadding="2" cellspacing="4">
+   <TR>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP>图像名称:</TD>
+      <TD VALIGN="baseline" NOWRAP>
+         <INPUT NAME="tbImageName" TYPE="text" class="medTField">
+      </TD>
+   </TR>
+   <TR>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP>原始图像:</TD>
+      <TD VALIGN="baseline" NOWRAP>
+         <INPUT NAME="tbOriginalImage" TYPE="text" class="largeTField">
+         <INPUT TYPE="button" value="浏览..." onClick="document.rolloverForm.tbOriginalImage.value = dreamweaver.browseForFileURL( 'select', 'Original Image:', true );focus(this)">
+      </TD>
+   </TR>
+   <TR>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP>鼠标经过图像:</TD>
+      <TD VALIGN="baseline" NOWRAP>
+         <INPUT NAME="tbRolloverImage" TYPE="text" class="largeTField">
+         <INPUT TYPE="button" value="浏览..." onClick="document.rolloverForm.tbRolloverImage.value = dreamweaver.browseForFileURL( 'select', 'Rollover Image:', true );focus(this)"><BR>
+         <INPUT TYPE="checkbox" NAME="cbPreloadImages" CHECKED>预载鼠标经过图像
+      </TD>
+   </TR>
+   <TR>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP>替换文本:</TD>
+      <TD VALIGN="baseline" NOWRAP>
+         <INPUT NAME="tbAltText" TYPE="text" class="largeTField">
+      </TD>
+   </TR>
+   <TR>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP>按下时，前往的 URL:</TD>
+      <TD VALIGN="baseline" NOWRAP>
+         <INPUT NAME="tbURL" TYPE="text" class="largeTField" VALUE="">
+         <INPUT TYPE="button" value="浏览..." onClick="document.rolloverForm.tbURL.value = dreamweaver.browseForFileURL( 'select', 'On Click, Go To URL:', false );focus(this)">
+      </TD>
+   </TR>
+   </TABLE>
+   </DIV>
+</FORM>
+</BODY>
+</HTML>

@@ -1,0 +1,303 @@
+<html>
+<head>
+<title>&lt;xsl:sort&gt;</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">&lt;xsl:sort&gt;</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+Defines a sort key for the current context. This element appears as a child of the <span class="LITERAL">&lt;xsl:apply-templates&gt;</span> or <span class="LITERAL">&lt;xsl:for-each&gt;</span> elements. Within those elements, the first <span class="LITERAL">&lt;xsl:sort&gt;</span> defines the primary sort key, the second <span class="LITERAL">&lt;xsl:sort&gt;</span> defines the secondary sort key, etc.</td></tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Category</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>Subinstruction (<span class="LITERAL">&lt;xsl:sort&gt;</span> always appears as a child of the <span class="LITERAL">&lt;xsl:apply-templates&gt;</span> or <span class="LITERAL">&lt;xsl:for-each&gt;</span> elements)</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Required Attributes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>None.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Optional Attributes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<dl>
+<dt>
+select
+</dt>
+<dd>
+An XPath expression that defines the nodes to be sorted.
+<P></p>
+<dt>
+lang
+</dt>
+<dd>
+A string that defines the language used by the sort. The language codes are defined in RFC1766, available at
+<systemitem role="url">
+http://www.ietf.org/rfc/rfc1766.txt
+</systemitem>
+.
+<P></p>
+<dt>
+data-type
+</dt>
+<dd>
+An attribute that defines the type of the items to be sorted. Allowable values are
+<span class="LITERAL">
+number
+</span>
+and
+<span class="LITERAL">
+text
+</span>
+; the default is
+<span class="LITERAL">
+text
+</span>
+. An XSLT processor has the option of supporting other values as well. Sorting the values
+<span class="LITERAL">
+32 10 120
+</span>
+with
+<span class="LITERAL">
+data-type=
+"
+text
+"
+</span>
+returns
+<span class="LITERAL">
+10 120 32
+</span>
+, while
+<span class="LITERAL">
+data-type=
+"
+number
+"
+</span>
+returns
+<span class="LITERAL">
+10 32 120
+</span>
+.
+<P></p>
+<dt>
+order
+</dt>
+<dd>
+An attribute that defines the order of the sort. Allowable values are
+<span class="LITERAL">
+ascending
+</span>
+and
+<span class="LITERAL">
+descending
+</span>
+.
+<P></p>
+<dt>
+case-order
+</dt>
+<dd>
+An attribute that defines the order in which upper- and lowercase letters are sorted. Allowable values are
+<span class="LITERAL">
+upper-first
+</span>
+and
+<span class="LITERAL">
+lower-first
+</span>
+.
+<P></p>
+</dl>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Content</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>None.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Appears in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>
+<span class="LITERAL">&lt;xsl:apply-templates&gt;</span> and <span class="LITERAL">&lt;xsl:for-each&gt;</span>.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Defined in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>XSLT section 10, Sorting.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>We'll illustrate <span class="LITERAL">&lt;xsl:sort&gt;</span> with this stylesheet:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+
+  &lt;xsl:output method="text"/&gt;
+
+  &lt;xsl:variable name="newline"&gt;
+&lt;xsl:text&gt;
+&lt;/xsl:text&gt;
+  &lt;/xsl:variable&gt;
+
+  &lt;xsl:template match="/"&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:call-template name="ascending-alpha-sort"&gt;
+      &lt;xsl:with-param name="items" select="/sample/textlist/listitem"/&gt;
+    &lt;/xsl:call-template&gt;
+    &lt;xsl:call-template name="ascending-alpha-sort"&gt;
+      &lt;xsl:with-param name="items" select="/sample/numericlist/listitem"/&gt;
+    &lt;/xsl:call-template&gt;
+    &lt;xsl:call-template name="ascending-numeric-sort"&gt;
+      &lt;xsl:with-param name="items" select="/sample/numericlist/listitem"/&gt;
+    &lt;/xsl:call-template&gt;
+    &lt;xsl:call-template name="descending-alpha-sort"&gt;
+      &lt;xsl:with-param name="items" select="/sample/textlist/listitem"/&gt;
+    &lt;/xsl:call-template&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template name="ascending-alpha-sort"&gt;
+    &lt;xsl:param name="items"/&gt;
+    &lt;xsl:text&gt;Ascending text sort:&lt;/xsl:text&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:for-each select="$items"&gt;
+      &lt;xsl:sort select="."/&gt;
+      &lt;xsl:value-of select="."/&gt;
+      &lt;xsl:value-of select="$newline"/&gt;
+    &lt;/xsl:for-each&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template name="descending-alpha-sort"&gt;
+    &lt;xsl:param name="items"/&gt;
+    &lt;xsl:text&gt;Descending text sort:&lt;/xsl:text&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:for-each select="$items"&gt;
+      &lt;xsl:sort select="." order="descending"/&gt;
+      &lt;xsl:value-of select="."/&gt;
+      &lt;xsl:value-of select="$newline"/&gt;
+    &lt;/xsl:for-each&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template name="ascending-numeric-sort"&gt;
+    &lt;xsl:param name="items"/&gt;
+    &lt;xsl:text&gt;Ascending numeric sort:&lt;/xsl:text&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:for-each select="$items"&gt;
+      &lt;xsl:sort select="." data-type="number"/&gt;
+      &lt;xsl:value-of select="."/&gt;
+      &lt;xsl:value-of select="$newline"/&gt;
+    &lt;/xsl:for-each&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+  &lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</pre></span>
+<p>Our stylesheet defines three named templates, each of which sorts <span class="LITERAL">&lt;listitem&gt;</span>s in a different order or with a different <span class="LITERAL">data-type</span>. We'll use this stylesheet against this document:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;sample&gt;
+  &lt;numericlist&gt;
+    &lt;listitem&gt;1&lt;/listitem&gt;
+    &lt;listitem&gt;3&lt;/listitem&gt;
+    &lt;listitem&gt;23&lt;/listitem&gt;
+    &lt;listitem&gt;120&lt;/listitem&gt;
+    &lt;listitem&gt;2&lt;/listitem&gt;
+  &lt;/numericlist&gt;
+  &lt;textlist&gt;
+    &lt;listitem&gt;3&lt;/listitem&gt;
+    &lt;listitem&gt;apple&lt;/listitem&gt;
+    &lt;listitem&gt;orange&lt;/listitem&gt;
+    &lt;listitem&gt;dragonfruit&lt;/listitem&gt;
+    &lt;listitem&gt;carambola&lt;/listitem&gt;
+  &lt;/textlist&gt;
+&lt;/sample&gt;</pre></span>
+<!--<?troff .Nd 10?>-->
+<p>Here are the results:</p>
+<span class="PROGRAMLISTING"><pre>
+
+Ascending text sort:
+3
+apple
+carambola
+dragonfruit
+orange
+
+Ascending text sort:
+1
+120
+2
+23
+3
+
+Ascending numeric sort:
+1
+2
+3
+23
+120
+
+Descending text sort:
+orange
+dragonfruit
+carambola
+apple
+3</pre></span>
+<p>Notice that the <span class="LITERAL">data-type="numeric"</span> attribute causes data to be sorted in numeric order. </p>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

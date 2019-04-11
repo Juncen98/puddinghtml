@@ -1,0 +1,39 @@
+<participant>
+     <quickSearch><![CDATA[MM_delete]]></quickSearch>
+     <insertText location="aboveHTML+30">
+<![CDATA[
+<%
+// *** Delete Record: construct a sql delete statement and execute it
+
+if (request.getParameter("MM_delete") != null &&
+    request.getParameter("MM_recordId") != null) {
+
+  // create the delete sql statement
+  MM_editQuery = new StringBuffer("delete from ").append(MM_editTable);
+  MM_editQuery.append(" where ").append(MM_editColumn).append(" = ").append(MM_recordId);
+  
+  if (!MM_abortEdit) {
+    // finish the sql and execute it
+    Driver MM_driver = (Driver)Class.forName(MM_editDriver).newInstance();
+    Connection MM_connection = DriverManager.getConnection(MM_editConnection,MM_editUserName,MM_editPassword);
+    PreparedStatement MM_editStatement = MM_connection.prepareStatement(MM_editQuery.toString());
+    MM_editStatement.executeUpdate();
+    MM_connection.close();
+
+    // redirect with URL parameters
+    if (MM_editRedirectUrl.length() != 0) {
+      response.sendRedirect(response.encodeRedirectURL(MM_editRedirectUrl));
+      return;
+    }
+  }
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern><![CDATA[/request\.getParameter\("MM_delete"\)/]]></searchPattern>
+       <searchPattern><![CDATA[/if\s*\(!MM_abortEdit\)\s*\{/]]></searchPattern>
+       <searchPattern><![CDATA[/MM_editQuery\s*=\s*new\s+StringBuffer\("delete from "\)/]]></searchPattern>
+     </searchPatterns>
+</participant>
+

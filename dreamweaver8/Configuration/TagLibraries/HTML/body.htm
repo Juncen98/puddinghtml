@@ -1,0 +1,217 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>BODY</title>
+  
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script>
+//*************** GLOBAL VARIABLES *****************
+// UI Elements
+var COLORP_BG, COLORP_TEXT, COLORP_LINK, COLORP_VLINK, COLORP_ALINK; 
+var TEXT_BG, TEXT_TEXT, TEXT_LINK, TEXT_VLINK, TEXT_ALINK; 
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj); 
+  initializeUI(); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj); 
+}
+
+function updateUI(itemName)
+{
+  switch(itemName)
+  {
+    case "bgColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_BG,TEXT_BG);
+      break;
+    }
+    case "bgcolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_BG,TEXT_BG);
+      break;
+    }
+    case "textColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_TEXT,TEXT_TEXT);
+      break;
+    }
+    case "text":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_TEXT,TEXT_TEXT);
+      break;
+    }
+    case "linkColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_LINK,TEXT_LINK);
+      break;
+    }
+    case "link":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_LINK,TEXT_LINK);
+      break;
+    }
+    case "visitedLinkColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_VLINK,TEXT_VLINK);
+      break;
+    }
+    case "vlink":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_VLINK,TEXT_VLINK);
+      break;
+    }
+    case "activeLinkColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_ALINK,TEXT_ALINK);
+      break;
+    }
+    case "alink":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_ALINK,TEXT_ALINK);
+      break;
+    }
+  }
+}
+
+function initializeUI()
+{
+  COLORP_BG = dwscripts.findDOMObject("bgColorPicker");
+  COLORP_TEXT = dwscripts.findDOMObject("textColorPicker"); 
+  COLORP_LINK = dwscripts.findDOMObject("linkColorPicker"); 
+  COLORP_VLINK = dwscripts.findDOMObject("visitedLinkColorPicker"); 
+  COLORP_ALINK = dwscripts.findDOMObject("activeLinkColorPicker"); 
+  TEXT_BG = dwscripts.findDOMObject("thebgcolor");
+  TEXT_TEXT = dwscripts.findDOMObject("thetext");  
+  TEXT_LINK = dwscripts.findDOMObject("thelink");
+  TEXT_VLINK = dwscripts.findDOMObject("thevlink");
+  TEXT_ALINK = dwscripts.findDOMObject("thealink");
+
+  tagDialog.updateColorPicker("colorField",COLORP_BG,TEXT_BG);
+  tagDialog.updateColorPicker("colorField",COLORP_ALINK,TEXT_ALINK);
+  tagDialog.updateColorPicker("colorField",COLORP_TEXT,TEXT_TEXT);
+  tagDialog.updateColorPicker("colorField",COLORP_LINK,TEXT_LINK);
+  tagDialog.updateColorPicker("colorField",COLORP_VLINK,TEXT_VLINK);
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+<div name="常规"> 
+<table border="0" cellspacing="4">
+  <tr valign="baseline"> 
+    <td align="right" nowrap="nowrap">背景图像: </td>
+    <td nowrap="nowrap"> <input name="thebackground" type="text" class="basicTextField" id="attr:body:background" attname="background" />&nbsp;
+		<input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('thebackground')"> 
+    </td>
+  </tr>
+  <tr valign="baseline"> 
+    <td align="right" nowrap="nowrap">背景颜色: </td>
+    <td nowrap="nowrap"><input type="mmcolorbutton" name="bgColorPicker" value="" onChange="updateUI('bgColorPicker')"> 
+      <input name="thebgcolor" type="text" class="smallTField" id="att:body:bgcolor" onBlur="updateUI('bgcolor')" value="" attname="bgcolor">
+    </td>
+  </tr>
+  <tr valign="baseline"> 
+    <td align="right" nowrap="nowrap">文本颜色: </td>
+    <td nowrap="nowrap"><input type="mmcolorbutton" name="textColorPicker" value="" onChange="updateUI('textColorPicker')"> 
+      <input name="thetext" type="text" class="smallTField" id="att:body:text" onBlur="updateUI('text')" value="" attname="text"> 
+    </td>
+  </tr>
+  <tr valign="baseline"> 
+    <td align="right" nowrap="nowrap">链接颜色: </td>
+    <td nowrap="nowrap"><input type="mmcolorbutton" name="linkColorPicker" value="" onChange="updateUI('linkColorPicker')"> 
+      <input name="thelink" type="text" class="smallTField" id="att:body:link" onBlur="updateUI('link')" value="" attname="link"> 
+    </td>
+  </tr>
+  <tr valign="baseline"> 
+    <td align="right" nowrap="nowrap">已访问链接的颜色: </td>
+    <td nowrap="nowrap"><input type="mmcolorbutton" name="visitedLinkColorPicker" value="" onChange="updateUI('visitedLinkColorPicker')"> 
+      <input name="thevlink" type="text" class="smallTField" id="att:body:vlink" onBlur="updateUI('vlink')" value="" attname="vlink"> 
+    </td>
+  </tr>
+  <tr valign="baseline"> 
+    <td align="right" nowrap="nowrap">活动链接颜色: </td>
+    <td nowrap="nowrap"><input type="mmcolorbutton" name="activeLinkColorPicker" value="" onChange="updateUI('activeLinkColorPicker')"> 
+      <input name="thealink" type="text" class="smallTField" id="att:body:alink" onBlur="updateUI('alink')" value="" attname="alink"> 
+    </td>
+  </tr>
+</table>
+</div>
+<div name="浏览器特定的">
+<table border="0" cellspacing="4">
+  <tr valign="baseline"> 
+    <td align="right" nowrap="nowrap">左边距: </td>
+    <td nowrap="nowrap" ><input name="theleftmargin" type="text" class="smallNumOrChar" id="attr:body:leftmargin" attname="leftmargin" />&nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;2+</td>
+	</tr>
+  <tr valign="baseline"> 
+    <td align="right" nowrap="nowrap">顶部边距: </td>
+    <td nowrap="nowrap"><input name="thetopmargin" type="text" class="smallNumOrChar" id="attr:body:topmargin" attname="topmargin" />&nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;2+</td>
+	</tr>
+  <tr valign="baseline"> 
+    <td align="right" nowrap="nowrap">右边距: </td>
+    <td nowrap="nowrap" ><input name="therightmargin" type="text" class="smallNumOrChar" id="attr:body:rightmargin" attname="rightmargin" />&nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;4+</td>
+	</tr>
+  <tr valign="baseline"> 
+    <td align="right" nowrap="nowrap">下边距: </td>
+    <td nowrap="nowrap"><input name="thebottommargin" type="text" class="smallNumOrChar" id="attr:body:bottommargin" attname="bottommargin" />&nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;4+</td>
+	</tr>
+	<tr valign="baseline">
+    <td align="right" nowrap="nowrap">边距宽度: </td>
+    <td nowrap="nowrap"> 
+      <input name="themarginwidth" type="text" class="smallNumOrChar" id="attr:body:marginwidth" attname="marginwidth" />&nbsp;<img src="../../Shared/MM/Images/Netscape.gif" alt="Netscape" align="absmiddle">&nbsp;4+&nbsp;<img src="../../Shared/MM/Images/Opera.gif" alt="Opera" align="absmiddle">&nbsp;4+</td>
+  </tr>
+	<tr valign="baseline">
+    <td align="right" nowrap="nowrap">边距高度: </td>
+    <td nowrap="nowrap"><input name="themarginheight" type="text" class="smallNumOrChar" id="attr:body:marginheight" attname="marginheight" />&nbsp;<img src="../../Shared/MM/Images/Netscape.gif" alt="Netscape" align="absmiddle">&nbsp;4+&nbsp;<img src="../../Shared/MM/Images/Opera.gif" alt="Opera" align="absmiddle">&nbsp;4+</td>
+  </tr>
+</table>
+</div>
+<div name="样式表/辅助功能"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">类: </td>
+      <td nowrap="nowrap">
+        <input name="theclass" type="text" class="basicTextField" id="attr:applet:class" attname="class" />
+      </td>
+    </tr>
+      <tr valign="baseline">
+      <td align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="attr:applet:id" attname="id" />
+      </td>
+    </tr>
+      <tr valign="baseline">
+      <td align="right" nowrap="nowrap">样式: </td>
+      <td nowrap="nowrap">
+        <input name="thestyle" type="text" class="basicTextField" id="attr:applet:class" attname="style" />
+      </td>
+    </tr>
+    <tr valign="baseline"><td height="1" nowrap="nowrap"></td></tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">标题: </td>
+      <td nowrap="nowrap">
+        <input name="thetitle" type="text" class="basicTextField" id="attr:appletronym:title" attname="title" />
+      </td>
+    </tr>
+  </table> 
+</div>
+<div name="事件"> 
+  <div name="onLoad"> 
+    <textarea name="theonLoad" attname="onLoad" id="attr:body:onload" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onUnload"> 
+    <textarea name="theonUnload" attname="onUnload" id="attr:body:onUnload" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+</div>
+</body>
+</html>

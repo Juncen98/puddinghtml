@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "分钟数到小时数" description = "将分钟数转换为小时数并返回一个字符串"hrs:min"." preview="code" type="block">
+<insertText location="beforeSelection">
+<![CDATA[function minutesToHours(min)
+{
+  var hrs = Math.floor(min/60);
+  min = min % 60;
+  if(min<10) min = "0" + min;
+  return hrs + ":" + min;
+}
+]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

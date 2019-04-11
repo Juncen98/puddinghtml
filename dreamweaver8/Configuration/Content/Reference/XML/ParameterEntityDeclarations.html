@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Parameter Entity Declarations</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">Parameter Entity Declarations</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+<span class="PROGRAMLISTING"><pre><strong class="userinput">&lt;!ENTITY</strong><var class="replaceable"> %</var> <var class="replaceable">name</var> <strong class="userinput">"</strong><var class="replaceable">Replacement text</var><strong class="userinput">."&gt;</strong>
+<strong class="userinput">&lt;!ENTITY</strong><var class="replaceable"> %</var> <var class="replaceable">name</var> <strong class="userinput">SYSTEM "</strong><var class="replaceable">system-literal</var><strong class="userinput">"&gt;</strong>
+<strong class="userinput">&lt;!ENTITY</strong><var class="replaceable"> %</var> <var class="replaceable">name</var> <strong class="userinput">PUBLIC "</strong><var class="replaceable">pubid-literal</var><strong class="userinput">" "</strong><var class="replaceable">system-literal</var><strong class="userinput">"&gt;</strong></pre></span>
+<p>Parameter
+entities are declared within the
+document's DTD and must be declared before they are
+used. The declaration provides two key pieces of information:</p>
+
+<ul><li>
+<p>The name of the entity, which is used when it is referenced</p>
+</li><li>
+<p>The replacement text, either directly or indirectly through a link to
+an external entity</p>
+</li></ul>
+
+<p>Be aware that an XML parser performs some preprocessing on the
+replacement text before it is used in an entity reference. Most
+importantly, parameter entity references in the replacement text are
+recursively expanded before the final version of the replacement text
+is stored. Character references are also replaced immediately with
+the specified character. This replacement can lead to unexpected side
+effects, particularly when constructing parameter entities that
+declare other parameter entities. For full disclosure of how entity
+replacement is implemented by an XML parser and what kinds of
+unexpected side effects can occur, see Appendix D of the XML 1.0
+specification. The specification is available on the World Wide Web
+Consortium web site (<systemitem role="url">http://www.w3.org/TR/REC-xml#sec-entexpand</systemitem>).</p>
+</td></tr>
+</table>
+</div>
+</body>
+</html>

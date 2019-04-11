@@ -1,0 +1,39 @@
+<participant>
+     <quickSearch><![CDATA[_total]]></quickSearch>
+     <insertText location="aboveHTML+75">
+<![CDATA[
+<%
+// *** Recordset Stats: if we don't know the record count, manually count them
+
+if (@@rsName@@_total == -1) {
+
+  // count the total records by iterating through the recordset
+    for (@@rsName@@_total = 1; @@rsName@@.next(); @@rsName@@_total++);
+
+  // reset the cursor to the beginning
+  @@rsName@@.close();
+  @@resetRecordsetCall@@
+  @@rsName@@_hasData = @@rsName@@.next();
+
+  // set the number of rows displayed on this page
+  if (@@rsName@@_numRows < 0 || @@rsName@@_numRows > @@rsName@@_total) {
+    @@rsName@@_numRows = @@rsName@@_total;
+  }
+
+  // set the first and last displayed record
+  @@rsName@@_first = Math.min(@@rsName@@_first, @@rsName@@_total);
+  @@rsName@@_last  = Math.min(@@rsName@@_first + @@rsName@@_numRows - 1, @@rsName@@_total);
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName"><![CDATA[/\b(\w+)_total\+\+\);/]]></searchPattern>
+       <searchPattern paramNames="callableName" isOptional="true"><![CDATA[/\b(\w+)\.execute\(\);/]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="rsName"><![CDATA[/(\W)\w+(_total|_numRows|_first|_last|_hasData|\.next|\.close)/g]]></updatePattern>
+       <updatePattern paramName="rsName"><![CDATA[/(Statement)\w+(.executeQuery)/g]]></updatePattern>
+       <updatePattern paramName="resetRecordsetCall"><![CDATA[/(\.close\(\);[ \t]*[\r\n]*[ \t]*)[^\r\n]*([\r\n])/g]]></updatePattern>       
+     </updatePatterns>
+</participant>

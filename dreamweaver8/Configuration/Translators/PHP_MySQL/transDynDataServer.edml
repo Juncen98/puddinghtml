@@ -1,0 +1,25 @@
+<participant name="transDynDataServer">
+  <translator priority=400>
+    <searchPatterns>
+      <searchPattern><![CDATA[echo]]></searchPattern>
+      <searchPattern><![CDATA[_SERVER]]></searchPattern>
+      <searchPattern paramNames=",rs,col"><![CDATA[/echo (\w+\s*\(\s*)?\$(?:HTTP)?_(SERVER)(?:_VARS)?\[["'](\w+)["']\]\s*\)?;?/i]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="directive" translationType="dynamic data">
+        <openTag>MM_DYNAMIC_CONTENT</openTag>
+        <attributes>
+          <attribute><![CDATA[SOURCE=Server]]></attribute>
+          <attribute><![CDATA[BINDING="@@col@@"]]></attribute>
+        </attributes>
+        <display><![CDATA[{Server.@@col@@}]]></display>
+        <closeTag>MM_DYNAMIC_CONTENT</closeTag>
+      </translation>
+      <translation whereToSearch="tag+INPUT" limitSearch="attribute+VALUE" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="VALUE={Server.@@col@@}"]]></attribute>
+        </attributes>
+      </translation>
+    </translations>
+  </translator>
+</participant>

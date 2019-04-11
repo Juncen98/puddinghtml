@@ -1,0 +1,76 @@
+<!-- Copyright 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<title>CFNTAUTHENTICATE</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var TYPELIST; 
+var theUIObjects; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+</script>
+
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap"> 
+        <input name="thename" type="text" class="basicTextField" id="attr:cfntauthenticate:name" attname="name" required="true" />&nbsp;
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">密码: </td>
+      <td nowrap="nowrap"> 
+        <input name="thepassword" type="text" class="basicTextField" id="attr:cfntauthenticate:password" attname="password" required="true" />&nbsp;
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">域: </td>
+      <td nowrap="nowrap"> 
+        <input name="thedomain" type="text" class="basicTextField" id="attr:cfntauthenticate:domain" attname="domain" required="true" />&nbsp;
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">结果: </td>
+      <td nowrap="nowrap"> 
+        <input name="theresult" type="text" class="basicTextField" id="attr:cfntauthenticate:result" attname="result" />&nbsp;
+      </td>
+    </tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap"> 
+        <input type="checkbox" id="attr:cfntauthenticate:listgroups" name="thelistgroups" attname="listgroups" truevalue="yes" falsevalue="no"  /> 列表组
+      </td>
+    </tr>
+	    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap"> 
+        <input type="checkbox" id="attr:cfntauthenticate:throwonerror" name="thethrowonerror" attname="throwOnError" truevalue="yes" falsevalue="no"  /> 出错时引发
+      </td>
+    </tr>
+  </table>
+</div>
+</body> 
+</html>

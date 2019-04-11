@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>CDATA (Character Data) Sections</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">CDATA (Character Data) Sections</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+<span class="PROGRAMLISTING"><pre><strong class="userinput">&lt;![CDATA[</strong><var class="replaceable">unescaped character &amp; markup data</var><strong class="userinput">]]&gt;</strong></pre></span>
+
+<p>XML documents consist of markup
+and character data. The <span class="LITERAL">&lt;</span> or
+<span class="LITERAL">&amp;</span> characters cannot be included inside normal
+character data without using a character or entity reference, such as
+<span class="LITERAL">&amp;amp;</span> or <span class="LITERAL">&amp;#38;</span>. By
+using a reference, the resulting <span class="LITERAL">&lt;</span> and
+<span class="LITERAL">&amp;</span> characters are not recognized as markup by
+the parser, but they will become part of the data stream to the
+parser's client application.</p>
+
+<p>For large blocks of character data—particularly if the data
+contains markup, such as an HTML or XML fragment—the
+<span class="LITERAL">CDATA</span> section can be used. Within a
+<span class="LITERAL">CDATA</span> block, every character between the opening
+and closing strings is treated as character data. Thus, special
+characters can be included in a <span class="LITERAL">CDATA</span> section with
+impunity, except for the <span class="LITERAL">CDATA</span> closing sequence,
+<span class="LITERAL">]]&gt;</span>.</p>
+
+<p><span class="LITERAL">CDATA</span> sections are very useful for tasks such as
+enclosing XML or HTML documents inside of tutorials explaining how to
+use markup, but it is difficult to process the contents of
+<span class="LITERAL">CDATA</span> sections using XSLT, the DOM, or SAX as
+anything other than text.</p>
+
+<tip id="xmlnut3-CHP-21-NOTE-133" role="ora">
+<p><span class="LITERAL">CDATA</span> sections cannot be nested. The character
+sequence <span class="LITERAL">]]&gt;</span> cannot appear within data that is
+being escaped, or the <span class="LITERAL">CDATA</span> block will be closed
+prematurely. This situation should not be a problem ordinarily, but
+if an application includes XML documents as unparsed character data,
+it is important to be aware of this constraint. If it is necessary to
+include the <span class="LITERAL">CDATA</span> closing sequence in the data,
+close the open <span class="LITERAL">CDATA</span> section, include the closing
+characters using character references to escape them, then reopen the
+<span class="LITERAL">CDATA</span> section to contain the rest of the character
+data.</p>
+</tip>
+</td></tr>
+</table>
+</div>
+</body>
+</html>

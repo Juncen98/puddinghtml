@@ -1,0 +1,51 @@
+<!-- MENU-LOCATION=NONE -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<head>
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<title><MMString:LoadString id="insertbar/hyperlink" /></title>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<script language="javascript" src="../../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<!-- End removal area. -->
+<script language="javascript" src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script language="javascript" src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script language="javascript" src="Hyperlink.js"></script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initUI()">
+<form name="theForm">
+  <table border="0" height="135">
+    <tr valign="baseline"> 
+      <td align="right" nowrap><label for="linkText">文本:</label></td>
+      <td  align="left"> <input name="linkText" type="text" class="basicTextField" value=""> 
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap><label for="linkPath">链接: </label></td>
+      <td align="left" nowrap><select name="linkPath" class="basicTextField" editable="true">
+        </select>
+        &nbsp;
+        <input type="image" name="browseBtn" alt="浏览" src="../../Shared/MM/Images/folder.gif" onClick="document.theForm.linkPath.editText=dw.browseForFileURL();if (LIST_LINKS.getLen() == 0 || (LIST_LINKS.get() != document.theForm.linkPath.editText)) { LIST_LINKS.append(document.theForm.linkPath.editText); }"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap><label for="linkTarget">目标:</label></td>
+      <td  align="left" nowrap> <select name="linkTarget" class="targetList" editable="true">
+        </select></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap><label for="linkTitle">标题:</label></td>
+      <td  align="left" nowrap><input name="linkTitle" type="text" class="basicTextField"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap><label for="accessKey">访问键:</label></td>
+      <td  align="left" nowrap><input name="accessKey" type="text" class="smallNumOrChar" maxlength="1"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap><label for="tabIndex">Tab 键索引:</label></td>
+      <td align="left" nowrap><input name="tabIndex" type="text" class="smallNumOrChar" maxlength="5"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

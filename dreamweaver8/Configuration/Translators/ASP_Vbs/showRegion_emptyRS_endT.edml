@@ -1,0 +1,13 @@
+<participant>
+		<translator>
+			<searchPatterns>
+				<searchPattern><![CDATA[/End\s+If\s*\'\s*end\s*\w+\.EOF\s+And\b/i]]></searchPattern>
+				<searchPattern requiredLocation="leading"><![CDATA[/If\s*(\w+)\.EOF\s+AND\s+\w+\.BOF\s*Then\s*%>/i]]></searchPattern>
+			</searchPatterns>
+			<translations>
+				<translation whereToSearch="directive" translationType="tabbed region end">
+					<closeTag>MM_HIDDENREGION</closeTag>
+				</translation>
+			</translations>
+		</translator>
+</participant>

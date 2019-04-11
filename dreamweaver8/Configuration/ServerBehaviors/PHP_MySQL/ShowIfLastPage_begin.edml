@@ -1,0 +1,11 @@
+<participant version="6.0">
+	<insertText location="beforeSelection">
+	  <![CDATA[<?php if ($pageNum_@@RecordsetName@@ >= $totalPages_@@RecordsetName@@) { // Show if last page ?>]]>
+	</insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="RecordsetName" isOptional="false" limitSearch="all">
+		  <![CDATA[/if \(\$pageNum_([^\r\n]*?) >= \$totalPages_[^\r\n]*?\) \{ \/\/ Show if last page (?=\r\n|\r|\n|\?>)/i]]>
+		</searchPattern>
+	</searchPatterns>
+	<quickSearch>($pageNum_</quickSearch>
+</participant>

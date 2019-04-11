@@ -1,0 +1,74 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFDUMP</title>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Controls/Scripts/MultiStateCheckBox.js"></script>
+<script>
+
+var theExpandMultiStateCheckBox; 
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj); 
+}
+
+function updateUI(itemName)
+{
+  switch(itemName)
+  {
+    case "expand":
+	  {
+	    theExpandMultiStateCheckBox.updateUI(); 
+	    break; 
+	  } 	
+  }
+}
+function initializeUI()
+{
+  theExpandMultiStateCheckBox = new MultiStateCheckBox("theexpand");
+  theExpandMultiStateCheckBox.initializeUI(); 
+}
+
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="initializeUI();"> 
+<div name="常规"> 
+  <table border="0">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">变量: </td>
+      <td nowrap="nowrap">
+        <input name="thevar" type="text" class="basicTextField" id="attr:cfdump:var" attname="var" required="true" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">标签: </td>
+      <td nowrap="nowrap">
+        <input name="thelabel" type="text" class="basicTextField" id="attr:cfdump:label" attname="label" />
+      </td>
+    </tr>
+	 <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">上: </td>
+      <td nowrap="nowrap">
+        <input name="thetop" type="text" class="basicTextField" id="attr:cfdump:top" attname="top" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap"> 
+        <input name="theexpand" attname="expand" type="image" value="disabled" truevalue="yes" falsevalue="no" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('expand');" >
+        &nbsp;扩展 </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

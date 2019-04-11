@@ -1,0 +1,14 @@
+<participant>
+     <quickSearch><![CDATA[_isEmpty]]></quickSearch>
+     <insertText location="afterSelection">
+<![CDATA[
+<% } /* end !@@rsName@@_isEmpty */ %>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName"><![CDATA[/\}\s*\/\* end !(\w+)_isEmpty \*\//]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="rsName"><![CDATA[/(\b)\w+(_isEmpty)/]]></updatePattern>
+     </updatePatterns>
+</participant>

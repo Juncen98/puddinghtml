@@ -1,0 +1,59 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">this</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> ECMA <span class="emphasis">1</span></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements"></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description">
+						<p>Refers to the current object. For example, in a form control object
+event handler, you can pass the object as a parameter to the
+function:
+</p>
+<span class="PROGRAMLISTING"><pre>&lt;input type=&quot;text&quot; name=&quot;ZIP&quot; onchange=&quot;validate(this);&gt;&quot;</pre></span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Inside a custom object constructor, the keyword refers to the object
+itself, allowing you to assign values to its properties (even
+creating the properties at the same time):
+</p>
+<span class="PROGRAMLISTING"><pre>function CD(label, num, artist) {
+    this.label = label;
+    this.num = num;
+    this.artist = artist;
+}</pre></span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><p>			Inside a function, the <span class="literal">this</span> keyword refers to the
+function object. However, if the function is assigned as a method of
+a custom object constructor, <span class="literal">this</span> refers to the
+instance of the object in whose context the function executes.
+</p>
+												</td>
+</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;input type="text" name="phone" onchange="validate(this.value);"&gt;</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div>
+
+</body>
+</html>

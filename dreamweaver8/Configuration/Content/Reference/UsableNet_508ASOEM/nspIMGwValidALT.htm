@@ -1,0 +1,251 @@
+<html xmlns:un="http://usablenet.com/namespaces/508_rules">
+   <link rel="stylesheet" href="josh.css">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Detailed View for rule: Non spacer IMG with valid ALT</title>
+      <!--
+  508/W3C Accessibility Suite OEM V2 for Macromedia Dreamweaver
+  (C) Copyright 2001-2005 UsableNet Inc. All rights reserved.
+  -->
+   </head>
+   <body bgcolor="#ffffff">
+      <div id="Description">
+         <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+            <tr>
+               <td valign="top" nowrap="true" class="name">Non spacer IMG with valid ALT</td>
+               <td valign="top" nowrap="true" class="compatibility">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+            </tr>
+            <tr>
+               <td valign="top" align="right" nowrap="true" colspan="2" class="requirements">
+                  Section 508 1194.22(a); 
+                  
+                  WAI
+                  
+                  / 
+                  
+                  WCAG
+                  
+                  1.0 checkpoint 1.1
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Description</b><br>
+                  
+                  <p>
+                     Images included in this document do not have corresponding
+                     valid textual descriptions. A valid description is a string
+                     value of the ALT attribute that:
+                     
+                  </p>
+                  
+                  <ul>
+                     
+                     <li>
+                        is not the empty string ("")
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        is not a string with 1 or more spaces (" ")
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        is not the name of the file containing the image
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        does not only say which is the size of the image file
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        is not longer than 150 characters (this is actually only
+                        a suggestion: it is not required by WCAG 1.0 nor 508
+                        standard)
+                        
+                     </li>
+                     
+                  </ul>
+                  
+                  <p>
+                     The image appears to have more than a decorative role (i.e.,
+                     it is not a spacer).
+                     
+                  </p>
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>How to fix</b>
+                  
+                  <p>
+                     Add the ALT attribute to the IMG tag. Remember the following points:
+                     
+                  </p>
+                  	          
+                  <ul>
+                     
+                     <li>
+                        The description should explain the role of the image on
+                        the page. Imagine listening over the phone to the page
+                        content and the image description
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        If the image is used as the content of a link and you
+                        provide link text too, use a space as the ALT attribute
+                        value of the IMG element. In such a case, link text
+                        should be the alternative description for the image
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        Be brief. Consider that images like logos are repeated on
+                        every page of the site, and people would have to listen
+                        to the same description over and over
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        As a rough guideline, for buttons use the same text shown
+                        by the image
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        ALT descriptions are not interpreted by browsers, and
+                        should not include HTML tags. Embedded tags can only
+                        confuse users and possibly search engines too
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        ALT descriptions that are too long may be truncated by
+                        browsers and increase the time required to download the
+                        page. A good guideline is to use less than 10 words and
+                        64 characters
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        Images used solely for decorative purposes (such as
+                        spacers) should include an empty ALT string ("") so that
+                        screen-readers ignore them. The same is true for images
+                        like bullets
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        BEWARE: The ALT attribute should be the empty string ("")
+                        in cases where the image is already described by
+                        surrounding text
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        BEWARE: All images included in links (including
+                        transparent GIFs) need to have valid ALTs describing the
+                        link destination
+                        
+                     </li>
+                     
+                  </ul>
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Explanation</b><br>
+                  
+                  <p>
+                     The ALT attribute describes the associated image so that
+                     users without graphics-enabled browsers can still
+                     effectively navigate the page. The advent of hand-held,
+                     text-only browsers makes the use of the ALT descriptions
+                     more important now than ever.
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     For hidden links (normal A tags whose label is a spacer),
+                     it is important that the ALT attribute of the image exists
+                     and describes the destination of the link. (Hidden links is
+                     a technique you can use to fulfill the 508 rule 1194.22(o)
+                     stating "A method shall be provided that permits users to
+                     skip repetitive navigation links," and the WAI checkpoint
+                     13.6.)
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     ALT descriptions are displayed before the associated image,
+                     which is helpful when image download and display takes
+                     several seconds.
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     Adding keywords to the ALT attribute can also improve the
+                     page listing in some search engine.
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     For images that play only a decorative role in the page
+                     (like spacers and bullets), it is recommended that you define an
+                     empty ALT (i.e. 
+                     <strong>
+                        ALT=""
+                        </strong>
+                     ) so that speaking browsers do not confuse your users to say
+                     things like "*" or "&gt;".
+                     
+                  </p>
+                  
+               </td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

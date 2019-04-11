@@ -1,0 +1,298 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFEXECUTE</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFEXECUTE</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Executes a ColdFusion developer-specified process on a server computer. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Extensibility tags, Flow-control tags 
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfexecute 
+   name = &quot;application name&quot;
+   arguments = &quot;command line arguments&quot;
+   outputFile = &quot;output filename&quot;
+   variable = &quot;variable name&quot;
+   timeout = &quot;timeout interval&quot;&gt;
+   ...
+&lt;/cfexecute&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfcollection, cfindex, cfobject, cfreport, cfsearch, cfwddx
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion MX&#160;6.1: 
+</p>
+<ul>
+
+<li>Added the variable attribute.</li>
+
+<li>Changed file path behavior for the outputFile attribute: if you do not specify an absolute file path in the outputFile attribute, the path is relative to the ColdFusion temporary directory.</li>
+</ul>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+Do not put other ColdFusion tags or functions between the start and end tags of cfexecute. You cannot nest cfexecute tags.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Exceptions</span>
+<p>
+Throws the following exceptions:
+</p>
+<ul>
+
+<li>If the application name is not found: java.io.IOException </li>
+
+<li>If the effective user of the ColdFusion executing thread does not have permissions to execute the process: a security exception </li>
+</ul>
+
+<p>
+The time out values must be between zero and the longest time out value supported by the operating system.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;cfexecute&lt;/h3&gt;
+&lt;p&gt;This example executes the Windows NT version of the netstat network 
+monitoring program, and places its output in a file.
+
+&lt;cfexecute name = &quot;C:\WinNT\System32\netstat.exe&quot;
+   arguments = &quot;-e&quot; 
+   outputFile = &quot;C:\Temp\output.txt&quot;
+   timeout = &quot;1&quot;&gt;
+&lt;/cfexecute&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="NAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Absolute path of the application to execute.</p>
+<p>On Windows, you must specify an extension; for example, C:\myapp.exe.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ARGUMENTS">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ARGUMENTS</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Command-line variables passed to application. If specified as string, it is processed as follows: </p><ul>
+
+<li>Windows: passed to process control subsystem for parsing.</li>
+
+<li>UNIX: tokenized into an array of arguments. The default token separator is a space; you can delimit arguments that have embedded spaces with double-quotation marks.</li>
+</ul>
+
+<p>If passed as array, it is processed as follows:</p><ul>
+
+<li>Windows: Elements are concatenated into a string of tokens, separated by spaces. Passed to process control subsystem for parsing.</li>
+
+<li>UNIX: Elements are copied into an array of exec() arguments.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="OUTPUTFILE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">OUTPUTFILE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>File to which to direct program output. If no outputfile or variable attribute is specified, output is displayed on the page from which it was called. </p>
+<p>If not an absolute path (starting a with a drive letter and a colon, or a forward or backward slash), it is relative to the ColdFusion temporary directory, which is returned by the GetTempDirectory function.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="VARIABLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">VARIABLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Variable in which to put program output. If no outputfile or variable attribute is specified, output is displayed on page from which it was called.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TIMEOUT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TIMEOUT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "0"
+
+
+<p>Length of time, in seconds, that ColdFusion waits for output from the spawned program.</p><ul>
+
+<li>0: equivalent to nonblocking mode.</li>
+
+<li>A very high value: equivalent to blocking mode. </li>
+</ul>
+
+<p>If the value is 0:</p><ul>
+
+<li>ColdFusion starts a process and returns immediately. ColdFusion may return control to the calling page before any program output displays. To ensure that program output displays, set the value to 2 or higher.</li>
+
+<li>If the outputFile attribute is not specified, any program output is discarded</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

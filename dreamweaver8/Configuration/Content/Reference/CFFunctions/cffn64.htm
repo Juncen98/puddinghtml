@@ -1,0 +1,204 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>DATEFORMAT</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">DATEFORMAT</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Formats a date value using U.S. date formats. For international date support, use LSDateFormat.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+A text string representing the date formatted according to the mask. If no mask is specified, returns the value in dd-mmm-yy format. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Date and time functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>DateFormat(&quot;date&quot; [, &quot;mask&quot; ])
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+Now, CreateDate, LSDateFormat, LSParseDateTime, LSTimeFormat, TimeFormat, ParseDateTime
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX: Added support for the following mask parameter options: short, medium, long, and full. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+When passing a date/time object as a string, you must enclose it in quotation marks. Otherwise, it is interpreted as a numeric representation of a date/time object.
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>You can pass the CreateDate function or Now function as the date parameter of this function; for example: #DateFormat(CreateDate(2001, 3, 3))#</td>
+  </tr>
+</table>
+<p>
+Date and time values in database query results can vary in sequence and formatting unless you use functions to format them. To ensure that application users correctly understand displayed dates and times, Macromedia recommends that you use this function and the LSDateFormat, TimeFormat, and LSTimeFormat functions to format resultset values. For more information and examples, see TechNote 22183, &quot;ColdFusion Server (5 and 4.5.x) with Oracle: Formatting Date and Time Query Results,&quot; on the Macromedia website at www.coldfusion.com/Support/KnowledgeBase/SearchForm.cfm</a>. 
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>The DateFormat function is best used for formatting output, not for formatting input. For formatting input, use one of the date/time creation functions (for example, CreateDate) instead.</td>
+  </tr>
+</table>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;cfset todayDate = Now()&gt;
+&lt;body&gt;
+&lt;h3&gt;DateFormat Example&lt;/h3&gt;
+&lt;p&gt;Today's date is &lt;cfoutput&gt;#todayDate#&lt;/cfoutput&gt;.
+&lt;p&gt;Using DateFormat, we can display that date in different ways:
+&lt;cfoutput&gt;
+&lt;ul&gt;
+   &lt;li&gt;#DateFormat(todayDate)#
+   &lt;li&gt;#DateFormat(todayDate, &quot;mmm-dd-yyyy&quot;)#
+   &lt;li&gt;#DateFormat(todayDate, &quot;mmmm d, yyyy&quot;)#
+   &lt;li&gt;#DateFormat(todayDate, &quot;mm/dd/yyyy&quot;)#
+   &lt;li&gt;#DateFormat(todayDate, &quot;d-mmm-yyyy&quot;)#   
+   &lt;li&gt;#DateFormat(todayDate, &quot;ddd, mmmm dd, yyyy&quot;)#   
+   &lt;li&gt;#DateFormat(todayDate, &quot;short&quot;)#
+   &lt;li&gt;#DateFormat(todayDate, &quot;medium&quot;)#
+   &lt;li&gt;#DateFormat(todayDate, &quot;long&quot;)#
+   &lt;li&gt;#DateFormat(todayDate, &quot;full&quot;)#
+&lt;/ul&gt;
+&lt;/cfoutput&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="DATE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DATE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Date/time object, in the range 100 AD-9999 AD.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="MASK">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">MASK</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Characters that show how ColdFusion displays a date:</p><ul>
+
+<li>d: Day of the month as digits; no leading zero for single-digit days. </li>
+
+<li>dd: Day of the month as digits; leading zero for single-digit days. </li>
+
+<li>ddd: Day of the week as a three-letter abbreviation. </li>
+
+<li>dddd: Day of the week as its full name. </li>
+
+<li>m: Month as digits; no leading zero for single-digit months. </li>
+
+<li>mm: Month as digits; leading zero for single-digit months. </li>
+
+<li>mmm: Month as a three-letter abbreviation. </li>
+
+<li>mmmm: Month as its full name. </li>
+
+<li>yy: Year as last two digits; leading zero for years less than 10. </li>
+
+<li>yyyy: Year represented by four digits. </li>
+
+<li>gg: Period/era string. Ignored. Reserved.The following masks tell how to format the full date and cannot be combined with other masks:</li>
+
+<li>short: equivalent to m/d/y</li>
+
+<li>medium: equivalent to mmm d, yyyy</li>
+
+<li>long: equivalent to mmmm d, yyyy</li>
+
+<li>full: equivalent to dddd, mmmm d, yyyy</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

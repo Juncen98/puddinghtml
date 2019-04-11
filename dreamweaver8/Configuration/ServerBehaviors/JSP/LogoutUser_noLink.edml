@@ -1,0 +1,22 @@
+<participant>
+     <quickSearch><![CDATA[MM_logoutRedirectPage]]></quickSearch>
+     <insertText location="aboveHTML+8">
+<![CDATA[
+<%
+// *** Logout the current user.
+String MM_logoutRedirectPage = "@@redirectPage@@";
+session.putValue("@@MM_username@@", "");
+session.putValue("@@MM_userAuthorization@@", "");
+if (!MM_logoutRedirectPage.equals("")) {
+  response.sendRedirect(response.encodeRedirectURL(MM_logoutRedirectPage));
+  return;
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="redirectPage" limitSearch="all"><![CDATA[/String\s+MM_logoutRedirectPage\s*=\s*"([^\r\n]*)";/]]></searchPattern>
+       <searchPattern paramNames="" limitSearch="all"><![CDATA[/if\s*\(!MM_logoutRedirectPage\.equals\(""\)\)\s*\{\s*response\.sendRedirect\(response\.encodeRedirectURL\(MM_logoutRedirectPage\)\);/]]></searchPattern>
+       <searchPattern paramNames="redirectPage_url" limitSearch="all"><![CDATA[/String\s+MM_logoutRedirectPage\s*=\s*"([^\r\n]*)";/]]></searchPattern>
+     </searchPatterns>
+</participant>

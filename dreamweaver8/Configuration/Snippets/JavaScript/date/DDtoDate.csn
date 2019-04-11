@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "日期：基数到序数" description = "向 1 到 31 的数字添加一个后缀，以创建从“1st”到“31st”的字符串。" preview="code" type="wrap">
+<insertText location="beforeSelection">
+<![CDATA[function DDtoDay(inputDate)
+{
+  var dateString = new Array('','st','nd','rd','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','st','nd','rd','th','th','th','th','th','th','th','st');
+  returnDate = '';
+  tempDate = parseInt(inputDate);
+  if (tempDate >= 1 && tempDate <= 31)
+  {
+	  returnDate = inputDate + dateString[tempDate];
+	}
+	return returnDate;
+}]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

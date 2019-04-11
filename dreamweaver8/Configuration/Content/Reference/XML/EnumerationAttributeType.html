@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>Enumeration Attribute Type</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">Enumeration Attribute Type</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+<span class="PROGRAMLISTING"><pre><strong class="userinput">... (</strong><var class="replaceable">name_token</var> <var class="replaceable">[</var><strong class="userinput">|</strong> <var class="replaceable">name_token]</var><strong class="userinput">*) ...</strong></pre></span>
+<p>
+This syntax limits the possible values of
+the given attribute to one of the name tokens from the provided list:</p>
+
+<span class="PROGRAMLISTING"><pre>&lt;!ELEMENT door EMPTY&gt;
+&lt;!ATTLIST door
+          state (open | closed | missing) "open"&gt;
+. . .
+&lt;door state="closed"/&gt;</pre></span></td></tr>
+</table>
+</div>
+</body>
+</html>

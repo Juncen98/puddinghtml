@@ -1,0 +1,109 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<TITLE>自定义样式</TITLE>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+<!--
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MENU_None = "无(_N)";
+
+//--------------- END LOCALIZEABLE   ---------------
+function isBodyOrIsInBody(node)
+{
+	var result = false;
+	var parent = node.parentNode;
+	if(node.nodeType == Node.ELEMENT_NODE && node.tagName == "BODY")
+	{
+		return true;
+	}
+	while (parent && parent.nodeType == Node.ELEMENT_NODE)
+	{
+		if (parent.tagName == "BODY")
+		{
+			result = true;
+			break;
+		}
+		parent = parent.parentNode;
+	}
+
+	return result;
+}
+
+function receiveArguments()
+{
+	var styleName = arguments[0];
+	if (styleName == "(None)")
+		dw.getDocumentDOM('document').applyCSSStyle('','');
+	else
+		dw.getDocumentDOM('document').applyCSSStyle('',styleName);
+}
+
+function canAcceptCommand()
+{
+	var bCanAccept = ((dw.getFocus() == 'document' && dw.getDocumentDOM().getFocus() == 'body') || dw.getFocus() == 'textView' || dw.getFocus() == 'html') && dw.getDocumentDOM() && dw.getDocumentDOM().getParseMode() == 'html';
+    if (dw.getDocumentDOM() != null){
+      var selarray = dw.getDocumentDOM().getSelection(true);
+      var obj = dw.getDocumentDOM().offsetsToNode(selarray[0],selarray[1]);
+      bCanAccept = false;
+      if (selarray.length >= 2 && (obj.nodeType == Node.ELEMENT_NODE || obj.nodeType == Node.TEXT_NODE || obj.nodeType == Node.COMMENT_NODE ))
+	    {
+	       if (isBodyOrIsInBody(obj))
+		      bCanAccept = true;
+	    }
+    }
+	
+	return bCanAccept;
+}
+
+function isCommandChecked()
+{
+  var bChecked = false;
+	var cssStyle = arguments[0];
+	
+	if (dw.getDocumentDOM() == null) 
+	  return false;
+
+	if (cssStyle == "(None)")
+	{
+		return dw.cssStylePalette.getSelectedStyle() == '';
+	}
+	else
+	{
+		return dw.cssStylePalette.getSelectedStyle() == cssStyle;
+	}
+		return bChecked;
+}
+
+// getDynamicContent returns the contents of a dynamically generated menu.
+// returns an array of strings to be placed in the menu, with a unique
+// identifier for each item separated from the menu string by a semicolon.
+//
+// return null from this routine to indicate that you are not adding any
+// items to the menu
+function getDynamicContent(itemID)
+{
+	var cssStyles = null;
+	cssStyles = new Array();
+	cssStyles[0] = new String(MENU_None + ";id='(None)'"); // add the base "None" style
+	var dwCSS = dw.cssStylePalette.getStyles();
+	var i;
+
+	if (dwCSS.length > 0)
+	{
+		for (i=0; i<dwCSS.length; i++)
+		{
+			cssStyles[i+1] = new String(dwCSS[i]);
+			cssStyles[i+1] += ";id='"+escQuotes(dwCSS[i])+"'"; // each item needs an ID
+		}
+	}
+	return cssStyles;
+}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

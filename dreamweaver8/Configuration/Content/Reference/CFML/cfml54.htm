@@ -1,0 +1,115 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFGRIDROW</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFGRIDROW</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Lets you define a cfgrid control that does not use a query as source for row data. If a query attribute is specified in the cfgrid tag, the cfgridrow tags are ignored.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Forms tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfgridrow 
+   data = &quot;col1, col2, ...&quot;&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfgrid, cfgridcolumn, cfgridupdate, cfform, cfinput, cfselect, cfslider, cftextarea, cftree
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+The following example shows how you use the cfgridrow tag can populate a cfgrid tag from list data:
+</p>
+<pre>&lt;!--- Set two lists, each with the data for a grid column. ---&gt;
+&lt;cfset cities = &quot;Rome,Athens,Canberra,Brasilia,Paris&quot;&gt;
+&lt;cfset countries = &quot;Italy,Greece,Australia,Brazil,France&quot;&gt;
+
+&lt;cfform name = &quot;cities&quot;&gt;
+   &lt;cfgrid name=&quot;GeoGrid&quot; autowidth = &quot;yes&quot; vspace = &quot;4&quot; 
+         height = &quot;120&quot; font=&quot;tahoma&quot; rowheaders=&quot;no&quot;&gt;
+      &lt;cfgridcolumn name=&quot;City&quot; header=&quot;City&quot;&gt;
+      &lt;cfgridcolumn name=&quot;Country&quot; header=&quot;Country&quot;&gt;
+      &lt;!--- Loop through the lists using cfgridrow to poplulate the grid. ---&gt; 
+      &lt;cfloop index=&quot;i&quot; from=&quot;1&quot; to=&quot;#ListLen(cities)#&quot;&gt;
+         &lt;cfgridrow data =&quot;#ListGetAt(cities, i)#,#ListGetAt(countries, i)#&quot;&gt;
+      &lt;/cfloop&gt;
+   &lt;/cfgrid&gt;&lt;br&gt;&lt;br&gt;
+&lt;/cfform&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="DATA">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DATA</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Comma-delimited list of column values. If a value contains a comma, it must be escaped with another comma.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

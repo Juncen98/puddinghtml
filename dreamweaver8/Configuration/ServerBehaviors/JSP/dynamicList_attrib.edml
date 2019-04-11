@@ -1,0 +1,9 @@
+<participant>
+     <insertText location="nodeAttribute" nodeParamName="radioNode">
+<![CDATA[ <%=((@@expression2@@.toString().equals(@@expression1@@))?"@@selected@@":"")%>]]>
+     </insertText>
+     <searchPatterns whereToSearch="tag+option">
+       <searchPattern paramNames="expression2,expression1,selected" limitSearch="tagOnly"><![CDATA[/\s<%=\s*\(\(([^\r\n]*?)\.toString\(\)\.equals\(([^\r\n]*?)\)\)\s*\?\s*"([^\r\n]*?)"\s*\:\s*""\)\s*%>/i]]></searchPattern>
+     </searchPatterns>
+</participant>
+

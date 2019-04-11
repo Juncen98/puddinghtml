@@ -1,0 +1,10 @@
+<participant>
+     <quickSearch><![CDATA[MM_logout=]]></quickSearch>
+     <insertText location="nodeAttribute+href" nodeParamName="linkTag">
+<![CDATA[<cfoutput>#CurrentPage#?MM_logout=1</cfoutput>]]>
+     </insertText>
+     <searchPatterns whereToSearch="tag+a">
+       <searchPattern limitSearch="attribute+href"><![CDATA[/#CurrentPage#\?MM_logout=1/i]]></searchPattern>
+     </searchPatterns>
+     <delete deleteType="tagOnly" />
+</participant>

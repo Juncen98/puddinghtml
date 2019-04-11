@@ -1,0 +1,32 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<title><MMString:LoadString id="insertbar/table" /></title>
+<script>
+// Copyright 2000, 2001, 2002, 2003 Macromedia, Inc. All rights reserved.
+
+function isDOMRequired() {
+	return false;
+}
+
+function objectTag(){
+  // We're keeping this a separate command, as we want to use the
+  // "buttons at the bottom" style.
+  var cmdFile = dreamweaver.getConfigurationPath() + "/Commands/TableCommands.htm";
+  var cmdDOM = dreamweaver.getDocumentDOM(cmdFile);
+  if ( dw.getShowDialogsOnInsert() )
+  {
+     dreamweaver.popupCommand("TableCommands.htm");
+  }
+  else
+  {
+     cmdDOM.parentWindow.initializeUI();
+     cmdDOM.parentWindow.setTableStr();
+  }
+  return (cmdDOM.parentWindow.createTableStr());	
+}
+</script>
+</head>
+<body>
+</body>
+</html>

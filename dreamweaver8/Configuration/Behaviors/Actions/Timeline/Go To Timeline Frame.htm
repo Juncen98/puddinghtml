@@ -1,0 +1,59 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<HTML>
+<HEAD>
+<SCRIPT LANGUAGE="javascript" SRC="Go To Timeline Frame.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<SCRIPT LANGUAGE="javascript">
+// Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved.
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_NegFrameNum = "请为帧编号输入一个正整数";
+var MSG_NegGotoNum = "请为前往的位置输入一个正整数";
+var MSG_TimelineNotFound = '无法找到时间轴 "%s"。';
+var MSG_LoopNotFromTI = "重复播放只能使用于时间轴检查器中的「行为」通道。";
+var MSG_LoopNotBackward = "重复播放只有在跳回至较前面的帧才能使用。";
+//--------------- END LOCALIZEABLE   ---------------
+//---------------    END JAVASCRIPT    ---------------
+</SCRIPT>
+<TITLE>转到时间轴帧</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+<link href="../../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm" ACTION="">
+    
+      
+  <TABLE BORDER=0 cellpadding="4" cellspacing="2">
+        
+    <TR>
+          
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP>
+            时间轴:</TD>
+      <TD VALIGN="baseline" NOWRAP>
+            <SELECT NAME="menu" class="itemList">
+              
+          <OPTION SELECTED>**** no timelines found ****
+            </SELECT></TD>
+    </TR>
+    <TR>
+          
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP>
+            前往帧:</TD>
+      <TD VALIGN="baseline" NOWRAP>
+            <INPUT NAME="frmNum" TYPE="text" class="smallNumOrChar" VALUE="1"></TD>
+    </TR>
+    <TR>
+          
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP>
+            循环:</TD>
+      <TD VALIGN="baseline" NOWRAP>
+            <INPUT NAME="numGotos" TYPE="text" class="smallNumOrChar" VALUE=""> 次 </TD>
+    </TR>      
+  </TABLE>
+    </FORM>
+</BODY>
+</HTML>

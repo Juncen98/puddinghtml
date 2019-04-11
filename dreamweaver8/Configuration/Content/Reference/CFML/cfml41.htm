@@ -1,0 +1,151 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFFLUSH</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFFLUSH</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Flushes currently available data to the client.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Data output tags, Page processing tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfflush
+   interval = &quot;integer number of bytes&quot;&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfcache, cfheader, cfinclude, cfsetting, cfsilent
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+The first occurrence of this tag on a page sends back the HTML headers and any other available HTML. Subsequent cfflush tags on the page send only the output that was generated after the previous flush.
+</p>
+
+<p>
+When you flush data, ensure that enough information is available, as some browsers might not respond if you flush only a small amount. Similarly, set the interval attribute for a few hundred bytes or more, but not thousands of bytes.
+</p>
+
+<p>
+Use the interval attribute only when a large amount of output will be sent to the client, such as in a cfloop or a cfoutput of a large query. Using this form globally (such as in the Application.cfm file) might cause unexpected errors when CFML tags that modify HTML headers are executed. 
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Caution: </strong></td>
+    <td>Because the cfflush tag sends data to the browser when it executes, it has several limitations, including the following: Using any of the following tags or functions on a page anywhere after the cfflush tag can cause errors or unexpected results: cfcontent, cfcookie, cfform, cfheader, cfhtmlhead, cflocation, and SetLocale. (These tags and functions normally modify the HTML header, but cannot do so after a cfflush tag, because the cfflush sends the header.) Using the cfset tag to set a cookie anywhere on a page that has a cfflush tag does not set the cookie in the browser. Using the cfflush tag within the body of several tags, including cfsavecontent, cfquery, and custom tags, cause errors. If you save Client variables as cookies, any client variables that you set after a cfflush tag are not saved in the browser.</td>
+  </tr>
+</table><table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>Normally, the cferror tag discards the current output buffer and replaces it with the contents of the error page. The cfflush tag discards the current buffer. As a result, the Error.GeneratedContent variable resulting from a cferror tag after a cfflush contains any contents of the output buffer that has not been flushed. This content is not sent to the client. The content of the error page displays to the client after the bytes that have been sent.</td>
+  </tr>
+</table>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+The following example uses cfloop tags and the rand random number generating function to delay data display. It simulates a page that is slow to generate data.
+</p>
+<pre>&lt;h1&gt;Your Magic numbers&lt;/h1&gt;
+&lt;p&gt;It will take us a little while to calculate your ten magic numbers. It takes 
+a lot of work to find numbers that truly fit your personality. So relax for 
+a minute or so while we do the hard work for you.&lt;/p&gt;
+&lt;H2&gt;We are sure you will agree it was worth the short wait!&lt;/H2&gt;
+&lt;cfflush&gt;
+
+&lt;cfflush interval=10&gt;
+&lt;!--- Delay Loop to make it seem harder. ---&gt;
+&lt;cfloop index=&quot;randomindex&quot; from=&quot;1&quot; to=&quot;200000&quot; step=&quot;1&quot;&gt;
+   &lt;cfset random=rand()&gt;
+&lt;/cfloop&gt;
+
+&lt;!--- Now slowly output 10 random numbers. ---&gt;
+&lt;cfloop index=&quot;Myindex&quot; from=&quot;1&quot; to=&quot;10&quot; step=&quot;1&quot;&gt;
+   &lt;cfloop index=&quot;randomindex&quot; from=&quot;1&quot; to=&quot;100000&quot; step=&quot;1&quot;&gt;
+      &lt;cfset random=rand()&gt;
+   &lt;/cfloop&gt;
+   &lt;cfoutput&gt;
+      Magic number #Myindex# is:&amp;nbsp;&amp;nbsp;#RandRange( 
+100000, 999999)#&lt;br&gt;&lt;br&gt;
+   &lt;/cfoutput&gt;
+&lt;/cfloop&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="INTERVAL">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">INTERVAL</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Integer. Flushes output each time this number of bytes becomes available. HTML headers, and data that is already available when the tag is executed, are omitted from the count.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

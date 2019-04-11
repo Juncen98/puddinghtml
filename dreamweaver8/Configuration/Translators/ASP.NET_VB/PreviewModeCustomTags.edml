@@ -1,0 +1,34 @@
+<participant name="PreviewModeCustomTags">
+
+	<translator priority="325" type="renderer">
+		<searchPatterns>
+			<searchPattern requiredLocation="tagName"><![CDATA[:]]></searchPattern>
+			<searchPattern requiredLocation="tagName"><![CDATA[/^(?!asp:)/i]]></searchPattern>
+			<searchPattern requiredLocation="tagName"><![CDATA[/^(?!mm:if$)/i]]></searchPattern>
+			<searchPattern requiredLocation="tagName"><![CDATA[/^(?!mm:dataset$)/i]]></searchPattern>
+			<searchPattern requiredLocation="tagName"><![CDATA[/^(?!mm:insert$)/i]]></searchPattern>
+			<searchPattern requiredLocation="tagName"><![CDATA[/^(?!mm:update$)/i]]></searchPattern>
+			<searchPattern requiredLocation="tagName"><![CDATA[/^(?!mm:delete$)/i]]></searchPattern>
+			<searchPattern requiredLocation="tagName"><![CDATA[/^(?!mm:pagebind$)/i]]></searchPattern>
+			<searchPattern requiredLocation="tagName"><![CDATA[/^(?!mm:invisible$)/i]]></searchPattern>
+			<searchPattern requiredLocation="openTag"><![CDATA[/runat\s*=\s*"?server"?/i]]></searchPattern>
+		</searchPatterns>
+		<translations>
+
+			<translation whereToSearch="tag+mm:dataset" limitSearch="all" translationType="none"/>
+			<translation whereToSearch="tag+mm:insert" limitSearch="all" translationType="none"/>
+			<translation whereToSearch="tag+mm:update" limitSearch="all" translationType="none"/>
+			<translation whereToSearch="tag+mm:delete" limitSearch="all" translationType="none"/>
+			<translation whereToSearch="tag+mm:pagebind" limitSearch="all" translationType="none"/>
+			<translation whereToSearch="tag+mm:if" limitSearch="all" translationType="none"/>
+			<translation whereToSearch="tag+mm:invisible" limitSearch="all" translationType="none"/>
+
+
+			<translation whereToSearch="tag+*" limitSearch="all" translationType="external">
+				<display><![CDATA[translateCustomControl]]></display>
+			</translation>
+
+		</translations>
+	</translator>
+
+</participant>

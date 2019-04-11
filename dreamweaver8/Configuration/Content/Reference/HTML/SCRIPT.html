@@ -1,0 +1,750 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">&lt;SCRIPT&gt;</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">&lt;SCRIPT&gt;...&lt;/SCRIPT&gt;</p>
+					</td><td valign="top" nowrap class="requirements">HTML End Tag: Required&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The <span class="literal">script</span> element provides a container for lines
+of script code written in any scripting language that the browser is
+capable of interpreting. Script statements that are not written
+inside a function definition are executed as the page loads; function
+definitions are loaded but their execution is deferred until
+explicitly invoked by user or system action (events). You can have
+more than one <span class="literal">script</span> element in a document, and
+you may include <span class="literal">script</span> elements written in
+different script languages within the same document.
+</p><p>An important shift in attribute syntax is introduced with HTML 4. To
+specify the scripting language of the statements within a
+<span class="literal">script</span> element, the <span class="literal">language</span>
+attribute has been used since the first scriptable browsers. HTML 4
+deprecates that attribute in favor of the <span class="literal">type</span>
+attribute, whose value is a MIME type. Until you know for certain
+that your page visitors use only newer browsers that support the
+<span class="literal">type</span> attribute, you should include both attributes
+in documents for long-term backward compatibility with older
+browsers. The <span class="literal">language</span> attribute validates with
+transitional DTDs.
+</p><p>All but the earliest scriptable browsers also allow script statements
+to be imported into the document from a document whose URL is
+specified for the <span class="literal">src</span> attribute.
+</p><p>Older, nonscriptable browsers don't recognize the
+<span class="literal">script</span> element and may attempt to render the
+script statements as regular HTML content. To prevent this, wrap the
+script statements inside HTML block comment markers. The
+end-of-comment marker (<span class="literal">--&gt;</span>) must be preceded by
+a JavaScript comment marker (<span class="literal">//</span>) to prevent
+JavaScript from generating a script error.
+</p><p>Due to character conflicts between JavaScript and XHTML, and the lack
+of browser support for the XHTML-preferred
+<span class="literal">&lt;![CDATA[...]]&gt;</span> script wrapper, you should
+use imported script libraries for pages that must validate under
+XHTML. This prevents XML parsers from misinterpreting symbols such as
+the less-than operator (<span class="literal">&lt;</SPAN>) as XML markup
+symbols.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;SCRIPT type="text/javascript" language="JavaScript"&gt;
+&lt;!--
+FUNCTION howdy( ) {
+    alert("Hello, HTML world!");
+}
+//--&gt;
+&lt;/SCRIPT&gt;
+
+&lt;SCRIPT type="text/javascript" scr="scripts/myscript.js"&gt;&lt;/SCRIPT&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Element-Specific Attributes</span></td>
+				</tr>
+				<tr>
+      <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+    </tr><tr>
+					<td>
+						<table border="1"><tbody><tr><td><span class="literal">charset</span></td><td><span class="literal">defer</span></td><td><span class="literal">event</span></td><td><span class="literal">for</span></td><td><span class="literal">language</span></td>
+								</tr>
+								<tr><td><span class="literal">src</span></td><td><span class="literal">type</span></td><td><span class="literal">version</span></td><td><span class="literal">xml:space</span></td><td></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Element-Specific Event Handler Attributes</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="charset">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">charset</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">charset="<span class="replaceable">characterSet</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Character encoding of the content in the file referred to by the
+<span class="literal">src</span> attribute.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;SCRIPT charset="csISO5427Cyrillic" src="moscow.js"&gt; . . . &lt;/SCRIPT&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-insensitive alias from the character set registry (ftp://ftp.isi.edu/in-notes/iana/assignments/character-sets).
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>Determined by browser. </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="defer">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">defer</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">defer</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The presence of the <span class="literal">defer</span> attribute instructs the
+browser to render regular HTML content without looking for the script
+to generate content as the page loads. This is an advisory attribute
+only. The browser doesn't have to hold up rendering
+further HTML content as it parses the content of the
+<span class="literal">script</span> element in search of
+<span class="literal">document.write( )</span> statements. As of Version 7,
+Netscape allows but does not respond to the <span class="literal">defer</span>
+attribute.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;SCRIPT type="text/javascript" language="JavaScript" defer&gt;...&lt;/SCRIPT&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>The presence of this attribute sets its value to
+<span class="literal">true</span>.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">false</span></p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID</span>).defer</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="event">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">event</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">|4|</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">event="<span class="replaceable">eventName</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Internet Explorer's event model allows the binding
+of object events to <span class="literal">script</span> elements with the help
+of the <span class="literal">event</span> and <span class="literal">for</span>
+attributes. As the page loads, the browser registers each
+<span class="literal">script</span> element with its event and object binding
+so that when the object generates the event, the script statements
+inside the <span class="literal">script</span> element executewithout
+having to write event handlers for the objects or wrap the script
+statements inside function definitions. Event values are written
+either as unquoted event names or as quoted event names formatted as
+functions (with trailing parentheses and optional parameter names).
+Use this type of script-event binding only in Internet Explorer.
+Navigator attempts to execute the script statements while the page
+loads. The transitional HTML 4 DTD reserves this attribute for
+possible future use, but the reservation doesn't
+hold for XHTML 1.0.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;SCRIPT for="window" event="onresize( )"&gt;...&lt;/SCRIPT&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-sensitive event name or the event name as a function inside a
+quote pair. The object described in the <span class="literal">for</span>
+attribute must support the event named in the
+<span class="literal">event</span> attribute.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID</span>).event</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="for">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">for</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">|4|</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">for="<span class="replaceable">elementID"</span></p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Internet Explorer's event model allows the binding
+of object events to <span class="literal">script</span> elements with the help
+of the <span class="literal">event</span> and <span class="literal">for</span>
+attributes. As the page loads, the browser registers each
+<span class="literal">script</span> element with its event and object binding
+so that when the object generates the event, the script statements
+inside the <span class="literal">script</span> element executewithout
+having to write event handlers for the objects or wrap the script
+statements inside function definitions. Use the unique
+<span class="literal">id</span> attribute value of the element whose event you
+wish to handle. Use this type of script-event binding only in
+Internet Explorer. Navigator attempts to execute the script
+statements while the page loads. The transitional HTML 4 DTD reserves
+this attribute for possible future use, but the reservation
+doesn't hold for XHTML 1.0.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;SCRIPT for="firstNameEntry" event="onchange( )"&gt;...&lt;/SCRIPT&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-sensitive ID value of the event-generating element. The object
+described in the <span class="literal">for</span> attribute must support the
+event named in the <span class="literal">event</span> attribute.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID</span>).htmlFor</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="language">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">language</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">language="<span class="replaceable">scriptingLanguage</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Sets the scripting language for script statements defined in the
+element. This attribute is deprecated in HTML 4 (in favor of the
+<span class="literal">type</span> attribute), but it has been so widely used
+since the first days of scriptable browsers that its use and support
+will continue for a long time to come. Moreover, it is so far the
+only accepted way to convey the JavaScript version for the script
+block (e.g., see the <span class="literal">Array</span> object in Chapter 12).
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;SCRIPT language="JavaScript"&gt;...&lt;/SCRIPT&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Internet Explorer recognizes four case-insensitive language names:
+<span class="literal">JavaScript</span> | <span class="literal">JScript</span> |
+<span class="literal">vbs</span> | <span class="literal">vbscript</span>. Navigator
+recognizes only <span class="literal">JavaScript</span>. Versions of JavaScript
+are also supported in appropriate browsers. To keep the attribute
+values one-word identifiers, the version numbers are tacked onto the
+end of the <span class="literal">"JavaScript"</span> language name. The
+version-less <span class="literal">"JavaScript"</span> is observed by all
+browsers; <span class="literal">"JavaScript1.1"</span> is recognized only by
+Navigator 3; <span class="literal">"JavaScript1.2"</span> is recognized by
+Navigator 4.0-4.05 and Internet Explorer 4;
+<span class="literal">"JavaScript1.3"</span> applies to Navigator 4.06-4.7x and
+IE 5-6; <span class="literal">"JavaScript1.5"</span> applies to Netscape 6-7.
+When <span class="literal">script</span> elements are assigned these later
+version values, older browsers that don't support
+the named version ignore the <span class="literal">script</span> elements.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">JavaScript</span> (NN); <span class="literal">JScript</span> (IE).</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID</span>).language</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="src">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">src</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">src="<span class="replaceable">URL</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Imports a file of script statements from an external file. Once the
+external statements are loaded, the browser treats them as if they
+were embedded in the main HTML document. This attribute had some
+support in Internet Explorer 3, but it relied on a specific
+<span class="emphasis">JScript.dll</span> version, which makes it unreliable
+to blindly use in IE 3.
+</p><p>In theory, you should be able to add script statements inside a
+<span class="literal">script</span> element that loads an external script
+library file. In practice, it is more reliable to provide a separate
+<span class="literal">script</span> element for each external library file and
+for in-document scripts.
+</p><p>Current implementations limit the <span class="literal">src</span> attribute to
+point to JavaScript external files. Such files must have a
+<span class="emphasis">.js</span> filename extension, and the server must have
+the extension and <span class="literal">application/x-javascript</span> MIME
+type set to serve up such files.
+</p><p>When assigning the <span class="literal">src</span> attribute in an XHTML
+document, browsers may not like the shortcut end tag format.
+Don't think of the tag as an empty element, but
+rather as one with content that arrives from an external source. Use
+an explicit <span class="literal">&lt;/SCRIPT&gt;</span> end tag.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;SCRIPT language="JavaScript" type="text/javascript" src="stringParseLib.js"&gt;
+&lt;/SCRIPT&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Any valid URL. Current browsers require files with names that end in
+the <span class="emphasis">.js</span> extension. A complete URL may help
+overcome difficulties in earlier browsers that implement this
+feature.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID</span>).src</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="type">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">type</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">type="<span class="replaceable">MIMEType</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Required&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>An advisory about the content type of the script statements. The
+content type should tell the browser which scripting engine to use to
+interpret the script statements. The <span class="literal">type</span>
+attribute will eventually replace the <span class="literal">language</span>
+attribute as the one defining the scripting language in which the
+element's statements are written. To be compatible
+with future and past browsers, you may include both the
+<span class="literal">language</span> and <span class="literal">type</span> attributes in
+a <span class="literal">script</span> element.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;SCRIPT type="text/javascript" language="JavaScript"&gt;...&lt;/SCRIPT&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-insensitive MIME type. Values are limited to one(s) for which a
+particular browser is equipped. IE 4 and later and Netscape 6 accept
+<span class="literal">text/javascript</span> and
+<span class="literal">application/x-javascript</span> for scripts in an
+ECMAScript-compatible language. IE also accepts the following types:
+<span class="literal">text/ecmascript</span>, <span class="literal">text/jscript</span>,
+<span class="literal">text/vbs</span> (IE/Windows),
+<span class="literal">text/vbscript</span> (IE/Windows), and
+<span class="literal">text/xml</span> (IE 5 and later).
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID</span>).type  </pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="version">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">version</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">n/a</span> HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">version="<span class="replaceable">x.y</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>This attribute is listed here as a possible future implementation for
+Mozilla-based browsers. Most of the pieces that support this
+attribute (to complement the <span class="literal">type</span> attribute) are
+in place in the Netscape 6 (Mozilla) browser engine, but as of
+Netscape 7, are not yet connected.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;SCRIPT type="text/javascript" version="1.5"&gt;...&lt;/SCRIPT&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Language version expressed as major and minor version integers,
+separated by a period.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="xml:space">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">xml:space</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">n/a</span> HTML <span class="emphasis">X1.0</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">xml:space="<span class="replaceable">preserve</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>An XHTML parser is supposed to expunge all source code whitespace as
+it processes the document. This removal may harm scripts. By
+including the XML namespace <span class="literal">space</span> attribute, you
+instruct the parser to keep source code whitespace of script element
+content intact.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;SCRIPT type="text/javascript" xml:space="preserve"&gt;...&lt;/SCRIPT&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Constant value: <span class="literal">preserve</span>.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+</body>
+</html>

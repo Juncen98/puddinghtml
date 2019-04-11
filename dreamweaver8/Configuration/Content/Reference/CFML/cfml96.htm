@@ -1,0 +1,371 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFPARAM</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFPARAM</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Tests for the existence of a parameter (that is, a variable), validates its data, and, if a default value is not assigned, optionally provides one. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Variable manipulation tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfparam 
+   name = &quot;param_name&quot;
+   type = &quot;data_type&quot;
+   default = &quot;value&quot;
+max = &quot;value&quot;
+min = &quot;value&quot;
+pattern = &quot;regular expression&quot;&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfcookie, cfregistry, cfsavecontent, cfschedule, cfset; "Validating data with the IsValid function and the cfparam tag" in Chapter&#160;28, "Validating Data," in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7: 
+</p>
+<ul>
+
+<li>Added min, max, and pattern attributes.</li>
+
+<li>Added creditcard, email, eurodate, float, integer, range, regex, regular_expression, ssn, social_security_number, time, URL, USdate, and zipcode attributes of the type attribute.</li>
+</ul>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+You can use this tag to make the following tests:
+</p>
+<ul>
+
+<li>To test whether a required variable exists, use this tag with only the name attribute. If it does not exist, ColdFusion&#160;MX stops processing the page and returns an error.</li>
+
+<li>To test whether a required variable exists, and that it is of the specified type, use this tag with the name and type attributes. If the variable does not exist or its value is not of the specified type, ColdFusion returns an error. </li>
+
+<li>To set a default value for the variable, use this tag with the name and default attributes. If the variable does not exist, it is created and set to the default attribute value. If the variable exists, processing continues; the value is not changed. </li>
+</ul>
+
+<p>
+If you specify variableName for the type attribute, the parameter's value must be a string that is in ColdFusion variable name format; that is, starts with a letter, underscore (_), or Unicode currency symbol, and contains letters, numbers, underscores, periods, and Unicode currency symbols, only. ColdFusion does not check whether the parameter value corresponds to an existing ColdFusion variable.
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Tip: </strong></td>
+    <td>To improve performance, avoid using the cfparam tag in ColdFusion functions, including in CFC methods. Instead, place the cfparam tags in the body of the CFML pages.</td>
+  </tr>
+</table>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!--- This example shows how to use CFPARAM to define default values for page
+   variables. --------&gt; 
+&lt;cfparam name = &quot;storeTempVar&quot; default = &quot;my default value&quot;&gt;
+&lt;cfparam name = &quot;tempVar&quot; default = &quot;my default value&quot;&gt;
+
+&lt;!--- Check if form.tempVar was passed. ---&gt;
+&lt;cfif IsDefined(&quot;form.tempVar&quot;) is &quot;True&quot;&gt;
+   &lt;!--- Check if form.tempVar is not blank. ---&gt;
+   &lt;cfif form.tempVar is not &quot;&quot;&gt;
+      &lt;!--- If not, set tempVar to value of form.tempVar ---&gt;
+      &lt;cfset tempVar = form.tempVar&gt;
+   &lt;/cfif&gt;
+&lt;/cfif&gt;
+
+&lt;body&gt;
+&lt;h3&gt;cfparam Example&lt;/h3&gt;
+&lt;p&gt;cfparam is used to set default values so that a developer does not have to 
+check for the existence of a variable using a function like IsDefined.
+
+&lt;p&gt;The default value of our tempVar is 
+   &quot;&lt;cfoutput&gt;#StoreTempVar# &lt;/cfoutput&gt;&quot;
+
+&lt;!--- Check if tempVar is still the same as StoreTempVar.
+and that tempVar is not blank ---&gt;
+&lt;cfif tempVar is not #StoreTempVar# 
+   and tempVar is not &quot;&quot;&gt;
+      &lt;h3&gt;The value of tempVar has changed: the new value is
+      &lt;cfoutput&gt;#tempVar#&lt;/cfoutput&gt;&lt;/h3&gt;
+&lt;/cfif&gt;
+
+&lt;p&gt;
+&lt;form action = &quot;cfparam.cfm&quot; method = &quot;post&quot;&gt;
+   Type in a new value for tempVar, and hit submit:&lt;br&gt;
+   &lt;input type = &quot;Text&quot; name = &quot;tempVar&quot;&gt;
+   &lt;input type = &quot;Submit&quot; name = &quot;&quot; value = &quot;submit&quot;&gt;
+&lt;/form&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="NAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of the parameter (variable) to test (such as &quot;Client.Email &quot; or &quot;Cookie.BackgroundColor &quot;). If omitted, and if the parameter does not exist, an error is thrown.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TYPE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TYPE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "any"
+
+
+<p>The valid format for the data; one of the following. For detailed information on validation algorithms, see "Validating form data using hidden fields" in Chapter&#160;28, "Validating Data," in ColdFusion MX Developer's Guide.</p><ul>
+
+<li>any: any type of value.</li>
+
+<li>array: an array of values.</li>
+
+<li>binary: a binary value.</li>
+
+<li>boolean: a Boolean value: yes, no, true, false, or a number.</li>
+
+<li>creditcard: a 13-16 digit number conforming to the mod10 algorithm.</li>
+
+<li>date or time: a date-time value.</li>
+
+<li>email: a valid e-mail address.</li>
+
+<li>eurodate: a date-time value. Any date part must be in the format dd/mm/yy, The format can use /, -, or . characters as delimiters.</li>
+
+<li>float or numeric: a numeric value.</li>
+
+<li>guid: a Universally Unique Identifier of the form &quot;XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX&quot; where `X' is a hexadecimal number.</li>
+
+<li>integer: an integer. </li>
+
+<li>query: a query object.</li>
+
+<li>range: a numeric range, specified by the min and max attributes.</li>
+
+<li>regex <i>or</i> regular_expression: matches input against pattern attribute.</li>
+
+<li>ssn <i>or</i> social_security_number: a U.S. social security number.</li>
+
+<li>string: a string value or single character.</li>
+
+<li>struct: a structure.</li>
+
+<li>telephone: a standard U.S. telephone number.</li>
+
+<li>URL: an http, https, ftp, file, mailto, or news URL. </li>
+
+<li>UUID: a ColdFusion Universally Unique Identifier, formatted `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXX', where `X' is a hexadecimal number. See CreateUUID on&#160;page&#160;796.</li>
+
+<li>USdate: a U.S. date of the format mm/dd/yy, with 1-2 digit days and months, 1-4 digit years.</li>
+
+<li>variableName: a string formatted according to ColdFusion variable naming conventions.</li>
+
+<li>xml: XML objects and XML strings.</li>
+
+<li>zipcode: U.S., 5- or 9-digit format ZIP codes.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DEFAULT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DEFAULT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Value to set parameter to if it does not exist. Any expression used for the default attribute is evaluated, even if the parameter exists. The result is not assigned if the parameter exists, but if the expression has side effects, they still occur.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="MAX">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">MAX</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>The maximum valid value; used only for range validation.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="MIN">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">MIN</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>The minimum valid value; used only for range validation.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="PATTERN">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PATTERN</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>A JavaScript regular expression that the parameter must match; used only for regex or regular_expression validation.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

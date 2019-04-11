@@ -1,0 +1,28 @@
+<participant>
+     <quickSearch><![CDATA[_i++]]></quickSearch>
+     <insertText location="afterSelection">
+<![CDATA[
+<%
+  @@rsName@@_i++;
+}
+%>
+]]>
+    </insertText>
+    <searchPatterns whereToSearch="directive">
+      <searchPattern paramNames="rsName"><![CDATA[/\b(\w+)_i\+\+;/]]></searchPattern>
+    </searchPatterns>
+    <updatePatterns>
+      <updatePattern paramName="rsName"><![CDATA[/(\b)\w+(_i\+\+;)/]]></updatePattern>
+    </updatePatterns>	
+    <translator>
+      <searchPatterns>
+        <searchPattern><![CDATA[/\b(\w+)_i\+\+;/]]></searchPattern>
+        <searchPattern requiredLocation="leading"><![CDATA[/<%\s*for\s*\(\s*int\s*(\w+)_i\s*=\s*0;\s*(\w+)_i\s*<\s*\1_coll\.get\1Size\(\);\s*\)\s*\{\s*\1_item\s*=\s*\1_coll\.get\1\(\1_i\);\s*%>/]]></searchPattern>
+      </searchPatterns>
+      <translations>
+        <translation whereToSearch="directive" translationType="tabbed region end">
+	  <closeTag>MM_REPEATEDREGION</closeTag>
+	</translation>
+      </translations>
+    </translator>
+</participant>

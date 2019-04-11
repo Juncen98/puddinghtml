@@ -1,0 +1,38 @@
+<formats id="DWMenu_Format_ASPNET_VB_1">
+	<separator />
+	<menu name = "日期/时间" id="DWMenu_Format_ASPNET_VB_1_DATETIME">
+		<format	file="日期/时间"	title = "日期/时间 - 2001-1-17"					expression="<%#\s*DateTime\.Parse\(([\s\S]+)\)\.ToString\(&quot;d&quot;\)\s*%>"	id="DWMenu_Format_ASPNET_VB_1_DT2"/>
+		<format	file="日期/时间"	title = "日期/时间 - 2001年1月17日"	expression="<%#\s*DateTime\.Parse\(([\s\S]+)\)\.ToString\(&quot;D&quot;\)\s*%>"	id="DWMenu_Format_ASPNET_VB_1_DT3"/>
+		<format	file="日期/时间"	title = "日期/时间 - 1月17日"					expression="<%#\s*DateTime\.Parse\(([\s\S]+)\)\.ToString\(&quot;m&quot;\)\s*%>"	id="DWMenu_Format_ASPNET_VB_1_DT4"/>
+		<format	file="日期/时间"	title = "日期/时间 - 2001年1月"				expression="<%#\s*DateTime\.Parse\(([\s\S]+)\)\.ToString\(&quot;y&quot;\)\s*%>"	id="DWMenu_Format_ASPNET_VB_1_DT5"/>
+		<format	file="日期/时间"	title = "日期/时间 - 下午 2:35"						expression="<%#\s*DateTime\.Parse\(([\s\S]+)\)\.ToString\(&quot;t&quot;\)\s*%>"	id="DWMenu_Format_ASPNET_VB_1_DT7"/>
+		<format	file="日期/时间"	title = "日期/时间 - 下午 2:35:18"					expression="<%#\s*DateTime\.Parse\(([\s\S]+)\)\.ToString\(&quot;T&quot;\)\s*%>"	id="DWMenu_Format_ASPNET_VB_1_DT8"/>
+	</menu>
+	<separator />
+	<menu name = "数字" id="DWMenu_Format_ASPNET_VB_1_NUMBER">
+		<format	file="数字"	title = "数字 - 默认值"						expression="<%#\s*Double\.Parse\(([\s\S]+)\)\.ToString\(&quot;F&quot;\)\s*%>"					id="DWMenu_Format_ASPNET_VB_1_NO1"/>
+		<format	file="数字"	title = "数字 - 舍入"							expression="<%#\s*Math\.Round\(Double\.Parse\(([\s\S]+)\)\)\.ToString\(&quot;F&quot;\)\s*%>"		id="DWMenu_Format_ASPNET_VB_1_NO2"/>
+	</menu>
+	<menu name = "货币" id="DWMenu_Format_ASPNET_VB_1_CURRENCY">
+		<format	file="货币"	title = "货币 - 默认值"					expression="<%#\s*Double\.Parse\(([\s\S]+)\)\.ToString\(&quot;C&quot;\)\s*%>"					id="DWMenu_Format_ASPNET_VB_1_CURRENCY1"/>
+	</menu>
+	<menu name = "百分比" id="DWMenu_Format_ASPNET_VB_1_PERCENT">
+		<format	file="百分比"	title = "百分比 - 默认值"	expression="<%#\s*Double\.Parse\(([\s\S]+)\)\.ToString\(&quot;P&quot;\)\s*%>"					id="DWMenu_Format_ASPNET_VB_1_PERCENT1"/>
+		<format	file="百分比"	title = "百分比 - 舍入"		expression="<%#\s*Double\.Parse\(([\s\S]+)\)\.ToString\(&quot;P0&quot;\)\s*%>"	id="DWMenu_Format_ASPNET_VB_1_PERCENT2"/>
+	</menu>
+	<separator />
+	<menu name = "AlphaCase" id="DWMenu_Format_ASPNET_VB_1_ALPHACASE">
+		<format	file="AlphaCase"	title = "AlphaCase - 小写"	expression="<%#\s*([\s\S]+)\.ToLower\(\)\s*%>"	id="DWMenu_Format_ASPNET_VB_1_CASELOWER"/>
+		<format	file="AlphaCase"	title = "AlphaCase - 大写"	expression="<%#\s*([\s\S]+)\.ToUpper\(\)\s*%>"	id="DWMenu_Format_ASPNET_VB_1_CASEUPPER"/>
+	</menu>
+	<menu name = "修整" id="DWMenu_Format_ASPNET_VB_1_TRIM">
+		<format	file="修整"	title = "修整 - 左"		expression="<%#\s*([\s\S]+)\.TrimStart\(\)\s*%>"	id="DWMenu_Format_ASPNET_VB_1_TRIMLEFT"/>
+		<format	file="修整"	title = "修整 - 右"	expression="<%#\s*([\s\S]+)\.TrimEnd\(\)\s*%>"		id="DWMenu_Format_ASPNET_VB_1_TRIMRIGHT"/>
+		<format	file="修整"	title = "修整 - 两侧"		expression="<%#\s*([\s\S]+)\.Trim\(\)\s*%>"			id="DWMenu_Format_ASPNET_VB_1_TRIMBOTH"/>
+	</menu>
+	<separator />
+	<format	file="编码"	title = "编码 - URL 编码格式"	expression="<%#\s*Server\.UrlEncode\(([\s\S]+)\)\s*%>"	id="DWMenu_Format_ASPNET_VB_1_URLENCODE"/>
+	<format	file="编码"	title = "编码 - HTML 编码格式"	expression="<%#\s*Server\.HtmlEncode\(([\s\S]+)\)\s*%>"	id="DWMenu_Format_ASPNET_VB_1_HTMLENCODE"/>
+	<separator />
+	<format	file="地图"	title = "映射 - MapPath"	expression="<%#\s*Server\.MapPath\(([\s\S]+)\)\s*%>"	id="DWMenu_Format_ASPNET_VB_1_MAPPATH"/>
+</formats>

@@ -1,0 +1,37 @@
+<tag name="CFAPPLICATION" endtag="no">
+	<tagformat nlbeforetag="1" nlaftertag="1"/>
+	<tagdialog file="cfapplication.htm"/>
+	<attributes>	
+		<attrib name="NAME" type="TEXT"/>
+		<attrib name="CLIENTMANAGEMENT" type="ENUMERATED">
+			<attriboption value="Yes"/>
+			<attriboption value="No"/>
+		</attrib>
+		<attrib name="SESSIONMANAGEMENT" type="ENUMERATED">
+			<attriboption value="Yes"/>
+			<attriboption value="No"/>
+		</attrib>
+		<attrib name="SETCLIENTCOOKIES" type="ENUMERATED">
+			<attriboption value="Yes"/>
+			<attriboption value="No"/>
+		</attrib>
+		<attrib name="SETDOMAINCOOKIES" type="ENUMERATED">
+			<attriboption value="Yes"/>
+			<attriboption value="No"/>
+		</attrib>
+		<attrib name="SESSIONTIMEOUT" type="TEXT"/>
+		<attrib name="APPLICATIONTIMEOUT" type="TEXT"/>
+		<attrib name="CLIENTSTORAGE" type="TEXT"/>
+		<attrib name="LOGINSTORAGE" type="ENUMERATED">
+			<attriboption value="Cookie"/>
+			<attriboption value="Session"/>
+		</attrib>
+		<attrib name="SCRIPTPROTECT" type="TEXT">
+			<attriboption value="None"/>
+			<attriboption value="All"/>
+		</attrib>
+	</attributes>
+	<attribcategories>
+		<attribgroup name="General" elements="name,sessiontimeout,applicationtimeout,clientstorage,loginStorage,clientmanagement,sessionmanagement,setclientcookies,setdomaincookies,scriptprotect" />
+	</attribcategories>
+ </tag>

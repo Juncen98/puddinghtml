@@ -1,0 +1,13 @@
+<participant name="RepeatedRegion_End">
+		<translator>
+			<searchPatterns>
+				<searchPattern><![CDATA[/<%\s*\w+__index\+\+\s*;\s*\w+\.movenext\(\s*\)\s*;\s*\}/i]]></searchPattern>
+				<searchPattern requiredLocation="leading"><![CDATA[/\bwhile\s*\(\s*\(\s*(\w+)__numrows\-\-\s*!=\s*0\)\s*&&\s*\(!\s*(\w+)\.eof\s*\)\s*\)\s*\{\s*%>/i]]></searchPattern>
+			</searchPatterns>
+			<translations>
+				<translation whereToSearch="directive" translationType="tabbed region end">
+					<closeTag>MM_REPEATEDREGION</closeTag>
+				</translation>
+			</translations>
+		</translator>
+</participant>

@@ -1,0 +1,304 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+<div id="Description"><table cellpadding="0" cellspacing="0" border="0" width="100%" class="main"><tr><td valign="top" class="name">button</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2  </span>  IE <span class="emphasis">3  </span>  DOM <span class="emphasis">1</span></td></tr><tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">&nbsp;&nbsp;</td>
+				</tr><td valign="top" colspan="2" class="description"><p>  The <span class="literal">button</span> object
+is a form control generated with an <span class="literal">INPUT</span> element
+whose <span class="literal">TYPE</span> attribute is set to
+<span class="literal">"button"</span>. This element is similar to, but differs
+from, the <span class="literal">BUTTON</span> element. For details on the
+distinctions, see the <span class="literal">BUTTON</span> HTML element
+description in <xref linkend="ch08-11458"/>.
+</p>
+
+</td></tr><tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr><tr><td valign="top" colspan="2" class="htmlequivalent"><span class="title">HTML Equivalent</span><br>
+
+<span class="programlisting"><pre>&lt;INPUT TYPE="button"&gt;</pre></span>
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span><td>
+</tr>
+<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+<tr>
+<td>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="objectmodelreference">
+<tr><td valign="top" width="50" class="term">NN</td>
+<td valign="top" class="listitem">
+<span class="literal">[window.]document.</span><span class="replaceable">formName</span><span class="literal">.</span><span class="replaceable">elementName</span>
+<br>
+
+<span class="literal">[window.]document.forms[i].elements[i]</span></td>
+</tr>
+<tr><td valign="top" width="50" class="term">IE</td>
+<td valign="top" class="listitem">
+<span class="literal">[window.]document.</span><span class="replaceable">formName</span><span class="literal">.</span><span class="replaceable">elementName</span>
+<br>
+
+<span class="literal">[window.]document.forms[i].elements[i]</span><br>
+
+<span class="literal">[window.]document.all.</span><span class="replaceable">elementID</span>
+</td>
+</tr>
+</table>
+
+</td></tr></table></div>
+<div id="accessKey"><table cellpadding="0" cellspacing="0" border="0" width="100%" class="main"><tr><td valign="top" class="name">accessKey</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span>    IE <span class="emphasis">4  </span>  DOM <span class="emphasis">1</span></td></tr><tr><td valign="top" nowrap class="usage"> </td><td valign="top" nowrap class="requirements">Read/Write</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="description"><p>A single character key that "clicks" the button from the
+keyboard. The browser and operating system determine whether the user
+must press a modifier key (e.g., <emphasis
+role="bold">Ctrl</span>, <emphasis role="bold">Alt</span>, or
+<emphasis role="bold">Command</span>) with the access key to
+"click" the button. In IE 4/Windows, the <emphasis
+role="bold">Alt</span> key is required, and the key is not case
+sensitive. Not working in IE 4/Mac.
+</p>
+
+</td></tr><tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr><tr><td valign="top" colspan="2" class="example"><span class="title">Example</span><br><span class="programlisting"><pre>document.entryForm.myButton.accessKey = "n"</pre></span></td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="value"><span class="title">Value</span><br>
+
+Single alphanumeric (and punctuation) keyboard character.
+
+</td></tr><tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr><tr><td valign="top" colspan="2" class="default"><table cellspacing="0" cellpadding="0" border="0" width="100%" class="default"><tr><td valign="top" width="50" class="title">Default</td></tr><tr></tr>
+<tr>
+
+<td valign="top" class="defaultvalue">None.</td></tr></table>
+
+</td></tr></table></div>
+<div id="dataFld"><table cellpadding="0" cellspacing="0" border="0" width="100%" class="main"><tr><td valign="top" class="name">dataFld</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span>    IE <span class="emphasis">4  </span>  DOM <span class="emphasis">n/a</span></td></tr><tr><td valign="top" nowrap class="usage"> </td><td valign="top" nowrap class="requirements">Read/Write</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="description"><p>Used with IE 4 data binding to associate a remote data source column
+name to a <span class="literal">button</span> object's
+<span class="literal">value</span> property. A <span class="literal">DATASRC</span>
+attribute must also be set for the element. Setting both the
+<span class="literal">dataFld</span> and <span class="literal">dataSrc</span> properties
+to empty strings breaks the binding between element and data source.
+</p>
+
+</td></tr><tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr></tr><tr><td valign="top" colspan="2" class="example"><span class="title">Example</span><br><span class="programlisting"><pre>document.myForm.myButton.dataFld = "linkURL"</pre></span></td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="value"><span class="title">Value</span><br>
+
+Case-sensitive identifier of the data source column.
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="default"><table cellspacing="0" cellpadding="0" border="0" width="100%" class="default"><tr><td valign="top" width="50" class="title">Default</td></tr><tr></tr>
+<tr>
+
+<td valign="top" class="defaultvalue">None.</td></tr></table>
+
+</td></tr></table></div>
+<div id="dataSrc"><table cellpadding="0" cellspacing="0" border="0" width="100%" class="main"><tr><td valign="top" class="name">dataSrc</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span>    IE <span class="emphasis">4  </span>  DOM <span class="emphasis">n/a</span></td></tr><tr><td valign="top" nowrap class="usage"> </td><td valign="top" nowrap class="requirements">Read/Write</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="description"><p>Used with IE 4 data binding to specify the name of the remote ODBC
+data source (such as an Oracle or SQL Server database) to be
+associated with the element. Content from the data source is
+specified via the <span class="literal">DATAFLD</span> attribute. Setting both
+the <span class="literal">dataFld</span> and <span class="literal">dataSrc</span>
+properties to empty strings breaks the binding between element and
+data source.
+</p>
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="example"><span class="title">Example</span><br><span class="programlisting"><pre>document.myForm.myButton.dataSrc = "#DBSRC3"</pre></span></td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="value"><span class="title">Value</span><br>
+
+Case-sensitive identifier of the data source.
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="default"><table cellspacing="0" cellpadding="0" border="0" width="100%" class="default"><tr><td valign="top" width="50" class="title">Default</td></tr><tr>
+
+<td valign="top" class="defaultvalue">None.</td></tr></table>
+
+</td></tr></table></div>
+<div id="disabled"><table cellpadding="0" cellspacing="0" border="0" width="100%" class="main"><tr><td valign="top" class="name">disabled</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span>    IE <span class="emphasis">4  </span>  DOM <span class="emphasis">1</span></td></tr><tr><td valign="top" nowrap class="usage"> </td><td valign="top" nowrap class="requirements">Read/Write</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="description"><p>Whether the element is available for user interaction. When set to
+<span class="literal">true</span>, the element cannot receive focus or be
+modified by the user. It is also not submitted with the form.
+</p>
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="example"><span class="title">Example</span><br><span class="programlisting"><pre>document.forms[0].myButton.disabled = true</pre></span></td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="value"><span class="title">Value</span><br>
+
+Boolean value: <span class="literal">true</span> | <span class="literal">false</span>.
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="default"><table cellspacing="0" cellpadding="0" border="0" width="100%" class="default"><tr><td valign="top" width="50" class="title">Default</td></tr><tr>
+
+<td valign="top" class="defaultvalue"><span class="literal">false</span></td></tr></table>
+
+</td></tr></table></div>
+<div id="form"><table cellpadding="0" cellspacing="0" border="0" width="100%" class="main"><tr><td valign="top" class="name">form</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2  </span>  IE <span class="emphasis">3  </span>  DOM <span class="emphasis">n/a</span></td></tr><tr><td valign="top" nowrap class="usage"> </td><td valign="top" nowrap class="requirements">Read-only</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="description"><p>Returns a reference to the <span class="literal">FORM</span> element that
+contains the current element (if any). This property is most often
+passed as a parameter for an event handler, using the
+<span class="literal">this</span> keyword to refer to the current form control.
+</p>
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="example"><span class="title">Example</span><br><span class="programlisting"><pre>&lt;INPUT TYPE="button" VALUE="Validate Form" onClick="doValidate(this.form)"&gt;</pre></span></td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="value"><span class="title">Value</span><br>
+
+Object reference.
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="default"><table cellspacing="0" cellpadding="0" border="0" width="100%" class="default"><tr><td valign="top" width="50" class="title">Default</td></tr><tr>
+
+<td valign="top" class="defaultvalue">None.</td></tr></table>
+
+</td></tr></table></div>
+<div id="name"><table cellpadding="0" cellspacing="0" border="0" width="100%" class="main"><tr><td valign="top" class="name">name</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2  </span>  IE <span class="emphasis">3  </span>  DOM <span class="emphasis">1</span></td></tr><tr><td valign="top" nowrap class="usage"> </td><td valign="top" nowrap class="requirements">Read/Write</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="description"><p>The identifier associated with the form control. The value of this
+property is submitted as one-half of the name/value pair when the
+form is submitted to the server. Names are hidden from user view,
+since control labels are assigned via other means, depending on the
+control type. Form control names may also be used by script
+references to the objects.
+</p>
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="example"><span class="title">Example</span><br><span class="programlisting"><pre>document.orderForm.myButton.name = "Win32"</pre></span></td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="value"><span class="title">Value</span><br>
+
+Case-sensitive identifier that follows the rules of identifier
+naming: it may contain no whitespace, cannot begin with a numeral,
+and should avoid punctuation except for the underscore character.
+
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="default"><table cellspacing="0" cellpadding="0" border="0" width="100%" class="default"><tr><td valign="top" width="50" class="title">Default</td></tr><tr>
+
+<td valign="top" class="defaultvalue">None.</td></tr></table>
+
+</td></tr></table></div>
+<div id="recordNumber"><table cellpadding="0" cellspacing="0" border="0" width="100%" class="main"><tr><td valign="top" class="name">recordNumber</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span>    IE <span class="emphasis">4  </span>  DOM <span class="emphasis">n/a</span></td></tr><tr><td valign="top" nowrap class="usage"> </td><td valign="top" nowrap class="requirements">Read-only</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="description"><p>Used with data binding, returns an integer representing the record
+within the data set that generated the element (i.e., an element
+whose content is filled via data binding). Values of this property
+can be used to extract a specific record from an Active Data Objects
+(ADO) record set (see <span class="literal">recordset</span> property).
+</p>
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="example"><span class="title">Example</span><br><span class="programlisting"><pre>&lt;SCRIPT FOR="tableTemplate" EVENT="onclick"&gt;
+    myDataCollection.recordset.absoluteposition = this.recordNumber
+    ...
+&lt;/SCRIPT&gt;</pre></span></td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="value"><span class="title">Value</span><br>
+
+Integer.
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="default"><table cellspacing="0" cellpadding="0" border="0" width="100%" class="default"><tr><td valign="top" width="50" class="title">Default</td></tr><tr>
+
+<td valign="top" class="defaultvalue">None.</td></tr></table>
+
+</td></tr></table></div>
+<div id="tabIndex"><table cellpadding="0" cellspacing="0" border="0" width="100%" class="main"><tr><td valign="top" class="name">tabIndex</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span>    IE <span class="emphasis">4  </span>  DOM <span class="emphasis">1</span></td></tr><tr><td valign="top" nowrap class="usage"> </td><td valign="top" nowrap class="requirements">Read/Write</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="description"><p>A number that indicates the sequence of this element within the
+tabbing order of all focusable elements in the document. Tabbing
+order follows a strict set of rules. Elements that have values other
+than zero assigned to their <span class="literal">tabIndex</span> properties
+are first in line when a user starts tabbing in a page. Focus starts
+with the element with the lowest <span class="literal">tabIndex</span> value
+and proceeds in order to the highest value, regardless of physical
+location on the page or in the document. If two elements have the
+same <span class="literal">tabIndex</span> values, the element that comes
+earlier in the document receives focus first. Next come all elements
+that either don't support the <span class="literal">tabIndex</span>
+property or have the value set to zero. These elements receive focus
+in the order in which they appear in the document. A value of -1
+removes the element from tabbing order altogether.
+</p>
+
+<p>Note that the Macintosh user interface does not provide for giving
+focus to elements other than text and password
+<span class="literal">INPUT</span> fields.
+</p>
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="example"><span class="title">Example</span><br><span class="programlisting"><pre>document.forms[0].ZIPButton.tabIndex = 6</pre></span></td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="value"><span class="title">Value</span><br>
+
+Integer.
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="default"><table cellspacing="0" cellpadding="0" border="0" width="100%" class="default"><tr><td valign="top" width="50" class="title">Default</td></tr><tr>
+
+<td valign="top" class="defaultvalue">None.</td></tr></table>
+
+</td></tr></table></div>
+<div id="type"><table cellpadding="0" cellspacing="0" border="0" width="100%" class="main"><tr><td valign="top" class="name">type</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3  </span>  IE <span class="emphasis">4  </span>  DOM <span class="emphasis">1</span></td></tr><tr><td valign="top" nowrap class="usage"> </td><td valign="top" nowrap class="requirements">Read-only</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="description"><p>Returns the type of form control element. The value is returned in
+all lowercase letters. It may be necessary to cycle through all form
+elements in search of specific types to do some processing on (e.g.,
+emptying all form controls of type <span class="literal">"text"</span> while
+leaving other controls untouched).
+</p>
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="example"><span class="title">Example</span><br><span class="programlisting"><pre>if (document.forms[0].elements[3].type == "button") {
+    ...
+}</pre></span></td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="value"><span class="title">Value</span><br>
+
+Any of the following constants (as a string):
+<span class="literal">button</span> | <span class="literal">checkbox</span> |
+<span class="literal">file</span> | <span class="literal">hidden</span> |
+<span class="literal">image</span> | <span class="literal">password</span> |
+<span class="literal">radio</span> | <span class="literal">reset</span> |
+<span class="literal">select-multiple</span> | <span class="literal">select-one</span> |
+<span class="literal">submit</span> | <span class="literal">text</span> |
+<span class="literal">textarea</span>.
+
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="default"><table cellspacing="0" cellpadding="0" border="0" width="100%" class="default"><tr><td valign="top" width="50" class="title">Default</td></tr><tr>
+
+<td valign="top" class="defaultvalue"><span class="literal">checkbox</span></td></tr></table>
+
+</td></tr></table></div>
+<div id="value"><table cellpadding="0" cellspacing="0" border="0" width="100%" class="main"><tr><td valign="top" class="name">value</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2  </span>  IE <span class="emphasis">3  </span>  DOM <span class="emphasis">1</span></td></tr><tr><td valign="top" nowrap class="usage"> </td><td valign="top" nowrap class="requirements">Read/Write</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="description"><p>This is the rare time that the <span class="literal">value</span> property
+controls the label of a form control: the text that appears on the
+button. A button input element is not submitted with the form.
+</p>
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="example"><span class="title">Example</span><br><span class="programlisting"><pre>document.forms[0].myButton.value = "Undo"</pre></span></td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="value"><span class="title">Value</span><br>
+
+String.
+
+</td></tr><tr><td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr><tr><td valign="top" colspan="2" class="default"><table cellspacing="0" cellpadding="0" border="0" width="100%" class="default"><tr><td valign="top" width="50" class="title">Default</td></tr><tr>
+
+<td valign="top" class="defaultvalue">None.</td></tr></table>
+
+</td></tr></table></div>
+<div id="blur(  )"><table cellpadding="0" cellspacing="0" border="0" width="100%" class="main"><tr><td valign="top" class="name">blur(  )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span>    IE <span class="emphasis">4  </span>  DOM <span class="emphasis">n/a</span></td></tr><tr><td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr><tr><td valign="top" colspan="2" class="description"><p>Removes focus from the current element and fires an
+<span class="literal">onBlur</span> event (in IE). No other element necessarily
+receives focus as a result.
+</p>
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span><br>
+
+None.
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span><br>
+
+None.
+
+</td></tr></table></div>
+<div id="focus(  )"><table cellpadding="0" cellspacing="0" border="0" width="100%" class="main"><tr><td valign="top" class="name">focus(  )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span>    IE <span class="emphasis">4  </span>  DOM <span class="emphasis">n/a</span></td></tr><tr><td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td></tr><tr><td valign="top" colspan="2" class="description"><p>Gives focus to the current element and fires the
+<span class="literal">onFocus</span> event (in IE). If another element property
+objects had focus at the time, it receives an
+<span class="literal">onBlur</span> event.
+</p>
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span><br>
+
+None.
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span><br>
+
+None.
+
+</td></tr></table></div>
+<div id="handleEvent(  )"><table cellpadding="0" cellspacing="0" border="0" width="100%" class="main"><tr><td valign="top" class="name">handleEvent(  )</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4  </span>  IE <span class="emphasis">n/a</span>    DOM <span class="emphasis">n/a</span></td></tr><tr><td valign="top" colspan="2" class="description"><p>handleEvent(<span class="replaceable">event</span>)</p>
+
+<p>Instructs the object to accept and process the event whose
+specifications are passed as the parameter to the method. The object
+must have an event handler for the event type to process the event.
+</p>
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="returnedvalue"><span class="title">Returned Value</span><br>
+
+None.
+
+</td></tr><tr>\n					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>\n				</tr>]<tr><td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span><br>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="value">
+<tr><td valign="top" width="50" class="term"><span class="replaceable">event</span></td>
+<td valign="top" class="listitem">
+A Navigator 4 <span class="literal">event</span> object.
+
+</td>
+</tr>
+</table>
+
+</td></tr></table></div>
+</body>
+</html>

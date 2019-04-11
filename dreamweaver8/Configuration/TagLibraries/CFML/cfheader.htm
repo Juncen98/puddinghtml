@@ -1,0 +1,116 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFHEADER</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+var types = new Array("status", "header");
+var SELECTORLIST;
+var theUIObjects;
+var applyType = "dynamic"; 
+
+
+/****************************************************************/
+
+function isValueInList(theValue, theArray) {
+	for (var i=0; i<theArray.length; i++) {
+		if (theValue == theArray[i]) {
+			return true;
+		}
+	}
+	return false;
+}
+function inspectTag(tagNodeObj) {
+	var curValue = SELECTORLIST.getValue();
+	var theAttr = SELECTORLIST.object.getAttribute("attname");
+	var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+
+	if (isValueInList(tagNodeObj.getAttribute(theAttr), types)) {
+		tagDialog.inspectTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode, SELECTORLIST);
+	} else {
+		updateUI();
+	}
+}
+function applyTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.applyTagCommon(tagNodeObj, null, applyType, activeDisplayNode); 
+}
+
+function updateUI()
+{
+  var curDiv = SELECTORLIST.getValue(); 
+  tagDialog.showOnlyThisLayer(curDiv, document.layers[0]); 
+  
+}
+
+function initializeUI()
+{
+	SELECTORLIST = new ListControl("theselector"); 
+	theUIObjects = new Array(SELECTORLIST);
+
+  tagDialog.populateDropDownList(SELECTORLIST, theSelHeaderCap, theSelHeaderVal, 0); 
+}
+
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+
+<div name="常规"> 
+<br/> 
+标题类型: 
+<select name="theselector" class="selectorList" id="attr:cfheader:selector" onChange="updateUI();" attname="headertype" editable="false">
+</select>
+<hr width="100%"> 
+<div id="theheader" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:cfheader:name" attname="name" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">值: </td>
+      <td nowrap="nowrap">
+        <input name="thevalue" type="text" class="basicTextField" id="attr:cfheader:value" attname="value" />
+      </td>
+    </tr>
+	<tr>
+      <td valign="baseline" align="right" nowrap="nowrap">字符集: </td>
+      <td nowrap="nowrap">
+        <input name="thecharset" type="text" class="basicTextField" id="attr:cfheader:charset" attname="charset" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="thestatus" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">状态代码: </td>
+      <td nowrap="nowrap">
+        <input name="thestatuscode" type="text" class="basicTextField" id="attr:cfheader:statuscode" attname="statuscode" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">状态文本: </td>
+      <td nowrap="nowrap">
+        <input name="thestatustext" type="text" class="basicTextField" id="attr:cfheader:statustext" attname="statustext" />
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+</html>

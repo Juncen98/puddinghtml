@@ -1,0 +1,337 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFTRACE</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFTRACE</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Displays and logs debugging data about the state of an application at the time the cftrace tag executes. Tracks runtime logic flow, variable values, and execution time. Displays output at the end of the request or in the debugging section at the end of the request; or, in Dreamweaver MX and later, in the Server Debug tab of the Results window. 
+</p>
+
+<p>
+ColdFusion logs cftrace output to the file logs\cftrace.log, in the ColdFusion installation directory.
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>To permit this tag to execute, you must enable debugging in the ColdFusion&#160;MX Administrator. Optionally, to report trace summaries, enable the Trace section.</td>
+  </tr>
+</table>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Debugging tags, Variable manipulation tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cftrace 
+   abort = &quot;Yes&quot; or &quot;No&quot;
+   category = &quot;string&quot;
+   inline = &quot;Yes&quot; or &quot;No&quot;
+   text = &quot;string&quot;
+   type = &quot;format&quot;
+   var = &quot;variable_name&quot;
+&lt;/cftrace&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfdump, cferror, cfrethrow, cftimer, cftry; Chapter&#160;18, "Debugging and Troubleshooting Applications" in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX: Added this tag.
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+You cannot put application code within this tag. (This avoids problems that can occur if you disable debugging.) 
+</p>
+
+<p>
+This tag is useful for debugging CFML code during application development. 
+</p>
+
+<p>
+You can display cftrace tag output in the following ways:
+</p>
+<ul>
+
+<li>As a section in the debugging output</li>
+
+<li>In-line in an application page, and as a section in debugging output. If you specify in-line tracing, ColdFusion flushes all output up to the cftrace tag, and displays the trace output when it encounters the tag.</li>
+</ul>
+
+<p>
+This is an example of a log file entry:
+</p>
+<pre>&quot;Information&quot;,&quot;web-4&quot;,&quot;04/08/02&quot;,&quot;23:21:30&quot;,   ,&quot;[30 ms (1st trace)]      
+[C:\CFusionMX7\wwwroot\generic.cfm @ line: 9] - 
+   [thisPage = /generic.cfm]  &quot;
+&quot;Information&quot;,&quot;web-0&quot;,&quot;04/08/02&quot;,&quot;23:58:58&quot;,   ,&quot;[5187 ms (10)]  
+[C:\CFusionMX7\wwwroot\generic.cfm @ line: 14] - [category]
+   [thisPage = /generic.cfm] [ABORTED] thisPage &quot;
+</pre>
+<p>
+For a complex variable, ColdFusion lists the variable name and the number of elements in the object; it does not log the contents of the variable.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+The following example traces a FORM variable that is evaluated by a cfif block:
+</p>
+<pre>&lt;cftrace var=&quot;FORM.variable&quot;
+   text=&quot;doing equivalency check for FORM.variable&quot;
+   category=&quot;form_vars&quot;
+   inline=&quot;true&quot;&gt;
+&lt;cfif isDefined(&quot;FORM.variable&quot;) AND #FORM.variable# EQ 1&gt;
+   &lt;h1&gt;Congratulations, you&#39;re a winner!&lt;/h1&gt;
+&lt;cfelse&gt;
+   &lt;h1&gt;Sorry, you lost!&lt;/h1&gt;
+&lt;/cfif&gt;
+
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="ABORT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ABORT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "No"
+
+<ul>
+
+<li>Yes: calls a cfabort tag when the tag is executed.</li>
+
+<li>No</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="CATEGORY">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">CATEGORY</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>User-defined string for identifying trace groups.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="INLINE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">INLINE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "No"
+
+<ul>
+
+<li>Yes: displays trace code in line on the page in the location of the cftrace tag, in addition to the debugging information output. </li>
+
+<li>No</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TEXT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TEXT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>User-defined string, which can include simple variables, but not complex variables such as arrays. Outputs to the cflog text attribute. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TYPE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TYPE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Information"
+
+
+<p>Corresponds to the cflog type attribute; displays an appropriate icon:</p><ul>
+
+<li>Information</li>
+
+<li>Warning</li>
+
+<li>Error </li>
+
+<li>Fatal Information</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="VAR">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">VAR</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>The name of a simple or complex variable to display. </p>
+<p>Useful for displaying a temporary value, or a value that does not display on any CFM page.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

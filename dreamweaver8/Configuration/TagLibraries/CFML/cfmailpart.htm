@@ -1,0 +1,69 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFMAILPART</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var TYPELIST;
+var CHARSETLIST;
+var theUIObjects;
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function initializeUI()
+{
+  TYPELIST = new ListControl("thetype"); 
+  CHARSETLIST = new ListControl("thecharset");
+  theUIObjects  = new Array(TYPELIST, CHARSETLIST); 
+
+  tagDialog.populateDropDownList(TYPELIST, theMailPartTypeCap, theMailPartTypeVal, 0); 
+  tagDialog.populateDropDownList(CHARSETLIST, theCharSetCap, theCharSetVal, 1);
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">邮件类型: </td>
+      <td nowrap="nowrap">        
+	    <select name="thetype" class="oneWordOptionList" id="attr:cfmailpart:type" attname="type" editable="false">
+        </select>
+	  </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">字符集: </td>
+      <td nowrap="nowrap">
+	    <select name="thecharset" class="oneWordOptionList" id="attr:cfmailpart:charset" attname="charset" editable="true">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">文字自动换行: </td>
+      <td nowrap="nowrap"><input name="thewraptext" type="text" class="xsmallTField" id="attr:cfmailpart:wraptext" attname="wraptext" /></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

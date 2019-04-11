@@ -1,0 +1,80 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+
+<TITLE><MMString:LoadString id="insertbar/server/dynamicTable" /></TITLE>
+
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/sbUtils.js"></SCRIPT>
+<SCRIPT SRC="serverObjectsCommon.js"></SCRIPT>
+
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/ListMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/NumRecButtons.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/TextField.js"></SCRIPT>
+
+<SCRIPT SRC="DynamicTable.js"></SCRIPT>
+
+
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+<FORM NAME="theForm">
+  <TABLE BORDER=0>
+    <TR>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP> 记录集: </TD>
+      <TD VALIGN="baseline" NOWRAP colspan="3">
+        <SELECT class="connRSTableList" NAME="Recordset">
+          <OPTION SELECTED>BooksRecordset</OPTION>
+        </select>
+      </TD>
+    </TR>
+    <TR><TD HEIGHT="3"></TD></TR>
+    <TR>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP> 显示: </TD>
+      <td valign="baseline" nowrap colspan="3">
+        <input type="radio" name="Show" value="Count" onClick="_Show.updateUI('countButton')" checked>
+        <input type="text" name="tf_Show" maxlength="5" style="width:30px" value="10" onBlur="_Show.updateUI('numRecField')">
+        记录
+      </td>
+    </tr>
+    <TR><TD HEIGHT="1"></TD></TR>
+    <tr>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP></TD>
+      <td valign="baseline" nowrap colspan="3">
+        <input type="radio" name="Show" value="All" onClick="_Show.updateUI('allButton')">
+        所有记录
+      </td>
+    </tr>
+    <TR><TD HEIGHT="3"></TD></TR>
+    <TR>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP> 边框:</TD>
+      <TD VALIGN="baseline" NOWRAP>
+        <INPUT NAME="Border" TYPE="text" class="smallNumOrChar">
+      </TD>
+    </TR>
+    <TR><TD HEIGHT="1"></TD></TR>
+    <TR>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP> 单元格边距:</TD>
+      <TD VALIGN="baseline" NOWRAP>
+        <INPUT NAME="Cell__Padding" TYPE="text" class="smallNumOrChar">
+      </TD>
+    </TR>
+    <TR><TD HEIGHT="1"></TD></TR>
+    <TR>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP> 单元格间距:</TD>
+      <TD VALIGN="baseline" NOWRAP>
+        <INPUT NAME="Cell__Spacing" TYPE="text" class="smallNumOrChar">
+      </TD>
+    </TR>
+    <TR><TD HEIGHT="1"></TD></TR>
+  </TABLE>
+</FORM>
+</BODY>
+</HTML>
+

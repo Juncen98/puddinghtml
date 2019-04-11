@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>&lt;jsp:fallback&gt;</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">&lt;jsp:fallback&gt;</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+
+
+<p>You can use the <span class="LITERAL">&lt;jsp:fallback&gt;</span> action only
+in the body of a <span class="LITERAL">&lt;jsp:plugin&gt;</span> action. Its
+body specifies the template text to use for browsers that do not
+support the HTML <span class="LITERAL">&lt;embed&gt;</span> or
+<span class="LITERAL">&lt;object&gt;</span> elements. This action supports no
+attributes.
+</p>
+
+<p>Example:</p>
+
+<span class="PROGRAMLISTING"><pre>&lt;jsp:plugin type="applet" code="Clock2.class" 
+  codebase="applet" 
+  jreversion="1.2" width="160" height="150" &gt;
+  <emphasis role="bold">&lt;jsp:fallback&gt;</em>
+    Plug-in tag OBJECT or EMBED not supported by browser.
+  <emphasis role="bold">&lt;/jsp:fallback&gt;</em>
+&lt;/jsp:plugin&gt;</pre></span>
+
+</td></tr>
+</table>
+</div>
+</body>
+</html>

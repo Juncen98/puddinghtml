@@ -1,0 +1,9 @@
+<participant>
+     <insertText location="nodeAttribute" nodeParamName="radioNode">
+<![CDATA[ <%If (Not isNull(@@expression1@@)) Then If (@@expression2@@ = CStr(@@expression1@@)) Then Response.Write("@@selected@@") : Response.Write("")%>]]>
+     </insertText>
+     <searchPatterns whereToSearch="tag+option">
+       <searchPattern paramNames="expression2,expression1,selected" limitSearch="tagOnly"><![CDATA[/\s<%\s*(?:If\s*\(Not isNull\([^\r\n]*?\)\) Then)?\s*If\s*\((.*)\s*=\s*CStr\((.*)\)\)\s*Then\s+Response\.Write\("(.*?)"\) : Response\.Write\(""\)\s*%>/i]]></searchPattern>
+     </searchPatterns>
+</participant>
+

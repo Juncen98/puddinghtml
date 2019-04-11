@@ -1,0 +1,46 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+	<head>
+		<!-- Copyright 2001-2003 Macromedia, Inc. All rights reserved. -->
+		<title>导入 XML DTD 或架构文件</title>
+		<link rel="stylesheet" href="mmres://user_interface_dialog.css">
+			<script src="../../../Shared/MM/Scripts/CMN/UI.js"></script>
+			<script src="../../../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+			<script src="../../../Shared/Common/Scripts/dwscripts.js"></script>
+      <script src="../../../Shared/MM/Scripts/CMN/string.js"></script>
+			<script src="DTDSchemaImport.js"></script>
+			<script language="JavaScript">
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_GENERIC_ERROR = "出现错误。";
+var MSG_CHOOSEFILE    = "选择 DTD 或架构文件";
+var MSG_FILENAME  = "文件名必须以 \"file://\" 或\"http://\" 开头";
+var MSG_CHOOSEPREFIX  = "选择用于此库的标签前缀。这是将加在每个标签名称之前的前缀（带一个冒号）。";
+var MSG_REMOTENOTFOUND = "访问远端文件时出现 HTTP 错误：错误 %s";
+var MSG_CREATELIBRARY = "创建标签库时出现错误";
+var MSG_PREFIX_WHITESPACE = "标签前缀不能有空白";
+var MSG_NOTAGSFOUND = "DTD 或架构文件中未找到任何标签";
+
+var LABEL_DTDORSCHEMAFILTER = "DTD 或架构文件 (*.dtd, *.xsd)|*.dtd;*.xsd|DTD 或架构文件|";
+var LABEL_DTDFILTER = "DTD (*.dtd)|*.dtd|DTD|";
+var LABEL_SCHEMAFILTER = "架构 (*.xsd)|*.xsd|架构|";
+
+//--------------- END LOCALIZEABLE   ---------------
+
+			</script>
+	</head>
+	<body onLoad="initUI()">
+		<div id="Layer1" style="position:absolute; width:427px; height:50px; z-index:1; left: 5px; top: 5px; visibility: visible">
+			<form name="MainForm">
+				<table width="409" border="0">
+					<tr valign="baseline">
+        <td align="right" nowrap> 文件或远程 URL: </td>
+        <td nowrap > <input type="text" name="filePath" size="40"> <input type="button" name="Browse" onClick="browseForDTDFile()" value="浏览..."> 
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</body>
+</html>

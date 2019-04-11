@@ -1,0 +1,135 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>DAYOFWEEKASSTRING</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">DAYOFWEEKASSTRING</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Determines the day of the week, in a date, as a string function. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+The day of the week, as a string in the current locale, that corresponds to day_of_week.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Date and time functions, String functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>DayOfWeekAsString(day_of_week)
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+Day, DayOfWeek, DayOfYear, DaysInMonth, DaysInYear, FirstDayOfMonth
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7: Changed behavior. The returned string is now in the language of the current locale.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+The following example shows the use of the DayOfWeekAsString function. It is the action page for a form that submits year, month, and day fields.
+</p>
+<pre>&lt;h3&gt;DayOfWeekAsString Example&lt;/h3&gt;
+&lt;cfif IsDefined(&quot;FORM.year&quot;)&gt;
+More information about your date:
+&lt;cfset yourDate = CreateDate(FORM.year, FORM.month, FORM.day)&gt;
+
+&lt;cfoutput&gt;
+&lt;p&gt;Your date, #DateFormat(yourDate)#.
+&lt;br&gt;It is #DayofWeekAsString(DayOfWeek(yourDate))#, day
+    #DayOfWeek(yourDate)# in the week.
+&lt;br&gt;This is day #Day(YourDate)# in the month of 
+#MonthAsString(Month(yourDate))#, which has
+     #DaysInMonth(yourDate)# days.
+&lt;br&gt;We are in week #Week(yourDate)# of #Year(YourDate)# (day 
+#DayofYear(yourDate)#
+of #DaysinYear(yourDate)#). 
+&lt;br&gt;&lt;cfif IsLeapYear(Year(yourDate))&gt;This is a leap year
+   &lt;cfelse&gt;This is not a leap year&lt;/cfif&gt;
+&lt;/cfoutput&gt;
+&lt;/cfif&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="DAY_OF_WEEK">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DAY_OF_WEEK</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Integer, in the range 1 (Sunday) - 7 (Saturday).</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

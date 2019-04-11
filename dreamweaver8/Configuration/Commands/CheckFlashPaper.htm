@@ -1,0 +1,27 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2003-2005 Macromedia, Inc. All rights reserved. -->
+<TITLE>CheckFlashPaper</TITLE>
+<SCRIPT LANGUAGE="javascript" src="InsertFlashPaper.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+<!--
+var g_warnUserIfNotAvailable = false;
+var g_returnArray = null;
+function receiveArguments()
+{
+	g_warnUserIfNotAvailable = arguments[0];
+	g_returnArray = arguments[1];
+}
+function run()
+{
+	var result = isFlashPaperAvailable(g_warnUserIfNotAvailable);
+	if (g_returnArray)
+		g_returnArray[0] = result;
+}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY onload="run()">
+</BODY>
+</HTML>

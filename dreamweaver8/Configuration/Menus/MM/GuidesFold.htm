@@ -1,0 +1,68 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
+<TITLE>Text List Menu</TITLE>
+<SCRIPT LANGUAGE="javascript">
+<!--
+
+function guidesExistAtLocation(horizontalLocation, verticalLocation)
+{
+	var hasHorizontal = dw.getDocumentDOM().hasHorizontalGuide(horizontalLocation);
+	var hasVertical = dw.getDocumentDOM().hasVerticalGuide(verticalLocation);
+	
+	return hasHorizontal && hasVertical;
+}
+
+function isDOMRequired()
+{
+  return true;
+}
+
+
+function receiveArguments()
+{
+  var verticalLocation = arguments[0];
+  var horizontalLocation = arguments[1];
+
+  if (dw.getDocumentDOM() != null) {
+	// we need to see if we should turn the guides on or off
+	if( guidesExistAtLocation(horizontalLocation, verticalLocation) ) {
+		// turn 'em off
+		dw.getDocumentDOM().deleteHorizontalGuide(horizontalLocation);
+		dw.getDocumentDOM().deleteVerticalGuide(verticalLocation);
+	} else {
+		// turn 'em on
+		dw.getDocumentDOM().createHorizontalGuide(horizontalLocation);
+		dw.getDocumentDOM().createVerticalGuide(verticalLocation);	
+	}
+  }
+}
+
+function canAcceptCommand()
+{
+  // We just need a document
+  var retVal =  dw.getDocumentDOM() != null;
+
+  return retVal;
+}
+
+function isCommandChecked()
+{
+  var verticalLocation = arguments[0];
+  var horizontalLocation = arguments[1];
+   
+  if (dw.getDocumentDOM() != null){
+  	return guidesExistAtLocation(horizontalLocation, verticalLocation);
+  }
+  else
+  {
+    return false;
+  }  
+}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

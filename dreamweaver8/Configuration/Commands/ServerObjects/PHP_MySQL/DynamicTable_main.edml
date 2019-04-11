@@ -1,0 +1,19 @@
+<participant version="5.0">
+<insertText location="afterSelection">
+<![CDATA[
+<table<@if (@@Border@@) @> border="@@Border@@"<@endif@><@if (@@CellPadding@@) @> cellpadding="@@CellPadding@@"<@endif@><@if (@@CellSpacing@@) @> cellspacing="@@CellSpacing@@"<@endif@>>
+<tr>
+<@ loop (@@FieldLabelArray@@) @>
+<td>@@FieldLabelArray@@</td>
+<@ endloop @>
+</tr>
+<?php do { ?>
+<tr>
+<@ loop (@@FieldNameArray@@) @>
+<td><?php echo $row_@@RecordsetName@@['@@FieldNameArray@@']; ?></td>
+<@ endloop @>
+</tr>
+<?php } while ($row_@@RecordsetName@@ = mysql_fetch_assoc($@@RecordsetName@@)); ?>
+</table>
+]]></insertText>
+</participant>

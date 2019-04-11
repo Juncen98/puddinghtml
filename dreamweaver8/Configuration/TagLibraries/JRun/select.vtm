@@ -1,0 +1,33 @@
+<tag name="select" casesensitive="yes" endtag="xml" tagtype="nonempty">
+<tagformat nlbeforetag="1" nlbeforecontents="1" nlaftercontents="1" nlaftertag="1" indentcontents="yes"/>
+<tagdialog file="select.htm"> 
+  <attributes>
+    <attrib name="name" CONTROL="txtName" type="TEXT" casesensitive="yes">
+    <attrib name="size" CONTROL="txtSize" type="TEXT" casesensitive="yes">
+    <attrib name="hashtable" CONTROL="txtHashtable" type="TEXT" casesensitive="yes">
+    <attrib name="required" CONTROL="checkRequired" type="ENUMERATED" casesensitive="yes">
+  
+    <attriboption value="true"/>
+  
+    <attriboption value="false"/>
+    </attrib>
+
+    <attrib name="onError" CONTROL="txtOnError" type="TEXT" casesensitive="yes">
+    <attrib name="selected" CONTROL="txtSelected" type="TEXT" casesensitive="yes">
+    <attrib name="query" CONTROL="txtQuery" type="TEXT" casesensitive="yes">
+    <attrib name="value" CONTROL="txtValue" type="TEXT" casesensitive="yes">
+    <attrib name="display" CONTROL="txtDisplay" type="TEXT" casesensitive="yes">
+  
+    <attriboption value="true"/>
+  
+    <attriboption value="false"/>
+    </attrib>
+
+	  <event name="onError"/>
+  </attributes>
+	<attribcategories>
+		<attribgroup name="General" elements="name,required,selected" />
+		<attribgroup name="Hashtable" elements="size,hashtable" />
+		<attribgroup name="Columns" elements="query,value,display" />
+	</attribcategories>
+</tag>

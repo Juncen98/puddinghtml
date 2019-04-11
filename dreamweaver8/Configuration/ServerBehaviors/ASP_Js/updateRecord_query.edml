@@ -1,0 +1,56 @@
+<participant>
+     <quickSearch><![CDATA[MM_update]]></quickSearch>
+     <insertText location="aboveHTML+30">
+<![CDATA[
+<%
+// *** Update Record: construct a sql update statement and execute it
+
+if (String(Request("MM_update")) != "undefined" &&
+    String(Request("MM_recordId")) != "undefined") {
+
+  // create the sql update statement
+  MM_editQuery = "update " + MM_editTable + " set ";
+  for (var i=0; i+1 < MM_fields.length; i+=2) {
+    var formVal = MM_fields[i+1];
+    var MM_typesArray = MM_columns[i+1].split(",");
+    var delim =    (MM_typesArray[0] != "none") ? MM_typesArray[0] : "";
+    var altVal =   (MM_typesArray[1] != "none") ? MM_typesArray[1] : "";
+    var emptyVal = (MM_typesArray[2] != "none") ? MM_typesArray[2] : "";
+    if (formVal == "" || formVal == "undefined") {
+      formVal = emptyVal;
+    } else {
+      if (altVal != "") {
+        formVal = altVal;
+      } else if (delim == "'") { // escape quotes
+        formVal = "'" + formVal.replace(/'/g,"''") + "'";
+      } else {
+        formVal = delim + formVal + delim;
+      }
+    }
+    MM_editQuery += ((i != 0) ? "," : "") + MM_columns[i] + " = " + formVal;
+  }
+  MM_editQuery += " where " + MM_editColumn + " = " + MM_recordId;
+
+  if (!MM_abortEdit) {
+    // execute the update
+    var MM_editCmd = Server.CreateObject('ADODB.Command');
+    MM_editCmd.ActiveConnection = MM_editConnection;
+    MM_editCmd.CommandText = MM_editQuery;
+    MM_editCmd.Execute();
+    MM_editCmd.ActiveConnection.Close();
+
+    if (MM_editRedirectUrl) {
+      Response.Redirect(MM_editRedirectUrl);
+    }
+  }
+
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern><![CDATA[/Request\("MM_update"\)/]]></searchPattern>
+       <searchPattern><![CDATA[/if\s*\(!MM_abortEdit\)\s*\{/]]></searchPattern>
+       <searchPattern><![CDATA[/MM_editQuery\s*=\s*"update "/]]></searchPattern>
+     </searchPatterns>
+</participant>

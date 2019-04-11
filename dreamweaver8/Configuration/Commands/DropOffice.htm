@@ -1,0 +1,71 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<title>插入文档</title>
+<!-- Copyright 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<script language="javascript" src="../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<script language="javascript" src="InsertOfficeDoc.js"></script>
+<script language="javascript" src="DropOffice.js"></script>
+</head>
+<body onLoad="initializeUI()">
+<form name="theForm">
+  <table>
+    <tr valign="middle">
+      <td colspan=4 nowrap>您想如何插入文档？</td>
+    </tr>
+    <tr valign="middle">
+      <td nowrap>&nbsp;</td>
+      <td colspan="3" nowrap><input type="radio" name="opmode" value="content" checked onClick="disableTypes('false')">
+        插入内容 </td>
+    </tr>
+    <tr valign="middle">
+      <td nowrap>&nbsp;</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap valign=middle>&nbsp;</td>
+      <td nowrap valign=middle><input name="pastetype" type="radio" value="text" onClick="disableCleanup('true')"/>
+        仅文本</td>
+    </tr>
+    <tr valign="middle">
+      <td nowrap>&nbsp;</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap valign=middle>&nbsp;</td>
+      <td nowrap valign=middle><input name="pastetype" type="radio" value="structure" onClick="disableCleanup('false')"/>
+        Text with structure (paragraphs, lists, tables, etc.)</td>
+    </tr>
+    <tr valign="middle">
+      <td nowrap>&nbsp;</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap valign=middle>&nbsp;</td>
+      <td nowrap valign=middle><input name="pastetype" type="radio" value="basic" onClick="disableCleanup('false')"/>
+        带结构的文本以及基本格式（粗体、斜体）</td>
+    </tr>
+    <tr valign="middle">
+      <td nowrap>&nbsp;</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap valign=middle>&nbsp;</td>
+      <td nowrap valign=middle><input name="pastetype" type="radio" value="full" checked onClick="disableCleanup('true')"/>
+        带结构的文本以及全部格式（粗体、斜体、样式）</td>
+    </tr>
+    <tr valign="middle">
+      <td nowrap></td>
+      <td nowrap></td>
+      <td nowrap></td>
+      <td nowrap></td>
+    </tr>
+    <tr valign="middle">
+      <td nowrap>&nbsp;</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap valign=middle>&nbsp;</td>
+      <td nowrap valign=middle><input type="checkbox" name="cleanup" value="checkbox" >
+        清理 Word 段落间距</td>
+    </tr>
+    <tr valign="middle">
+      <td nowrap>&nbsp;</td>
+      <td colspan="3" nowrap><input type="radio" name="opmode" value="link" onClick="disableTypes('true')"/>
+        创建链接 </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

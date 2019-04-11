@@ -1,0 +1,34 @@
+<tag name="input" casesensitive="yes" endtag="xml" tagtype="nonempty">
+<tagformat nlbeforetag="1" nlaftertag="1"/>
+<tagdialog file="input.htm" />
+  <attributes>
+    <attrib name="name" type="TEXT" casesensitive="yes">
+    <attrib name="type" type="ENUMERATED" casesensitive="yes">
+    	<attriboption value="checkbox"/>
+    	<attriboption value="creditcard"/>
+    	<attriboption value="date"/>
+    	<attriboption value="eurodate"/>
+    	<attriboption value="float"/>
+    	<attriboption value="integer"/>
+    	<attriboption value="password"/>
+    	<attriboption value="phone"/>
+    	<attriboption value="radio"/>
+    	<attriboption value="ssc"/>
+    	<attriboption value="text"/>
+    	<attriboption value="time"/>
+    	<attriboption value="zipcode"/>
+    </attrib>
+    <attrib name="value" type="TEXT" casesensitive="yes">
+    <attrib name="required" type="ENUMERATED" casesensitive="yes">
+    	<attriboption value="true"/>
+    	<attriboption value="false"/>
+    </attrib>
+    <attrib name="onError" type="Text" casesensitive="yes">
+    <attrib name="onValidate" type="TEXT" casesensitive="yes">
+    <event name="onError"/>
+	  <event name="onValidate"/>
+  </attributes>
+	<attribcategories>
+		<attribgroup name="General" elements="name,value,required,type" />
+	</attribcategories>
+</tag>

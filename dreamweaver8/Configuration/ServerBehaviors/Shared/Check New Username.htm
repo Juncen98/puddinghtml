@@ -1,0 +1,45 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+
+<SCRIPT>
+// Copyright 2001-2002 Macromedia, Inc. All rights reserved.
+var HELP_DOC = MM.HELP_sbCheckNewUsername;
+</SCRIPT>
+
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Check New Username.js"></SCRIPT>
+
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+<FORM NAME="theForm">
+  <table border="0">
+    <tr>
+      <td valign="baseline" align="right" nowrap>
+        用户名字段: 
+      </td>
+      <td valign="baseline" nowrap>
+        <select name="listFormElement" class="fieldList">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap>
+        如果已存在，则转到:
+      </td>
+      <td valign="baseline" nowrap>
+        <input name="textGoToURLOnUsernameExists" type="text" class="basicTextField">
+        <input name="btnFileBrowserOnUsernameExists" type="button" value="浏览..." onClick="onClickBtnFileBrowserOnUsernameExists();focus(this)">
+      </td>
+    </tr>
+  </table>
+</FORM>
+</BODY>
+</HTML>

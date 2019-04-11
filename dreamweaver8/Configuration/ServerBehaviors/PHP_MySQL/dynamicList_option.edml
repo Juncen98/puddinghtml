@@ -1,0 +1,15 @@
+<participant>
+     <quickSearch><![CDATA[option value=]]></quickSearch>
+     <insertText location="lastChildOfNode" nodeParamName="selectNode">
+<![CDATA[
+<option value="<?php echo $row_@@rsName@@['@@valueColumn@@']?>"<@ if (@@expression1@@) @><?php if (!(strcmp($row_@@rsName@@['@@valueColumn@@'], @@expression1@@))) {echo "@@selected@@";} ?><@ endif @>><?php echo $row_@@rsName@@['@@labelColumn@@']?></option>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="tag+option">
+       <searchPattern paramNames="rsName,valueColumn" limitSearch="attribute+value"><![CDATA[/<\?php echo \$row_([^\r\n]*?)\['([^\r\n]*?)'\]\?>/i]]></searchPattern>
+       <searchPattern paramNames="labelColumn" limitSearch="innerOnly"><![CDATA[/<\?php echo \$row_[^\r\n]*?\['([^\r\n]*?)'\]\?>/i]]></searchPattern>
+       <searchPattern paramNames="expression1,selected" limitSearch="tagOnly"><![CDATA[/if \(!\(strcmp\(\$row_[^\r\n]*?\['[^\r\n]*?'\], ([^\r\n]*?)\)\)\) \{echo "([^\r\n]*?)";\} (?=\r\n|\r|\n|\?>)/i]]></searchPattern>
+       <searchPattern paramNames="valueExpression" limitSearch="attribute+value"></searchPattern>
+       <searchPattern paramNames="labelExpression" limitSearch="innerOnly"></searchPattern>
+     </searchPatterns>
+</participant>

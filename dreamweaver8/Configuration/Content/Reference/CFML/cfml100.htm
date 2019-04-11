@@ -1,0 +1,218 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFPROCRESULT</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFPROCRESULT</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Associates a query object with a result set returned by a stored procedure. Other ColdFusion tags, such as cfoutput and cftable, use this query object to access the result set. This tag is nested within a cfstoredproc tag. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Database manipulation tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfprocresult 
+   name = &quot;query_name&quot;
+   resultSet = &quot;1-n&quot; 
+   maxRows = &quot;maxrows&quot;&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfinsert, cfprocparam, cfquery, cfqueryparam, cfstoredproc, cftransaction, cfupdate; "Optimizing database use" in Chapter&#160;13, "Designing and Optimizing a ColdFusion&#160;Application," in ColdFusion MX Developer's Guide
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+To enable access to data returned by the stored procedure, specify one or more cfprocresult tags. If the stored procedure returns more than one result set, use the resultSet attribute to specify which of the stored procedure's result sets to return.
+</p>
+
+<p>
+The resultSet attribute must be unique within the scope of the cfstoredproc tag. If you specify a result set twice, the second occurrence overwrites the first.
+</p>
+
+<p>
+CFML supports Oracle 8 and 9 Reference Cursor type, which passes a parameter by reference. Parameters that are passed this way can be allocated and deallocated from memory within the execution of one application. To use reference cursors in packages or stored procedures, use the cfprocresult tag. This causes the ColdFusion JDBC database driver to put Oracle reference cursors into a result set. (You cannot use this method with Oracle's ThinClient JDBC drivers.)
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!--- This example executes a Sybase stored procedure that returns three 
+result sets, two of which we want. The stored procedure returns 
+status code and one output parameter, which we display. We use 
+named notation for parameters. ---&gt;
+&lt;!--- cfstoredproc tag ---&gt;
+&lt;cfstoredproc procedure = &quot;foo_proc&quot;
+      dataSource = &quot;MY_SYBASE_TEST&quot;    username = &quot;sa&quot;
+      password = &quot;&quot;    dbServer = &quot;scup&quot;    dbName = &quot;pubs2&quot;
+      returnCode = &quot;Yes&quot;    debug = &quot;Yes&quot;&gt;
+   &lt;!--- cfprocresult tags ---&gt;
+   &lt;cfprocresult name = RS1&gt;
+   &lt;cfprocresult name = RS3 resultSet = 3&gt;
+   &lt;!--- cfprocparam tags ---&gt;
+   &lt;cfprocparam type = &quot;IN&quot;
+      CFSQLType = CF_SQL_INTEGER
+         value = &quot;1&quot;    dbVarName = @param1&gt;
+      
+   &lt;cfprocparam type = &quot;OUT&quot;    CFSQLType = CF_SQL_DATE
+      variable = FOO dbVarName = @param2&gt;
+   &lt;!--- Close the cfstoredproc tag. ---&gt;
+&lt;/cfstoredproc&gt;
+&lt;cfoutput&gt;
+   The output param value: '#foo#'&lt;br&gt;
+&lt;/cfoutput&gt;
+&lt;h3&gt;The Results Information&lt;/h3&gt;
+&lt;cfoutput query = RS1&gt;#name#,#DATE_COL#&lt;br&gt;
+&lt;/cfoutput&gt;
+&lt;p&gt;
+&lt;cfoutput&gt;
+   &lt;hr&gt;
+   &lt;p&gt;Record Count: #RS1.recordCount# &lt;p&gt;Columns: #RS1.columnList#
+   &lt;hr&gt;
+&lt;/cfoutput&gt; 
+&lt;cfoutput query = RS3&gt;#col1#,#col2#,#col3#&lt;br&gt;
+&lt;/cfoutput&gt;
+&lt;p&gt;
+&lt;cfoutput&gt;
+   &lt;hr&gt;
+   &lt;p&gt;Record Count: #RS3.recordCount# &lt;p&gt;Columns: #RS3.columnList#
+   &lt;hr&gt;
+   The return code for the stored procedure is:
+'#cfstoredproc.statusCode#'&lt;br&gt;
+&lt;/cfoutput&gt;
+...
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="NAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name for the query result set.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="RESULTSET">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">RESULTSET</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "1"
+
+
+<p>Names one result set, if stored procedure returns more than one.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="MAXROWS">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">MAXROWS</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "-1 (All)"
+
+
+<p>Maximum number of rows returned in result set.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

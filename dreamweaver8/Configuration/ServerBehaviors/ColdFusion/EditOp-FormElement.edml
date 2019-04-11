@@ -1,0 +1,84 @@
+<participant version="5.0">
+  <insertText location="afterSelection">
+	<![CDATA[
+	  <@ if (@@ElementType@@ == "textfield") @>
+	    <tr valign="baseline">
+	      <td nowrap align="right">@@ElementLabel@@</td>
+	      <td><input type="text" name="@@ElementName@@" value="@@ElementValue@@" size="32"></td>
+	    </tr>
+	  <@ elseif (@@ElementType@@ == "passwordfield") @>
+	    <tr valign="baseline">
+	      <td nowrap align="right">@@ElementLabel@@</td>
+	      <td><input type="password" name="@@ElementName@@" value="@@ElementValue@@" size="32"></td>
+	    </tr>
+	  <@ elseif (@@ElementType@@ == "textarea") @>
+	    <tr valign="baseline">
+	      <td nowrap align="right" valign="top">@@ElementLabel@@</td>
+	      <td>
+	        <textarea name="@@ElementName@@" cols="50" rows="5">@@ElementValue@@</textarea>
+	      </td>
+	    </tr>
+	  <@ elseif (@@ElementType@@ == "text") @>
+	    <tr valign="baseline">
+	      <td nowrap align="right">@@ElementLabel@@</td>
+	      <td>@@ElementValue@@</td>
+	    </tr>      
+	  <@ elseif (@@ElementType@@ == "checkbox") @>
+	    <tr valign="baseline">
+	      <td nowrap align="right">@@ElementLabel@@</td>
+	      <td><input type="checkbox" name="@@ElementName@@" value="@@ElementValue@@" @@ElementChecked@@></td>
+	    </tr>     
+	  <@ elseif (@@ElementType@@ == "dynamiccheckbox") @>
+	    <tr valign="baseline">
+	      <td nowrap align="right">@@ElementLabel@@</td>
+	      <td><input type="checkbox" name="@@ElementName@@" value="@@ElementValue@@" @@ElementChecked@@></td>
+	    </tr>    
+    <@ elseif (@@ElementType@@ == "menu") @>
+      <tr valign="baseline">
+        <td nowrap align="right">@@ElementLabel@@</td>
+        <td>
+          <select name="@@ElementName@@">
+	          <@ loop (@@OptionValue@@, @@OptionText@@, @@OptionSelected@@) @>
+	  	        <option value="@@OptionValue@@" @@OptionSelected@@>@@OptionText@@</option>
+	          <@ endloop @>
+          </select>
+        </td>
+      </tr> 
+    <@ elseif (@@ElementType@@ == "dynamicmenu") @>
+      <tr valign="baseline">
+        <td nowrap align="right">@@ElementLabel@@</td>
+        <td>
+          <select name="@@ElementName@@">
+            <cfoutput query="@@RecordsetName@@">
+              <option value="#@@RecordsetName@@.@@DynOptionValue@@#"<@ if (@@EqualToVal@@) @> <cfif (<@if (@@EqualToVal@@.match(/^[\W\d]/) == null)@>isDefined("@@EqualToVal@@") AND <@endif@>@@RecordsetName@@.@@DynOptionValue@@ EQ @@EqualToVal@@)>selected</cfif><@endif@>>#@@RecordsetName@@.@@DynOptionText@@#</option>
+            </cfoutput>
+          </select>
+        </td>
+      <tr>      
+      <@ elseif (@@ElementType@@ == "radiogroup") @>
+        <tr valign="baseline">
+          <td nowrap align="right">@@ElementLabel@@</td>
+          <td valign="baseline">
+	          <table>
+	            <@ loop (@@FieldLabel@@, @@FieldValue@@,@@FieldChecked@@) @>
+			          <tr>
+	        	      <td><input type="radio" name="@@ElementName@@" value="@@FieldValue@@" @@FieldChecked@@>@@FieldLabel@@</td>
+	                <td>
+                </tr>
+	            <@ endloop @>
+	          </table>
+        </tr>
+      <@ elseif (@@ElementType@@ == "dynamicradiogroup") @>
+        <tr valign="baseline">
+          <td nowrap align="right">@@ElementLabel@@</td>
+          <td>
+              <cfoutput query="@@RecordsetName@@">
+                <input type="radio" name="@@ElementName@@" value="#@@DynFieldValue@@#" <@ if (@@EqualToVal@@) @> #IIf(@@EqualToVal@@ EQ @@DynFieldValue@@,DE("CHECKED"),DE(""))#<@ endif @>>#@@DynFieldName@@#
+              </cfoutput>
+          </td>
+        </tr>                              
+	  <@ else @>
+	  <@ endif @>   
+  ]]>
+</insertText>
+</participant>

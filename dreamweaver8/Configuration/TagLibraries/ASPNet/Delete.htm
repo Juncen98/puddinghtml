@@ -1,0 +1,117 @@
+<!-- Copyright 2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>删除</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script>
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div name="常规"> 
+  <input type="hidden" name="therunat" attname="runat" value="server" required="true" /> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">连接字符串: </td>
+      <td nowrap="nowrap">
+        <input name="theconnectionstring" type="text" class="basicTextField" id="aspnet:delete:connectionstring" attname="connectionstring" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">命令文本 </td>
+      <td nowrap="nowrap">
+        <input name="thecommandtext" type="text" class="basicTextField" id="aspnet:delete:commandtext" attname="commandtext" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">当前页: </td>
+      <td nowrap="nowrap">
+        <input name="thecurrentpage" type="text" class="basicTextField" id="aspnet:delete:currentpage" attname="currentpage" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">成功 URL: </td>
+      <td nowrap="nowrap">
+        <input name="thesuccessurl" type="text" class="basicTextField" id="aspnet:delete:successurl" attname="successurl" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">失败 URL: </td>
+      <td nowrap="nowrap">
+        <input name="thefailureurl" type="text" class="basicTextField" id="aspnet:delete:failureurk" attname="FailureURL" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">起始行: </td>
+      <td nowrap="nowrap">
+        <input name="thestartrow" type="text" class="basicTextField" id="aspnet:delete:startrow" attname="startrow" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">最大记录数: </td>
+      <td nowrap="nowrap">
+        <input name="themaxrecords" type="text" class="basicTextField" id="aspnet:delete:maxrecords" attname="maxrecords" />
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">页面尺寸: </td>
+      <td nowrap="nowrap">
+        <input name="thepagesize" type="text" class="basicTextField" id="aspnet:delete:pagesize" attname="pagesize" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">表格名称: </td>
+      <td nowrap="nowrap">
+        <input name="thetablename" type="text" class="basicTextField" id="aspnet:delete:tablename" attname="tablename" />
+      </td>
+    </tr>
+   <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:delete:debug" name="thedebug" attname="debug" truevalue="true" falsevalue="false" checked="checked" /> 调试
+      </td>
+    </tr>  
+
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:delete:getrecordcount" name="thegetrecordCount" attname="getrecordcount" truevalue="true" falsevalue="false" /> 获取记录计数
+      </td>
+    </tr>  
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:delete:isstoredprocedure" name="theisstoredprocedure" attname="isstoredprocedure" truevalue="true" falsevalue="false" /> 是预存过程
+      </td>
+    </tr>  
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:delete:createdataset" name="thecreatedataSet" attname="createdataset" truevalue="true" falsevalue="false" /> 创建数据集
+      </td>
+    </tr>  
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:delete:expression" name="theexpression" attname="expression" truevalue="true" falsevalue="false" /> 表达式
+      </td>
+    </tr>  
+  </table>
+</body>
+</html>

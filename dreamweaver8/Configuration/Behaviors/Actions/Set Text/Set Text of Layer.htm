@@ -1,0 +1,53 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- SAFE-IN-TEMPLATES -->
+<HTML>
+<HEAD>
+<SCRIPT SRC="Set Text of Layer.js"></SCRIPT>
+<SCRIPT SRC="../MM_findObj.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/MM/Scripts/setText.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/MM/Scripts/CMN/niceName.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/MM/Scripts/CMN/docInfo.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+
+<SCRIPT LANGUAGE="javascript">
+// Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved.
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_LayerNotFound = '无法找到层 "%s"，可能已经重新命名或被删除。';
+var MSG_UnnamedLayer = "只能影响 *已命名的* 层。 请点击「取消」，使用属性检查器将您的层命名。";
+var MSG_BadBraces = "小括号保存给内嵌变量，而且必须正确地匹配。\n请修正括号或点击「取消」。";
+//--------------- END LOCALIZEABLE   ---------------
+//---------------    END JAVASCRIPT    ---------------
+</SCRIPT>
+<TITLE>设置层文本</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+<link href="../../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm">
+    <DIV ALIGN="center">
+      
+    <TABLE BORDER=0 cellpadding="4" cellspacing="2">
+        <TR>
+          <TD ALIGN="right" VALIGN="baseline" NOWRAP>层:</TD>
+          <TD ALIGN="left" VALIGN="baseline" NOWRAP>
+            <SELECT NAME="menu" class="namedObjectsList">
+              
+            <OPTION SELECTED>**********************************************************
+            </select></TD>
+        </TR>
+        <TR>
+          <TD ALIGN="right" VALIGN="TOP" NOWRAP>新建 HTML:</TD>
+          <TD ALIGN="left" VALIGN="top" NOWRAP>
+            <TEXTAREA NAME="message" ROWS="5" WRAP="VIRTUAL" class="xlargeTField"></textarea></TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </FORM>
+</BODY>
+</HTML>

@@ -1,0 +1,14 @@
+<participant version="6.0">
+	<insertText location="aboveHTML+10"><![CDATA[
+<cflock scope="Session" type="ReadOnly" timeout="30" throwontimeout="no">
+  <cfset MM_Username=Iif(IsDefined("Session.MM_Username"),"Session.MM_Username",DE(""))>
+  <cfset MM_UserAuthorization=Iif(IsDefined("Session.MM_UserAuthorization"),"Session.MM_UserAuthorization",DE(""))>
+</cflock>
+]]></insertText>
+	<searchPatterns whereToSearch="tag+cflock">
+		<searchPattern paramNames="timeout,throwontimeout" isOptional="false" limitSearch="all">
+		  <![CDATA[/<cflock scope="Session" type="ReadOnly" timeout="([^\r\n]*?)" throwontimeout="([^\r\n]*?)">\s*<cfset MM_Username=Iif\(IsDefined\("Session\.MM_Username"\),"Session\.MM_Username",DE\(""\)\)>\s*<cfset MM_UserAuthorization=Iif\(IsDefined\("Session\.MM_UserAuthorization"\),"Session\.MM_UserAuthorization",DE\(""\)\)>\s*<\/cflock>/i]]>
+		</searchPattern>
+	</searchPatterns>
+	<quickSearch>MM_UserAuthorization=Iif(IsDefined("Session.MM_UserAuthorization"),"Session.MM_UserAuthorization",DE(""))</quickSearch>
+</participant>

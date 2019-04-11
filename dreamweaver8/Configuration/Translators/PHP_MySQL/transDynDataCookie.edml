@@ -1,0 +1,25 @@
+<participant name="transDynDataCookie">
+  <translator priority=400>
+    <searchPatterns>
+      <searchPattern><![CDATA[echo]]></searchPattern>
+      <searchPattern><![CDATA[_COOKIE]]></searchPattern>
+      <searchPattern paramNames=",rs,col"><![CDATA[/echo (\w+\s*\(\s*)?\$(?:HTTP)?_(COOKIE)(?:_VARS)?\[["'](\w+)["']\]\s*\)?;?/i]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="directive" translationType="dynamic data">
+        <openTag>MM_DYNAMIC_CONTENT</openTag>
+        <attributes>
+          <attribute><![CDATA[SOURCE=Cookie]]></attribute>
+          <attribute><![CDATA[BINDING="@@col@@"]]></attribute>
+        </attributes>
+        <display><![CDATA[{Cookie.@@col@@}]]></display>
+        <closeTag>MM_DYNAMIC_CONTENT</closeTag>
+      </translation>
+      <translation whereToSearch="tag+INPUT" limitSearch="attribute+VALUE" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="VALUE={Cookie.@@col@@}"]]></attribute>
+        </attributes>
+      </translation>
+    </translations>
+  </translator>
+</participant>

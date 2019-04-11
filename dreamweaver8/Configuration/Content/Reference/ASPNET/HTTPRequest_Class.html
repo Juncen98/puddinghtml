@@ -1,0 +1,3257 @@
+<html>
+<head>
+<link rel="stylesheet" href="josh.css">
+</head>
+<body bgcolor="#FFFFFF">
+<div id="AcceptTypes">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">AcceptTypes</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">stringArray =
+          Request.AcceptTypes</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns a String array containing the Multipurpose Internet Mail Extension
+          (MIME) types accepted by the client. You can use this property to determine
+          whether a client can accept certain response types, including application
+          types such as Word or Excel, which are supported only by Internet Explorer.The
+          following table lists some common MIME types: </p>
+        <table border="1">
+          <tbody>
+            <tr>
+              <td>MIME type</td>
+              <td>Description</td>
+            </tr>
+            <tr>
+              <td>text/html</td>
+              <td>HTML text content</td>
+            </tr>
+            <tr>
+              <td>text/xml</td>
+              <td>XML text content</td>
+            </tr>
+            <tr>
+              <td>image/gif</td>
+              <td>GIF-encoded image data</td>
+            </tr>
+            <tr>
+              <td>image/jpg</td>
+              <td>JPEG-encoded image data</td>
+            </tr>
+            <tr>
+              <td>application/msword</td>
+              <td>Binary data for Microsoft Word</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">stringArray</span> <br>
+&nbsp; A String array that receives the array of accept types from the property. </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The code example declares a string array and an integer counter variable
+          and assigns the AcceptTypes property value to the array variable. It
+          then iterates the array members using the counter variable, writing
+          each value to the browser by using the Message label control:</p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load(  )
+   'Display Accept Types
+   Dim MyArray(  ) As String
+   Dim I As Integer
+   MyArray = Request.AcceptTypes
+   For I = 0 To MyArray.GetUpperBound(0)
+      Message.Text &amp;= &quot;Type &quot; &amp; CStr(I) &amp; &quot;: &quot; &amp; CStr(MyArray(I)) &amp; _
+              &quot;&lt;br/&gt;&quot;
+   Next I
+End Sub</pre>
+        </span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The output of the code would look something like this:</p>
+        Type 0: image/gif<br>
+        Type 1: image/x-xbitmap<br>
+        Type 2: image/jpeg<br>
+        Type 3: image/pjpeg<br>
+        Type 4: application/vnd.ms-powerpoint<br>
+        Type 5: application/vnd.ms-excel<br>
+        Type 6: application/msword<br>
+        Type 7: */* </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>This property can prevent the server from wasting time sending responses
+          to the client that the client cannot handle. For example, a request
+          that would normally be fulfilled by returning an Excel spreadsheet
+          could be fulfilled with an alternate response type for clients that
+          do not support the Excel MIME type, application/vnd.ms-excel. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="ApplicationPath">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">ApplicationPath</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">stringvar = Request.ApplicationPath</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns a String containing the path to the virtual root of the current
+          application. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">stringvar</span> <br>
+&nbsp; A string variable to receive the value of the ApplicationPath property. </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The code example retrieves the ApplicationPath and writes it to the
+          client using the Message label control: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load(  )
+   Message.Text = Request.ApplicationPath
+End Sub</pre>
+        </span>
+        </td>
+    </tr>
+    <tr>
+      <td><p> The output of the code should be the name of the virtual root of
+          the application to which the request was sent. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="Browser">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">Browser</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">bc = Request.Browser</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns an instance of the <span class="literal">HttpBrowserCapabilities</span> class
+          that describes the capabilities of the client browser. You can then
+          use the class instance to determine what capabilities the client browser
+          supports. The <span class="literal">HttpBrowserCapabilities</span> class
+          exposes the capabilities of the client browser as a set of Boolean
+          and String properties. Properties of the <span class="literal">HttpBrowserCapabilities</span> class
+          include: </p>
+        <ul>
+          <li><span class="literal">ActiveXControls</span> <br>
+&nbsp; A Boolean indicating whether the browser supports ActiveX controls.</li>
+          <li><span class="literal">AOL</span> <br>
+&nbsp; A Boolean indicating whether the browser is an AOL browser.</li>
+          <li><span class="literal">BackgroundSounds</span> <br>
+&nbsp; A Boolean indicating whether the browser supports background sounds.</li>
+          <li><span class="literal">Beta</span> <br>
+&nbsp; A Boolean indicating whether the browser is beta software.</li>
+          <li><span class="literal">Browser</span> <br>
+&nbsp; A String containing the User-Agent header value.
+          <li><span class="literal">CDF</span> <br>
+&nbsp; A Boolean indicating whether the browser supports the Channel Definition
+Format for pushing content. </li>
+          <li><span class="literal">ClrVersion</span> <br>
+&nbsp; Returns a System.Version object containing version information about the
+CLR (if any) installed on the client machine (from the User-Agent header). If
+ClrVersion is not Nothing, you can retrieve version information from four of
+its Integer properties: Major, Minor, Revision, and Build. </li>
+          <li><span class="literal">Cookies</span> <br>
+&nbsp; A Boolean indicating whether the browser supports cookies. </li>
+          <li><span class="literal">Crawler</span> <br>
+&nbsp; A Boolean indicating whether the browser is a search engine web crawler. </li>
+          <li><span class="literal">EcmaScriptVersion</span> <br>
+&nbsp; Returns an instance of the Version class containing information about
+the version of ECMAScript supported by the client browser. If EcmaScriptVersion
+is not Nothing, you can retrieve version information from four of its Integer
+properties: Major, Minor, Revision, and Build. </li>
+          <li><span class="literal">Frames</span> <br>
+&nbsp; A Boolean indicating whether the browser supports frames.</li>
+          <li><span class="literal">Item</span> <br>
+&nbsp; A Dictionary interface to values (i.e., Request.Browser.Item(keyname)). </li>
+          <li><span class="literal">JavaApplets</span> <br>
+&nbsp; A Boolean indicating whether the browser supports Java applets.</li>
+          <li><span class="literal">JavaScript</span> <br>
+&nbsp; A Boolean indicating whether the browser supports JavaScript.</li>
+          <li><span class="literal">MajorVersion</span> <br>
+&nbsp; An Integer representing the browser major version number (for example,
+for IE 3.01, the MajorVersion property would return 3). </li>
+          <li><span class="literal">MinorVersion</span> <br>
+&nbsp; A Double representing the browser minor version number (for example, for
+IE 3.01, the MinorVersion property would return .01). </li>
+          <li><span class="literal">MSDomVersion</span> <br>
+&nbsp; Returns an instance of the Version class containing information about
+the version of the Microsoft XML Document Object Model (DOM) supported by the
+client browser. If MSDomVersion is not Nothing, you can retrieve version information
+from four of its Integer properties: Major, Minor, Revision, and Build. </li>
+          <li><span class="literal">Platform</span> <br>
+&nbsp; A String containing the platform name (if any) included in the User-Agent
+header. </li>
+          <li><span class="literal">Tables</span> <br>
+&nbsp; A Boolean indicating whether the browser supports HTML tables.</li>
+          <li><span class="literal">Type</span> <br>
+&nbsp; A String containing the name and major version of the client browser.</li>
+          <li><span class="literal">VBScript</span> <br>
+&nbsp; A Boolean indicating whether the browser supports VBScript.</li>
+          <li><span class="literal">Version</span> <br>
+&nbsp; A String containing both the major and minor version numbers of the client
+browser. </li>
+          <li><span class="literal">W3CDomVersion</span> <br>
+&nbsp; Returns an instance of the Version class containing information about
+the version of the World Wide Web Consortium (W3C) XML DOM supported by the client
+browser. If W3CDomVersion is not Nothing, you can retrieve version information
+from four of its Integer properties: Major, Minor, Revision, and Build. </li>
+          <li><span class="literal">Win16</span> <br>
+&nbsp; A Boolean indicating whether the client is a Win16 machine.</li>
+          <li><span class="literal">Win32</span> <br>
+&nbsp; A Boolean indicating whether the client is a Win32 machine.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">bc</span> <br>
+&nbsp; An Object variable of type HttpBrowserCapabilities.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span><span class="programlisting">
+        <pre>
+Sub Page_Load(  )
+   Dim bc As HttpBrowserCapabilities
+   bc = Request.Browser
+   If bc.Cookies Then
+      Message.Text = &quot;Cookies are available with this browser&quot;
+   Else
+      Message.Text = &quot;Cookies are not available with this browser&quot;
+   End If
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>You will probably use this property a lot if you plan to support multiple
+          browsers and must provide the highest level of functionality on uplevel
+          browsers such as Internet Explorer 5 or 6 or Netscape 6. For some properties,
+          such as Cookies and JavaScript, the returned Boolean indicates only
+          whether the browser version sending the request supports these features,
+          not whether they are currently enabled in the current user's browser.
+          This property is especially important when developing custom server
+          controls, since it allows you to have your custom controls automatically
+          tailor their output to a specific browser (or class of browsers). See
+          Chapter 6 for more information on custom control development. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="ClientCertificate">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">ClientCertificate</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">cs = Request.ClientCertificate</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns an instance of the <span class="literal">HttpClientCertificate</span> class,
+          which exposes information about the client security certificate settings.
+          These properties include issuer information, key size, and certificate
+          validity dates. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">cs</span> <br>
+&nbsp; An Object variable of type HttpClientCertificate.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span><span class="programlisting">
+        <pre>
+Sub Page_Load(  )
+   Dim cs As HttpClientCertificate
+   cs = Request.ClientCertificate
+   Message.Text = &quot;Certificate Issuer is: &quot; &amp; cs.Issuer &amp; &quot;.&quot;
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>You will probably use this property in intranet settings, where you
+          have provided a limited set of clients with certificates (issued from
+          your own Certificate Server) for accessing your application, rather
+          than requiring them to authenticate by using a set of credentials entered
+          via the browser. In this case, client certificates are mapped to NT
+          user accounts to provide secure access. Client certificates can also
+          be issued by trusted third parties, but this method is rarely used.
+          If no client certificate is installed on the requesting client, this
+          property returns an HttpClientCertificate instance with no valid property
+          values. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="ContentEncoding">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">ContentEncoding</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">ce = Request.ContentEncoding</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns an instance of the <span class="literal">Encoding</span> class
+          (located in the System.Text namespace), which represents the character
+          encoding of the body of the current request. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">ce</span> <br>
+&nbsp; An Object variable of type Encoding.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example demonstrates how to display the current ContentEncoding
+          to the user:</p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load(  )
+   Dim ce As System.Text.Encoding
+   ce = Request.ContentEncoding
+   Message.Text = &quot;Current encoding is: &quot; &amp; ce.EncodingName &amp; &quot;.&quot;
+End Sub</pre>
+        </span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>For a request using UTF-8 content encoding, the output of this example
+          would be:</p>
+        <span class="programlisting">Current encoding is: Unicode (UTF-8).</span> </td>
+    </tr>
+  </table>
+</div>
+<div id="ContentLength">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">ContentLength</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">intvar = Request.ContentLength</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns an integer containing the length, in bytes, of the request
+          sent from the client. This property includes only the content sent
+          in the body of the HTTP request and does not include the length of
+          the HTTP headers or of any data sent as part of an HTTP GET request
+          (which would appear in the headers). If the HTTP request contains no
+          body, its value is 0. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">intvar</span> <br>
+&nbsp; An Integer variable to receive the length, in bytes, of the content.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>This example demonstrates how to display the length of the current
+          request in the browser:</p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load(  )
+   Dim length As Integer
+   length = Request.ContentLength
+   Message.Text = &quot;Length of request was: &quot; &amp; length &amp; &quot; bytes.&quot;
+End Sub</pre>
+        </span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The following code can be used to post to the example page:</p>
+        <span class="programlisting">
+        <pre>
+&lt;html&gt;
+   &lt;head&gt;
+      &lt;title&gt;Submit a named parameter via POST&lt;/title&gt;
+   &lt;/head&gt;
+&lt;body&gt;
+   &lt;form id=&quot;form1&quot; action=&quot;ContentLength.aspx&quot; method=&quot;POST&quot;&gt;
+      &lt;h3&gt;Name:&lt;/h3&gt;
+      &lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;
+      &lt;input type=&quot;submit&quot;&gt;
+   &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>You can use this property to test the length of content posted via
+          a POST request before acting on that content. For example, if your
+          page receives files from a file input field, you could check the ContentLength
+          property before saving or processing the uploaded file to prevent users
+          from uploading files greater than a specific size. Note that in cases
+          when you receive multiple form fields, you can get more specific data
+          on the size of an uploaded file by referring to the PostedFile.ContentLength
+          property of an HtmlInputFile control used for submitting files. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="ContentType">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">ContentType</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">stringvar = Request.ContentType</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns a String containing the MIME type of the current client request.
+          On GET requests, this property may return an empty string. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">stringvar</span> <br>
+&nbsp; A String variable to receive the content type.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example shows how you can take different actions in your page,
+          depending on the ContentType of the request:</p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load(  )
+   Dim ct As String
+   ct = Request.ContentType
+   If ct = &quot;application/x-www-form-urlencoded&quot; Then
+      'Process form input
+      Message.Text = &quot;Form data was submitted.&quot;
+   Else
+      Message.Text = &quot;Content Type of request is: &quot; &amp; ct
+   End If
+End Sub
+</pre>
+        </span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The following code can be used to post to the example page:</p>
+        <span class="programlisting">
+        <pre>
+&lt;html&gt;
+   &lt;head&gt;
+      &lt;title&gt;Submit a named parameter via POST&lt;/title&gt;
+   &lt;/head&gt;
+&lt;body&gt;
+   &lt;form id=&quot;form1&quot; action=&quot;ContentType.aspx&quot; method=&quot;POST&quot;&gt;
+      &lt;h3&gt;Name:&lt;/h3&gt;
+      &lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;
+      &lt;input type=&quot;submit&quot;&gt;
+   &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>One potential use for this property is to ensure that the content
+          type of the request is what you expect it to be. This can help avoid
+          wasting processor time with invalid requests and prevent malicious
+          users from attempting to forge requests to your application that send
+          unexpected content. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="FilePath">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">FilePath</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">stringvar = Request.FilePath</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns a String containing the virtual path of the current client
+          request. The virtual path includes the name of the application root
+          folder, any subfolders in the request path, and the requested filename. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">stringvar</span> <br>
+&nbsp; A String variable to receive the file path.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example displays the FilePath property to the user.</p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load(  )
+   Dim fp As String
+   fp = Request.FilePath
+   Message.Text = &quot;The virtual path of the current request is: _
+   &amp; &quot;&lt;strong&gt;&quot; &amp; fp &amp; &quot;&lt;/strong&gt;&quot;
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>This property is identical to the Path property listed later in this
+          chapter. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="HttpMethod">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">HttpMethod</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">stringvar = Request.HttpMethod</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns a String containing the method (i.e., GET, POST, or HEAD)
+          of the current request. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">stringvar</span> <br>
+&nbsp; A String variable to receive the HTTP method of the current request.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example uses the HttpMethod property to determine what action
+          to take for a given request:</p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load(  )
+   Select Case Request.HttpMethod
+      Case &quot;POST&quot;
+         Response.Write(&quot;POST requests not allowed!&lt;br/&gt;&quot;)
+         Response.End
+      Case &quot;HEAD&quot;
+         Response.Write(&quot;HEAD requests not allowed!&lt;br/&gt;&quot;)
+         Response.End
+      Case &quot;GET&quot;
+         'Process request
+         Message.Text = &quot;GET requests are allowed!&lt;br/&gt;&quot;
+      Case Else
+         Response.Write(&quot;Unknown request: not allowed!&lt;br/&gt;&quot;)
+         Response.End
+   End Select
+End Sub</pre>
+        </span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>Note that we use Response.Write to send the message before calling
+          Response.End. Calling Response.End will immediately terminate processing
+          of the page, which will also prevent rendering of any server control
+          output. The code for a page that makes a POST request to the example
+          page is shown here:</p>
+        <span class="programlisting">
+        <pre>
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;Submit a named parameter via POST&lt;/title&gt;
+	&lt;/head&gt;
+&lt;body&gt;
+	&lt;form id=&quot;form1&quot; action=&quot;HttpMethod.aspx&quot; method=&quot;POST&quot;&gt;
+		&lt;h3&gt;Name:&lt;/h3&gt;
+		&lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;
+		&lt;input type=&quot;submit&quot;&gt;
+	&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>In classic ASP, the request method was typically retrieved using the
+          REQUEST_METHOD key of the ServerVariables collection. Often, this key
+          was used to create self-submitting form pages by displaying a set of
+          form fields when the GET method was detected and processing the input
+          received from the form fields when the POST method was detected. ASP.NET
+          Web Forms provide built-in plumbing for self-submitting forms. By adding
+          a form with the runat=&quot;server&quot; attribute and adding one or
+          more input type server controls to the form, the developer only needs
+          to check the page's IsPostBack property to determine whether a POST
+          or GET request has been received, and execute the desired code based
+          on that property. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="InputStream">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">InputStream</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">inputstream =
+          Request.InputStream</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns a Stream object containing the body of the incoming HTTP request. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">inputstream</span> <br>
+&nbsp; An Object variable of type Stream.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example uses a byte array to search for a specified character
+          and then copies that character and the remaining contents of the stream
+          to a string. The <span class="literal">@Import</span> directive shown
+          in the example should be placed at the top of the page:</p>
+        <span class="programlisting">
+        <pre>
+&lt;% @ Import Namespace=&quot;System.IO&quot; %&gt;
+
+Sub Page_Load( )
+	Dim InStream As Stream
+	Dim iCounter, StreamLength, iRead As Integer
+	Dim OutString As String
+	Dim Found As Boolean
+
+	InStream = Request.InputStream
+	StreamLength = CInt(InStream.Length)
+	Dim ByteArray(StreamLength) As Byte
+	iRead = InStream.Read(ByteArray, 0, StreamLength)
+	InStream.Close( )
+
+	For iCounter = 0 to StreamLength - 1
+		If Found = True Then
+			OutString &amp;= Chr(ByteArray(iCounter))
+		End If
+		If Chr(ByteArray(iCounter)) = &quot;A&quot; Then
+			Found = True OutString &amp;= Chr(ByteArray(iCounter))
+		End If
+	Next iCounter
+
+	Message.Text = &quot;Output:&quot; &amp; OutString
+End Sub</pre>
+        </span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The following code can be used to post to the example page:</p>
+        <span class="programlisting">
+        <pre>
+&lt;html&gt;
+	&lt;head&gt;
+	&lt;/head&gt;
+&lt;body&gt;
+	&lt;form id=&quot;form1&quot; action=&quot;InputStream.aspx&quot; method=&quot;POST&quot;&gt;
+		&lt;h3&gt;Name:&lt;/h3&gt;
+		&lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;
+		&lt;input type=&quot;submit&quot;&gt;
+	&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        </span>
+        </td>
+    </tr>
+    <tr>
+      <td><p> The code returns as output the first capital A appearing in the request
+          body. Any characters after it are returned to the end of the stream. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>This property is useful if you wish to perform byte-level filtering
+          of the request body. It works only with POST requests, since these
+          requests are the only commonly used HTTP requests that provide a request
+          body. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="IsAuthenticated">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">IsAuthenticated</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">boolvar = Request.IsAuthenticated</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns a Boolean indicating whether the current request is coming
+          from a user who is authenticated. This property refers to authentication
+          against the NTLM account database. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">boolvar</span> <br>
+&nbsp; A Boolean variable to receive the authentication status of the user.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example checks to see if the current user is authenticated and
+          it outputs one of two messages, depending on the authentication status
+          of the user. Note that the message delivered to authenticated users
+          utilizes the User property of the page to output the current user's
+          name and domain. </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Dim boolAuth As Boolean
+
+	boolAuth = Request.IsAuthenticated
+
+	If boolAuth Then
+		Message.Text = &quot;User&quot; &amp; Page.User.Identity.Name &amp; &quot;is authenticated.&quot;
+	Else
+		Message.Text = &quot;Current user is not authenticated.&quot;
+	End If
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>In addition to the IsAuthenticated property that the <span class="literal">HttpRequest</span> class
+          exposes, the FormsIdentity, WindowsIdentity, and <span class="literal">PassportIdentity</span> classes
+          expose an IsAuthenticated property for much the same purpose as the <span class="literal">HttpRequest</span> class.
+          Note that the IsAuthenticated property of the <span class="literal">HttpRequest</span> class
+          returns the authentication status of the user regardless of the authentication
+          method used. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="IsSecureConnection">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">IsSecureConnection</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">boolvar = Request.IsSecureConnection</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns a Boolean indicating whether the current connection uses secure
+          sockets (SSL) for communication. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">boolvar</span> <br>
+&nbsp; A Boolean variable to receive the SSL status of the current request.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example shows how you can take different actions depending on
+          whether or not the current request was made via SSL: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Dim boolvar As Boolean
+	boolvar = Request.IsSecureConnection
+	If boolvar = True Then
+		Message.Text = &quot;Connection is HTTPS.&quot;
+	Else
+		Message.Text = &quot;Connection is HTTP.&quot;
+	End If
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>You would typically use this property to determine whether or not
+          to fulfill a request that requires an SSL connection in order to encrypt
+          sensitive data (such as credit card numbers) that might be submitted
+          via the requested page. Additionally, you could use this property on
+          a page that may or may not use SSL to determine how to render output
+          to the page depending on the SSL status. Since encrypting and decrypting
+          content for SSL communication exacts a performance penalty, reducing
+          the number and/or size of graphics used on SSL-enabled pages is generally
+          considered good practice. With this property, you could render more
+          and/or higher-resolution graphics when SSL is not enabled for the request,
+          and render fewer and/or lower-resolution graphics for SSL requests. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="Path">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">Path</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">stringvar = Request.Path</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns a String containing the virtual path of the current client
+          request. The virtual path includes the name of the application root
+          folder, subfolders in the request path, and the requested filename. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">stringvar</span> <br>
+&nbsp; A String variable to receive the file path.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example displays the Path property to the user:</p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Dim path As String
+	path = Request.FilePath
+	Message.Text = &quot;The virtual path of the current request is:&quot; &amp; path
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>This property is identical to the FilePath property listed earlier
+          in this chapter. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="PathInfo">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">PathInfo</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">stringvar = Request.PathInfo</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns a String containing any additional path information (including
+          path information appended to a URL after the filename of the requested
+          resource) passed with the current request. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">stringvar</span> <br>
+&nbsp; A String variable to receive the additional path information.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example writes both the Path and PathInfo properties to the client
+          browser: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Message.Text = &quot;Path = &quot; &amp; Request.Path &amp; &quot;&lt;br/&gt;&quot;
+	Message.Text &amp;= &quot;Additional Path Info = &quot; &amp; Request.PathInfo &amp; &quot;&lt;br/&gt;&quot;
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>PathInfo does not return information such as query string values.
+          PathInfo returns any characters following a forward-slash (/) after
+          the resource (file) name, including the forward-slash itself. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="PhysicalApplicationPath">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">PhysicalApplicationPath</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">stringvar = Request.PhysicalApplicationPath </p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns a String containing the physical path to the root of the current
+          application. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">stringvar</span> <br>
+&nbsp; A String variable to receive the application path.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example writes the PhysicalApplicationPath property to the browser: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Dim physAppPath As String
+	physAppPath = Request.PhysicalApplicationPath
+	Message.Text = &quot;Physical Application Path = &quot; &amp; physAppPath
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>This property is useful when you need to create or write to a file
+          within your web application. Rather than hardcoding a filesystem path
+          in your page, you can use this property in combination with a filename
+          to create or edit a file in the same folder as the page containing
+          the code, regardless of the page's location. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="PhysicalPath">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">PhysicalPath</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">stringvar = Request.PhysicalPath </p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns a String containing the physical path to the requested file.</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">stringvar</span> <br>
+&nbsp; A String variable to receive the physical path.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example writes the PhysicalPath property to the browser:</p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Dim physicalPath As String
+	physicalPath = Request.PhysicalPath
+	Message.Text = &quot;Physical Path = &quot; &amp; physicalPath
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>Unlike the PhysicalApplicationPath, which returns only the path to
+          the root of the application, the PhysicalPath property returns the
+          full physical path of the requested resource, including any intervening
+          folders and the resource's filename. This property may be useful in
+          combination with ASP.NET's Trace functionality in troubleshooting situations
+          when files you are attempting to write to or read from are not found,
+          or when created files aren't located where you expect them to be. Adding
+          Trace.Write statements to your page to write the Path, PhysicalApplicationPath,
+          and PhysicalPath properties to the trace log (which you can enable
+          by adding the <span class="literal">Trace=&quot;true&quot;</span> attribute
+          to the<span class="literal"> @ Page</span> directive) may help you
+          track down such bugs. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="RawUrl">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">RawUrl</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">stringvar = Request.RawUrl</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns a String containing the raw URL of the current request. The
+          raw URL consists of the portion of the URL following the domain information.
+          Thus, for the URL http://search.support.microsoft.com/kb/c.asp, the
+          raw URL is <span class="emphasis">/kb/c.asp</span>. The raw URL includes
+          the query string, if one is present. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">stringvar</span> <br>
+&nbsp; A String variable to receive the raw URL.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example writes the RawUrl property to the browser:</p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Dim stringvar As String
+	stringvar = Request.RawUrl
+	Message.Text = &quot;The raw URL is:&quot; &amp; stringvar
+End Sub</pre>
+        </span> </td>
+    </tr>
+  </table>
+</div>
+<div id="RequestType">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">RequestType</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">stringvar = Request.RequestType </p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>The RequestType property returns a String containing the request type
+          (i.e., GET or POST) of the current request. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">stringvar</span> <br>
+&nbsp; A String variable to receive the request type.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example writes the RequestType property to the browser:</p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Dim stringvar As String
+	stringvar = Request.RequestType
+	Message.Text = &quot;The request type is:&quot; &amp; stringvar
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>This property is listed as read/write; however, there really aren't
+          any situations where it would be useful to change its value. From the
+          read standpoint, this property returns the same information as the
+          read-only HttpMethod property listed earlier in this chapter. If you
+          attempt to change its value, no corresponding change occurs in the
+          value of HttpMethod. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="TotalBytes">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">TotalBytes</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">intvar = Request.TotalBytes</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns an Integer representing the size of the HTTP request body.
+          The TotalBytes property does not include the size of the HTTP request
+          headers, or the size of query string values passed with a GET request. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">intvar</span> <br>
+&nbsp; An Integer variable to receive the size, in bytes, of the current request
+body. </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example writes the TotalBytes property to the browser:</p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Dim intvar As Integer
+	intvar = Request.TotalBytes
+	Message.Text = &quot;The size of the current request body is: &lt;br/&gt;&quot;
+	Message.Text &amp;= intvar &amp; &quot;bytes.&quot;
+End Sub</pre>
+        </span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The following code can be used to post to the example page:</p>
+        <span class="programlisting">
+        <pre>
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;Submit a named parameter via POST&lt;/title&gt;
+	&lt;/head&gt;
+&lt;body&gt;
+	&lt;form id=&quot;form1&quot; action=&quot;TotalBytes.aspx&quot; method=&quot;POST&quot;&gt;
+		&lt;h3&gt;Name:&lt;/h3&gt;
+		&lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;
+		&lt;input type=&quot;submit&quot;&gt;
+	&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>This property's behavior is identical to that of the ContentLength
+          property described earlier in this chapter. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="Url">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">Url</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">uriObj = Request.Url</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns an instance of the <span class="literal">Uri</span> class
+          containing properties that describe the current URL requested by the
+          user. Properties exposed by the <span class="literal">Uri</span> class
+          include Scheme (protocol), Port, and Host. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">uriObj</span> <br>
+&nbsp; An Object variable of type Uri.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example uses the Uri object that the Url property returns to write
+          information about the URL for the current request to the browser: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Dim myUri As Uri
+	myUri = Request.Url
+
+	Message.Text = &quot;Current request URL info - &lt;br/&gt;&lt;br/&gt;&quot;
+	Message.Text &amp;= &quot;Protocol:&quot; &amp; myUri.Scheme &amp; &quot;&lt;br/&gt;&quot;
+	Message.Text &amp;= &quot;Port:&quot; &amp; myUri.Port &amp; &quot;&lt;br/&gt;&quot;
+	Message.Text &amp;= &quot;Host Name:&quot; &amp; myUri.Host &amp; &quot;&lt;br/&gt;&quot;
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>While the <span class="literal">Uri</span> class this property returns
+          has methods as well as properties, you're more likely to use these
+          methods (particularly the CheckHostName and CheckSchemeName methods)
+          when creating your own Uri resource from scratch, rather than when
+          receiving the Uri instance from the Url property. A note on URIs: Uniform
+          Resource Identifier (URI) (compare to Uniform Resource Locator, or
+          URL) is a more general version of URLs and URNs. In most cases today,
+          URI and URL are identical, although this may change as URNs are used
+          more frequently. For the purposes of the Url property, the terms carry
+          the same meaning. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="UrlReferrer">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">UrlReferrer</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">uriObj = Request.UrlReferrer</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns an instance of the <span class="literal">Uri</span> class
+          containing properties that describe the URL for the resource from which
+          the user navigated to the current requested resource. If the user did
+          not navigate to the current resource (i.e., if the current resource
+          is accessed directly), the UrlReferrer property returns <span class="literal">Nothing</span>. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">uriObj</span> <br>
+&nbsp; An Object variable of type Uri.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example uses the Uri object that the UrlReferrer property returned
+          in order to write information about the URL for the referring resource
+          to the browser:</p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Dim myUri As Uri
+	myUri = Request.UrlReferrer
+
+	If Not (myUri Is Nothing) Then
+		Message.Text = &quot;Referral URL info - &lt;br/&gt;&lt;br/&gt;&quot;
+		Message.Text &amp;= &quot;Protocol:&quot; &amp; myUri.Scheme &amp; &quot;&lt;br/&gt;&quot;
+		Message.Text &amp;= &quot;Port:&quot; &amp; myUri.Port &amp; &quot;&lt;br/&gt;&quot;
+		Message.Text &amp;= &quot;Host Name:&quot; &amp; myUri.Host &amp; &quot;&lt;br/&gt;&quot;
+		Message.Text &amp;= &quot;App Path:&quot; &amp; myUri.AbsolutePath &amp; &quot;&lt;br/&gt;&quot;
+	Else
+		Message.Text = &quot;No referral URL info available.&quot;
+	End If
+End Sub</pre>
+        </span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The following code can link to the example page</p>
+        <span class="programlisting">
+        <pre>
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;Link to UrlReferrer&lt;/title&gt;
+	&lt;/head&gt;
+&lt;body&gt;
+	&lt;a href=&quot;UrlReferrer.aspx&quot;&gt;Go to UrlReferrer.aspx&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example code makes sure that the UrlReferrer property returns
+          a valid instance of the <span class="literal">Uri</span> class. The
+          UrlReferrer property returns <span class="literal">Nothing</span> if
+          the page is accessed directly, rather than from a link on another page. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="UserAgent">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">UserAgent</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">stringvar = Request.UserAgent</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns a String containing the User-Agent header. The User-Agent
+          string identifies the browser (or other HTTP-capable client software,
+          such as that used on mobile phones, etc.) the client uses to make the
+          request. Depending on the browser and platform, this string may also
+          identify the operating system the client uses, as well as the version
+          of the installed .NET Framework (IE only). </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">stringvar</span> <br>
+&nbsp; A String variable to receive the User-Agent string.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example writes the UserAgent property to the browser:</p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Dim stringvar As String
+	stringvar = Request.UserAgent
+	Message.Text = &quot;User Agent:&quot; &amp; stringvar
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>When you attempt to discern the capabilities of the client browser,
+          using the properties of the <span class="literal">HttpBrowserCapabilities</span> object
+          returned by the Request.Browser property is generally easier. However,
+          there may be cases in which the User-Agent for a given client returns
+          information that is not checked for by the <span class="literal">HttpBrowserCapabilities</span> class.
+          In this case, you could add the desired information to the <span class="literal">&lt;browserCaps&gt;</span> configuration
+          section handler in <span class="emphasis">machine.config</span> (see
+          Chapter 8 and Chapter 20 for more information on ASP.NET configuration)
+          and then create your own version of the <span class="literal">HttpBrowserCapabilities</span> class
+          by inheriting from the built-in class and adding your own property
+          or properties for the <span class="literal">User-Agent</span> attribute
+          you're looking for. Or, if you don't want to make that effort, you
+          could simply parse the User-Agent string for the desired attribute
+          by using the UserAgent property. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="UserHostAddress">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">UserHostAddress</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">stringvar = Request.UserHostAddress</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns the IP address of the client making the request. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">stringvar</span> <br>
+&nbsp; A String variable to receive the client IP address.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example writes the UserHostAddress, UserHostName, and UserLanguages
+          properties to the browser: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Dim HostAddress, HostName, Languages( ) As String
+	Dim iCounter As Integer
+
+	HostAddress = Request.UserHostAddress
+	HostName = Request.UserHostName
+	Languages = Request.UserLanguages
+
+	Message.Text = &quot;Client IP Address:&quot; &amp; HostAddress &amp; &quot;&lt;br/&gt;&quot;
+	Message.Text &amp;= &quot;Client Machine Name:&quot; &amp; HostName &amp; &quot;&lt;br/&gt;&quot;
+	For iCounter = 0 To Languages.GetUpperBound(0)
+		Message.Text &amp;= &quot;Client Language&quot; &amp; iCounter &amp; &quot;: &quot; &amp;_
+				CStr(Languages(iCounter)) &amp; &quot;&lt;br/&gt;&quot;
+	Next iCounter
+End Sub</pre>
+        </span> </td>
+    </tr>
+  </table>
+</div>
+<div id="UserHostName">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">UserHostName</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">stringvar= Request.UserHostName </p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description" >
+        <p>Returns a string that contains the DNS hostname of the client making
+          the request. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">stringvar</span> <br>
+&nbsp; A String variable to receive the hostname.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>See the example for the UserHostAddress property.</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>If no DNS server is available that can resolve the client IP address
+          to a DNS name, the UserHostName property returns the IP address of
+          the client (just like the UserHostAddress property). </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="UserLanguages">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">UserLanguages</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">stringArray =
+          Request.UserLanguages</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns a sorted String array containing the list of languages supported
+          by the client. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">stringArray</span> <br>
+&nbsp; A String array variable to receive the list of client-supported languages. </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>See the example for the UserHostAddress property.</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>To test this property, you can set support for additional languages
+          in your browser. Now if you browse a page containing the code in the
+          UserHostAddress example, all languages you select will be listed in
+          the order you chose. </p>
+        <ul>
+          <li>In Internet Explorer 6, select Internet Options... from the Tools
+            menu. On the General tab of the Internet Options dialog, click the
+            Languages... button. Use the Language Preference dialog to add, remove,
+            or move languages up or down on the list of preferred languages.</li>
+          <li>In Netscape Navigator 6, select Preferences... from the Edit menu
+            and then select the Languages node in the lefthand tree view. Use
+            the options on the right to add, remove, or move languages up or
+            down on the list.</li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td><p>Now if you browse a page containing the code in the UserHostAddress
+          example, all languages you select will be listed in the order you chose. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="Cookies">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">Cookies</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">HttpCookieCollection
+          = Request.Cookies</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>The Cookies collection returns an instance of the <span class="literal">HttpCookieCollection</span> class
+          containing all cookies sent as a part of the current request. The <span class="literal">HttpCookieCollection</span> class
+          contains an instance of the <span class="literal">HttpCookie</span> class
+          for each cookie passed as part of the client request. The properties
+          of these <span class="literal">HttpCookie</span> instances can be used
+          to access information about the cookie(s). </p>
+        <p>As in classic ASP, the Cookies collection is still implemented as
+          a collection (in fact, the HttpCookieCollection inherits from the .NET <span class="literal">NameObjectCollectionBase</span> class),
+          but rather than a collection of string keys and string values, the
+          ASP.NET implementation is a collection of string keys and objects (instances
+          of the <span class="literal">HttpCookie</span> class). Individual cookies
+          are retrieved into variables of type HttpCookie, providing access to
+          the cookies' values through class properties. </p>
+        <p> Dictionary-style cookies (cookies with more than one value) are accessible
+          through the Values property of the <span class="literal">HttpCookie</span> class,
+          which returns a NameValueCollection containing the cookie subkeys and
+          values. You can also retrieve individual values by their key with the
+          following syntax: </p>
+        <span class="programlisting"> HttpCookie.Values(&quot; keyname &quot;)</span> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">HttpCookieCollection</span> <br>
+&nbsp; An Object variable of type HttpCookieCollection.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example retrieves the collection of cookies from the Cookies property
+          and writes out the key and value of each, along with any subkeys of
+          dictionary cookies: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Dim Counter1, Counter2 As Integer
+	Dim Keys(), SubKeys( ) As String
+	Dim CookieColl As HttpCookieCollection
+	Dim Cookie As HttpCookie
+
+	' Get Cookie collection
+	CookieColl = Request.Cookies
+
+	' Get Cookie keys
+	Keys = CookieColl.AllKeys
+
+	' Get cookies by index
+	For Counter1 = 0 To Keys.GetUpperBound(0)
+		Cookie = CookieColl(Keys(Counter1))
+		Message.Text = &quot;Cookie:&quot; &amp; Cookie.Name &amp; &quot;&lt;br/&gt;&quot;
+		Message.Text &amp;= &quot;Expires: &quot; &amp; Cookie.Expires &amp;&quot;&lt;br/&gt;&quot;
+
+		' Get keys for dictionary cookie into an array
+		SubKeys = Cookie.Values.AllKeys
+		' Write dictionary cookie values to the browser
+		For Counter2 = 0 To SubKeys.GetUpperBound(0)
+			Message.Text &amp;= &quot;Key &quot; &amp; CStr(Counter2) + &quot;: &quot; &amp;_
+				SubKeys(Counter2) &amp; &quot;&lt;br/&gt;&quot;
+			Message.Text &amp;= &quot;Value &quot; &amp; CStr(Counter2) + &quot;: &quot; &amp;_
+				Cookie.Values(Counter2) &amp; &quot;&lt;br/&gt;&quot;
+		Next Counter2
+		Message.Text &amp;= &quot;&lt;br/&gt;&quot;
+	Next Counter1
+End Sub </pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The ASP implementation of the Cookies collection and the HttpCookieCollection
+          class returned by the Cookies property expose a common set of properties;
+          these properties are described in Section 16.3. While it is still possible
+          in ASP.NET to retrieve an individual cookie by its text key as well
+          as its numerical index, the differences in the operation make wholesale
+          migration of ASP cookie-handling code to ASP.NET impractical without
+          significant changes. For example, the following code will raise exceptions: </p>
+        <span class="programlisting">
+        <pre>
+For Each strKey In Request.Cookies
+	Response.Write	strKey &amp; &quot; = &quot; &amp;Request.Cookies(strKey) &amp;_
+					&quot;&lt;br/&gt;&quot;
+	If Request.Cookies(strKey).HasKeys Then
+		For Each strSubKey In Request.Cookies(strKey)
+			Response.Write &quot;-&gt;&quot;&amp; strKey &amp; &quot;(&quot; &amp; strSubKey &amp;_
+				&quot;) = &quot; &amp;Request.Cookies(strKey)(strSubKey) &amp; &quot;&lt;br/&gt;&quot;
+		Next
+	End If
+Next</pre>
+        </span>
+        </td>
+    </tr>
+    <tr>
+      <td><p> Apart from the fact that this code does not explicitly declare its
+          variables or their types (both of which are required by default in
+          ASP.NET), the previous code fails because the Request.Cookies(key)
+          property returns an instance of HttpCookie, rather than a string, and
+          the HttpCookie instance cannot be implicitly converted to a string
+          for the Response.Write statement, which expects a string. Additionally,
+          the call to Request.Cookies(key) does not get the subkeys for a dictionary
+          cookie. Fortunately, the modifications necessary to make the previous
+          code work are fairly simple and are shown here: </p>
+        <span class="programlisting">
+        <pre>
+For Each strKey In Request.Cookies
+	Message.Text = strKey &amp; &quot; = &quot; &amp;_
+		Request.Cookies(strKey).ToString( ) &amp; &quot;&lt;br/&gt;&quot;
+	If Request.Cookies(strKey).HasKeys Then
+		For Each strSubKey In Request.Cookies(strKey).Values
+			Message.Text = &quot;-&gt;&quot;&amp; strKey &amp; &quot;(&quot; &amp; strSubKey &amp; _
+				&quot;) = &quot; &amp; Request.Cookies(strKey)(strSubKey).ToString()_
+				&amp; &quot;&lt;br/&gt;&quot;
+		Next
+	End If
+Next</pre>
+        </span>
+        </td>
+    </tr>
+    <tr>
+      <td><p> To solve the first issue, we use the HttpCookie's Value method to
+          get the value of the cookie as a string. The solution to the second
+          issue is to call the Values property of the HttpCookie instance, which
+          allows us to retrieve the subkeys of a dictionary cookie.</p>
+        </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td><p>Another quirk of the change from the mostly text-based manipulation
+          of cookie keys and values in ASP to class-based manipulation in ASP.NET
+          is that the Expires property of the HttpCookie class is available whether
+          you read or write to a cookie. In ASP, however, attempting to read
+          the Expires property of a cookie would result in an error. Unfortunately,
+          at the time of this writing, the Expires property of HttpCookie does
+          not actually return the expiration of the cookie. Instead, it returns
+          the value 12:00:00 AM, which suggests that despite its readability,
+          the property is not designed to be read from.</p>
+        </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td><p>Finally, unlike classic ASP, the collections in ASP.NET are zero-based,
+          so the first element in any collection or array is 0, not 1. This is
+          especially important to remember when retrieving values by their index. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="Files">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">Files</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">HttpFileCollection
+          = Request.Files</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>The Files collection, which is new to ASP.NET, returns a collection
+          of type HttpFileCollection that contains any files uploaded by the
+          user's current request. This collection is especially useful in combination
+          with the HtmlInputFile Server Control, which provides the basic plumbing
+          necessary to upload files via an HTTP POST request. When a user submits
+          one or more files (one per HtmlInputFile control on the submitting
+          page), you can retrieve the files by using the Files collection. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">HttpFileCollection</span> <br>
+&nbsp; An Object variable of type HttpFileCollection.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example uses two HtmlInputFile server controls and a server-side <span class="literal">&lt;script&gt;</span> block
+          to upload files and process them. The example shows both the <span class="literal">&lt;form&gt;</span> section
+          of the page and its controls and the <span class="literal">&lt;script&gt;</span> block
+          containing the UploadBtn_OnClick method called by the onServerClick
+          event of the HtmlInputButton control: </p>
+        <span class="programlisting">
+        <pre>
+&lt;!--Place between the &lt;head&gt; and &lt;/head&gt; tags --&gt;
+&lt;script runat=&quot;server&quot;&gt;
+		Sub UploadBtn_Click(Sender as Object, e as EventArgs)
+			UploadForm.Visible = False
+			If InStr(Request.ContentType, &quot;multipart/form-data&quot;) Then
+				Dim Counter1 As Integer
+				Dim Keys( ) As String
+				Dim Files As HttpFileCollection
+
+				' Load File
+				Files = Request.Files
+				' Get names of all files into an array
+				Keys = Files.AllKeys
+				For Counter1 = 0 To Keys.GetUpperBound(0)
+					Message.Text &amp;= &quot;File ID: &quot; &amp; Keys(Counter1) &amp; &quot;&lt;br/&gt;&quot;_
+					Message.Text &amp;= &quot;File Name/Path: &quot; &amp;_
+						Files(Counter1).FileName &amp; &quot;&lt;br/&gt;&quot;
+				Next Counter1
+			Else
+				Message.Text = &quot;Wrong content type!&quot;
+			End If
+		End Sub
+&lt;/script&gt;
+
+&lt;!-- This section resides between the &lt;body&gt; and &lt;/body&gt; tags --&gt;
+&lt;form id=&quot;UploadForm&quot; enctype=&quot;multipart/form-data&quot; runat=&quot;server&quot;&gt;
+	Select File To Upload to Server:
+	&lt;br/&gt;
+	&lt;%-- MyFile and MyFile2 are HtmlInputFile controls --%&gt;
+	&lt;%-- note the runat attribute --%&gt;
+	&lt;input id=&quot;MyFile&quot; type=&quot;file&quot; runat=&quot;server&quot;&gt;
+	&lt;br/&gt;
+	&lt;input id=&quot;MyFile2&quot; type=&quot;file&quot; runat=&quot;server&quot;&gt;
+	&lt;br/&gt;
+	&lt;input id=&quot;Submit1&quot; type=&quot;submit&quot; value=&quot;Upload!&quot;
+		onserverclick=&quot;UploadBtn_Click&quot; runat=&quot;server&quot; &gt;
+&lt;/form&gt;
+&lt;asp:label id=&quot;Message&quot; runat=&quot;server&quot;/&gt;</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>In classic ASP, file uploading was a painful process that usually
+          involved finding and purchasing a third-party upload control to use
+          on the receiving ASP page to parse and save uploaded files. Thanks
+          to the Files collection, you no longer need to locate and learn how
+          to use third-party controls to upload files. This is bad for the control
+          developers (although we suspect they'll more than make up for the loss
+          by writing new Server Controls), but great for ASP.NET developers.
+          Two important points to remember about the Files collection to successfully
+          upload files: </p>
+        <ul>
+          <li>If using a client-side HTML form (no <span class="literal">runat=&quot;server&quot;</span> attribute),
+            set the <span class="literal">method</span> attribute of the form
+            to <span class="literal">POST.</span> </li>
+          <li>Set the <span class="literal">enctype</span> attribute of the form
+            to <span class="literal">multipart/form-data</span> . </li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td><p>The upload will succeed only if you take both steps. Note that the
+          code example checks to see if the incoming request is multipart/form-data
+          before attempting to retrieve the files.</p>
+        </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td><p>It is not necessary to use the HtmlInputFile control to upload files
+          that can be retrieved via the Files collection. As long as the submitting
+          page uses the POST method and the multipart/form-data <span class="literal">enctype</span> attribute,
+          you can use the standard HTML file input tags:</p>
+        <span class="programlisting">
+        <pre>
+&lt;input type=&quot;file&quot; id=&quot;myFile&quot; name=&quot;myFile&quot;&gt;</pre>
+        </span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>Note the use of the name attribute, without which the files collection
+          will not contain the uploaded file for the control. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="Form">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">Form</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">NameValueCollection
+          = Request.Form</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>The Form collection returns an instance of the NameValueCollection
+          class containing all form fields passed along with an HTTP POST request.
+          This collection will contain data only when the Content-Type of the
+          HTTP request is either <span class="literal">application/x-www-form-urlencoded</span> or <span class="literal">multipart/form-data</span>. </p>
+        <p>The Form collection is one of two ways to retrieve data, depending
+          on the HTTP method used to submit the data. The Form collection retrieves
+          data submitted by an HTML form whose <span class="literal">method</span> attribute
+          is set to <span class="literal">POST</span> , while the QueryString
+          collection (covered later in this section) retrieves values submitted
+          by HTML forms whose <span class="literal">method</span> attribute is
+          set to <span class="literal">GET</span>. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">NameValueCollection</span> <br>
+&nbsp; An Object variable of type NameValueCollection.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example demonstrates how ASP.NET allows a single page to be used
+          to submit values via HTTP POST and retrieve and display the values
+          to the user. The example uses the IsPostBack property of the <span class="literal">Page</span> class
+          to determine whether the request is a result of the form being submitted.
+          If the request is not a postback, the form fields are displayed to
+          allow the user to enter values. If the request is a postback, the page
+          retrieves the Form collection and displays the name and value of each
+          field in the browser. </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	If IsPostBack Then
+		Form1.Visible = False
+		If Request.HttpMethod= &quot;POST&quot; Then
+			Dim Counter1 As Integer
+			Dim Keys( ) As String
+			Dim FormElements As NameValueCollection
+
+			' Get Form keys/elements
+			FormElements=Request.Form ' Get names of form fields into array
+			Keys = FormElements.AllKeys
+			For Counter1 = 0 To Keys.GetUpperBound(0)
+				Message.Text &amp;= &quot;Form &quot; &amp; Counter1 &amp; &quot; name: &quot; &amp;_
+					Keys(Counter1) &amp; &quot; &lt;br/&gt;&quot;
+				Message.Text &amp;= &quot;Form &quot; &amp; Counter1 &amp; &quot; value: &quot; &amp;_
+					FormElements(Counter1) &amp; &quot;&lt;br/&gt;&quot;
+			Next Counter1
+		End If
+	Else
+		Form1.Visible = True
+	End If
+End Sub
+
+&lt;!-- This section resides between the &lt;body&gt; and &lt;/body&gt; tags --&gt;
+&lt;form id=&quot;Form1&quot; runat=&quot;server&quot;&gt;
+	First Name:
+	&lt;br/&gt;
+	&lt;asp:Textbox id=&quot;txtFName&quot; runat=&quot;server&quot;/&gt;
+	&lt;br/&gt;
+	Last Name:
+	&lt;br/&gt;
+	&lt;asp:Textbox id=&quot;txtLName&quot; runat=&quot;server&quot;/&gt;
+	&lt;br/&gt;
+	&lt;asp:Button id=&quot;Submit&quot; Text=&quot;Submit&quot; runat=&quot;server&quot;/&gt;
+&lt;/form&gt;
+&lt;asp:label id=&quot;Message&quot; runat=&quot;server&quot;/&gt;</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The Form collection exposes the same properties and methods described
+          in Section 16.3 and adds the following methods: </p>
+        <ul>
+          <li><span class="emphasis">Get</span> ( Index | Key )</li>
+          Returns the contents of the specified item in the NameValueCollection
+          as a comma-delimited String.
+          <li><span class="emphasis">GetValues</span> ( Index | Key ) Returns
+            the contents of the specified item in the NameValueCollection as
+            a String array.</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="Headers">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">Headers</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">NameValueCollection
+          = Request.Headers</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>The Headers collection returns an instance of the <span class="literal">NameValueCollection</span> class
+          containing all HTTP headers sent with the current request. This collection
+          provides the same information that is returned by calling the Request.ServerVariables
+          collection with the <span class="literal">ALL_HTTP</span> key. </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">NameValueCollection</span> <br>
+&nbsp; An Object variable of type NameValueCollection.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example writes the HTTP headers passed with the request to the
+          browser, first by using the ServerVariables(&quot;ALL_HTTP&quot;) method
+          and then by using the Headers collection: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Dim AllHttp As String
+	' Get a String with all the HTTP headers
+	AllHttp = Request.ServerVariables(&quot;ALL_HTTP&quot;)
+	' Use Replace to format the String
+	AllHttp = Replace(AllHttp, &quot;HTTP&quot;, &quot; &lt;br/&gt;HTTP&quot;
+	Message.Text &amp;= AllHttp &amp; &quot;&lt;br/&gt;&lt;br/&gt;&quot;
+	Dim Counter1, Counter2 As Integer
+	Dim Keys(), subKeys( ) As String
+	Dim HeaderColl As NameValueCollection
+
+	' Load Headers into NameValueCollection
+	HeaderColl=Request.Headers
+	' Get keys into an array
+	Keys = HeaderColl.AllKeys
+	For Counter1 = 0 To Keys.GetUpperBound(0)
+		Message.Text &amp;= &quot;Key: &quot; &amp; Keys(Counter1) &amp; &quot;&lt;br/&gt;&quot;
+		' Get all values under this key
+		subKeys = HeaderColl.GetValues(Counter1)
+		For Counter2 = 0 To subKeys.GetUpperBound(0)
+			Message.Text &amp;= &quot;Value &quot; &amp; CStr(Counter2) &amp; &quot;: &quot; &amp;_
+				subKeys(Counter2) &amp; &quot;&lt;br/&gt;&quot;
+		Next Counter2
+	Next Counter1
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The Headers collection returns only the HTTP headers that were sent
+          as a part of the current request, as opposed to the ServerVariables
+          collection (described later in this section), which contains keys for
+          every HTTP header, regardless of whether a value was passed. If all
+          you need to do is write the HTTP headers to a file or display them
+          in the browser, it may be simpler to use the ServerVariables collection.
+          In cases when you need to access a specific HTTP header by name or
+          loop through the collection, the Headers collection is the way to go. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="Params">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">Params</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">NameValueCollection
+          = Request.Params</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>The Params collection returns an instance of the <span class="literal">NameValueCollection</span> class
+          containing key/value pairs for the QueryString, Form, ServerVariables,
+          and Cookies collections. You can use the Params collection to dump
+          all of these collections to a file or to the browser and to troubleshoot
+          an application or track the form values your application receives,
+          regardless of whether they come via GET (QueryString collection) or
+          POST (Form collection). </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">NameValueCollection</span> <br>
+&nbsp; An Object variable of type NameValueCollection.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example writes the keys and values contained in the Params collection
+          to the browser: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load( )
+	Dim Counter1, Counter2 As Integer
+	Dim Keys(), subKeys( ) As String
+	Dim ParamColl As NameValueCollection
+
+	' Load Params into NameValueCollection
+	ParamColl=Request.Params ' Get keys into an array
+	Keys = ParamColl.AllKeys
+	For Counter1 = 0 To Keys.GetUpperBound(0)
+		Message.Text &amp;= &quot;Key: &quot; &amp; Keys(Counter1) &amp; &quot;&lt;br/&gt;&quot;
+		' Get all values under this key subKeys = ParamColl.GetValues(Counter1)
+		For Counter2 = 0 To subKeys.GetUpperBound(0)
+			Message.Text &amp;= &quot;Value &quot; &amp; CStr(Counter2) &amp; &quot;: &quot; &amp;_
+				subKeys(Counter2) &amp; &quot;&lt;br/&gt;&quot;
+		Next Counter2
+		Message.Text &amp;= &quot;&lt;br/&gt;&quot;
+	Next Counter1
+End Sub</pre>
+        </span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The following code can be used to post to the example page:</p>
+        <span class="programlisting">
+        <pre>
+&lt;html&gt;
+	&lt;head&gt;
+	&lt;title&gt;Submit a named parameter via POST&lt;/title&gt;
+	&lt;/head&gt;
+&lt;body&gt;
+	&lt;form id=&quot;form1&quot; action=&quot;Params.aspx&quot; method=&quot;POST&quot;&gt;
+		&lt;h3&gt;Name:&lt;/h3&gt;
+		&lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;
+		&lt;input type=&quot;submit&quot;&gt;
+	&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The collections are listed in the following order: </p>
+        <ul>
+          <li> QueryString </li>
+          <li> Form </li>
+          <li> Cookies </li>
+          <li> ServerVariables </li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td><p>While it is possible to have both the Form and QueryString collections
+          populated (for example, if a query string name/value pair is added
+          to the URL for the <span class="literal">action</span> attribute of
+          a form by us.</p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="QueryString">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">QueryString</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">NameValueCollection
+          = Request.QueryStrings</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>The QueryString collection returns an instance of the <span class="literal">NameValueCollection</span> class
+          containing all the keys and values passed as a part of the query string
+          (typically by submitting an HTML form that uses the GET method instead
+          of POST).</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">NameValueCollection</span> <br>
+&nbsp; An Object variable of type NameValueCollection.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example writes the contents of the QueryString collection to the
+          browser: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load(  )
+   Dim Counter1, Counter2 As Integer
+   Dim Keys(), subKeys(  ) As String
+   Dim QSColl As NameValueCollection
+
+   ' Load QS into NameValueCollection
+   QSColl=Request.QueryString
+   ' Get keys into an array
+   Keys = QSColl.AllKeys
+   For Counter1 = 0 To Keys.GetUpperBound(0)
+     Message.Text &amp;= &quot;Key: &quot; &amp; Keys(Counter1) &amp; &quot;&lt;br/&gt;&quot;
+     subKeys = QSCol1.GetValues(Counter1) 'Get all values under this key
+     For Counter2 = 0 To subKeys.GetUpperBound(0)
+        Message.Text &amp;= &quot;Value &quot; &amp; CStr(Counter2) &amp; &quot;: &quot; &amp; _
+           subKeys(Counter2) &amp; &quot;&lt;br/&gt;&quot;
+     Next Counter2
+     Message.Text &amp;= &quot;&lt;br/&gt;&quot;
+   Next Counter1
+End Sub</pre>
+        </span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The following code can be used to post to the example page (note that
+          the form method attribute has been set to GET, which is required for
+          the form value to be sent as part of the query string): </p>
+        <span class="programlisting">
+        <pre>
+&lt;html&gt;
+   &lt;head&gt;
+      &lt;title&gt;Submit a named parameter via POST&lt;/title&gt;
+   &lt;/head&gt;
+&lt;body&gt;
+   &lt;form id=&quot;form1&quot; action=&quot;QueryString.aspx&quot; method=&quot;GET&quot;&gt;
+      &lt;h3&gt;Name:&lt;/h3&gt;
+      &lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;&quot;
+      &lt;input type=&quot;submit&quot;&gt;
+   &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>One advantage that the QueryString collection has over the Form collection
+          is that you do not always need to have the user submit a form to use
+          it. Because the query string values are appended to the URL, it is
+          relatively simple to statically add query strings to links within pages
+          or dynamically create anchor tags with query string values appended.
+          In fact, many online stores use this method to drive their catalog
+          pages (by passing a product ID appended onto a link to the page designed
+          to display the product). That page can then retrieve the ID by using
+          the QueryString collection. </p>
+        </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td><p>Because query string values are passed as plain text appended to the
+          URL, they are more vulnerable to tampering than values passed as a
+          result of a POST operation. If you need to pass important data or data
+          that, if tampered with, could create problems for your application,
+          you should consider encrypting values before adding them to the query
+          string or using another method to pass the values</p>
+        </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td><p>Certain characters used in query string processing, including &, ?,
+          %, and +, must be encoded to avoid confusion between their use in your
+          key/value pair and their role as special characters in a query string.
+          The following table lists the encoding for each of these special characters: </p>
+        <table width="75%" border="1">
+          <tr>
+            <td>Character</td>
+            <td>Encoding</td>
+          </tr>
+          <tr>
+            <td>&amp;</td>
+            <td>%26</td>
+          </tr>
+          <tr>
+            <td>?</td>
+            <td>%3f</td>
+          </tr>
+          <tr>
+            <td>%</td>
+            <td>%25</td>
+          </tr>
+          <tr>
+            <td>+</td>
+            <td>%2b</td>
+          </tr>
+          <tr>
+            <td>Space</td>
+            <td>%20</td>
+          </tr>
+        </table>
+        </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td><p>Rather than memorizing these values, you could make your life easier
+          by simply using the UrlEncode method provided by the <span class="literal">HttpServerUtility</span> class
+          (covered in Chapter 18), which automatically substitutes the appropriate
+          encoding for any special characters in a string passed to it.</p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="ServerVariables">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">ServerVariables</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">NameValueCollection
+          = Request.ServerVariables</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">NameValueCollection</span> <br>
+&nbsp; An Object variable of type NameValueCollection.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example, as in the previous collection-related examples, writes
+          the contents of the ServerVariables collection to the browser: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load(  )
+   Dim Counter1, Counter2 As Integer
+   Dim Keys(), subKeys(  ) As String
+   Dim SVarsColl As NameValueCollection
+
+   ' Load ServerVariables into NameValueCollection
+   SVarsColl=Request.ServerVariables
+   ' Get keys into an array
+   Keys = SVarsColl.AllKeys
+   For Counter1 = 0 To Keys.GetUpperBound(0)
+      Message.Text &amp;= &quot;Key: &quot; &amp; Keys(Counter1) &amp; &quot;&lt;br/&gt;&quot;
+      subKeys = SVarsColl.GetValues(Counter1)
+      ' Get all values under this key
+      For Counter2 = 0 To subKeys.GetUpperBound(0)
+         Message.Text &amp;= &quot;Value &quot; &amp; CStr(Counter2) &amp; &quot;: &quot; &amp; _
+            subKeys(Counter2) &amp; &quot;&lt;br/&gt;&quot;
+      Next Counter2
+      Message.Text &amp;= &quot;&lt;br/&gt;&quot;
+   Next Counter1
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>In addition to retrieving all the values by looping through the Keys,
+          you can access individual values if you know their key. The following
+          list shows the available keys for the ServerVariable collection: </p>
+        <ul>
+          <li><span class="literal">ALL_HTTP</span><br>
+&nbsp; Returns a string containing all HTTP headers with each header name taking
+the form <span class="literal">HTTP_headername</span>, for which <span class="literal">headername</span> is
+the name of an HTTP header in all capital letters. </li>
+          <li><span class="literal">ALL_RAW</span><br>
+&nbsp; Provides the same information as ALL_HTTP, but header names are not all
+capital letters and are not prefixed with <span class="literal">HTTP_</span>.</li>
+          <li><span class="literal">APPL_MD_PATH </span><br>
+&nbsp; Returns the path of the application in the IIS metabase.</li>
+          <li><span class="literal">APPL_PHYSICAL_PATH</span><br>
+&nbsp; Returns the physical path that corresponds to <span class="literal">APPL_MD_PATH</span>.</li>
+          <li><span class="literal">AUTH_TYPE</span><br>
+&nbsp; Returns the authentication method used to validate access to protected
+content. </li>
+          <li><span class="literal">AUTH_USER</span><br>
+&nbsp; Returns the username of the authenticated user in raw form. </li>
+          <li><span class="literal">AUTH_PASSWORD</span><br>
+&nbsp; Returns the password entered in the browser's authentication dialog, assuming
+Basic authentication was used.</li>
+          <li><span class="literal">LOGON_USER </span><br>
+&nbsp; Returns the name of the Windows account the current user is logged in
+to. 1 </li>
+          <li><span class="literal">REMOTE_USER </span><br>
+&nbsp; Returns the username string sent by the browser before any authentication
+filtering has taken place. </li>
+          <li><span class="literal">CERT_COOKIE</span><br>
+&nbsp; Returns a unique string identifier for the client certificate.</li>
+          <li><span class="literal">CERT_FLAGS </span><br>
+&nbsp; Returns bit flags that represent whether a certificate is present (bit0)
+and whether the certificate authority for the client certificate is in the list
+of recognized certificate authorities on the server (bit1). </li>
+          <li><span class="literal">CERT_ISSUER </span><br>
+&nbsp; Returns the issuer of the client certificate. </li>
+          <li><span class="literal">CERT_KEYSIZE </span><br>
+&nbsp; Returns the number of bits for the SSL key (e.g., 40 or 128).</li>
+          <li><span class="literal">CERT_SECRETKEYSIZE</span><br>
+&nbsp; Returns the number of bits in the server's private key. </li>
+          <li><span class="literal">CERT_SERIALNUMBER </span><br>
+&nbsp; Returns the serial number of the client certificate. </li>
+          <li><span class="literal">CERT_SERVER_ISSUER </span><br>
+&nbsp; Returns the issuer of the server certificate </li>
+          <li><span class="literal">CERT_SERVER_SUBJECT</span><br>
+&nbsp; Returns the subject field of the server certificate.</li>
+          <li><span class="literal">CERT_SUBJECT</span><br>
+&nbsp; Returns the subject field of the client certificate.</li>
+          <li><span class="literal">CONTENT_LENGTH</span><br>
+&nbsp; Returns the length of the content in the body of the HTTP request.</li>
+          <li><span class="literal">CONTENT_TYPE</span><br>
+&nbsp; Returns the MIME type of the content in the HTTP request.</li>
+          <li><span class="literal">GATEWAY_INTERFACE</span><br>
+&nbsp; Returns the revision number of the CGI specification used by the server.</li>
+          <li><span class="literal">HTTPS</span><br>
+&nbsp; Returns either <span class="literal">on</span> or <span class="literal">off</span>,
+depending on whether the request came through a secure socket (HTTPS) connection.</li>
+          <li><span class="literal">HTTPS_KEYSIZE</span><br>
+&nbsp; Returns the size, in bits, of the SSL key.</li>
+          <li><span class="literal">HTTPS_SECRETKEYSIZE</span><br>
+&nbsp; Returns the number of bits in the server's private key.</li>
+          <li><span class="literal">HTTPS_SERVER_ISSUER</span><br>
+&nbsp; Returns the issuer of the server certificate.</li>
+          <li><span class="literal">HTTPS_SERVER_SUBJECT</span><br>
+&nbsp; Returns the subject field of the server certificate.</li>
+          <li><span class="literal">INSTANCE_ID</span><br>
+&nbsp; Returns the ID for the IIS instance associated with the request. Unless
+more than one instance of IIS is running, this value is always 1.</li>
+          <li><span class="literal">INSTANCE_META_PATH</span><br>
+&nbsp; Returns the metabase path to the instance of IIS that responds to the
+current request.</li>
+          <li><span class="literal">LOCAL_ADDR</span><br>
+&nbsp; Returns the server address on which the request was received. Useful for
+servers with multiple NICs and IP addresses to determine which address received
+the request.</li>
+          <li><span class="literal">PATH_INFO</span><br>
+&nbsp; Returns any extra path information passed with the request. See the.PathInfo
+property earlier in the chapter for more information.</li>
+          <li><span class="literal">PATH_TRANSLATED</span><br>
+&nbsp; Returns the physical path corresponding to the virtual path for the request.</li>
+          <li><span class="literal">QUERY_STRING</span><br>
+&nbsp; Returns the raw query string (if any) passed with the request.</li>
+          <li><span class="literal">REMOTE_ADDR</span><br>
+&nbsp; Returns the IP address of the machine making the request.</li>
+          <li><span class="literal">REMOTE_HOST</span><br>
+&nbsp; Returns the DNS name of the machine making the request, if available.Otherwise,
+returns the IP address.</li>
+          <li><span class="literal">REQUEST_METHOD</span><br>
+&nbsp; Returns the HTTP request method (GET, POST, etc.) used in the request.</li>
+          <li><span class="literal">SCRIPT_NAME</span><br>
+&nbsp; Returns a virtual path to the page being executed.</li>
+          <li><span class="literal">SERVER_NAME</span><br>
+&nbsp; Returns the server name, DNS name, or IP address of the server.</li>
+          <li><span class="literal">SERVER_PORT</span><br>
+&nbsp; Returns the port number on which the request was received.</li>
+          <li><span class="literal">SERVER_PORT_SECURE</span><br>
+&nbsp; Returns a string containing either 0 or 1, depending on whether the request
+was received on a secure port (1) or not (0).</li>
+          <li><span class="literal">SERVER_PROTOCOL</span><br>
+&nbsp; Returns the name and version of the protocol used to handle the client
+request. For IE 5.5 and IIS 5, this name and version would be &quot;HTTP/1.1&quot;.</li>
+          <li><span class="literal">SERVER_SOFTWARE</span><br>
+&nbsp; Returns the name and version of the web server software.</li>
+          <li><span class="literal">URL</span><br>
+&nbsp; Returns the base URL of the request (i.e., everything after the domain
+name).</li>
+          <li><span class="literal">HTTP_CONNECTION</span><br>
+&nbsp; Returns the type of connection established.</li>
+          <li><span class="literal">HTTP_ACCEPT</span><br>
+&nbsp; Returns the value of the HTTP Accept header.</li>
+          <li><span class="literal">HTTP_ACCEPT_ENCODING</span><br>
+&nbsp; Returns the value of the HTTP Accept-Encoding header.</li>
+          <li><span class="literal">HTTP_ACCEPT_LANGUAGE</span><br>
+&nbsp; Returns the value of the HTTP Accept-Language header.</li>
+          <li><span class="literal">HTTP_HOST</span><br>
+&nbsp; Returns the value of the HTTP Host header.</li>
+          <li><span class="literal">HTTP_USER_AGENT</span><br>
+&nbsp; Returns the value of the HTTP User-Agent header.</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="BinaryRead">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">BinaryRead</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">byteArray = Request.BinaryRead(byteCount)</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Returns a byte array containing the number of bytes specified by the
+          <span class="literal">byteCount</span> argument.</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">byteArray </span> <br>
+&nbsp; An Array variable of type Byte to receive the specified number of bytes
+from the method. </li>
+          <li><span class="literal">byteCount </span> <br>
+&nbsp; An integer specifying the number of bytes to return.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>This method provides backward compatibility with classic ASP applications.
+          For new development, using other means (such as the Files collection,
+          etc.) is preferable to achieve the results that this method was used
+          for. </p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="MapPath">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">MapPath</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><pre class="literal">
+stringvar = Request.MapPath(virtualPath)
+stringvar = Request.MapPath(virtualPath, _
+             baseVirtualDirectory, allowCrossMapping)</pre>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description"> <br>
+        The MapPath method, which the Server object exposed in classic ASP, allows
+          you to retrieve a physical path on the server for a provided virtual
+          path. In ASP.NET, this method is overloaded, meaning that it can be
+          called with two different sets of arguments, as shown in the previous
+          code. The first style, which is the same as in classic ASP, simply
+          passes in a String containing the virtual path to be mapped. The second
+          adds the <span class="literal">baseVirtualDirectory</span> argument,
+          which specifies a base from which to resolve relative paths, and the <span class="literal">allowCrossMapping</span> argument,
+          which allows you to map virtual paths that belong to other applications. </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">stringvar</span> <br>
+&nbsp; A String variable to receive the mapped physical path.</li>
+          <li><span class="literal">virtualPath </span> <br>
+&nbsp; A String argument containing the virtual path to map.</li>
+          <li><span class="literal">baseVirtualDirectory</span> <br>
+&nbsp; A String argument containing a base path to be used for resolving relative
+paths.</li>
+          <li><span class="literal">allowCrossMapping </span> <br>
+&nbsp; A Boolean argument specifying whether paths can be mapped across applications.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example maps the path of the .NET Framework SDK samples' /QuickStart
+          directory and writes the result to the browser: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load(  )
+   Dim VirPath, PhysPath, BasePath As String
+   Dim BoolCross As Boolean = True
+
+   VirPath = &quot;/QuickStart&quot;
+   BasePath = &quot;&quot;
+
+   Message.Text = Request.MapPath(VirPath, BasePath, BoolCross)
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>In the previous example, if we had set the BoolCross variable to False
+          and called the example code from outside the QuickStart application,
+          an HttpException would be thrown, since this argument must be set to
+          True to map paths across applications.</p>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="SaveAs">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+    <tr>
+      <td valign="top" class="name">SaveAs</td>
+      <td valign="top" nowrap class="compatibility"> </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+    </tr>
+    <tr>
+      <td valign="top" class="usage" nowrap><p class="literal">Request.SaveAs(filename,
+          includeHeaders)</p>
+      </td>
+      <td valign="top" align="right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="description">
+        <p>Saves the current HTTP request to disk, using the <span class="literal">filename</span> argument
+          as the path and filename under which to save the request </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="parameters"><span class="title">Parameters</span>
+        <ul>
+          <li><span class="literal">filename</span> <br>
+&nbsp;A String argument containing the path and filename under which the request
+should be saved. </li>
+          <li><span class="literal">includeHeaders </span> <br>
+&nbsp;A Boolean argument indicating whether to save the HTTP header information
+as part of the request. Note that unless this is a POST request (or other request
+type with a request body), no information is saved if this argument is set to <span class="literal">False</span>.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="clearseparation">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="example"><span class="title">Example</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>The example writes the HTTP request headers to the browser (for comparison
+          purposes) and then saves the current request both with and without
+          header information: </p>
+        <span class="programlisting">
+        <pre>
+Sub Page_Load(  )
+   Message.Text = Request.Headers
+
+   ' Save HTTP Request and Headers to a file
+   Request.SaveAs((Request.PhysicalApplicationPath &amp; _
+      &quot;HTTPRequest.txt&quot;), True)
+   ' Save HTTP Request to a file
+   Request.SaveAs((Request.PhysicalApplicationPath &amp; _
+      &quot;HTTPRequest_NoHeaders.txt&quot;), False)
+End Sub</pre>
+        </span> </td>
+    </tr>
+    <tr>
+      <td valign="top" colspan="2" class="notes"><span class="title">Notes</span>
+        </td>
+    </tr>
+    <tr>
+      <td><p>This method can be very useful when debugging because it allows you
+          to look at all the information sent in a given request (which is particularly
+          useful in POST requests). </p>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

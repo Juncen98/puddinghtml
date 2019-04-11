@@ -1,0 +1,70 @@
+<!-- MENU-LOCATION=NONE -->
+
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<html>
+<head>
+<title>单选按钮组属性</title>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="Radio Properties.js"></SCRIPT>
+<SCRIPT SRC="EditOpsCustomObjs.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/Class/GridClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/RadioGroupClass.js"></SCRIPT>
+<SCRIPT SRC="../ServerBehaviors/Shared/DynamicCmn.js"></SCRIPT>
+<!-- Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onload="initializeUI()">
+
+  <form name="form1" method="post" action="">
+    <table border=0>
+    <tr>
+      <td nowrap valign="baseline" align="right" width="120">单选按钮:</td>
+      <td nowrap align="left">
+        <input type="image" src="../Shared/MM/Images/btnAdd.gif" onClick="addNewRow();focus(this)" name="image">
+        <input type="image" src="../Shared/MM/Images/btnDel.gif" onClick="GRID_RADIO.delRow();focus(this)" name="image2">
+        <img src="../Shared/MM/Images/transparent.gif" height=8 width="155">
+        <input type="image" border="0" name="imageField3" src="../Shared/MM/Images/btnUp.gif" onClick="GRID_RADIO.moveRowUp();focus(this)">
+        <input type="image" border="0" name="imageField22" src="../Shared/MM/Images/btnDown.gif" onClick="GRID_RADIO.moveRowDown();focus(this)">
+      </td>
+    </tr>
+    <tr>
+      <td nowrap valign="top" align="right">&nbsp;</td>
+      <td nowrap align="left">
+        <mm:treecontrol style="width:248px;height:96px" name="MenuGrid" onChange="displayGridValues()">
+            <mm:treecolumn width="100"> <mm:treecolumn width="100">
+        </mm:treecontrol>
+      </td>
+    </tr>
+    <tr>
+      <td nowrap valign="baseline" align="right">标签:</td>
+      <td nowrap align="left">
+        <input name="MenuText" type="text" style="width:150px" onBlur="updateGridRow()">
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+      <td nowrap valign="baseline" align="right">值:</td>
+      <td nowrap align="left">
+        <input name="MenuValue" type="text" style="width:150px" onBlur="updateGridRow()">
+      </td>
+    </tr>
+    <tr><td height="5"></td></tr>
+    <mmui>
+    <tr>
+      <td nowrap valign="baseline" align="right">选取值等于: </td>
+      <td nowrap align="left">
+          <input name="DefaultValueManual" type="text" style="width:220px">
+          <input type="image" src="../Shared/UltraDev/Images/Boltup.gif" width="15" height="14" align="absbottom" onClick="displayDynamicDataDialog(TF_DEFAULT_MANUAL)">
+      </td>
+    </tr>
+    </mmui>
+  </table>
+  </form>
+
+  </body>
+</html>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "弹出式窗口" description = "打开新的浏览器窗口，给出 URL 和窗口的左侧、顶部、宽度和高度。" preview="code" type="block">
+<insertText location="beforeSelection">
+<![CDATA[var popUpWin=0;
+function popUpWindow(URLStr, left, top, width, height)
+{
+  if(popUpWin)
+  {
+    if(!popUpWin.closed) popUpWin.close();
+  }
+  popUpWin = open(URLStr, 'popUpWin', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,copyhistory=yes,width='+width+',height='+height+',left='+left+', top='+top+',screenX='+left+',screenY='+top+'');
+}
+]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

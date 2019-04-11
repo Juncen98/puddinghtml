@@ -1,0 +1,24 @@
+<participant version="6.0">
+	<insertText location="aboveHTML+60"><![CDATA[<?php
+$queryString_@@RecordsetName@@ = "";
+if (!empty($_SERVER['QUERY_STRING'])) {
+  $params = explode("&", $_SERVER['QUERY_STRING']);
+  $newParams = array();
+  foreach ($params as $param) {
+    if (stristr($param, "pageNum_@@RecordsetName@@") == false && 
+        stristr($param, "totalRows_@@RecordsetName@@") == false) {
+      array_push($newParams, $param);
+    }
+  }
+  if (count($newParams) != 0) {
+    $queryString_@@RecordsetName@@ = "&" . htmlentities(implode("&", $newParams));
+  }
+}
+$queryString_@@RecordsetName@@ = sprintf("&totalRows_@@RecordsetName@@=%d%s", $totalRows_@@RecordsetName@@, $queryString_@@RecordsetName@@);
+?>
+]]></insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="RecordsetName" isOptional="false" limitSearch="all"><![CDATA[/\$queryString_([^\r\n]*?) = "";(?:\r\n|\r(?!\n)|\n)[ \t]*if \(!empty\(\$(?:HTTP)?_SERVER(?:_VARS)?\['QUERY_STRING'\]\)\) \{(?:\r\n|\r(?!\n)|\n)[ \t]*\$params = explode\("&", \$(?:HTTP)?_SERVER(?:_VARS)?\['QUERY_STRING'\]\);(?:\r\n|\r(?!\n)|\n)[ \t]*\$newParams = array\(\);(?:\r\n|\r(?!\n)|\n)[ \t]*foreach \(\$params as \$param\) \{(?:\r\n|\r(?!\n)|\n)[ \t]*if \(stristr\(\$param, "pageNum_[^\r\n]*?"\) == false && (?:\r\n|\r(?!\n)|\n)[ \t]*stristr\(\$param, "totalRows_[^\r\n]*?"\) == false\) \{(?:\r\n|\r(?!\n)|\n)[ \t]*array_push\(\$newParams, \$param\);(?:\r\n|\r(?!\n)|\n)[ \t]*\}(?:\r\n|\r(?!\n)|\n)[ \t]*\}(?:\r\n|\r(?!\n)|\n)[ \t]*if \(count\(\$newParams\) != 0\) \{(?:\r\n|\r(?!\n)|\n)[ \t]*\$queryString_[^\r\n]*? = "&" \. (?:htmlentities\()?implode\("&", \$newParams\)(?:\))?;(?:\r\n|\r(?!\n)|\n)[ \t]*\}(?:\r\n|\r(?!\n)|\n)[ \t]*\}(?:\r\n|\r(?!\n)|\n)[ \t]*\$queryString_[^\r\n]*? = sprintf\("&totalRows_[^\r\n]*?=%d%s", \$totalRows_[^\r\n]*?, \$queryString_[^\r\n]*?\);(?=\r\n|\r|\n|\?>)/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch><![CDATA[explode("&",]]></quickSearch>
+</participant>

@@ -1,0 +1,203 @@
+<html xmlns:un="http://usablenet.com/namespaces/508_rules">
+   <link rel="stylesheet" href="josh.css">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Detailed View for rule: Cell of data table should refer to headers</title>
+      <!--
+  508/W3C Accessibility Suite OEM V2 for Macromedia Dreamweaver
+  (C) Copyright 2001-2005 UsableNet Inc. All rights reserved.
+  -->
+   </head>
+   <body bgcolor="#ffffff">
+      <div id="Description">
+         <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+            <tr>
+               <td valign="top" nowrap="true" class="name">Cell of data table should refer to headers</td>
+               <td valign="top" nowrap="true" class="compatibility">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+            </tr>
+            <tr>
+               <td valign="top" align="right" nowrap="true" colspan="2" class="requirements">
+                  Section 508 1194.22(g); 
+                  
+                  WAI
+                  
+                  / 
+                  
+                  WCAG
+                  
+                  1.0 checkpoint 5.1
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Description</b><br>
+                  
+                  <p>
+                     The page includes a table that has TH tags without ID or
+                     SCOPE attributes. If the table is used to present data,
+                     provide header information.
+                     
+                  </p>
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>How to check</b>
+                  
+                  <p>
+                     If the table is used to present data, make sure that each
+                     row and column has appropriate headers defined by TH tags.
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     In addition:
+                     
+                  </p>
+                  
+                  
+                  <ul>
+                     
+                     <li>
+                        TH tags should have an ID attribute for identification
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        TD tags should have a HEADERS attribute that refers to
+                        the appropriate TH tags
+                        
+                     </li>
+                     
+                  </ul>
+                  
+                  
+                  <p>
+                     Alternatively, the TH tag may have a SCOPE='col' or
+                     SCOPE='row' attribute, meaning that the header refers to
+                     the entire column or row, respectively.
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     It might be a good idea to use the ABBR attribute in the TH
+                     tag to provide a more concise description of the header to
+                     be repeated over and over by specialized browsers.
+                     
+                  </p>
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Explanation</b><br>
+                  
+                  <p>
+                     Tables can be used to present data such as a bus schedule,
+                     a comparison of regional sales figures, or a listing of
+                     employee contact information. Cells in data tables like
+                     these are related to each other and usually must be
+                     perceived as a group. Tables can also be used to lay out
+                     images and text on a page. Each cell in a layout table like
+                     this is normally independent and can be viewed on its own.
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     Data tables are used to convey information in a
+                     bidirectional medium, which often is not available for
+                     certain users. Consider the following examples:
+                     
+                  </p>
+                  
+                  
+                  <ul>
+                     
+                     <li>
+                        A textual browser may not align rows and columns
+                        correctly because, for example, the content of a cell wraps        
+                     </li>
+                     
+                     
+                     <li>
+                        A reading browser sequentially reads the content of the
+                        table
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        A Braille reader also sequentially scans the table
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        A browser with a very small display (such as a PDA or a
+                        cellular phone) shows only a limited portion of the table
+                        
+                     </li>
+                     
+                  </ul>
+                  
+                  
+                  <p>
+                     In all these cases, the user has to mentally remember the
+                     context of the cell (which row and column does it refer
+                     to?). This requirement may be too strong, for example, when
+                     the table is large, when the user is under stress, or is
+                     impatient to find the needed information.
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     Consider also that in these situations, users might not be
+                     able to move directly from one cell of the table to any
+                     other. They are constrained to move sequentially, from one
+                     cell to its neighbors only (within the same row, for
+                     example).
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     Layout tables, on the other hand, are not used to convey
+                     information and therefore they do not need to be accessible.
+                     Note however that W3C suggests using styles to lay out the
+                     content of a page. For more information, see
+                     http://www.w3.org/TR/WCAG10-CSS-TECHS/#style-alignment.
+                     
+                  </p>
+                  
+               </td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,1369 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">&lt;A&gt;</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">all</span> IE <span class="emphasis">all</span>   HTML <span class="emphasis">all</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">&lt;A&gt;...&lt;/A&gt;</p>
+					</td><td valign="top" nowrap class="requirements">HTML End Tag: Required&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The <span class="literal">a</span> element is the rare element that can be an
+anchor and/or a link, depending on the presence of the
+<span class="literal">name</span> and/or <span class="literal">href</span> attributes. As
+an anchor, the element defines a named location in a document to
+which any URL can reference by appending a hashmark and the anchor
+name to the document's URI (for example,
+<span class="emphasis">http://www.megacorp.com/contents#a-c</span>). Names are
+identifiers assigned to the <span class="literal">name</span> attribute (or in
+newer browsers, the <span class="literal">id</span> attribute). Content defined
+solely as an anchor is not (by default) visually differentiated from
+surrounding <span class="literal">body</span> content.
+</p><p>By assigning a URI to the <span class="literal">href</span> attribute, the
+element becomes the source of a hypertext link. Activating the link
+generally navigates to the URI assigned to the
+<span class="literal">href</span> attribute (or it may load other media into a
+helper application or plugin without changing the page). Unless
+modified by style sheets, links typically have a distinctive
+appearance in the browser, such as an underline beneath text (or
+border around an object) and a color other than the current content
+color. Attributes can define separate colors for three states: an
+unvisited link, a link being activated by the user, and a previously
+visited link (the linked document is currently in the browser cache).
+Such color control is deprecated in favor of CSS pseudo-classes
+(<span class="literal">:link</span>, <span class="literal">:active</span>,
+<span class="literal">:visited</span>, and a new state,
+<span class="literal">:hover</span>). An <span class="literal">a</span> element can be
+both an anchor and a link if, in the least, both the
+<span class="literal">name</span> (or <span class="literal">id</span>) and
+<span class="literal">href</span> attributes have values assigned to them.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;A name="anchor3" id="anchor3"&gt;Just an anchor named "anchor3."&lt;/A&gt;
+&lt;A href="#anchor3"&gt;A link to navigate to "anchor3" in the same document.&lt;/A&gt;
+&lt;A name="anchor3" id="anchor3" href="http://www.megacorp.com/index.html"&gt;
+Go from here (anchor 3) to home page.&lt;/A&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.links[i]
+[window.]document.anchors[i]
+[window.]document.getElementById(<span class="replaceable">elementID</span>)</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Element-Specific Attributes</span></td>
+				</tr>
+				<tr>
+      <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+    </tr><tr>
+					<td>
+						<table border="1"><tbody><tr><td>charset</td><td>coords</td><td>datafld</td><td>datasrc</td><td>href</td>
+								</tr>
+								<tr><td>hreflang</td><td>methods</td><td>name</td><td>rel</td><td>rev</td>
+								</tr>
+								<tr><td>shape</td><td>target</td><td>type</td><td>urn</td><td></td>
+								</tr>
+							</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Element-Specific Event Handler Attributes</span></td>
+				</tr>
+				<tr>
+					<td><p>None. Anchor-only <span class="literal">a</span> elements have no event
+handlers in Navigator through Version 4.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="accesskey">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">accesskey</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6 (see text)</span> IE <span class="emphasis">4/5</span> HTML <span class="emphasis">4 (see text)</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal">accesskey="<span class="replaceable">character</span>"</p>
+							</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>A single character key that either gives focus to an element (in some
+		browsers) or activates a form control or link action. The browser and
+		operating system determine if the user must press a modifier key
+		(e.g., <span class="emphasis">Ctrl</span>, <span class="emphasis">Alt</span>, or <span class="emphasis">Command</span>) with the access key to activate the
+		link. In Windows versions of IE 4 and later and Netscape 6, the
+		<span class="emphasis">Alt</span> key is required and the key is
+		not case-sensitive. For Macintosh versions of IE 5 and later and
+		Netscape 6, the <span class="emphasis">Ctrl</span> modifier key is
+		required to effect the action.
+		</p><p>Although <span class="literal">accesskey</span> is listed here as a widely
+		shared attribute, that isn't strictly the case
+		across all implementations. HTML 4 and Netscape 6 recognize this
+		attribute only for the following elements: <span class="literal">a</span>,
+		<span class="literal">area</span>, <span class="literal">button</span>,
+		<span class="literal">input</span>, <span class="literal">label</span>,
+		<span class="literal">legend</span>, and <span class="literal">textarea</span>. To this
+		list, IE 4 adds <span class="literal">applet</span>, <span class="literal">body</span>,
+		<span class="literal">div</span>, <span class="literal">embed</span>,
+		<span class="literal">isindex</span>, <span class="literal">marquee</span>,
+		<span class="literal">object</span>, <span class="literal">select</span>,
+		<span class="literal">span</span>, <span class="literal">table</span>, and
+		<span class="literal">td</span> (but removes <span class="literal">label</span> and
+		<span class="literal">legend</span>). IE 5 adds every other renderable element,
+		but with a caution: except for <span class="literal">input</span> and other
+		form-related elements, you must also assign a
+		<span class="literal">tabindex</span> attribute to the IE 5 and later element
+		(even if simply a value of zero for all) to let the accelerator key
+		combination bring focus to the element.
+		</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>&lt;A href="http://www.megacorp.com/toc.html" accesskey="t"&gt;Table of Contents&lt;/A&gt;
+		&lt;H2 class="subsection" accesskey="2" tabindex="0"&gt;Part Two&lt;/H2&gt;</pre>
+								</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+						</tr>
+						<tr>
+							<td><p>Single character of the document set.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+						</tr>
+						<tr>
+							<td><p>None.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>[window.]document.links[i].accessKey
+		[window.]document.anchors[i].accessKey
+		[window.]document.<span class="replaceable">formName</span>.<span class="replaceable">elementName</span>.accessKey
+		[window.]document.forms[i].elements[j].accessKey
+		[window.]document.getElementById(<span class="replaceable">elementID).</span>accessKey</pre>
+								</span></td>
+						</tr>
+					</table>
+		</div>
+		<div id="charset">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">charset</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">n/a</span>   HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">charset="<span class="replaceable">characterSet</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Character encoding of the content at the other end of the link.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;A charset="csISO5427Cyrillic" href="moscow.html"&gt;Visit Moscow&lt;/A&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-insensitive alias from the character set registry (ftp://ftp.isi.edu/in-notes/iana/assignments/character-sets).
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>Determined by browser.  </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="coords">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">coords</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">6</span>   HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">coords="<span class="replaceable">coord1, ... coordN</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Although defined for the <span class="literal">a</span> element, the
+<span class="literal">coords</span> attribute applies to the
+<span class="literal">area</span> element for client-side image maps. The
+<span class="literal">area</span> element
+"inherits" many attributes and
+behaviors of the <span class="literal">a</span> element. See the
+<span class="literal">area</span> element.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="datafld">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">datafld</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span>   HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">datafld="<span class="replaceable">columnName</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Used with IE data binding to associate a remote data source column
+name in lieu of an <span class="literal">href</span> attribute for a link. The
+data source column must contain a valid URI (relative or absolute). A
+<span class="literal">datasrc</span> attribute must also be set for the
+element. Works only with text file data sources in IE 5/Mac.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;A datasrc="DBSRC3" datafld="newsURL"&gt;Late-Breaking News&lt;/A&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-sensitive identifier.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.links[i].dataFld
+[window.]document.getElementById(<span class="replaceable">elementID</span>).dataFld </pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="datasrc">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">datasrc</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span>  HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">datasrc="<span class="replaceable">dataSourceName</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Used with IE data binding to specify the ID of the
+page's <span class="literal">object</span> element that loads
+the data source object for remote data access. Content from the data
+source to be inserted into the <span class="literal">a</span> element text is
+specified via the <span class="literal">datafld</span> attribute. Works only
+with text file data sources in IE 5/Mac.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;A datasrc="DBSRC3" datafld="newsURL"&gt;Late-Breaking News&lt;/A&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-sensitive identifier.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.links[i].dataSrc
+[window.]document.getElementById(<span class="replaceable">elementID</span>).dataSrc </pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="href">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">href</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">all</span> IE <span class="emphasis">all</span>  HTML <span class="emphasis">all</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">href="<span class="replaceable">URI</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Required for links&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The URI of the destination of a link. In browsers, when the URI is an
+HTML document, the document is loaded into the current (default) or
+other window target (as defined by the <span class="literal">target</span>
+attribute). For some other file types, the browser may load the
+destination content into a plugin or save the destination file on the
+client machine. In the absence of the <span class="literal">href</span>
+attribute, the element does not distinguish itself in a browser as a
+clickable link and may instead be only an anchor (if the
+<span class="literal">name</span> or <span class="literal">id</span> attribute is set).
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;A href="part1/chap3.html"&gt;Chapter 3&lt;/A&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Any valid URI, including complete and relative URLs, anchors on the
+same page (anchor names prefaced with the <span class="literal">#</span>
+symbol), and the <span class="literal">javascript:</span> pseudo-URL in
+scriptable browsers to trigger a script statement rather than
+navigate to a destination.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><p>In both browsers, other link object properties allow for the
+extraction of components of the URL, such as protocol and hostname.
+See the <span class="literal">a</span> element in Chapter 9.
+</p><span class="programlisting"><pre>[window.]document.links[i].href
+[window.]document.getElementById(<span class="replaceable">elementID</span>).href</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="hreflang">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">hreflang</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">6</span>  HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">hreflang="<span class="replaceable">languageCode</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The language code of the content at the destination of a link.
+Requires that the <span class="literal">href</span> attribute also be set. This
+attribute is primarily an advisory attribute to help a browser
+prepare itself for a new language set if the browser is so enabled.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;A hreflang="HI" href="hindi/Chap3.html&gt;Chapter 3 (in Hindi)&lt;/A&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-insensitive language code.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>Browser default.  </p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="id">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">id</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">4</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal">id="<span class="replaceable">elementIdentifier</span>"</p>
+							</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>A unique identifier that distinguishes this element from all the rest
+		in the document. Can be used to associate a single element with a
+		style rule naming this attribute value as an ID selector. An element
+		can have an ID assigned for uniqueness as well as a class for
+		inclusion within a group. See Chapter 3.
+		</p><p>IE 4 and later and Netscape 6 allow <span class="literal">id</span> attributes
+		for nonrenderable elements, but if your code requires validation, be
+		aware that the W3C HTML 4 and XHTML DTDs do not. Because all W3C DOM
+		elements have an <span class="literal">id</span> property, it is natural to
+		assign an <span class="literal">id</span> attribute to non-renderable elements
+		if scripts must reference those elements. Or, your scripts may use
+		other ways (e.g., the array returned by
+		<span class="literal">document.getElementsByTagName( )</span>) to reference
+		such elements.
+		</p><p>Assign identifiers to <span class="literal">id</span> attributes in order to
+		duplicate values previously only assigned to <span class="literal">name</span>
+		attributes in elements that feature the <span class="literal">name</span>
+		attribute. Current browser form controls still require
+		<span class="literal">name</span> attributes for name/value pairs to be
+		submitted with the form, and a elements acting as anchors still need
+		name attributes. Be sure to assign an identifier to the
+		<span class="literal">id</span> attribute of any element you intend to
+		reference by script.
+		</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>&lt;H2 id="sect3Head"&gt;Section Three&lt;/H2&gt;</pre>
+								</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+						</tr>
+						<tr>
+							<td><p>Case-sensitive identifier.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+						</tr>
+						<tr>
+							<td><p>None.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID).</span>id</pre>
+								</span></td>
+						</tr>
+					</table>
+		</div>
+		<div id="lang">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">lang</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">3</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal">lang="<span class="replaceable">languageCode</span>"</p>
+							</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>The language being used for the element's attribute
+		values and content. A browser can use this information to assist in
+		proper rendering of content with respect to details such as treatment
+		of ligatures (when supported by a particular font or required by a
+		written language), quotation marks, and hyphenation. Other
+		applications and search engines might use this information to aid the
+		selection of spell-checking dictionaries and the creation of indices.
+		</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>&lt;SPAN lang="de"&gt;Deutsche Bundesbahn&lt;/SPAN&gt;</pre>
+								</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+						</tr>
+						<tr>
+							<td><p>Case-insensitive language code.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+						</tr>
+						<tr>
+							<td><p>Browser default.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID).</span>lang</pre>
+								</span></td>
+						</tr>
+					</table>
+		</div>
+		<div id="methods">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">methods</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span>  HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">methods="<span class="replaceable">http-method</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>An advisory attribute about the functionality of the destination of a
+link. A browser could use this information to display special colors
+or images for the element content based on what the destination will
+do for the user.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;A href="http://www.megacorp.com/cgi-bin/search?chap3" methods="get"&gt;
+Chapter 3&lt;/A&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Comma-delimited list of one or more HTTP methods.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.links[i].Methods
+[window.]document.getElementById(<span class="replaceable">elementID</span>).Methods </pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="name">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">name</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">all</span> IE <span class="emphasis">all</span>  HTML <span class="emphasis">all</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">name="<span class="replaceable">elementIdentifier</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Required for anchors&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>The traditional way to signify an anchor position within a document.
+Other link elements can refer to the anchor by setting their
+<span class="literal">href</span> attributes to a URL ending in a pound sign
+(<span class="literal">#</span>) followed by the identifier. Omitting the
+<span class="literal">name</span> (and <span class="literal">id</span>) attribute for the
+<span class="literal">a</span> element prevents the element from being used as
+an anchor position. This attribute is interchangeable with the
+<span class="literal">id</span> attribute in recent browsers. The attribute is
+deprecated in XHTML 1.0, so you are encouraged to use both attributes
+(with the same identifier) to keep all browser generations happy. If
+the <span class="literal">name</span> and <span class="literal">href</span> attribute are
+set in the element, the element is considered both an anchor and a
+link.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;A id="sect3" name="sect3"&gt;Section III&lt;/A&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-sensitive identifier.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.links[i].name
+[window.]document.anchors[i].name
+[window.]document.getElementById(<span class="replaceable">elementID</span>).name</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="rel">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">rel</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">3</span>  HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">rel="<span class="replaceable">linkTypes</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Defines the relationship between the current element and the
+destination of the link. Also known as a <span class="emphasis">forward
+link</span>, not to be confused in any way with the destination
+document whose address is defined by the <span class="literal">href</span>
+attribute. The HTML 4 recommendation defines several link types; it
+is up to the browser to determine how to employ the value. This
+attribute has meaning primarily for the <span class="literal">link</span>
+element, although there is significant room for future application
+for tasks such as assigning an <span class="literal">a</span> element (acting
+as a link) to a button in a static navigation bar pointing to the
+next or previous document in a series. The element must include an
+<span class="literal">href</span> attribute for the <span class="literal">rel</span>
+attribute to be applied.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;A rel="next chapter" href="chapter3.html"&gt;Chapter 3&lt;/A&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-insensitive, space-delimited list of HTML 4 standard link types
+applicable to the element. Sanctioned link types are:
+</p>
+<table border="1"><tbody><tr><td><span class="literal">alternate</span></td><td><span class="literal">appendix</span></td><td><span class="literal">bookmark</span></td><td><span class="literal">chapter</span></td>
+								</tr>
+								<tr><td><span class="literal">contents</span></td><td><span class="literal">copyright</span></td><td><span class="literal">glossary</span></td><td><span class="literal">help</span></td>
+								</tr>
+								<tr><td><span class="literal">index</span></td><td><span class="literal">next</span></td><td><span class="literal">prev</span></td><td><span class="literal">section</span></td>
+								</tr>
+								<tr><td><span class="literal">start</span></td><td><span class="literal">stylesheet</span></td><td><span class="literal">subsection</span></td><td></td>
+								</tr>
+							</tbody></table>
+<p>In addition, IE 3 defined a fixed set of four values:
+<span class="literal">same</span> | <span class="literal">next</span> |
+<span class="literal">parent</span> | <span class="literal">previous</span>, but only
+<span class="literal">next</span> and <span class="literal">previous</span> continue to
+be supported in IE.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.links[i].rel
+[window.]document.getElementById(<span class="replaceable">elementID</span>)<span class="replaceable">.</span>rel </pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="rev">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">rev</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">3</span>  HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">rev="<span class="replaceable">linkTypes</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>A reverse link relationship. Like the <span class="literal">rel</span>
+attribute, the <span class="literal">rev</span> attribute's
+capabilities are defined by the browser, particularly with regard to
+how the browser interprets and renders the various link types
+available in the HTML 4 specification. Given two documents (A and B)
+containing links that point to each other, the <span class="literal">rev</span>
+value of B is designed to express the same relationship between the
+two documents as denoted by the <span class="literal">rel</span> attribute in
+A. There is not yet much application of either the
+<span class="literal">rel</span> or <span class="literal">rev</span> attributes of the
+<span class="literal">a</span> element in mainstream browsers.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;A rev="previous" href="chapter2.html"&gt;Chapter 2&lt;/A&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-insensitive, space-delimited list of standard link types
+applicable to the element. See the <span class="literal">rel</span> attribute
+for sanctioned and supported link types.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.links[i].rev
+[window.]document.getElementById(<span class="replaceable">elementID</span>).rev </pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="shape">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">shape</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">n/a</span>  HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">shape="<span class="replaceable">shape</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Defines the shape of a server-side image map area whose coordinates
+are specified with the <span class="literal">coords</span> attribute. See the
+<span class="literal">area</span> element.
+</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="tabindex">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+						<tr><td valign="top" class="name">tabindex</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">4</span> HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap class="usage"><p class="literal">tabindex="<span class="replaceable">integer</span>"</p>
+							</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="description"><p>A number that indicates the sequence of this element within the
+		tabbing order of all focusable elements in the document. Tabbing
+		order follows a strict set of rules. Elements that have values other
+		than zero assigned to their <span class="literal">tabindex</span> attributes
+		are first in line when a user starts tabbing in a page. Focus starts
+		with the element with the lowest <span class="literal">tabindex</span> value
+		and proceeds in order to the highest value, regardless of physical
+		location on the page or in the document. If two elements have the
+		same <span class="literal">tabindex</span> values, the element that comes
+		earlier in the document receives focus first. Next come all elements
+		that either don't support the
+		<span class="literal">tabindex</span> attribute or have the value set to zero.
+		These elements receive focus in the order in which they appear in the
+		document. Note that reloading the current page does not necessarily
+		restart the tabbing sequence from the
+		"top." Therefore, controlling
+		tabbing sequence is most helpful when the logic of your focusable
+		elements is something other than the source code order of those
+		elements (e.g., directing tabbing to fields down table columns rather
+		than across rows).
+		</p><p>HTML 4 and Netscape 6 limit the <span class="literal">tabindex</span> attribute
+		to the following elements: <span class="literal">a</span>,
+		<span class="literal">area</span>, <span class="literal">button</span>,
+		<span class="literal">input</span>, <span class="literal">object</span>,
+		<span class="literal">select</span>, <span class="literal">textarea</span>. To this list,
+		IE 4 adds <span class="literal">applet</span>, <span class="literal">body</span>,
+		<span class="literal">div</span>, <span class="literal">embed</span>,
+		<span class="literal">isindex</span>, <span class="literal">marquee</span>,
+		<span class="literal">span</span>, <span class="literal">table</span>, and
+		<span class="literal">td</span>. IE 5 adds every other renderable element. A
+		negative value in IE (only) removes an element from tabbing order
+		entirely.
+		</p><p>Links and anchors cannot be tabbed to with the Mac version of IE 4,
+		so the tabindex for a elements is ignored in that version.
+		</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>&lt;A href="chapter3.html" tabindex="3"&gt;Chapter 3&lt;/A&gt;</pre>
+								</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+						</tr>
+						<tr>
+							<td><p>Any integer from 0 through 32,767. In IE, setting
+		<span class="literal">tabindex</span> to a negative value causes the element to
+		be skipped in tabbing order altogether.
+		</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+						</tr>
+						<tr>
+							<td><p>None.</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+						</tr>
+						<tr>
+							<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><span class="programlisting"><pre>[window.]document.getElementById(<span class="replaceable">elementID).</span>tabIndex</pre>
+								</span></td>
+						</tr>
+					</table>
+		</div>
+		<div id="target">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">target</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">all</span> IE <span class="emphasis">all</span>  HTML <span class="emphasis">all</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">target="<span class="replaceable">windowOrFrameName</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>If the destination document is to be loaded into a window or frame
+other than the current window or frame, you can specify where the
+destination document should load by assigning a window or frame name
+to the <span class="literal">target</span> attribute. Target frame names must
+be assigned to frames and windows as identifiers. Assign names to
+frames via the <span class="literal">name</span> and <span class="literal">id</span>
+attributes of the <span class="literal">frame</span> element; assign names to
+new windows via the second parameter of the <span class="literal">window.open(
+)</span> scripting method. If you omit this attribute, the
+destination document replaces the document containing the link. An
+identifier other than one belonging to an existing frame or window
+opens a new window for the destination document. This attribute is
+applicable only when a value is assigned to the
+<span class="literal">href</span> attribute of the element.
+</p><p>A link element can have only one destination document and one target.
+If you want a link to change the content of multiple frames, you can
+use an <span class="literal">a</span> element's
+<span class="literal">onclick</span> event handler or a
+<span class="literal">javascript:</span> pseudo-URL to fire a script that loads
+multiple documents. Set the <span class="literal">location.href</span> property
+of each frame to a desired URL.
+</p><p>Strict DTDs for HTML 4 and XHTML do not support the
+<span class="literal">target</span> attribute of any element because frames and
+windows are outside the scope of pure document markup. In fact,
+framesetting documents will not validate in the strict
+environmentthus the purpose of the separate frameset DTDs for
+HTML 4 and XHTML. If your documents must validate with these strict
+DTDs, and you wish to support targets, use scripts to set
+<span class="literal">target</span> properties of links, image maps, and forms
+after the page has loaded.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;A target="display" href="chap3.html#sec2"&gt;Section 3.2&lt;/A&gt;
+&lt;A target="_top" href="index.html"&gt;Start Over&lt;/A&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-sensitive identifier when the frame or window name has been
+assigned via the target element's
+<span class="literal">name</span> and <span class="literal">id</span> attributes. Four
+reserved target names act as constants:
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p><span class="literal">_self</span></p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.links[i].target
+[window.]document.getElementById(<span class="replaceable">elementID).</span>target</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div><div id="type">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">type</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">6</span> IE <span class="emphasis">6</span>  HTML <span class="emphasis">4</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">type="<span class="replaceable">MIMEType</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>An advisory about the content type of the destination document or
+resource. A browser might use this information to assist in preparing
+support for a resource requiring a multimedia player or plugin.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;A type="video/mpeg" href="ski4.mpeg"&gt;View Devil's Ghost slope&lt;/A&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>Case-insensitive MIME type. A catalog of registered MIME types is
+available from ftp://ftp.isi.edu/in-notes/iana/assignments/media-types/.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.  </p>
+					</td>
+				</tr>
+			</table>
+		</div><div id="urn">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">urn</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">4</span>  HTML <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal">urn="<span class="replaceable">urn</span>"</p>
+					</td><td valign="top" nowrap class="requirements">Optional&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>A Uniform Resource Name version of the destination document specified
+in the <span class="literal">href</span> attribute. This attribute is intended
+to offer support in the future for the URN format of URI, an evolving
+recommendation under discussion at the IETF (see RFC 2141). Although
+supported in IE 4 and later, this attribute does not take the place
+of the <span class="literal">href</span> attribute.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="example"><span class="title">Example</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>&lt;A urn="urn:foo:bar3" href="chapter3.html"&gt;Chapter 3&lt;/A&gt;</pre>
+						</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="value"><span class="title">Value</span></td>
+				</tr>
+				<tr>
+					<td><p>A valid URN in the form of
+<span class="literal">"urn:</span><span class="replaceable">NamespaceID</span><span class="literal">:</span><span class="replaceable">NamespaceSpecificString</span><span class="literal">"</span>.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap colspan="2" class="default"><span class="title">Default</span></td>
+				</tr>
+				<tr>
+					<td><p>None.</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="objectmodelreference"><span class="title">Object Model Reference</span></td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td><span class="programlisting"><pre>[window.]document.links[i].urn
+[window.]document.getElementById(<span class="replaceable">elementID).</span>urn</pre>
+						</span></td>
+				</tr>
+			</table>
+		</div>
+</body>
+</html>

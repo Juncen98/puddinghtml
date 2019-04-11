@@ -1,0 +1,29 @@
+<participant VERSION="6.0">
+	<insertText location="aboveHTML+18"><![CDATA[<?php
+// *** Redirect if username exists
+$MM_flag="MM_insert";
+if (isset($_POST[$MM_flag])) {
+  $MM_dupKeyRedirect="@@dupKeyRedirect@@";
+  $loginUsername = $_POST['@@frmUsername@@'];
+  $LoginRS__query = "SELECT @@fldUsername@@ FROM @@tableName@@ WHERE @@fldUsername@@='" . $loginUsername . "'";
+  mysql_select_db($database_@@connName@@, $@@connName@@);
+  $LoginRS=mysql_query($LoginRS__query, $@@connName@@) or die(mysql_error());
+  $loginFoundUser = mysql_num_rows($LoginRS);
+
+  //if there is a row in the database, the username was found - can not add the requested username
+  if($loginFoundUser){
+    $MM_qsChar = "?";
+    //append the username to the redirect page
+    if (substr_count($MM_dupKeyRedirect,"?") >=1) $MM_qsChar = "&";
+    $MM_dupKeyRedirect = $MM_dupKeyRedirect . $MM_qsChar ."requsername=".$loginUsername;
+    header ("Location: $MM_dupKeyRedirect");
+    exit;
+  }
+}
+?>]]></insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="dupKeyRedirect,frmUsername,fldUsername,tableName,connName" limitSearch="all"><![CDATA[/\/\/ \*\*\* Redirect if username exists(?:\r\n|\r(?!\n)|\n)[ \t]*\$MM_flag="MM_insert";(?:\r\n|\r(?!\n)|\n)[ \t]*if \(isset\(\$\_POST\[\$MM\_flag\]\)\) \{(?:\r\n|\r(?!\n)|\n)[ \t]*\$MM_dupKeyRedirect="([^\r\n]*?)";(?:\r\n|\r(?!\n)|\n)[ \t]*\$loginUsername = \$\_POST\['([^\r\n]*?)'\];(?:\r\n|\r(?!\n)|\n)[ \t]*\$LoginRS__query = "SELECT ([^\r\n]*?) FROM ([^\r\n]*?) WHERE [^\r\n]*?='" \. \$loginUsername \. "'";(?:\r\n|\r(?!\n)|\n)[ \t]*mysql_select_db\(\$database_([^\r\n]*?), \$[^\r\n]*?\);(?:\r\n|\r(?!\n)|\n)[ \t]*\$LoginRS=mysql_query\(\$LoginRS__query, \$[^\r\n]*?\) or die\(mysql_error\(\)\);(?:\r\n|\r(?!\n)|\n)[ \t]*\$loginFoundUser = mysql_num_rows\(\$LoginRS\);(?:\r\n|\r(?!\n)|\n)(?:\r\n|\r(?!\n)|\n)[ \t]*\/\/if there is a row in the database\,\s*the\susername was found\s*\-\s*can not add the requested username(?:\r\n|\r(?!\n)|\n)[ \t]*if\(\$loginFoundUser\)\{(?:\r\n|\r(?!\n)|\n)[ \t]*\$MM_qsChar = "\?";(?:\r\n|\r(?!\n)|\n)[ \t]*\/\/append the username to the redirect page(?:\r\n|\r(?!\n)|\n)[ \t]*if\s*\(substr\_count\(\$MM_dupKeyRedirect\,\"\?\"\)\s*>\=1\)\s*\$MM_qsChar = "\&";(?:\r\n|\r(?!\n)|\n)[ \t]*\$MM_dupKeyRedirect\s*=\s*\$MM_dupKeyRedirect\s*\.\s*\$MM\_qsChar\s*\.\s*\"requsername\=\"\.\$loginUsername;(?:\r\n|\r(?!\n)|\n)[ \t]*header\s*\(\"Location\:\s*\$MM_dupKeyRedirect\"\);(?:\r\n|\r(?!\n)|\n)[ \t]*exit;(?:\r\n|\r(?!\n)|\n)[ \t]*\}(?:\r\n|\r(?!\n)|\n)[ \t]*\}/]]></searchPattern>
+            <searchPattern paramNames="dupKeyRedirect_url" limitSearch="all"><![CDATA[/\$MM_dupKeyRedirect\s*=\s*"([^\r\n]*?)"/]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>$LoginRS=mysql_query($LoginRS__query,</quickSearch>
+</participant>

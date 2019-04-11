@@ -1,0 +1,131 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+
+<SCRIPT>
+// Copyright 2001-2003 Macromedia, Inc. All rights reserved.
+var HELP_DOC = MM.HELP_sbLoginUser;
+</SCRIPT>
+
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/RadioGroupClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/accessControlCmn.js"></SCRIPT>
+<SCRIPT SRC="../Shared/AccessControlCmn.js"></SCRIPT>
+<SCRIPT SRC="Login User.js"></SCRIPT>
+
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+
+<TITLE>登录用户</TITLE>
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm" ACTION="">
+    <table border="0">
+      <tr valign="baseline">
+        <td nowrap align="right">从表单获取输入: </td>
+        <td nowrap>
+          <select name="listForm" style="width:180px" onChange="onChangeForm()">
+          </select>
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td nowrap align="right">用户名字段: </td>
+        <td nowrap>
+          <select name="listFormUsername" style="width:180px">
+          </select>
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td nowrap align="right">密码字段: </td>
+        <td nowrap>
+          <select name="listFormPassword" style="width:180px">
+          </select>
+        </td>
+      </tr>
+      <tr valign="baseline"><td colspan="3" nowrap><hr></td></tr>
+      <tr valign="baseline">
+        <td nowrap align="right">使用连接验证: </td>
+        <td nowrap>
+          <select name="listConnection" style="width:180px" onChange="onChangeConnection()">
+          </select>
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td nowrap align="right">表格: </td>
+        <td nowrap>
+          <select name="listTable" style="width:180px" onChange="onChangeTable()">
+          </select>
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td nowrap align="right">用户名列: </td>
+        <td nowrap>
+          <select name="listRsUsername" style="width:180px">
+          </select>
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td nowrap align="right">密码列: </td>
+        <td nowrap>
+          <select name="listRsPassword" style="width:180px">
+          </select>
+        </td>
+      </tr>
+      <tr valign="baseline"><td colspan="3" nowrap><hr></td></tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>如果登录成功，转到: </td>
+        <td nowrap>
+          <input name="textGoToURLOnSuccess" type="text" style="width:180px">
+          <input name="btnFileBrowserOnSuccess" type="button" value="浏览..." onClick="onClickBtnFileBrowserOnSuccess();focus(this)">
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td nowrap>&nbsp;</td>
+        <td nowrap>
+          <input name="cbGoToReferrerURL" type="checkbox" >
+          转到前一个URL（如果它存在）</td>
+      </tr>
+      <tr valign="baseline">
+        <td nowrap align="right">如果登录失败，转到: </td>
+        <td nowrap>
+          <input name="textGoToURLOnFailure" type="text" style="width:180px">
+          <input name="btnFileBrowserOnFailure" type="button" value="浏览..." onClick="onClickBtnFileBrowserOnFailure();focus(this)">
+        </td>
+      </tr>
+      <tr valign="baseline"><td colspan="3" nowrap><hr></td></tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>基于以下项限制访问:  </td>
+        <td nowrap>
+          <input type="radio" name="securityMethod" value="securityMethodUP" onClick="onClickSecurityMethodUP()" checked>
+          用户名和密码</td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>&nbsp;</td>
+        <td nowrap>
+          <input type="radio" name="securityMethod" value="securityMethodUPA" onClick="onClickSecurityMethodUPA()">
+          用户名、密码和访问级别</td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>&nbsp;</td>
+        <td nowrap> 获取级别自: 
+          <select name="listRsAuthorization" style="width:150px">
+          </select>
+        </td>
+      </tr>
+    </table>
+  </FORM>
+</BODY>
+</HTML>

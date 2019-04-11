@@ -1,0 +1,140 @@
+<html>
+<head>
+<title>BodyTag Interface</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">BodyTag Interface</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Interface name:</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+<p><span class="LITERAL">javax.servlet.jsp.tagext.BodyTag</span></p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Extends:</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+<p><span class="LITERAL">javax.servlet.jsp.tagext.Tag</span></p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Implemented by:</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+<p>Custom action tag handler classes and
+<span class="LITERAL">javax.servlet.jsp.tagext.BodyTagSupport</span>
+</p>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+<p>The <span class="LITERAL">BodyTag</span> interface must be implemented by tag
+handler classes that need access to the body contents of the
+corresponding custom action element; for instance, in order to
+perform a transformation of the contents before they are included in
+the response. This interface must also be implemented by tag handlers
+that need to iterate over the body of a custom action element.
+</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="doAfterBody">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">doAfterBody()</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"> </td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage"><span class="LITERAL">public int doAfterBody() throws JspException</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Performs actions after the body has been evaluated. This method is invoked after every body evaluation. If this method returns <span class="LITERAL">EVAL_BODY_TAG</span> the body is evaluated again, typically after changing the values of variables used in it. If it returns <span class="LITERAL">SKIP_BODY</span>, the processing continues with a call to <span class="LITERAL">doEndTag()</span>.
+</p>
+<p>
+This method is not invoked if the element body is empty or if <span class="LITERAL">doStartTag()</span> returns <span class="LITERAL">SKIP_BODY</span>.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="doInitBody">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">doInitBody()</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"> </td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage"><span class="LITERAL">public void doInitBody() throws JspException</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Prepares for evaluation of the body. This method is invoked by the page implementation once per action invocation, after a new <span class="LITERAL">BodyContent</span> has been obtained and set on the tag handler via the <span class="LITERAL">setBodyContent()</span> method and before the evaluation of the element's body.
+</p>
+<p>
+This method is not invoked if the element body is empty or if <span class="LITERAL">doStartTag()</span> returns <span class="LITERAL">SKIP_BODY</span>.
+</p></td>
+</tr>
+</table>
+</div>
+<div id="setBodyContent">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">setBodyContent()</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"> </td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="usage"><span class="LITERAL">public void setBodyContent(BodyContent b)</span></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description"><p>
+Sets the <span class="LITERAL">BodyContent</span> created for this tag handler. This method is not invoked if the element body is empty or if <span class="LITERAL">doStartTag()</span> returns <span class="LITERAL">SKIP_BODY</span>.
+</p></td>
+</tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!-- MENU-LOCATION=NONE -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+	<head>
+		<!-- Copyright 2003 Macromedia, Inc. All rights reserved. -->
+		<title>自定义收藏夹对象</title>
+		<script src="../Shared/Common/Scripts/dwscripts.js"></script>
+		<script src="../Shared/Common/Scripts/ListControlClass.js"></script>
+		<script src="Customize Favorites.js"></script>
+		<script src="CustomizeFavoritesClass.js"></script>
+    <SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+		<link href="../fields.css" rel="stylesheet" type="text/css">
+	</head>
+	<body onLoad="initializeUI()">
+		<form>
+			<table>
+				<tr>
+					<td width="200">可用对象:</td>
+					<td width="35">&nbsp;</td>
+					<td width="115">收藏夹对象:</td>
+					<td width="83" nowrap><div align="right">
+							<input type="image" src="../Shared/MM/Images/delete20.gif" name="deleteButton"  onclick="updateUI('deleteButton');" alt="删除“收藏夹对象”列表中选择的对象。">
+							<img src="../Shared/MM/Images/spacer.gif" name="spacer" width="1" height="1" alt="">
+							<input type="image" src="../Shared/MM/Images/btnDown.gif" alt="在列表中下移项" name="downButton"  id="downButton" onclick="updateUI('downButton');">
+							<input type="image" src="../Shared/MM/Images/btnUp.gif" alt="在列表中上移项" name="upButton"  id="upButton" onclick="updateUI('upButton');"></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<select name="availableCategories"  style="width:200px" onchange="updateUI('availableCategories')">
+						</select>
+						<select name="availableObjects" size="10" style="width:200px" onchange="updateUI('availableObjects')" ondblclick="updateUI('availableObjectsDoubleClick');">
+						</select>
+					</td>
+					<td><input type="submit" name="addButton" value="&gt;&gt;" alt="" onclick="updateUI('addButton');">
+						<!-- 
+						<br>
+						<input type="submit" name="deleteButton" value="&lt;&lt;" onClick="updateUI('deleteButton');">
+						-->
+					</td>
+					<td colspan="2">
+						<select name="favoriteObjects" size="12" style="width:200px" ondblclick="updateUI('favoriteObjectsDoubleClick');">
+						</select></td>
+				</tr>
+				<tr>
+					<td><!-- <input type="submit" name="GetAvailableSelected" value="Get Selected" onClick="updateUI('getAvailableSelected');"> -->
+					</td>
+					<td>&nbsp;</td>
+					<td colspan="2"><!-- <input type="submit" name="GetFavoriteSelected" value="Get Selected" onClick="updateUI('getFavoriteSelected');"> -->
+						<input type="submit" name="AddSeparator" value="添加分隔符" onClick="updateUI('addSeparator');"></td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

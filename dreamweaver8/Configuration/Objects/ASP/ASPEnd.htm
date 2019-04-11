@@ -1,0 +1,42 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Copyright 2001 Macromedia, Inc. All rights reserved. -->
+<title><MMString:LoadString id="insertbar/asp/aspend" /></title>
+
+<script language="javascript">
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_NOT_NEEDED = "只有当服务器模型是 ASP VBScript 时，此对象才相关。对于 ASP JavaScript，任何 End 语句都不必要。"
+
+//--------------- END LOCALIZEABLE ---------------
+
+//---------------     API FUNCTIONS    ---------------
+
+function isDOMRequired() { 
+	// Return false, indicating that this object is available in code view.
+	return false;
+}
+
+function objectTag() {
+	var retStr = "<% End If %>";
+	var dom = dw.getDocumentDOM();
+	var docType = dom.documentType;
+	var before,after;
+	if (docType == 'ASP-JS'){
+		alert(MSG_NOT_NEEDED);
+		retStr = "";
+	}
+	
+  return retStr;
+}
+
+</script>
+	
+</head>
+
+<body>
+</body>
+
+</html>

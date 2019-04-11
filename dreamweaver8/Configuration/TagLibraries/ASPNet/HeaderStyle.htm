@@ -1,0 +1,293 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>标题式样</title> 
+<styleplaceholder>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Controls/Scripts/MultiStateCheckBox.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/******************* GLOBAL VARS *************************/
+
+// Color control elements
+var COLORP_BACK, COLORP_BORDER, COLORP_FORE; 
+var TEXT_BACK, TEXT_BORDER, TEXT_FORE; 
+
+var theFontBoldMultiStateCheckBox; 
+var theFontItalicMultiStateCheckBox; 
+var theFontOverlineMultiStateCheckBox; 
+var theFontStrikeoutMultiStateCheckBox; 
+var theFontUnderlineMultiStateCheckBox; 
+var theWrapMultiStateCheckBox; 
+
+var FONTLIST;
+var FONTGROUPLIST;
+var VERTALIGNLIST;
+var HORZALIGNLIST;
+var BORDERSTYLELIST;
+var theUIObjects;
+
+/*********************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+  updateColors();
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function updateUI(itemName)
+{
+  switch(itemName)
+  {
+    case "backColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_BACK,TEXT_BACK);
+      break;
+    }
+    case "backcolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_BACK,TEXT_BACK);
+      break;
+    }
+    case "borderColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_BORDER,TEXT_BORDER);
+      break;
+    }
+    case "bordercolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_BORDER,TEXT_BORDER);
+      break;
+    }
+    case "foreColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_FORE,TEXT_FORE);
+      break;
+    }
+    case "forecolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_FORE,TEXT_FORE);
+      break;
+    }
+    case "font-bold":
+	{
+	  theFontBoldMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+    case "font-italic":
+	{
+	  theFontItalicMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+    case "font-overline":
+	{
+	  theFontOverlineMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+    case "font-strikeout":
+	{
+	  theFontStrikeoutMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+    case "font-underline":
+	{
+	  theFontUnderlineMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+    case "wrap":
+	{
+	  theWrapMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+  }
+}
+
+function updateColors()
+{
+  tagDialog.updateColorPicker("colorField",COLORP_BACK,TEXT_BACK);
+  tagDialog.updateColorPicker("colorField",COLORP_BORDER,TEXT_BORDER);
+  tagDialog.updateColorPicker("colorField",COLORP_FORE,TEXT_FORE);
+}
+
+function updateFontList(){
+	// Remember old value if there was one
+	var oldValue = FONTGROUPLIST.getValue();
+	
+	// Null out the list first, then add the new values.
+	FONTGROUPLIST.setAll(new Array(0),new Array(0));
+  tagDialog.populateDropDownList(FONTGROUPLIST, dw.getFontList(), dw.getFontList(), 1); 
+	FONTGROUPLIST.pickValue(oldValue);
+  syncFontLists('font-names');
+}
+
+function syncFontLists(changedList){
+  // if font-names changed, we need to blank out font-name (it'll be
+  // set automatically with the first font in the font-names list)
+  if (changedList == 'font-names' && FONTGROUPLIST.getValue != ""){
+    FONTLIST.setIndex(0);
+  }
+  // likewise, if font-name changed, we need to blank out font-names
+  // (it'll be set automatically to a 1-item array containing font-name)
+  else if (changedList == 'font-name' && FONTLIST.getValue() != ""){
+    FONTGROUPLIST.setIndex(0);
+  }  
+}
+
+function initializeUI()
+{
+  // fix up dialog if its an OSX but linking to a style sheet (only for OSX) 
+  tagDialog.setOSXStyleSheetIfNeeded(); 
+  
+  theFontBoldMultiStateCheckBox = new MultiStateCheckBox("thefont-bold");
+  theFontBoldMultiStateCheckBox.initializeUI(); 
+  theFontItalicMultiStateCheckBox = new MultiStateCheckBox("thefont-italic");
+  theFontItalicMultiStateCheckBox.initializeUI(); 
+  theFontOverlineMultiStateCheckBox = new MultiStateCheckBox("thefont-overline");
+  theFontOverlineMultiStateCheckBox.initializeUI(); 
+  theFontStrikeoutMultiStateCheckBox = new MultiStateCheckBox("thefont-strikeout");
+  theFontStrikeoutMultiStateCheckBox.initializeUI(); 
+  theFontUnderlineMultiStateCheckBox = new MultiStateCheckBox("thefont-underline");
+  theFontUnderlineMultiStateCheckBox.initializeUI(); 
+  theWrapMultiStateCheckBox = new MultiStateCheckBox("thewrap");
+  theWrapMultiStateCheckBox.initializeUI(); 
+
+	FONTLIST = new ListControl("thefont-name"); 
+	FONTGROUPLIST = new ListControl("thefont-names");
+  HORZALIGNLIST = new ListControl("thehorizontalalign");
+  VERTALIGNLIST = new ListControl("theverticalalign");
+  BORDERSTYLELIST = new ListControl("theborderstyle");
+
+  theUIObjects = new Array(FONTLIST,FONTGROUPLIST,HORZALIGNLIST,VERTALIGNLIST,BORDERSTYLELIST);
+
+  COLORP_BACK = dwscripts.findDOMObject("backColorPicker");
+  COLORP_BORDER = dwscripts.findDOMObject("borderColorPicker"); 
+  COLORP_FORE = dwscripts.findDOMObject("foreColorPicker"); 
+  
+  TEXT_BACK = dwscripts.findDOMObject("thebackcolor");
+  TEXT_BORDER = dwscripts.findDOMObject("thebordercolor");
+  TEXT_FORE = dwscripts.findDOMObject("theforecolor");
+  
+  updateColors(); 
+
+  tagDialog.populateDropDownList(FONTGROUPLIST, dw.getFontList(), dw.getFontList(), 1); 
+  tagDialog.populateDropDownList(FONTLIST, dw.getSystemFontList('all'), dw.getSystemFontList('all'), 1);   
+  tagDialog.populateDropDownList(HORZALIGNLIST, theStandardFourAlignsCap, theStandardFourAlignsVal, 1); 
+  tagDialog.populateDropDownList(VERTALIGNLIST, theStandardValignsCap, theStandardValignsVal, 1); 
+  tagDialog.populateDropDownList(BORDERSTYLELIST, theStylesCap, theStylesVal, 1); 
+
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline"> 
+      <td width="105" align="right" nowrap="nowrap">高度: </td>
+      <td colspan="2" nowrap="nowrap"> <input name="theheight" type="text" class="smallNumOrChar" id="aspnet:headerstyle:height" attname="height" /> 
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">宽度: </td>
+      <td colspan="2" nowrap="nowrap"> <input name="thewidth" type="text" class="smallNumOrChar" id="aspnet:headerstyle:width" attname="width" /> 
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">边框样式: </td>
+      <td colspan="2" nowrap="nowrap"> <select name="theborderstyle" class="styleList" id="aspnet:headerstyle:borderstyle" attname="borderstyle">
+        </select> </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">边框宽度: </td>
+      <td colspan="2" nowrap="nowrap"> <input name="theborderwidth" type="text" class="smallNumOrChar" id="aspnet:headerstyle:borderwidth" attname="borderwidth" /> 
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">CSS 类: </td>
+      <td colspan="2" nowrap="nowrap"> <input name="thecssclass" type="text" class="basicTextField" id="aspnet:headerstyle:cssclass" attname="cssclass" /> 
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td colspan="2" nowrap="nowrap"> <select name="thefont-name" class="fontList" id="aspnet:headerstyle:font-name" onBlur="syncFontLists('font-name')" attname="font-name" editable="true">
+        </select> &nbsp; </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td colspan="2" nowrap="nowrap"> <select name="thefont-names" class="fontGroupList" id="aspnet:headerstyle:font-names" onBlur="syncFontLists('font-names')" attname="font-names" editable="true">
+        </select> &nbsp; <input type="button" name="editFontList" value="编辑字体列表..." onClick="dw.editFontList();updateFontList()" /> 
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">字体大小: </td>
+      <td colspan="2" nowrap="nowrap"> <input name="thefont-size" type="text" class="smallNumOrChar" id="aspnet:headerstyle:font-size" attname="font-size" /> 
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">水平对齐: </td>
+      <td colspan="2" nowrap="nowrap"> <select name="thehorizontalalign" class="alignList" id="aspnet:headerstyle:horizontalalign" attname="horizontalalign">
+        </select> </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">垂直对齐方式: </td>
+      <td colspan="2" nowrap="nowrap"> <select name="theverticalalign" class="alignList" id="aspnet:headerstyle:verticalalign" attname="verticalalign">
+        </select> </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">背景颜色: </td>
+      <td colspan="2" nowrap="nowrap"> <input type="mmcolorbutton" name="backColorPicker" value="" onChange="updateUI('backColorPicker')"> 
+        <input name="thebackcolor" type="text" class="smallTField" id="att:body:backcolor" onBlur="updateUI('backcolor')" value="" attname="backcolor"> 
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> 
+        <!-- spacer - do not remove -->
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">前景色: </td>
+      <td colspan="2" nowrap="nowrap"> <input type="mmcolorbutton" name="foreColorPicker" value="" onChange="updateUI('foreColorPicker')"> 
+        <input name="theforecolor" type="text" class="smallTField" id="att:alternatingitemstyle:forecolor" onBlur="updateUI('forecolor')" value="" attname="forecolor"> 
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">边框颜色: </td>
+      <td colspan="2" nowrap="nowrap"> <input type="mmcolorbutton" name="borderColorPicker" value="" onChange="updateUI('borderColorPicker')"> 
+        <input name="thebordercolor" type="text" class="smallTField" id="att:body:alink" onBlur="updateUI('bordercolor')" value="" attname="bordercolor"> 
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td width="66" nowrap="nowrap"> <input name="thefont-bold" attname="font-bold" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('font-bold');" >
+        粗体 </td>
+      <td width="230" nowrap="nowrap"> <input name="thefont-strikeout" attname="font-strikeout" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('font-strikeout');" >
+        删除线 </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap"> <input name="thefont-italic" attname="font-italic" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('font-italic');" >
+        斜体 </td>
+      <td nowrap="nowrap"><input name="thefont-underline" attname="font-underline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('font-underline');" >
+        下划线 </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap"> <input name="thefont-overline" attname="font-overline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('font-overline');" >
+        上划线 </td>
+      <td nowrap="nowrap"> <input name="thewrap" attname="wrap" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('wrap');" >
+        换行 </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

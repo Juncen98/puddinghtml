@@ -1,0 +1,18 @@
+<!-- WARNING: DO NOT CHANGE ANY ID ATTRIBUTES ASSOCIATED WITH MENU ITEMS. -->
+<!-- Changing IDs will make it impossible for other developers to locate -->
+<!-- menu items for installation purposes. -->
+<shortcutlist id="DWDataSourcesContext">
+	<shortcut key="Cmd+I"   	domRequired="false"		enabled="insertEnabled(dw.databasePalette.getSelectedNode());"  command="clickedInsert(dw.databasePalette.getSelectedNode());" id="DWShortcuts_ServerComponent_Insert" />
+	<shortcut key="Del"				domRequired="false"   enabled="(dw.databasePalette.getSelectedNode() != null && (dw.databasePalette.getSelectedNode().objectType=='Connection'))" command="clickedDelete();"  id="DWShortcuts_ServerComponent_Delete" /> 	
+</shortcutlist>
+<menubar name="" id="DWDataSourcesContext">
+	<menu name="" id="DWContext_DataSources">
+		<menuitem name="修改数据源..."		enabled="(dw.databasePalette.getSelectedNode() != null && (dw.databasePalette.getSelectedNode().objectType=='Connection'))" command="modifyDataSources();" id="DWContext_DataSources_ModifyDataSources" />
+		<menuitem name="测试连接..." enabled="false" command="clickedTest();"	 id="DWContext_DataSources_TestConnection" />
+		<separator/>
+		<menuitem name="查看数据(_V)..." command="clickedViewData();" enabled="(dw.databasePalette.getSelectedNode() != null && (dw.databasePalette.getSelectedNode().objectType=='Table' || dw.databasePalette.getSelectedNode().objectType=='View'))" id="DWContext_Tables_ViewData" />
+		<separator/>
+		<menuitem name="插入代码" domRequired="false"		enabled="insertEnabled(dw.databasePalette.getSelectedNode());" command="clickedInsert(dw.databasePalette.getSelectedNode());" id="DWShortcuts_ServerComponent_Insert" />
+		<menuitem name="刷新" command="MMDB.needToRefreshColdFusionDsnList(); dw.databasePalette.refresh();"	 id="DWContext_DataSources_TestConnection" />
+    </menu>
+</menubar>

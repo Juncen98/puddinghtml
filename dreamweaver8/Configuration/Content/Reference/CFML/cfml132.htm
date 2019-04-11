@@ -1,0 +1,211 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFTRANSACTION</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFTRANSACTION</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+For enterprise database management systems that support transaction processing, instructs the database management system to treat multiple database operations as a single transaction. Provides database commit and rollback processing. See the documentation for your database management system to determine whether it supports SQL transaction processing.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Database manipulation tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cftransaction 
+   action = &quot;begin&quot; or &quot;commit&quot; or &quot;rollback&quot;
+   isolation = &quot;read_uncommitted&quot; or &quot;read_committed&quot; or 
+      &quot;repeatable_read&quot; &gt;
+&lt;/cftransaction&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfinsert, cfprocparam, cfprocresult, cfquery, cfqueryparam, cfstoredproc, cfupdate; "Commits, rollbacks, and transactions" in Chapter&#160;19, "Introduction to Databases and SQL," in ColdFusion MX Developer's Guide
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+If you do not specify a value for the action attribute, automatic transaction processing proceeds as follows:
+</p>
+<ul>
+
+<li>If the cfquery operations within the transaction block complete without an error, the transaction is committed.</li>
+
+<li>If a cfquery tag generates an error within a cftransaction block, all cfquery operations in the transaction roll back.</li>
+</ul>
+
+<p>
+If you do not specify a value for the isolation attribute, ColdFusion uses the default isolation level for the associated database.
+</p>
+
+<p>
+Using CFML error handling and the action attribute, however, you can also explicitly control whether a transaction is committed or rolled back, based on the success or failure of the database query. Within a transaction block, you can do the following:
+</p>
+<ul>
+
+<li>Commit a database transaction by nesting the &lt;cftransaction action = &quot;commit&quot;/&gt; tag within the block</li>
+
+<li>Roll back a transaction by nesting the &lt;cftransaction action = &quot;rollback&quot;/&gt; tag within the block </li>
+</ul>
+
+<p>
+(In these examples, the slash is alternate syntax that is the equivalent of an end tag.)
+</p>
+
+<p>
+Within a transaction block, you can write queries to more than one database, but you must commit or roll back a transaction to one database before writing a query to another. 
+</p>
+
+<p>
+To control how the database engine performs locking during the transaction, use the isolation attribute. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;p&gt;CFTRANSACTION can be used to group multiple queries that use CFQUERY
+into one business event. Changes to data that is requested by the queries
+are not committed to the datasource until all actions within the transaction 
+block have executed successfully.
+&lt;p&gt;This a view-only example. 
+&lt;!--- 
+&lt;cftransaction&gt;
+   &lt;cfquery name=&#39;makeNewCourse&#39; datasource=&#39;Snippets&#39;&gt;
+   INSERT INTO Courses
+      (Number, Descript)
+   VALUES
+      (&#39;#myNumber#&#39;, &#39;#myDescription#&#39;)
+   &lt;/cfquery&gt;
+
+   &lt;cfquery name=&#39;insertNewCourseToList&#39; datasource=&#39;Snippets&#39;&gt;
+   INSERT INTO CourseList
+      (CorNumber, CorDesc, Dept_ID,
+      CorName, CorLevel, LastUpdate)
+   VALUES
+      (&#39;#myNumber#&#39;, &#39;#myDescription#&#39;, &#39;#myDepartment#&#39;,
+      &#39;#myDescription#&#39;, &#39;#myCorLevel#&#39;, #Now()#)
+   &lt;/cfquery&gt;
+&lt;/cftransaction&gt; 
+---&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="ACTION">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ACTION</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "begin"
+
+<ul>
+
+<li>begin: the start of the block of code to execute.</li>
+
+<li>commit: commits a pending transaction.</li>
+
+<li>rollback: rolls back a pending transaction.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ISOLATION">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ISOLATION</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>ODBC lock type: </p><ul>
+
+<li>read_uncommitted: reads without regard for other transactions that are taking place. Sometimes called a `dirty read' because data that is read can be in a transitional state and therefore not accurate.</li>
+
+<li>read_committed: uses shared locks to assure that no other transaction modifies rows that this transaction uses.</li>
+
+<li>repeatable_read: same as read_committed, except that rows in the recordset are exclusively locked until the transaction completes. Due to high overhead, Macromedia does not recommend this isolation level for normal database access.</li>
+
+<li>serializable: places an exclusive lock on every data table in use for the duration of the transaction. Causes access to the database to be single-threaded and is therefore not recommended for normal database access.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

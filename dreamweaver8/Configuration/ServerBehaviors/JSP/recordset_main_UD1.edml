@@ -1,0 +1,25 @@
+<participant>
+     <quickSearch><![CDATA[DriverManager.getConnection]]></quickSearch>
+     <insertText location="aboveHTML+50">
+<![CDATA[
+<%
+Driver Driver@@rsName@@ = (Driver)Class.forName("@@driver@@").newInstance();
+Connection Conn@@rsName@@ = DriverManager.getConnection("@@connection@@","@@username@@","@@password@@");
+PreparedStatement Statement@@rsName@@ = Conn@@rsName@@.prepareStatement("@@encodedSQL@@");
+ResultSet @@rsName@@ = Statement@@rsName@@.executeQuery();
+boolean @@rsName@@_isEmpty = !@@rsName@@.next();
+boolean @@rsName@@_hasData = !@@rsName@@_isEmpty;
+Object @@rsName@@_data;
+int @@rsName@@_numRows = 0;
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName,driver"><![CDATA[/Driver\s+Driver(\w+)\s*=\s*\(Driver\)Class\.forName\("([^\r\n]*)"\).newInstance\(\);/]]></searchPattern>
+       <searchPattern paramNames="connection,username,password"><![CDATA[/Connection\s+Conn\w+\s*=\s*DriverManager\.getConnection\("([^"]*)","([^"]*)","([^")]*)"\)/]]></searchPattern>
+       <searchPattern paramNames=",encodedSQL"><![CDATA[/PreparedStatement\s+Statement\w+\s*=\s*Conn\w+\.prepare(Statement|Call)\("([^\r\n]*)"\s*[,)]/]]></searchPattern>
+       <searchPattern paramNames=",cursorType,lockType" isOptional="true"><![CDATA[/PreparedStatement\s+Statement\w+\s*=\s*Conn\w+\.prepare(Statement|Call)\("[^\r\n]*"\s*,\s*([^, ]*)\s*,\s*([^) ]*)\);/]]></searchPattern>
+       <searchPattern paramNames="fetchSize" isOptional="true"><![CDATA[/Statement\w+\.setFetchSize\(([^)]*)\);/]]></searchPattern>
+       <searchPattern paramNames="queryTimeout" isOptional="true"><![CDATA[/Statement\w+\.setQueryTimeout\(([^)]*)\);/]]></searchPattern>
+     </searchPatterns>
+</participant>

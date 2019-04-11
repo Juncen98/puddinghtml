@@ -1,0 +1,8 @@
+<participant version="6.0">
+	<insertText location="aboveHTML+65"><![CDATA[<@ if (@@AddQueryString@@) @><cfset tempPos=ListContainsNoCase(QueryString_@@RecordsetName@@,"PageNum_@@RecordsetName@@=","&")><@ endif @>
+]]></insertText>
+	<searchPatterns whereToSearch="tag+CFSET">
+		<searchPattern paramNames="AddQueryString,RecordsetName" isOptional="false" limitSearch="all"><![CDATA[/(?:<cfset tempPos=ListContainsNoCase\((QueryString)_([^\r\n]*?),"PageNum_[^\r\n]*?=","&"\)>)/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>tempPos=ListContainsNoCase(QueryString_</quickSearch>
+</participant>

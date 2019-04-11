@@ -1,0 +1,380 @@
+<HTML>
+<HEAD>
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<SCRIPT LANGUAGE="javascript">
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   getServerModelDisplayName
+//
+// DESCRIPTION:
+//   Returns the name that should be displayed in the UI for
+//   this Server Model
+//
+//   This value can be accessed from JavaScript by calling the
+//   function:
+//     dom.serverModel.getDisplayName()
+//
+// ARGUMENTS:
+//   None
+//
+// RETURNS:
+//   string
+//--------------------------------------------------------------------
+
+function getServerModelDisplayName()
+{
+  return "PHP MySQL";
+}
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   getServerModelFolderName
+//
+// DESCRIPTION:
+//   Returns the folder name that will be used for this Server Model
+//   within the Configuration folder
+//
+//   This value can be accessed from JavaScript by calling the
+//   function:
+//     dom.serverModel.getFolderName()
+//
+// ARGUMENTS:
+//   None
+//
+// RETURNS:
+//   string
+//--------------------------------------------------------------------
+
+function getServerModelFolderName()
+{
+  return "PHP_MySQL";
+}
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   getServerInfo
+//
+// DESCRIPTION:
+//   Returns a JavaScript Object, which can be accessed from within
+//   the JavaScript code.
+//
+//   The entire object can be retreived through the JavaScript function:
+//     dom.serverModel.getServerInfo();
+//
+//   The properties: serverName, serverLanguage, and serverVersion
+//   are special properties, which can also be accessed with the
+//   JavaScript functions:
+//     dom.serverModel.getServerName()
+//     dom.serverModel.getServerLanguage()
+//     dom.serverModel.getServerVersion();
+//
+// ARGUMENTS:
+//   None
+//
+// RETURNS:
+//   Object
+//--------------------------------------------------------------------
+
+function getServerInfo()
+{
+  var obj = new Object();
+
+  obj.serverName = "PHP";
+  obj.serverLanguage = "";
+  obj.serverVersion = "4.0";
+
+  obj.recordsetDisplayName = MM.LABEL_TitleRecordset;
+  obj.recordsetBaseName = MM.LABEL_RecordsetBaseName;
+  obj.defaultRadioButtonSB = MM.LABEL_DynamicRadioSBFileTitleMX;
+  obj.defaultCheckboxSB = MM.LABEL_DynCheckboxSBFileTitle;
+  obj.defaultListboxSB = MM.LABEL_DynamicListMenuSBFileTitle;
+
+  return obj;
+}
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   getFileExtensions
+//
+// DESCRIPTION:
+//   Returns a JavaScript Array of the file extensions which will
+//   be listed as potential default file extensions on the Application
+//   Server configuration page within the Site definition dialog.
+//
+// ARGUMENTS:
+//   None
+//
+// RETURNS:
+//   Array
+//--------------------------------------------------------------------
+
+function getFileExtensions()
+{
+  FileExtensionArray = new Array();
+
+  FileExtensionArray[0] = ".php";
+  FileExtensionArray[1] = ".php3";
+  FileExtensionArray[2] = ".phtml";
+  FileExtensionArray[3] = ".htm";
+  FileExtensionArray[4] = ".html";
+
+  return FileExtensionArray;
+}
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   getServerSupportsCharset
+//
+// DESCRIPTION:
+//   Returns true if the current server supports the given charset
+//
+//   The CharSet support be accessed from JavaScript by calling the
+//   function:
+//     dom.serverModel.getServerSupportsCharset(metaCharSetString)
+//
+// ARGUMENTS:
+//   metaCharSetString - string - the value of the documents "charset="
+//
+// RETURNS:
+//   Array
+//--------------------------------------------------------------------
+
+function getServerSupportsCharSet( metaCharSetString )
+{
+  //PHP does not support korean, or chinese
+  if(    metaCharSetString.indexOf( "euc-kr" )  != -1
+  	  || metaCharSetString.indexOf( "big5" )  != -1
+  	  || metaCharSetString.indexOf( "gb2312" )  != -1
+  	 )
+  {
+    return false;
+  }
+  //PHP may support UTF-8 if it's compiled with the option, assume it
+  //is if the person is switching to is
+  else if ( metaCharSetString.indexOf( "utf-8" ) != -1  ){
+  	return true;
+  }
+  else {
+    return true;
+  }
+}
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   updatePageDirective
+//
+// DESCRIPTION:
+//   This function is called when a user changes their document encoding
+//	 or the document type of their document.
+//
+// ARGUMENTS:
+//   dom - The Document DOM of the document to be opened.
+//
+// RETURNS:
+//   none
+//--------------------------------------------------------------------
+
+function updatePageDirective(dom)
+{
+  if (dom)
+  {
+    encoding = dom.getCharSet();
+    if (encoding)
+    {
+      var docStr = dom.documentElement.outerHTML;
+      var pageEncodingStart = 0;
+	  var pageEncodingEnd = 0;
+	  var updateDoc = false;
+
+	 pageEncodingStart = docStr.search( /mb_http_input\(["'][\w-]*["']\)/i );
+	
+      if( pageEncodingStart > -1 )
+      {
+        pageEncodingEnd = docStr.indexOf(")", pageEncodingStart) + 1;
+
+        if(pageEncodingEnd > 1 && pageEncodingEnd > pageEncodingStart)
+        {
+          var oldLangStr = docStr.substring(pageEncodingStart, pageEncodingEnd);
+          var newLangStr = oldLangStr.replace( /(mb_http_input)\("[\w-]*"\)/i, "$1" + "(\"" + encoding + "\")" ); // double quotes
+		  var newLangStr = oldLangStr.replace( /(mb_http_input)\('[\w-]*'\)/i, "$1" + "('" + encoding + "')" );// single quotes
+          if (newLangStr != oldLangStr)
+          {
+            var newDocStr = docStr.substring(0, pageEncodingStart) +
+                            newLangStr +
+                            docStr.substring(pageEncodingEnd);
+			docStr = newDocStr;
+			updateDoc = true;
+          }
+        }
+      }
+	  
+      pageEncodingStart = docStr.search( /mb_http_output\(["'][\w-]*["']\)/i );
+
+      if( pageEncodingStart > -1 )
+      {
+        pageEncodingEnd = docStr.indexOf(")", pageEncodingStart) + 1;
+
+        if(pageEncodingEnd > 1 && pageEncodingEnd > pageEncodingStart)
+        {
+          var oldLangStr = docStr.substring(pageEncodingStart, pageEncodingEnd);
+          var newLangStr = oldLangStr.replace( /(mb_http_output)\("[\w-]*"\)/i, "$1" + "(\"" + encoding + "\")" ); // double quotes
+		  var newLangStr = oldLangStr.replace( /(mb_http_output)\('[\w-]*'\)/i, "$1" + "('" + encoding + "')" );// single quotes
+          if (newLangStr != oldLangStr)
+          {
+            var newDocStr = docStr.substring(0, pageEncodingStart) +
+                            newLangStr +
+                            docStr.substring(pageEncodingEnd);
+			docStr = newDocStr;
+			updateDoc = true;
+          }
+        }
+      }
+	  
+	  if( updateDoc )
+	  {
+	  	dom.documentElement.outerHTML = docStr;
+	  }
+    }
+  }
+}
+
+
+//*-------------------------------------------------------------------
+// FUNCTION:
+//   getServerModelDelimiters
+//
+// DESCRIPTION:
+//   Returns the script delimiters which are used by the application
+//   server, and states whether each can or cannot participate in
+//   merging of code blocks.
+//
+//   This value can be accessed from JavaScript by calling the
+//   function:
+//     dom.serverModel.getDelimiters()
+//
+// ARGUMENTS:
+//   None
+//
+// RETURNS:
+//   Array
+//--------------------------------------------------------------------
+
+function getServerModelDelimiters()
+{
+	DelimArray = new Array();
+
+	DelimObject = new Object();
+	DelimObject["startPattern"]="<\\?php";
+	DelimObject["endPattern"]="\\?>";
+	DelimObject["participateInMerge"]=true;
+	DelimArray[0]=DelimObject;
+
+	DelimObject = new Object();
+	DelimObject["startPattern"]="<\\?=";
+	DelimObject["endPattern"]="\\?>";
+	DelimObject["participateInMerge"]=false;
+	DelimArray[1]=DelimObject;
+
+	DelimObject = new Object();
+	DelimObject["startPattern"]="<\\?php\\s+(include|require|virtual)(_once)?";
+	DelimObject["endPattern"]="\\?>";
+	DelimObject["participateInMerge"]=false;
+	DelimArray[2]=DelimObject;
+
+	DelimObject = new Object();
+	DelimObject["startPattern"]="<\\?\\s+(include|require|virtual)(_once)?";
+	DelimObject["endPattern"]="\\?>";
+	DelimObject["participateInMerge"]=false;
+	DelimArray[3]=DelimObject;
+
+	DelimObject = new Object();
+	DelimObject["startPattern"]="<\\?(?=\\s)";
+	DelimObject["endPattern"]="\\?>";
+	DelimObject["participateInMerge"]=true;
+	DelimArray[4]=DelimObject;
+
+	DelimObject = new Object();
+	DelimObject["startPattern"]="<\\?php echo (?=\\$row_)";
+	DelimObject["endPattern"]="\\?>";
+	DelimObject["participateInMerge"]=false;
+	DelimArray[5]=DelimObject;
+
+  DelimObject = new Object();
+  DelimObject["startPattern"]="<\\?php echo ";
+  DelimObject["endPattern"]="\\?>";
+  DelimObject["participateInMerge"]=false;
+  DelimArray[6]=DelimObject;
+
+  DelimObject = new Object();
+  DelimObject["startPattern"]="<\\?php echo (?=\\$row_)";
+  DelimObject["endPattern"]=";\\s*\\?>";
+  DelimObject["participateInMerge"]=false;
+  DelimArray[7]=DelimObject;
+
+  DelimObject = new Object();
+  DelimObject["startPattern"]="<\\?php echo ";
+  DelimObject["endPattern"]=";\\s*\\?>";
+  DelimObject["participateInMerge"]=false;
+  DelimArray[8]=DelimObject;
+
+  DelimObject = new Object();
+  DelimObject["startPattern"]="<\\?php mb_http_input";
+  DelimObject["endPattern"]=";\\s*\\?>";
+  DelimObject["participateInMerge"]=false;
+  DelimArray[9]=DelimObject;
+
+	return DelimArray;
+}
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   getLanguageSignatures
+//
+// DESCRIPTION:
+//   Returns the method and array signatures used by the scripting
+//   language.
+//
+// ARGUMENTS:
+//   None
+//
+// RETURNS:
+//   Signatures object
+//--------------------------------------------------------------------
+
+function getLanguageSignatures()
+{
+	return new Object();
+}
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   canRecognizeDocument
+//
+// DESCRIPTION:
+//   This function is called when a user attempts to open a document
+//   whose file extension matches two or more Document Types.
+//
+// ARGUMENTS:
+//   dom - The Document DOM of the document to be opened.
+//
+// RETURNS:
+//   integer +ve integer if document is identified.
+//           -ve integer if not.
+//--------------------------------------------------------------------
+function canRecognizeDocument(dom)
+{
+  return 1;
+}
+
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

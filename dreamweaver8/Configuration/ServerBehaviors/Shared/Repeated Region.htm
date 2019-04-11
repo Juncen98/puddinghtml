@@ -1,0 +1,51 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/RecordsetMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/RadioGroupClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Repeated Region.js"></SCRIPT>
+<SCRIPT SRC="../Shared/DynamicCmn.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+  <form name="theForm">
+    
+  <table border="0" cellpadding="4" cellspacing="2">
+      <tr>
+        <td align="right" valign="baseline" nowrap>记录集: </td>
+        <td valign="baseline"  nowrap>
+          <select name="rsName" class="rsNameList">
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap>显示: </td>
+        <td valign="baseline" nowrap>
+            <input type="radio" name="count" value="Repeat" onClick="updateUI('count');focus(this)" checked>
+            <input name="repeatCount" type="text" class="smallNumOrChar" value="10" maxlength="5">
+         记录
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td valign="baseline" nowrap>
+            <input type="radio" name="count" value="All" onClick="updateUI('count');focus(this)"> 所有记录
+        </td>
+      </tr>
+    </table>
+  </form>
+</BODY>
+</HTML>

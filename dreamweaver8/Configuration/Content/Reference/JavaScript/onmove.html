@@ -1,0 +1,109 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">onmove, onmoveend, onmovestart</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5.5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Bubbles: Yes; Cancelable: No&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>When in edit mode, a positionable element set up for dragging
+receives these events in the following sequence:
+<span class="literal">onmovestart</span> (upon starting the drag),
+<span class="literal">onmove</span> (repeatedly during the drag), and
+<span class="literal">onmoveend</span> (upon release of the mouse button). The
+following example uses several events to demonstrate IE edit mode
+scripting (note that the native element dragging mechanism
+doesn't work well in IE 6 if the
+<span class="literal">&lt;!DOCTYPE&gt;</span> element points to a
+standards-compatible mode DTD):
+</p>
+<span class="PROGRAMLISTING"><pre>&lt;htm&gt; 
+&lt;head&gt; 
+&lt;title&gt;IE 5.5 (Windows) Edit Mode&lt;/title&gt; 
+&lt;style type=&quot;text/css&quot;&gt;
+   body {font-family:Arial, sans-serif}
+   #myDIV  {position:absolute; height:100px; width:300px;}
+   .regular {border:5px black solid; padding:5px; background-color:lightgreen}
+   .moving {border:5px maroon dashed; padding:5px; background-color:lightyellow}
+   .chosen {border:5px maroon solid; padding:5px; background-color:lightyellow}
+&lt;/style&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+// built-in dragging support
+document.execCommand(&quot;2D-position&quot;,false,true);
+// preserve content between modes
+var oldHTML = &quot;&quot;;
+
+// engage static edit environment
+function editOn( ) {
+    var elem = event.srcElement;
+    elem.className = &quot;chosen&quot;;
+}
+
+// engage special edit-move environment
+function moveOn( ) {
+    var elem = event.srcElement;
+    oldHTML = elem.innerHTML;
+    elem.className = &quot;moving&quot;;
+}
+
+// display coordinates during drag
+function trackMove( ) {
+    var elem = event.srcElement;
+    elem.innerHTML = &quot;Element is now at: &quot; + elem.offsetLeft + &quot;, &quot; +
+                      elem.offsetTop;
+}
+
+// turn off special edit-move environment
+function moveOff( ) {
+    var elem = event.srcElement;
+    elem.innerHTML = oldHTML;
+    elem.className = &quot;chosen&quot;;
+}
+
+// restore original environment (wrapper gets onfocusout)
+function editOff( ) {
+    var elem = event.srcElement;
+    if (elem.id == &quot;wrapper&quot;) {
+        elem.firstChild.className = &quot;regular&quot;;
+    }
+}
+
+// initialize event handlers
+function init( ) {
+    document.body.oncontrolselect = editOn;
+    document.body.onmovestart = moveOn;
+    document.body.onmove = trackMove;
+    document.body.onmoveend = moveOff;
+    document.body.onfocusout = editOff;
+}
+&lt;/script&gt; 
+&lt;/head&gt; 
+&lt;body onload=&quot;init( );&quot;&gt;
+&lt;div id=&quot;wrapper&quot; contenteditable=&quot;true&quot;&gt;
+    &lt;div id=&quot;myDIV&quot; class=&quot;regular&quot;&gt;
+        This is a positioned element with some text in it.
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt; 
+&lt;/html&gt;l</pre></span>
+							</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="typicaltargets"><span class="title">Typical Targets</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			An XML <span class="literal">LayoutRect</span> object.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+</body>
+</html>

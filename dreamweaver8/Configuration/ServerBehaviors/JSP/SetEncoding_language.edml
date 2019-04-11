@@ -1,0 +1,8 @@
+<participant version="6.0">
+	<insertText location="aboveHTML+0"><![CDATA[<% request.setCharacterEncoding("@@encoding@@"); %>]]></insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="encoding" isOptional="false" limitSearch="all"><![CDATA[/request\.setCharacterEncoding\("([^\r\n]*?)"\); (?=\r\n|\r|\n|%>)/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>request.setCharacterEncoding("</quickSearch>
+	<delete deleteType="none" />
+</participant>

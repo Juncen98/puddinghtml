@@ -1,0 +1,169 @@
+// Copyright 2000, 2001, 2002, 2003 Macromedia, Inc. All rights reserved.
+
+//*************** GLOBALS VARS *****************
+
+var helpDoc = MM.HELP_behCheckBrowser;
+
+//******************* BEHAVIOR FUNCTION **********************
+
+//Flexible interface allows many choices based on browser type an version.
+//If Netscape version meets or exceeds the first version, it can stay on the
+//same page of send the page to either of the URLs. Same for IE.
+//The function accepts the following arguments:
+//  NSvers   - float or integer: Netscape browser version number to check against
+//  NSpass   - 0,1,2: where to go if the browser version is the same or higher than NSvers:
+//               0 means stay on same page (do nothing)
+//               1 means go to theURL
+//               2 means go to altURL
+//  NSnoPass - 0,1,2: where to go if the browser version is the less than NSvers
+//  IEvers   - float or integer: Explorer browser version number to check against
+//  IEpass   - 0,1,2: where to go if the browser version is the same or higher than IEvers
+//  IEnoPass - 0,1,2: where to go if the browser version is the less than IEvers
+//  OBpass   - 0,1,2: where to go if other browser is used
+//  theURL   - URL, often a filename, URL encoded. (ex: file.htm, http://www.x.com/y.htm)
+//  altURL   - URL, often a filename, URL encoded. (ex: file.htm, http://www.x.com/y.htm)
+//
+//Gets the client browser version number. Checks if the browser is Netscape.
+//If the version number >= NSvers, checks if NSpass > 0, then goes to URL or altURL based
+//on NSpass. Then does the same for Internet Explorer. If some other browser is use,
+//goes to the URL or altURL based on OBpass. Goes to a URL by setting the
+//window.location property. Sets the return value global so this code can override the
+//link HREF.
+
+function MM_checkBrowser(NSvers,NSpass,NSnoPass,IEvers,IEpass,IEnoPass,OBpass,URL,altURL) { //v5.0
+  var newURL='', userAgent=navigator.userAgent, version=0;
+  if (userAgent.indexOf('Netscape') != -1) {
+  	version = parseFloat(userAgent.substring(userAgent.indexOf('Netscape')+9,userAgent.length));
+    if (version >= NSvers) {if (NSpass>0) newURL=(NSpass==1)?URL:altURL;}
+    else {if (NSnoPass>0) newURL=(NSnoPass==1)?URL:altURL;}
+  } else if (userAgent.indexOf('MSIE') != -1) {
+  	version = parseFloat(userAgent.substring(userAgent.indexOf('MSIE')+4,userAgent.length));
+    if (version >= IEvers)
+     {if (IEpass>0) newURL=(IEpass==1)?URL:altURL;}
+    else {if (IEnoPass>0) newURL=(IEnoPass==1)?URL:altURL;}
+  } else if (OBpass>0) newURL=(OBpass==1)?URL:altURL;
+  if (newURL) { window.location=unescape(newURL); document.MM_returnValue=false; }
+}
+
+MM.VERSION_MM_checkBrowser = 5.0; //define latest version number for behavior inspector
+
+//******************* API **********************
+
+
+//Can be used with any tag and any event
+
+function canAcceptBehavior(){
+  return true;
+}
+
+
+
+//Returns a Javascript function to be inserted in HTML head with script tags.
+
+function behaviorFunction(){
+  return "MM_checkBrowser";
+}
+
+
+
+//Returns fn call to insert in HTML tag <TAG... onEvent='thisFn(arg)'>
+//Calls dw.doURLEncoding to encode URLs. Checks validity of all entries.
+//For example, if *any* condition uses URL, the URL field cannot be empty.
+
+function applyBehavior() {
+  var NSvers, IEvers, URL, altURL;
+  var NSpass, NSnoPass, IEpass, IEnoPass, OBpass;
+
+  with (document.theForm) {  // read all values from form
+    NSvers = parseFloat(NSversion.value);
+    NSpass = NSpassTest.selectedIndex;
+    NSnoPass = NSnoPassTest.selectedIndex;
+    IEvers = parseFloat(IEversion.value);
+    IEpass = IEpassTest.selectedIndex;
+    IEnoPass = IEnoPassTest.selectedIndex;
+    OBpass = OBpassTest.selectedIndex;
+    URL = dw.doURLEncoding(theURL.value);  //URL encode
+    altURL = dw.doURLEncoding(theAltURL.value);  //URL encode
+  }
+
+  //Check for valid numbers, and URLs exist if required
+  if (isNaN(NSvers) || isNaN(IEvers)) return MSG_InvalidVersionNumbers;
+  if ((URL=="") && (NSpass==1 || NSnoPass==1 || IEpass==1 || IEnoPass==1 || OBpass==1))
+     return MSG_NoURL;
+  if ((altURL=="") && (NSpass==2 || NSnoPass==2 || IEpass==2 || IEnoPass==2 || OBpass==2))
+     return MSG_NoAltURL;
+
+  //Make sure numbers are floats 4 => 4.0
+  NSvers = ""+NSvers;
+  if (NSvers.indexOf(".") == -1) NSvers += ".0";
+  IEvers = ""+IEvers;
+  if (IEvers.indexOf(".") == -1) IEvers += ".0";
+
+  // netscape 6 identifies itself as 5
+  if(NSvers == 6.0) NSvers = "5.0";
+  updateBehaviorFns("MM_checkBrowser");
+  return "MM_checkBrowser("+NSvers+","+NSpass+","+NSnoPass+","+IEvers+","+IEpass+","+IEnoPass+
+                          ","+OBpass+",'"+URL+"','"+altURL+"')";
+}
+
+
+
+//Returns a dummy function call to inform Dreamweaver the type of certain behavior
+//call arguments. This information is used by DW to fixup behavior args when the
+//document is moved or changed.
+//
+//It is passed an actual function call string generated by applyBehavior(), which
+//may have a variable list of arguments, and this should return a matching mask.
+//
+//The return values are:
+//  URL     : argument could be a file path, which DW will update during Save As...
+//  NS4.0ref: arg is an object ref that may be changed by Convert Tables to Layers
+//  IE4.0ref: arg is an object ref that may be changed by Convert Tables to Layers
+//  other...: argument is ignored
+
+function identifyBehaviorArguments(fnCallStr) {
+  var argArray;
+
+  argArray = extractArgs(fnCallStr);
+  if (argArray.length == 10) {
+    return "other,other,other,other,other,other,other,URL,URL";
+  } else {
+    return "";
+  }
+}
+
+
+
+//Passed the function call above, takes prior arguments and reloads the UI.
+//Converts strings into numbers for list indexes, and decodes URLs.
+
+function inspectBehavior(argStr){
+  var argArray = extractArgs(argStr);
+
+  if (argArray.length == 10) { //function name plus 9 args
+    with (document.theForm) {  // set all form values from args
+      NSversion.value            =          argArray[1];
+      if (NSversion.value==5.0) NSversion.value="6.0"
+      NSpassTest.selectedIndex   = parseInt(argArray[2]);
+      NSnoPassTest.selectedIndex = parseInt(argArray[3]);
+      IEversion.value            =          argArray[4];
+      IEpassTest.selectedIndex   = parseInt(argArray[5]);
+      IEnoPassTest.selectedIndex = parseInt(argArray[6]);
+      OBpassTest.selectedIndex   = parseInt(argArray[7]);
+      theURL.value               = unescape(argArray[8]);
+      theAltURL.value            = unescape(argArray[9]);
+    }
+  }
+}
+
+
+
+//**************** LOCAL FUNCTIONS ****************
+
+
+//Loads a preset list of browser version numbers
+
+function initializeUI() {
+  document.theForm.theURL.focus(); //set focus on textbox
+  document.theForm.theURL.select(); //set insertion point into textbox
+}

@@ -1,0 +1,120 @@
+<!-- Copyright 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<html>
+	<head>
+		<title>ÑéÖ¤Æ÷´íÎó</title>
+		<script language="JavaScript">
+		
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+// note for localization: there are identical message strings in strings.xml under "autovalidate/*"
+var MSG_ValidationErrorsFirst = "ÕÒµ½ ";
+var MSG_ValidationErrorsSecond = " ä¯ÀÀÆ÷¼ì²é´íÎó";
+var MSG_ValidationErrorsNone = "Ã»ÓÐä¯ÀÀÆ÷¼ì²é´íÎó";
+
+//--------------- END LOCALIZEABLE ---------------
+		
+
+var m_imageErr = 'Toolbars/images/MM/validatorerrors.png';
+var m_imageNoErr = 'Toolbars/images/MM/validatornoerrors.png';
+//var m_imageErrMac = 'dwres:6320';
+//var m_imageNoErrMac = 'dwres:6321';
+
+
+function getErrorCount()
+{
+	var doc = dw.getDocumentDOM();
+	var errState = false;
+	if ( !doc )
+	{
+		return 0;
+	}
+	else {
+		var errBTC = doc.getAutoValidationCount();
+		return errBTC.numError;
+	}
+}
+
+// jschang 4/29/03 - we changed the method of popping the toolip info message so that it 
+// comes up only when the user explicitly runs the browser check from the context or toolbar
+// menu and on document open - therefore we don't have the valnotify menu item anymore and 
+// don't need showIf
+/***
+function showIf()
+{
+	var doc = dw.getDocumentDOM();
+
+	// there are 2 toolbar items using this command, one is visible and has a menu 
+	// and it passes in arg 'valmenu', it gets notification messages for both 
+	// view changes and validation updates
+	//
+	// the other toolbar item is hidden and only gets notification on validation updates.
+	// it passes in 'valnotify' - we needed these to be separate item because we don't 
+	// want to show the info message on a view change
+	if ( arguments[0] == 'valnotify' )
+	{
+		var errCount = getErrorCount();
+
+		if (doc)
+		{
+			// if we just ran the validation and it produced errors, then we 
+			// should popup the info message and set a timer to close it
+			if ( errCount > 0 )
+			{
+				var msg = MSG_ValidationErrorsFirst + errCount + MSG_ValidationErrorsSecond;
+				doc.showInfoMessagePopup('toolbar:DW_Toolbar_Main:DW_ValidatorErrors', msg, 5000);
+				doc.setToolbarItemAttribute('DW_Toolbar_Main', 'DW_ValidatorErrors', 'tooltip', msg);
+			}
+			else
+			{
+				doc.setToolbarItemAttribute('DW_Toolbar_Main', 'DW_ValidatorErrors', 'tooltip', MSG_ValidationErrorsNone);
+			}
+		}
+		return false;
+	}
+	else
+		return true;
+}
+***/
+
+function canAcceptCommand()
+{
+	// jschang 4/29/03 - changed the method of popping the toolip info message, no more valnotify item
+	//if ( arguments[0] == 'valnotify' ) {
+	//	return false;
+	//}
+	
+	var doc = dw.getDocumentDOM();
+
+	var errCount = getErrorCount();
+
+	// otherwise it is a notification for the menu button, so 
+	// update the button image and tooltip
+	if ( doc )
+	{
+		if ( errCount == 0 )
+		{
+			doc.setToolbarItemAttribute('DW_Toolbar_Main', 'DW_ValidatorErrors', 'image', m_imageNoErr);
+			//doc.setToolbarItemAttribute('DW_Toolbar_Main', 'DW_ValidatorErrors', 'imageMac', m_imageNoErrMac);
+			doc.setToolbarItemAttribute('DW_Toolbar_Main', 'DW_ValidatorErrors', 'tooltip', MSG_ValidationErrorsNone);
+		}
+		else {
+			doc.setToolbarItemAttribute('DW_Toolbar_Main', 'DW_ValidatorErrors', 'image', m_imageErr);
+			//doc.setToolbarItemAttribute('DW_Toolbar_Main', 'DW_ValidatorErrors', 'imageMac', m_imageErrMac);
+			var msg = MSG_ValidationErrorsFirst + errCount + MSG_ValidationErrorsSecond;
+			doc.setToolbarItemAttribute('DW_Toolbar_Main', 'DW_ValidatorErrors', 'tooltip', msg);
+		}
+	}
+	return ((doc == null) || (doc.getView() != 'browse'));
+}
+
+function getMenuID()
+{
+	return "DWValidatorErrorsPopup";
+}
+
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

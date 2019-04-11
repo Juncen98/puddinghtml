@@ -1,0 +1,313 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFOBJECT: COM OBJECT</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFOBJECT: COM OBJECT</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Creates and manipulates a Component Object Model (COM) object. Invokes a registered automation server object type. 
+</p>
+
+<p>
+For information on OLEView, and about COM and DCOM, see the Microsoft OLE Development website: www.microsoft.com</a>.
+</p>
+
+<p>
+To use this tag, you must provide the object's program ID or filename, the methods and properties available through the IDispatch interface, and the arguments and return types of the object&#39;s methods. For most COM objects, you can get this information with the OLEView utility. 
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>On UNIX, this tag does not support COM objects.</td>
+  </tr>
+</table>  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfobject 
+   type = &quot;com&quot;
+   action = &quot;action&quot;
+   class = &quot;program_ID&quot;
+   name = &quot;text&quot;
+   context = &quot;context&quot;
+   server = &quot;server_name&quot;&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+ReleaseComObject, cfcollection, cfexecute; "COM" in Chapter&#160;17, "Developing Globalized Applications," in ColdFusion MX Developer's Guide
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;cfobject (COM) Example&lt;/h3&gt;
+&lt;!--- Create a COM object as an inproc server (DLL). (class = prog-id)---&gt;
+&lt;cfobject action = &quot;Create&quot;
+   type = &quot;COM&quot;
+   class = Allaire.DocEx1.1
+   name = &quot;obj&quot;&gt; 
+
+&lt;!--- Call a method. Methods that expect no arguments should be called 
+using empty parentheses. ---&gt;
+&lt;cfset obj.Init()&gt;
+
+&lt;!--- This is a collection object. It should support, at a minimum:
+   Property : Count
+   Method : Item(inarg, outarg)
+   and a special property called _NewEnum 
+---&gt;
+&lt;cfoutput&gt;
+   This object has #obj.Count# items.
+   &lt;br&gt; &lt;HR&gt;
+&lt;/cfoutput&gt;
+
+&lt;!--- Get the 3rd object in the collection. ---&gt;
+&lt;cfset emp = obj.Item(3)&gt;
+&lt;cfoutput&gt;
+   The last name in the third item is #emp.lastname#.
+   &lt;br&gt; &lt;HR&gt;
+&lt;/cfoutput&gt;
+&lt;!---Loop over all the objects in the collection.---&gt;
+&lt;p&gt;Looping through all items in the collection:
+&lt;br&gt;
+&lt;cfloop 
+   collection = #obj# 
+   item = file2&gt;
+   &lt;cfoutput&gt;Last name: #file2.lastname# &lt;br&gt;&lt;/cfoutput&gt;
+&lt;/cfloop&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="TYPE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TYPE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Object type:</p><ul>
+
+<li>com</li>
+
+<li>corba</li>
+
+<li>java</li>
+</ul>
+
+<p>(The other object types do not take the type attribute.)</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ACTION">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ACTION</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<ul>
+
+<li>create: instantiates a COM object (typically, a DLL) before invoking methods or properties.</li>
+
+<li>connect: connects to a COM object (typically, an EXE) running on server.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="CLASS">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">CLASS</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Component ProgID for the object to invoke. When using Java stubs to connect to the COM object, the class must be the ProgID of the COM object.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="NAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>String; name for the instantiated component.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="CONTEXT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">CONTEXT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<ul>
+
+<li>inproc</li>
+
+<li>local</li>
+
+<li>remote </li>
+</ul>
+
+<p>On Windows: If not specified, uses Registry setting. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SERVER">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SERVER</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required if context = &quot;Remote&quot;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Server name, using Universal Naming Convention (UNC) or Domain Name Serve (DNS) convention, in one of these forms: </p><ul>
+
+<li>\\lanserver</li>
+
+<li>lanserver</li>
+
+<li>http://www.servername.com</li>
+
+<li>www.servername.com</li>
+
+<li>127.0.0.1</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

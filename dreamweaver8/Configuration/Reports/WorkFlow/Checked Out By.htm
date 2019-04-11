@@ -1,0 +1,35 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<head>
+	<title>取出者</title>
+	<script src="../../Shared/MM/Scripts/CMN/UI.js"></script>
+	<script language="JavaScript" src="../../Shared/MM/Scripts/CMN/DOM.js"></script>
+    <script language="JavaScript" src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+  <script language="JavaScript" src="../../Shared/MM/Scripts/Class/PreferencesClass.js"></script>
+	<script language="JavaScript" src="../Reports.js"></script> 
+	<script language="JavaScript" src="Checked Out By.js"></script>
+  <script language="JavaScript">
+
+// Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved.
+//--------------- LOCALIZEABLE GLOBALS---------------
+var MSG_CantRun_FileActivity = "Dreamweaver 当前正与服务器进行交互。\n\n由于运行“取出者”报告也需要与服务器交互，因此 Dreamweaver 当前无法执行此任务。\n\n请在当前服务器任务完成后重试。";
+var MSG_CheckOutReport = "该文件的取出者是:";
+var MSG_CheckInOutNotEnabled = "如果存回/取出没有启用则取出者报告不能工作.请在站点定义对话框中启用它.";
+//--------------- END LOCALIZEABLE   ---------------
+ </script> 
+
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad = "initializeUI()">
+<form name="theForm">
+  <table width="300" border="0" cellpadding="4" cellspacing="2">
+    <tr valign="baseline"> 
+      <td>取出者是:
+        <input name="checkOutField" type="text" class="medTField" value="">
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

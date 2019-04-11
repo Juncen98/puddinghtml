@@ -1,0 +1,224 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFCACHE</title>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var CACHE_PROTOCOLLIST;
+var CLIENTCACHE_PROTOCOLLIST;
+var OPTIMAL_PROTOCOLLIST;
+var SELECTORLIST;
+
+var theUIObjects;
+var applyType = "dynamic";
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue();
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode, SELECTORLIST);
+}
+
+function applyTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue();
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode);
+}
+
+function updateUI()
+{
+  var curDiv = SELECTORLIST.getValue();
+  tagDialog.showOnlyThisLayer(curDiv);
+}
+
+function initializeUI()
+{
+  CACHE_PROTOCOLLIST = new ListControl("thecacheprotocol");
+  CLIENTCACHE_PROTOCOLLIST = new ListControl("theclientcacheprotocol");
+  OPTIMAL_PROTOCOLLIST = new ListControl("theoptimalprotocol");
+  SELECTORLIST = new ListControl("theselector");
+
+  theUIObjects = new Array(CACHE_PROTOCOLLIST,CLIENTCACHE_PROTOCOLLIST,OPTIMAL_PROTOCOLLIST,SELECTORLIST);
+
+  tagDialog.populateDropDownList(CACHE_PROTOCOLLIST, theProtocolsVal, theProtocolsVal, 0);
+  tagDialog.populateDropDownList(CLIENTCACHE_PROTOCOLLIST, theProtocolsVal, theProtocolsVal, 0);
+  tagDialog.populateDropDownList(OPTIMAL_PROTOCOLLIST, theProtocolsVal, theProtocolsVal, 0);
+  tagDialog.populateDropDownList(SELECTORLIST, theSelCacheCap, theSelCacheVal, 0);
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+
+<div name="常规">
+<br />
+操作:
+<select name="theselector" class="selectorList" id="attr:cfcache:selector" onChange="updateUI();" attname="action" editable="false">
+</select>
+<hr width="100%">
+<br />
+<div id="thecache" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">用户名: </td>
+      <td nowrap="nowrap">
+        <input name="theusername" type="text" class="basicTextField" id="attr:cfcache:username" attname="username" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">密码: </td>
+      <td nowrap="nowrap">
+        <input name="thepassword" type="text" class="basicTextField" id="attr:cfcache:password" attname="password" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">超时: </td>
+      <td nowrap="nowrap">
+        <input name="thetimeout" type="text" class="basicTextField" id="attr:cfcache:timeout" attname="timeout" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">协议: </td>
+      <td nowrap="nowrap">
+        <select name="thecacheprotocol" class="protocolList" id="attr:cfcache:cacheprotocol" attname="protocol">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">端口: </td>
+      <td nowrap="nowrap">
+        <input name="theport" type="text" class="basicTextField" id="attr:cfcache:port" attname="port" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">缓存目录: </td>
+      <td nowrap="nowrap">
+        <input name="thecachedirectory" type="text" class="basicTextField" id="attr:cfcache:cachedirectory" attname="cachedirectory" />&nbsp;
+		<input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFolder('thecachedirectory',document.layers[0].document.layers['thecache'],true)" />
+	  </td>
+    </tr>
+  </table>
+</div>
+<div id="theflush" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">目录: </td>
+      <td nowrap="nowrap">
+        <input name="thedirectory" type="text" class="basicTextField" id="attr:cfcache:directory" attname="directory" />&nbsp;
+    		<input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFolder('thedirectory',document.layers[0].document.layers['theflush'],true)" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">到期 URL: </td>
+      <td nowrap="nowrap">
+        <input name="theexpireurl" type="text" class="basicTextField" id="attr:cfcache:expireurl" attname="expireurl" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">时间跨度: </td>
+      <td nowrap="nowrap">
+        <input name="thetimespan" type="text" class="basicTextField" id="attr:cfcache:timespan" attname="timespan" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="theclientcache" style="position:absolute;width:200px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">用户名: </td>
+      <td nowrap="nowrap">
+        <input name="theusername" type="text" class="basicTextField" id="attr:cfcache:username" attname="username" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">密码: </td>
+      <td nowrap="nowrap">
+        <input name="thepassword" type="text" class="basicTextField" id="attr:cfcache:password" attname="password" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">超时: </td>
+      <td nowrap="nowrap">
+        <input name="thetimeout" type="text" class="basicTextField" id="attr:cfcache:timeout" attname="timeout" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">协议: </td>
+      <td nowrap="nowrap">
+        <select name="theclientcacheprotocol" class="protocolList" id="attr:cfcache:clientcacheprotocol" attname="protocol" editable="false">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">端口: </td>
+      <td nowrap="nowrap">
+        <input name="theport" type="text" class="basicTextField" id="attr:cfcache:port" attname="port" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">缓存目录: </td>
+      <td nowrap="nowrap">
+        <input name="thecachedirectory" type="text" class="basicTextField" id="attr:cfcache:cachedirectory" attname="cachedirectory" />&nbsp;
+        <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFolder('thecachedirectory',document.layers[0].document.layers['theclientcache'],true)" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="theoptimal" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">用户名: </td>
+      <td nowrap="nowrap">
+        <input name="theusername" type="text" class="basicTextField" id="attr:cfcache:username" attname="username" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">密码: </td>
+      <td nowrap="nowrap">
+        <input name="thepassword" type="text" class="basicTextField" id="attr:cfcache:password" attname="password" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">超时: </td>
+      <td nowrap="nowrap">
+        <input name="thetimeout" type="text" class="basicTextField" id="attr:cfcache:timeout" attname="timeout" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">协议: </td>
+      <td nowrap="nowrap">
+        <select name="theoptimalprotocol" class="protocolList" id="attr:cfcache:optimalprotocol" attname="protocol" editable="false">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">端口: </td>
+      <td nowrap="nowrap">
+        <input name="theport" type="text" class="basicTextField" id="attr:cfcache:port" attname="port" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">缓存目录: </td>
+      <td nowrap="nowrap">
+        <input name="thecachedirectory" type="text" class="basicTextField" id="attr:cfcache:cachedirectory" attname="cachedirectory" />&nbsp;
+        <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFolder('thecachedirectory',document.layers[0].document.layers['theoptimal'],true)" />
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+</body>
+</html>

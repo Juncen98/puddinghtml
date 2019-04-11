@@ -1,0 +1,88 @@
+<!doctype HTML PUBLIC "-//Macromedia//DWExtension layout-engine 5">
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Include the UI helper functions -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<!-- Include DOM functions -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<script src="../Shared/MM/Scripts/Cmn/string.js"></script>
+<script src="../Shared/Common/Scripts/ListControlClass.js"></script>
+<SCRIPT src="../Shared/Common/Scripts/ImageButtonClass.js"></SCRIPT>
+<script src="../Shared/MM/Scripts/Class/FileClass.js"></script>
+<script src="ShortcutClass.js"></script> 
+<script src="../Shared/MM/Scripts/keyCodes.js"></script> 
+<script src="ExtractTemplateXML.js"></script>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/templateUtils.js"></SCRIPT>
+<SCRIPT>
+<!--Copyright 2001-2002 Macromedia, Inc. All rights reserved.-->
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_NoSiteSelected = "您在可以将其模板数据导出为 XML 前必须选取一个站点。";
+var MSG_PickFolder = "解压缩模板 XML";
+var MSG_sameAsRoot = "您不能解压缩到站点的根文件夹。";
+var MSG_insideRoot = "您不能解压缩到站点内的文件夹。";
+var MSG_Does_Not_exist = "指定的文件夹不存在。";
+var MSG_No_Dir = "您必须指定要解压缩到的文件夹。";
+
+//--------------- END LOCALIZEABLE   ---------------
+
+
+//---------------    END JAVASCRIPT    ---------------
+
+
+
+</SCRIPT>
+
+
+<title>导出为无模板标记的站点</title>
+
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+
+
+<form name="theForm">
+
+  <TABLE WIDTH=434 BORDER=0 cellpadding="4" cellspacing="2">
+	<TR>
+		<TD colspan=2>
+		选择要将站点导出到的文件夹。 
+		<BR>
+		</TD>
+	</TR> 
+	
+	<TR>
+      <TD width="44" NOWRAP>
+         <P ALIGN=RIGHT>文件夹:
+      </TD><TD width="368">        <P>
+        <INPUT NAME="destinationFolder" TYPE="text" class="largeTField" VALUE="">
+        <input type="submit" name="Submit" value="浏览..." onClick="browseForFolder();focus(this)">      
+      </TD>
+   </TR>
+   
+   <TR>
+      <TD >
+         
+      </TD><TD>
+         <P><INPUT TYPE="checkbox" id="wantXMLFiles" NAME="wantXMLFiles" VALUE="value"><LABEL for="wantXMLFiles">保留模板数据文件</LABEL>
+      </TD>
+   </TR>
+   
+   <TR>
+      <TD >
+         
+      </TD><TD>
+         <P><INPUT TYPE="checkbox" id="changedFilesOnly" NAME="changedFilesOnly" VALUE="value"><label for="changedFilesOnly">只解压缩已更改的文件</label>
+      </TD>
+   </TR>
+</TABLE>
+	
+</form>
+</body>
+</html>

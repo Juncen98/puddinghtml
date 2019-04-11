@@ -1,0 +1,107 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+
+<SCRIPT>
+// Copyright 2001-2002 Macromedia, Inc. All rights reserved.
+var PROP_type = "DynamicSelectList";
+</SCRIPT>
+
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/TagEditClass.js"></SCRIPT>
+
+<SCRIPT SRC="../../Shared/Controls/Scripts/TagMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/RecordsetMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/RecordsetColumnMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/DynamicTextField.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/GridControlClass.js"></SCRIPT>
+
+<SCRIPT SRC="../Shared/DynamicSelectList.js"></SCRIPT>
+
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm" ACTION="">
+    
+  <table border="0" cellpadding="4" cellspacing="2">
+      
+    <tr valign="baseline">
+        
+      <td align="right" nowrap>菜单: </td>
+      <td nowrap colspan="2">
+          <select name="selectNode" class="tagList" onChange="updateUI('selectNode', 'onChange')">
+          </select>
+        </td>
+    </tr>
+      
+      
+    <tr valign="baseline">
+        
+      <td align="right" nowrap>静态选项:</td>
+      <td nowrap align="left">
+          <input type="image" name="optionAdd" src="../../Shared/MM/Images/btnAdd.gif" onClick="updateUI('optionAdd','onClick');" width="20" height="18">
+          <input type="image" name="optionDel" src="../../Shared/MM/Images/btnDel.gif" onClick="updateUI('optionDel','onClick');" width="20" height="18">
+        </td>
+      <td nowrap align="right">
+          <input type="image" border="0" name="optionUp" src="../../Shared/MM/Images/btnUp.gif" width="20" height="18" onClick="updateUI('optionUp','onClick');">
+          <input type="image" border="0" name="optionDown" src="../../Shared/MM/Images/btnDown.gif" width="20" height="18" onClick="updateUI('optionDown','onClick');">
+        </td>
+    </tr>
+      
+    <tr valign="baseline">
+        
+      <td nowrap align="right"></td>
+      <td nowrap colspan="2" align="left">
+          <select name="optionsGrid" size="6" class="columnNameMultiList" type="mmparameterlist" disableDelKey="disableDelKey" columns="值,标签" columnWidths="99,99">
+        </select>
+        </td>
+    </tr>
+      
+      
+    <tr valign="baseline">
+  	    
+      <td nowrap align="right">来自记录集的选项:</td>
+      <td nowrap colspan="2" align="left">
+	  	    <select name="rsName" class="rsNameList">
+		      </select>
+        </td>
+    </tr>
+      
+    <tr valign="baseline">
+		    
+      <td nowrap align="right">值:</td>
+      <td nowrap align="left" colspan="2">
+          <select name="valueColumn" class="columnNameList">
+          </select>
+        </td>
+    </tr>
+      
+    <tr valign="baseline">
+		    
+      <td nowrap align="right">标签:</td>
+      <td nowrap align="left" colspan="2">
+          <select name="labelColumn" class="columnNameList">
+          </select>
+        </td>
+    </tr>
+      
+      
+    <tr valign="baseline">
+        
+      <td align="right" nowrap>选取值等于: </td>
+      <td colspan="2" align="left" nowrap>
+          <input name="expression1" type="text" class="basicTextField">
+          <input type="image" src="../../Shared/UltraDev/Images/Boltup.gif" onClick="expression1.launchDynamicData()" name="image">
+        </td>
+    </tr>
+    
+  </table>
+  </FORM>
+</BODY>
+</HTML>

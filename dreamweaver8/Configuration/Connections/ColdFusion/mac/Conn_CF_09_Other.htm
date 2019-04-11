@@ -1,0 +1,74 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<HTML>
+<HEAD>
+<!--  Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<script language="JavaScript">
+var ISMAC=false;
+</script>
+
+<TITLE>其他连接（默认驱动程序）</TITLE>
+
+<SCRIPT SRC="../../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/UltraDev/Scripts/connectionCmn.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/UltraDev/Scripts/sbManager.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/RDSAPI/basicAPI.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/RDSAPI/connectionAPI.js"></SCRIPT>
+<SCRIPT SRC="../AdvancedSettings/Conn_CF_common_Adv.js"></SCRIPT>
+<SCRIPT SRC="../Connection_php_adodb.js"></SCRIPT>
+<SCRIPT SRC="Conn_CF_09_Other.js"></SCRIPT>
+
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+
+<form NAME="theForm" ACTION="">
+  <table border=0 width="600">
+    <tr valign="baseline">
+      <td width="21%" align="right" nowrap>CF 数据源名称:</td>
+      <td align="left">
+        <input type="text" style="width:160px" name="ConnectionName">
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>JDBC URL:</td>
+      <td align="left"><input type="text" style="width:300px" name="JDBC_URL">
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>驱动程序类:</td>
+      <td align="left">
+        <input type="text" style="width:300px" name="DriverClass">
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>驱动程序名称:</td>
+      <td align="left"><input type="text" style="width:300px" name="DriverName"></td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>用户名:</td>
+      <td align="left">
+        <input type="text" style="width:160px" name="UserName">
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>密码:</td>
+      <td align="left">
+<input name="Password" type="password" style="width:160px" maxlength="16"> <FONT class=label>（不能超过 16 个字符）</FONT>
+
+
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" valign="top">描述:</td>
+      <td align="left"><textarea name="Description" style="width:300px; height:50px"></textarea> 
+      </td>
+    </tr>
+    <tr align="left" valign="baseline">
+      <td colspan="3" valign="top"><input name="AdvancedButton" type="submit" id="advanced" onClick="clickedAdvanced();" value="显示高级设置" style="width:150px"></td>
+    </tr>
+  </table>
+  <div name="AdvancedSettingsDiv"></div>
+</form>
+</BODY>
+</HTML>

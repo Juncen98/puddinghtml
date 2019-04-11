@@ -1,0 +1,14 @@
+<participant name="XSLTForEachOpen">
+  <translator priority=400>
+    <searchPatterns>
+      <searchPattern>xsl:for-each</searchPattern>
+      <searchPattern paramNames="match"><![CDATA[/<xsl:for-each\s*select\s*=\s*["'](.+)["']\s*>/]]></searchPattern>
+<!--      <searchPattern requiredLocation="trailing"><![CDATA[/<\/xsl:for-each>/]]></searchPattern>-->
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="tag+xsl:for-each" limitSearch="tagOnly" translationType="tabbed region start">
+        <display><![CDATA[xsl:for-each]]></display>
+      </translation>
+    </translations>
+  </translator>
+</participant>

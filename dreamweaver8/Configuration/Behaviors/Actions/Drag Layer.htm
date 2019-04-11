@@ -1,0 +1,162 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- SAFE-IN-TEMPLATES -->
+<html>
+<head>
+<script src="MM_findObj.js"></script>
+<script src="MM_scanStyles.js"></script>
+<script src="MM_getProp.js"></script>
+<script src="Drag Layer.js"></script>
+<script src="../../Shared/MM/Scripts/CMN/docInfo.js"></script>
+<script src="../../Shared/MM/Scripts/CMN/DOM.js"></script>
+<script src="../../Shared/MM/Scripts/CMN/niceName.js"></script>
+<script src="../../Shared/MM/Scripts/CMN/UI.js"></script>
+<script src="../../Shared/MM/Scripts/CMN/string.js"></script>
+<script src="../../Shared/MM/Scripts/Class/TabControlClass.js"></script>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<script src="../../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<!-- End removal area. -->
+<script language="javascript">
+// Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved.
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var LABEL_Basic    = "基本";
+var LABEL_Advanced = "高级";
+
+var MSG_LayerNotFound = '无法找到层 "%s"，可能已经重新命名或被删除。';
+var MSG_UnnamedLayer = "只能影响 *已命名的* 层。 请点击「取消」，使用属性检查器将您的层命名。";
+var MSG_HandleNotInts = "请为所有的拖动控制点输入整数值，或选择'整个层'。";
+var MSG_ConstraintsNotInts = "请为限制范围输入整数值，或保留空白。";
+var MSG_ConstraintsNotPos = "请为所有的限制范围输入正整数值或 0。";
+var MSG_TargetNotInts = "请为投放目标输入整数值，或保留空白。";
+var MSG_TolNotPositive = "请为容许范围输入正整数值，或保留空白。";
+var MSG_LayerHasNoPosn = "该层尚未有位置值，请移动层以设定位置。";
+//--------------- END LOCALIZEABLE   ---------------
+//---------------    END JAVASCRIPT    ---------------
+</script>
+<style type="text/css">
+<!--
+.pageBg        { position:absolute; left:6px; top:21px; width:10px; height:10px; z-index:1; visibility:hidden; }
+.tabLayer      { position:absolute; top:0px; width:70px; height:20px; z-index:8; visibility:hidden ;}
+.tabInnerLayer { position:absolute; width:75px; height:23px; z-index:8; left: 0px; top: 0px; visibility:inherit ;}
+.tabLabelLayer { position:absolute; width:69px; height:1px; z-index:8; left: 0px; top: 5px; visibility:inherit; text-align:center }
+-->
+</style>
+<title>拖动层</title>
+<meta http-equiv="Content-Type" content="text/html">
+</head>
+<body onLoad="initializeUI()">
+
+<!-- ---------------------------------------------------------------------- -->
+<!-- TAB DIVS -->
+
+<div class="pageBg" style="visibility:visible; left:1px; width:485px;">
+  <img name="tabBgWin" width="483" height="160" src="../../Shared/MM/Images/tabBgWin500x160.gif">
+</div>
+
+<div id="Tab0" class="tabLayer" style="left: 8px; ">
+  <div class="tabInnerLayer"> <img src="../../Shared/MM/Images/tabBg.gif"> </div>
+  <div id="Tab0Sel" class="tabInnerLayer" style="visibility:hidden">
+    <img src="../../Shared/MM/Images/tabBgSel.gif"> </div>
+  <div name="Tab0Label" class="tabLabelLayer"></div>
+  <div class="tabInnerLayer">
+    <input type="image" alt="基本" src="../../Shared/MM/Images/transparent.gif" width="69" height="21" onClick="T.showPageNum(0);focus(this)"> </div>
+</div>
+<div id="Tab1" class="tabLayer" style="left: 78px; ">
+  <div class="tabInnerLayer"> <img src="../../Shared/MM/Images/tabBg.gif"> </div>
+  <div id="Tab1Sel" class="tabInnerLayer" style="visibility:hidden">
+    <img src="../../Shared/MM/Images/tabBgSel.gif"> </div>
+  <div name="Tab1Label" class="tabLabelLayer"></div>
+  <div class="tabInnerLayer">
+    <input type="image" alt="高级" src="../../Shared/MM/Images/transparent.gif" width="69" height="21" onClick="T.showPageNum(1);focus(this)"> </div>
+</div>
+
+  <div id="mainLayer" class="pageBg">
+    <form>
+      
+    <table width="480" border="0" cellpadding="0" cellspacing="6">
+      <tr>
+          <td height="10" colspan="2">
+            <!--<img src="../../Shared/MM/Images/transparent.gif" width="500" height="1">-->
+          </td>
+        </tr>
+        <tr>
+          <td align="right" valign="baseline" nowrap>层:</td>
+          <td valign="baseline">
+            <select name="layerMenu" style="width:348px">
+              <option selected>***************************************
+            </select></td>
+
+        </tr><tr>
+          <td align="right" valign="baseline" nowrap>移动:</td>
+          <td valign="baseline" nowrap>
+            <select name="constrainMenu" onChange="T.update('constrainMenu');focus(this)">
+              <option selected>不限制</option>
+              <option>限制</option>
+            </select>
+          <span name="constrainSet">上: <input name="constrainUp" type="text" size="6"> 下: <input name="constrainDown" type="text" size="6"> 左: <input name="constrainLeft" type="text" size="6"> 右: <input name="constrainRight" type="text" size="6">
+            </span>
+         </td>
+
+        </tr><tr>
+          <td align="right" valign="baseline" nowrap>放下目标:</td>
+          
+        <td valign="baseline" nowrap> 左: 
+          <input name="targetLeft" type="text" size="6"> 上: <input name="targetTop" type="text" size="6">
+            <input type="button" value="取得目前位置" onClick="getLayerPosition();focus(this)"></td>
+
+        </tr><tr>
+          <td align="right" valign="baseline" nowrap>靠齐距离:</td>
+          <td valign="baseline" nowrap><input name="targetTolerance" type="text" size="6">
+            像素接近放下目标</td>
+        </tr>
+      </table>
+
+
+    </form>
+  </div>
+
+  <div id="optionsLayer" class="pageBg">
+    <form>
+      
+    <table width="300" border="0" cellpadding="0" cellspacing="6">
+      <tr>
+          <td height="10" colspan="2"></td>
+        </tr>
+        <tr>
+          <td align="right" valign="baseline" nowrap>拖动控制点:</td>
+          <td valign="baseline" nowrap>
+            <select name="handleMenu" onChange="T.update('handleMenu');focus(this)">
+              <option selected>整个层</option>
+              <option>层内区域</option>
+            </select><span name="handleSet"> 左: <input name="handleLeft" type="text" size="5">
+ 上: <input name="handleTop" type="text" size="5">
+宽: <input name="handleWidth" type="text" size="5"> 
+高: <input name="handleHeight" type="text" size="5"></span>
+          </td>
+
+        </tr><tr>
+          <td align="right" valign="baseline" nowrap>拖动时:</td>
+          <td valign="baseline" nowrap><input name="bringToFront" type="checkbox" checked>将层移至最前，然后
+          <select name="dropBackMenu">
+              <option selected>留在最上方
+              <option>恢复 z 轴
+            </select></td>
+
+        </tr><tr>
+          <td></td>
+          <td align="left" valign="baseline" nowrap>呼叫 JavaScript:<input name="dragJavascript" type="text" style="width:170px" value=""></td>
+
+        </tr><tr>
+          <td align="right" valign="baseline" nowrap>放下时:</td>
+          <td align="left" valign="baseline" nowrap>呼叫 JavaScript:<input name="dropJavascript" type="text" style="width:170px" value="">
+          <input name="callJsWhenSnapped" type="checkbox" checked>只有在靠齐时</td>
+
+        </tr>
+      </table>
+
+    </form>
+  </div>
+
+</body>
+</html>

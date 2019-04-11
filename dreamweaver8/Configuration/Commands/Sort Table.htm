@@ -1,0 +1,104 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<title>排序表格</title>
+<script src="Sort Table.js"></script>
+<script src="../Shared/MM/Scripts/CMN/docInfo.js"></script>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<script src="../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<!-- End removal area. -->
+<script language="javascript">
+//command "Sort Table"
+//Copyright 2000-2003 Macromedia, Inc. All Rights Reserved.
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MENU_Column="列";
+var MENU_OrderAscending="升序"
+var MENU_OrderDescending="降序"
+var MENU_TypeAlphabetical="按字母顺序"
+var MENU_TypeNumerical="按数字顺序"
+var MSG_SpansArePresent = "「排序表格」命令无法应用至使用直行合并或横列合并的表格。";
+var MSG_IsInvalidTable = "「排序表格」命令不能应用到该表格."+
+		"<p>检查每一 TR 标签是否只包含 TD 或 TH 标签。另外请检<br>查表格是否包含 THEAD、TFOOT 和/或 TBODY 标签，并<br>且这些部分之外没有 TR 标签。";
+//--------------- END LOCALIZEABLE   ---------------
+</script>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onload="initializeUI()"> 
+<div id="formLayer" style="position:absolute; width:200px; height:162px; z-index:1; left:10; top:10; visibility: visible"> 
+  <form> 
+    <table> 
+      <tr> 
+        <td align="right" nowrap>排序按:</td> 
+        <td nowrap> <select name="sortCol" class="oneWordOptionList"> 
+            <option selected>****************</option> 
+          </select> </td> 
+      </tr> 
+      <tr > 
+        <td align="right" nowrap></td> 
+        <td nowrap></td> 
+      </tr> 
+      <tr> 
+        <td align="right" nowrap> 顺序:</td> 
+        <td nowrap> <select name="sortType" class="oneWordOptionList"> 
+            <option selected>****************</option> 
+          </select> 
+          <select name="sortOrder" class="oneWordOptionList"> 
+            <option selected>****************</option> 
+          </select> </td> 
+      </tr> 
+      <tr> 
+        <td align="right" nowrap >&nbsp;</td> 
+        <td nowrap>&nbsp; </td> 
+      </tr> 
+      <tr> 
+        <td align="right" nowrap>再按:</td> 
+        <td nowrap> <select name="subsortCol" class="oneWordOptionList"> 
+            <option>****************</option> 
+          </select> </td> 
+      </tr> 
+      <tr > 
+        <td align="right" nowrap></td> 
+        <td nowrap></td> 
+      </tr> 
+      <tr> 
+        <td align="right" nowrap>顺序:</td> 
+        <td nowrap> <select name="subsortType" class="oneWordOptionList"> 
+            <option selected>****************</option> 
+          </select> 
+          <select name="subsortOrder" class="oneWordOptionList"> 
+            <option selected>****************</option> 
+          </select> </td> 
+      </tr> 
+      <tr> 
+        <td align="right" nowrap>&nbsp;</td> 
+        <td nowrap>&nbsp; </td> 
+      </tr> 
+      <tr> 
+        <td align="right" nowrap>选项:</td> 
+        <td nowrap> <input type="checkbox" name="sortFirstRow" value="checkbox"> 
+          排序包含第一行 </td> 
+      </tr> 
+      <tr> 
+        <td align="right" nowrap>&nbsp;</td> 
+        <td nowrap> <input type="checkbox" name="sortHeadRows" value="checkbox"> 
+          排序标题行</td> 
+      </tr> 
+      <tr> 
+        <td align="right" nowrap>&nbsp;</td> 
+        <td nowrap> <input type="checkbox" name="sortFootRows" value="checkbox"> 
+          排序脚注行</td> 
+      </tr> 
+      <tr> 
+        <td align="right" nowrap>&nbsp;</td> 
+        <td nowrap> <input type="checkbox" name="moveRowAttrs" value="checkbox"> 
+          完成排序后所有行颜色保持不变</td> 
+      </tr> 
+    </table> 
+  </form> 
+</div> 
+<div id="ErrMsgLayer" style="position:absolute; width:322px; height:216px; z-index:2; left:10; top:10; visibility: hidden;"></div> 
+</body>
+</html>

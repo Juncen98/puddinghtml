@@ -1,0 +1,38 @@
+<participant>
+     <quickSearch><![CDATA[(!MM_paramIsDefined]]></quickSearch>
+     <insertText location="aboveHTML+82">
+<![CDATA[
+<%
+// *** Move To Record: handle 'index' or 'offset' parameter
+
+if (!MM_paramIsDefined && MM_rsCount != 0) {
+
+  // use index parameter if defined, otherwise use offset parameter
+  r = String(Request("index"));
+  if (r == "undefined") r = String(Request("offset"));
+  if (r && r != "undefined") MM_offset = parseInt(r);
+
+  // if we have a record count, check if we are past the end of the recordset
+  if (MM_rsCount != -1) {
+    if (MM_offset >= MM_rsCount || MM_offset == -1) {  // past end or move last
+      if ((MM_rsCount % MM_size) != 0) {  // last page not a full repeat region
+        MM_offset = MM_rsCount - (MM_rsCount % MM_size);
+      } else {
+        MM_offset = MM_rsCount - MM_size;
+      }
+    }
+  }
+
+  // move the cursor to the selected record
+  for (var i=0; !MM_rs.EOF && (i < MM_offset || MM_offset == -1); i++) {
+    MM_rs.MoveNext();
+  }
+  if (MM_rs.EOF) MM_offset = i;  // set MM_offset to the last possible record
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern><![CDATA[/r\s*=\s*String\(\Request/]]></searchPattern>
+     </searchPatterns>
+</participant>

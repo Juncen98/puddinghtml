@@ -1,0 +1,93 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 6.0//pi">
+<!-- tag:asp:button, priority:1, selection:exact,hline,vline ,serverModel:ASP.NET -->
+<html>
+<head>
+<!-- Copyright 2002 Macromedia, Inc. All rights reserved. -->
+<title>ASP.NET Button</title>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/TagEditClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dotNetUtils.js"></SCRIPT>
+<SCRIPT SRC="../TagLibraries/ASPNet/loc_strings.js"></SCRIPT>
+<SCRIPT SRC="../TagLibraries/ASPNet/strings.js"></SCRIPT>
+<script src="asp.net_button.js"></script>
+<script language="JavaScript">
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+//--------------- END LOCALIZEABLE   ---------------
+</script>
+</head>
+
+<body marginwidth="0" marginheight="0">
+<span id="image" style="position:absolute; width:36px; height:36px; z-index:16; left: 5px; top: 9px"><img src="button.gif" width="36" height="36"></span>
+<div id="idBoxLayer" style="position:absolute; width:65px; height:38px; z-index:1; left: 44px; top: 9px; visibility: visible;"> 
+<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		  <td align="left" height="17" NOWRAP>按钮</td>
+		</tr>
+		<tr>
+		  <td align="left" nowrap>
+
+        <input name="buttonID" type="text" id="buttonID" style="width:65px" onBlur="updateTag('id')">
+		  </td>
+		</tr>
+  </table>
+</div>
+
+<div id="textLabelLayer" style="position:absolute; left:122px; top:2px; z-index:18"></div>
+
+<div id="topLayer" style="position:absolute; left:125px; top:2px; width:400px; height:38px; z-index:34; visibility: visible;">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="right" nowrap>文本&nbsp;
+      </td>
+      <td nowrap> <input name="textLabel" type="text" id="textLabel" style="width:150px;" onBlur="updateTag('text')" onFocus="this.focus();this.select()"></td>
+      <td nowrap><input name="image" type="image" onClick="dotNetUtils.getDynamicData(TEXT_TEXT);updateTag('text')" src="../Shared/MM/Images/Bolt.gif" width="15" height="14" alt="绑定动态数据"></td>
+      <td align="right" nowrap>边框&nbsp;
+      </td>
+      <td nowrap><input name="border" type="text" id="border" style="width:30px" onFocus="this.focus();this.select()" onBlur="updateTag('border')"></td>
+      <td align="right" nowrap>工具提示&nbsp;
+      </td>
+      <td nowrap><input name="tooltip" type="text" id="tooltip" style="width:80px" onFocus="this.focus();this.select()" onBlur="updateTag('toolTip')"></td>
+    </tr>
+    <tr>
+      <td align="right">命令&nbsp;
+      </td>
+      <td> <input name="cmd" type="text" id="cmd" style="width:150px" onFocus="this.focus();this.select()" onBlur="updateTag('commandName')"></td>
+      <td nowrap>&nbsp;</td>
+      <td align="right" nowrap>边框样式&nbsp;
+      </td>
+      <td colspan="3" nowrap><select name="borderStyle" id="borderStyle" onChange="updateTag('borderStyle')" style="width:160px"></select></td>
+    </tr>
+  </table>
+</div>
+
+<div id="bottomLayer" style="position:absolute; left:25px; top:55px; z-index:24; width: 521px; height: 38px;">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="right" nowrap>宽&nbsp;
+      </td>
+      <td nowrap> <input name="buttonWidth" type="text" id="buttonWidth" style="width:30px" onFocus="this.focus();this.select()" onBlur="updateTag('width')"> </td>
+      <td align="right" nowrap>命令参数&nbsp;
+      </td>
+      <td colspan="3" nowrap> <input name="cmdArg" type="text" id="cmdArg" style="width:126px" onFocus="this.focus();this.select()" onBlur="updateTag('commandArgument')"> </td>
+      <td nowrap>前景&nbsp;<input type="mmcolorbutton" name="fgColor" id="fgColor" onChange="TEXT_FGCOLOR.value=this.value;updateTag('foreColor')">&nbsp;<input name="fgColorField" type="text" id="fgColorField" style="width:60px" onFocus="this.focus();this.select()" onBlur="CP_FGCOLOR.value=this.value;updateTag('foreColor')"></td>
+      <td align="right" nowrap>边框&nbsp;<input type="mmcolorbutton" name="bdrColor" id="bdrColor" onChange="TEXT_BDRCOLOR.value=this.value;updateTag('borderColor');">&nbsp;<input name="bdrColorField" type="text" id="bdrColorField" style="width:60px" onFocus="this.focus();this.select()" onBlur="updateTag('borderColor');CP_BDRCOLOR.value=this.value"></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>高&nbsp;
+      </td>
+      <td nowrap> <input name="buttonHeight" type="text" id="buttonHeight" style="width:30px" onFocus="this.focus();this.select()" onBlur="updateTag('height')"> </td>
+      <td align="right" nowrap>Tab 键索引&nbsp;</td>
+      <td nowrap><input name="tabix" type="text" id="tabix" style="width:30px" onFocus="this.focus();this.select()" onBlur="updateTag('tabIndex')"> </td>
+      <td align="right" nowrap>访问键&nbsp;
+      </td>
+      <td nowrap><input name="akey" type="text" id="akey" style="width:30px" onFocus="this.focus();this.select()" onBlur="updateTag('accessKey')" maxlength="3"> </td>
+      <td nowrap>背景&nbsp;<input type="mmcolorbutton" name="bgColor" id="bgColor" onChange="TEXT_BGCOLOR.value=this.value;updateTag('backColor')">&nbsp;<input name="bgColorField" type="text" id="bgColorField" style="width:60px" onFocus="this.focus();this.select()" onBlur="CP_BGCOLOR.value=this.value;updateTag('backColor')"></td>
+      <td align="right" nowrap><input type="image" src="tagDialog.gif" name="more" id="more" title="Display Tag Editor for asp:Button" onClick="dotNetUtils.displayTagDialog()" alt="显示 asp:Button 的标签编辑器"></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

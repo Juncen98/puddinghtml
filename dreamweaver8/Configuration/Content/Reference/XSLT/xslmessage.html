@@ -1,0 +1,206 @@
+<html>
+<head>
+<title>&lt;xsl:message&gt;</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">&lt;xsl:message&gt;</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+Sends a message. How the message is sent can vary from one XSLT processor to the next, but it's typically written to the standard output device. This element is useful for debugging stylesheets.</td></tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Category</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>Instruction</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Required Attributes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>None.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Optional Attributes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<dl>
+<dt>
+terminate=
+"
+yes
+"
+|
+"
+no
+"
+</dt>
+<dd>
+If this attribute has the value
+<span class="LITERAL">
+yes
+</span>
+, the XSLT processor stops execution after issuing this message. The default value for this attribute is
+<span class="LITERAL">
+no
+</span>
+; if the
+<span class="LITERAL">
+&lt;
+xsl:message
+&gt;
+</span>
+doesn't terminate the processor, the message is sent and processing continues.
+<P></p>
+</dl>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Content</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>An XSLT template.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Appears in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>
+<span class="LITERAL">&lt;xsl:message&gt;</span> appears inside a template. </p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Defined in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>XSLT section 13, Messages.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>Here's a stylesheet that uses the <span class="LITERAL">&lt;xsl:message&gt;</span> element to trace the transformation of an XML document. We'll use our list of recently purchased albums again:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;list xml:lang="en"&gt;
+  &lt;title&gt;Albums I've bought recently:&lt;/title&gt;
+  &lt;listitem&gt;The Sacred Art of Dub&lt;/listitem&gt;
+  &lt;listitem&gt;Only the Poor Man Feel It&lt;/listitem&gt;
+  &lt;listitem&gt;Excitable Boy&lt;/listitem&gt;
+  &lt;listitem xml:lang="sw"&gt;Aki Special&lt;/listitem&gt;
+  &lt;listitem xml:lang="en-gb"&gt;Combat Rock&lt;/listitem&gt;
+  &lt;listitem xml:lang="zu"&gt;Talking Timbuktu&lt;/listitem&gt;
+  &lt;listitem xml:lang="jz"&gt;The Birth of the Cool&lt;/listitem&gt;
+&lt;/list&gt;</pre></span>
+<p>We'll list all of the purchased albums in an HTML table, with the background color of each row alternating through various colors. Our stylesheet uses an <span class="LITERAL">&lt;xsl:choose&gt;</span> element inside an <span class="LITERAL">&lt;xsl:attribute&gt;</span> element to determine the value of the <span class="LITERAL">bgcolor</span> attribute. If a given <span class="LITERAL">&lt;listitem&gt;</span> is converted to an HTML <span class="LITERAL">&lt;tr&gt;</span> with a background color of <span class="LITERAL">lavender</span>, we'll issue a celebratory message:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+
+  &lt;xsl:output method="html"/&gt;
+
+  &lt;xsl:template match="/"&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;
+          &lt;xsl:value-of select="list/title"/&gt;
+        &lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;h1&gt;&lt;xsl:value-of select="list/title"/&gt;&lt;/h1&gt;
+        &lt;table border="1"&gt;
+          &lt;xsl:for-each select="list/listitem"&gt;
+            &lt;tr&gt;
+              &lt;td&gt;
+                &lt;xsl:attribute name="bgcolor"&gt;
+                  &lt;xsl:choose&gt;
+                    &lt;xsl:when test="position() mod 4 = 0"&gt;
+                      &lt;xsl:text&gt;papayawhip&lt;/xsl:text&gt;
+                    &lt;/xsl:when&gt;
+                    &lt;xsl:when test="position() mod 4 = 1"&gt;
+                      &lt;xsl:text&gt;mintcream&lt;/xsl:text&gt;
+                    &lt;/xsl:when&gt;
+                    &lt;xsl:when test="position() mod 4 = 2"&gt;
+                      &lt;xsl:text&gt;lavender&lt;/xsl:text&gt;
+                      &lt;xsl:message terminate="no"&gt;
+                        &lt;xsl:text&gt;Table row #&lt;/xsl:text&gt;
+                        &lt;xsl:value-of select="position()"/&gt;
+                        &lt;xsl:text&gt; is lavender!&lt;/xsl:text&gt;
+                      &lt;/xsl:message&gt;
+                    &lt;/xsl:when&gt;
+                    &lt;xsl:otherwise&gt;
+                      &lt;xsl:text&gt;whitesmoke&lt;/xsl:text&gt;
+                    &lt;/xsl:otherwise&gt;
+                  &lt;/xsl:choose&gt;
+                &lt;/xsl:attribute&gt;
+                &lt;xsl:value-of select="."/&gt;
+              &lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/xsl:for-each&gt;
+        &lt;/table&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+  &lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</pre></span>
+<p>Note that the XSLT specification doesn't define how the message is issued. When we use this stylesheet with Xalan 2.0.1, we get these results:</p>
+<span class="PROGRAMLISTING"><pre>
+file:///D:/O'Reilly/XSLT/bookSamples/AppendixA/message.xsl; Line 32; Column 51;
+Table row #2 is lavender!
+file:///D:/O'Reilly/XSLT/bookSamples/AppendixA/message.xsl; Line 32; Column 51;
+Table row #6 is lavender!</pre></span>
+<!--<?troff .Nd 10?>-->
+<p>Xalan gives us feedback on the part of the stylesheet that generated each message. Saxon, on the other hand, keeps things short and sweet:</p>
+<span class="PROGRAMLISTING"><pre>
+Table row #2 is lavender!
+Table row #6 is lavender!</pre></span>
+<p>For variety's sake, here's how XT processes the <span class="LITERAL">&lt;xsl:message&gt;</span> element:</p>
+<span class="PROGRAMLISTING"><pre>
+file:/D:/O'Reilly/XSLT/bookSamples/AppendixA/test4.xml:5: Table row #2 is lavender!
+file:/D:/O'Reilly/XSLT/bookSamples/AppendixA/test4.xml:9: Table row #6 is lavender!</pre></span>
+<p>XT gives information about the line in the XML source document that generated the message.</p>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

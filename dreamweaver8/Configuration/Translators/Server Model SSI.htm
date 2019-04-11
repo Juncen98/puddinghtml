@@ -1,0 +1,461 @@
+<html>
+<head>
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<title>Server Model SSI Translator</title>
+<meta http-equiv="Content-Type" content="text/html; charset=">
+<script language="JavaScript" src="../Shared/MM/Scripts/Class/FileClass.js"></script>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<script language="JavaScript">
+
+var debugTranslator  = false;
+
+// We don't want to translate if we inside a <style>, <script>
+// or third-party, non-empty script-model tag. Initialize
+// an array of tag names to "ignore". Do it here so it only
+// happens once.
+var ignoreTagArray = dw.getThirdPartyNonEmptyScriptModelTags();
+ignoreTagArray.push("script");
+ignoreTagArray.push("style");
+
+function translateMarkup( docNameStr, siteRootStr, inStr )
+{
+	if (inStr.length == 0)
+		return "";
+
+	var outStr				= "";
+	var macBeforeFileName	= "Desktop:BeforeTranslation.txt";
+	var macAfterFileName	= "Desktop:AfterTranslation.txt";
+	var winBeforeFileName	= "C:\\BeforeTranslation.txt";
+	var winAfterFileName	= "C:\\AfterTranslation.txt";
+	var	patternFound		= false;
+	var showContents		= dw.getTranslateServerSideIncludes();
+	var ssiIcon				= "";
+
+	if ( debugTranslator )
+		DWfile.write((("macos" == DWfile.getPlatform()) ? macBeforeFileName : winBeforeFileName), inStr);
+
+	// Get parameters
+	var dom = dw.getDocumentDOM();
+	var includeArray = new Array();
+	var obj;
+
+	// The ServerModel object used to be null when no Server Model was defined,
+	// but now it seems to be an empty object, so check for both to be safe
+	var sm = (dom == null) ? null : dom.serverModel;
+	if (dom == null || sm == null || sm.getFolderName() == "")
+	{
+		// Do a straight search to see if we even have anything that looks
+		// like an include statement before doing the whole heavy regexp search.
+		if (inStr.search(/include/i) != (-1))
+		{
+			// Handle Apache-style includes in files with no Server Model
+			obj = new Object();
+			obj.pattern = "/<!--\\s*#include\\s+(file|virtual)\\s*=\\s*[\"|']([^\"^']*)[\"|']\\s*-->/im";
+			obj.fileRef = 2;
+			obj.type = "ssi_comment";
+			obj.enabled = true;
+			obj.urlFormat = 1;
+			includeArray.push(obj);
+
+			if (dw.appName == "Contribute")
+			{
+				// Handle cfinclude in Contributor
+				obj2 = new Object();
+				obj2.pattern = "/<cfinclude\\s+template\\s*=\s*[\"|']([^\"^']*)[\"|']\\s*>/im";
+				obj2.fileRef = 1;
+				obj2.type = "ssi_includeUrl";
+				obj2.enabled = true;
+				obj.urlFormat = -1;
+				includeArray.push(obj2);
+			}
+		}
+		else
+			return "";
+	}
+	else
+	{
+		var masterArray = sm.getServerIncludeUrlPatterns();
+		if (masterArray.length == 0)
+			return "";
+
+		// Copy array items so we can manipulate local copy
+		for (i=0; i < masterArray.length; i++)
+		{
+			obj = new Object();
+			obj.pattern	= masterArray[i].pattern;
+			obj.fileRef	= masterArray[i].fileRef;
+			obj.type	= masterArray[i].type;
+			obj.enabled	= true;
+			obj.urlFormat = -1;
+			includeArray.push(obj);
+		}
+
+		// Add patterns to array to match sections of
+		// page that we do not want to translate
+
+		if (sm.getServerName() == "Cold Fusion")
+		{
+			//  CRITCAL:  do not try to subsume CF comments into the HTML comment pattern.
+			//  We want to be able to handle this:
+			//
+			//	<!---
+			//  <!-- #include file="foo.cfm" -->
+			//  --->
+			//
+			//  In this example we do not want to include foo.cfm.  We can only accomplish
+			//  that by making a very precise CF comment pattern.
+
+			if (inStr.indexOf("<!--") != -1)
+			{
+				obj = new Object();
+				obj.pattern = "/<!---[\\s\\S]*?--->/im";	// CF comments
+				obj.fileRef = -1;
+				obj.type = "";
+				obj.enabled = true;
+				includeArray.push(obj);
+			}
+		}
+	}
+
+	// Add patterns to array to match sections of
+	// page that we do not want to translate
+
+	if (inStr.indexOf("<%--") != -1)
+	{
+		obj = new Object();
+		obj.pattern = "/<%--[\\s\\S]*?--%>/im";	// html comments
+		obj.fileRef = -1;
+		obj.type = "";
+		obj.enabled = true;
+		includeArray.push(obj);
+	}
+
+	if (inStr.indexOf("MM:BeginLock") != -1)
+	{
+		obj = new Object();
+		obj.pattern = "/<MM:BeginLock.*?<MM:EndLock>/im"; // locked regions
+		obj.fileRef = -1;
+		obj.type = "";
+		obj.enabled = true;
+		includeArray.push(obj);
+	}
+
+	var result;
+	var remainingInStr = inStr;
+
+	// We can run into problems when outline IDs are reused.  This
+	// page might gain other sorts of tabbed outlines when it passes
+	// through the appropriate server model translator, so we'll start
+	// counting a little higher to avoid collisions
+	var outlineCount = 500;
+
+	for (i=0; i < includeArray.length; i++)
+		includeArray[i].re = eval(includeArray[i].pattern);
+
+	// Translate contents of page
+	while ((result = ExecRegExpArray(includeArray, remainingInStr)) != null)
+	{
+		// Add text up to match
+		outStr += remainingInStr.substr(0, result.index);
+
+		if (result.fileReference >= 0)
+		{
+			var translate = false;
+
+			// If we're inside a tag, don't translate this SSI.
+			
+			var leftIndex = outStr.lastIndexOf("<");
+			var rightIndex = outStr.lastIndexOf(">");
+			
+			translate = (leftIndex <= rightIndex);
+
+			if (translate)
+			{
+				// We don't want to translate if we're inside a <style>, <script>
+				// or third-party, non-empty script-model tag
+
+				var lowerStr = outStr.toLowerCase();
+				
+				for (i = 0; i < ignoreTagArray.length; i++)
+				{
+					var tagName = ignoreTagArray[i].toLowerCase();
+
+					// Don't include the greater-than in the opening
+					// tag because some tags might have attributes.
+
+					var openTag = "<" + tagName;
+					var closeTag = "</" + tagName + ">";
+
+					leftIndex = lowerStr.lastIndexOf(openTag);
+					rightIndex = lowerStr.lastIndexOf(closeTag);
+						
+					translate = (leftIndex <= rightIndex);
+					
+					if (!translate)
+						break;
+				}
+			}
+						
+			if (!translate)
+			{
+				outStr += result[0];
+			}
+			else if (showContents)
+			{
+				var fileContents = "";
+				var depPath = "";
+
+			    if (result[result.fileReference].charAt(0) == File.separator &&
+					dw.appName == "Contribute")
+				{
+
+                    //ask for current site remote URL
+                    var curSiteURL = site.getRemoteURL();
+
+                    //This block of code provides a workaround in the event that site.getRemoteURL()
+                    //returns an empty string. In 1.0, this happens sometimes after clicking OK in Links.
+                    //The patch is to use the document URL in that case. After ship, we should just
+                    //always use the URL from the Workspace Manager (don't use site.getRemoteURL()).
+                    if (!curSiteURL && dom)
+                    { //get workspace manager so we can get the current doc's path
+                        var wm = CCWorkspaceManager.getManager(dom);
+                        if (wm)
+                        {
+                            curSiteURL = wm.getURL();  //use the document URL instead
+                        }
+                    }
+					fileContents = getSiteRootRelativeFileContents(curSiteURL, result[result.fileReference]);
+				}
+				else
+				{
+					var ssi;
+					// Try to open file. Substring index stored in result.fileReference
+					// [my 06-10-05] #190674 - DW was including a string query as part of the file anem.
+					var filename = result[result.fileReference];
+					var qIndex = filename.indexOf("?");
+					if (qIndex >= 0)
+						filename = filename.substring(0, qIndex);
+
+					ssi = new File(filename, docNameStr);
+					if (ssi.exists())
+					{
+						fileContents = ssi.getContents();
+						// Note: &nbsp; was originally used so empty content would render better
+						// in tabbed outlines (which are no longer used). This is now used to
+						// distinguish between 'empty file' and 'file not found' cases.
+						if (fileContents.length <= 0)
+							fileContents = "&nbsp;";
+						depPath = ssi.getAbsolutePath();
+					}
+					// [afinnell 05/05/2005] Bug #188562. We used to try to go fetch remote
+					//	site relative urls here. But if we couldn't make it to the server we hang waiting
+					//	on the timeout. To the user, this looked like a crash.
+				}
+
+				if ((dw.appName == "Contribute" && fileContents.length > 0) ||
+					(dw.appName != "Contribute" && !HasTemplateMarkup(fileContents, result[result.fileReference])))
+				{
+					// Do translation
+					outStr += '<MM:BeginLock translatorClass="MM_SSI" type="' +
+						result.type + '" orig="' + encode(result[0]) +
+						'" fileRef="' + result[result.fileReference] + '"';
+					if (depPath.length > 0)
+						 outStr += ' depFiles="' + ssi.getAbsolutePath() + '"';
+					outStr += '>' + fileContents + '<MM:EndLock>';
+				}
+				else //don't do the translation, just return the original string
+					outStr += result[0];
+			}
+			else
+			{
+				// Build reusable icon string
+				if (ssiIcon.length == 0)
+				{
+					var serverName = (sm) ? sm.getServerName() : "";
+					if (serverName == "")
+						serverName = "ASP";
+					else if (serverName == "Cold Fusion")
+						serverName = "ColdFusion";
+					ssiIcon = "<img src=\"" + dw.getConfigurationPath() + "/ThirdPartyTags/" + serverName + ".gif\">";
+				}
+
+				outStr += '<MM:BeginLock translatorClass="MM_SSI" type="' +
+						    result.type + '" orig="' + encode(result[0]) +
+						    '" fileRef="' + result[result.fileReference] +
+							'">' + ssiIcon + '<MM:EndLock>';
+			}
+
+		}
+		else
+		{
+			// nothing to translate
+			outStr += result[0];
+		}
+
+		// Re-search text following match
+		remainingInStr = remainingInStr.substr(result.index + result[0].length);
+
+		// Remember that at least one translation was performed
+		patternFound = true;
+	}
+
+	outStr += remainingInStr;
+
+	if ( debugTranslator )
+		DWfile.write((("macos" == DWfile.getPlatform()) ? macAfterFileName : winAfterFileName), outStr);
+
+	// If no translations were performed, return empty string
+	return patternFound ? outStr : "";
+} // translateMarkup
+
+
+// Temp fix to prevent Template markup from being displayed as include file content.
+// The problem is that include file content should be read-only, but the Template
+// engine does not realize it is inside a Lock tag, so crash can occur
+
+function HasTemplateMarkup(contents, filename)
+{
+	// Template filenames have the form "[name].dwt" or "[name].dwt.[ext]"
+	if (filename.search(/\.dwt($|\.)/i) != (-1))
+		return true;
+
+	if (contents.search(/InstanceBegin/i) != (-1))
+		return true;
+
+	return false;
+}
+
+
+// ExecRegExpArray()
+//
+// Run .exec() against the string for all elements of RegExp array and
+// return the result that has the lowest index (i.e. sequentially next)
+
+function ExecRegExpArray(incla, str)
+{
+	var nextResult = null;
+
+	for (i=0; i < incla.length; i++)
+	{
+		if (incla[i].enabled == false)
+			continue;
+
+		var result = incla[i].re.exec(str);
+		if (result != null)
+		{
+			if ((nextResult == null ||
+				 result.index < nextResult.index))
+			{
+				nextResult = result;
+				nextResult.fileReference = incla[i].fileRef;
+				nextResult.urlFormat = incla[i].urlFormat;
+				nextResult.type = incla[i].type;
+			}
+		}
+		else
+		{
+			// Pattern not found, so remove it from list
+			incla[i].enabled = false;
+		}
+	}
+
+	return nextResult;
+}
+
+// getSiteRootRelativeFileContents
+//
+// Test each directory of site remote url, starting with the shortest to
+// try to find file with site-root relative path that may be outside root
+
+function getSiteRootRelativeFileContents(url, relPath)
+{
+	var contents = "";
+	var urlIndex = -1;
+
+	// Remove trailing url '/'
+	if (url[url.length-1] == '/')
+		url = url.substr(0, url.length-1);
+
+	// Extract just domain name from url
+	// Skip first 2 slash (/) chars (i.e "http://") and
+	// move urlIndex to 3rd slash
+	var i=0;
+	while (i<3 && urlIndex < url.length)
+		if (url[++urlIndex] == '/')
+			i++;
+
+	// Get url up to, but not including, current slash and append
+	// site-root relative path (which *does* include a slash)
+	var testUrl = url.substr(0, urlIndex) + relPath;
+	var httpReply = MMHttp.getText(dw.doURLEncoding(testUrl));
+	if (httpReply.statusCode == 200)
+	{
+		contents = httpReply.data;
+		// Note: &nbsp; was originally used so empty content would render better
+		// in tabbed outlines (which are no longer used). This is now used to
+		// distinguish between 'empty file' and 'file not found' cases.
+		if (contents.length == 0)
+			contents = "&nbsp;";
+	}
+
+	return contents;
+}
+
+function encode(stmt)
+{
+	// Can't use replace method recursively, so URL-encode
+	// the percent characters manually
+	var index = stmt.indexOf("%");
+	while (index != -1)
+	{
+		stmt = stmt.substring(0, index) + "%25" + stmt.substring(index+1);
+		index = stmt.indexOf("%", index+1);
+	}
+
+	// URL encode quote character
+	var index = stmt.indexOf("\"");
+	while (index != -1)
+	{
+		stmt = stmt.substring(0, index) + "%22" + stmt.substring(index+1);
+		index = stmt.indexOf("\"");
+	}
+
+	// URL encode "<" character
+	index = stmt.indexOf("<");
+	while (index != -1)
+	{
+		stmt = stmt.substring(0, index) + "%3C" + stmt.substring(index+1);
+		index = stmt.indexOf("<");
+	}
+
+	// URL encode ">" character
+	index = stmt.indexOf(">");
+	while (index != -1)
+	{
+		stmt = stmt.substring(0, index) + "%3E" + stmt.substring(index+1);
+		index = stmt.indexOf(">");
+	}
+
+	return stmt;
+}
+
+function getTranslatorInfo()
+{
+	returnArray = new Array(7)
+
+	returnArray[0] = "MM_SSI";			// The translatorClass
+	returnArray[1] = "Server Model SSI";	// The title
+	returnArray[2] = "0"; 					// The number of extensions. 0 indicates to run against all extensions
+	returnArray[3] = "1"; 					// The number of expressions
+	returnArray[4] = "include";				// Run on files with this text
+	returnArray[5] = "allFiles";			// Run against all files
+	returnArray[6] = "10";					// Priority: Give a high priority (low number) to run this translator before most others
+
+	return returnArray
+}
+</script>
+
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 6.0//pi">
+<!-- tag:LINK,priority:5,selection:within,vline,hline -->
+<html>
+<head>
+<!-- Copyright 2000 Macromedia, Inc. All rights reserved. -->
+<title>链接属性检查器</title>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<!-- End removal area. -->
+<SCRIPT LANGUAGE="javascript" SRC="_pi_common.js"></SCRIPT>
+<script src="link.js"></script>
+</head>
+<body>
+<div id="label" style="position:absolute; width:30px; height:17px; z-index:16; left: 44px; top: 4px">链接</div><div id="image" style="position:absolute; width:23px; height:17px; z-index:16; left: 3px; top: 2px"><img src="link.gif" width="36" height="36"></div>
+<div id="topLayer" style="position:absolute; width:462px; z-index:1; left: 115px; top: 2px"> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="40" align="right">Href&nbsp;</td>
+      <td width="296"> 
+        <input type="text" name="Href" size="50" onBlur="setLinkTag()" maxlength="40" style="width:300"></td>
+      <td> &nbsp; 
+        <input name="image" type="image" onClick="browseForFile();setLinkTag()" src="../Shared/MM/Images/folder.gif" width="15" height="15" border="0">
+      </td>
+      <td width="2">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" dwcopytype="CopyTableRow">
+    <tr> 
+      <td width="40" align="right">标题&nbsp;</td>
+      <td width="154"> 
+        <input type="text" name="Title" style="width:120px" onBlur="setLinkTag()"></td>
+      <td width="27" align="right">ID&nbsp;</td>
+      <td width="240"> 
+        <input type="text" name="ID2" onBlur="setLinkTag()" style="width:120px"></td>
+    </tr>
+  </table>
+</div>
+<div id="Layer3" style="position:absolute; left:115px; top:52px; width:463px; height:21px; z-index:28"> 
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+      <td width="39" align="right" valign="baseline">Rel&nbsp;</td>
+      <td width="152" align="left" valign="baseline"> 
+        <input type="text" name="Rel" onBlur="setLinkTag()" style="width:120px">
+      </td>
+      <td width="30" align="right" valign="baseline">Rev&nbsp;</td>
+      <td width="242" align="left" valign="baseline"> 
+        <input type="text" name="Rev" onBlur="setLinkTag()" style="width:120px">
+    </td>
+  </tr>
+</table>
+</div>
+<div id="tButtonSpan" style="position:absolute; width:15px; height:15px; z-index:17; left: -1px; top: 21px">
+<input type="image" border="0" src="T4PI.gif" width="15" height="15" onClick="launchQuickTagEditor( true )" name="tButtonImage">
+</div>
+</body>
+</html>

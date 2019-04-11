@@ -1,0 +1,38 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<html>
+<head>
+<title>ª∑»∆±Í«©</title>
+
+<script language="JavaScript">
+
+function receiveArguments()
+{
+	dw.showQuickTagEditor();
+}
+
+function isDOMRequired()
+{
+	return false;
+}
+
+function canAcceptCommand()
+{
+	var dom = dw.getDocumentDOM();
+
+	if (dom == null)
+		return false;
+		
+	var focusView = dw.getFocus(true);
+
+	if (focusView == 'document')
+		return false;
+
+	var theSel = dom.source.getSelection();
+	return (theSel != null && theSel[0] != theSel[1]);
+}
+</script>
+</head>
+
+<body>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<HTML>
+<HEAD>
+<TITLE>OLE DB 连接</TITLE>
+<SCRIPT SRC="../../../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/MM/Scripts/CMN/enableControl.js"></SCRIPT>
+<SCRIPT SRC="../../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Connection_common.js"></SCRIPT>
+<SCRIPT SRC="default_oledb.js"></SCRIPT>
+<link href="../../../fields.css" rel="stylesheet" type="text/css"></HEAD>
+<SCRIPT LANGUAGE="Javascript">
+// Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved.
+//-------------------- GLOBALS -----------------------
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+//--------------- END LOCALIZEABLE   ---------------
+
+//---------------    END JAVASCRIPT    ---------------
+</SCRIPT>
+
+<BODY onLoad="initializeUI()">
+<form NAME="theForm" ACTION="">
+  <table border=0>
+	<tr>
+	  <td align="right" valign="baseline" nowrap>连接名称: </td>
+	  <td colspan=2 align="left"><input name="ConnectionName" type="text" class="medTField"></td>
+	</tr>
+	<tr valign="top">	
+	  <td align="right" valign="top" nowrap>
+	    <table border=0 cellspacing=1>
+		  <tr><td nowrap></td></tr>
+          <tr><td nowrap></td></tr>
+		  <tr><td nowrap>连接字符串:</td></tr>
+		</table>
+	  </td>
+	  <td align="left" nowrap><textarea type="text" style="width:250px;height:150px" name="ConnectionString" /></td>
+	  <td><input type="button" name="templateButton" style="width:85px" value="Templates..." onClick="templateClicked()"></td>
+	</tr>
+    <tr valign="top"> 
+      <td colspan="3">Connection information is saved in the web.config file in 
+        the site's local root folder. If the testing server is not this computer 
+        and it has a version of web.config, you may wish to copy it to this computer 
+        before proceeding. After creating a connection, copy the local version 
+        of web.config back to the testing server.</td>
+    </tr>
+  </table>
+</form>
+</BODY>
+</HTML>

@@ -1,0 +1,179 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<html>
+<head>
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<title>XSLT Translator</title>
+<meta http-equiv="Content-Type" content="text/html; charset=">
+<script language="JavaScript" src="../Shared/MM/Scripts/Class/FileClass.js"></script>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<script language="JavaScript">
+var debugTranslator  = false;
+
+var XSLTTransformPattern = new Array();
+
+XSLTTransformPattern["ColdFusion"] = /<cfinvoke(?:\r\n|\r(?!\n)|\n)[ \t]*component="([^\r\n]*?)includes\.MM_XSLTransform\.MM_XSLTransform"(?:\r\n|\r(?!\n)|\n)[ \t]*method="transform"(?:\r\n|\r(?!\n)|\n)[ \t]*returnvariable="([^\r\n]*?)_output">\s*<!--- XSL Transformation --->\s*<cfinvokeargument name="xml" value="([^\r\n]*?)">\s*<cfinvokeargument name="xsl" value="([^\r\n]*?)">\s*((?:\s*<cfinvokeargument name="[^\r\n]*" value="[^\r\n]*">\s*)*?)\s*<\/cfinvoke>/i;
+XSLTTransformPattern["PHP_MySQL"] = /<\?php\s*((?:\$[^\r\n]* = "[^\r\n]*";(?:\r\n|\r(?!\n)|\n)[ \t]*if \(isset\([^\r\n]*\)\) \{(?:\r\n|\r(?!\n)|\n)[ \t]*\$[^\r\n]* = \(get_magic_quotes_gpc\(\)\) \? [^\r\n]* : addslashes\([^\r\n]*\);(?:\r\n|\r(?!\n)|\n)[ \t]*\}(?:\r\n|\r(?!\n)|\n)[ \t]*)*?)\$([^\r\n]*?) = new MM_XSLTransform\(\);(?:\r\n|\r(?!\n)|\n)[ \t]*\$[^\r\n]*?->\s*setXML\("([^\r\n]*?)"\);(?:\r\n|\r(?!\n)|\n)[ \t]*\$[^\r\n]*?->\s*setXSL\("([^\r\n]*?)"\);(?:\r\n|\r(?!\n)|\n)[ \t]*((?:\$[^\r\n]*->\s*addParameter\("[^\r\n]*", [^\r\n]*\);(?:\r\n|\r(?!\n)|\n)[ \t]*)*?)echo \$[^\r\n]*?->\s*Transform\(\);(?=\r\n|\r|\n)\s*\?>/i;
+XSLTTransformPattern["ASP_VBS"] = /<\%\s*((?:Dim [^\r\n]*: [^\r\n]* = "[^\r\n]*"(?:\r\n|\r(?!\n)|\n)[ \t]*If\s*[^\r\n]*\s*<>\s*"" Then [^\r\n]* = [^\r\n]* End If(?:\r\n|\r(?!\n)|\n)[ \t]*)*?)Dim ([^\r\n]*?): Set [^\r\n]*? = new MM_XSLTransform(?:\r\n|\r(?!\n)|\n)[ \t]*[^\r\n]*?\.setXML "([^\r\n]*?)"(?:\r\n|\r(?!\n)|\n)[ \t]*[^\r\n]*?\.setXSL "([^\r\n]*?)"(?:\r\n|\r(?!\n)|\n)[ \t]*((?:[^\r\n]*\.addParameter "[^\r\n]*", [^\r\n]*(?:\r\n|\r(?!\n)|\n)[ \t]*)*?)Response\.write [^\r\n]*?\.Transform\(\)(?=\r\n|\r|\n)\s*\%>/i;
+XSLTTransformPattern["ASP_JS"] = /<\%\s*((?:var [^\r\n]* = "[^\r\n]*";(?:\r\n|\r(?!\n)|\n)[ \t]*if \(String\([^\r\n]*\) != "undefined" && String\([^\r\n]*\) != ""\) \{ (?:\r\n|\r(?!\n)|\n)[ \t]*[^\r\n]* = String\([^\r\n]*\);(?:\r\n|\r(?!\n)|\n)[ \t]*\}(?:\r\n|\r(?!\n)|\n)[ \t]*)*?)var ([^\r\n]*?) = new MM_XSLTransform\(\);(?:\r\n|\r(?!\n)|\n)[ \t]*[^\r\n]*?\.setXML\("([^\r\n]*?)"\);	(?:\r\n|\r(?!\n)|\n)[ \t]*[^\r\n]*?\.setXSL\("([^\r\n]*?)"\);(?:\r\n|\r(?!\n)|\n)[ \t]*((?:[^\r\n]*\.addParameter\("[^\r\n]*", [^\r\n]*\);(?:\r\n|\r(?!\n)|\n)[ \t]*)*?)Response\.write \([^\r\n]*?\.Transform\(\)\);(?=\r\n|\r|\n)\s*\%>/i;
+XSLTTransformPattern["ASP.NET_VB"] = /<\%\s*((?:Dim [^\r\n]* As String = "[^\r\n]*"(?:\r\n|\r(?!\n)|\n)[ \t]*If\s*[^\r\n]*\s*<>\s*"" Then(?:\r\n|\r(?!\n)|\n)[ \t]*[^\r\n]* = [^\r\n]*(?:\r\n|\r(?!\n)|\n)[ \t]*End If(?:\r\n|\r(?!\n)|\n)[ \t]*)*?)Dim ([^\r\n]*?) As MM\.XSLTransform = new MM\.XSLTransform\(\)(?:\r\n|\r(?!\n)|\n)[ \t]*[^\r\n]*?\.setXML\((?:Server\.MapPath\()?"([^\r\n]*?)"(?:\))?\)(?:\r\n|\r(?!\n)|\n)[ \t]*[^\r\n]*?\.setXSL\(Server\.MapPath\("([^\r\n]*?)"\)\)(?:\r\n|\r(?!\n)|\n)[ \t]*((?:[^\r\n]*\.addParameter\("[^\r\n]*", [^\r\n]*\)(?:\r\n|\r(?!\n)|\n)[ \t]*)*?)Response\.write\([^\r\n]*?\.Transform\(\)\)(?=\r\n|\r|\n)\s*\%>/i;
+XSLTTransformPattern["ASP.NET_Csharp"] = /<\%\s*((?:string [^\r\n]* = "[^\r\n]*";(?:\r\n|\r(?!\n)|\n)[ \t]*if \([^\r\n]*!=null && [^\r\n]*\.ToString\(\)\.Length >\s*0\) \{(?:\r\n|\r(?!\n)|\n)[ \t]*[^\r\n]* = [^\r\n]*;(?:\r\n|\r(?!\n)|\n)[ \t]*\}(?:\r\n|\r(?!\n)|\n)[ \t]*)*?)MM\.XSLTransform ([^\r\n]*?) = new MM\.XSLTransform\(\);(?:\r\n|\r(?!\n)|\n)[ \t]*[^\r\n]*?\.setXML\((?:Server\.MapPath\()?"([^\r\n]*?)"(?:\))?\);(?:\r\n|\r(?!\n)|\n)[ \t]*[^\r\n]*?\.setXSL\(Server\.MapPath\("([^\r\n]*?)"\)\);(?:\r\n|\r(?!\n)|\n)[ \t]*((?:[^\r\n]*\.addParameter\("[^\r\n]*", [^\r\n]*\);(?:\r\n|\r(?!\n)|\n)[ \t]*)*?)Response\.Write\([^\r\n]*?\.Transform\(\)\);(?=\r\n|\r|\n)\s*\%>/i;
+
+var XSLFilePattern = new Array();
+
+XSLFilePattern["ColdFusion"] = /<cfinvokeargument\s+name="xsl"\s+value="([^\r\n]*?)">/ig;
+XSLFilePattern["PHP_MySQL"] = /\$[^\r\n]*?->\s*setXSL\("([^\r\n]*?)"\);/ig;
+XSLFilePattern["ASP_VBS"] = /[^\r\n]*?\.setXSL "([^\r\n]*?)"/ig;
+XSLFilePattern["ASP_JS"] = /[^\r\n]*?\.setXSL\("([^\r\n]*?)"\);/ig;
+XSLFilePattern["ASP.NET_VB"] = /[^\r\n]*?\.setXSL\(Server\.MapPath\("([^\r\n]*?)"\)\)/ig;
+XSLFilePattern["ASP.NET_Csharp"] = /[^\r\n]*?\.setXSL\(Server\.MapPath\("([^\r\n]*?)"\)\);/ig;
+
+function translateMarkup( docNameStr, siteRootStr, inStr )
+{
+	var outStr				= "";
+	var macBeforeFileName	= "Desktop:BeforeTranslation.txt";
+	var macAfterFileName	= "Desktop:AfterTranslation.txt";
+	var winBeforeFileName	= "C:\\BeforeTranslation.txt";
+	var winAfterFileName	= "C:\\AfterTranslation.txt";
+
+
+	var serverModel = "";
+	if (dw.getDocumentDOM())
+	{
+		serverModel = dw.getDocumentDOM().serverModel.getFolderName();
+		if (serverModel == "")
+		{
+		  serverModel = dw.getDocumentDOM().getServerModelFolderNameFromDoc();
+		}
+	}
+	if (inStr.length > 0)
+	{
+		var XSLTPattern = XSLTTransformPattern[serverModel];		
+		if( XSLTPattern )
+		{
+			var matchObjArray = inStr.match(XSLTPattern);
+			while (matchObjArray!="" && matchObjArray!=null) {
+					//get the end transform index;
+					cfXSLBeginIndex = matchObjArray.index;
+					cfXSLTEndIndex  = cfXSLBeginIndex + matchObjArray[0].length;
+					if ((cfXSLBeginIndex != -1) && (cfXSLTEndIndex != -1))
+					{
+						var cfXSLTCode = inStr.substring(cfXSLBeginIndex,cfXSLTEndIndex);
+						var xslRef = null;
+						if (cfXSLTCode.length)
+						{
+							var xslRegExp = XSLFilePattern[serverModel];
+							if (cfXSLTCode.match(xslRegExp) != -1)
+							{
+								xslRef = RegExp.$1;
+							}
+							if (xslRef != null)
+							{	
+								var isHTTPReference = ((xslRef.indexOf("http://") != -1) || (xslRef.indexOf("https://") != -1));
+								if (!isHTTPReference)
+								{
+									if (xslRef.charAt(0) == '/')
+									{
+										 //check for site relative path and map them to absolute path
+										xslRef = site.siteRelativeToLocalPath(xslRef);										
+									}
+									else
+									{
+										//doc relative to absolute
+										var currDocURL = docNameStr;
+										var siteRootURL	= dreamweaver.getSiteRoot();
+										xslRef = dreamweaver.relativeToAbsoluteURL( currDocURL, siteRootURL, xslRef);
+									}
+									if (DWfile.exists(xslRef))
+									{
+										xslFileContents = DWfile.read(xslRef);
+									}
+									else
+									{
+										var unableToLocateXSLRef = dw.loadString("XMLXSL_TranslatorError/UnableToLocateFile");
+										xslFileContents = dwscripts.sprintf(unableToLocateXSLRef,xslRef);
+									}
+								}
+								else
+								{
+									var remoteFileRef = dw.loadString("XMLXSL_TranslatorError/RemoteXSLTFile");
+									xslFileContents = dwscripts.sprintf(remoteFileRef,xslRef);
+								}
+								//xslFileContents = xslFileContents.replace(/\<[\?\/]?[xml|xsl]\:?.*\??\>/gi, "");
+								outPreCode  = inStr.substring(0,cfXSLBeginIndex);
+								outPostCode = inStr.substring(cfXSLTEndIndex);		
+								translatedData = '<MM:BeginLock translatorClass="MM_XSLT_SB" type="' +
+										'MM_XSLT_SB' + '" orig="' + encode(cfXSLTCode) +
+										'" ' +
+										' depFiles="' + xslRef + '"' +
+										'">' + xslFileContents + '<MM:EndLock>';	
+								outStr = outPreCode + translatedData + outPostCode;
+							}
+						}
+					}
+					inStr = outStr;
+					matchObjArray = inStr.match(XSLTPattern);							
+			}
+		}
+	}
+	return outStr;
+}
+
+function getTranslatorInfo()
+{
+	returnArray = new Array(7)
+
+	returnArray[0] = "MM_XSLT_SB";			// The translatorClass
+	returnArray[1] = "XSLT_SB";				// The title
+	returnArray[2] = "0"; 					// The number of extensions. 0 indicates to run against all extensions
+	returnArray[3] = "1"; 					// The number of expressions
+	returnArray[4] = "XSLTransform";		// Run on files with this text
+	returnArray[5] = "allFiles";			// Run against all files
+	returnArray[6] = "5";					// Priority: Give a high priority (low number) to run this translator before most others
+	return returnArray
+}
+
+
+function encode(stmt)
+{
+	// Can't use replace method recursively, so URL-encode
+	// the percent characters manually
+	var index = stmt.indexOf("%");
+	while (index != -1)
+	{
+		stmt = stmt.substring(0, index) + "%25" + stmt.substring(index+1);
+		index = stmt.indexOf("%", index+1);
+	}
+
+	// URL encode quote character
+	var index = stmt.indexOf("\"");
+	while (index != -1)
+	{
+		stmt = stmt.substring(0, index) + "%22" + stmt.substring(index+1);
+		index = stmt.indexOf("\"");
+	}
+
+	// URL encode "<" character
+	index = stmt.indexOf("<");
+	while (index != -1)
+	{
+		stmt = stmt.substring(0, index) + "%3C" + stmt.substring(index+1);
+		index = stmt.indexOf("<");
+	}
+
+	// URL encode ">" character
+	index = stmt.indexOf(">");
+	while (index != -1)
+	{
+		stmt = stmt.substring(0, index) + "%3E" + stmt.substring(index+1);
+		index = stmt.indexOf(">");
+	}
+
+	return stmt;
+}
+
+</script>
+</head>
+<body>
+</body>
+</html>

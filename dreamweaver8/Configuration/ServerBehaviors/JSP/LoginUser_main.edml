@@ -1,0 +1,67 @@
+<participant>
+     <quickSearch><![CDATA[MM_valUsername]]></quickSearch>
+     <insertText location="aboveHTML+81">
+<![CDATA[
+<%
+// *** Validate request to log in to this site.
+String MM_LoginAction = request.getRequestURI();
+if (request.getQueryString() != null && request.getQueryString().length() > 0) {
+  String queryString = request.getQueryString();
+  String tempStr = "";
+  for (int i=0; i < queryString.length(); i++) {
+    if (queryString.charAt(i) == '<') tempStr = tempStr + "&lt;";
+    else if (queryString.charAt(i) == '>') tempStr = tempStr + "&gt;";
+    else if (queryString.charAt(i) == '"') tempStr = tempStr +  "&quot;";
+    else tempStr = tempStr + queryString.charAt(i);
+  }
+  MM_LoginAction += "?" + tempStr;
+}
+String MM_valUsername=request.getParameter("@@frmUsername@@");
+if (MM_valUsername != null) {
+  String MM_fldUserAuthorization="@@fldAuthorization@@";
+  String MM_redirectLoginSuccess="@@redirectSuccess@@";
+  String MM_redirectLoginFailed="@@redirectFailed@@";
+  String MM_redirectLogin=MM_redirectLoginFailed;
+  Driver MM_driverUser = (Driver)Class.forName(MM_@@connection@@_DRIVER).newInstance();
+  Connection MM_connUser = DriverManager.getConnection(MM_@@connection@@_STRING,MM_@@connection@@_USERNAME,MM_@@connection@@_PASSWORD);
+  String MM_pSQL = "SELECT @@fldUsername@@, @@fldPassword@@";
+  if (!MM_fldUserAuthorization.equals("")) MM_pSQL += "," + MM_fldUserAuthorization;
+  MM_pSQL += " FROM @@table@@ WHERE @@fldUsername@@=\'" + MM_valUsername.replace('\'', ' ') + "\' AND @@fldPassword@@=\'" + request.getParameter("@@frmPassword@@").toString().replace('\'', ' ') + "\'";
+  PreparedStatement MM_statementUser = MM_connUser.prepareStatement(MM_pSQL);
+  ResultSet MM_rsUser = MM_statementUser.executeQuery();
+  boolean MM_rsUser_isNotEmpty = MM_rsUser.next();
+  if (MM_rsUser_isNotEmpty) {
+    // username and password match - this is a valid user
+    session.putValue("@@MM_username@@", MM_valUsername);
+    if (!MM_fldUserAuthorization.equals("")) {
+      session.putValue("@@MM_userAuthorization@@", MM_rsUser.getString(MM_fldUserAuthorization).trim());
+    } else {
+      session.putValue("@@MM_userAuthorization@@", "");
+    }
+    if ((request.getParameter("accessdenied") != null) && @@redirectToReferrer@@) {
+      MM_redirectLoginSuccess = request.getParameter("accessdenied");
+    }
+    MM_redirectLogin=MM_redirectLoginSuccess;
+  }
+  MM_rsUser.close();
+  MM_connUser.close();
+  response.sendRedirect(response.encodeRedirectURL(MM_redirectLogin));
+  return;
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="frmUsername" limitSearch="all"><![CDATA[/String\s+MM_valUsername\s*=\s*request\.getParameter\s*\(\s*"([^\r\n]*?)"/]]></searchPattern>
+       <searchPattern paramNames="fldAuthorization" limitSearch="all"><![CDATA[/String\s+MM_fldUserAuthorization\s*=\s*"([^\r\n]*?)"/]]></searchPattern>
+       <searchPattern paramNames="redirectSuccess" limitSearch="all"><![CDATA[/String\s+MM_redirectLoginSuccess\s*=\s*"([^\r\n]*?)"/]]></searchPattern>
+       <searchPattern paramNames="redirectFailed" limitSearch="all"><![CDATA[/String\s+MM_redirectLoginFailed\s*=\s*"([^\r\n]*?)"/]]></searchPattern>
+       <searchPattern paramNames="redirectSuccess_url" limitSearch="all"><![CDATA[/String\s+MM_redirectLoginSuccess\s*=\s*"([^\r\n]*?)"/]]></searchPattern>
+       <searchPattern paramNames="redirectFailed_url" limitSearch="all"><![CDATA[/String\s+MM_redirectLoginFailed\s*=\s*"([^\r\n]*?)"/]]></searchPattern>
+       <searchPattern paramNames="connection" limitSearch="all"><![CDATA[/Connection\s+MM_connUser\s*=\s*DriverManager\.getConnection\s*\(\s*MM_([^\r\n]*?)_STRING/]]></searchPattern>
+       <searchPattern paramNames="fldUsername,fldPassword" limitSearch="all"><![CDATA[/String\s+MM_pSQL\s*=\s*"SELECT\s+([^,]*)\s*,\s*([^"]*)\s*"/]]></searchPattern>
+       <searchPattern paramNames="table" limitSearch="all"><![CDATA[/MM_pSQL\s*\+=\s*"\s+FROM\s+([^\r\n]*?)\s+WHERE/]]></searchPattern>
+       <searchPattern paramNames="frmPassword" limitSearch="all"><![CDATA[/\+\s*request\.getParameter\s*\(\s*"([^\r\n]*?)"\s*\)/]]></searchPattern>
+       <searchPattern paramNames="redirectToReferrer" limitSearch="all"><![CDATA[/request\.getParameter\s*\(\s*"accessdenied"\s*\)\s*!=\s*null\s*\)\s*&&\s*(\w+)\s*\)/]]></searchPattern>
+     </searchPatterns>
+</participant>

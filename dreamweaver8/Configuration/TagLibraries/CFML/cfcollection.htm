@@ -1,0 +1,171 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFCOLLECTION</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var LANGUAGELIST;
+var SELECTORLIST;
+var theUIObjects;
+var applyType = "dynamic";
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue();
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode, SELECTORLIST);
+}
+
+function applyTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue();
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode);
+}
+
+function updateUI()
+{
+  var curDiv = SELECTORLIST.getValue();
+
+  tagDialog.showOnlyThisLayer(curDiv);
+}
+
+function initializeUI()
+{
+	LANGUAGELIST = new ListControl("thelanguage");
+	SELECTORLIST = new ListControl("theselector");
+	theUIObjects = new Array(LANGUAGELIST);
+
+  tagDialog.populateDropDownList(LANGUAGELIST, theLanCollectionCap, theLanCollectionVal, 1);
+  tagDialog.populateDropDownList(SELECTORLIST, theSelCollectionCap, theSelCollectionVal, 0);
+
+  LANGUAGELIST.setIndex(1);
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+
+<div name="常规">
+<br />
+操作:
+<select name="theselector" class="selectorList" id="attr:cfcollection:selector" onChange="updateUI();" attname="action" editable="false">
+</select>
+<hr width="100%">
+<div id="thecreate" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td width="54" align="right" valign="baseline" nowrap="nowrap">集合: </td>
+      <td colspan="2" nowrap="nowrap">
+        <input name="thecollection" type="text" class="basicTextField" id="attr:cfcollection:createcollection" attname="collection" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">路径: </td>
+      <td colspan="2" nowrap="nowrap">
+        <input name="thepath" type="text" class="largeTField" id="attr:cfcollection:path" attname="path" required="true" />
+          &nbsp;
+        <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFolder('thepath',null,true)">
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">语言: </td>
+      <td width="150" nowrap="nowrap">
+        <select name="thelanguage" class="dirLangList" id="attr:cfcollection:language" attname="language" editable="true">
+        </select>
+      </td>
+      <td width="166" nowrap="nowrap">
+	  <input type="checkbox" id="attr:cfcollection:checkcreatecategory" name="thecheckcreatecategory" attname="categories" truevalue="yes" falsevalue="no" />
+        Categories</td>
+    </tr>
+  </table>
+</div>
+<div id="thedelete" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">集合: </td>
+      <td nowrap="nowrap">
+        <input name="thecollection" type="text" class="basicTextField" id="attr:cfcollection:deletecollection" attname="collection" required="true" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="thelist" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">查询名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="basicTextField" id="attr:cfcollection:name" attname="name" required="true" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="themap" style="position:absolute;width:200px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">集合: </td>
+      <td nowrap="nowrap">
+        <input name="thecollection" type="text" class="basicTextField" id="attr:cfcollection:mapcollection" attname="collection" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">路径: </td>
+      <td nowrap="nowrap">
+        <input name="themappath" type="text" class="largeTField" id="attr:cfcollection:path" attname="path" required="true" />
+          &nbsp;
+        <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFolder('themappath',null,true)">
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="theoptimize" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">集合: </td>
+      <td nowrap="nowrap">
+        <input name="thecollection" type="text" class="basicTextField" id="attr:cfcollection:optcollection" attname="collection" required="true" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="therepair" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">集合: </td>
+      <td nowrap="nowrap">
+        <input name="thecollection" type="text" class="basicTextField" id="attr:cfcollection:repaircollection" attname="collection" required="true" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="thecategorylist" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">Name: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="basicTextField" id="attr:cfcollection:categorylistname" attname="name" required="true" />
+      </td>
+	  </tr>
+	  <tr>
+	  <td valign="baseline" align="right" nowrap="nowrap">集合: </td>
+      <td nowrap="nowrap">
+        <input name="thecollection" type="text" class="basicTextField" id="attr:cfcollection:categorylistcollection" attname="name" required="true" />
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+</html>

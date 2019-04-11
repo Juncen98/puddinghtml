@@ -1,0 +1,150 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>LSPARSEEUROCURRENCY</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">LSPARSEEUROCURRENCY</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Formats a locale-specific currency string as a number. Attempts conversion through each of the default currency formats (none, local, international). Ensures correct handling of euro currency for Euro zone countries.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+A formatted number that matches the value of the string.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+International functions, String functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>LSParseEuroCurrency(<i>currency-</i>string)
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+LSParseCurrency, LSEuroCurrencyFormat, SetLocale; "Locale-specific content" in Chapter&#160;17, "Developing Globalized Applications," in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX: Changed formatting behavior: this function might return different formatting than in earlier releases. This function uses Java locale formatting rules on all platforms, except that it uses the rule detailed in the Usage section for countries in the Euro currency zone.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+This function determines whether the current locale's country belongs to the Euro Zone, whose members have converted to the euro; if so, the currency-string parameter must be formatted in euros on all JVMs, including Sun JVM 1.3.1. If the country is not in the Euro zone, the string must follow the locale formatting rules of the JVM. For examples of valid currency formats in all supported locales, see LSEuroCurrencyFormat on&#160;page&#160;1007.
+</p>
+
+<p>
+For a list of the locale options that ColdFusion supports, and information on setting the default display format of date, time, number, and currency values, see SetLocale.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;LSParseEuroCurrency Example&lt;/h3&gt;
+&lt;p&gt;Loop through all available locales. Create string representations of the 
+value
+   123,456 in the three supported currency formats, 
+   and parse the results back to numbers.&lt;p&gt;
+&lt;cfloop list=&quot;#Server.Coldfusion.SupportedLocales#&quot; index=&quot;locale&quot; 
+delimiters=&quot;,&quot;&gt;
+   &lt;cfset oldlocale = SetLocale(locale)&gt;
+   &lt;cfoutput&gt;&lt;p&gt;Current Locale: &lt;b&gt;&lt;i&gt;#locale#&lt;/i&gt;&lt;/b&gt;&lt;br&gt;
+   &lt;cfset localCurrency = LSEuroCurrencyFormat(123456, &quot;local&quot;)&gt;
+      Value in local currency: #localCurrency#&lt;br&gt;
+      Parsed using LSParseEuroCurrency: 
+      #LSParseEuroCurrency(localCurrency)#&lt;br&gt;
+   &lt;cfset IntlCurrency = LSEuroCurrencyFormat(123456, &quot;international&quot;)&gt;
+      Value with International currency formatting: #IntlCurrency#&lt;br&gt;
+      Parsed using LSParseEuroCurrency: 
+      #LSParseEuroCurrency(IntlCurrency)#&lt;br&gt;
+   &lt;cfset Currency = LSEuroCurrencyFormat(123456, &quot;none&quot;)&gt;
+      Value with no currency formatting: #currency#&lt;br&gt;
+      Parsed using LSParseEuroCurrency: 
+      #LSParseEuroCurrency(Currency)#&lt;br&gt;
+      &lt;hr noshade&gt;
+   &lt;/cfoutput&gt;
+&lt;/cfloop&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="CURRENCY-STRING">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">CURRENCY-STRING</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Locale-specific string or a variable that contains one.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

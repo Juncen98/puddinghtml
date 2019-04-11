@@ -1,0 +1,6524 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  505/W3C Accessibility Suite OEM V2 for Macromedia Dreamweaver
+  (C) Copyright 2001-2005 UsableNet Inc. All rights reserved.
+-->
+<!-- $Id: 508_rules.xml,v 1.12 2005/03/29 16:09:21 eva Exp $ -->
+
+<!--
+<!DOCTYPE un:rules SYSTEM "rules.dtd">
+-->
+
+<un:rules xmlns:un="http://usablenet.com/namespaces/508_rules">
+  <un:category>
+    <un:categoryTitle>
+      ALL
+    </un:categoryTitle>
+     
+    <un:categoryDescription>
+      This category contains all rules.
+    </un:categoryDescription>
+  </un:category>
+   
+  <un:category>
+    <un:categoryTitle>
+      508 accessibility
+    </un:categoryTitle>
+     
+    <un:categoryDescription>
+      <p>
+        This category contains the 508 rules specified by the
+        Accessibility Board
+        (http://www.access-board.gov/sec508/508standards.htm).
+      </p>
+       
+      <p>
+        For more details also suggest to look at a short course on
+        accessibility at http://www.jimthatcher.com/webcourse1.htm,
+        and a self-evaluation guide for accessibility at
+        http://www.usdoj.gov/crt/508/web.htm.
+      </p>
+    </un:categoryDescription>
+  </un:category>
+   
+  <un:category>
+    <un:categoryTitle>
+      W3C/WCAG P.1 accessibility
+    </un:categoryTitle>
+     
+    <un:categoryDescription>
+      This category contains the accessibility (priority 1) rules
+      specified by the W3C/WAI group
+      (http://www.w3.org/TR/WAI-WEBCONTENT). See WAI references
+      at http://www.w3.org/WAI/References for additional material
+      on web accessibility issues.
+    </un:categoryDescription>
+  </un:category>
+   
+  <un:category>
+    <un:categoryTitle>
+      W3C/WCAG P.2 accessibility
+    </un:categoryTitle>
+     
+    <un:categoryDescription>
+      This category contains the accessibility (priority 2) rules
+      specified by the W3C/WAI group
+      (http://www.w3.org/TR/WAI-WEBCONTENT). See WAI references at
+      http://www.w3.org/WAI/References for additional material on
+      web accessibility issues.
+    </un:categoryDescription>
+  </un:category>
+   
+
+  <un:category>
+    <un:categoryTitle>
+      images
+    </un:categoryTitle>
+     
+    <un:categoryDescription>
+      This category contains rules dealing with images embedded in
+      HTML documents.
+    </un:categoryDescription>
+  </un:category>
+   
+  <un:category>
+    <un:categoryTitle>
+      manual
+    </un:categoryTitle>
+     
+    <un:categoryDescription>
+      This category contains rules requiring manual inspection of
+      the HTML documents.
+    </un:categoryDescription>
+  </un:category>
+   
+  <un:category>
+    <un:categoryTitle>
+      forms
+    </un:categoryTitle>
+     
+    <un:categoryDescription>
+      This category contains rules dealing with FORMs and related
+      elements.
+    </un:categoryDescription>
+  </un:category>
+   
+  <un:category>
+    <un:categoryTitle>
+      frames
+    </un:categoryTitle>
+     
+    <un:categoryDescription>
+      This category contains rules dealing with FRAMEs and related
+      elements.
+    </un:categoryDescription>
+  </un:category>
+   
+  <un:category>
+    <un:categoryTitle>
+      tables
+    </un:categoryTitle>
+     
+    <un:categoryDescription>
+      This category contains rules dealing with TABLEs and related
+      elements.
+    </un:categoryDescription>
+  </un:category>
+   
+  <un:category>
+    <un:categoryTitle>
+      imagemaps
+    </un:categoryTitle>
+     
+    <un:categoryDescription>
+      This category contains rules dealing with image maps.
+    </un:categoryDescription>
+  </un:category>
+   
+  <un:category>
+    <un:categoryTitle>
+      scripts
+    </un:categoryTitle>
+     
+    <un:categoryDescription>
+      This category contains rules dealing with programmatic
+      objects.
+    </un:categoryDescription>
+  </un:category>
+   
+  <un:category>
+    <un:categoryTitle>
+      links
+    </un:categoryTitle>
+    <un:categoryDescription>
+      This category contains rules dealing with images within links
+      and navigation bars.
+    </un:categoryDescription>
+  </un:category>
+
+  <un:category>
+     <un:categoryTitle>
+       meta
+     </un:categoryTitle>
+     <un:categoryDescription>
+       This category contains rules that deal with META elements of HTML.
+     </un:categoryDescription>
+  </un:category>
+   
+  <un:category>
+    <un:categoryTitle>
+      css
+    </un:categoryTitle>
+    <un:categoryDescription>
+      This category contains tests dealing with Cascading Style Sheets.
+    </un:categoryDescription>
+  </un:category>
+
+
+  <un:category>
+    <un:categoryTitle>
+      suggestions
+    </un:categoryTitle>
+     
+    <un:categoryDescription>
+      This category contains rules that suggest ways in which to
+      use the LIFT Online service at www.usablenet.com.
+    </un:categoryDescription>
+  </un:category>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="false">
+    <un:ruleTitle>
+      Non spacer IMG with valid ALT
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      nspIMGwValidALT
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      images
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+    <p>
+    Images included in this document do not have corresponding
+      valid textual descriptions. A valid description is a string
+      value of the ALT attribute that:
+      </p>
+      <ul>
+        <li>
+          is not the empty string ("")
+        </li>
+         
+        <li>
+          is not a string with 1 or more spaces (" ")
+        </li>
+         
+        <li>
+          is not the name of the file containing the image
+        </li>
+         
+        <li>
+          does not only say which is the size of the image file
+        </li>
+         
+        <li>
+          is not longer than 150 characters (this is actually only
+          a suggestion: it is not required by WCAG 1.0 nor 508
+          standard)
+        </li>
+      </ul>
+      <p>
+       The image appears to have more than a decorative role (i.e.,
+      it is not a spacer).
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='none'>
+      No ALT defined for image.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='nonempty'>
+      ALT of image should be empty or blank and isn't.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='empty'>
+      ALT of image is the empty string "".
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='blank'>
+      ALT of image is the blank string " ".
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='html'>
+      ALT of image contains HTML tags.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='toolong'>
+      ALT of image is too long.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='size'>
+      ALT of image describes only the size of the image file.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='filename'>
+      ALT of image describes only the filename of the image.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='placeholder'>
+      ALT of image appears to contain only placeholder text.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        The ALT attribute describes the associated image so that
+        users without graphics-enabled browsers can still
+        effectively navigate the page. The advent of hand-held,
+        text-only browsers makes the use of the ALT descriptions
+        more important now than ever.
+      </p>
+       
+      <p>
+        For hidden links (normal A tags whose label is a spacer),
+        it is important that the ALT attribute of the image exists
+        and describes the destination of the link. (Hidden links is
+        a technique you can use to fulfill the 508 rule 1194.22(o)
+        stating "A method shall be provided that permits users to
+        skip repetitive navigation links," and the WAI checkpoint
+        13.6.)
+      </p>
+       
+      <p>
+        ALT descriptions are displayed before the associated image,
+        which is helpful when image download and display takes
+        several seconds.
+      </p>
+       
+      <p>
+        Adding keywords to the ALT attribute can also improve the
+        page listing in some search engine.
+      </p>
+       
+      <p>
+        For images that play only a decorative role in the page
+        (like spacers and bullets), it is recommended that you define an
+        empty ALT (i.e. 
+        <tt>
+          ALT=""
+        </tt>
+         ) so that speaking browsers do not confuse your users to say
+        things like "*" or "&gt;".
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+    <p>
+    Add the ALT attribute to the IMG tag. Remember the following points:
+    </p>
+	          <ul>
+        <li>
+          The description should explain the role of the image on
+          the page. Imagine listening over the phone to the page
+          content and the image description
+        </li>
+         
+        <li>
+          If the image is used as the content of a link and you
+          provide link text too, use a space as the ALT attribute
+          value of the IMG element. In such a case, link text
+          should be the alternative description for the image
+        </li>
+         
+        <li>
+          Be brief. Consider that images like logos are repeated on
+          every page of the site, and people would have to listen
+          to the same description over and over
+        </li>
+         
+        <li>
+          As a rough guideline, for buttons use the same text shown
+          by the image
+        </li>
+         
+        <li>
+          ALT descriptions are not interpreted by browsers, and
+          should not include HTML tags. Embedded tags can only
+          confuse users and possibly search engines too
+        </li>
+         
+        <li>
+          ALT descriptions that are too long may be truncated by
+          browsers and increase the time required to download the
+          page. A good guideline is to use less than 10 words and
+          64 characters
+        </li>
+         
+        <li>
+          Images used solely for decorative purposes (such as
+          spacers) should include an empty ALT string ("") so that
+          screen-readers ignore them. The same is true for images
+          like bullets
+        </li>
+         
+        <li>
+          BEWARE: The ALT attribute should be the empty string ("")
+          in cases where the image is already described by
+          surrounding text
+        </li>
+         
+        <li>
+          BEWARE: All images included in links (including
+          transparent GIFs) need to have valid ALTs describing the
+          link destination
+        </li>
+      </ul>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="false">
+    <un:ruleTitle>
+      Spacer IMG with valid ALT
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      spIMGwValidALT
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      images
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+    <p>
+      Images in this document that seem to serve decorative
+      purposes only (spacers) do not have corresponding valid
+      textual descriptions. A valid textual description is a blank
+      or empty string for the ALT attribute value.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='none'>
+      No ALT defined for spacer image.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='nonempty'>
+      ALT of spacer image should be empty or blank and isn't.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        The ALT attribute describes the associated image so that
+        users without graphics-enabled browsers can still
+        effectively navigate the page. Images that have only a
+        decorative role do not need to have a textual description
+        since users unable to see the image will not care about it.
+      </p>
+       
+      <p>
+        In addition, speaking browsers or screen readers will not
+        bother their users if the ALT text is a blank or empty
+        string. A blank string is a string made up of one or more
+        spaces, such as " ". An empty string is a string with no
+        spaces at all, such as "".
+      </p>
+       
+      <p>
+        The ALT attribute should be defined even if the value is a
+        blank or empty string. Otherwise a screen reader or
+        speaking browser might insert the image filename, for
+        example, disturbing the user while listening to the page.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>Add the ALT attribute to the IMG tag. </p>
+      <p>
+        For a spacer, the ALT attribute value should be a blank (" ")
+        or empty ("") string, but it should exist anyway. The same
+        applies for images used as bullets.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Non spacer IMG with equivalent ALT
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      nspIMGwEquivalentALT
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      images
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+      The image appears to have more than a decorative role (i.e.,
+      it is not a spacer). It should have an equivalent textual
+      description.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmExplanation>
+      <p>
+        The ALT attribute describes the associated image so that
+        users without graphics-enabled browsers can still
+        effectively navigate the page.
+      </p>
+       
+      <p>
+        The description should convey the same information as the
+        image and it should explain the role the image plays on the
+        page - why it is there, what it represents, how it presents
+        the information.
+      </p>
+       
+      <p>
+        If the image is used within a hidden link (that is, a
+        normal A tag with a spacer as label), then its ALT
+        attribute should describe the link destination. The ALT
+        content is all that non-graphical browsers show for a
+        hidden link. (Hidden links is a technique that can be used
+        to fulfill the 508 rule 1194.22(o), which states "A method
+        shall be provided that permits users to skip repetitive
+        navigation links," and the WAI checkpoint 13.6.)
+      </p>
+       
+      <p>
+        Notice that adding a good alternative description to images
+        is very important today as many users, for one reason or
+        the other, are not able to take advantage of graphics. They
+        include users of cellular phones, PDAs, or browsers
+        installed in cars.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Check to make sure the current ALT description conveys the
+        meaning of the image.
+      </p>
+       
+      <p>
+        The description should explain the role the image plays on
+        the page: why it is there, what it represents, how it
+        presents the information. Imagine hearing the description
+        over the phone.
+      </p>
+       
+      <p>
+        If the image is used as the content of a link and you
+        provide link text too, use a space as the ALT attribute
+        value of the IMG element. In such a case, link text should
+        be the alternative description for the image.
+      </p>
+       
+      <p>
+        If the image is used as a hidden link, then its ALT
+        attribute should describe the link destination.
+      </p>
+       
+      <p>
+        If the image has only decorative purposes (such as images
+        used for bullets or spacers), the ALT string should be a
+        empty string ("") or a blank one (" ").
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="false">
+    <un:ruleTitle>
+      Non spacer IMG with valid LONGDESC
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      nspIMGwValidLongdesc
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      images
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+    <p>
+      Image has a LONGDESC attribute that is not valid for one of
+      the following reasons:
+      </p>
+      <ul>
+        <li>
+          It points to a non-existing local file or web resource
+        </li>
+         
+        <li>
+          It points to a non-HTML resource
+        </li>
+      </ul>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='nofile'>
+      Invalid LONGDESC attribute: Mentioned file does not exist.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='nohtml'>
+      Invalid LONGDESC attribute: Mentioned file is not an HTML
+      file.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='empty'>
+      Invalid LONGDESC attribute: Mentioned file is empty.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='noresponse'>
+      Invalid LONGDESC attribute: Its URL is dead.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='badresponse'>
+      Invalid LONGDESC attribute: Got an error response from the
+      server in response to its URL.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='badproto'>
+      Invalid LONGDESC attribute: It is not a local file or an HTTP
+      URL.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        The ALT attribute cannot be used to provide a full-length
+        description of the content of an image. Think of a diagram,
+        a histogram, a chart, or a product picture in an online
+        catalogue. To describe its content, you need more
+        flexibility.
+      </p>
+       
+      <p>
+        The LONGDESC attribute can be used to provide a long
+        description of the associated image. By including the
+        attribute LONGDESC="any_HTML_file" in your IMG tag, you can
+        link the image to the HTML file containing a formatted
+        description of the image. The long description (unlike the
+        ALT attribute) can contain HTML code, with links to other
+        resources, formatting instructions, and more.
+      </p>
+       
+      <p>
+        However, since not many browsers at the moment support the
+        LONGDESC attribute, you may also want to place a so-called
+        D-link near the image. A D-link is a normal textual link
+        with a label "D" pointing to an HTML page providing a full
+        image description. Example:
+      </p>
+       
+<pre>
+    &lt;IMG src="chart.gif" alt="chart of beverages distribution"
+    longdesc="chart.html"&gt;&lt;A href="chart.html"&gt;D&lt;/A&gt;
+</pre>
+       
+      <p>
+        Placing a rich textual description such as a caption close
+        to the image is another viable solution. In such a case,
+        you will not need the LONGDESC attribute or the D-link.
+      </p>
+       
+      <p>
+        Adding a good alternative description to images is very
+        important today because many users can't take advantage
+        of graphics. They include users of cellular phones, PDAs,
+        and browsers installed in cars.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Make sure the link specified by the LONGDESC attribute is
+        working.
+      </p>
+       
+      <p>
+        Since not many browsers at the moment support the LONGDESC
+        attribute, you may also want to place a so-called D-link
+        near the image. A D-link is a normal textual link with
+        label "D" pointing to an HTML page providing a full image
+        description. Example: 
+<pre>
+    &lt;IMG src="chart.gif" alt="chart of beverages distribution"
+    longdesc="chart.html"&gt;&lt;A href="chart.html"&gt;D&lt;/A&gt;
+</pre>
+      </p>
+       
+      <p>
+        Placing a rich textual description such as a caption close
+        to the image is another viable solution. In such a case,
+        you will not need the LONGDESC attribute or the D-link.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="false">
+    <un:ruleTitle>
+      No LONGDESC for spacer IMG
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      spIMGwNoLongdesc
+    </un:ruleID>
+     
+    <un:severity>
+      2
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      images
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+    <p>
+      Image has a LONGDESC attribute even though the image appears
+      to be decorative only.
+      </p>
+      <p>
+        Decorative images should not have any long descriptions.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='msg'>
+      Spacer image has an unneeded LONGDESC attribute.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        The LONGDESC attribute can be used to provide a long
+        description of the associated image when the description
+        would not fit in the ALT attribute. This may be needed, for
+        example, when the image represents a chart or a diagram,
+        which typically need long explanations.
+      </p>
+       
+      <p>
+        However, for images used only for decorative purposes, a
+        long description is unnecessary, and people using browsers that
+        take advantage of that feature will find it distracting.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+    <p>Remove the LONGDESC attribute from the IMG tag.</p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Non spacer IMG needs LONGDESC
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      nspIMGneedsLongdesc
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      images
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+      Image does not have a LONGDESC attribute that points to an
+      HTML file providing a detailed description of the image.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='msg'>
+      Non-spacer image may need a LONGDESC attribute.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        The ALT attribute cannot be used to provide a full-length
+        description of the content of an image. Think of a diagram,
+        a histogram, a chart, or a product picture in an online
+        catalogue. To describe its content, you need more
+        flexibility.
+      </p>
+       
+      <p>
+        The LONGDESC attribute can be used to provide a long
+        description of the associated image. By including the
+        attribute LONGDESC="any_HTML_file" in your IMG tag, you can
+        link the image to the HTML file containing a formatted
+        description of the image. The long description (unlike the
+        ALT attribute) can contain HTML code, with links to other
+        resources, formatting instructions, and more.
+      </p>
+       
+      <p>
+        However, since not many browsers at the moment support the
+        LONGDESC attribute, you may also want to place a so-called
+        D-link near the image. A D-link is a normal textual link
+        with a label "D" pointing to an HTML page providing a full
+        image description. Example: 
+<pre>
+    &lt;IMG src="chart.gif" alt="chart of beverages distribution"
+    longdesc="chart.html"&gt;&lt;A href="chart.html"&gt;D&lt;/A&gt;
+</pre>
+      </p>
+       
+      <p>
+        Placing a rich textual description such as a caption close
+        to the image is another viable solution. In such a case,
+        you will not need the LONGDESC attribute or the D-link.
+      </p>
+       
+      <p>
+        Adding a good alternative description to images is very
+        important today because many users can't take advantage
+        of graphics. They include users of cellular phones, PDAs,
+        and browsers installed in cars.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+      Make sure the image presents information that is not included
+      in the page or in the text equivalent of the image (that is,
+      in its ALT attribute).
+      </p>
+      <p>
+        If describing the image will add information not present in
+        the text of the page, then you need to provide a
+        description of the image. The amount of information in the
+        image and the context in which it will be used will
+        determine how detailed the description should be.
+      </p>
+       
+      <p>
+        However, since not many browsers at the moment support the
+        LONGDESC attribute, you may also want to place a so-called
+        D-link near the image. A D-link is a normal textual link
+        with a label "D" pointing to an HTML page providing a full
+        image description. Example: 
+<pre>
+    &lt;IMG src="chart.gif" alt="chart of beverages distribution"
+    longdesc="chart.html"&gt;&lt;A href="chart.html"&gt;D&lt;/A&gt;
+</pre>
+      </p>
+       
+      <p>
+        Placing a rich textual description such as a caption close
+        to the image is another viable solution. In such a case,
+        you will not need the LONGDESC attribute or the D-link.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="false">
+    <un:ruleTitle>
+      INPUT with valid ALT
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      INPUTwValidALT
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      images
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      forms
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        Image used as a button in the form does not have a valid
+        textual description.
+      </p>
+       
+      <p>
+        Image does not have a LONGDESC attribute linking it to an
+        HTML file that provides a detailed description that would
+        not fit in the ALT attribute. A valid description is a
+        string value of the ALT attribute that is not any of the
+        following:
+      </p>
+       
+      <ul>
+        <li>
+          an empty string ("")
+        </li>
+         
+        <li>
+          a blank string with one or more spaces (" ")
+        </li>
+         
+        <li>
+          the name of the image file
+        </li>
+         
+        <li>
+          the size of the image file
+        </li>
+         
+        <li>
+          a string longer than 150 characters (this is actually only a
+          suggestion - not a WCAG 1.0 or 508 requirement)
+        </li>
+      </ul>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='none'>
+      No ALT defined for button image.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='nonempty'>
+      ALT of button image should be empty or blank and isn't.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='empty'>
+      ALT of button image is the empty string "".
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='blank'>
+      ALT of button image is the blank string " ".
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='toolong'>
+      ALT of button image is too long.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='html'>
+      ALT of button contains HTML tags.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='size'>
+      ALT of button image describes only the size of the image
+      file.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='filename'>
+      ALT of button image describes only the filename of the image.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='placeholder'>
+      ALT of button image appears to contain only placeholder text.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        The ALT attribute describes the associated image so that
+        users without graphics-enabled browsers can still
+        effectively navigate the page. The advent of hand-held,
+        text-only browsers makes the use of ALT descriptions more
+        important now than ever.
+      </p>
+       
+      <p>
+        If the button image does not have a textual description,
+        users of non-graphical browsers will have no idea what
+        clicking on that button will do.
+      </p>
+       
+      <p>
+        Beware of another possible problem:
+      </p>
+       
+      <p>
+        When the mouse is used to click on the image, the form and
+        the click coordinates are submitted to the server.
+      </p>
+       
+      <p>
+        If the server takes different actions depending on the
+        location clicked, users of non-graphical browsers will be
+        disadvantaged. For this reason, you should consider
+        alternate approaches such as the following:
+      </p>
+       
+      <ul>
+        <li>
+          Use multiple submit buttons (each with its own image) in
+          place of a single graphical submit button. You can use
+          style sheets to control the positioning of these buttons.
+        </li>
+         
+        <li>
+          Use a client-side image map together with scripting.
+        </li>
+      </ul>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+      Add the ALT attribute to the INPUT element while keeping the
+      following in mind:
+      </p>
+      <ul>
+        <li>
+          The description should explain the effect of clicking on
+          the button.
+        </li>
+         
+        <li>
+          ALT descriptions are not interpreted by browsers, and
+          should not include HTML tags. Embedded tags can only
+          confuse users and possibly search engines as well.
+        </li>
+         
+        <li>
+          ALT descriptions that are too long may be truncated by
+          browsers and increase the time required to download the
+          page. A good rule of thumb is to use less than 10 words
+          and 64 characters
+        </li>
+      </ul>
+       
+      <p>
+        Beware that when the mouse is used to click on the image,
+        the form and the click coordinates are submitted to the
+        server. If the server takes different actions depending on
+        the location clicked, users of non-graphical browsers will
+        be disadvantaged. For this reason, you should consider
+        alternate approaches such as the following:
+      </p>
+       
+      <ul>
+        <li>
+          Use multiple submit buttons (each with its own image) in
+          place of a single graphical submit button. You can use
+          style sheets to control the positioning of these buttons.
+        </li>
+         
+        <li>
+          Use a client-side image map together with scripting.
+        </li>
+      </ul>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      INPUT with equivalent ALT
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      INPUTwEquivalentALT
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      images
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      forms
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        Image used as a button in the form has a valid description.
+        
+        <br />
+         It should have an equivalent textual description.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmExplanation>
+      <p>
+        The ALT attribute describes the associated image so that
+        users without graphics-enabled browsers can still
+        effectively navigate the page. The advent of hand-held,
+        text-only browsers makes the use of the ALT descriptions
+        more important now than ever.
+      </p>
+       
+      <p>
+        If the button image does not have an equivalent textual
+        description, users of non-graphical browsers will have no
+        idea what clicking that button will do.
+      </p>
+       
+      <p>
+        Beware of another possible problem. When the mouse is used
+        to click on the image, the form and the click coordinates
+        are submitted to the server. If the server takes different
+        actions depending on the location clicked, users of
+        non-graphical browsers will be disadvantaged. For this
+        reason, you should consider alternate approaches such as
+        the following:
+      </p>
+       
+      <ul>
+        <li>
+          Use multiple submit buttons (each with its own image) in
+          place of a single graphical submit button. You can use
+          style sheets to control the positioning of these buttons.
+        </li>
+         
+        <li>
+          Use a client-side image map together with scripting.
+        </li>
+      </ul>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Test the content of the ALT attribute of the INPUT element.
+        
+        <br />
+         Remember that the description should explain the effect of
+        clicking on the button.
+      </p>
+       
+      <p>
+        Beware that when the mouse is used to click on the image,
+        the form and the click coordinates are submitted to the
+        server. If the server takes different actions depending on
+        the location clicked, users of non-graphical browsers will
+        be disadvantaged. For this reason, you should consider
+        alternate approaches such as the following:
+      </p>
+       
+      <ul>
+        <li>
+          Use multiple submit buttons (each with its own image) in
+          place of a single graphical submit button. You may use
+          style sheets to control the positioning of these buttons.
+        </li>
+         
+        <li>
+          Use a client-side image map together with scripting.
+        </li>
+      </ul>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="false">
+    <un:ruleTitle>
+      FRAME with valid LONGDESC
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      FRAMEwValidLongdesc
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      frames
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+      The frame's LONGDESC attribute is invalid because of one of
+      the following reasons:
+      </p>
+      <ul>
+        <li>
+          It points to a non-existing local file or web resource
+        </li>
+         
+        <li>
+          It points to a non-HTML resource
+        </li>
+      </ul>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='nofile'>
+      Invalid LONGDESC attribute: Mentioned file does not exist.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='nohtml'>
+      Invalid LONGDESC attribute: Mentioned file is not an HTML
+      file.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='empty'>
+      Invalid LONGDESC attribute: Mentioned file is empty.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='noresponse'>
+      Invalid LONGDESC attribute: Its URL is dead.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='badresponse'>
+      Invalid LONGDESC attribute: Got an error response to its URL
+      from the server.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='badproto'>
+      Invalid LONGDESC attribute: It is not a local file or an HTTP
+      URL.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        The LONGDESC attribute can be used to provide a long
+        description of the associated FRAME tag when the
+        description would not fit in the TITLE attribute. This
+        would be needed, for example, if the frame contained only
+        an image with no text around it.
+      </p>
+       
+      <p>
+        The LONGDESC attribute describes the frame content so that
+        users without graphics-enabled browsers can still
+        effectively understand what is being presented in the page.
+        The advent of hand-held, text-only browsers makes the use
+        of textual descriptions more important now than ever.
+      </p>
+       
+      <p>
+        The W3C/WAI discourages putting an image directly in a
+        frame (to learn why, see
+        http:www.w3.org/TR/REC-html40/present/frames.html#h-16.4.2)
+        and suggests instead having the frame point to a separate
+        HTML file that includes the image and some explanatory
+        text.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Ensure that the link specified by the LONGDESC attribute is
+        working.
+      </p>
+       
+      <p>
+        Note that the W3C/WAI discourages using the LONGDESC
+        attribute for framed images, and suggests instead having
+        the frame point to a separate HTML file that includes the
+        image and some explanatory text.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      SCRIPT with valid NOSCRIPT
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      SCRIPTwValidNOSCRIPT
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      scripts
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+      SCRIPT element does not have an associated valid NOSCRIPT: 
+      </p>
+      <ul>
+        <li>
+          A NOSCRIPT should directly follow the SCRIPT element
+        </li>
+         
+        <li>
+          The content of the NOSCRIPT element should not be empty.
+          It can include any HTML instruction.
+        </li>
+      </ul>
+       
+      <p>
+        Note that the 508 standard 
+        <strong>
+          does not
+        </strong>
+         require that all SCRIPTS be followed by corresponding
+        NOSCRIPTS (though it is a suggested technique in WAI WCAG
+        1.0). The 508 standard requires that when pages use
+        scripting languages to display content or to create
+        interface elements, the information provided by the script
+        should be identified with functional text that can be read
+        by assistive technology. 
+        <br />
+         There are two kinds of scripts that require special care
+        and using the NOSCRIPT tag may help:
+      </p>
+       
+      <ul>
+        <li>
+          <strong>
+            Rollovers:
+          </strong>
+           If a script changes an image on the screen when the
+          user moves the cursor over the image, and the script does
+          not indicate (through text readable by a screen reader)
+          that it has changed the content of the page, the script
+          cannot be made accessible.
+        </li>
+         
+        <li>
+          <strong>
+            Keyboard unoperable scripts:
+          </strong>
+           If the event triggering the script cannot be activated
+          through the keyboard, then the script cannot be made
+          accessible
+        </li>
+      </ul>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='missing'>
+      Missing NOSCRIPT: There is no NOSCRIPT following the SCRIPT.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='empty'>
+      Invalid NOSCRIPT: The NOSCRIPT is empty.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        One way to provide a text equivalent to a SCRIPT element is
+        with NOSCRIPT. The content of this element is rendered when
+        scripts are not enabled.
+      </p>
+       
+      <p>
+        The NOSCRIPT element allows authors to provide alternate
+        content when a script is not executed. The content of a
+        NOSCRIPT element should only be rendered by a script-aware
+        user agent in the following cases:
+      </p>
+       
+      <ul>
+        <li>
+          The browser is configured not to evaluate scripts
+        </li>
+         
+        <li>
+          The browser doesn't support a scripting language invoked
+          by the script
+        </li>
+      </ul>
+       
+      <p>
+        Users of screen readers and speaking browsers would not be
+        able to take advantage of scripts that affect the graphical
+        interface of a web page.
+      </p>
+       
+      <p>
+        Users not using a mouse or joystick would not be able to
+        take advantage of scripts that open windows, dialogs, or
+        menus.
+      </p>
+       
+      <p>
+        Note that there are many other cases where scripts cannot
+        be run by browsers, and there are going to be more and more
+        of these cases in the future. They include:
+      </p>
+       
+      <ul>
+        <li>
+          PDAs and cellular phones unable to execute scripts
+        </li>
+         
+        <li>
+          Browsers in diverse operating systems (Windows, MacOS,
+          Linux) unable to execute scripts written in a given
+          language. For example, VBScripts will not run in Netscape
+          on Linux machines or PDAs
+        </li>
+         
+        <li>
+          Users of graphical browsers who disable Javascript for
+          security reasons
+        </li>
+      </ul>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Check that the information provided by the script can be
+        also provided by text that can be read by assistive
+        technology.
+      </p>
+       
+      <p>
+        The easiest way to check if a script is accessible is to
+        try to view the page with a browser where scripts and image
+        loading are temporarily disabled (consult the browser's
+        documentation to learn how to disable scripts and image
+        loading). 
+        <br />
+         Another approach is to use the page without the mouse (by
+        tabbing through elements and using only the keyboard). This
+        gives you an idea of the role actual played by the script
+        in the interaction.
+      </p>
+       
+      <p>
+        If not, consider adding a NOSCRIPT element to the SCRIPT.
+        It can contain any HTML tag. Its content should let people
+        that do not execute the script achieve the same effects as
+        those that do. In particular, they should be able to access
+        the same content and same interaction opportunities,
+        including links.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      SCRIPT with equivalent NOSCRIPT
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      SCRIPTwEquivalentNOSCRIPT
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      scripts
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        Script included in this document has a valid NOSCRIPT
+        element whose content should be equivalent to the script.
+      </p>
+       
+      <p>
+        A NOSCRIPT is valid if the following conditions apply: it
+        exists, it is close to the SCRIPT it refers to, and it is
+        not empty.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='msg'>
+      Found NOSCRIPT: Check if it is equivalent.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        One way to provide a text equivalent to a SCRIPT element is
+        with NOSCRIPT. The content of this element is rendered when
+        scripts are not enabled.
+      </p>
+       
+      <p>
+        The NOSCRIPT element allows authors to provide alternate
+        content when a script is not executed. The content of a
+        NOSCRIPT element should only be rendered by a script-aware
+        user agent in the following cases:
+      </p>
+       
+      <ul>
+        <li>
+          The browser is configured not to evaluate scripts
+        </li>
+         
+        <li>
+          The browser doesn't support a scripting language invoked
+          by the script
+        </li>
+      </ul>
+       
+      <p>
+        Users of screen readers and speaking browsers would not be
+        able to take advantage of scripts that affect the graphical
+        interface of a web page.
+      </p>
+       
+      <p>
+        Users not using a mouse or joystick would not be able to
+        take advantage of scripts that open windows, dialogs, and
+        menus.
+      </p>
+       
+      <p>
+        Note that there are also many other cases where scripts
+        cannot be run by browsers, and there are going to be more
+        and more cases in the future. They include:
+      </p>
+       
+      <ul>
+        <li>
+          PDAs and cellular phones that are unable to execute
+          scripts
+        </li>
+         
+        <li>
+          Browsers in diverse operating systems (such as Windows,
+          MacOS, Linux) unable to execute scripts written in a
+          given language. For example, VBScripts will not run on
+          Netscape on Linux machines
+        </li>
+         
+        <li>
+          Users of graphical browsers who disable Javascript for
+          security reasons
+        </li>
+      </ul>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Make sure the content of the current NOSCRIPT conveys the
+        same meaning of the associated SCRIPT.
+      </p>
+       
+      <p>
+        The content of NOSCRIPT should let people that do not
+        execute the script achieve the same effects as those that
+        do. In particular, they should be able to access the same
+        content and same interaction opportunities, including
+        links.
+      </p>
+       
+      <p>
+        NOSCRIPT can contain any HTML tag.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="false">
+    <un:ruleTitle>
+      AREA with valid ALT
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      AREAwValidALT
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      images
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The image map included in this document does not have AREAs
+        elements with valid textual descriptions. A valid
+        description is a string value of the ALT attribute that is
+        not any the following:
+      </p>
+       
+      <ul>
+        <li>
+          an empty string ("")
+        </li>
+         
+        <li>
+          a string with one or more spaces (" ")
+        </li>
+         
+        <li>
+          the name of the image file
+        </li>
+         
+        <li>
+          the size of the image file
+        </li>
+         
+        <li>
+          a string longer than 150 characters (this is actually only a
+          suggestion - it is not a WCAG 1.0 or 508 requirement)
+        </li>
+      </ul>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='none'>
+      No ALT defined for image region.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='empty'>
+      ALT of image region is the empty string "".
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='blank'>
+      ALT of image region is the blank string " ".
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='toolong'>
+      ALT of image region is too long.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='html'>
+      ALT of image region contains HTML tags.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='size'>
+      ALT of image region describes only the size of the image
+      file.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='filename'>
+      ALT of image region describes only the filename of the image.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='placeholder'>
+      ALT of image region appears to contain only placeholder text.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        ALT attributes are the means to provide text equivalents
+        for image maps. Doing so is important since image maps
+        convey visual information crucial for navigation.
+      </p>
+       
+      <p>
+        The ALT attribute should describe the associated area of
+        the image so that users without graphics-enabled browsers
+        can still effectively navigate the page. Without ALT
+        descriptions, such users would not be able to navigate
+        through the image map.
+      </p>
+       
+      <p>
+        Each AREA element of the image map should have its own ALT
+        attribute. Example (taken and revised from a tutorial at
+        http://www.jimthatcher.com/webcourse2.htm): 
+<pre>
+   &lt;IMG src="map.gif" alt="navigation" usemap="#navigation"&gt;
+   &lt;MAP name="navigation"&gt;
+   &lt;AREA coords="1,1,40,100" alt="home" href="../index.html"&gt;
+   &lt;AREA coords="1,100,40,180" alt="products"
+href="products.html"&gt;
+   &lt;/MAP&gt;
+</pre>
+      </p>
+       
+      <p>
+        As with other links, the link text should make sense when
+        read out of context. Good link text should not be overly
+        general. Do not use "click here." Not only is this phrase
+        device-dependent (it implies a pointing device), but it
+        says nothing about what is to be found if the link is
+        clicked. Instead of "click here," link text should indicate
+        the nature of the link target, as in "more information
+        about sea lions" or "text-only version of this page".
+      </p>
+       
+      <p>
+        The advent of hand-held, text-only browsers makes the use
+        of the ALT descriptions more important now than ever.
+        Consider that many users by choice or necessity use
+        text-only browsers with screen readers or speaking
+        browsers. They include visually impaired persons, people
+        using the web over a phone, and people using a speaking
+        browser in the car.
+      </p>
+       
+      <p>
+        Until user agents are able to render text equivalents for
+        client-side image map links, you can make your page
+        accessible to users that cannot see the graphics by
+        providing redundant textual links for each active region of
+        a client-side image map. By providing the ALT description
+        for AREA elements, however, your page is already compliant
+        with respect to these new browsers.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+      Add the ALT attribute to the AREA tag while keeping the
+      following points in mind:
+      </p>
+      <ul>
+        <li>
+          The description should explain the link destination, or
+          why the user would want to follow it.
+        </li>
+         
+        <li>
+          Do not mention the mechanics such as "click here", but
+          describe the destination of the link and its role for the
+          user.
+        </li>
+         
+        <li>
+          ALT descriptions are not interpreted by browsers, and
+          should not include HTML tags. Embedded tags can only
+          confuse users and possibly search engines as well.
+        </li>
+         
+        <li>
+          ALT descriptions that are too long may be truncated by
+          browsers and increase the time required to download the
+          page (a good rule of thumb is to use less than 10 words
+          and 64 characters).
+        </li>
+      </ul>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      AREA with equivalent ALT
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      AREAwEquivalentALT
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      images
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The image map included in this document has AREAs elements
+        with valid textual descriptions. 
+        <br />
+         These descriptions should be equivalent to the image map.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmExplanation>
+      <p>
+        ALT attributes are the means to provide text equivalents
+        for image maps. Doing so is important since image maps
+        convey visual information crucial for navigation.
+      </p>
+       
+      <p>
+        The ALT attribute should describe the associated area of
+        the image so that users without graphics-enabled browsers
+        can still effectively navigate the page. Without equivalent
+        ALT descriptions, such users would not be able to navigate
+        through the image map.
+      </p>
+       
+      <p>
+        As with other links, the link text should make sense when
+        read out of context. Good link text should not be overly
+        general. Do not use "click here." Not only is this phrase
+        device-dependent (it implies a pointing device), but it
+        says nothing about what is to be found if the link is
+        click. Instead of "click here", link text should indicate
+        the nature of the link target, as in "more information
+        about sea lions" or "text-only version of this page".
+      </p>
+       
+      <p>
+        The advent of hand-held, text-only browsers makes the use
+        of the ALT descriptions more important now than ever.
+        Consider that many users by choice or necessity use
+        text-only browsers with screen readers or speaking
+        browsers. They include visually impaired persons, people
+        using the web over a phone, and people using a speaking
+        browser in the car.
+      </p>
+       
+      <p>
+        Until user agents can render text equivalents for
+        client-side image map links, you can make your page
+        accessible to users that cannot see the graphics by
+        providing redundant textual links for each active region of
+        a client-side image map. By providing the ALT description
+        for AREA elements, however, your page is already compliant
+        with respect to these new browsers.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+      Test the ALT attribute of the AREA tag while keeping the
+      following points in mind:
+      </p>
+      <ul>
+        <li>
+          The description should explain the link destination, or
+          why the user would want to follow it
+        </li>
+         
+        <li>
+          Do not mention the mechanics such as "click here", but
+          describe the destination of the link and its role for the
+          user
+        </li>
+      </ul>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Color is not essential
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      DontRelyOnColorAlone
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 c/WCAG 2.1 P1">
+      Section 508 1194.22(c); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 2.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page contains colors, so make sure the information
+        conveyed with the page does not rely on those colors.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmExplanation>
+      <p>
+        There are many situations where a person cannot see colors.
+        They include:
+      </p>
+       
+      <ul>
+        <li>
+          Bad choice of background or foreground colors on the page
+        </li>
+         
+        <li>
+          People using a textual browser
+        </li>
+         
+        <li>
+          People listening to a reading browser
+        </li>
+         
+        <li>
+          People using a black and white display, like a PDA or a
+          cell phone
+        </li>
+         
+        <li>
+          Color-blind people
+        </li>
+         
+        <li>
+          Poorly sighted or blind people
+        </li>
+      </ul>
+       
+      <p>
+        Colors on a page should be used only as decorative or
+        graphic-enhancing devices. They should not be used to
+        convey information.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Make sure the page can be understood and navigated even if
+        users do not have the ability to identify specific colors
+        or differentiate between colors.
+      </p>
+       
+      <p>
+        Here are easy ways to test the page:
+      </p>
+       
+      <ul>
+        <li>
+          View the page on a black and white screen and go through
+          each of its elements
+        </li>
+         
+        <li>
+          Print the page on a black and white printer
+        </li>
+         
+        <li>
+          Scan the page and find sentences like "press the red
+          button"
+        </li>
+      </ul>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Colors are visible
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      ColorsAreVisible
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 c/WCAG 2.2 P1">
+      Section 508 1194.22(c); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 2.2
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page uses some colors; there might be cases where the
+        contrast between foreground and background colors is not
+        sufficient to differentiate them.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmExplanation>
+      <p>
+        There are many situations where a bad choice of colors by
+        the designer hinders perception and comprehension of some
+        information or image on a page. They include:
+      </p>
+       
+      <ul>
+        <li>
+          Bad choice of background/foreground colors
+        </li>
+         
+        <li>
+          The user uses a screen incapable of rendering colors with
+          the same quality as the one used by the page designer
+        </li>
+         
+        <li>
+          The user is accessing the page through a black and white
+          PDA or cell phone
+        </li>
+         
+        <li>
+          The user needs to print the page on a black and while
+          printer
+        </li>
+         
+        <li>
+          The user is color-blind
+        </li>
+      </ul>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Make sure colors and colored items on the page can be
+        clearly differentiated in all the possible contexts in
+        which users may be viewing the page. Make sure the contrast
+        between foreground and background items is conveyed by
+        other means than color, such as different font styles, font
+        sizes, or font faces.
+      </p>
+       
+      <p>
+        Here are easy ways to test the page:
+      </p>
+       
+      <ul>
+        <li>
+          View the page on a black and white screen and go through
+          each of its elements
+        </li>
+         
+        <li>
+          Print the page on a black and white printer
+        </li>
+         
+        <li>
+          Take the printout and copy it two or three times to see
+          how it degrades. This will show you where you need to add
+          redundant cues (like underlying links) or whether the
+          cues are too small or indistinct to hold up well
+        </li>
+      </ul>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Style sheets should not be necessary
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      StyleSheetsNotNecessary
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 d/WCAG 6.1 P1">
+      Section 508 1194.22(d); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 6.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page requires the use of Cascading Style Sheets (CSS).
+        Make sure the page can be understood and navigated without
+        applying style specifications.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='msg'>
+      The page uses style sheets to present its content. Some
+      browsers might be unable to understand style sheets, or the
+      provided style sheets may conflict with user-specified style
+      information.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        Cascading Style Sheets (CSS) is a great technology for
+        separating content and its structure from presentation.
+        Usually when content is organized logically, it will be
+        rendered in a meaningful order when style sheets are turned
+        off or not supported. However, there may be situations
+        where CSS gets in the way, limiting accessibility to a web
+        page.
+      </p>
+       
+      <p>
+        For example, old browsers do not support CSS, and thus page
+        authors should not rely on styles to convey information or
+        enable navigation. Also, user-defined style information
+        (such as font size, font color) should be unaffected by
+        styles specified in the page.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Make sure the document can be read without style sheets.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Links are needed for server-side image map
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      RdndtLnksSSimagemap
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 e/WCAG 1.2 P1">
+      Section 508 1194.22(e); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.2
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      imagemaps
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page includes a server-side image map. Verify that each
+        active region of the image map has a redundant textual
+        link.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='msg'>
+      The page appears to contain a server-side image map. Each of
+      its active regions must have a corresponding redundant link
+      in the page.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        Server-side image maps pose big accessibility problems,
+        including:
+      </p>
+       
+      <ul>
+        <li>
+          Server-side image maps require specific input devices
+          like the mouse, which may not be available to certain
+          users in certain contexts (such as users of cellular
+          phones or voice controlled browsers)
+        </li>
+         
+        <li>
+          Certain users in certain situations may not be able to
+          accurately click on the map (such as disabled persons or
+          persons walking, driving, or standing)
+        </li>
+         
+        <li>
+          The links specified by server-side image maps are hidden
+          in the server and cannot be manipulated by browsers in
+          any way, including any assistive technology. Therefore,
+          the browser cannot communicate any alternative links to
+          the user
+        </li>
+         
+        <li>
+          Server-side image maps are less efficient than their
+          client-side counterparts because an additional
+          interaction with the server is needed for each user click
+        </li>
+      </ul>
+       
+      <p>
+        For these reasons, the use of server-side image maps is
+        highly discouraged. The only exception is for active
+        regions whose shape are so irregular that client-side image
+        maps cannot support them.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Make sure each active region of the image map is duplicated
+        as a redundant link in the page. You must inspect the
+        implementation of the image map on the server to determine
+        the URLs that are activated when the user clicks on any of
+        the active regions.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      No server-side image maps should be used
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      NoServerSideImageMaps
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 f/WCAG 9.1 P1">
+      Section 508 1194.22(f); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 9.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      imagemaps
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page includes a server-side image map. Verify that the
+        image map can be replaced by a more accessible client-side
+        image map.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='msg'>
+      The page appears to contain a server-side image map. Can you
+      convert it to a client-side image map? Unless the map defines
+      regions that cannot be specified with available geometric
+      shapes, you should replace it with a client-side image map.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        Server-side image maps pose big accessibility problems,
+        including:
+      </p>
+       
+      <ul>
+        <li>
+          Server-side image maps require specific input devices
+          like the mouse, which may not be available to certain
+          users in certain contexts (such as users of cellular
+          phones or voice controlled browsers)
+        </li>
+         
+        <li>
+          Certain users in certain situations may not be able to
+          accurately click on the map (such as disabled persons or
+          persons walking, driving, or standing)
+        </li>
+         
+        <li>
+          The links specified by server-side image maps are hidden
+          in the server and cannot be manipulated by browsers in
+          any way, including any assistive technology. Therefore,
+          the browser cannot communicate any alternative links to
+          the user
+        </li>
+         
+        <li>
+          Server-side image maps are less efficient than their
+          client-side counterparts because an additional
+          interaction with the server is needed for each user click
+        </li>
+      </ul>
+       
+      <p>
+        For these reasons, the use of server-side image maps is
+        highly discouraged. The only exception is for active
+        regions whose shape are so irregular that client-side image
+        maps cannot support them.
+      </p>
+       
+      <p>
+        You can recognize a server-side image map with a browser by
+        pointing the mouse at the image. Mouse coordinates are
+        displayed by the browser as you move the mouse over the
+        image.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Determine whether the server-side image map is really
+        needed. The only reason to use one is if you need to define
+        active regions that cannot be defined with available
+        shapes. If you must use one, you should at least provide
+        alternative ways such as textual links to reach the same
+        destination pages. (You must inspect the implementation of
+        the image map on the server to find out how active regions
+        are defined.)
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Data table should have headers
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      TableWithHeaders
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 g/WCAG 5.1 P1">
+      Section 508 1194.22(g); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 5.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      tables
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page includes a table that does not have specific cells
+        marked as headers (i.e., with TH tags). If the table is
+        used to present data, add headers to it.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='msg'>
+      The page contains a table that might be used to present data.
+      If this is the case, then the table must have headers for
+      rows and columns (i.e., strings with TH tags).
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        Tables can be used to present data such as a bus schedule,
+        a comparison of regional sales figures, or a listing of
+        employee contact information. Cells in data tables like
+        these are related to each other and usually must be
+        perceived as a group. Tables can also be used to lay out
+        images and text on a page. Each cell in a layout table like
+        this is normally independent and can be viewed on its own.
+      </p>
+       
+      <p>
+        Data tables are used to convey information in a
+        bidirectional medium, which often is not available for
+        certain users. Consider the following examples:
+      </p>
+       
+      <ul>
+        <li>
+          A textual browser may not align rows and columns
+          correctly because, for example, the content of a cell wraps
+        </li>
+         
+        <li>
+          A reading browser sequentially reads the content of the
+          table
+        </li>
+         
+        <li>
+          A Braille reader also sequentially scans the table
+        </li>
+         
+        <li>
+          A browser with a very small display (such as a PDA or a
+          cellular phone) shows only a limited portion of the table
+        </li>
+      </ul>
+       
+      <p>
+        In all these cases, the user has to mentally remember the
+        context of the cell (which row and column does it refer
+        to?). This requirement may be too strong, for example, when
+        the table is large, when the user is under stress, or is
+        impatient to find the needed information.
+      </p>
+       
+      <p>
+        Consider also that in these situations, users might not be
+        able to move directly from one cell of the table to any
+        other. They are constrained to move sequentially, from one
+        cell to its neighbors only (within the same row, for
+        example).
+      </p>
+       
+      <p>
+        Layout tables, on the other hand, are not used to convey
+        information and therefore they do not need to be accessible.
+        Note however that W3C suggests using styles to lay out the
+        content of a page. For more information, see
+        http://www.w3.org/TR/WCAG10-CSS-TECHS/#style-alignment.
+      </p>
+       
+      <p>
+        Note also that layout tables are linearized by
+        non-graphical browsers. In other words, the content of
+        their cells are shown in the sequence they appear in the
+        HTML file. This means that if the cells include buttons,
+        they may be shown in a sequence that is far from being
+        usable. For a detailed discussion, see
+        http://www.jimthatcher.com/webcourse4.htm.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        If the table presents data, make sure that each row and
+        column has appropriate headers.
+      </p>
+       
+      <p>
+        The simplest way to accomplish this is by defining a table
+        row of cells marked with the TH tag and having the first
+        cell of each other row marked with the TH tag again.
+      </p>
+       
+      <p>
+        In addition:
+      </p>
+       
+      <ul>
+        <li>
+          TH tags should have an ID attribute for identification
+        </li>
+         
+        <li>
+          TD tags should have a HEADERS attribute that refers to
+          the appropriate TH tags
+        </li>
+      </ul>
+       
+      <p>
+        Alternatively, the TH tag may have a SCOPE='col' or
+        SCOPE='row' attribute, meaning that the header refers to
+        the entire column or row, respectively.
+      </p>
+       
+      <p>
+        It might be a good idea to use the ABBR attribute in the TH
+        tag to provide a more concise description of the header to
+        be repeated over and over by specialized browsers.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Cell of data table should refer to headers
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      CellsReferToHeaders
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 g/WCAG 5.1 P1">
+      Section 508 1194.22(g); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 5.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      tables
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page includes a table that has TH tags without ID or
+        SCOPE attributes. If the table is used to present data,
+        provide header information.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='msg'>
+      The page contains a table that seems to be used to present
+      data. If this is the case, then the TH tags needs ID or SCOPE
+      attributes.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        Tables can be used to present data such as a bus schedule,
+        a comparison of regional sales figures, or a listing of
+        employee contact information. Cells in data tables like
+        these are related to each other and usually must be
+        perceived as a group. Tables can also be used to lay out
+        images and text on a page. Each cell in a layout table like
+        this is normally independent and can be viewed on its own.
+      </p>
+       
+      <p>
+        Data tables are used to convey information in a
+        bidirectional medium, which often is not available for
+        certain users. Consider the following examples:
+      </p>
+       
+      <ul>
+        <li>
+          A textual browser may not align rows and columns
+          correctly because, for example, the content of a cell wraps        </li>
+         
+        <li>
+          A reading browser sequentially reads the content of the
+          table
+        </li>
+         
+        <li>
+          A Braille reader also sequentially scans the table
+        </li>
+         
+        <li>
+          A browser with a very small display (such as a PDA or a
+          cellular phone) shows only a limited portion of the table
+        </li>
+      </ul>
+       
+      <p>
+        In all these cases, the user has to mentally remember the
+        context of the cell (which row and column does it refer
+        to?). This requirement may be too strong, for example, when
+        the table is large, when the user is under stress, or is
+        impatient to find the needed information.
+      </p>
+       
+      <p>
+        Consider also that in these situations, users might not be
+        able to move directly from one cell of the table to any
+        other. They are constrained to move sequentially, from one
+        cell to its neighbors only (within the same row, for
+        example).
+      </p>
+       
+      <p>
+        Layout tables, on the other hand, are not used to convey
+        information and therefore they do not need to be accessible.
+        Note however that W3C suggests using styles to lay out the
+        content of a page. For more information, see
+        http://www.w3.org/TR/WCAG10-CSS-TECHS/#style-alignment.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        If the table is used to present data, make sure that each
+        row and column has appropriate headers defined by TH tags.
+      </p>
+       
+      <p>
+        In addition:
+      </p>
+       
+      <ul>
+        <li>
+          TH tags should have an ID attribute for identification
+        </li>
+         
+        <li>
+          TD tags should have a HEADERS attribute that refers to
+          the appropriate TH tags
+        </li>
+      </ul>
+       
+      <p>
+        Alternatively, the TH tag may have a SCOPE='col' or
+        SCOPE='row' attribute, meaning that the header refers to
+        the entire column or row, respectively.
+      </p>
+       
+      <p>
+        It might be a good idea to use the ABBR attribute in the TH
+        tag to provide a more concise description of the header to
+        be repeated over and over by specialized browsers.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Data tables should be defined by TABLE tag
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      PREisNotATable
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 g/WCAG 5.1 P1">
+      Section 508 1194.22(g); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 5.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      tables
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page includes a PRE tag with pre-formatted tabular
+        data. If the PRE tag is used to present data, convert it to
+        a TABLE tag.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='msg'>
+      The page contains pre-formatted data that might have a
+      tabular form. If this is the case, then the data should be
+      formatted in a table using appropriate tags: TABLE, TR, TH,
+      TD.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        Data tables are used to convey information in a
+        bidirectional medium, which often is not available for
+        certain users. Consider the following examples:
+      </p>
+       
+      <ul>
+        <li>
+          A textual browser may not align rows and columns
+          correctly because, for example, the content of a cell wraps
+        </li>
+         
+        <li>
+          A reading browser sequentially reads the content of the
+          table
+        </li>
+         
+        <li>
+          A braille reader also sequentially scans the table
+        </li>
+         
+        <li>
+          A browser with a very small display (such as a PDA or a
+          cellular phone) shows only a limited portion of the table
+        </li>
+      </ul>
+       
+      <p>
+        In all these cases, the user has to mentally remember the
+        context of the cell (which row and column does it refer
+        to?). This requirement may be too strong, for example, when
+        the table is large, when the user is under stress, or is
+        impatient to find the needed information.
+      </p>
+       
+      <p>
+        Consider also that in these situations, users might not be
+        able to move directly from one cell of the table to any
+        other. They are constrained to move sequentially, from one
+        cell to its neighbors only (within the same row, for
+        example).
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        If you're using the PRE tag to arrange and present data in
+        a tabular format, format the data in a table using the
+        TABLE, TR, TH, TD tags with appropriate attributes (ID,
+        HEADERS, SCOPE).
+      </p>
+       
+      <p>
+        In addition:
+      </p>
+       
+      <ul>
+        <li>
+          TH tags should have an ID attribute for identification
+        </li>
+         
+        <li>
+          TD tags should have a HEADERS attribute that refers to
+          the appropriate TH tags
+        </li>
+      </ul>
+       
+      <p>
+        Alternatively, the TH tag may have a SCOPE='col' or
+        SCOPE='row' attribute, meaning that the header refers to
+        the entire column or row, respectively.
+      </p>
+       
+      <p>
+        It might be a good idea to use the ABBR attribute in the TH
+        tag to provide a more concise description of the header to
+        be repeated over and over by specialized browsers.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Multiple headers should be marked in data tables
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      TABLEwithMultipleLevels
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 h/WCAG 5.2 P1">
+      Section 508 1194.22(h); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 5.2
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      tables
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page includes a TABLE tag with a TH tag and does not
+        have any THEAD, TFOOT, TBODY elements. If the table is used
+        to show data and if it includes multiple levels of row and
+        column headers, then consider adopting THEAD, TFOOT, TBODY
+        to mark up such levels.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='msg'>
+      The page seems to contain a data table. If the table has more
+      than one level of row or column headers, then the THEAD,
+      TFOOT, and TBODY tags should be used as appropriate.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        Data tables are used to convey information in a
+        bidirectional medium, which often is not available for
+        certain users. Consider the following examples:
+      </p>
+       
+      <ul>
+        <li>
+          A textual browser may not align rows and columns
+          correctly because, for example, the content of a cell wraps
+        </li>
+         
+        <li>
+          A reading browser sequentially reads the content of the
+          table
+        </li>
+         
+        <li>
+          A braille reader also sequentially scans the table
+        </li>
+         
+        <li>
+          A browser with a very small display (such as a PDA or a
+          cellular phone) shows only a limited portion of the table
+        </li>
+      </ul>
+       
+      <p>
+        In all these cases, the user has to mentally remember the
+        context of the cell (which row and column does it refer
+        to?). This requirement may be too strong, for example, when
+        the table is large, when the user is under stress, or is
+        impatient to find the needed information.
+      </p>
+       
+      <p>
+        Consider also that in these situations, users might not be
+        able to move directly from one cell of the table to any
+        other. They are constrained to move sequentially, from one
+        cell to its neighbors only (within the same row, for
+        example).
+      </p>
+       
+      <p>
+        If the table is structured in different sections, each with
+        its own row or column headers, then this structure should
+        be clearly marked up so that specialized browsers can take
+        advantage of it and articulate it (perhaps by repeating the
+        appropriate headings when moving to a cell).
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        If you're using the table to present data and the data is
+        organized in different sections requiring different
+        headers, use the THEAD, TFOOT, TBODY tags (perhaps with
+        COLGROUP and COL) to mark up the different sections.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="false">
+    <un:ruleTitle>
+      FRAME with valid TITLE
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      FRAMEwValidTitle
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 i/WCAG 12.1 P1">
+      Section 508 1194.22(i); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 12.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      frames
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The FRAME tag defined in the document does not have a valid
+        TITLE attribute.
+      </p>
+       
+      <p>
+        A TITLE attribute of a FRAME tag is valid if the following
+        conditions exist: it exists, it is not an empty string (""),
+        and it is nor a blank string (" ").
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='missing'>
+      Invalid FRAME: Missing TITLE attribute
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='empty'>
+      Invalid FRAME: TITLE attribute exists but is the empty string
+      ""
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='blank'>
+      Invalid FRAME: TITLE attribute exists but is the blank string
+      " "
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='html'>
+      Invalid FRAME: TITLE attribute exists but contains HTML tags
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        Frames are good for implementing complex navigational
+        structures. However, if not implemented correctly they may
+        become an obstacle for many users. Make sure your framed
+        page can be accessed by any user using any possible
+        technology in any possible context.
+      </p>
+       
+      <p>
+        A general user interface design guideline is "to provide
+        context and orientation information to help users
+        understand complex pages or elements."
+      </p>
+       
+      <p>
+        For frames, this means that the TITLE attribute should be
+        defined because its value is the only thing non-graphical browsers
+        show. In fact, each frame will be shown independently for
+        the other ones, making it hard for the user to figure out
+        their relationship. Titles like, "content area" or
+        "navigationals" are much more informative than "left" or
+        "top-frame".
+      </p>
+       
+      <p>
+        Providing contextual information about the relationships
+        between elements can be useful for all users. Complex
+        relationships between parts of a page may be difficult for
+        people with cognitive or visual disabilities to interpret.
+      </p>
+       
+      <p>
+        Cognitive disabilities do not refer only to people who are
+        mentally challenged, but also people who work under specific
+        adverse contexts, such as people using an e-ticketing
+        service in an airport hall, a speaking browser by phone in
+        a noisy environment, a PDA where a quick decision is
+        required, or a browser during a meeting where changing the
+        mental focus is difficult.
+      </p>
+       
+      <p>
+        Similarly, visually disabled people also include people who
+        forget their glasses at home, who use a poorly lit display
+        in a dark environment, or who use a speaking browser or
+        screen reader over a phone.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Define a valid TITLE attribute for the FRAME tag.
+      </p>
+       
+      <p>
+        Title the frame to help frame identification and navigation
+        by describing concisely the frame's content and role on the
+        page.
+      </p>
+       
+      <p>
+        Since the TITLE attribute is not widely supported,
+        providing titles as normal text at the top of the contents
+        of each frame is sufficient for the purposes of 508 rule
+        1194.22(i).
+      </p>
+       
+      <p>
+        As an alternative, use the same string for both the TITLE
+        and NAME attributes. For example, the Lynx textual browser
+        uses only the NAME attribute.
+      </p>
+       
+      <p>
+        A TITLE string value is valid if it meets the following
+        requirements:
+      </p>
+       
+      <ul>
+        <li>
+          It does not contains any HTML tags
+        </li>
+         
+        <li>
+          It is not an empty string ("")
+        </li>
+         
+        <li>
+          It is not a blank string (" ")
+        </li>
+      </ul>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="false">
+    <un:ruleTitle>
+      IFRAME with valid TITLE
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      IFRAMEwValidTitle
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 i/WCAG 12.1 P1">
+      Section 508 1194.22(i); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 12.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      frames
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        IFRAME tag defined in the document does not have a valid
+        TITLE attribute.
+      </p>
+       
+      <p>
+        A TITLE attribute of a IFRAME tag is valid if the following
+        conditions apply: it exists; it is not an empty string
+        (""), and it is not a blank string(" ").
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='missing'>
+      Invalid IFRAME: Missing TITLE attribute
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='empty'>
+      Invalid IFRAME: TITLE attribute exists but is the empty
+      string ""
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='blank'>
+      Invalid IFRAME: TITLE attribute exists but is the blank
+      string " "
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='html'>
+      Invalid IFRAME: TITLE attribute exists but contains HTML tags
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        Frames are good for implementing complex navigational
+        structures. However, in many cases this added complexity
+        may become an obstacle for many users. Make sure your
+        framed page can be accessed by any user using any possible
+        technology in any possible context.
+      </p>
+       
+      <p>
+        A general user interface design guideline is "to provide
+        context and orientation information to help users
+        understand complex pages or elements."
+      </p>
+       
+      <p>
+        Providing contextual information about the relationships
+        between elements can be useful for all users. Complex
+        relationships between parts of a page may be difficult for
+        people with cognitive or visual disabilities to interpret.
+      </p>
+       
+      <p>
+        Cognitive disabilities does not refer only to people whom are
+        mentally challenged, but also people who work under specific
+        adverse contexts, such as people using an e-ticketing
+        service in an airport hall, a speaking browser by phone in
+        a noisy environment, a PDA where a quick decision is
+        required, or a browser during a meeting where changing the
+        mental focus is difficult.
+      </p>
+       
+      <p>
+        Similarly, visually disabled people also include people who
+        forget their glasses at home, who use a poorly lit display
+        in a dark environment, or who use a speaking browser or
+        screen reader over a phone.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Define a valid TITLE attribute for the IFRAME tag.
+      </p>
+       
+      <p>
+        Title the frame to help frame identification and navigation
+        by describing concisely the frame's content and role in the
+        page.
+      </p>
+       
+      <p>
+        Since the TITLE attribute is not widely supported,
+        providing titles as normal text at the top of the contents
+        of each frame is sufficient for the purposes of 508 rule
+        1194.22(i).
+      </p>
+       
+      <p>
+        A TITLE string value is valid if it meets the following
+        requirements:
+      </p>
+       
+      <ul>
+        <li>
+          It does not contains any HTML tags
+        </li>
+         
+        <li>
+          It is not an empty string ("")
+        </li>
+         
+        <li>
+          It is not a blank string (" ")
+        </li>
+      </ul>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Text only equivalent page may be needed
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      TextOnlyEquivPage
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 k/WCAG 6.2 P1">
+      Section 508 1194.22(k); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 6.2
+    </un:guideline>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      scripts
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page contains programmatic objects that can make it
+        inaccessible. If the page cannot be made accessible, there
+        should be a text-only version of the page updated whenever
+        the original page changes.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmExplanation>
+      <p>
+        If a page cannot be made accessible, then an accessible,
+        equivalent version of the page is needed. A text-only
+        version of it would suffice. Text-only alternatives to
+        inaccessible pages allow people with disabilities to have
+        full access to all the information. The information or
+        functionality on the alternative page must be equivalent to
+        the information or functionality on the original page.
+      </p>
+       
+      <p>
+        It is also important to update alternative pages when you
+        update the original pages.
+      </p>
+       
+      <p>
+        You should only resort to creating alternative pages when
+        other solutions fail because these pages are generally
+        updated less often than original pages. An out-of-date page
+        may be as frustrating as an inaccessible one because the
+        information presented on the original page is unavailable
+        in both cases. Automatically generating alternative pages
+        may lead to more frequent updates, but content developers
+        must still be careful to ensure generated pages always make
+        sense, and that users are able to navigate a site by
+        following links on original pages, alternative pages, or
+        both. Before resorting to an alternative page, reconsider
+        the design of the original page. Making the original page
+        accessible is likely to improve it for all users.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Determine whether the page satisfies all the 508
+        accessibility conditions. If some conditions are not
+        satisfied, and the page cannot be changed to satisfy them,
+        then you need an equivalent text-only version of this page.
+      </p>
+       
+      <p>
+        Make sure such a page exists and that it is updated
+        whenever a change is made to the original page.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Scripts are accessible
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      AccessibleScripts
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 l/WCAG 6.2, 8.1, 9.2, 9.3 P1">
+      Section 508 1194.22(l); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoints 6.3, 8.1, 9.2, 9.3
+    </un:guideline>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      scripts
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page contains a programmatic object such as a script, a
+        plug-in, or an applet that may be used to change the
+        content of the page or its navigation options - and perhaps
+        reduce the page's accessibility.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='APPLET'>
+      An applet is used: Check its accessibility.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='OBJECT'>
+      A plug-in is used: Check its accessibility.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='EMBED'>
+      A plug-in is used: Check its accessibility.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        Programmatic objects can change the presentation, content,
+        and navigation options of a page. If some of these changes
+        are not associated to text that can be read by assistive
+        technology, then the page is not accessible. For example,
+        using a script to show a menu of choices on a page without
+        also providing the choices as textual links would make the
+        page inaccessible.
+      </p>
+       
+      <p>
+        A related concept is "device independence." As defined by
+        W3C/WAI (see
+        http://www.w3.org/TR/WAI-WEBCONTENT/#device-independent),
+        it means that users must be able to interact with a website
+        using the supported input and output devices of their
+        choice according to their needs. Input devices may
+        include pointing devices, keyboards, Braille devices, head
+        wands, microphones, and others. Output devices may include
+        monitors, speech synthesizers, and Braille devices.
+      </p>
+       
+      <p>
+        Note that "device-independent support" does not mean that
+        the browser must support every input or output device. It
+        should offer redundant input and output mechanisms for
+        those devices that are supported. For example, if a browser
+        supports keyboard and mouse input, users should be able to
+        interact with all features using either the keyboard or the
+        mouse.
+      </p>
+       
+      <p>
+        Device-independent access means that the user may interact
+        with the user agent or document with a preferred input (or
+        output) device. For example, if a form control can only be
+        activated with a mouse or other pointing device, someone
+        using the page without sight, with voice input, or with a
+        keyboard will not be able to use the form. The form is an
+        example of device dependence, because its use would be
+        possible only through a mouse.
+      </p>
+       
+      <p>
+        Generally, pages that allow keyboard interaction are also
+        accessible through speech input or a command-line
+        interface.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+      Inaccessible programmatic objects may include:
+      </p>
+      <ul>
+        <li>
+          Rollovers
+        </li>
+         
+        <li>
+          Scripts that present menu options
+        </li>
+         
+        <li>
+          Scripts that handle events triggered by devices other
+          than a keyboard
+        </li>
+         
+        <li>
+          Plug-ins such as Flash, Shockwave, RealAudio, and
+          RealVideo
+        </li>
+         
+        <li>
+          Java applets
+        </li>
+      </ul>
+       
+      <p>
+        Examine the programmatic object included on the page and
+        see if it provides information or interaction options not
+        available through other text on the page.
+      </p>
+       
+      <p>
+        If the script cannot be made accessible, one solution is to
+        include a NOSCRIPT tag with alternative and equivalent
+        content and interaction (using a form).
+      </p>
+       
+      <p>
+        Consider also transforming the client-side script into an
+        equivalent server-side script. In this case, you must write
+        it so that it produces accessible pages.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Link to plug-in is present
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      LinkToPluginIsPresent
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 m">
+      Section 508 1194.22(m)
+    </un:guideline>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      scripts
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page contains a programmatic object such as a plug-in
+        or an applet that may require a specific plug-in for the
+        browser to interpret the page content.
+      </p>
+       
+      <p>
+        Check that the object is accessible or that the page
+        contains a link to an equivalent object that is accessible.
+        You should also check that the page contains a link to a
+        resource where the plug-in can be downloaded.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='APPLET'>
+      An applet is used: Is it accessible? If not, is there a link
+      to an accessible version of the applet?
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='OBJECT'>
+      A plug-in is used: Is it accessible? If not, is there a link
+      to an accessible version of the object? Is there a link to
+      the plug-in needed by the browser?
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='EMBED'>
+      A plug-in is used: Is it accessible? If not, is there a link
+      to an accessible version of the object? Is there a link to
+      the plug-in needed by the browser? If not, use the
+      PLUGINSPACE or PLUGINURL attributes of the EMBED tag to
+      specify a link to the plug-in.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='PDF'>
+      A PDF file is used: Is it accessible? If not, is there a link
+      to an accessible version of the document?
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        Programmatic objects may change the presentation, content,
+        or navigation options of a page. Programmatic objects
+        include Java applets, Flash, ShockWave, RealAudio or
+        RealVideo files. Each of these objects must be accessible.
+        If this is not possible, then the page should contain links
+        to other, accessible versions of the objects. When
+        evaluating the accessibility of plug-ins, it may be useful
+        to refer to the Access Board's section 508 rule as it
+        applies to software, 36 C.F.R. 1194.21 (see
+        http://www.access-board.gov/sec508/508standards.htm). In
+        addition, if these objects require some specific plug-in
+        for the browser, the page should provide the means for the
+        user to get and install the plug-in.
+      </p>
+       
+      <p>
+        In general, PDF documents can be created in several
+        different ways and each method has separate implications
+        for accessibility. Here are four methods:
+      </p>
+       
+      <ol>
+        <li>
+          Scanning a document into PDF creates a so-called "PDF
+          Image Only" file that is essentially a graphic
+          representation of the document and, like a photograph
+          with no associated text, is generally unreadable by
+          screen-reader technology.
+        </li>
+         
+        <li>
+          Scanning a document into PDF and then running it through
+          OCR ("optical character recognition") technology converts
+          the text images into searchable text. Such documents must
+          be checked carefully for accuracy.
+        </li>
+         
+        <li>
+          Printing a file directly into PDF format converts the
+          electronic information into a digital representation of
+          the document that is somewhat readable by assistive
+          technology
+        </li>
+         
+        <li>
+          Writing a document inside Adobe Acrobat can also result
+          in a document that is somewhat readable by assistive
+          technology.
+        </li>
+      </ol>
+       
+      <p>
+        Web developers should try to use the last two methods of
+        creating PDF files and should avoid the first method
+        entirely. You should also test the accessibility of your
+        PDF documents using screen readers before posting them to
+        web sites. Adobe's accessibility site includes the latest
+        recommendations for making PDF files accessible (see
+        http://access.adobe.com/). Finally, you should be careful
+        that non-text content be accompanied by text descriptions
+        in the PDF files. Developers that choose to publish
+        web-based documents in PDF should simultaneously publish
+        the same documents in another, more accessible format, such
+        as HTML.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Make sure the object is accessible or that the page
+        contains a link to an equivalent object that is accessible.
+        Also make sure the page contains a link to a resource where
+        the plug-in can be downloaded.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="false">
+    <un:ruleTitle>
+      APPLET with valid ALT
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      APPLETwValidALT
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      scripts
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        Applets included in this document do not have corresponding
+        valid textual descriptions. A valid description is a string
+        value of the ALT attribute that is not any of the
+        following:
+      </p>
+       
+      <ul>
+        <li>
+          an empty string ("")
+        </li>
+         
+        <li>
+          a blank string with one or more spaces (" ")
+        </li>
+         
+        <li>
+          the name of the file containing the applet
+        </li>
+         
+        <li>
+          the size of the applet file
+        </li>
+      </ul>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='none'>
+      No ALT defined for applet.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='empty'>
+      ALT of applet is the empty string "".
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='blank'>
+      ALT of applet is the blank string " ".
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='size'>
+      ALT of applet describes only the size of the applet file.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='imgfilesuffix'>
+      ALT of applet describes only the filename of an image.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='appletfilesuffix'>
+      ALT of applet describes only the filename of the applet.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='placeholder'>
+      ALT of applet appears to contain only placeholder text.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        Here are cases where applets may not run:
+      </p>
+       
+      <ul>
+        <li>
+          Some users view the page on PDAs and cellular phones that
+          cannot execute applets
+        </li>
+         
+        <li>
+          Some applets use libraries written for a specific
+          operating system such as Windows, MacOS, or Linux
+        </li>
+         
+        <li>
+          Some users of graphical browsers disable applets for
+          security reasons
+        </li>
+      </ul>
+       
+      <p>
+        You can use the ALT attribute to describe the behavior and
+        content of the applet to these users.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Add the ALT attribute to the APPLET tag.
+      </p>
+       
+      <p>
+        The ALT description should convey the same information as
+        the applet, and it should explain the role the applet plays
+        on the page: why it is there, what it represents, how it
+        presents the information.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      APPLET with equivalent ALT
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      APPLETwEquivalentALT
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      scripts
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+      Applets included in this document should have corresponding
+      equivalent textual descriptions in the ALT attribute and the
+      applet's content.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmExplanation>
+      <p>
+        Here are cases where applets may not run:
+      </p>
+       
+      <ul>
+        <li>
+          Some users view the page on PDAs and cellular phones that
+          cannot execute applets
+        </li>
+         
+        <li>
+          Some applets use libraries written for a specific
+          operating system such as Windows, MacOS, or Linux
+        </li>
+         
+        <li>
+          Some users of graphical browsers disable applets for
+          security reasons
+        </li>
+      </ul>
+       
+      <p>
+        You can use the ALT attribute and the applet contents to
+        describe the behavior and content of the applet to these
+        users.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Check the applet's textual description in the ALT attribute
+        value and the applet's content. It should convey the same
+        information as the applet and explain the role the applet
+        plays on the page: why it is there, what it represents, how
+        it presents the information.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="false">
+    <un:ruleTitle>
+      APPLET with valid CONTENT
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      APPLETwValidCONTENT
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      scripts
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+      Applets included in this document do not have corresponding
+      valid textual descriptions. A valid description is a string
+      value for CONTENT that is not any of the following:
+      </p>
+      <ul>
+        <li>
+          An empty string ("")
+        </li>
+         
+        <li>
+          A blank string with one or more spaces (" ")
+        </li>
+         
+        <li>
+          The name of the file containing the applet
+        </li>
+         
+        <li>
+          The size of the applet file
+        </li>
+      </ul>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='none'>
+      No CONTENT defined for applet.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='empty'>
+      CONTENT of applet is the empty string "".
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='blank'>
+      CONTENT of applet is the blank string " ".
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='size'>
+      CONTENT of applet describes only the size of the applet file.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='imgfilesuffix'>
+      CONTENT of applet describes only the filename of an image.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='appletfilesuffix'>
+      CONTENT of applet describes only the filename of the applet.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='placeholder'>
+      CONTENT of applet appears to contain only placeholder text.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        Here are cases where applets may not run:
+      </p>
+       
+      <ul>
+        <li>
+          Some users view the page on PDAs and cellular phones that
+          cannot execute applets
+        </li>
+         
+        <li>
+          Some applets use libraries written for a specific
+          operating system such as Windows, MacOS, or Linux
+        </li>
+         
+        <li>
+          Some users of graphical browsers disable applets for
+          security reasons
+        </li>
+      </ul>
+       
+      <p>
+        Provide a text equivalent describing the behavior of the
+        applet using the ALT attribute and the content in the
+        APPLET tag. This enables the content to transform
+        easily for those user agents that only support one of
+        the two mechanisms (ALT or content).
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Add a content to the APPLET tag.
+      </p>
+       
+      <p>
+        The textual description should convey the same information
+        as the applet, and it should explain the role the applet
+        plays on the page: why it is there, what it represents, how
+        it presents the information.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Form is accessible
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      FormIsAccessible
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 n">
+      Section 508 1194.22(n)
+    </un:guideline>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      forms
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page contains a FORM element whose components appear
+        to be laid out by a table. The table may make the form
+        unusable.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='msg'>
+      Make sure the linearized version of the form is still usable.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        Using a table to lay out a form may make the form unusable.
+        When the user accesses the page through a reading browser
+        or through a device with a small screen such as a PDA or a
+        cell phone, the table cells may be presented in a linear
+        fashion (linearized). This may position the labels of text
+        fields, checkboxes, or radio buttons in unintended places.
+      </p>
+       
+      <p>
+        For a detailed discussion on the effect of layout tables on
+        navigation, see http://www.jimthatcher.com/webcourse4.htm.
+      </p>
+       
+      <p>
+        Another thing to consider is the tabbing order of the form
+        elements. By pressing the TAB key on the keyboard, the user
+        can move sequentially from one element to the next in the
+        order defined on the HTML page. Sometimes, however, you
+        might want to specify a different order. This can be
+        achieved with the TABINDEX attribute of the INPUT, A,
+        BUTTON, AREA, OBJECT, SELECT, and TEXTAREA tags inside a
+        form.
+      </p>
+       
+      <p>
+        You can also use the ACCESSKEY attribute to associate
+        keyboard accelerators to activate the form elements.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Make sure the form elements and their associated labels are
+        properly rendered by non-graphically enabled browsers. In
+        particular, make sure the form is still usable after the
+        table used to lay it out is linearized. A simple way to do
+        this is to strip out the table tags. Another quick test is
+        to run a piece of paper down the page and read your table
+        line by line.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Skip repetitive links
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      SkipRepetitiveLinks
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 o/WCAG 13.6 P1">
+      Section 508 1194.22(o); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 13.6
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        If the page contains a set of navigational links placed at
+        standard positions (often across the top, bottom, or side
+        of a page), then a textual link should be present to allow
+        users of non-graphical browsers to skip those links and
+        move to the page content.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='msg'>
+      Check if a textual link is present for skipping navigational
+      links that are repeated in all the pages.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        Web designers often place a set of navigational links at a
+        standard location such as across the top, bottom, or side
+        of a page. If non-disabled visitors return to a web page or
+        site and know that they want to view the content of that
+        particular page instead of selecting a navigation link,
+        they may simply look past the links and begin reading the
+        desired text. For those who use screen readers or other
+        types of assistive technologies, however, it can be a
+        tedious and time-consuming chore to wait for the assistive
+        technology to work through and announce each of the links
+        before getting to the page content.
+      </p>
+       
+      <p>
+        To address this problem, include a mechanism allowing users
+        to skip repetitive navigational links.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        If the page has a standard set of navigational links placed
+        at a standard location, create a link that lets users skip
+        those links. The easiest method is to use a normal text
+        link such as "skip navigationals" that points to a named
+        anchor on the same page.
+      </p>
+       
+      <p>
+        A more effective method is to use a transparent GIF with an
+        appropriate ALT attribute as the link. For example:
+      </p>
+       
+<pre>
+   &lt;A href="#content"&gt;
+     &lt;IMG alt="skip to page content" src="spacer.gif" width="1"
+height="1"&gt;
+   &lt;/A&gt;
+</pre>
+       
+      <p>
+        Users with graphical browsers won't see the link, but it
+        would be seen and used by users with non-graphical
+        browsers.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="false">
+    <un:ruleTitle>
+      No javascript links are used
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      NoJavascriptLinks
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="WCAG 6.5 P1">
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       1.0 checkpoint 6.5
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      scripts
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page contains a link that can be followed only by
+        browsers that support JavaScripts.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmExplanation>
+      <p>
+        Links that activate scripts can only be followed by
+        browsers capable of executing JavaScript. Not all browsers
+        can do that. Examples include textual browsers like Lynx,
+        browsers coupled with screen readers, and browsers for PDAs
+        or cellular phones. A user with such a browser would not be
+        able to navigate the page. Even if you provide other links
+        or buttons to reach the destination, the user would still
+        experience a broken link, thus increasing user frustration
+        and confusion.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Replace the link that directly starts the script with other
+        ways to start it, such as defining a button, separately
+        defining the script (remember also the NOSCRIPT element),
+        and binding an event like onKeyPress on the button to the
+        script.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="false">
+    <un:ruleTitle>
+      No auto refresh is used
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      NoRefreshIsUsed
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 p/WCAG 7.4 P1">
+      Section 508 1194.22(p); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 7.4
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page is automatically updated after a given time. You
+        should remove this behavior.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmExplanation>
+      <p>
+        Pages that are automatically updated may pose significant
+        problems to people who are disabled or who use technology
+        that hinders normal interaction patterns. For example,
+        screen readers might not be working properly when the page
+        updates, or people with physical disabilities might not be
+        able to move quickly or accurately through the page content
+        and navigation items. Also, people may face problems if for
+        some reason they are slow in reading the page, if they use a
+        very slow internet connection, or if they use a small
+        screen that forces them to read more slowly. Until browsers
+        allow users to turn off these automatically updating
+        features, do not use auto-refresh.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Until browsers allow users to turn off automatically
+        updating features, do not use auto-refresh. Try to achieve
+        a similar effect by specifying caching properties and
+        configure the web server appropriately. This would not
+        affect the accessibility of the pages because the page
+        would change only as a consequence of the user requesting a
+        page from the server.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="false">
+    <un:ruleTitle>
+      No auto redirect is used
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      NoRedirectIsUsed
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 p/WCAG 7.5 P1">
+      Section 508 1194.22(p); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 7.5
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page is automatically updated after a given time and a
+        new page is automatically loaded after a given time. You
+        should remove this behavior.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmExplanation>
+      <p>
+        Pages that are automatically updated may pose significant
+        problems to people who are disabled or who use technology
+        that hinders normal interaction patterns. For example,
+        screen readers might not be working properly when the page
+        updates, or people with physical disabilities might not be
+        able to move quickly or accurately through the page content
+        and navigation items. Also, people may face problems if for
+        some reason they are slow in reading the page, if they use a
+        very slow internet connection, or if they use a small
+        screen that forces them to read more slowly. Until browsers
+        allow users to turn off these automatically updating
+        features, do not use auto-refresh.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Until browsers allow users to turn off automatically
+        updating features, do not use auto-refresh or
+        auto-redirect. If auto-redirect is needed, then implement
+        it using the redirection capabilities offered by the
+        server. This will not affect accessibility of the pages
+        because the page would change only as a consequence of the
+        user requesting a page from the server. If this is not
+        possible, then you should provide the users with the means
+        to access and navigate the items present on the current
+        page also in the new page that is loaded automatically. In
+        this way, the user will still be able to access those items
+        when the two pages switch.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      GIFs do not cause the screen to flicker
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      NoFlickeringGIFs
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 j/WCAG 7.1 P1">
+      Section 508 1194.22(j); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 7.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page contains a GIF image that may cause the screen to
+        flicker. 
+        <br />
+         Make sure the page does not contain an animated GIF with a
+        refresh rate of between 2 to 55 frames per second.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='msg'>
+      The page contains GIF images: Are they causing the screen to
+      flicker? If so, please modify or remove the images.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        A flickering or flashing screen may cause seizures in users
+        with photosensitive epilepsy. As a result, content
+        developers should avoid causing the screen to flicker.
+      </p>
+       
+      <p>
+        Seizures can be triggered by a light flickering or flashing
+        2 to 55 times per second, with peak sensitivity at 20
+        flashes per second with quick changes from dark to light.
+      </p>
+       
+      <p>
+        Too much animation GIFs may also distract some users from
+        reading the page.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Make sure the page contains no animated GIF with a refresh
+        rate of between 2 to 55 frames per second. In other words,
+        make sure no image repeatedly flashes or changes from dark
+        to light from 2 and 55 times per second.
+      </p>
+       
+      <p>
+        If you need to use the animated GIF, increase its refresh
+        rate to more than 55 frames per second or change its colors
+        to reduce the flickering effect.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Avoid causing the screen to flicker
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      NoFlickeringObjects
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 j/WCAG 7.1 P1">
+      Section 508 1194.22(j); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 7.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page contains a graphic object that may cause the
+        screen to flicker. 
+        <br />
+         Make sure the page does not contain an animated object
+        with a refresh rate of between 2 to 55 frames per second.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='any'>
+      An applet/object/script is used: Is it causing the screen to
+      flicker? If so, please modify or remove the applet.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        A flickering or flashing screen may cause seizures in users
+        with photosensitive epilepsy. As a result, content
+        developers should avoid causing the screen to flicker.
+      </p>
+       
+      <p>
+        Seizures can be triggered by a light flickering or flashing
+        2 to 55 times per second, with peak sensitivity at 20
+        flashes per second with quick changes from dark to light.
+      </p>
+       
+      <p>
+        Here are HTML elements that may cause flickering:
+      </p>
+       
+      <ul>
+        <li>
+          SCRIPT: A scripting language can be used to create
+          animations
+        </li>
+         
+        <li>
+          OBJECT: An OBJECT can contain movies, animated GIFs, or
+          animated Java applets
+        </li>
+         
+        <li>
+          EMBED: This tag is usually used to include movies on the
+          page
+        </li>
+         
+        <li>
+          APPLET: Java applets can display animations
+        </li>
+      </ul>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Make sure no animated object has a refresh rate of between
+        2 to 55 frames per second. In other words, make sure no
+        image repeatedly flashes or changes from dark to light from
+        2 and 55 times per second.
+      </p>
+       
+      <p>
+        If you need to use the animated object, increase its
+        refresh rate to more than 55 frames per second or change
+        its colors to reduce the flickering effect.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="false">
+    <un:ruleTitle>
+      Image OBJECT with valid CONTENT
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      imgOBJECTwValidContent
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      scripts
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page contains OBJECT elements embedding images that do
+        not have a valid description between the &lt;OBJECT&gt; and
+        &lt;/OBJECT&gt; tags.
+      </p>
+       
+      <p>
+        A valid description is an HTML fragment between the
+        &lt;OBJECT&gt; and &lt;/OBJECT&gt; tags that contain the
+        following:
+      </p>
+       
+      <ul>
+        <li>
+          At least one word
+        </li>
+         
+        <li>
+          Another object
+        </li>
+         
+        <li>
+          An IMG element with valid ALT text
+        </li>
+         
+        <li>
+          A link to a valid alternative representation
+        </li>
+      </ul>
+       
+      <p>
+        A valid description does not contain placeholder text (see
+        http://www.w3.org/TR/AERT#AppendixC).
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='empty'>
+      Alternative content of object is the empty string "".
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='blank'>
+      Alternative content of object is the blank string " ".
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='size'>
+      Alternative content of object describes only the size of the
+      image file.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='filename'>
+      Alternative content of object describes only the filename of
+      the image.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='placeholder'>
+      Alternative content of object appears to contain only
+      placeholder text.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        The OBJECT tag offers a mechanism for specifying alternate
+        object renderings. Each embedded OBJECT declaration may
+        specify alternate content types. If a browser cannot render
+        the outermost OBJECT, it tries to render its contents,
+        which may be another OBJECT element, etc.
+      </p>
+       
+      <p>
+        At least one object in such a chain should be accessible by
+        providing a valid equivalent description so that users
+        without graphics-enabled browsers can still effectively
+        navigate the page. The advent of hand-held, text-only
+        browsers makes the use of the ALT descriptions more
+        important now than ever.
+      </p>
+       
+      <p>
+        Defining a textual description for an object can also
+        improve the page listing in some search engine.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Insert a meaningful description inside the &lt;OBJECT&gt;
+        tag.
+      </p>
+       
+      <p>
+        The alternative textual description should explain the
+        content of the image and its role in the document.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Image OBJECT with equivalent CONTENT
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      imgOBJwEquivCont
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      scripts
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The OBJECT elements embedding images in this document
+        should have corresponding equivalent description between
+        the &lt;OBJECT&gt; and &lt;/OBJECT&gt; tags.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmExplanation>
+      <p>
+        The OBJECT element offers a mechanism for specifying
+        alternate object renderings. Each embedded OBJECT
+        declaration may specify alternate content types. If a
+        browser cannot render the outermost OBJECT, it tries to
+        render its contents, which may be another OBJECT element,
+        etc.
+      </p>
+       
+      <p>
+        Objects that embed images should have corresponding
+        equivalent descriptions or images to allow users without
+        graphics-enabled browsers to still effectively navigate the
+        page.
+      </p>
+       
+      <p>
+        The image description should convey the same information as
+        the image and it should explain the role the image plays on
+        the page: why it is there, what it represents, how it
+        presents the information.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Insert an equivalent meaningful textual description inside
+        the &lt;OBJECT&gt; tag, or insert an image.
+      </p>
+       
+      <p>
+        The alternative textual description should explain the
+        content of the image and its role in the document.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="false">
+    <un:ruleTitle>
+      Audio/video OBJECT with valid CONTENT
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      avOBJECTwValidContent
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      scripts
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page contains OBJECT elements embedding audio or video
+        files without a valid description between the
+        &lt;OBJECT&gt; and &lt;/OBJECT&gt; tags.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='empty'>
+      Alternative content of object is the empty string "".
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='blank'>
+      Alternative content of object is the blank string " ".
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='size'>
+      Alternative content of object describes only the size of the
+      audio/video file.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='filename'>
+      Alternative content of object describes only the name of the
+      audio or video file.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='placeholder'>
+      Alternative content of object appears to contain only
+      placeholder text.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        The OBJECT element's design offers a mechanism for
+        specifying alternate object renderings. Each embedded
+        OBJECT declaration may specify alternate content types. If
+        a browser cannot render the outermost OBJECT, it tries to
+        render the contents, which may be another OBJECT element,
+        etc.
+      </p>
+       
+      <p>
+        Objects included in this document that embed audio or video
+        files do not have corresponding valid descriptions. A valid
+        description is an HTML fragment between the &lt;OBJECT&gt;
+        and &lt;/OBJECT&gt; tags that contain the following:
+      </p>
+       
+      <ul>
+        <li>
+          At least one word
+        </li>
+         
+        <li>
+          Another object
+        </li>
+         
+        <li>
+          A link to a valid alternative representation
+        </li>
+      </ul>
+       
+      <p>
+        A valid description doesn't contain placeholder text (see
+        http://www.w3.org/TR/AERT#AppendixC).
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Insert a meaningful description inside the &lt;OBJECT&gt;
+        tag.
+      </p>
+       
+      <p>
+        The alternative textual description should be a
+        transcription of the audio/video file.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Audio/video OBJECT with equivalent CONTENT
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      avOBJwEquivContent
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      scripts
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The OBJECT elements with embedded audio or video files
+        included in this document should have corresponding
+        equivalent description between the &lt;OBJECT&gt; and
+        &lt;/OBJECT&gt; tags.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmExplanation>
+      <p>
+        Equivalent descriptions for sounds can be provided in the
+        form of a text phrase on the page that links to a text
+        transcript or description of the sound file. The link to
+        the transcript should appear in a highly visible location
+        such as at the top of the page. If a script automatically
+        loads a sound, the script should also automatically load a
+        visual indication that the sound is currently playing and
+        provide a description or transcript of the sound.
+      </p>
+       
+      <p>
+        The OBJECT element's design offers a mechanism for
+        specifying alternate object renderings. Each embedded
+        OBJECT declaration may specify alternate content types. If
+        a browser cannot render the outermost OBJECT, it tries to
+        render the contents, which may be another OBJECT element,
+        etc.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Insert a meaningful description inside the &lt;OBJECT&gt;
+        tag.
+      </p>
+       
+      <p>
+        In particular, check the content inside the &lt;OBJECT&gt;
+        and &lt;/OBJECT&gt; tags:
+      </p>
+       
+      <ul>
+        <li>
+          If the content is a textual description, it should be a
+          transcription of the audio/video file
+        </li>
+         
+        <li>
+          If the content is a link, it should point to a
+          transcription
+        </li>
+         
+        <li>
+          If the content is an &lt;OBJECT&gt; tag, it should be an
+          audio file or a transcription.
+        </li>
+      </ul>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="false">
+    <un:ruleTitle>
+      OBJECT with valid CONTENT
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      OBJECTwValidContent
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      scripts
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page contains OBJECT elements without a valid
+        description between the &lt;OBJECT&gt; and &lt;/OBJECT&gt;
+        tags.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='empty'>
+      Alternative content of object is the empty string "".
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='blank'>
+      Alternative content of object is the blank string " ".
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='size'>
+      Alternative content of object describes only the size of the
+      embedded file.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='filename'>
+      Alternative content of object describes only the name of the
+      embedded file.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='placeholder'>
+      Alternative content of object appears to contain only
+      placeholder text.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        The OBJECT element's design offers a mechanism for
+        specifying alternate object renderings. Each embedded
+        OBJECT declaration may specify alternate content types. If
+        a browser cannot render the outermost OBJECT, it tries to
+        render the contents, which may be another OBJECT element,
+        etc.
+      </p>
+       
+      <p>
+        Objects included in this document do not have corresponding
+        valid descriptions. A valid description is an HTML fragment
+        between the &lt;OBJECT&gt; and &lt;/OBJECT&gt; tags that
+        contain the following:
+      </p>
+       
+      <ul>
+        <li>
+          At least one word
+        </li>
+         
+        <li>
+          Another object
+        </li>
+         
+        <li>
+          A link to a valid alternative representation
+        </li>
+      </ul>
+       
+      <p>
+        A valid description does not contain placeholder text (see
+        http://www.w3.org/TR/AERT#AppendixC).
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Insert a meaningful description inside the &lt;OBJECT&gt;
+        tag.
+      </p>
+       
+      <p>
+        The ALT description should convey the same information as
+        the object embedded, and it should explain the role the
+        object plays on the page: why it is there, what it
+        represents, how it presents the information.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      OBJECT with equivalent CONTENT
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      OBJECTwEquivalentContent
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      scripts
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The description contained between the &lt;OBJECT&gt; and
+        &lt;/OBJECT&gt; tags of the OBJECT elements on the page
+        should be an equivalent description of the objects
+        themselves.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmExplanation>
+      <p>
+        The OBJECT element's design offers a mechanism for
+        specifying alternate object renderings. Each embedded
+        OBJECT declaration may specify alternate content types. If
+        a browser cannot render the outermost OBJECT, it tries to
+        render the contents, which may be another OBJECT element,
+        etc.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+      Insert a meaningful description inside &lt;OBJECT&gt; tag.
+      </p>
+      <p>
+        The ALT description should convey the same information as
+        the object embedded, and it should explain the role the
+        object plays on the page: why it is there, what it
+        represents, how it presents the information.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Multimedia with synchronized alternative
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      MuMediawSynchAlt
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 b/WCAG 1.4 P1">
+      Section 508 1194.22(b); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.4
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      scripts
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page contains elements such as OBJECT or EMBED tags
+        embedding multimedia files or elements referring directly
+        to them (such as A or AREA tags).
+      </p>
+       
+      <p>
+        Make sure equivalent alternatives such as captions or
+        auditory descriptions of the visual track are synchronized
+        with the multimedia presentation.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='A'>
+      A direct link to a multimedia file is present.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='AREA'>
+      A direct link to a multimedia file is present.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='OBJECT'>
+      An OBJECT embedding a multimedia file is present.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='filename'>
+      An EMBED element pointing to a multimedia file is present.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        Auditory presentations must be accompanied by text
+        transcripts or textual equivalents of auditory events. When
+        these transcripts are presented synchronously with a video
+        presentation, they are called captions and are used by
+        people who cannot hear the audio track of the video
+        material.
+      </p>
+       
+      <p>
+        Some media formats such as QuickTime 3.0 and SMIL allow
+        captions and video descriptions to be added to the
+        multimedia clip. SAMI allows captions to be added.
+      </p>
+       
+      <p>
+        Until the format you are using supports alternative tracks,
+        two versions of the movie could be made available - one
+        with captions and descriptive video, and one without.
+        Technologies such as SMIL and SAMI allow separate
+        audio/visual files to be combined with text files through a
+        synchronization file to create captioned audio and movies.
+      </p>
+       
+      <p>
+        Some technologies also allow the user to choose from
+        multiple sets of captions to match their reading skills.
+        For more information see the SMIL 1.0 specification at
+        http://www.w3.org/TR/1998/REC-smil-19980615/.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        The page contains elements such as OBJECT or EMBED tags
+        embedding multimedia files or elements referring directly
+        to them (such as A or AREA tags). <br />
+       Make sure the following requirements are met: 
+      </p>
+      <ul>
+        <li>
+          For any multimedia content, text captioning is provided
+          for all audible output
+        </li>
+         
+        <li>
+          All audio descriptions and text captions are synchronized
+          with their associated dynamic content
+        </li>
+      </ul>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Multimedia with equivalent audio description
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      MmediaEquivAuDescr
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 b/WCAG 1.3 P1">
+      Section 508 1194.22(b); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.3
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      scripts
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page contains elements such as OBJECT or EMBED tags
+        embedding multimedia files or elements referring directly
+        to them (such as A or AREA tags).
+      </p>
+       
+      <p>
+        Make sure auditory descriptions are provided for every
+        visual track in the multimedia presentation.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='A'>
+      A direct link to a multimedia file is present.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='AREA'>
+      A direct link to a multimedia file is present.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='OBJECT'>
+      An OBJECT embedding a multimedia file is present.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='filename'>
+      An EMBED element pointing to a multimedia file is present.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        Generally, multimedia presentations require users to rely
+        on more than one sense, such as combining a reliance on
+        hearing and vision. While these advances make web pages
+        more interesting and "layered" for people without
+        disabilities, those with disabilities face new barriers to
+        understanding a page's content.
+      </p>
+       
+      <p>
+        To ensure multimedia is accessible to users with visual
+        impairments, you should ensure that audio descriptions of
+        video portions are provided in all cases, except where the
+        video portion of a presentation is unimportant to
+        understanding a presentation.
+      </p>
+       
+      <p>
+        Auditory descriptions of the visual track provide narration
+        of the key visual elements without interfering with the
+        audio or dialogue of a movie. Key visual elements include
+        actions, settings, body language, graphics, and displayed
+        text.
+      </p>
+       
+      <p>
+        Until the format you are using supports alternative tracks,
+        you could add a link to an existing audio description file.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        The page contains elements such as OBJECT or EMBED tags
+        embedding multimedia files or elements referring directly
+        to them (such as A or AREA tags).
+      </p>
+       
+      <p>
+        Make sure audio descriptions are provided for all important
+        visual information as:
+      </p>
+       
+      <ul>
+        <li>
+          Alternative tracks of the multimedia file
+        </li>
+         
+        <li>
+          Links to specific audio files
+        </li>
+      </ul>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Use clear language for site's content
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      ClearLangForSite
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="WCAG 14.1 P1">
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 14.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        Consistent page layout, recognizable graphics, and easy to
+        understand language will benefit all users. In particular, they
+        help people with cognitive disabilities or who have
+        difficulty reading.
+      </p>
+       
+      <p>
+        Using clear and simple language promotes effective
+        communication. Access to written information can be
+        difficult for people who have cognitive or learning
+        disabilities. Using clear and simple language also benefits
+        people those whose first language differs from your own,
+        including those people who communicate primarily in sign
+        language.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmExplanation>
+      <p>
+        The following are some writing style suggestions to help
+        make the content of your site easier to read:
+      </p>
+       
+      <ul>
+        <li>
+          Strive for clear and accurate headings and link
+          descriptions. For example, some users browse by jumping
+          from link to link and listening only to link text
+        </li>
+         
+        <li>
+          State the topic of the sentence or paragraph at the
+          beginning of the sentence or paragraph (a technique
+          called "front-loading"). This helps people who are
+          skimming visually as well as people who use speech
+          synthesizers
+        </li>
+         
+        <li>
+          Limit each paragraph to one main idea
+        </li>
+         
+        <li>
+          Avoid slang, jargon, and specialized meanings of familiar
+          words, unless defined within your document
+        </li>
+         
+        <li>
+          Favor words that are commonly used. For example, use
+          "begin" rather than "commence" or use "try" rather than
+          "endeavor"
+        </li>
+      </ul>
+       
+      <p>
+        To help determine whether your document is easy to read,
+        consider using the Gunning-Fog reading measure, available
+        at
+        http://isu.indstate.edu/nelsons/asbe336/PowerPoint/fog-index.htm.
+        When fed a text, this algorithm generally produces a lower
+        score when content is easier to read. If you find your
+        score soaring into the teens (or higher!), you've lost most
+        of your audience in the dense fog.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Make sure the text on the page is easy to read by everyone,
+        especially by people with reading or cognitive
+        disabilities.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Clarify natural language usage
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      ClarifyNatLangUsage
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="WCAG 4.1 P1">
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 4.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        If the page contains chunks of text written using different
+        languages such as English, French, or Spanish, then every
+        chunk should be contained in a tag with a LANG attribute.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmExplanation>
+      <p>
+        If you use different natural languages on a single page,
+        make sure any language switch is clearly identified with
+        the LANG attribute.
+      </p>
+       
+      <p>
+        Identifying language switches on a page is important for
+        the following reasons:
+      </p>
+       
+      <ul>
+        <li>
+          Users reading the document in Braille will be able to
+          substitute the appropriate control codes (markup) where
+          language changes occur to ensure that the Braille
+          translation software will generate the correct characters
+          (accented characters, for instance)
+        </li>
+         
+        <li>
+          Speech synthesizers that speak multiple languages will be
+          able to generate the text in the appropriate accent with
+          proper pronunciation. If changes are not marked, the
+          synthesizer will pronounce the words in the language it
+          works in, usually producing sounds that cannot be
+          understood
+        </li>
+         
+        <li>
+          Users who are unable to translate between languages
+          themselves will be able to have unfamiliar languages
+          translated by machine translators
+        </li>
+      </ul>
+       
+      <p>
+        It is also important because more and more sites will be
+        accessed through audio-only devices such as telephones.
+      </p>
+       
+      <p>
+        The LANG attribute may be helpful in many other situations,
+        such as the following:
+      </p>
+       
+      <ul>
+        <li>
+          Assisting search engines
+        </li>
+         
+        <li>
+          Helping a browser select glyph variants for high quality
+          typography
+        </li>
+         
+        <li>
+          Helping a browser choose a set of quotation marks
+        </li>
+         
+        <li>
+          Helping a browser make decisions about hyphenation,
+          ligatures, and spacing
+        </li>
+         
+        <li>
+          Assisting spell checkers and grammar checkers
+        </li>
+      </ul>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+    <p>
+      Clearly identify changes in the natural language used in the
+      text of a document and any text equivalents as follows: 
+    </p>
+      <ul>
+        <li>
+          Identify chunks of text written using different natural
+          languages
+        </li>
+         
+        <li>
+          Add a LANG attribute to the innermost element containing
+          the text for each chunk identified previously
+        </li>
+      </ul>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <!-- ********************************************************* -->
+  
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Linked AUDIO with equivalent CONTENT
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      linkedAUDIOwEquivContent
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="S508 a/WCAG 1.1 P1">
+      Section 508 1194.22(a); 
+      <abbr title="Web Accessibility Initiative">
+        WAI
+      </abbr>
+       / 
+      <abbr title="Web Content Accessibility Guidelines">
+        WCAG
+      </abbr>
+       1.0 checkpoint 1.1
+    </un:guideline>
+     
+    <un:ruleCategory>
+      W3C/WCAG P.1 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      508 accessibility
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page contains A or AREA elements pointing to audio
+        files.
+      </p>
+       
+      <p>
+        Make sure the audio file is described within the document,
+        or that the document contains a link to a transcript file
+        or to a file containing a description of the sound file.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmMessage name='A'>
+      "A" tag points to an audio file.
+    </un:pbmMessage>
+     
+    <un:pbmMessage name='AREA'>
+      AREA tag points to an audio file.
+    </un:pbmMessage>
+     
+    <un:pbmExplanation>
+      <p>
+        Text equivalents for sounds can be provided as textual
+        links to a text transcript or a description of the sound
+        file. The link to the transcript should appear in a highly
+        visible location such as at the top of the page.
+      </p>
+       
+      <p>
+        Unless transcripts are provided, the following users could
+        not hear the audio's output and take advantage of its
+        contents:
+      </p>
+       
+      <ul>
+        <li>
+          Deaf or poorly hearing users
+        </li>
+         
+        <li>
+          Users accessing an audio device in a noisy environment
+        </li>
+         
+        <li>
+          Users that do not have the appropriate plug-in for
+          hearing sounds
+        </li>
+         
+        <li>
+          Users that access the site with a computer that has no
+          audio devices
+        </li>
+         
+        <li>
+          Users accessing the site in a place where sounds cannot
+          be played, such as a public library
+        </li>
+      </ul>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+      Insert a meaningful description of the audio file. 
+      <br />
+      In particular, make sure the page contains one of the
+        following:
+      </p>
+       
+      <ul>
+        <li>
+          A transcription of the audio/video file
+        </li>
+         
+        <li>
+          A link pointing to a transcription
+        </li>
+      </ul>
+    </un:pbmCorrection>
+  </un:rule>
+   
+  <un:rule enabled="true"
+           manual="true">
+    <un:ruleTitle>
+      Proprietary tags are used
+    </un:ruleTitle>
+     
+    <un:ruleID>
+      proprietaryTagsAreUsed
+    </un:ruleID>
+     
+    <un:severity>
+      4
+    </un:severity>
+     
+    <un:guideline abbr="suggestions">
+      suggestions
+    </un:guideline>
+     
+    <un:ruleCategory>
+      suggestions
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      manual
+    </un:ruleCategory>
+     
+    <un:ruleCategory>
+      ALL
+    </un:ruleCategory>
+     
+    <un:pbmDescription>
+      <p>
+        The page contains proprietary tags that are replaced by a
+        web server by one or more HTML tags. As a result, it is not
+        possible to check the accessibility of the original file. A
+        thorough evaluation requires testing the final version of
+        the page, which can be done by opening the page in a
+        browser, saving it, and testing the saved version.
+      </p>
+    </un:pbmDescription>
+     
+    <un:pbmExplanation>
+      <p>
+        Some web technologies such as ColdFusion use specialized
+        tags to create specific kinds of information and behaviors.
+        When the server receives a request for the page, the server
+        replaces all the specialized tags with HTML and then sends the
+        page to the user's browser. The page the user receives
+        should no longer contain any proprietary tags.
+      </p>
+       
+      <p>
+        It may not be possible to check the accessibility of a page
+        for the following reasons:
+      </p>
+       
+      <ul>
+        <li>
+          The site may contain pages such as ColdFusion and ASP.NET
+          pages that are dynamically created
+        </li>
+         
+        <li>
+          Local pages may be part of a larger site that need to be
+          tested globally
+        </li>
+         
+        <li>
+          Local pages may contain special proprietary tags that are
+          replaced by the web server before delivering the page to
+          the user's browser
+        </li>
+         
+        <li>
+          For online pages, one can test also actual download times
+          and server response times
+        </li>
+         
+        <li>
+          The server may deliver slightly different pages to
+          different browsers
+        </li>
+         
+        <li>
+          Pages may contain links external to the website
+        </li>
+      </ul>
+       
+      <p>
+        For these reasons, it is not always possible to completely
+        check the accessibility of a page in its original state.
+        You must test it in its final state.
+      </p>
+    </un:pbmExplanation>
+     
+    <un:pbmCorrection>
+      <p>
+        Using a browser, request the page from the server. The page
+        that opens in your browser should no longer contain any
+        proprietary tags. Save the page using the browser's save
+        command (in Microsoft Internet Explorer, choose File &gt;
+        Save As), then test the saved version for accessibility.
+      </p>
+    </un:pbmCorrection>
+  </un:rule>
+</un:rules>
+

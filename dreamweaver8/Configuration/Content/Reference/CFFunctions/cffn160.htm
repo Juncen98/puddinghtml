@@ -1,0 +1,166 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>ISXMLATTRIBUTE</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">ISXMLATTRIBUTE</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Determines whether the function parameter is an XML Document Object Model (DOM) attribute node.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+True, if the function argument is an XML attribute node; False, otherwise.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Decision functions, XML functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>IsXmlAttribute(value)
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+IsXML, IsXmlDoc, IsXmlElem, IsXmlNode, IsXmlRoot, XmlGetNodeType, XmlValidate, Chapter&#160;35, "Using XML and WDDX" in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7: Added this function.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+This function determines whether the parameter is an XML DOM attribute node, a node with an XMLType value of ATTRIBUTE. It is useful for determining whether a value returned by the XmlSearch function is an XML attribute. 
+</p>
+
+<p>
+The DOM, and therefore ColdFusion MX, treats XML attributes as properties of an element and does not directly expose them as DOM nodes. For this reason, the XmlAttributes entries in ColdFusion XML document objects do not represent DOM attribute nodes, and tests such as the following always return False:
+</p>
+<pre>IsXmlAttribute(myxmlelement.XMlAttributes);
+IsXmlAttribute(myxmlelement.XMlAttributes.myattribute);
+</pre>
+<p>
+The XmlSearch function does return attributes as XML DOM attribute nodes. For example, the following line returns an array of attribute nodes containing the quantity attributes in the xmlobject document object:
+</p>
+<pre>quantities = XmlSearch(xmlobject, &#39;//@quantity&#39;);
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+The following example creates an XML document object and gets parts of it. It then tests whether these parts are attribute nodes.
+</p>
+<pre>&lt;!--- Create an XML document object ---&gt;
+&lt;cfxml variable=&quot;xmlobject&quot;&gt;
+&lt;order id=&quot;4323251&quot;&gt;
+   &lt;customer firstname=&quot;Philip&quot; lastname=&quot;Cramer&quot; accountNum=&quot;21&quot;/&gt;
+   &lt;items&gt;
+      &lt;item id=&quot;43&quot;&gt;
+         &lt;quantity&gt;1&lt;/quantity&gt;
+         &lt;unitprice&gt;15.95&lt;/unitprice&gt;
+      &lt;/item&gt;
+   &lt;/items&gt;
+&lt;/order&gt;
+&lt;/cfxml&gt;
+
+&lt;!--- Get an array with all lastname quantity DOM attribute nodes 
+   (In this example there is only one entry) ---&gt;
+&lt;cfset lastnames = XmlSearch(xmlobject, &#39;//@lastname&#39;)&gt;
+
+&lt;!--- Test objects to see if they are attributes ---&gt;
+&lt;cfoutput&gt;
+&lt;h3&gt;Are the following XML Attribute nodes?&lt;/h3&gt;
+&lt;!--- The order element id attribute. 
+       This a simple variable, not a DOM attribute node.---&gt;
+node.xmlobject.order.XmlAttributes.id: 
+   #IsXmlAttribute(xmlobject.order.XmlAttributes.id)#&lt;br&gt;
+&lt;!--- The items element ---&gt;
+xmlobject.order.items: #IsXmlAttribute(xmlobject.order.items)#&lt;br&gt;
+lastnames[1] returned by XmlSearch: 
+#isXmlAttribute(lastnames[1])#&lt;br&gt;
+&lt;/cfoutput&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="VALUE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">VALUE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Name of an XML attribute</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

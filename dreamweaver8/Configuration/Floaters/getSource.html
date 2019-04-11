@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>ÏÔÊ¾Ô´</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<SCRIPT LANGUAGE="javascript">
+
+function getDOM(){
+	//get the DOM of the current document
+	var theDOM = dw.getDocumentDOM().documentElement.outerHTML;
+	document.theForm.showScript.value = theDOM;
+	}
+</SCRIPT>
+</head>
+
+<body bgcolor="" text="#000000" onLoad="getDOM();">
+<form name="theForm" onSubmit="getDOM();">
+  <table width="70%" border="0">
+    <tr> 
+      <td colspan="2" height="284"> 
+        <div align="center"> 
+          <textarea name="showScript" rows="18" readonly="true" cols="100" disabled="yes"></textarea>
+        </div>
+      </td>
+    </tr>
+    <tr valign="top"> 
+      <td colspan="2" height="13"> 
+        <input type="submit" name="Submit" onClick="getDOM();" value="Update">
+      </td>
+    </tr>
+    <tr> 
+      <td width="10%">&nbsp;</td>
+      <td width="90%">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="10%">&nbsp;</td>
+      <td width="90%"> &nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="10%">&nbsp;</td>
+      <td width="90%">&nbsp;</td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <p><br>
+  </p>
+</form>
+</body>
+</html>

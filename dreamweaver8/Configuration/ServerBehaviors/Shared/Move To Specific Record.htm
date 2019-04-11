@@ -1,0 +1,54 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/RecordsetMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/RecordsetColumnMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/TextField.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Move To Specific Record.js"></SCRIPT>
+
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm" ACTION="">
+    <TABLE BORDER=0 WIDTH="240px">
+      <TR>
+        <TD ALIGN="right" VALIGN="baseline" NOWRAP>移至以下内容中的记录: </TD>
+        
+      <TD VALIGN="baseline" NOWRAP>
+<select name="rs" class="rsNameList">
+             
+          <option selected>*** 未找到记录集</option>
+          </select>          
+        </TD>
+      </TR>
+      <tr><td height="1"></td></tr>
+      <TR>
+        <TD ALIGN="right" VALIGN="baseline" NOWRAP>其中的列: </TD>
+        <TD VALIGN="baseline" NOWRAP>
+          <select name="col" class="columnNameList">
+             
+          <option selected>*** 未找到列</option>
+          </select>
+        </TD>
+      </TR>
+      <tr><td height="1"></td></tr>
+      <TR>
+        <TD ALIGN="right" VALIGN="baseline" NOWRAP>匹配 URL 参数: </TD>
+        <TD VALIGN="baseline" NOWRAP>
+          <INPUT NAME="paramName" TYPE="text" class="medTField" VALUE="id">
+        </TD>
+      </TR>
+    </TABLE>
+  </FORM>
+</BODY>
+</HTML>

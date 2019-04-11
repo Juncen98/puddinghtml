@@ -1,0 +1,194 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>HTMLCODEFORMAT</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">HTMLCODEFORMAT</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Replaces special characters in a string with their HTML-escaped equivalents and inserts &lt;pre&gt; and &lt;/pre&gt; tags at the beginning and end of the string.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+HTML-escaped string string, enclosed in &lt;pre&gt; and &lt;/pre&gt; tags. Return characters are removed; line feed characters are preserved. Characters with special meanings in HTML are converted to HTML character entities such as &amp;gt;.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Display and formatting functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>HTMLCodeFormat(string [, version ])
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+HTMLEditFormat
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+This function converts the following characters to HTML character entities:
+</p>
+
+<p>
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr align="center">    <th>&#160;</th>
+    <th>&#160;</th>
+</tr>
+  <tr align="left">    <td>
+<p>&lt;</p></td>
+    <td>
+<p>&amp;lt;</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>&gt;</p></td>
+    <td>
+<p>&amp;gt;</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>&amp;</p></td>
+    <td>
+<p>&amp;amp;</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>"</p></td>
+    <td>
+<p>&amp;quot;</p></td>
+</tr>
+</table>
+</div>
+<p>
+</p>
+
+<p>
+This function typically increases the length of a string. This can cause unpredictable results when performing certain string functions (Left, Right, and Mid, for example) against the expanded string.
+</p>
+
+<p>
+The only difference between this function and HTMLEditFormat is that HTMLEditFormat does not surround the text in an HTML pre tag.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!--- This example shows the effects of HTMLCodeFormat and 
+      HTMLEditFormat. View it in your browser, then View it
+      using your browser&#39;s the View Source command. ---&gt;
+&lt;cfset testString=&quot;This is a test
+        &amp; this is another 
+&lt;This text is in angle brackets&gt;
+
+Previous line was blank!!!&quot;&gt;
+
+&lt;cfoutput&gt;
+    &lt;h3&gt;The text without processing&lt;/h3&gt;
+    #testString#&lt;br&gt;
+    &lt;h3&gt;Using HTMLCodeFormat&lt;/h3&gt;
+    #HTMLCodeFormat(testString)#
+    &lt;h3&gt;Using HTMLEditFormat&lt;/h3&gt;
+    #HTMLEditFormat(testString)#
+&lt;/cfoutput&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="STRING">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STRING</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A string or a variable that contains one.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="VERSION">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">VERSION</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>HTML version to use; currently ignored.</p><ul>
+
+<li>-1: The latest implementation of HTML</li>
+
+<li>2.0: HTML 2.0 (Default)</li>
+
+<li>3.2: HTML 3.2</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

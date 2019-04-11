@@ -1,0 +1,315 @@
+<html>
+<head>
+<title>ASP.NET lookup module</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script src="../lookupMod.js"></script>
+<script language="JavaScript">
+var BOOK_NAME = "O'REILLY ASP.NET Reference";
+
+var KEYWORDS_CONFIG = new Array(
+        "ALLOW" , "web.config Reference" , "<allow>" ,
+		"APPSETTINGS" , "web.config Reference" , "<appsettings>" ,
+		"ASSEMBLIES" , "web.config Reference" , "<assemblies>" ,
+		"AUTHENTICATION" , "web.config Reference" , "<authentication>" ,
+		"AUTHORIZATION" , "web.config Reference" , "<authorization>" ,
+		"BROWSERCAPS" , "web.config Reference" , "<browserCaps>" ,
+		"CASE" , "web.config Reference" , "<case>" ,
+		"CLIENTTARGET" , "web.config Reference" , "<clientTarget>" ,
+		"COMPILATION" , "web.config Reference" , "<compilation>" ,
+		"COMPILER" , "web.config Reference" , "<compiler>" ,
+		"COMPILERS" , "web.config Reference" , "<compilers>" ,
+		"CONFIGURATION" , "web.config Reference" , "<configuration>" ,
+		"CREDENTIALS" , "web.config Reference" , "<credentials>" ,
+		"CUSTOMERRORS" , "web.config Reference" , "<customerrors>" ,
+		"DENY" , "web.config Reference" , "<deny>" ,
+		"ERROR" , "web.config Reference" , "<error>" ,
+		"FILTER" , "web.config Reference" , "<filter>" ,
+		"FORMS" , "web.config Reference" , "<forms>" ,
+		"GLOBALIZATION" , "web.config Reference" , "<globalization>" ,
+		"HTTPHANDLERS" , "web.config Reference" , "<httpHandlers>" ,
+		"HTTPMODULES" , "web.config Reference" , "<httpModules>" ,
+		"HTTPRUNTIME" , "web.config Reference" , "<httpRuntime>" ,
+		"IDENTITY" , "web.config Reference" , "<identity>" ,
+		"LOCATION" , "web.config Reference" , "<location>" ,
+		"MACHINEKEY" , "web.config Reference" , "<machineKey>" ,
+		"PAGES" , "web.config Reference" , "<pages>" ,
+		"PASSPORT" , "web.config Reference" , "<passport>" ,
+		"PROCESSMODEL" , "web.config Reference" , "<processModel>" ,
+		"RESULT" , "web.config Reference" , "<result>" ,
+		"SECURITYPOLICY" , "web.config Reference" , "<securityPolicy>" ,
+		"SESSIONSTATE" , "web.config Reference" , "<sessionState>" ,
+		"SYSTEM.WEB" , "web.config Reference" , "<system.web>" ,
+		"TRACE" , "web.config Reference" , "<trace>" ,
+		"TRUST" , "web.config Reference" , "<trust>" ,
+		"USE" , "web.config Reference" , "<use>" ,
+		"USER" , "web.config Reference" , "<user>" );
+
+var KEYWORDS_ASPNET = new Array(
+		"ACCEPTTYPES" , "HttpRequest Class" , "AcceptTypes" ,
+		"ADD" , "HttpApplicationState Class" , "ADD" ,
+		"ADDCACHEITEMDEPENDENCIES" , "HttpResponse Class" , "AddCacheItemDependencies" ,
+		"ADDCACHEITEMDEPENDENCY" , "HttpResponse Class" , "AddCacheItemDependency" ,
+		"ADDFILEDEPENDENCIES" , "HttpResponse Class" , "AddFileDependencies" ,
+		"ADDFILEDEPENDENCY" , "HttpResponse Class" , "AddFileDependency" ,
+		"ADDHEADER" , "HttpResponse Class" , "AddHeader" ,
+		"ALLKEYS" , "HttpApplicationState Class" , "AllKeys" ,
+		"APPENDHEADER" , "HttpResponse Class" , "AppendHeader" ,
+		"APPENDTOLOG" , "HttpResponse Class" , "AppendToLog" ,
+		"APPLICATION" , "Page Class" , "APPLICATION" ,
+		"APPLICATIONPATH" , "HttpRequest Class" , "ApplicationPath" ,
+		"APPLYAPPPATHMODIFIER" , "HttpResponse Class" , "ApplyAppPathModifier" ,
+		"BINARYREAD" , "HttpRequest Class" , "BinaryRead" ,
+		"BINARYWRITE" , "HttpResponse Class" , "BinaryWrite" ,
+		"BROWSER" , "HttpRequest Class" , "Browser" ,
+		"BUFFER" , "HttpResponse Class" , "Buffer" ,
+		"BUFFEROUTPUT" , "HttpResponse Class" , "BufferOutput" ,
+		"RESPONSE.CACHE" , "HttpResponse Class" , "Cache" ,
+		"PAGE.CACHE" , "Page Class" , "Cache" ,
+		"CACHECONTROL" , "HttpResponse Class" , "CacheControl" ,
+		"CHARSET" , "HttpResponse Class" , "Charset" ,
+		"APPLICATION.CLEAR" , "HttpApplicationState Class" , "Clear" ,
+		"RESPONSE.CLEAR" , "HttpResponse Class" , "Clear" ,
+		"CLEARCONTENT" , "HttpResponse Class" , "ClearContent" ,
+		"CLEARHEADERS" , "HttpResponse Class" , "ClearHeaders" ,
+		"CLIENTCERTIFICATE" , "HttpRequest Class" , "ClientCertificate" ,
+		"CLIENTTARGET" , "Page Class" , "ClientTarget" ,
+		"CLOSE" , "HttpResponse Class" , "Close" ,
+		"RESPONSE.CONTENTENCODING" , "HttpResponse Class" , "ContentEncoding" ,
+		"REQUEST.CONTENTENCODING" , "HttpRequest Class" , "ContentEncoding" ,
+		"CONTENTLENGTH" , "HttpRequest Class" , "ContentLength" ,
+		"CONTENTS" , "HttpApplicationState Class" , "Contents" ,
+		"RESPONSE.CONTENTTYPE" , "HttpResponse Class" , "ContentType" ,
+		"REQUEST.CONTENTTYPE" , "HttpRequest Class" , "ContentType" ,
+		"CONTEXT" , "Page Class" , "Context" ,
+		"CONTROLS" , "Page Class" , "Controls" ,
+		"RESPONSE.COOKIES" , "HttpResponse Class" , "Cookies" ,
+		"REQUEST.COOKIES" , "HttpRequest Class" , "Cookies" ,
+		"COUNT" , "HttpApplicationState Class" , "Count" ,
+		"DATABIND" , "Page Class" , "DataBind" ,
+		"ENABLEVIEWSTATE" , "Page Class" , "EnableViewState" ,
+		"RESPONSE.END" , "HttpResponse Class" , "End" ,
+		"APPLICATION.END" , "HttpApplicationState Class" , "End" ,
+		"ERROR" , "Page Class" , "Error" ,
+		"ERRORPAGE" , "Page Class" , "ErrorPage" ,
+		"EXPIRES" , "HttpResponse Class" , "Expires" ,
+		"EXPIRESABSOLUTE" , "HttpResponse Class" , "ExpiresAbsolute" ,
+		"FILEPATH" , "HttpRequest Class" , "FilePath" ,
+		"FILES" , "HttpRequest Class" , "Files" ,
+		"FINDCONTROL" , "Page Class" , "FindControl" ,
+		"FLUSH" , "HttpResponse Class" , "Flush" ,
+		"FORM" , "HttpRequest Class" , "Form" ,
+		"GET" , "HttpApplicationState Class" , "Get" ,
+		"GETKEY" , "HttpApplicationState Class" , "GetKey" ,
+		"HASCONTROLS" , "Page Class" , "HasControls" ,
+		"HEADERS" , "HttpRequest Class" , "Headers" ,
+		"HTTPMETHOD" , "HttpRequest Class" , "HttpMethod" ,
+		"INIT" , "Page Class" , "Init" ,
+		"INPUTSTREAM" , "HttpRequest Class" , "InputStream" ,
+		"ISAUTHENTICATED" , "HttpRequest Class" , "IsAuthenticated" ,
+		"ISCLIENTCONNECTED" , "HttpResponse Class" , "IsClientConnected" ,
+		"ISPOSTBACK" , "Page Class" , "IsPostBack" ,
+		"ISSECURECONNECTION" , "HttpRequest Class" , "IsSecureConnection" ,
+		"ISVALID" , "Page Class" , "IsValid" ,
+		"ITEM" , "HttpApplicationState Class" , "Item" ,
+		"KEYS" , "HttpApplicationState Class" , "Keys" ,
+		"LOAD" , "Page Class" , "Load" ,
+		"LOADCONTROL" , "Page Class" , "LoadControl" ,
+		"LOCK" , "HttpApplicationState Class" , "Lock" ,
+		"PAGE.MAPPATH" , "Page Class" , "MapPath" ,
+		"REQUEST.MAPPATH" , "HttpRequest Class" , "MapPath" ,
+		"OUTPUT" , "HttpResponse Class" , "Output" ,
+		"OUTPUTSTREAM" , "HttpResponse Class" , "OutputStream" ,
+		"PARAMS" , "HttpRequest Class" , "Params" ,
+		"PATH" , "HttpRequest Class" , "Path" ,
+		"PATHINFO" , "HttpRequest Class" , "PathInfo" ,
+		"PHYSICALAPPLICATIONPATH" , "HttpRequest Class" , "PhysicalApplicationPath" ,
+		"PHYSICALPATH" , "HttpRequest Class" , "PhysicalPath" ,
+		"PICS" , "HttpResponse Class" , "Pics" ,
+		"QUERYSTRING" , "HttpRequest Class" , "QueryString" ,
+		"RAWURL" , "HttpRequest Class" , "RawUrl" ,
+		"REDIRECT" , "HttpResponse Class" , "Redirect" ,
+		"REMOVE" , "HttpApplicationState Class" , "Remove" ,
+		"REMOVEALL" , "HttpApplicationState Class" , "RemoveAll" ,
+		"REMOVEAT" , "HttpApplicationState Class" , "RemoveAt" ,
+		"REQUEST" , "Page Class" , "Request" ,
+		"REQUESTTYPE" , "HttpRequest Class" , "RequestType" ,
+		"RESOLVEURL" , "Page Class" , "ResolveUrl" ,
+		"RESPONSE" , "Page Class" , "Response" ,
+		"SAVEAS" , "HttpRequest Class" , "SaveAs" ,
+		"SERVER" , "Page Class" , "Server" ,
+		"SERVERVARIABLES" , "HttpRequest Class" , "ServerVariables" ,
+		"SESSION" , "Page Class" , "Session" ,
+		"SET" , "HttpApplicationState Class" , "Set" ,
+		"SMARTNAVIGATION" , "Page Class" , "SmartNavigation" ,
+		"START" , "HttpApplicationState Class" , "Start" ,
+		"STATICOBJECTS" , "HttpApplicationState Class" , "StaticObjects" ,
+		"STATUS" , "HttpResponse Class" , "Status" ,
+		"STATUSCODE" , "HttpResponse Class" , "StatusCode" ,
+		"STATUSDESCRIPTION" , "HttpResponse Class" , "StatusDescription" ,
+		"SUPPRESSCONTENT" , "HttpResponse Class" , "SuppressContent" ,
+		"TOTALBYTES" , "HttpRequest Class" , "TotalBytes" ,
+		"TRACE" , "Page Class" , "Trace" ,
+		"UNLOAD" , "Page Class" , "Unload" ,
+		"UNLOCK" , "HttpApplicationState Class" , "Unlock" ,
+		"URL" , "HttpRequest Class" , "URL" ,
+		"URLREFERRER" , "HttpRequest Class" , "UrlReferrer" ,
+		"USER" , "Page Class" , "User" ,
+		"USERAGENT" , "HttpRequest Class" , "UserAgent" ,
+		"USERHOSTADDRESS" , "HttpRequest Class" , "UserHostAddress" ,
+		"USERHOSTNAME" , "HttpRequest Class" , "UserHostName" ,
+		"USERLANGUAGES" , "HttpRequest Class" , "UserLanguages" ,
+		"VALIDATE" , "Page Class" , "Validate" ,
+		"VALIDATORS" , "Page Class" , "Validators" ,
+		"VIEWSTATE" , "Page Class" , "ViewState" ,
+		"WRITE" , "HttpResponse Class" , "Write" ,
+		"WRITEFILE" , "HttpResponse Class" , "WriteFile" );
+
+
+function referenceLookup()
+{
+  var aspVal;
+  var dom = dw.getDocumentDOM();
+
+  if (dom){
+  //To synchronize the design and code view
+  dom.synchronizeDocument();
+
+  // The idea here is that we don't want to bother doing ASP.NET keyword processing if
+  // the file is not an ASP.NET file.
+  if(dom.documentType.indexOf('XML') != -1)
+  {
+    KEYWORDS = KEYWORDS_CONFIG;
+  }
+  else if(dom.documentType.indexOf('ASP.NET') != -1)
+  {
+    KEYWORDS = KEYWORDS_ASPNET;
+  }
+
+  if ((dom.documentType.indexOf('ASP.NET') == -1)&&(dom.documentType.indexOf('XML') == -1))
+  {
+    aspVal = new Array("");
+  }
+  else
+  {
+    var docEl = dom.documentElement;
+    var wholeDoc = docEl.outerHTML;
+    var theSel = dom.source.getSelection();
+    var startPoint = searchBackwards(theSel[0],dom);
+    var endPoint = searchForwards(theSel[1],dom,wholeDoc.length);
+    var keyword;
+    var j,k;
+    j = dom.source.getText(startPoint,startPoint+1);
+    k = dom.source.getText(endPoint-1,endPoint);
+
+	//For subcategories in Web.Config Reference which are included in <>
+    if (j == "<" )
+	{
+	  startPoint = startPoint+1;
+	  endPoint = endPoint-1;
+	}
+	else if (k == ">" )
+	{
+	  endPoint = endPoint-1;
+	}
+
+	keyword = dom.source.getText(startPoint,endPoint);
+	keyword = keyword.toUpperCase();
+
+    // Special cases (multiple entries for single keyword)
+	if (keyword == "CACHE")
+	{
+	  if (getPrevWord(startPoint,dom).toUpperCase() == "PAGE")
+	  {
+	    keyword = "PAGE.CACHE";
+	  }
+	  else if (getPrevWord(startPoint,dom).toUpperCase() == "RESPONSE")
+	  {
+	     keyword = "RESPONSE.CACHE";
+	  }
+	}
+	else if (keyword == "CLEAR")
+	{
+	  if (getPrevWord(startPoint,dom).toUpperCase() == "RESPONSE")
+	  {
+	    keyword = "RESPONSE.CLEAR";
+	  }
+	  else if (getPrevWord(startPoint,dom).toUpperCase() == "APPLICATION")
+	  {
+	     keyword = "APPLICATION.CLEAR";
+	  }
+	}
+	else if (keyword == "CONTENTENCODING")
+	{
+	  if (getPrevWord(startPoint,dom).toUpperCase() == "REQUEST")
+	  {
+	    keyword = "REQUEST.CONTENTENCODING";
+	  }
+	  else if (getPrevWord(startPoint,dom).toUpperCase() == "RESPONSE")
+	  {
+	    keyword = "RESPONSE.CONTENTENCODING";
+	  }
+	}
+	else if (keyword == "CONTENTTYPE")
+	{
+	  if (getPrevWord(startPoint,dom).toUpperCase() == "REQUEST")
+	  {
+	    keyword = "REQUEST.CONTENTTYPE";
+	  }
+	  else if (getPrevWord(startPoint,dom).toUpperCase() == "RESPONSE")
+	  {
+	    keyword = "RESPONSE.CONTENTTYPE";
+	  }
+   	}
+   	else if (keyword == "COOKIES")
+   	{
+	  if (getPrevWord(startPoint,dom).toUpperCase() == "REQUEST" )
+	  {
+	    keyword = "REQUEST.COOKIES";
+	  }
+	  else if (getPrevWord(startPoint,dom).toUpperCase() == "RESPONSE" )
+	  {
+	    keyword = "RESPONSE.COOKIES";
+	  }
+   	}
+   	else if (keyword == "END")
+   	{
+	  if (getPrevWord(startPoint,dom).toUpperCase() == "APPLICATION")
+	  {
+	    keyword = "APPLICATION.END";
+	  }
+	  else if (getPrevWord(startPoint,dom).toUpperCase() == "RESPONSE")
+	  {
+	    keyword = "RESPONSE.END";
+	  }
+   	}
+   	else if (keyword == "MAPPATH")
+   	{
+	  if (getPrevWord(startPoint,dom).toUpperCase() == "REQUEST")
+	  {
+	    keyword = "REQUEST.MAPPATH";
+	  }
+	  else if (getPrevWord(startPoint,dom).toUpperCase() == "PAGE")
+	  {
+	    keyword = "PAGE.MAPPATH";
+	  }
+    }
+    else if(keyword == "SYSTEM" || keyword == "WEB")
+    {
+	  keyword = "SYSTEM.WEB"
+    }
+
+    aspVal = getTopic(keyword);
+    }
+  }
+    if (!aspVal)
+	{
+	  aspVal = new Array("");
+	}
+    return aspVal;
+}
+
+</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+</body>
+</html>

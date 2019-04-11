@@ -1,0 +1,39 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<html>
+<head>
+<title>驱动器信息</title>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<script src="DriverInfoDialog.js"></script>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onload="initializeUI()">
+<form name="theForm">
+  <table border=0>
+    <tr>
+	  <td align="right" nowrap valign="baseline">驱动程序:</td>
+	  <td align="left" nowrap valign="baseline"><input name="Driver" type="text" class="basicTextField">
+	  <td align="left" nowrap valign="baseline"><input type="button" style="width:60px" name="UpdateButton" value="更新" onClick="UpdateClicked()"></td>
+	</tr>
+    <tr>
+	  <td align="right" nowrap valign="baseline">URL 模板:</td>
+	  <td align="left" nowrap valign="baseline"><input name="Template" type="text" class="basicTextField"></td>
+	  <td align="left" nowrap valign="baseline"><input type="button" style="width:60px" name="AddButton" value="增加" onClick="AddClicked()"></td>
+	</tr>
+	<tr>
+	  <td colspan=3><hr></td>
+	</tr>
+	<tr>
+	  <td align="right" nowrap valign="top">驱动程序列表:</td>
+	  <td align="left" nowrap valign="top"><select name="DriverList" size="12" class="itemList" onChange="SelectionChanged()">
+        </select></td>
+	  <td align="left" nowrap valign="top"><input type="button" style="width:60px" name="RemoveButton" value="删除" onClick="RemoveClicked()"></td>
+	</tr>
+
+  </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<participant name="SimpleOutputWithEscR">
+  <translator priority=500 type="renderer">
+    <searchPatterns>
+      <searchPattern requiredLocation="openTag"><![CDATA[/^<cfoutput\s*>$/i]]></searchPattern>
+      <searchPattern requiredLocation="innerHTML" useTranslatedSource="true" paramNames="source"><![CDATA[/^<mm:beginlock[^>]*>#<mm:endlock\s*>$/gi]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="tag+cfoutput" limitSearch="all" translationType="as is">
+		<display>#</display>
+      </translation>
+    </translations>
+  </translator>
+</participant>

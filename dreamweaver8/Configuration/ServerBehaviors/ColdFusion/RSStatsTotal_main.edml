@@ -1,0 +1,10 @@
+<participant version="5.0">
+  <insertText location="afterSelection">
+    <![CDATA[<cfoutput>#@@RecordsetName@@.RecordCount#</cfoutput>]]>
+  </insertText>
+  <searchPatterns whereToSearch="tag+MM_DYNAMIC_CONTENT" searchTranslatedSource="true">
+    <searchPattern limitSearch="all" isOptional="false"><![CDATA[/[\s\S]+/i]]></searchPattern>
+    <searchPattern paramNames="RecordsetName" limitSearch="attribute+SOURCE" isOptional="false"><![CDATA[/(\w+?)\.RecordCount/i]]></searchPattern>
+  </searchPatterns>
+  <quickSearch>.RecordCount</quickSearch>
+</participant>

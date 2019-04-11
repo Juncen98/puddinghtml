@@ -1,0 +1,30 @@
+<participant>
+     <quickSearch><![CDATA[MM_authorizedUsers]]></quickSearch>
+     <insertText location="aboveHTML+10">
+<![CDATA[
+<%
+// *** Restrict Access To Page: Grant or deny access to this page
+var MM_authorizedUsers="@@accessLevels@@";
+var MM_authFailedURL="@@failureURL@@";
+var MM_grantAccess=false;
+if (String(Session("@@MM_username@@")) != "undefined") {
+  if (@@dontUseAccessLevel@@ || (String(Session("@@MM_userAuthorization@@"))=="") || (MM_authorizedUsers.indexOf(String(Session("@@MM_userAuthorization@@"))) >=0)) {
+    MM_grantAccess = true;
+  }
+}
+if (!MM_grantAccess) {
+  var MM_qsChar = "?";
+  if (MM_authFailedURL.indexOf("?") >= 0) MM_qsChar = "&";
+  var MM_referrer = Request.ServerVariables("URL");
+  if (String(Request.QueryString()).length > 0) MM_referrer = MM_referrer + "?" + String(Request.QueryString());
+  MM_authFailedURL = MM_authFailedURL + MM_qsChar + "accessdenied=" + Server.URLEncode(MM_referrer);
+  Response.Redirect(MM_authFailedURL);
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="accessLevels,failureURL,dontUseAccessLevel" limitSearch="all"><![CDATA[/[\r\n]\s*var\s+MM_authorizedUsers\s*=\s*"([^\r\n]*)"[\w\W]*[\r\n]\s*var\s+MM_authFailedURL\s*=\s*"([^\r\n]*)"[\w\W]*[\r\n]\s*var\s+MM_grantAccess\s*=\s*false[\w\W]*[\r\n]\s*if\s+\(\s*(\w+)\s*\|\|\s*\(String\s*\(\s*Session\s*\(\s*"/]]></searchPattern>
+       <searchPattern paramNames="failureURL_url" limitSearch="all"><![CDATA[/var\s+MM_authFailedURL\s*=\s*"([^\r\n]*?)"/]]></searchPattern>
+     </searchPatterns>
+</participant>

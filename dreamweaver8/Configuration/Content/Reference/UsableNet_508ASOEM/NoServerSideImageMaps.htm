@@ -1,0 +1,154 @@
+<html xmlns:un="http://usablenet.com/namespaces/508_rules">
+   <link rel="stylesheet" href="josh.css">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Detailed View for rule: No server-side image maps should be used</title>
+      <!--
+  508/W3C Accessibility Suite OEM V2 for Macromedia Dreamweaver
+  (C) Copyright 2001-2005 UsableNet Inc. All rights reserved.
+  -->
+   </head>
+   <body bgcolor="#ffffff">
+      <div id="Description">
+         <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+            <tr>
+               <td valign="top" nowrap="true" class="name">No server-side image maps should be used</td>
+               <td valign="top" nowrap="true" class="compatibility">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+            </tr>
+            <tr>
+               <td valign="top" align="right" nowrap="true" colspan="2" class="requirements">
+                  Section 508 1194.22(f); 
+                  
+                  WAI
+                  
+                  / 
+                  
+                  WCAG
+                  
+                  1.0 checkpoint 9.1
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Description</b><br>
+                  
+                  <p>
+                     The page includes a server-side image map. Verify that the
+                     image map can be replaced by a more accessible client-side
+                     image map.
+                     
+                  </p>
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>How to check</b>
+                  
+                  <p>
+                     Determine whether the server-side image map is really
+                     needed. The only reason to use one is if you need to define
+                     active regions that cannot be defined with available
+                     shapes. If you must use one, you should at least provide
+                     alternative ways such as textual links to reach the same
+                     destination pages. (You must inspect the implementation of
+                     the image map on the server to find out how active regions
+                     are defined.)
+                     
+                  </p>
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Explanation</b><br>
+                  
+                  <p>
+                     Server-side image maps pose big accessibility problems,
+                     including:
+                     
+                  </p>
+                  
+                  
+                  <ul>
+                     
+                     <li>
+                        Server-side image maps require specific input devices
+                        like the mouse, which may not be available to certain
+                        users in certain contexts (such as users of cellular
+                        phones or voice controlled browsers)
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        Certain users in certain situations may not be able to
+                        accurately click on the map (such as disabled persons or
+                        persons walking, driving, or standing)
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        The links specified by server-side image maps are hidden
+                        in the server and cannot be manipulated by browsers in
+                        any way, including any assistive technology. Therefore,
+                        the browser cannot communicate any alternative links to
+                        the user
+                        
+                     </li>
+                     
+                     
+                     <li>
+                        Server-side image maps are less efficient than their
+                        client-side counterparts because an additional
+                        interaction with the server is needed for each user click
+                        
+                     </li>
+                     
+                  </ul>
+                  
+                  
+                  <p>
+                     For these reasons, the use of server-side image maps is
+                     highly discouraged. The only exception is for active
+                     regions whose shape are so irregular that client-side image
+                     maps cannot support them.
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     You can recognize a server-side image map with a browser by
+                     pointing the mouse at the image. Mouse coordinates are
+                     displayed by the browser as you move the mouse over the
+                     image.
+                     
+                  </p>
+                  
+               </td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

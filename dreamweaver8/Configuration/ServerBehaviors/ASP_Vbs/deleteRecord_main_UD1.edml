@@ -1,0 +1,54 @@
+<participant>
+     <quickSearch><![CDATA[MM_delete]]></quickSearch>
+     <insertText location="aboveHTML+20">
+<![CDATA[
+<%
+' *** Delete Record: construct a sql delete statement and execute it
+MM_editAction = CStr(Request("URL"))
+If (Request.QueryString <> "") Then
+  MM_editAction = MM_editAction & "?" & Request.QueryString
+End If
+if (CStr(Request("MM_delete")) <> "" And CStr(Request("MM_recordId")) <> "") Then
+
+  MM_tableName = "@@table@@"
+  MM_tableCol = "@@col@@"
+  MM_recordId = "@@colQuote@@" + Request.Form("MM_recordId") + "@@colQuote@@"
+  MM_redirectPage = "@@url@@"
+
+  ' create the delete sql statement
+  MM_deleteStr = "delete from " & MM_tableName & " where " & MM_tableCol & " = " & MM_recordId
+
+  ' finish the sql and execute it
+  Set MM_deleteCmd = Server.CreateObject("ADODB.Command")
+  MM_deleteCmd.ActiveConnection = "@@conn@@"
+  MM_deleteCmd.CommandText = MM_deleteStr
+  MM_deleteCmd.Execute
+
+  ' redirect with URL parameters
+  If (MM_redirectPage = "") Then
+    MM_redirectPage = CStr(Request("URL"))
+  End If
+  If (InStr(1, MM_redirectPage, "?", vbTextCompare) = 0 And Request.QueryString <> "") Then
+    MM_redirectPage = MM_redirectPage & "?" & Request.QueryString
+  End If
+  Call Response.Redirect(MM_redirectPage)
+End If
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="conn"><![CDATA[/ActiveConnection\s*=\s*"([^"]*)"/]]></searchPattern>
+       <searchPattern paramNames="table"><![CDATA[/MM_tableName\s*=\s*"([^"]*)"/]]></searchPattern>
+       <searchPattern paramNames="col"><![CDATA[/MM_tableCol\s*=\s*"([^"]*)"/]]></searchPattern>
+       <searchPattern paramNames="colQuote"><![CDATA[/MM_recordId\s*=\s*"([^"]*)"/]]></searchPattern>
+       <searchPattern paramNames="url"><![CDATA[/\sMM_redirectPage\s*=\s*"([^"]*)"/]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="conn"><![CDATA[/(ActiveConnection\s*=\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="table"><![CDATA[/(MM_tableName\s*=\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="col"><![CDATA[/(MM_tableCol\s*=\s*")[^"]*(";)/g]]></updatePattern>
+       <updatePattern paramName="colQuote"><![CDATA[/(MM_recordId\s*=\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="colQuote"><![CDATA[/(Request\.Form\("MM_recordId"\)\s*\+\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="url"><![CDATA[/(\sMM_redirectPage\s*=\s*")[^"]*(")/g]]></updatePattern>
+     </updatePatterns>
+</participant>

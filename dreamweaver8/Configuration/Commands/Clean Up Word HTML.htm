@@ -1,0 +1,299 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002, 2003, 2004 Macromedia, Inc. All rights reserved. -->
+
+<TITLE>清理 Word 生成的 HTML</TITLE>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+
+<SCRIPT LANGUAGE="javascript" SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+
+<!-- Include the UI helper functions -->
+<SCRIPT LANGUAGE="javascript" SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+
+<!-- Include DOM functions -->
+<SCRIPT LANGUAGE="javascript" SRC="../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+
+<!-- Include the implementation for the hierarchical checkboxes. -->
+<SCRIPT LANGUAGE="javascript" SRC="../Shared/MM/Scripts/Class/classCheckbox.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../Shared/MM/Scripts/Class/TabControlClass.js"></SCRIPT>
+
+<SCRIPT LANGUAGE="javascript" SRC="../Shared/MM/Scripts/CMN/errmsg.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="Source Formatting.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="Clean Up Word HTML.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+<!--
+//--------------- LOCALIZEABLE GLOBALS---------------
+var MSG_Word_Import = "选择要导入的 Word HTML 文件"
+
+
+var LABEL_Basic    = "基本";
+var LABEL_Detailed = "详细";
+var LABEL_OSX_BG_WIDTH	= 360;
+
+var MSG_DiffWordVersion       = "你选定的版本与检测到的版本不符，如果选定的版本不正确，滤镜可能不能正确工作。";
+var MSG_UnknownVersion        = "Dreamweaver不能确定产生该文档的Word版本。你可以从下拉菜单中\n手工选择一个版本。然而如果选择的版本不正确，导入滤镜可能不能正常工作。";
+var MSG_MetaFileError         = "不能保存对话框设置。下次将使用默认设置。";
+var MSG_Error                 = "错误：选定的是一个未知的Word版本。";
+
+// Logging messages
+var MSG_TrcSummaryHeader      = "清理 Word HTML结果:";
+var MSG_TrcRemoveMetaTags     = "%s Meta标签已删除";
+var MSG_TrcRemoveWordXML      = "%s Word XML 已删除";
+var MSG_TrcRemoveConditionals = "移除 %s 个 Word [if...]";
+var MSG_TrcRemoveEmptyParas   = "%s 空段落已删除";
+var MSG_TrcRemoveMargins      = "%s 边界定义已删除";
+var MSG_TrcRemoveInlineCSS    = "%s 不需要的行内CSS已删除";
+var MSG_TrcRemovemsoStyle     = "%s word-only \"mso\" styles removed";
+var MSG_TrcRemoveNonCSS       = "%s 非标准 CSS 样式实例已删除";
+var MSG_TrcRemoveTableCSS     = "%s 行内表格 CSS已删除或转化为HTML";
+var MSG_TrcRemoveUnusedCSS    = "%s 未使用的 CSS 样式定义已删除";
+var MSG_TrcFontsConverted     = "%s字体大小已转化";
+var MSG_TrcNestingFixed       = "%s 非法嵌套标签已修正";
+var MSG_TrcBackgroundSet      = "背景颜色设置为 %s";
+var MSG_TrcSourceFormatted    = "源格式已应用";
+var MSG_TrcDidNothing         = "没有要采取的动作!";
+
+// These are the values of which to populate the dropdown boxes for the
+// font conversions.  Even numbered array elements (0, 2, 4, et) are the
+// text that user will see in the dropdown.  The odd numbered array
+// elements is the value.
+//
+// **** Only the first column needs to translated ****
+fontValues= new Array("标题 1","h1","标题 2","h2","标题 3","h3","标题 4","h4","标题 5","h5","标题 6","h6","大小 1","1","大小 2","2","大小 3","3","大小 4","4","大小 5","5","大小 6","6","大小 7","7","预设大小","0","不更改","-1");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//--------------- END LOCALIZEABLE   ---------------
+
+// -->
+</SCRIPT>
+<style type="text/css">
+<!--
+.pageBg        { position:absolute; left:18px; top:31px; width:10px; height:253px; z-index:1; visibility:hidden; }
+.tabLayer      { position:absolute; top:10px; width:70px; height:20px; z-index:8; visibility:hidden ;}
+.tabInnerLayer { position:absolute; width:75px; height:23px; z-index:8; left: 0px; top: 0px; visibility:inherit ;}
+.tabLabelLayer { position:absolute; width:69px; height:1px; z-index:8; left: 0px; top: 5px; visibility:inherit; text-align:center }
+-->
+</style>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initialize()" class="content" >
+<!-- ---------------------------------------------------------------------- -->
+<!-- TAB DIVS -->
+
+<div class="pageBg" style="visibility:visible; left:4px; ">
+  <img name="tabBgWin" width="335" height="350" src="../Shared/MM/Images/transparent.gif">
+</div>
+
+<div id="Tab0" class="tabLayer" style="left: 8px; ">
+  <div class="tabInnerLayer"> <img src="../Shared/MM/Images/tabBg.gif"> </div>
+  <div id="Tab0Sel" class="tabInnerLayer" style="visibility:hidden">
+    <img src="../Shared/MM/Images/tabBgSel.gif"> </div>
+  <div name="Tab0Label" class="tabLabelLayer"></div>
+  <div class="tabInnerLayer">
+    <input type="image" src="../Shared/MM/Images/transparent.gif" width="69" height="21" onClick="T.showPageNum(0)"> </div>
+</div>
+<div id="Tab1" class="tabLayer" style="left: 78px; ">
+  <div class="tabInnerLayer"> <img src="../Shared/MM/Images/tabBg.gif"> </div>
+  <div id="Tab1Sel" class="tabInnerLayer" style="visibility:hidden">
+    <img src="../Shared/MM/Images/tabBgSel.gif"> </div>
+  <div name="Tab1Label" class="tabLabelLayer"></div>
+  <div class="tabInnerLayer">
+    <input type="image" src="../Shared/MM/Images/transparent.gif" width="69" height="21" onClick="T.showPageNum(1)"> </div>
+</div>
+
+
+<!-- ---------------------------------------------------------------------- -->
+<!-- PAGE DIVS -->
+
+<div class="pageBg" id="detecting" style="visibility:visible; left:4px; ">
+  <table width="340" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+  <td height="300" align="center"><p>
+  正在检测 Microsoft Word 版本...
+  </p>
+  </td>
+  </tr>
+  </table>
+</div>
+
+<FORM NAME="optionsForm">
+<div class="pageBg" style="visibility:hidden;" id="wordVersion">
+   <table border=0>
+     <tr>
+       <td height=10></td>
+     </tr>
+     <tr>
+       <td nowrap>清理的 HTML 来自
+          <select name="selectWordVersion" class="oneWordOptionList" onChange="setWordVersion()" style="width:150px;">
+            <option value="97" selected>Word 97/98</option>
+            <option value="2000">Word 2000 及更高版本</option>
+          </select>
+       </td>
+     </tr>
+   </table>
+</div>
+
+
+  <div id="detailWord2000" class="pageBg" style="width:388px; top:70px;">
+    <p>
+      <input type="image" name="removeWord2000_detail"  src="" onClick="CB.clicked(this);focus(this)">
+      移除 Word 特定的标记<br>
+      &nbsp;&nbsp;
+      <input type="image" name="removeXMLHTML2000_detail" parents="removeWord_basic,removeWord2000_detail"  src=""  onClick="CB.clicked(this);focus(this)">
+      &lt;html&gt; 标签中的 XML<br>
+      &nbsp;&nbsp;
+      <input type="image" name="removeMetaLink2000_detail" parents="removeWord_basic,removeWord2000_detail"  src="" onClick="CB.clicked(this);focus(this)">
+      &lt;head&gt; 中的 Word meta 和 link 标签  <br>
+      &nbsp;&nbsp;
+      <input type="image" name="removeXMLmarkup2000_detail" parents="removeWord_basic,removeWord2000_detail"  src="" onClick="CB.clicked(this);focus(this)">
+      Word XML 标记（例如 &lt;o:p&gt;&lt;/o:p&gt;）<br>
+      &nbsp;&nbsp;
+      <input type="image" name="removeIf2000_detail" parents="removeWord_basic,removeWord2000_detail"  src="" onClick="CB.clicked(this);focus(this)">
+      &lt;![if ...]&gt;&lt;![endif]&gt; 条件式标签和其内容<br>
+      &nbsp;&nbsp;
+      <input type="image" name="removeEmptyPara2000_detail" parents="removeWord_basic,removeWord2000_detail"  src="" onClick="CB.clicked(this);focus(this)">
+      移除样式中空的段落和边界</p>
+    <p>
+      <input type="image" name="cleanCSS2000_detail"  src="" onClick="CB.clicked(this);focus(this)">
+      清理 CSS<br>
+      &nbsp;&nbsp;
+      <input type="image" name="removeInlineCSS2000_detail" parents="cleanCSS_basic,cleanCSS2000_detail"  src="" onClick="CB.clicked(this);focus(this)">
+      尽可能地移除行内 CSS 样式 <br>
+      &nbsp;&nbsp;
+      <input type="image" name="removemsoStyle2000_detail" parents="cleanCSS_basic,cleanCSS2000_detail"  src="" onClick="CB.clicked(this);focus(this)">
+      移除所有开头为 &quot;mso&quot; 的样式属性<br>
+      &nbsp;&nbsp;
+      <input type="image" name="removeNonCSS2000_detail" parents="cleanCSS_basic,cleanCSS2000_detail"  src="" onClick="CB.clicked(this);focus(this)">
+      移除所有非 CSS 的样式宣告 <br>
+      &nbsp;&nbsp;
+      <input type="image" name="removeCSSTable2000_detail" parents="cleanCSS_basic,cleanCSS2000_detail"  src="" onClick="CB.clicked(this);focus(this)">
+      移除表格行和单元格中所有的 CSS 样式</p>
+  </div>
+
+
+<div id="detailWord97" class="pageBg" style="width:388px; top:70px;">
+    <table width=320 cellpadding="1" cellspacing="0" nowrap>
+      <tr>
+      <td colspan="2" valign="baseline">
+        <input type="image" name="removeWord97_detail"  src="" onClick="CB.clicked(this);focus(this)">
+        移除 Word 特定的标记</td>
+    </tr>
+    <tr>
+      <td colspan="2" valign="baseline">&nbsp;&nbsp;&nbsp;
+        <input type="image" name="removeMetaLink97_detail" parents="removeWord_basic,removeWord97_detail"  src="" onClick="CB.clicked(this);focus(this)">
+        &lt;head&gt; 中的 Word meta 和 link 标签  <br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <input type="image" name="cleanFonts97_detail"  src="" onClick="CB.clicked(this);focus(this)">
+        清理 &lt;font&gt; 标签 </td>
+    </tr>
+    <tr>
+      <td width=179 valign="baseline"> &nbsp;&nbsp;&nbsp;
+        <input type="image" name="convertSize7_detail" parents="cleanFonts_basic,cleanFonts97_detail"  src="" onClick="CB.clicked(this);focus(this)">
+        大小 7 转换为 </td>
+      <td width=200>
+        <select name="menuSize7" class="medTField">
+        </select>
+      </td>
+    <tr>
+      <td width=179 valign="baseline"> &nbsp;&nbsp;&nbsp;
+        <input type="image" name="convertSize6_detail" parents="cleanFonts_basic,cleanFonts97_detail"  src="" onClick="CB.clicked(this);focus(this)">
+        大小 6 转换为 </td>
+      <td width="200">
+        <select name="menuSize6" class="medTField">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td width=179 valign="baseline"> &nbsp;&nbsp;&nbsp;
+        <input type="image" name="convertSize5_detail" parents="cleanFonts_basic,cleanFonts97_detail"  src="" onClick="CB.clicked(this);focus(this)">
+        大小 5 转换为 </td>
+      <td width="200">
+        <select name="menuSize5" class="medTField">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td width=179 valign="baseline"> &nbsp;&nbsp;&nbsp;
+        <input type="image" name="convertSize4_detail" parents="cleanFonts_basic,cleanFonts97_detail"  src="" onClick="CB.clicked(this);focus(this)">
+        大小 4 转换为 </td>
+      <td width="200">
+        <select name="menuSize4" class="medTField">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td width=179 valign="baseline"> &nbsp;&nbsp;&nbsp;
+        <input type="image" name="convertSize3_detail" parents="cleanFonts_basic,cleanFonts97_detail"  src="" onClick="CB.clicked(this);focus(this)">
+        大小 3 转换为 </td>
+      <td width="200">
+        <select name="menuSize3" class="medTField">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td width=179 valign="baseline"> &nbsp;&nbsp;&nbsp;
+        <input type="image" name="convertSize2_detail" parents="cleanFonts_basic,cleanFonts97_detail"  src="" onClick="CB.clicked(this);focus(this)">
+        大小 2 转换为 </td>
+      <td width="200">
+        <select name="menuSize2" class="medTField">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td width=179 valign="baseline"> &nbsp;&nbsp;&nbsp;
+        <input type="image" name="convertSize1_detail" parents="cleanFonts_basic,cleanFonts97_detail"  src="" onClick="CB.clicked(this);focus(this)">
+        大小 1 转换为 </td>
+      <td width="200">
+        <select name="menuSize1" class="medTField">
+        </select>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+  <div id="basic" class="pageBg" style="width:340px; top:70px;">
+    <p>
+      <input type="image" name="removeWord_basic"  src="" onClick="CB.clicked(this);focus(this)">
+      删除所有 Word 特定的标记<br>
+      <input type="image" name="cleanCSS_basic"  src="" onClick="CB.clicked(this);focus(this)">
+      清理 CSS<br>
+      <input type="image" name="cleanFonts_basic"  src="" onClick="CB.clicked(this);focus(this)">
+      清理 &lt;font&gt; 标签<br>
+      <input type="image" name="fixInvalidNest_basic"  src="" onClick="CB.clicked(this);focus(this)">
+      修正无效的嵌套标签<br>
+      <input type="image" name="setBgColor_basic"  src="" onClick="CB.clicked(this);focus(this)">
+      设定背景颜色
+      <input type="text" name="bgcolor_basic" value="#FFFFFF" size="14">
+      <br>
+      <input type="image" name="applyFormatting_basic"  src="" onClick="CB.clicked(this);focus(this)">
+      应用源格式</p>
+    <p>
+      <input type="image" name="showLog_basic"  src="" onClick="CB.clicked(this);focus(this)">
+      完成时显示动作记录<br>
+  </div>
+</FORM>
+</BODY>
+</HTML>

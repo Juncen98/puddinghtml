@@ -1,0 +1,147 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFOBJECT: COMPONENT OBJECT</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFOBJECT: COMPONENT OBJECT</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Creates an instance of a ColdFusion component (CFC) object.
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfobject 
+   name = &quot;variable name&quot;
+   component = &quot;component name&quot;&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfcollection, cfcomponent, cfexecute, cfindex, cfreport, cfsearch, cfwddx; "Using ColdFusion components" in Chapter&#160;10, "Building and Using ColdFusion Components," in ColdFusion MX Developer's Guide
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+When the cfobject tag creates an instance of the CFC, ColdFusion executes any constructor code in the CFC; that is, it runs code that is not in the method definitions.
+</p>
+
+<p>
+On UNIX systems, ColdFusion searches first for a file with a name that matches the specified component name, but is all lowercase. If it does not find the file, it looks for a filename that matches the component name exactly, with the identical character casing.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!--- Separate instantiation and method invocation; permits multiple 
+invocations. ---&gt;
+&lt;cfobject 
+name=&quot;quoteService&quot; 
+component=&quot;nasdaq.quote&quot;&gt;
+&lt;cfinvoke 
+component=&quot;#quoteService#&quot; 
+method=&quot;getLastTradePrice&quot; 
+symbol=&quot;macr&quot; 
+returnVariable=&quot;res&quot;&gt;
+&lt;cfoutput&gt;#res#&lt;/cfoutput&gt;&lt;br&gt;
+
+&lt;cfinvoke 
+component=&quot;#quoteService#&quot; 
+method=&quot;getLastTradePrice&quot; 
+symbol=&quot;mot&quot; 
+returnVariable=&quot;res&quot;&gt;
+&lt;cfoutput&gt;#res#&lt;/cfoutput&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="NAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>String; name for the instantiated component. The name must not have a period as the first or last character.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="COMPONENT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">COMPONENT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of component to instantiate.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

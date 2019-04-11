@@ -1,0 +1,258 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>文本样式菜单</TITLE>
+<SCRIPT LANGUAGE="JavaScript" SRC="../../Toolbars/siteSettings_TEMP.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+<!--
+
+function isDOMRequired()
+{
+  return false;
+}
+
+
+function receiveArguments()
+{
+  var what = arguments[0];
+
+  if (dw.getFocus(true) == 'html' || dw.getFocus() == 'textView') {
+    var upCaseTag = (dw.getPreferenceString("Source Format", "Tags Upper Case", "") == 'TRUE');
+    var useStrongEm = (dw.getPreferenceString("General Preferences", "Avoid Bold and Italic", 'TRUE') == 'TRUE');
+    
+    var tagname = new String("");
+
+    if (what == "B") {
+      if (useStrongEm)
+          tagname = "strong";
+      else
+          tagname = "b";
+    }
+    else if (what == "I") {
+      if (useStrongEm)
+          tagname = "em";
+      else
+          tagname = "i";
+    }
+    else {
+      tagname = what;
+    }
+
+    if (tagname.length > 0) {
+      if (upCaseTag) {
+        tagname = tagname.toUpperCase();
+      }
+      else {
+        tagname = tagname.toLowerCase();
+      }
+
+      dw.getDocumentDOM().source.wrapSelection("<"+tagname+">", "</"+tagname+">");
+    }
+  }
+  
+  else {
+
+    if (what == "B"){
+      if (dw.getDocumentDOM().hasCharacterMarkup('b')){
+        dw.getDocumentDOM().removeCharacterMarkup('b'); 
+      }else{
+        dw.getDocumentDOM().applyCharacterMarkup('b');
+      }       
+    }
+    if (what == "I"){
+      if (dw.getDocumentDOM().hasCharacterMarkup('i')){
+        dw.getDocumentDOM().removeCharacterMarkup('i'); 
+      }else{
+        dw.getDocumentDOM().applyCharacterMarkup('i'); 
+      }
+    }
+    if (what == "U"){
+      if (dw.getDocumentDOM().hasCharacterMarkup('u')){
+        dw.getDocumentDOM().removeCharacterMarkup('u');
+      }else{
+        dw.getDocumentDOM().applyCharacterMarkup('u');
+      }
+    }
+    if (what == "S"){
+      if (dw.getDocumentDOM().hasCharacterMarkup('s')){
+        dw.getDocumentDOM().removeCharacterMarkup('s');
+      }else{
+        dw.getDocumentDOM().applyCharacterMarkup('s');
+      }
+    }
+    if (what == "TT"){
+      if (dw.getDocumentDOM().hasCharacterMarkup('tt')){
+        dw.getDocumentDOM().removeCharacterMarkup('tt');
+      }else{
+        dw.getDocumentDOM().applyCharacterMarkup('tt');
+      }
+    }
+    if (what == "EM"){
+      if (dw.getDocumentDOM().hasCharacterMarkup('em')){
+        dw.getDocumentDOM().removeCharacterMarkup('em');
+      }else{
+        dw.getDocumentDOM().applyCharacterMarkup('em');
+      }
+    }
+    if (what == "strong"){
+      if (dw.getDocumentDOM().hasCharacterMarkup('strong')){
+        dw.getDocumentDOM().removeCharacterMarkup('strong');
+      }else{
+        dw.getDocumentDOM().applyCharacterMarkup('strong');
+      }
+    }
+    if (what == "code"){
+      if (dw.getDocumentDOM().hasCharacterMarkup('code')){
+        dw.getDocumentDOM().removeCharacterMarkup('code');
+      }else{
+        dw.getDocumentDOM().applyCharacterMarkup('code');
+      }
+    }
+    if (what == "var"){
+      if (dw.getDocumentDOM().hasCharacterMarkup('var')){
+        dw.getDocumentDOM().removeCharacterMarkup('var');
+      }else{
+        dw.getDocumentDOM().applyCharacterMarkup('var');
+      }
+    }
+    if (what == "samp"){
+      if (dw.getDocumentDOM().hasCharacterMarkup('samp')){
+        dw.getDocumentDOM().removeCharacterMarkup('samp');
+      }else{
+        dw.getDocumentDOM().applyCharacterMarkup('samp');
+      }
+    }
+    if (what == "kbd"){
+      if (dw.getDocumentDOM().hasCharacterMarkup('kbd')){
+        dw.getDocumentDOM().removeCharacterMarkup('kbd');
+      }else{
+        dw.getDocumentDOM().applyCharacterMarkup('kbd');
+      }
+    }
+    if (what == "cite"){
+      if (dw.getDocumentDOM().hasCharacterMarkup('cite')){
+        dw.getDocumentDOM().removeCharacterMarkup('cite');
+      }else{
+        dw.getDocumentDOM().applyCharacterMarkup('cite');
+      }
+    }
+    if (what == "dfn"){
+      if (dw.getDocumentDOM().hasCharacterMarkup('dfn')){
+        dw.getDocumentDOM().removeCharacterMarkup('dfn');
+      }else{
+        dw.getDocumentDOM().applyCharacterMarkup('dfn');
+      }
+    }
+    if (what == "del"){
+      if (dw.getDocumentDOM().hasCharacterMarkup('del')){
+        dw.getDocumentDOM().removeCharacterMarkup('del');
+      }else{
+        dw.getDocumentDOM().applyCharacterMarkup('del');
+      }
+    }
+    if (what == "ins"){
+      if (dw.getDocumentDOM().hasCharacterMarkup('ins')){
+        dw.getDocumentDOM().removeCharacterMarkup('ins');
+      }else{
+        dw.getDocumentDOM().applyCharacterMarkup('ins');
+      }
+    }
+  
+  }
+}
+
+function canAcceptCommand()
+{
+
+  // Make sure the focus is in the BODY of the document.
+  // Focus can also be in the text view or the html inspector.
+  var dom = dw.getDocumentDOM();
+  if (dom == null)
+    return false; 
+    
+  var retVal = false;
+  if (dw.getFocus() == 'document' && dw.getDocumentDOM().getFocus() == 'body') {
+    retVal = true;
+  }
+  else if (dw.getFocus(true) == 'html' || dw.getFocus() == 'textView') {
+    retVal = true;
+  }
+  
+  if (dom && dom.getParseMode() != 'html') {
+    retVal = false;
+  }
+
+	var what = arguments[0];
+	var styleProps = dom.getCSSStyleProperties();
+	if (dom)
+	{
+		if (!isSelectionTextuallyModifiable(dom) ||
+			(what == 'B' && !dom.hasCharacterMarkup('b') && !dom.hasCharacterMarkup('strong') && (styleProps.fontWeight == 'bold' || styleProps.fontWeight == 'bolder')) ||
+			(what == 'I' && !dom.hasCharacterMarkup('i') && !dom.hasCharacterMarkup('em') && (styleProps.fontStyle == 'italic')))
+		{
+			retVal = false;
+		}
+	}
+	else
+	{
+		retVal = false;
+	}
+
+  return retVal;
+}
+
+function isCommandChecked()
+{
+    var what = arguments[0];
+
+
+  // do not  check menu items when in the code view.
+  if (dw.getFocus(true) == 'html' || dw.getFocus() == 'textView')
+    return false;
+    
+  if (dw.getDocumentDOM() != null){
+    if (what == "B")
+      return (dw.getDocumentDOM().hasCharacterMarkup("b"));
+    if (what == "I")
+      return (dw.getDocumentDOM().hasCharacterMarkup("i"));
+    if (what == "U")
+      return (dw.getDocumentDOM().hasCharacterMarkup("u"));
+    if (what == "S")
+      return (dw.getDocumentDOM().hasCharacterMarkup("s"));
+    if (what == "TT")
+      return (dw.getDocumentDOM().hasCharacterMarkup("tt"));
+    if (what == "EM")
+      return (dw.getDocumentDOM().hasCharacterMarkup("em"));
+    if (what == "strong")
+      return (dw.getDocumentDOM().hasCharacterMarkup("strong"));
+    if (what == "code")
+      return (dw.getDocumentDOM().hasCharacterMarkup("code"));
+    if (what == "var")
+      return (dw.getDocumentDOM().hasCharacterMarkup("var"));
+    if (what == "samp")
+      return (dw.getDocumentDOM().hasCharacterMarkup("samp"));
+    if (what == "kbd")
+      return (dw.getDocumentDOM().hasCharacterMarkup("kbd"));
+    if (what == "cite")
+      return (dw.getDocumentDOM().hasCharacterMarkup("cite"));
+    if (what == "dfn")
+      return (dw.getDocumentDOM().hasCharacterMarkup("dfn"));
+    if (what == "del")
+      return (dw.getDocumentDOM().hasCharacterMarkup("del"));
+    if (what == "ins")
+      return (dw.getDocumentDOM().hasCharacterMarkup("ins"));
+    else
+      return false;
+  }
+  else
+  {
+    return false;
+  }  
+}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

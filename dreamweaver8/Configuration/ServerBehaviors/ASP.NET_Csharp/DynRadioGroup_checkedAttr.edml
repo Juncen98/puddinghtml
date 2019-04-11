@@ -1,0 +1,7 @@
+<participant version="5.0">
+	<insertText location="nodeAttribute+Checked" nodeParamName="radioNodes"><![CDATA[<%# (@@expression1@@ == "@@expression2@@") ? true : false %>]]></insertText>
+  <searchPatterns whereToSearch="tag+asp:radiobutton">
+		<searchPattern paramNames="expression1,expression2" isOptional="false"><![CDATA[/\s*<%#\s*\(([^\r\n]*?)\s*==\s* "([^\r\n]*?)"\)\s*\?\s*true\s*\:\s*false\s*%>/i]]></searchPattern>
+	</searchPatterns>
+</participant>
+

@@ -1,0 +1,139 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>GETGATEWAYHELPER</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">GETGATEWAYHELPER</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Gets a Java GatewayHelper object that provides methods and properties for use with a ColdFusion event gateway.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+A Java GatewayHelper object.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Extensibility functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>GetGatewayHelper(gatewayID)
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+SendGatewayMessage
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7: Added the function.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+The ColdFusion GetGatewayHelper function returns a Java GatewayHelper object that provides event gateway-specific helper methods and properties. To use this function, the event gateway must provide access to a class that implements the GatewayHelper class. For example, an instant messaging event gateway might make buddy-list management functions available in a GatewayHelper object. 
+</p>
+
+<p>
+An event gateway listener CFC can get the gatewayID value from the CFEvent structure of the incoming message.
+</p>
+
+<p>
+You access the GatewayHelper object's methods and properties using standard ColdFusion Java object access techniques. For more information, see "The role of the GatewayHelper object" in Chapter&#160;42, "Using Event Gateways," in ColdFusion MX Developer's Guide.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+If an event gateway's helper class includes an addBuddy method that takes a single String parameter, you could use the following code to get the GatewayHelper object and add a buddy to the buddies list:
+</p>
+<pre>&lt;h3&gt;GetGatewayHelper Example&lt;/h3&gt;
+&lt;cfscript&gt;
+   myHelper = getGatewayHelper(myGatewayID);
+   status = myHelper.addBuddy("jsmith");
+&lt;/cfscript&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="GATEWAYID">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">GATEWAYID</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Identifier of the gateway that provides the GatewayHelper object. Must be the Gateway ID of one of the ColdFusion event gateway instances configured on the ColdFusion MX Administrator Event Gateways section's Gateways page.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

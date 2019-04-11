@@ -1,0 +1,19 @@
+<participant name="LastRecord">
+  <translator priority=400>
+    <searchPatterns>
+      <searchPattern><![CDATA[/<%=/]]></searchPattern>
+      <searchPattern><![CDATA[/\.EndRecord/]]></searchPattern>
+      <searchPattern paramNames="rs"><![CDATA[/<%=\s*(\w+)\.EndRecord\s*%>/i]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="directive" translationType="dynamic data">
+        <openTag>MM_DYNAMIC_CONTENT</openTag>
+        <attributes>
+          <attribute><![CDATA[SOURCE=@@rs@@]]></attribute>
+        </attributes>
+        <display><![CDATA[{@@rs@@.LastRecord}]]></display>
+        <closeTag>MM_DYNAMIC_CONTENT</closeTag>
+      </translation>
+    </translations>
+  </translator>
+</participant>

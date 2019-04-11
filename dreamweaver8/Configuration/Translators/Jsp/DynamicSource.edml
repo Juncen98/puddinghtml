@@ -1,0 +1,16 @@
+<participant name="DynamicSource">
+		<translator>
+			<searchPatterns>
+				<searchPattern paramNames="rs"><![CDATA[/[\r\n]+\s*Resultset\s+(\w+)\s*=\s*Statement\1\.executeQuery\(\s*\)/i]]></searchPattern>
+			</searchPatterns>
+			<translations>
+				<translation whereToSearch="directive" translationType="dynamic source">
+					<openTag>MM_RECORDSET</openTag>
+					<attributes>
+						<attribute><![CDATA[NAME="@@rs@@"]]></attribute>
+					</attributes>
+					<closeTag>MM_RECORDSET</closeTag>
+				</translation>
+			</translations>
+		</translator>
+</participant>

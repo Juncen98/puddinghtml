@@ -1,0 +1,61 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>м╪оЯиообнд</TITLE>
+<SCRIPT LANGUAGE="javascript">
+<!--
+function receiveArguments()
+{
+	var align = arguments[0];
+
+	if (align == "default")
+		dw.getDocumentDOM().setAttributeWithErrorChecking('ALIGN', '')
+	else
+		dw.getDocumentDOM().setAttributeWithErrorChecking('ALIGN', align)
+	return true;
+}
+
+function canAcceptCommand(){
+	//explicitly check for an image.
+	var dom = dw.getDocumentDOM();
+	var node = dom.getSelectedNode();
+	return (node.tagName && node.tagName == 'IMG');
+}
+
+function isCommandChecked()
+{
+	var selarray = dw.getSelection();
+	var theNode = dw.offsetsToNode(selarray[0],selarray[1]);
+	var alignAttr = "";
+	var align = arguments[0];
+
+	if (theNode.nodeType == Node.ELEMENT_NODE)
+	{
+		if (theNode.tagName == "IMG")
+		{
+			alignAttr = theNode.getAttribute("ALIGN");
+
+			if (align == "default")
+				return (alignAttr == null);
+			else if ( alignAttr )
+			{
+				reg = new RegExp( "^"+align+"$", "i" );
+				if ( alignAttr.match( reg ) )
+					return true;
+			}
+
+			return false;
+		}
+		else
+			return false;
+	}
+	else
+		return false;
+}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

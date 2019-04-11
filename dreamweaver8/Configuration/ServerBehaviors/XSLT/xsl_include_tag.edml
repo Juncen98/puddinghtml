@@ -1,0 +1,10 @@
+<participant>
+  <searchPatterns whereToSearch="tag+xsl:include">
+    <searchPattern paramNames="xsl_include_url" limitSearch="attribute+href" />
+  </searchPatterns>
+  <translator>
+    <searchPatterns>
+      <searchPattern paramNames="xsl_includeUrl"><![CDATA[/<xsl:include\s+href\s*=\s*["|']([^"^']*)["|']\s*>/im]]></searchPattern>
+    </searchPatterns>
+  </translator>
+</participant>

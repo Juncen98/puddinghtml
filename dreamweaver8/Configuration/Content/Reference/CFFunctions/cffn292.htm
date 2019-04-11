@@ -1,0 +1,167 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>XMLNEW</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">XMLNEW</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Creates an XML document object.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+An empty XML document object.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+XML functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>XmlNew([caseSensitive])
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfxml, IsXmlDoc, ToString, XmlFormat, XmlParse, XmlValidate; Chapter&#160;35, "Using XML and WDDX" in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX: Added this function.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+An XML document object is represented in ColdFusion as a structure.
+</p>
+
+<p>
+The caseSensitive parameter value determines whether identifiers whose characters are of varying case, but are otherwise the same, refer to different components; for example:
+</p>
+<ul>
+
+<li>If True, the element or attribute names "name" and "NAME" refer to different elements or attributes.</li>
+
+<li>If False, these names refer to the same elements or attributes.</li>
+</ul>
+
+<p>
+If your XML object is case sensitive, you cannot use dot notation to reference an element or attribute name. Use the name in associative array (bracket) notation, or a reference that does not use the case-sensitive name (such as xmlChildren[1]) instead. In the following code, the first line will work with a case-sensitive XML object. The second and third lines cause errors:
+</p>
+<pre>MyDoc.xmlRoot.XmlAttributes[&quot;Version&quot;] = &quot;12b&quot;;
+MyDoc.xmlRoot.XmlAttributes.Version = &quot;12b&quot;;
+MyDoc.MyRoot.XmlAttributes[&quot;Version&quot;] = &quot;12b&quot;;
+</pre>
+<p>
+To convert an XML document object into a string, use the ToString function.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+The following example creates and displays a ColdFusion document object:
+</p>
+<pre>&lt;cfset testVar = True&gt;
+&lt;cfscript&gt;
+   MyDoc = XmlNew();
+   MyDoc.xmlRoot = XmlElemNew(MyDoc,&quot;MyRoot&quot;);
+   if (testVar IS TRUE)
+      MyDoc.MyRoot.XmlText = &quot;The value of testVar is True.&quot;;
+   else 
+      MyDoc.MyRoot.XmlText = &quot;The value of testVar is False.&quot;;
+   for (i = 1; i LTE 4; i = i + 1)   {
+      MyDoc.MyRoot.XmlChildren[i] = XmlElemNew(MyDoc,&quot;childNode&quot;);
+      MyDoc.MyRoot.XmlChildren[i].XmlText = &quot;This is Child node &quot; &amp; i &amp;&quot;.&quot;;
+      }
+&lt;/cfscript&gt;
+&lt;cfdump var=#MyDoc#&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="CASESENSITIVE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">CASESENSITIVE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Determines how ColdFusion processes the case of XML document object component identifiers:</p><ul>
+
+<li>True: maintains case </li>
+
+<li>False: ColdFusion ignores case. Default.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

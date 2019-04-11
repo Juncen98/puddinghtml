@@ -1,0 +1,114 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<HTML>
+<HEAD>
+
+<!-- Copyright 2002 Macromedia, Inc. All rights reserved. -->
+
+<!-- Common Functions-->
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+
+<!-- Server Behavior Classes -->
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/TagEditClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/SQLStatementClass.js"></SCRIPT>
+
+<!-- Control Classes -->
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/ConnectionTableMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/ConnectionMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/TextField.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/ListMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/TagMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/FormFieldsMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/ConnectionColumnMenu.js"></SCRIPT>
+
+<SCRIPT src="InsertRecord.js"></SCRIPT>
+
+<title>插入记录</title>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY onload="initializeUI();">
+<FORM name="theForm">
+  <table border="0">
+    <tr valign="baseline">
+      <td align="right" nowrap>提交值，自: </td>
+      <td nowrap>
+        <select name="form__tag" class="tagList" onChange="updateUI('FormName','onChange')">
+        </select>
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>连接:</td>
+      <td nowrap>
+        <select name="ConnectionName" class="connNameList" onChange="updateUI('ConnectionName','onChange')" wrap="virtual">
+        </select>
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td align="right">插入表格:</td>
+      <td>
+        <select name="TableName" class="connRSTableList" onChange="updateUI('TableName')" wrap="virtual">
+        </select>
+      </td>
+    </tr>
+
+    <tr><td height="1"></td></tr>
+    <TR>
+      <TD></TD>
+      <TD valign="baseline" rowspan="2" nowrap>
+        <SELECT name="ColumnList" size="8" class="columnDescList" onChange="updateUI('ColumnList')">
+        </select>
+      </TD>
+    </TR>
+    <TR>
+      <TD align="right" valign="top" nowrap>列:</TD>
+    </TR>
+
+    <tr valign="baseline">
+      <td align="right"></td>
+      <td>
+        <table border="0">
+          <tr>
+            <td align="right" valign="baseline" nowrap>值:</td>
+            <td valign="baseline" nowrap>
+              <select name="SubmittedValueList" class="columnNameList" onChange="updateUI('SubmittedValueList', 'onChange')" wrap="virtual">
+                <OPTION selected></OPTION>
+              </select>
+            </td>
+          </tr>
+          <tr><td height="1"></td></tr>
+          <tr>
+            <td align="right" valign="baseline" nowrap>提交为: </td>
+            <td valign="baseline" nowrap>
+               <select name="FieldColFormat" class="dataTypeList" onChange="updateUI('FieldColFormat')">
+                <!-- Format values: value="char to wrap with, alt value if not wrapping, default value if empty, is Primary Key" -->
+                <option value="',none,none" selected  >文本</option>
+                <option value="none,0,NULL"           >整数</option>
+                <option value="none,.,NULL"           >双精度</option>
+                <option value="',none,NULL"           >日期</option>
+                <option value="none,Y,N"              >复选框 Y,N</option>
+                <option value="none,1,0"              >复选框 1,0</option>
+                <option value="none,-1,0"             >复选框 -1,0</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap>插入后，转到:</td>
+      <td valign="baseline" nowrap>
+      <input name="Redirect_url" type="text" class="xlargeTField">
+        &nbsp;
+      <input type="button" value="浏览..." onClick="updateUI('Redirect_url');focus(this);">
+      </td>
+    </tr>
+  </TABLE>
+</FORM>
+
+</BODY>
+</HTML>

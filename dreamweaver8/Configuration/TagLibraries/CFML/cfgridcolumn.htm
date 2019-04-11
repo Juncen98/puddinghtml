@@ -1,0 +1,303 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFGRIDCOLUMN</title>
+<styleplaceholder>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var HEADERALIGNLIST;
+var DATAALIGNLIST;
+var FONTLIST;
+var HEADERFONTLIST;
+var TYPELIST;
+var theUIObjects;
+
+// Color control elements
+var COLORP_BGCOLOR, COLORP_TEXTCOLOR, COLORP_COLHEAD; 
+var TEXT_BGCOLOR, TEXT_TEXTCOLOR, TEXT_COLHEADCOLOR;
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj,theUIObjects); 
+	updateColors();
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj,theUIObjects); 
+}
+
+function updateUI(itemName)
+{
+  switch(itemName)
+  {
+    case "bgColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_BGCOLOR,TEXT_BGCOLOR,true);
+      break;
+    }
+    case "bgcolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_BGCOLOR,TEXT_BGCOLOR,true);
+      break;
+    }
+    case "textColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_TEXTCOLOR,TEXT_TEXTCOLOR,true);
+      break;
+    }
+    case "textcolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_TEXTCOLOR,TEXT_TEXTCOLOR,true);
+      break;
+    }
+    case "colTextColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_COLHEAD,TEXT_COLHEADCOLOR,true);
+      break;
+    }
+    case "colheadertextcolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_COLHEAD,TEXT_COLHEADCOLOR,true);
+      break;
+    }
+  }
+}
+
+function updateColors()
+{
+  tagDialog.updateColorPicker("colorField",COLORP_BGCOLOR,TEXT_BGCOLOR);
+  tagDialog.updateColorPicker("colorField",COLORP_TEXTCOLOR,TEXT_TEXTCOLOR);
+  tagDialog.updateColorPicker("colorField",COLORP_COLHEAD,TEXT_COLHEADCOLOR);
+}
+
+function initializeUI()
+{
+  // fix up dialog if its an OSX but linking to a style sheet (only for OSX) 
+  tagDialog.setOSXStyleSheetIfNeeded(); 
+
+	HEADERALIGNLIST = new ListControl("theheaderalign"); 
+	DATAALIGNLIST = new ListControl("thedataalign"); 
+	FONTLIST = new ListControl("thefont"); 
+	HEADERFONTLIST = new ListControl("theheaderfont"); 
+	TYPELIST = new ListControl("thetype"); 
+
+	theUIObjects = new Array(HEADERALIGNLIST, DATAALIGNLIST,FONTLIST,HEADERFONTLIST, TYPELIST); 
+
+  COLORP_BGCOLOR = dwscripts.findDOMObject("bgColorPicker");
+  COLORP_TEXTCOLOR = dwscripts.findDOMObject("textColorPicker"); 
+  COLORP_COLHEAD = dwscripts.findDOMObject("colTextColorPicker"); 
+
+  TEXT_BGCOLOR = dwscripts.findDOMObject("thebgcolor");
+  TEXT_TEXTCOLOR = dwscripts.findDOMObject("thetextcolor");
+  TEXT_COLHEADCOLOR = dwscripts.findDOMObject("thecolheadertextcolor");
+
+  tagDialog.populateDropDownList(HEADERALIGNLIST, theVericalAlignmentsCap, theVericalAlignmentsVal, 0); 
+  tagDialog.populateDropDownList(DATAALIGNLIST, theVericalAlignmentsCap, theVericalAlignmentsVal, 0); 
+  tagDialog.populateDropDownList(FONTLIST, dw.getSystemFontList('all'), dw.getSystemFontList('all'), 1);   
+  tagDialog.populateDropDownList(HEADERFONTLIST, dw.getSystemFontList('all'), dw.getSystemFontList('all'), 1);   
+  tagDialog.populateDropDownList(TYPELIST, theGridColTypeCap, theGridColTypeVal, 1); 
+  
+  DATAALIGNLIST.setIndex(4);
+  HEADERALIGNLIST.setIndex(4); 
+  
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="initializeUI();">
+
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap"> 
+        <input name="thename" type="text" class="medTField" id="attr:cfgridcolumn:name" attname="name" required="true" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">数据对齐方式: </td>
+      <td nowrap="nowrap"> 
+        <select name="thedataalign" class="alignList" id="attr:cfgridcolumn:dataalign" attname="dataalign">
+        </select>
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">字体: </td>
+      <td nowrap="nowrap"> 
+        <select name="thefont" class="fontList" id="attr:cfgridcolumn:font" attname="font" editable="true">
+        </select>
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">字体大小: </td>
+      <td nowrap="nowrap"> 
+        <input name="thefontsize" type="text" class="smallNumOrChar" id="attr:cfgridcolumn:fontsize" attname="fontsize" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">文本颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="textColorPicker" value="" onChange="updateUI('textColorPicker')"> <input name="thetextcolor" type="text" class="smallTField" id="att:cfgrid:textcolor" onBlur="updateUI('textcolor')" value="" attname="textcolor"> 
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">背景颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="bgColorPicker" value="" onChange="updateUI('bgColorPicker')"> <input name="thebgcolor" type="text" class="smallTField" id="att:cfgrid:bgcolor" onBlur="updateUI('bgcolor')" value="" attname="bgcolor"> 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">宽度: </td>
+      <td nowrap="nowrap"> 
+        <input name="thewidth" type="text" class="smallNumOrChar" id="attr:cfgridcolumn:width" attname="width" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">数值格式 </td>
+      <td nowrap="nowrap"> 
+        <input name="thenumberformat" type="text" class="medTField" id="attr:cfgridcolumn:numberformat" attname="numberformat" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">HREF: </td>
+      <td nowrap="nowrap"> 
+        <input name="thehref" type="text" class="largeTField" id="attr:cfgridcolumn:href" attname="href" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">HREF 关键字: </td>
+      <td nowrap="nowrap"> 
+        <input name="thehrefkey" type="text" class="medTField" id="attr:cfgridcolumn:hrefkey" attname="hrefkey" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">URL 目标: </td>
+      <td nowrap="nowrap"> 
+        <input name="thetarget" type="text" class="medTField" id="attr:cfgridcolumn:target" attname="target" />
+      </td>
+    </tr>  
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">类型: </td>
+      <td nowrap="nowrap"> 
+        <select name="thetype" class="dataTypeList" id="attr:cfgridcolumn:type" attname="type" editable="true">
+        </select>
+      </td>
+    </tr>
+	 <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">蒙版: </td>
+      <td nowrap="nowrap"> 
+        <input name="themask" class="dataTypeList" id="attr:cfgridcolumn:mask" attname="mask" >
+        
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap"> 
+        <input type="checkbox" id="attr:cfgridcolumn:bold" name="thebold" attname="bold" truevalue="yes" falsevalue="no" /> 粗体
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap"> 
+        <input type="checkbox" id="attr:cfgridcolumn:italic" name="theitalic" attname="italic" truevalue="yes" falsevalue="no" /> 斜体
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap"> 
+        <input type="checkbox" id="attr:cfgridcolumn:select" name="theselect" attname="select" truevalue="yes" falsevalue="no" /> 选择
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap"> 
+        <input type="checkbox" id="attr:cfgridcolumn:display" name="thedisplay" attname="display" truevalue="yes" falsevalue="no" checked="true" /> 显示
+      </td>
+    </tr>
+  </table>
+</div>
+<div name="标题选项"> 
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">标题: </td>
+      <td nowrap="nowrap"> 
+        <input name="theheader" type="text" class="medTField" id="attr:cfgridcolumn:header" attname="header" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">标题对齐方式: </td>
+      <td nowrap="nowrap"> 
+        <select name="theheaderalign" class="alignList" id="attr:cfgridcolumn:headeralign" attname="headeralign" editable="false">
+        </select>
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">字体: </td>
+      <td nowrap="nowrap"> 
+        <select name="theheaderfont" class="fontList" id="attr:cfgridcolumn:headerfont" attname="headerfont" editable="true">
+        </select>
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">字体大小: </td>
+      <td nowrap="nowrap"> 
+        <input name="theheaderfontsize" type="text" class="smallNumOrChar" id="attr:cfgridcolumn:headerfontsize" attname="headerfontsize" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">标题文本颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="colTextColorPicker" value="" onChange="updateUI('colTextColorPicker')"> <input name="thecolheadertextcolor" type="text" class="smallTField" id="att:cfgrid:colheadertextcolor" onBlur="updateUI('colheadertextcolor')" value="" attname="colheadertextcolor"> 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap"> 
+        <input type="checkbox" id="attr:cfgridcolumn:headerbold" name="theheaderbold" attname="headerbold" truevalue="yes" falsevalue="no" /> 粗体
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap"> 
+        <input type="checkbox" id="attr:cfgridcolumn:headeritalic" name="theheaderitalic" attname="headeritalic" truevalue="yes" falsevalue="no" /> 斜体
+      </td>
+    </tr>
+  </table> 
+</div> 
+<div name="值"> 
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">值: </td>
+      <td nowrap="nowrap"> 
+        <input name="thevalues" type="text" class="basicTextField" id="attr:cfgridcolumn:values" attname="values" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">值显示: </td>
+      <td nowrap="nowrap"> 
+        <input name="thevaluesdisplay" type="text" class="basicTextField" id="attr:cfgridcolumn:valuesdisplay" attname="valuesdisplay" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">值分隔符: </td>
+      <td nowrap="nowrap"> 
+        <input name="thevaluesdelimiter" type="text" class="basicTextField" id="attr:cfgridcolumn:valuesdelimiter" attname="valuesdelimiter" />
+      </td>
+    </tr>
+  </table> 
+</div> 
+</body>
+</html>

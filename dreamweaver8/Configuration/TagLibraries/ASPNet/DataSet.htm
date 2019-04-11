@@ -1,0 +1,138 @@
+<!-- Copyright 2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>数据集</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script>
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj); 
+}
+
+function setCreateDataSet(storedProcBox){
+  var createDataSet = dwscripts.findDOMObject('thecreatedataset');
+  if (storedProcBox.checked == true){
+    createDataSet.setAttribute("falsevalue","false");
+  }else{
+    createDataSet.setAttribute("falsevalue","false");
+  }
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div name="常规"> 
+  <input type="hidden" name="therunat" attname="runat" value="server" required="true" /> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="aspnet:dataset:id" attname="id" required="true" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">连接字符串: </td>
+      <td nowrap="nowrap">
+        <input name="theconnectionstring" type="text" class="basicTextField" id="aspnet:dataset:connectionstring" attname="ConnectionString" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">数据库类型: </td>
+      <td nowrap="nowrap">
+        <input name="thedatabasetype" type="text" class="basicTextField" id="aspnet:dataset:databasetype" attname="DatabaseType" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">命令文本 </td>
+      <td nowrap="nowrap">
+        <input name="thecommandtext" type="text" class="basicTextField" id="aspnet:dataset:commandtext" attname="commandtext" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">当前页: </td>
+      <td nowrap="nowrap">
+        <input name="thecurrentpage" type="text" class="basicTextField" id="aspnet:dataset:currentpage" attname="currentpage" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">成功 URL: </td>
+      <td nowrap="nowrap">
+        <input name="thesuccessurl" type="text" class="basicTextField" id="aspnet:dataset:successurl" attname="successurl" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">失败 URL: </td>
+      <td nowrap="nowrap">
+        <input name="thefailureurl" type="text" class="basicTextField" id="aspnet:dataset:failureurk" attname="FailureURL" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">起始行: </td>
+      <td nowrap="nowrap">
+        <input name="thestartrow" type="text" class="basicTextField" id="aspnet:dataset:startrow" attname="startrow" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">最大记录数: </td>
+      <td nowrap="nowrap">
+        <input name="themaxrecords" type="text" class="basicTextField" id="aspnet:dataset:maxrecords" attname="maxrecords" />
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">页面尺寸: </td>
+      <td nowrap="nowrap">
+        <input name="thepagesize" type="text" class="basicTextField" id="aspnet:dataset:pagesize" attname="pagesize" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">表格名称: </td>
+      <td nowrap="nowrap">
+        <input name="thetablename" type="text" class="basicTextField" id="aspnet:dataset:tablename" attname="tablename" />
+      </td>
+    </tr>
+   <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:dataset:debug" name="thedebug" attname="debug" truevalue="true" falsevalue="false" /> 调试
+      </td>
+    </tr>  
+
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:dataset:getrecordcount" name="thegetrecordCount" attname="getrecordcount" truevalue="true" falsevalue="" /> 获取记录计数
+      </td>
+    </tr>  
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:dataset:isstoredprocedure" name="theisstoredprocedure" attname="isstoredprocedure" truevalue="true" falsevalue="false" onClick="setCreateDataSet(this)" /> 是预存过程
+      </td>
+    </tr>  
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:dataset:createdataset" name="thecreatedataset" attname="createdataset" truevalue="true" falsevalue="" /> 创建数据集
+      </td>
+    </tr>  
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:dataset:expression" name="theexpression" attname="expression" truevalue="true" falsevalue="" /> 表达式
+      </td>
+    </tr>  
+  </table>
+</body>
+</html>

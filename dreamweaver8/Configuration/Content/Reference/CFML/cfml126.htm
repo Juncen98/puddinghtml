@@ -1,0 +1,370 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFTABLE</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFTABLE</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Builds a table in a ColdFusion page. This tag renders data as preformatted text, or, with the HTMLTable attribute, in an HTML table. If you don&#39;t want to write HTML table tag code, or if your data can be presented as preformatted text, use this tag. 
+</p>
+
+<p>
+Preformatted text (defined in HTML with the &lt;pre&gt; and &lt;/pre&gt; tags) displays text in a fixed-width font. It displays white space and line breaks exactly as they are written within the pre tags. For more information, see an HTML reference guide.
+</p>
+
+<p>
+To define table column and row characteristics, use the cfcol tag within this tag.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Data output tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cftable 
+   query = &quot;query_name&quot;
+   maxRows = &quot;maxrows_table&quot;
+   colSpacing = &quot;number_of_spaces&quot;
+   headerLines = &quot;number_of_lines&quot;
+   HTMLTable
+   border
+   colHeaders
+   startRow = &quot;row_number&quot;&gt;
+   ...
+&lt;/cftable&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfcol, cfcontent, cflog, cfoutput, cfprocessingdirective, cftable; "Retrieving data" in Chapter&#160;20, "Accessing and Retrieving Data," in ColdFusion MX Developer's Guide
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+This tag aligns table data, sets column widths, and defines column heads. 
+</p>
+
+<p>
+At least one cfcol tag is required within this tag. You must put cfcol and cftable tags adjacent in a page. The only tag that you can nest within this tag is the cfcol tag. You cannot nest cftable tags.
+</p>
+
+<p>
+To display the cfcol header text, you must specify the cfcol header and the cftable colHeader attribute. If you specify either attribute without the other, the header does not display and no error is thrown.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!--- This example shows the use of cfcol and cftable to align information 
+returned from a query. ---&gt;
+&lt;!--- This query selects employee information from cfdocexamples 
+datasource. ---&gt;
+&lt;cfquery name = &quot;GetEmployees&quot; dataSource = &quot;cfdocexamples&quot;&gt;
+   SELECT Emp_ID, FirstName, LastName, EMail, Phone, Department
+   FROM Employees
+&lt;/cfquery&gt;
+
+&lt;html&gt;
+&lt;body&gt;
+&lt;h3&gt;cftable Example&lt;/h3&gt;
+
+&lt;!--- Note use of HTMLTable attribute to display cftable as an HTML table, 
+rather than as PRE formatted information. ---&gt;
+&lt;cftable query = &quot;GetEmployees&quot; 
+   startRow = &quot;1&quot; colSpacing = &quot;3&quot; HTMLTable&gt;
+&lt;!--- Each cfcol tag sets width of a column in table, and specifies header
+information and text/CFML with which to fill cell. ---&gt;
+   &lt;cfcol header = &quot;&lt;b&gt;ID&lt;/b&gt;&quot;
+      align = &quot;Left&quot;
+      width = 2
+      text  = &quot;#Emp_ID#&quot;&gt;
+      
+   &lt;cfcol header = &quot;&lt;b&gt;Name/Email&lt;/b&gt;&quot;   
+      align = &quot;Left&quot;
+      width = 15
+      text  = &quot;&lt;a href = 'mailto:#Email#'&gt;#FirstName# #LastName#&lt;/A&gt;&quot;&gt;
+
+   &lt;cfcol header = &quot;&lt;b&gt;Phone Number&lt;/b&gt;&quot;
+      align = &quot;Center&quot;
+      width = 15
+      text  = &quot;#Phone#&quot;&gt;
+&lt;/cftable&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="QUERY">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">QUERY</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of cfquery from which to draw data.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="MAXROWS">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">MAXROWS</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Maximum number of rows to display in the table.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="COLSPACING">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">COLSPACING</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "2"
+
+
+<p>Number of spaces between columns. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="HEADERLINES">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">HEADERLINES</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "2"
+
+
+<p>Number of lines to use for table header (the default leaves one line between header and first row of table).</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="HTMLTABLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">HTMLTABLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Renders data in an HTML 3.0 table.</p>
+<p>If you use this attribute (regardless of its value), ColdFusion renders data in an HTML table. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="BORDER">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">BORDER</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Displays border around table. </p>
+<p>If you use this attribute (regardless of its value), ColdFusion displays a border around the table.</p>
+<p>Use this only if you use the HTMLTable attribute.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="COLHEADERS">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">COLHEADERS</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Displays column heads. If you use this attribute, you must also use the cfcol tag header attribute to define them. </p>
+<p>If you use this attribute (regardless of its value), ColdFusion displays column heads. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="STARTROW">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STARTROW</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "1"
+
+
+<p>The query result row to put in the first table row. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

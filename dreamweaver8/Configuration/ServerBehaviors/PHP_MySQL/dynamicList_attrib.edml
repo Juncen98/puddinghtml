@@ -1,0 +1,9 @@
+<participant>
+     <insertText location="nodeAttribute" nodeParamName="radioNode">
+<![CDATA[ <?php if (!(strcmp(@@expression2@@, @@expression1@@))) {echo "@@selected@@";} ?>]]>
+     </insertText>
+     <searchPatterns whereToSearch="tag+option">
+       <searchPattern paramNames="expression2,expression1,selected" limitSearch="tagOnly"><![CDATA[/ <\?php if \(!\(strcmp\(([^\r\n]*?), ([^\r\n]*?)\)\)\) \{echo "([^\r\n]*?)";\} \?>/i]]></searchPattern>
+     </searchPatterns>
+</participant>
+

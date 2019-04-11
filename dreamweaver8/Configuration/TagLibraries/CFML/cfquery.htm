@@ -1,0 +1,167 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFQUERY</title>
+  <link rel="stylesheet" href="../../fields.css">
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var DBTYPELIST;
+var theUIObjects;
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function initializeUI()
+{
+	DBTYPELIST = new ListControl("thedbtype"); 
+	theUIObjects = new Array(DBTYPELIST); 
+
+  tagDialog.populateDropDownList(DBTYPELIST, theQueryDBTypeCap, theQueryDBTypeVal, 1)
+}
+
+</script>
+</head>
+
+<body onLoad="initializeUI();">
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline"> 
+      <td valign="baseline" align="right" nowrap="nowrap">查询名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:cfquery:name" attname="name" required="true" />
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td valign="baseline" align="right" nowrap="nowrap">数据源: </td>
+      <td nowrap="nowrap">
+        <input name="thedatasource" type="text" class="basicTextField" id="attr:cfquery:datasource" attname="datasource" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">用户名: </td>
+      <td nowrap="nowrap">
+        <input name="theusername" type="text" class="basicTextField" id="attr:cfquery:username" attname="username" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">密码: </td>
+      <td nowrap="nowrap">
+        <input name="thepassword" type="text" class="basicTextField" id="attr:cfquery:password" attname="password" />
+      </td>
+    </tr>
+	<tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">结果: </td>
+      <td nowrap="nowrap">
+        <input name="theresult" type="text" class="basicTextField" id="attr:cfquery:result" attname="result" />
+      </td>
+    </tr>
+    <tr> 
+      <td align="right" valign="top" nowrap="nowrap">SQL: </td>
+      <td nowrap="nowrap">
+        <textarea name="innerHTML" attname="innerHTML" id="aspnet:panel:onunload" class="contentsField" ></textarea>
+      </td> 
+    </tr>  
+  </table> 
+</div>
+
+<div name="连接"> 
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">DB 服务器: </td>
+      <td nowrap="nowrap">
+        <input name="thedbserver" type="text" class="basicTextField" id="attr:cfquery:dbserver" attname="dbserver" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">DB 名称: </td>
+      <td nowrap="nowrap">
+        <input name="thedbname" type="text" class="basicTextField" id="attr:cfquery:dbname" attname="dbname" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">提供程序: </td>
+      <td nowrap="nowrap">
+        <input name="theprovider" type="text" class="basicTextField" id="attr:cfquery:provider" attname="provider" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">提供程序 DSN: </td>
+      <td nowrap="nowrap">
+        <input name="theproviderdsn" type="text" class="basicTextField" id="attr:cfquery:providerdsn" attname="providerdsn" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">连接字符串: </td>
+      <td nowrap="nowrap">
+        <input name="theconnectstring" type="text" class="basicTextField" id="attr:cfquery:connectstring" attname="connectstring" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">DB 类型: </td>
+      <td nowrap="nowrap"> 
+        <select name="thedbtype" class="oneWordOptionList" id="attr:cfquery:dbtype" attname="dbtype" editable="true">
+        </select>
+      </td>
+    </tr> 
+    <tr valign="baseline">  
+      <td valign="baseline" align="right" nowrap="nowrap">最大行数: </td>
+      <td nowrap="nowrap">
+        <input name="themaxrows" type="text" class="medTField" id="attr:cfquery:maxrows" attname="maxrows" />
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td valign="baseline" align="right" nowrap="nowrap">超时: </td>
+      <td nowrap="nowrap">
+        <input name="thetimeout" type="text" class="medTField" id="attr:cfquery:timeout" attname="timeout" />
+      </td>
+    </tr>
+    <tr nowrap="nowrap"> 
+      <td valign="baseline" align="right" nowrap="nowrap">块因子: </td>
+      <td nowrap="nowrap">
+        <input name="theblockfactor" type="text" class="medTField" id="attr:cfquery:blockfactor" attname="blockfactor" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfquery:debug" name="thedebug" attname="debug" truevalue="1" falsevalue="" />
+        打印调试信息</td>
+    </tr>
+  </table> 
+</div>
+<div name="持久性查询"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">在以下时间后缓存: </td>
+      <td nowrap="nowrap">
+        <input name="thecachedafter" type="text" class="basicTextField" id="attr:cfquery:cachedafter" attname="cachedafter" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">在以下时间段内缓存: </td>
+      <td nowrap="nowrap">
+        <input name="thecachedwithin" type="text" class="basicTextField" id="attr:cfquery:cachedwithin" attname="cachedwithin" />
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

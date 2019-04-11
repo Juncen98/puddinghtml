@@ -1,0 +1,505 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFCHARTSERIES</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFCHARTSERIES</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Used with the cfchart tag. This tag defines the chart style in which the data displays: bar, line, pie, and so on. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Data output tags, Extensibility tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfchartseries 
+   colorlist = &quot;list&quot;&gt;
+   itemColumn=&quot;queryColumn&quot;
+   markerStyle=&quot;style&quot;
+   paintStyle=&quot;plain, raise, shade, light&quot;
+   query=&quot;queryName&quot;
+   seriesColor=&quot;Hex value or Web color&quot; 
+   seriesLabel=&quot;Label Text&quot;
+   type=&quot;type&quot;
+   valueColumn=&quot;queryColumn&quot;
+   dataLabelStyle=&quot;style&quot;
+&lt;/cfchartseries&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfchart, cfchartdata; Chapter&#160;31, "Creating Charts and Graphs," in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7: Added the dataLabelStyle attribute and the horizontalbar chart type.
+</p>
+
+<p>
+ColdFusion MX&#160;6.1: Changed interpolation behavior: the tag now interpolates data points on line charts with multiple series.
+</p>
+
+<p>
+ColdFusion&#160;MX: Added this tag.
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+For a pie chart, ColdFusion sets pie slice colors as follows:
+</p>
+<ul>
+
+<li>If the seriesColor attribute is omitted, ColdFusion automatically determines the colors of the slices. </li>
+
+<li>If the seriesColor attribute is specified, ColdFusion automatically determines the colors of the slices after the first one, starting with the specified color for the first slice.</li>
+</ul>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!--- The following example analyzes the salary data in the cfdocexamples
+database and generates a bar chart showing average salary by department. ---&gt;
+
+&lt;!--- Get the raw data from the database. ---&gt;
+&lt;cfquery name=&quot;GetSalaries&quot; datasource=&quot;cfdocexamples&quot;&gt;
+SELECT Departmt.Dept_Name, 
+Employee.Dept_ID, 
+Employee.Salary
+FROM Departmt, Employee
+WHERE Departmt.Dept_ID = Employee.Dept_ID
+&lt;/cfquery&gt;
+
+&lt;!--- Use a query of queries to generate a new query with ---&gt;
+&lt;!--- statistical data for each department. ---&gt;
+&lt;!--- AVG and SUM calculate statistics. ---&gt;
+&lt;!--- GROUP BY generates results for each department. ---&gt;
+&lt;cfquery dbtype = &quot;query&quot; name = &quot;DataTable&quot;&gt;
+SELECT 
+Dept_Name,
+AVG(Salary) AS avgSal,
+SUM(Salary) AS sumSal
+FROM GetSalaries
+GROUP BY Dept_Name
+&lt;/cfquery&gt;
+
+&lt;!--- Reformat the generated numbers to show only thousands. ---&gt;
+&lt;cfloop index = &quot;i&quot; from = &quot;1&quot; to = &quot;#DataTable.RecordCount#&quot;&gt;
+&lt;cfset DataTable.sumSal[i] = Round(DataTable.sumSal[i]/1000)*1000&gt;
+&lt;cfset DataTable.avgSal[i] = Round(DataTable.avgSal[i]/1000)*1000&gt;
+&lt;/cfloop&gt;
+
+&lt;h1&gt;Employee Salary Analysis&lt;/h1&gt; 
+&lt;!--- Bar graph, from Query of Queries ---&gt;
+&lt;cfchart format=&quot;flash&quot; 
+xaxistitle=&quot;Department&quot; 
+yaxistitle=&quot;Salary Average&quot;&gt; 
+
+&lt;cfchartseries type=&quot;bar&quot; 
+query=&quot;DataTable&quot; 
+itemcolumn=&quot;Dept_Name&quot; 
+valuecolumn=&quot;avgSal&quot; /&gt;
+&lt;/cfchart&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="COLORLIST">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">COLORLIST</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Sets colors for each data point. Applies if the cfchartseries type attribute is pie, pyramid, area, horizontalbar, cone, cylinder, or step. </p>
+<p>Comma-delimited list of hexadecimal values or supported, named web colors; see the name list and information about six- and eight-digit hexadecimal values in the cfchart Usage section.</p>
+<p>For a hexadecimal value, use the form &quot;##xxxxxx&quot; or &quot;##xxxxxxxx&quot;, where x = 0-9 or A-F; use two number signs or none. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ITEMCOLUMN">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ITEMCOLUMN</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required if query attribute is specified</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of a column in the query specified in the query attribute; contains the item label for a data point to graph.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="MARKERSTYLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">MARKERSTYLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "rectangle"
+
+
+<p>Sets the icon that marks a data point for two-dimensional line, curve, and scatter graphs:</p><ul>
+
+<li>rectangle</li>
+
+<li>triangle</li>
+
+<li>diamond</li>
+
+<li>circle</li>
+
+<li>letter</li>
+
+<li>mcross</li>
+
+<li>snow</li>
+
+<li>rcross</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="PAINTSTYLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">PAINTSTYLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "plain"
+
+
+<p>Sets the paint display style of the data series:</p><ul>
+
+<li>plain: solid color.</li>
+
+<li>raise: the appearance of a button.</li>
+
+<li>shade: gradient fill, darker at the edges.</li>
+
+<li>light: a lighter shade of color; gradient fill.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="QUERY">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">QUERY</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of the ColdFusion query from which to get data to graph.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SERIESCOLOR">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SERIESCOLOR</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Color of the main element (such as the bars) of a chart. For a pie chart, the color of the first slice.</p>
+<p>Hexadecimal value or supported named color; see the name list and information about six- and eight-digit hexadecimal values in the Usage section for the cfchart tag.</p>
+<p>For a hexadecimal value, use the form &quot;##xxxxxx&quot; or &quot;##xxxxxxxx&quot;, where x = 0-9 or A-F; use two number signs or none. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SERIESLABEL">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SERIESLABEL</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Text of the data series label</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TYPE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TYPE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Sets the chart display style:</p><ul>
+
+<li>bar</li>
+
+<li>line</li>
+
+<li>pyramid</li>
+
+<li>area</li>
+
+<li>horizontalbar</li>
+
+<li>cone</li>
+
+<li>curve</li>
+
+<li>cylinder</li>
+
+<li>step</li>
+
+<li>scatter</li>
+
+<li>pie</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="VALUECOLUMN">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">VALUECOLUMN</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required if query attribute is specified</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of a column in the query specified in the query attribute; contains data values to graph.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DATALABELSTYLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DATALABELSTYLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "None"
+
+
+<p>Specifies the way in which the color is applied to the item in the series:</p><ul>
+
+<li>none: nothing is printed.</li>
+
+<li>value: the value of the datapoint.</li>
+
+<li>rowLabel: the row&#39;s label.</li>
+
+<li>columnLabel: the column&#39;s label.</li>
+
+<li>pattern: combination of column label, value, and aggregate information, such as columnLabel value for the percentage of total graph; for example, Sales 55,000 20% of 277,000.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

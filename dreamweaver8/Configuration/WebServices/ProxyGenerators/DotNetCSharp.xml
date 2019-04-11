@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxyrec>
+	<doctitle>
+		<![CDATA[Default Proxy Generator]]>
+	</doctitle>
+	<properties>
+		<filename>
+			<![CDATA[DefaultProxyGen.htm]]>
+		</filename>
+		<introspectorfilename>
+			<![CDATA[ReflectDotNet]]>
+		</introspectorfilename>
+		<servermodels>
+			<![CDATA[ASP.NET C#]]>
+		</servermodels>
+		<compileproxy>
+			<![CDATA[csc /t:library /r:system.web.services.dll *.cs]]>
+		</compileproxy>
+		<generateproxy>
+			<![CDATA[wsdl $$WSDLFILE]]>
+		</generateproxy>
+		<file>
+			<![CDATA[DotNetCSharp]]>
+		</file>
+		<outputdir>
+			<![CDATA[$$SITEROOT]]>
+		</outputdir>
+	</properties>
+</proxyrec>

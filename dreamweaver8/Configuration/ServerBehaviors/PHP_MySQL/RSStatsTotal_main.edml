@@ -1,0 +1,8 @@
+<participant version="5.0">
+	<insertText location="afterSelection"><![CDATA[<?php echo $totalRows_@@RecordsetName@@ ?>
+]]></insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="RecordsetName" isOptional="false" limitSearch="all"><![CDATA[/<\?php echo \$totalRows_([^\r\n]*?) \?>/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>$totalRows_</quickSearch>
+</participant>

@@ -1,0 +1,145 @@
+<html>
+<head>
+<title>&lt;xsl:call-template&gt;</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">&lt;xsl:call-template&gt;</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+Lets you invoke a particular template by name.  This invocation is a convenient way to create commonly used output.  For example, if you create an HTML page and all your HTML pages have the same masthead and footer, you could define templates named <span class="LITERAL">masthead</span> and <span class="LITERAL">footer</span>, then use <span class="LITERAL">&lt;xsl:call-template&gt;</span> to invoke those templates as needed. </td></tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Category</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>Instruction</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Required Attributes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<dl>
+<dt>
+name
+</dt>
+<dd>
+The name of the template you're invoking.
+<P></p>
+</dl>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Optional Attributes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>None.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Content</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>This element can contain any number of optional <span class="LITERAL">&lt;xsl:with-param&gt;</span> elements.  </p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Appears in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>
+<span class="LITERAL">&lt;xsl:call-template&gt;</span> appears inside a template.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Defined in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>XSLT section 6, Named Templates.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+
+<p>The <span class="LITERAL">&lt;xsl:call-template&gt;</span> element gives
+you an excellent way to create modular stylesheets.  In our case study
+(see <link linkend="xslt-CHP-9">Chapter 9</link>), we need to generate common items at
+the top and bottom of every HTML page we generate. We build a
+navigation bar and title bar at the top of each panel in a similar
+way. Rather than intermingle these templates with the rest of our
+stylesheets, we put the templates for the common sections of the HTML
+pages in a separate stylesheet, then reference them when
+needed. </p>
+
+<span class="PROGRAMLISTING"><pre>
+&lt;xsl:call-template name="dw-masthead"/&gt;
+&lt;xsl:call-template name="dw-title-bar"/&gt;
+&lt;xsl:call-template name="dw-nav-bar"&gt;
+  &lt;xsl:with-param name="includeMain" select="'youBetcha'"/&gt;
+  &lt;xsl:with-param name="sectionNumber" select="$sectionNumber"/&gt;
+  &lt;xsl:with-param name="position" select="$pos"/&gt;
+  &lt;xsl:with-param name="last" select="$last"/&gt;
+  &lt;xsl:with-param name="topOrBottom" select="'top'"/&gt;
+  &lt;xsl:with-param name="oneOrTwo" select="'two'"/&gt;
+&lt;/xsl:call-template&gt;
+
+&lt;!-- Processing for the main body of the page goes here --&gt;
+
+&lt;xsl:call-template name="dw-nav-bar"&gt;
+  &lt;xsl:with-param name="includeMain" select="'youBetcha'"/&gt;
+  &lt;xsl:with-param name="sectionNumber" select="$sectionNumber"/&gt;
+  &lt;xsl:with-param name="position" select="$pos"/&gt;
+  &lt;xsl:with-param name="last" select="$last"/&gt;
+  &lt;xsl:with-param name="topOrBottom" select="'bottom'"/&gt;
+  &lt;xsl:with-param name="oneOrTwo" select="'two'"/&gt;
+&lt;/xsl:call-template&gt;
+&lt;xsl:call-template name="dw-footer"/&gt;</pre></span>
+<p>In this code fragment, we've invoked four templates to generate
+  the look and feel we want our HTML pages to have. If we decide to
+  change the look and feel of our tutorials, changing those four named
+  templates lets us change the look and feel by simply transforming
+  the XML document again. See <link linkend="xslt-CHP-9-SECT-5.5">Section 9.5.5</link> in
+  <link linkend="xslt-CHP-9">Chapter 9</link> for details on how this works. </p>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

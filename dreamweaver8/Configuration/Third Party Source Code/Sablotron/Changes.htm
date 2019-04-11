@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Sablotron XSLT Processor Modifications</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<p>The source code to the Sablotron XSLT Processor supplied herewith has been 
+  changed as follows on or prior to May 22, 2002:</p>
+<hr>
+<p>Comparing files C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\base.h 
+  and C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\BASE.H</p>
+<p><br>
+  ***** C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\base.h<br>
+  36: <br>
+  37: #ifndef _WIN32<br>
+  38: #define HAVE_CONFIG_H<br>
+  39: #endif<br>
+  40: <br>
+  41: // GP: clean<br>
+  ***** C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\BASE.H<br>
+  36: <br>
+  37: // GP: clean<br>
+  ***** </p>
+<hr>
+<p>Comparing files C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\datastr.cpp 
+  and C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\DATASTR.CPP</p>
+<p><br>
+  ***** C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\datastr.cpp<br>
+  59: <br>
+  60: void DynBlock::remove()<br>
+  61: {<br>
+  ***** C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\DATASTR.CPP<br>
+  59: <br>
+  60: inline void DynBlock::remove()<br>
+  61: {<br>
+  *****</p>
+<hr>
+<p>Comparing files C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\datastr.h 
+  and C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\DATASTR.H</p>
+<p><br>
+  ***** C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\datastr.h<br>
+  75: // number of elements in list<br>
+  76: int number() const;<br>
+  77: // get element with given index<br>
+  ***** C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\DATASTR.H<br>
+  75: // number of elements in list<br>
+  76: inline int number() const;<br>
+  77: // get element with given index<br>
+  *****</p>
+<p>***** C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\datastr.h<br>
+  79: // get last element<br>
+  80: T&amp; last() const;<br>
+  81: // swap two elements with given indices<br>
+  ***** C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\DATASTR.H<br>
+  79: // get last element<br>
+  80: inline T&amp; last() const;<br>
+  81: // swap two elements with given indices<br>
+  *****</p>
+<hr>
+<p>Comparing files C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\platform.cpp 
+  and C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\PLATFORM.CPP</p>
+<p><br>
+  ***** C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\platform.cpp<br>
+  39: <br>
+  40: #if defined(HAVE_CONFIG_H) || defined(macintosh)<br>
+  41: #include &lt;autocfg.h&gt;<br>
+  ***** C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\PLATFORM.CPP<br>
+  39: <br>
+  40: #ifdef HAVE_CONFIG_H<br>
+  41: #include &lt;autocfg.h&gt;<br>
+  *****</p>
+<p>***** C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\platform.cpp<br>
+  118: #else<br>
+  119: #ifdef macintosh<br>
+  120: return 1.0;<br>
+  121: #else<br>
+  122: #error &quot;Can't find function ftime() or similar on this platform&quot;<br>
+  ***** C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\PLATFORM.CPP<br>
+  118: #else<br>
+  119: #error &quot;Can't find function ftime() or similar on this platform&quot;<br>
+  *****</p>
+<p>***** C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\platform.cpp<br>
+  123: #endif<br>
+  124: #endif<br>
+  125: return ret;<br>
+  ***** C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\PLATFORM.CPP<br>
+  120: #endif<br>
+  121: return ret;<br>
+  *****</p>
+<hr>
+<p>Comparing files C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\sablot.h 
+  and C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\SABLOT.H</p>
+<p><br>
+  ***** C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\sablot.h<br>
+  45: <br>
+  46: #ifdef _MSC_EXTENSIONS<br>
+  47: #if defined(WIN32) &amp;&amp; defined(_MSC_VER)<br>
+  ***** C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\SABLOT.H<br>
+  45: <br>
+  46: #if defined(WIN32) &amp;&amp; defined(_MSC_VER)<br>
+  *****</p>
+<p>***** C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\sablot.h<br>
+  55: #endif<br>
+  56: #else /* _MSC_EXTENSIONS */<br>
+  57: #define DllImpExp extern<br>
+  58: #endif /* _MSC_EXTENSIONS */<br>
+  59: <br>
+  ***** C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\SABLOT.H<br>
+  54: #endif<br>
+  55: <br>
+  *****</p>
+<p>***** C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\sablot.h<br>
+  67: <br>
+  68: #ifdef __cplusplus<br>
+  69: #define DeclBegin extern &quot;C&quot; { DllImpExp<br>
+  70: #define DeclEnd }<br>
+  71: #else<br>
+  72: #define DeclBegin DllImpExp<br>
+  73: #define DeclEnd<br>
+  74: #endif<br>
+  75: <br>
+  76: #define Declare(STATEMENT) DeclBegin STATEMENT DeclEnd<br>
+  ***** C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\SABLOT.H<br>
+  63: <br>
+  64: #define Declare(STATEMENT) DeclBegin STATEMENT DeclEnd<br>
+  *****</p>
+<hr>
+<p>Comparing files C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\sdom.cpp 
+  and C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\SDOM.CPP</p>
+<p><br>
+  ***** C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\sdom.cpp<br>
+  824: <br>
+  825: const Element &amp;docElement = (i &lt; root.contents.number()) ?<br>
+  826: *toE(root.contents[i]) : root;<br>
+  827: Expression queryEx((Element &amp;)docElement);<br>
+  828: *pResult = NULL;<br>
+  ***** C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\SDOM.CPP<br>
+  824: <br>
+  825: Element &amp;docElement = (i &lt; root.contents.number()) ?<br>
+  826: *toE(root.contents[i]) : root;<br>
+  827: Expression queryEx(docElement);<br>
+  828: *pResult = NULL;<br>
+  *****</p>
+<hr>
+<p>Comparing files C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\situa.h 
+  and C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\SITUA.H</p>
+<p><br>
+  ***** C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\situa.h<br>
+  111: // same, including the document identification <br>
+  112: void setCurrVDoc(Vertex *v);<br>
+  113: <br>
+  ***** C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\SITUA.H<br>
+  111: // same, including the document identification <br>
+  112: void Situation::setCurrVDoc(Vertex *v);<br>
+  113: <br>
+  *****</p>
+<hr>
+<p>Comparing files C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\verts.cpp 
+  and C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\VERTS.CPP</p>
+<p><br>
+  ***** C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\verts.cpp<br>
+  69: {XSLA_NONE, FALSE, FALSE, EX_NONE}<br>
+  70: };<br>
+  71: AttTable at_apply_templates = <br>
+  72: {<br>
+  ***** C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\VERTS.CPP<br>
+  69: {XSLA_NONE, FALSE, FALSE, EX_NONE}<br>
+  70: },<br>
+  71: at_apply_templates = <br>
+  72: {<br>
+  *****</p>
+<p>***** C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\verts.cpp<br>
+  74: {XSLA_MODE, FALSE, FALSE, EX_NONE}<br>
+  75: };<br>
+  76: AttTable at_attribute = <br>
+  77: {<br>
+  ***** C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\VERTS.CPP<br>
+  74: {XSLA_MODE, FALSE, FALSE, EX_NONE}<br>
+  75: },<br>
+  76: at_attribute = <br>
+  77: {<br>
+  *****</p>
+<p>***** C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\verts.cpp<br>
+  79: {XSLA_NAMESPACE, FALSE, TRUE, EX_STRING}<br>
+  80: };<br>
+  81: AttTable at_attribute_set =<br>
+  82: {<br>
+  ***** C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\VERTS.CPP<br>
+  79: {XSLA_NAMESPACE, FALSE, TRUE, EX_STRING}<br>
+  80: },<br>
+  81: at_attribute_set =<br>
+  82: {<br>
+  *****</p>
+<p>***** C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\verts.cpp<br>
+  84: {XSLA_USE_ATTR_SETS, FALSE, FALSE, EX_NONE},<br>
+  85: };<br>
+  86: AttTable at_call_template = <br>
+  87: {<br>
+  ***** C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\VERTS.CPP<br>
+  84: {XSLA_USE_ATTR_SETS, FALSE, FALSE, EX_NONE},<br>
+  85: },<br>
+  86: at_call_template = <br>
+  87: {<br>
+  *****</p>
+<p>***** C:\PROGRA~1\MACROM~1\DREAMW~2\THIRDP~1\SABLOT-0.70\ENGINE\verts.cpp<br>
+  96: {XSLA_SELECT, TRUE, FALSE, EX_UNKNOWN}<br>
+  97: };<br>
+  98: AttTable at_decimal_format =<br>
+  99: {<br>
+  ***** C:\SABLOT~1\SABLOT-0.70\SABLOT\ENGINE\VERTS.CPP<br>
+  96: {XSLA_SELECT, TRUE, FALSE, EX_UNKNOWN}<br>
+  97: },<br>
+  98: at_decimal_format =<br>
+  99: {<br>
+  *****<br>
+</p>
+</body>
+</html>

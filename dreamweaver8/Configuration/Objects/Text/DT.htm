@@ -1,0 +1,37 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Copyright 2001 Macromedia, Inc. All rights reserved. -->
+<title><MMString:LoadString id="insertbar/textDT" /></title>
+<script language="javascript">
+
+//---------------     API FUNCTIONS    ---------------
+
+function isDOMRequired() { 
+	// Return false, indicating that this object is available in code view.
+	return false;
+}
+
+function objectTag() {
+	// Manually wrap tags around selection.
+	var dom = dw.getDocumentDOM();
+  var upCaseTag = (dw.getPreferenceString("Source Format", "Tags Upper Case", "") == 'TRUE');
+	// Manually wrap tags around selection.
+  if (upCaseTag){
+    dom.source.wrapSelection('<DT>','</DT>');
+  }else{
+		dom.source.wrapSelection('<dt>','</dt>');
+  }
+
+  // Just return -- don't do anything else.
+  return;
+}
+
+</script>
+	
+</head>
+
+<body>
+</body>
+
+</html>

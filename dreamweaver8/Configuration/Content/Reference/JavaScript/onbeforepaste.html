@@ -1,0 +1,64 @@
+<html>
+<link rel="stylesheet" href="josh.css">
+<body bgcolor="#FFFFFF">
+
+		<div id="Description">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+				<tr><td valign="top" class="name">onbeforepaste</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">n/a</span> IE <span class="emphasis">5(Win)</span> DOM <span class="emphasis">n/a</span>&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" nowrap class="usage"><p class="literal"></p>
+					</td><td valign="top" nowrap class="requirements">Bubbles: Yes; Cancelable: Yes&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="description"><p>Fires just before a user-initiated <span class="emphasis">Paste</span> command (via the <span class="emphasis">Edit</span> menu, a keyboard shortcut, or a context
+menu) completes the task of pasting the content from the system
+clipboard to the current selection. If you are trying to paste custom
+information from the <span class="literal">clipboardData</span> object (saved
+there in an <span class="literal">onbeforecopy</span>,
+<span class="literal">oncopy</span>, <span class="literal">onbeforecut</span>, or
+<span class="literal">oncut</span> event handler), you need to have the
+<span class="literal">onbeforepaste</span> and <span class="literal">onpaste</span> event
+handler functions working together. Set
+<span class="literal">event.returnValue</span> to <span class="literal">false</span> in
+the <span class="literal">onbeforepaste</span> event handler so that the
+<span class="emphasis">Paste</span> item in the <span class="emphasis">Edit</span> (and context) menu is activated, even for
+a noneditable paste target. When the user selects the <span class="emphasis">Paste</span> menu choice, your
+<span class="literal">onpaste</span> event handler retrieves information from
+the <span class="literal">clipboardData</span> object and perhaps modifies the
+selected element's HTML content:
+</p>
+<span class="PROGRAMLISTING"><pre>function handleBeforePaste( ) {
+    event.returnValue = false;
+}
+function handlePaste( ) {
+    if (event.srcElement.className == &quot;OK2Paste&quot;) {
+        event.srcElement.innerText = clipboardData.getData(&quot;Text&quot;);
+    }
+}</pre></span>
+							</td>
+						</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+						<tr>
+							<td colspan="2"><p>			In the above paste operation, the system clipboard never plays a role
+because your scripts handle the entire data transferall
+without having to go into edit mode.
+</p>
+							</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top" colspan="2" class="typicaltargets"><span class="title">Typical Targets</span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p>			All rendered elements and the <span class="literal">document</span> object.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+</body>
+</html>

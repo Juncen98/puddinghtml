@@ -1,0 +1,14 @@
+<participant version="5.0">
+<insertText location="afterSelection">
+<![CDATA[
+<table border="1" align="center">
+  <cfoutput>
+  <@loop (@@DetailPageFields@@) @><tr>
+    <td>@@DetailPageFields@@</td>
+    <td>#@@RecordsetName@@.@@DetailPageFields@@#</td>
+  </tr>
+  <@endloop@></cfoutput>
+</table>
+]]>
+</insertText>
+</participant>

@@ -1,0 +1,382 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>ListBox</title>
+  <link rel="stylesheet" href="../../fields.css">
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Controls/Scripts/MultiStateCheckBox.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/******************* GLOBAL VARS *************************/
+
+var SELECTIONMODELIST;
+var theUIObjects; 
+
+// Color control elements
+var COLORP_BACK, COLORP_FORE; 
+var TEXT_BACK, TEXT_FORE; 
+
+var theFontBoldMultiStateCheckBox; 
+var theFontItalicMultiStateCheckBox; 
+var theFontOverlineMultiStateCheckBox; 
+var theFontStrikeoutMultiStateCheckBox; 
+var theFontUnderlineMultiStateCheckBox; 
+var theEnabledMultiStateCheckBox; 
+var theEnableViewStateMultiStateCheckBox; 
+var theVisibleMultiStateCheckBox; 
+var theAutoPostBackMultiStateCheckBox;
+
+/*********************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+  updateColors();
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function updateUI(itemName)
+{
+  switch(itemName)
+  {
+    case "backColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_BACK,TEXT_BACK);
+      break;
+    }
+    case "backcolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_BACK,TEXT_BACK);
+      break;
+    }
+    case "foreColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_FORE,TEXT_FORE);
+      break;
+    }
+    case "forecolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_FORE,TEXT_FORE);
+      break;
+    }
+    case "font-bold":
+	{
+	  theFontBoldMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+    case "font-italic":
+	{
+	  theFontItalicMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+    case "font-overline":
+	{
+	  theFontOverlineMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+    case "font-strikeout":
+	{
+	  theFontStrikeoutMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+    case "font-underline":
+	{
+	  theFontUnderlineMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+    case "enabled":
+	{
+	  theEnabledMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+    case "enableviewstate":
+	{
+	  theEnableViewStateMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+    case "visible":
+	{
+	  theVisibleMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+    case "autopostback":
+	{
+	  theAutoPostBackMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+  }
+}
+
+function updateColors()
+{
+  tagDialog.updateColorPicker("colorField",COLORP_BACK,TEXT_BACK);
+  tagDialog.updateColorPicker("colorField",COLORP_FORE,TEXT_FORE);
+}
+
+function initializeUI()
+{
+  theFontBoldMultiStateCheckBox = new MultiStateCheckBox("thefont-bold");
+  theFontBoldMultiStateCheckBox.initializeUI(); 
+  theFontItalicMultiStateCheckBox = new MultiStateCheckBox("thefont-italic");
+  theFontItalicMultiStateCheckBox.initializeUI(); 
+  theFontOverlineMultiStateCheckBox = new MultiStateCheckBox("thefont-overline");
+  theFontOverlineMultiStateCheckBox.initializeUI(); 
+  theFontStrikeoutMultiStateCheckBox = new MultiStateCheckBox("thefont-strikeout");
+  theFontStrikeoutMultiStateCheckBox.initializeUI(); 
+  theFontUnderlineMultiStateCheckBox = new MultiStateCheckBox("thefont-underline");
+  theFontUnderlineMultiStateCheckBox.initializeUI(); 
+  theEnabledMultiStateCheckBox = new MultiStateCheckBox("theenabled");
+  theEnabledMultiStateCheckBox.initializeUI(); 
+  theEnableViewStateMultiStateCheckBox = new MultiStateCheckBox("theenableviewstate");
+  theEnableViewStateMultiStateCheckBox.initializeUI(); 
+  theVisibleMultiStateCheckBox = new MultiStateCheckBox("thevisible");
+  theVisibleMultiStateCheckBox.initializeUI(); 
+  theAutoPostBackMultiStateCheckBox = new MultiStateCheckBox("theautopostback");
+  theAutoPostBackMultiStateCheckBox.initializeUI();
+
+  SELECTIONMODELIST = new ListControl("theselectionmode"); 
+  theUIObjects = new Array(SELECTIONMODELIST); 
+
+  COLORP_BACK = dwscripts.findDOMObject("backColorPicker");
+  COLORP_FORE = dwscripts.findDOMObject("foreColorPicker"); 
+  
+  TEXT_BACK = dwscripts.findDOMObject("thebackcolor");
+  TEXT_FORE = dwscripts.findDOMObject("theforecolor");
+  
+  updateColors(); 
+  tagDialog.populateDropDownList(SELECTIONMODELIST, theSelectionsLBCap, theSelectionsLBVal, 1);   
+}
+
+</script>
+</head>
+
+<body onLoad="initializeUI();">
+<div name="常规"> 
+  <input type="hidden" name="therunat" attname="runat" value="server" required="true" /> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="aspnet:listbox:id" attname="id" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">行数: </td>
+      <td nowrap="nowrap">
+        <input name="therows" type="text" class="basicTextField" id="aspnet:listbox:rows" attname="rows" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">选择模式: </td>
+      <td nowrap="nowrap">
+        <select name="theselectionmode" class="oneWordOptionList" id="attr:aspnet:listbox:selectionmode" attname="selectionmode" editable="false">
+        </select> 
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theautopostback" attname="autopostback" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('autopostback');" > 
+        自动回发 
+      </td>
+    </tr>  
+  </table>
+</div>
+<div name="布局"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">高度: </td>
+      <td nowrap="nowrap">
+        <input name="theheight" type="text" class="smallNumOrChar" id="aspnet:listbox:height" attname="height" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">宽度: </td>
+      <td nowrap="nowrap">
+        <input name="thewidth" type="text" class="smallNumOrChar" id="aspnet:listbox:width" attname="width" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">背景颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="backColorPicker" value="" onChange="updateUI('backColorPicker')"> <input name="thebackcolor" type="text" class="smallTField" id="att:body:backcolor" onBlur="updateUI('backcolor')" value="" attname="backcolor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">前景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="foreColorPicker" value="" onChange="updateUI('foreColorPicker')"> <input name="theforecolor" type="text" class="smallTField" id="att:listbox:forecolor" onBlur="updateUI('forecolor')" value="" attname="forecolor">
+      </td>
+    </tr>  
+  </table> 
+</div> 
+<div name="数据"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">数据成员: </td>
+      <td nowrap="nowrap">
+        <input name="thedatamember" type="text" class="basicTextField" id="aspnet:listboxlist:datamember" attname="datamember" />
+      </td>
+    </tr>  
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">数据源: </td>
+      <td nowrap="nowrap">
+        <input name="thedatasource" type="text" class="basicTextField" id="aspnet:listboxlist:datasource" attname="datasource" />
+      </td>
+    </tr>  
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">数据文本字段: </td>
+      <td nowrap="nowrap">
+        <input name="thedatatextfield" type="text" class="basicTextField" id="aspnet:listboxlist:datatextfield" attname="datatextfield" />
+      </td>
+    </tr>  
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">数据文本格式字符串:  </td>
+      <td nowrap="nowrap">
+        <input name="thedatatextformatstring" type="text" class="basicTextField" id="aspnet:listboxlist:datatextformatstring" attname="datatextformatstring" />
+      </td>
+    </tr>  
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">数据值字段: </td>
+      <td nowrap="nowrap">
+        <input name="thedatavaluefield" type="text" class="basicTextField" id="aspnet:listboxlist:datavaluefield" attname="datavaluefield" />
+      </td>
+    </tr>  
+  </table>
+</div> 
+<div name="样式信息"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">CSS 类: </td>
+      <td nowrap="nowrap">
+        <input name="thecssclass" type="text" class="basicTextField" id="aspnet:listbox:cssclass" attname="cssclass" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="thefont-name" type="text" class="basicTextField" id="aspnet:listbox:font-name" attname="font-name" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="thefont-names" type="text" class="basicTextField" id="aspnet:listbox:font-names" attname="font-names" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">字体大小: </td>
+      <td nowrap="nowrap">
+        <input name="thefont-size" type="text" class="smallNumOrChar" id="aspnet:listbox:font-size" attname="font-size" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="thefont-bold" attname="font-bold" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('font-bold');" > 
+        粗体
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="thefont-italic" attname="font-italic" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('font-italic');" > 
+        斜体
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="thefont-overline" attname="font-overline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('font-overline');" > 
+        上划线
+      </td>
+    </tr>    
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="thefont-strikeout" attname="font-strikeout" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('font-strikeout');" > 
+        删除线
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="thefont-underline" attname="font-underline" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('font-underline');" > 下划线
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theenabled" attname="enabled" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('enabled');" > 
+        已启用
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="theenableviewstate" attname="enableviewstate" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('enableviewstate');" > 
+        启用视图状态 
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="thevisible" attname="visible" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('visible');" > 
+        可见
+      </td>
+    </tr> 
+  </table>
+</div> 
+<div name="辅助功能"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">Tab 键索引: </td>
+      <td nowrap="nowrap">
+        <input name="thetabindex" type="text" class="smallNumOrChar" id="aspnet:listbox:tabindex" attname="tabindex" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">访问键: </td>
+      <td nowrap="nowrap">
+        <input name="theaccesskey" type="text" class="smallNumOrChar" id="aspnet:listbox:accesskey" attname="accesskey" />
+      </td>
+    </tr>
+  </table>
+</div> 
+<div name="事件"> 
+  <div name="OnDataBinding">
+    <textarea name="theOnDataBinding" attname="OnDataBinding" id="aspnet:listbox:ondatabinding" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnDisposed">
+    <textarea name="theOnDisposed" attname="OnDisposed" id="aspnet:listbox:ondisposed" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnInit">
+    <textarea name="theOnInit" attname="OnInit" id="aspnet:listbox:oninit" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnLoad">
+    <textarea name="theOnLoad" attname="OnLoad" id="aspnet:listbox:onload" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnPreRender">
+    <textarea name="theOnPreRender" attname="OnPreRender" id="aspnet:listbox:onprerender" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnSelectedIndexChanged">
+    <textarea name="theOnSelectedIndexChanged" attname="OnSelectedIndexChanged" id="aspnet:listbox:onselectedindexchanged" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="OnUnLoad">
+    <textarea name="theOnUnLoad" attname="OnUnLoad" id="aspnet:listbox:onunload" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+</div> 
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!-- This file contains all the menus for Dreamweaver. -->
+<!-- The main menu bar is located at the end of this file -->
+<!-- WARNING: DO NOT CHANGE ANY ID ATTRIBUTES ASSOCIATED WITH MENU ITEMS. -->
+<!-- Changing IDs will make it impossible for other developers to locate -->
+<!-- menu items for installation purposes. -->
+<shortcutlist  id="DWConnectionsContext">
+	<shortcut key="Cmd+I"   	domRequired="false"		enabled="insertEnabled(dw.databasePalette.getSelectedNode());" command="clickedInsert(dw.databasePalette.getSelectedNode());" id="DWShortcuts_ServerComponent_Insert" />
+	<shortcut key="Del"				domRequired="false"   enabled="(dw.databasePalette.getSelectedNode() != null && (dw.databasePalette.getSelectedNode().objectType=='Connection'))" command="clickedDelete();"  id="DWShortcuts_ServerComponent_Delete" /> 	
+</shortcutlist>
+<menubar name=""  id="DWConnectionsContext">
+    <menu name="" id="DWContext_Connections">
+        <menuitem name="编辑连接..."  enabled="(dw.databasePalette.getSelectedNode() != null && (dw.databasePalette.getSelectedNode().objectType=='Connection'))" command="clickedEdit();"	 id="DWContext_Connections_TestConnection" />
+        <menuitem name="重制连接..."  enabled="(dw.databasePalette.getSelectedNode() != null && (dw.databasePalette.getSelectedNode().objectType=='Connection'))" command="clickedDuplicate();"	 id="DWContext_Connections_TestConnection" />
+        <menuitem name="删除连接..."  enabled="(dw.databasePalette.getSelectedNode() != null && (dw.databasePalette.getSelectedNode().objectType=='Connection'))" command="clickedDelete();"	 id="DWContext_Connections_TestConnection" />
+        <menuitem name="测试连接..."  enabled="(dw.databasePalette.getSelectedNode() != null && (dw.databasePalette.getSelectedNode().objectType=='Connection'))" command="clickedTest();"	 id="DWContext_Connections_TestConnection" />
+		<separator/>
+		<menuitem name="查看数据(_V)..." command="clickedViewData();" enabled="(dw.databasePalette.getSelectedNode() != null && (dw.databasePalette.getSelectedNode().objectType=='Table' || dw.databasePalette.getSelectedNode().objectType=='View'))" id="DWContext_Tables_ViewData" />
+		<separator/>
+		<menuitem name="插入代码"   	domRequired="false"		enabled="insertEnabled(dw.databasePalette.getSelectedNode());" command="clickedInsert(dw.databasePalette.getSelectedNode());" id="DWShortcuts_ServerComponent_Insert" />
+		<menuitem name="刷新" command="dw.databasePalette.refresh()"	 id="DWContext_Connections_TestConnection" />
+    </menu>
+</menubar>
+<menubar name=""  id="DWConnectionsChoosersContext">
+    <menu name="" id="DWContext_ConnectionsChooser">
+		<menuitem dynamic name="选择器"	 file="Menus/MM/DB_Connections.htm" id="DWContext_Connections_Chooser_List" />
+    </menu>
+</menubar>

@@ -1,0 +1,1621 @@
+<head>
+	<script language="JavaScript" src="../Shared/Common/Scripts/dwscripts.js"></script>
+	<script language="JavaScript" src="../Shared/Common/Scripts/dwscriptsServer.js"></script>
+	<script language="JavaScript" src="../Shared/MM/Scripts/Class/FileClass.js"></script>
+	<script language="JavaScript" src="../Shared/MM/Scripts/event.js"></script>
+	<script language="JavaScript" src="../Shared/MM/Scripts/Cmn/UI.js"></script>
+	<script language="JavaScript" src="helpDocs.js"></script>
+	<!-- This file was moved between DW4 and DWMX.  The file is loaded at startup
+with SHARE-IN-MEMORY turned on, so that callers can include it using either
+its old or new location -->
+	<script language="JavaScript" src="../Shared/Common/Scripts/ListControlClass.js"></script>
+	<script language="JavaScript">
+// Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved.
+
+
+//This script initializes the MM extension by adding any
+// javascript functions, classes, or variables that should be
+// made GLOBAL to all extensions.
+//
+//Once the item has been assigned to an MM equivalent, it can
+// then be referenced from any extension with Dreamweaver.
+// (for example: "MM.<function>()" or "x = new MM.<class>()")
+//
+//NOTE: Any script attached in this way, that refers to the 'document' object
+// will actually be refering to this file, so general UI commands will need
+// to have the current document object passed in as a parameter.
+
+MM.File  = File;
+MM.event = event;
+
+// Initialize error strings
+initErrorStrings();
+
+// Initialize HTML help index
+MM.HELP_errorFileNotFound = "无法找到帮助文件: ";
+MM.HELP_errorViewerNotFound = "无法启动帮助查看器。";
+MM.HELP_errorNoJavaScript = "您似乎在浏览器中禁用了 JavaScript（或脚本撰写）。若要正确显示帮助页，必须激活 JavaScript。请使用脚本撰写功能（在浏览器的“首选项”或“Internet 选项”对话框中）并重新载入此页。";
+
+
+// Check to see if we should paste Fireworks HTML
+if (typeof MM.event != 'undefined')
+{
+  MM.event.registerFnCall('dw.clipPaste()', 'PasteFireworksHTML.htm');
+  MM.event.registerFnCall('dw.clipPasteHTML()', 'PasteFireworksHTML.htm');
+}
+
+
+function initErrorStrings()
+{
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+// Can be used by any object, command, menu command, etc. (used to be
+// under master-detail page set group, but I extracted it and made it
+// more generic.) -LMH 10.02.02
+MM.MSG_saveDocument   = "使用此功能前必须先保存您的文档。";
+
+
+//********* Commands *************
+
+MM.TYPE_Image = '图像';
+MM.TYPE_Shockwave = '影片';
+MM.TYPE_Text = '文本';
+MM.TYPE_Separator = '在';
+MM.TYPE_Form = '表单';
+MM.TYPE_Frame = '框架';
+MM.TYPE_Layer = '层';
+MM.TYPE_Button = '按钮';
+MM.TYPE_MainWindow = '主窗口';
+
+MM.BTN_OK     = '确定';
+MM.BTN_Cancel = '取消';
+MM.BTN_Apply  = '应用';
+MM.BTN_Export = '导出';
+MM.BTN_Insert = '插入';
+MM.BTN_Help   = '帮助';
+MM.BTN_Add =    '添加';
+MM.BTN_Remove = '删除';
+MM.BTN_Yes    = '是      ';
+MM.BTN_No     = '否       ';
+
+MM.BTN_Refresh = '刷新';
+MM.BTN_Process = '处理';
+MM.BTN_Login   = '登录...';
+MM.BTN_ModifyDataSources = '修改数据源';
+
+MM.MSG_AutoFormAdd = '是否添加表单标签？';
+
+// jschang 9/22/00h
+// localizable variables for instrumentation commands in
+// folder configuration/debugger
+MM.MSG_dbgTypeError             = "错误";
+MM.MSG_dbgTypeWarning           = "警告";
+MM.MSG_dbgResultsTitle          = "调试器：JavaScript 语法错误";
+MM.MSG_dbgColHeadFile           = "文件";
+MM.MSG_dbgColHeadLine           = "行";
+MM.MSG_dbgColHeadType           = "类型";
+MM.MSG_dbgColHeadDescription    = "描述";
+MM.MSG_dbgButtonGoTo            = "转到行";
+
+// For #32352 (Debugging messages become junk if the encoding is non-SHIFT_JIS on J build)
+// We have arrays of messages. Use the localized message only if the encoding is SHIFT_JIS on J build.
+strDbgNoScript              = "You appear to have JavaScript (or scripting) turned off in your browser. JavaScript \n";
+strDbgNoScript             += 		"  must be active to use the JavaScript debugger. Please enable scripting \n";
+strDbgNoScript             += 		"  (in your browser's Preferences or Internet Options dialog box) and restart \n";
+strDbgNoScript             += 		"  the debugger. \n";
+strDbgNoApplet              = "You appear to have Java disabled (or not installed) in your browser. Java \n";
+strDbgNoApplet             += 		"  must be active to use the JavaScript debugger. Please enable the Java VM \n";
+strDbgNoApplet             += 		"  (in your browser's Preferences or Internet Options dialog box) and restart \n";
+strDbgNoApplet             += 		"  the debugger. \n";
+
+strDbgNoScriptDB           = "您似乎在浏览器中关闭了 JavaScript（或脚本撰写）。JavaScript \n";
+strDbgNoScriptDB           += 		"必须处于活动状态才能使用 JavaScript 调试器。请启用脚本撰写\n";
+strDbgNoScriptDB           += 		"（在浏览器的'首选项'或'Internet 选项'对话框中），然后重新启动\n";
+strDbgNoScriptDB           += 		"调试器。\n";
+strDbgNoAppletDB            = "您似乎在浏览器中禁用了（或未安装）Java。Java \n";
+strDbgNoAppletDB           += 		"必须处于活动状态才能使用 JavaScript 调试器。请启用 Java VM\n";
+strDbgNoAppletDB           += 		"（在浏览器的'首选项'或'Internet 选项'对话框中），然后重新启动\n";
+strDbgNoAppletDB           += 		"调试器。\n";
+
+MM.MSG_dbgStartDebugging= new Array("Click OK to start debugging.","点击确定开始调试.");
+MM.MSG_dbgStartDebugging2= new Array("Please wait for Dreamweaver Debugger Applet to load.\\nClick OK after giving the applet permission to run.","请等待 Dreamweaver 调试器程序加载.\\n在允许程序运行后点击确定.");
+
+
+MM.MSG_InvalidColor = '"%s" 不是有效的颜色值。请输入一个十六进制值 (#RRGGBB) 或一个标准的颜色名称。';
+//debugger for double-byte path name warning in NS
+MM.MSG_dbgDoubleBytePathNS    = "该路径包含一个双字节字符，无法进行调试。";
+
+//********* Paste Fix *************
+
+MM.MSG_odWordUnableToSaveAs = "将 Word 文档转换为 HTML 时出错。";
+MM.MSG_odExcelUnableToSaveAs = "将 Excel 文档转换为 HTML 时出错。";
+MM.MSG_odProblem = "处理输入时出错。";
+MM.MSG_odWarnWithLink = "您选择的文档较大，需要较长时间才能导入。\n\n若要继续，请单击“确定”。单击“取消”将插入该文档的链接。";
+MM.MSG_odWarn = "您选择的文档较大，需要一段时间才能导入。\n\n若要继续，请单击“确定”。若要取消，请单击“取消”。";
+MM.MSG_odStopWithLink = "您选择的我文档太大而不能导入，因此将改为插入该文档的链接。  建议使用“复制”和“粘贴”将文档插入多个网页。";
+MM.MSG_odStop = "您选择的文档太大而不能导入，建议使用“复制”和“粘贴”将文档的各部分内容插入多个网页。";
+
+
+
+//********* Inspectors *************
+
+//SSI Common
+MM.MSG_NoSiteForSiteRelURLs = "除非定义了站点，否则无法解析站点相关的 URL。";
+MM.MSG_NotSavedForDocRelURLs = "除非保存了该文件，否则无法解析文档相关的 URL。";
+MM.MSG_CannotConvertURLToIncludeFile = "该 URL 不能转化为合法包含类型 \"file\"。";
+MM.MSG_CannotConvertURLToVirtualFile = "无法将 URL 转换为 \"virtual\" 类型的有效 include 值。";
+MM.MSG_UnableToEdit = "无法打开 '%s'&#13;，因为在您的本地磁盘上找不到。&#13;您可能需要使用&#13;文件面板创建或获取文件，然后重试。";
+
+
+//********* Shared Scripts *************
+
+// Checkbox Class
+MM.MSG_CouldNotFindNamedCheckbox = "未能找到名为 \"%s\"  的复选框对象。";
+
+// Num Recs Class
+MM.MSG_NeedNumberOfRecords = "'记录数'域不能是空白。"
+MM.MSG_NeedValidNumberOfRecords = "'记录数'域必须是大于 0 的数字。"
+
+//********* Objects *************
+MM.MSG_SpecialCharNonLatinEncode   = "如果您的文档不使用西欧字符 (Latin1) 编码，则特殊字符可能不会出现在所有浏览器中。";
+MM.MSG_InvalidName = "输入了无效的名称。名称只能包含字母和数字并且不能以数字开头。"
+MM.MSG_EmptyName = "有效的名称必须包含一些字符。"
+MM.MSG_DuplicateName = "该文档中已经使用了此名称。";
+
+// Dynamic Table
+MM.MSG_NeedBlankOrNumberZeroOrGreater = "%s 值必须为空或者是一个大于或等于零的值。";
+MM.MSG_NeedValidSelectionForDynamicTable = "在 <cfoutput> 标签中时不能插入动态表格。\n请修改选择。";
+MM.LABEL_Border = "边框";
+MM.LABEL_CellPadding = "单元格填充";
+MM.LABEL_CellSpacing = "单元格间距";
+
+// Master Detail
+MM.MSG_NeedValidSelectionForMasterDetail = "在 <cfoutput> 标签中时不能插入'主详细信息页设置'。\n请修改选择。";
+MM.MSG_NeedUniqueDetailPageName = "请为详细页提供一个与控制页不同的名称。";
+MM.MSG_NeedSavedDocumentForMasterDetail = "在插入'主详细页集'之前，\n必须先保存该文件。" +
+		"\n\n您想要现在保存吗？";
+MM.MSG_NeedValidDetailPageName = "详细页名称无效。名称中不能包含非法字符，\n" +
+		"并且必须与控制页驻留在同一个文件夹中。"
+
+// Server Object Error Dialogs & Panel Instructions
+// Note: keep the s% around the same keywords if the phrasing is rearranged;
+// They represent opening and closing link tags
+// Note: non-breaking spaces used below to make the dialog wider.
+MM.MSG_BeforeUsingDynamicData = "若要在该页面上使用动态数据：";
+MM.MSG_BeforeInsertingServerObject = "在插入该对象之前，请执行下面的操作:";
+MM.MSG_CreateSite =   "为该文件创建 %s站点%s。";
+MM.MSG_CreateServer = "为此文件配置一个%s服务器%s。";
+MM.MSG_ChooseDynamicDocType = "选择一种%s文档类型%s。";
+MM.MSG_SetAppServer = "设置站点的 %s测试服务器%s。";
+MM.MSG_SetURLPrefix = "设置服务器的 %sURL 前缀%s。";
+MM.MSG_SetRDSPassword = "指定 ColdFusion 服务器的%sRDS 登录%s信息。";
+MM.MSG_CreateCFDataSource = "创建ColdFusion %s数据源%s。";
+MM.MSG_CreateRecordset = "创建 %s%s%s。";
+MM.MSG_ClickPlusBtnToCreateConn = "单击上面的 + 按钮创建连接。";
+MM.MSG_DeployToTestingServerBin = "%sDeploy%s 支持文件到测试服务器的 /bin 文件夹。";
+
+MM.MSG_NoRecordsetsFromSPs = "如果使用从预存过程返回的记录集，此服务器对象将无法正常工作。\n"
++ 		"请选择另一个记录集或点击'取消'。";
+
+//********* Reports *************
+MM.MSG_noteColon = '注：';
+MM.MSG_warningColon = '警告：';
+MM.MSG_errorColon = '错误： ';
+
+//********* Customize Favorite Objects Command *************
+MM.LABEL_CustomizeObjectsAll = "全部";
+MM.MSG_CustomizeObjectsAlreadyAdded = "您尝试添加的对象已经在“收藏夹”列表中。"
+
+//********* Tag Importers *************
+MM.MSG_legalTagLibraryName = "标签库的名称只能包含字母、数字、空格和下划线。";
+MM.MSG_legalTagName = "标签的名称只能包含字母、数字、冒号、句号、破折号和下划线。";
+MM.MSG_legalAttributeName = "属性的名称只能包含字母、数字、冒号、句号、破折号和下划线。";
+MM.MSG_missingTagLibraryName = "请为标签库提供一个名称。";
+MM.MSG_missingTagName = "请为标签提供一个名称。";
+MM.MSG_missingAttributeName = "请为该属性提供一个名称。";
+MM.MSG_noServerModel = "无";
+MM.MSG_tagLibraryAlreadyExists = "名为 \"%s\" 的标签库已经存在，因此不会再次添加它。";
+MM.MSG_tagAlreadyExists = "名为 \"%s\" 的标签已经存在，因此不会再次添加它。";
+MM.MSG_attributeAlreadyExists = "名为 \"%s\" 的属性已存在，因此不能再次添加。";
+MM.MSG_noTagSpecified = "必须为这些新属性选择一个标签。";
+MM.MSG_tagLibraryBeforeTag = "必须先创建标签库，然后才能创建标签。";
+MM.MSG_tagLibraryBeforeAttribute = "必须先创建标签库和标签，然后才能创建属性。";
+MM.MSG_tagBeforeAttribute = "必须先创建标签，然后才能创建属性。";
+MM.MSG_libraryNameTooLong = "标签库名称的长度不能超过 30 个字符。";
+MM.MSG_tagNameTooLong = "标签名称的长度不能超过 27 个字符。";
+
+//*********** JavaScript Developer Warnings/Errors ************
+MM.MSG_createStaticClass = "'%s' 是静态类，不应被实例化。";
+MM.MSG_createVitualClass = "'%s' 是虚拟基类，不应被实例化。";
+MM.MSG_overrideVirtualFunction = "'%s'是一个纯虚拟函数，必须由子类重写。";
+MM.MSG_unknownNodeObject = "'%s'是一个未知节点。请检查以确保节点名称拼写正确。";
+MM.MSG_mismatchedArrayLength = "列表控制 '%s' 的显示和值阵列具有不同的长度。这些阵列的长度必须相同。 \ndisplayArray.length：'%s' \nvalueArray.length：'%s'";
+
+//************* UltraDev Constants ****************
+//Generic
+MM.LABEL_NoTables      = "*** 找不到表格";
+MM.LABEL_NoColumns     = "*** 找不到列";
+MM.LABEL_NoRecordsets  = "*** 未找到 %s";
+MM.LABEL_NoProcedures  = "*** 找不到预存过程";
+MM.LABEL_NoForms       = "*** 找不到表单";
+MM.LABEL_NoFields      = "*** 找不到域";
+MM.LABEL_NoConnections = "*** 没有已定义的连接";
+MM.LABEL_NoTags        = "*** 找不到标签";
+MM.LABEL_Unnamed       = "<未命名>";
+MM.LABEL_Ignore        = "<忽略>";
+MM.LABEL_NoValue       = "<没有值>";
+MM.LABEL_OutOfDate     = "   #以前的版本#";
+MM.LABEL_Loading       = "正在载入...";
+
+//Move, Go To
+MM.MSG_NoRecordsets    = "在使用此服务器行为之前，请先创建一个%s。\n";
+MM.MSG_LinkNotSelected = "在使用该服务器行为之前，请选择一个链接。";
+MM.MSG_NoTags          = "在使用此服务器行为之前，请先创建一个 '%s' 标签。";
+MM.MSG_RsNotFound      = "未找到在此脚本中指定的初始 %s。";
+MM.MSG_ColNotFound     = "没有找到列名称 \"%s\"。";
+MM.MSG_NeedRs          = "请指定一个 %s 名称。";
+MM.MSG_NeedColumn      = "请指定列。";
+MM.MSG_NeedParamName   = "请输入一个参数名。";
+MM.MSG_NeedParamValue   = "请输入一个参数值。";
+MM.MSG_NeedUrl         = "请输入一个 URL。";
+
+MM.MSG_NeedServerModelForSO = "在使用此服务器对象前，请先选择一个服务器模型。\n";
+MM.MSG_NeedCommandFileForSO = "服务器对象实现文件不存在： '%s'";
+
+MM.MSG_NeedRepeatRegionForSB = "在插入此项目前，请先插入一个'重复区域'服务器行为。\n";
+MM.MSG_NeedRepeatRegionForSO = "在插入此项目前，请先插入一个'重复区域'服务器行为。\n";
+MM.NeedRepeatRegionForRecordset =
+		"指定的记录集没有关联的'重复区域'服务器行为。\n" +
+		"请选择其它记录集，或者点击'取消'\n" +
+		"并为记录集 '%s' 创建一个重复区域。\n";
+MM.NeedRepeatRegionWithPageNav =
+		"指定的记录集没有关联的\n" +
+		"为记录浏览而配置的'重复区域'服务器行为。\n" +
+		"请选择其它记录集，或者点击'取消'\n" +
+		"并为记录集 '%s' 创建一个重复区域。\n";
+MM.MSG_RepeatRegionWithPageNavExists =
+		"指定的记录集已经有一个'重复区域'服务器行为\n" +
+		"与其相关联，该行为被配置以用于记录浏览。\n" +
+		"每个记录集只能添加这些类型的重复区域中的一个。\n" +
+		"请选择不同的'显示'类型或不同的记录集。\n";
+
+MM.MSG_WarnAboutRepeatRegionForRecordset = "此项的代码将被添加到页面上，但为了显示记录，需要\n为记录集'%s' 添加重复区域服务器行为。";
+MM.MSG_RepeatRegionExistsForRecordset = "选定的记录集 (%s) 已有与之关联的重复区域服务器行为。\n请选择其他记录集。";
+
+MM.MSG_WarnAboutPageNavForDataSet = "此项目的代码将被添加到页面中，但是需要先\n为数据集“%s”添加重复区域、数据网格或数据集服务器行为，\n然后这段代码才能正常运行。";
+
+MM.LABEL_TitleMoveToSpecific     = "移至特定记录";
+MM.LABEL_TitleGoToDetail         = "转到详细页面";
+MM.LABEL_TitleGoToRelated        = "转到相关页面";
+
+MM.LABEL_TitleDeleteRecord       = "删除记录";
+MM.LABEL_TitleInsertRecord       = "插入记录";
+MM.LABEL_TitleUpdateRecord       = "更新记录";
+
+MM.LABEL_TitleMoveToFirst        = "移至第一条记录";
+MM.LABEL_TitleMoveToFirstPlural  = "移至第一条记录";
+MM.LABEL_TitleMoveToPrev         = "移至前一条记录";
+MM.LABEL_TitleMoveToPrevPlural   = "移至前一条记录";
+MM.LABEL_TitleMoveToNext         = "移至下一条记录";
+MM.LABEL_TitleMoveToNextPlural   = "移至下一条记录";
+MM.LABEL_TitleMoveToLast         = "移至最后一条记录";
+MM.LABEL_TitleMoveToLastPlural   = "移动到最后一条记录";
+
+MM.LABEL_TitleShowIfEmptySet       = "如果记录集为空则显示";
+MM.LABEL_TitleShowIfNotEmptySet    = "如果记录集不为空则显示";
+MM.LABEL_TitleShowIfLastRecord     = "如果为最后一条记录则显示";
+MM.LABEL_TitleShowIfNotLastRecord  = "如果不是最后一条记录则显示";
+MM.LABEL_TitleShowIfFirstRecord    = "如果为第一条记录则显示";
+MM.LABEL_TitleShowIfNotFirstRecord = "如果不是第一条记录则显示";
+
+MM.LABEL_TitleMoveToFirstPage    = "移至第一页";
+MM.LABEL_TitleMoveToPrevPage     = "移至前一页";
+MM.LABEL_TitleMoveToNextPage     = "移至下一页";
+MM.LABEL_TitleMoveToLastPage     = "移至最后一页"
+
+MM.LABEL_TitleShowIfLastPage     = "如果是最后一页则显示";
+MM.LABEL_TitleShowIfNotLastPage  = "如果不是最后一页则显示";
+MM.LABEL_TitleShowIfFirstPage    = "如果是第一页则显示";
+MM.LABEL_TitleShowIfNotFirstPage = "如果不是第一页则显示";
+
+MM.LABEL_TitleRSStatsFirst       = "显示起始记录编号";
+MM.LABEL_TitleRSStatsLast        = "显示结束记录编号";
+MM.LABEL_TitleRSStatsTotal       = "显示总记录数";
+
+MM.LABEL_SelectionLink           = "所选范围:";
+MM.LABEL_CreateNewLink           = "创建新链接 : \"%s\"";
+MM.LABEL_NewDetailLinkLabel      = "详细信息";
+MM.LABEL_NewRelatedLinkLabel     = "相关";
+MM.LABEL_NewMoveToFirstLinkLabel = "第一页";
+MM.LABEL_NewMoveToPrevLinkLabel  = "前一页";
+MM.LABEL_NewMoveToNextLinkLabel  = "下一页";
+MM.LABEL_NewMoveToLastLinkLabel  = "最后一页";
+
+MM.LABEL_DeleteColAction    = "删除列";
+MM.LABEL_InsertColAction    = "插入到列中";
+MM.LABEL_UpdateColAction    = "更新列";
+
+//Java Bean
+MM.LABEL_JavaBean            = "Java Bean (@@Id@@)";
+MM.LABEL_JavaSetProperty    = "设置 Bean 属性";
+MM.LABEL_JavaGetProperty    = "获取 Bean 属性 (@@beanName@@,@@property@@)";
+MM.LABEL_JavaBeanCollection  = "Java Bean 集合 (@@Id@@)";
+MM.LABEL_JBNotInitialized    = "[未初始化]";
+MM.LABEL_JBAllProp          = "[全部]";
+MM.LABEL_JBAllPropValue      = "*";
+MM.LABEL_JBGetPackageName    = "选择 Java 存档文件（.jar 或 .zip）";
+MM.MSG_NoJavaBeans          = "在使用此服务器行为之前，请先创建一个 Java Bean。\n";
+MM.MSG_NoJavaBeanName        = "请提供一个 Java Bean 名称。";
+MM.MSG_InvalidJavaBeanName  = "无效的 Java Bean 名称。请输入以字母开头并且只包含字母和数字的名称。";
+MM.MSG_DupeJavaBeanName      = "指定的 Java Bean 名称已经存在。请提供另一个名称。";
+MM.MSG_SelectAJavaClass      = "[选择类]";
+MM.MSG_ErrSelectAJavaClass    = "请选择一个 Java Bean 类";
+MM.MSG_SelectAJavaCollectionClass  = "[选择类]";
+MM.MSG_ErrSelectAJavaCollectionClass = "请选择一个 Java Bean 集合类";
+MM.LABEL_GetTLDPackageName    = "选择 .tld 或 Java 存档文件（.jar 或 .zip）";
+MM.LABEL_GetJSTFolderName      = "为 JRun 服务器标签选择文件夹位置";
+MM.MSG_JNDIError        = "试图从测试服务器中发现 JDBC 数据源时出现 HTTP 错误 \"%s\"。\n\n" +
+		"该问题的原因可能是:\n\n" +
+		"1）java:comp/env/jdbc 可能不是默认上下文。\n"+
+		"2）%s 是无效的 JDBC 上下文。\n\n" +
+		"请参考测试服务器管理指南中有关使用 JIDI 定义 JDBC 数据源的部分。";
+
+MM.MSG_FailedToCreateFolder      = "创建文件夹 %s 失败。";
+MM.MSG_SuccessFolder        = "已创建 %s 文件夹。";
+MM.MSG_FolderExists          = "%s 文件夹已存在。";
+MM.MSG_FailedToCreateFile      = "创建文件 %s 失败。";
+MM.MSG_SuccessFile          = "已创建 %s。";
+MM.MSG_FileExists          = "%s 文件已存在。";
+
+
+//Edit Ops
+MM.MSG_OnlyOneServerBehAllowed = "无法添加另一个 \"%s\" 服务器行为。每页仅限一个。";
+MM.MSG_NoForms        = "在使用此服务器行为之前，请先创建一个表单。\n";
+MM.MSG_NoConnection   = "请选择一个连接。";
+MM.MSG_NoTables       = "请选择一个包含用于更新的表格的连接，或者点击'取消'。";
+MM.MSG_NoColumns      = "请选择包含要进行更新的列的表格，或者点击'取消'。";
+MM.MSG_NoFormFields   = "请选择一个具有要用于更新的域的表单，或者点击'取消'。";
+MM.MSG_NoFormColumn   = "请选择一个列以更新其中一个表单元素，或者点击'取消'。";
+MM.MSG_NoColumnInRS   = "请从选定的 %s 中选择一个唯一键，或者点击'取消'。";
+MM.MSG_EditOpExists   = "请选择没有应用过编辑操作的表单，或者点击“取消”。";
+MM.LABEL_Numeric      = "数值";
+MM.LABEL_FileRedirect = "选取重定向文件。";
+MM.MSG_NoDataSource   = "请选择一个数据源。";
+MM.MSG_NoTablesInDS   = "请选择一个包含用于更新的表的数据源，或单击'取消'。";
+
+
+MM.MSG_ConnNotFound   = "没有找到连接 \"%s\"。请选择新的连接。"
+MM.MSG_TableNotFound  = "找不到该表格。";
+MM.MSG_TColNotFound   = "找不到在该脚本中指定的原始唯一键。";
+MM.MSG_FormFieldsNotFound = "无法找到表单域: %s。";
+
+MM.MSG_ElemIsCheckbox = "您试图更新的表单元素是复选框。\n复选框仅限于更新数字列的值。";
+
+//Edit Ops v5
+MM.MSG_NoCFDataSource   = "请选择一个 ColdFusion 数据源。";
+
+// Masks to define whether or not a column has a mapping
+MM.LABEL_IsNotMappedMask    = "'%s' 没有获取值。";
+MM.LABEL_IsNotMappedKeyMask = "'%s' 是一个未使用的主键。";
+MM.LABEL_IsMappedMask       = "'%s' Gets Value From '%s' as '%s'";
+MM.LABEL_IsMappedKeyMask    = "'%s' Selects Record Using '%s' as '%s'";
+
+MM.MSG_NoMappedColumns = "请至少为其中一个列指定值。";
+MM.MSG_NoMappedKey     = "请提交至少一个列作为主键。";
+MM.MSG_MapColumnToExistingElement = "列 '%s' 被映射到不存在的表单元素。\n"
++ 		"请将列映射到现有的表单元素 \n"
++ 		"或者将其值设置为'无'。";
+
+MM.LABEL_NeverCheckIfParamIsDefined = "主键值";
+MM.MSG_InvalidCheckIfIsDefinedVarName  = "“先检查是否定义了变量”值不是有效的变量名称。";
+MM.MSG_InvalidPrimaryKeyVarName        = "“主键值”是无效的变量名称。";
+MM.MSG_NoPrimaryKeyValue               = "该值字段不能为空。";
+
+//Dynamic Elements
+MM.LABEL_DynamicTextTitle = "动态文本";
+
+MM.MSG_NothingEntered                 = "请输入所有的值。";
+MM.MSG_ValueGreaterThanZero           = "值必须大于零。";
+MM.MSG_ValueGreaterThanOrEqualToZero  = "值必须大于或等于零。";
+MM.MSG_CouldNotFindMyCode        = "不能定位该服务器行为的一些元素。请重新应用该行为。";
+MM.MSG_CouldNotFindSource1        = "无法找到 %s（其名称为'%s'）。";
+MM.MSG_NoCheckboxes           = "在使用此服务器行为之前，请先插入一个复选框。";
+MM.MSG_NeedDynamicCheckboxValue      = "请为'选取，如果'域提供一个值。";
+MM.MSG_NeedCheckboxBooleanValue      = "请为'等于'域提供一个值。";
+
+MM.LABEL_DynamicRadioTitle         = "动态单选按钮";
+MM.LABEL_DynamicRadioGroupTitle    = "动态单选按钮组";
+MM.MSG_NoRadioBtns                 = "在使用此服务器行为之前，请先创建一个单选按钮组。";
+MM.MSG_NeedSelectEqualToExpression = "请为'选定值等于'域提供一个值。"
+MM.MSG_NotAppliedToAllButtons      = "'动态单选按钮'服务器行为尚未应用于该组中的全部按钮。\n" +
+		"必须重新应用该行为以纠正此问题。";
+MM.MSG_RadioValuesHaveChanged = "'动态单选按钮组'服务器行为可能不再有效，\n"
++ 		"原因是某个或多个单选按钮值已更改。\n"
++ 		"点击'确定'时，将自动纠正\n"
++ 		"当您在服务器行为对话框中"
+MM.MSG_RadioGroupHasServerBehavior = "所选单选按钮组已经应用了一个'动态单选按钮组'服务器行为。\n" +
+		"请选择一个尚未包含此服务器行为的组，或者点击'取消'。"
+
+
+
+MM.LABEL_DynamicTextfieldTitle = "动态文本域 (@@theName@@)";
+MM.MSG_NoTextfield = "在使用此服务器行为之前，请先插入一个文本域。";
+MM.MSG_TextfieldHasServerBehavior = "所选的文本域已经应用了'动态文本域'服务器行为。\n" +
+		"请选择一个尚未包含此服务器行为的文本域，或者点击'取消'。"
+
+MM.LABEL_DynamicHiddenTitle = "动态隐藏字段 (@@theName@@)";
+MM.MSG_NoHiddenField = "在使用此服务器行为之前，请插入一个隐藏字段。";
+
+MM.LABEL_DynamicPasswordTitle = "动态密码字段 (@@theName@@)";
+MM.MSG_NoPasswordField = "在使用此服务器行为之前，请插入一个密码字段。";
+
+MM.LABEL_DynamicListMenuTitle = "动态列表/菜单 (@@theName@@)";
+MM.MSG_NoListMenus = "使用此服务器行为之前，请插入\n一个列表/菜单对象" +
+		"从 HTML SELECT 标签创建的\n列表/菜单对象。"
+MM.MSG_MenuHasServerBehavior = "所选菜单已经应用了“动态菜单”服务器行为。\n" +
+		"请选择尚未包含该服务器行为的菜单，或者点击“取消”。"
+MM.MSG_NoDynamicOptOrSel = "请向该菜单添加一个动态选项或动态选择内容。";
+MM.MSG_NoOptionsForDynSel = "请添加一个或多个静态选项。";
+
+MM.LABEL_DynCheckboxTitle = "动态复选框 (@@theName@@)";
+MM.MSG_CheckboxHasServerBehavior = "所选的复选框已经应用了“动态复选框”服务器行为。" +
+		"请选择一个未包含该服务器行为的复选框，或者点击“取消”。"
+
+MM.LABEL_DynamicAttrTitle = "动态属性";
+
+// The next block of strings must be identical to the title of the associated
+//   server behavior htm file.
+MM.LABEL_DynamicRadioSBFileTitle = "动态单选按钮";
+MM.LABEL_DynamicRadioSBFileTitleMX = "动态单选按钮组";
+MM.LABEL_DynCheckboxSBFileTitle = "动态复选框";
+MM.LABEL_DynCheckboxSBFileTitleJSP = "动态复选框";
+MM.LABEL_DynamicListMenuSBFileTitle = "动态列表/菜单";
+
+//Show Region
+MM.MSG_RequiresMoveTo  = "在使用此条件之前，必须向页中添加一个'移动到记录'服务器行为。";
+MM.MSG_FixMoveTo       = "使用该条件之前，“移动到”服务器行为必须使用有效的记录集。";
+MM.MSG_RequiresSelection = "在插入此项目之前，请在页上进行选取。";
+MM.MSG_InvalidCondition  = "先前选择的条件依赖于“移动到”服务器行为" +
+		"这些行为或者已经被删除，或者使用的是无效的记录集。\n\n" +
+		"要继续使用该条件，请单击“取消”，然后添加或编辑某个" +
+		"“移动到”行为。";
+MM.MSG_NoOverlappingHideRegions = MM.MSG_NoOverlappingRepeatAndHide;
+MM.MSG_NoOverlappingHideAndRepeat = MM.MSG_NoOverlappingRepeatAndHide;
+
+MM.LABEL_HideIfEmptySet       = "如果记录集为空则隐藏";
+MM.LABEL_HideIfNotEmptySet    = "如果记录集不为空则隐藏";
+MM.LABEL_HideIfLastRecord     = "如果为最后一条记录则隐藏";
+MM.LABEL_HideIfNotLastRecord  = "如果不是最后一条记录则隐藏";
+MM.LABEL_HideIfFirstRecord    = "如果为第一条记录则隐藏";
+MM.LABEL_HideIfNotFirstRecord = "如果不是第一条记录则隐藏";
+MM.LABEL_HideTabbedOutlineLabel    = "如果符合此条件则显示..."
+
+//Command
+MM.LABEL_TitleCommand = "命令";
+MM.LABEL_None = "无";
+MM.LABEL_EmptyOption = "--";
+MM.LABEL_CTStoredProc = "预存过程";
+MM.LABEL_CTInsert = "插入";
+MM.LABEL_CTUpdate = "更新";
+MM.LABEL_CTDelete= "删除";
+MM.LABEL_ParamRow = "参数网格行:";
+MM.LABEL_AddToColumn = "INSERT INTO";
+MM.LABEL_AddToValue = "添加到值";
+MM.LABEL_AddToSet = "SET";
+MM.LABEL_AddToWhere = "WHERE";
+MM.LABEL_AddToDelete = "DELETE";
+MM.LABEL_AddProc = "PROCEDURE";
+MM.LABEL_SPColumns = "名称,类型,方向,大小,默认值,运行值";
+MM.LABEL_SQLColumns = "名称,运行值";
+
+MM.MSG_MissingCommandText = "请提供命令文本";
+MM.MSG_MissingCommandName = "请为命令对象提供名称。";
+MM.MSG_InvalidCommandName = "无效的命令对象名称。请输入以字母（A-Z 或 a-z）开头而且只包含字母和数字的名称。";
+MM.MSG_MissingCommandType = "请选择命令类型。";
+MM.MSG_DefaultValMissing = "变量缺少默认值:";
+MM.MSG_RunTimeValMissing = "变量缺少运行时值:";
+MM.MSG_MissingParamName = "请为变量提供名称:";
+MM.MSG_NoRecordsetName = "请输入一个记录集名称。";
+MM.MSG_NotValidCommandTextForSP = "指定的命令文本无效。";
+MM.MSG_NotValidCommandTextForInsert = "指定的命令文本对于插入语句无效";
+MM.MSG_NotValidCommandTextForUpdate = "指定的命令文本对于更新语句无效";
+MM.MSG_NotValidCommandTextForDelete = "指定的命令文本对于删除语句无效";
+MM.MSG_OnlyAnSPCanReturnARecordset = "只有预存过程才能返回记录集。";
+MM.MSG_InvalidParamName = "是一个无效的变量名称 。";
+MM.MSG_ParamNameAlreadyExists = "已经有一个名为 \"%s\" 的变量。请输入唯一的名称。";
+MM.MSG_InvalidParamNameNotInSQL = "是一个无效的变量名称；它不在 SQL 中出现 ";
+MM.MSG_InvalidCFParamNameNotInSQL = "是一个无效的参数名称；它不在 SQL 中出现。";
+MM.MSG_MissingDirection = "请为变量提供方向:";
+MM.MSG_MissingSQLType = "请为变量提供数据类型:";
+MM.MSG_MissingSizeVal = "请为变量提供大小：";
+MM.MSG_DupeCommandName = "指定的名称已经存在。请提供另一个名称。";
+MM.MSG_DupeRecordsetName = "指定的记录集名称已经存在。请提供另一个名称。";
+MM.MSG_CommandAndRecordsetDiffNames = "它创建的命令对象和记录集对象必须具有不同的名称。";
+MM.MSG_ReservedWord = "'%s' 是一个保留的 JavaScript 或 VBScript 关键字。请提供另一个名称。";
+MM.MSG_InvalidRecordsetName = "无效的记录集名称。请输入不包含空格并以字母开头的名称。";
+MM.MSG_InvalidSelection = "请在数据库树中选择表格、视图、列或预存过程。";
+MM.MSG_SelectTable = "请在数据库树中选择一个表格。";
+MM.MSG_SelectColumn = "请从表格或视图中选择一列。";
+MM.MSG_EmptyParamList = "变量列表空白。请先点击加号 (+) 按钮来创建一个变量。";
+MM.MSG_InvalidSQL = "SQL 语句无法分析并且可能包含错误。";
+MM.MSG_SelectTableOrColumn = "请从数据库树中选择一个表格、视图或列。";
+MM.MSG_StoredProcedure = "请在数据库树中选择一个预存过程。";
+MM.MSG_CallableAndResultsetDiffNames = "它创建的“可调用对象”和“结果集对象”必须具有不同名称。";
+MM.MSG_ParamDefaultValMissing = "请为参数 '%s' 输入一个默认值。";
+
+//Recordsets
+MM.LABEL_TitleRecordset = "记录集";
+
+MM.MSG_NoConnectionForRecordset = "在创建记录集之前，请先通过从'修改'菜单中\n" +
+		"选择 \"连接...\" 来创建一个链接。";
+MM.MSG_ConnectionPathInvalid = "到“连接”文件夹的相对路径不再有效。\n这将在点击服务器行为对话框中的“确定”时自动纠正。";
+MM.MSG_SBOutOfDate     = "此服务器行为是用 UltraDev 的较早版本创建的。\n当您在'服务器行为'对话框中单击'确定'时，它将被当前版本替换。";
+MM.MSG_NoTableSelected = "请选择一个表格，或单击“取消”";
+MM.MSG_UpdateRecordsetRefs = "记录集的重命名通过使用'查找/替换'对话框以交互方式完成，\n以便同时替换对该记录集的全部引用。\n请验证在此对话框执行的每次替换是否有效。\n点击'查找/替换'对话框中的'关闭'以使记录集名称保持不变。";
+MM.MSG_UpdateStoredProcRefs = "预存过程的重命名通过使用'查找/替换'对话框以交互方式完成，\n以便同时替换对记录集的全部引用。\n请验证在此对话框中执行的每次替换都是有效的。\n点击'查找/替换'对话框中的'关闭'以使预存过程名称保持不变。";
+MM.MSG_UnknownParamType = "未知的参数类型'%s'。";
+MM.MSG_StoredProcWarning = "注意：建议您使用'预存过程'服务器行为来查询预存过程。";
+MM.MSG_MissingParamNames = "请为所有参数提供名称。";
+MM.MSG_MissingConnection = "请选择一个连接。";
+MM.MSG_MissingParameterDefault = "请为该参数提供一个默认值或单击'取消'。";
+MM.MSG_MissingParameterName = "请为该参数提供一个名称或单击'取消'。";
+MM.MSG_WarnDependentsOnDelete = "该页上的其它服务器行为可能需要依靠此服务器行为才能正常工作。\n"
++ 		"您确实想要删除此服务器行为吗？";
+
+MM.MSG_SBCreateCFDataSource = "此服务器行为需要 Cold Fusion 数据源。\n有关如何创建的信息，请检查'数据库'面板。";
+
+MM.MSG_ARecordsetWasAdded = "%s已添加到了该页面。若要访问%s的\n域，请使用绑定面板。";
+
+//Repeat Region
+MM.LABEL_TitleRepeatRegion = "重复区域";
+MM.MSG_DuplicateRR = "重复区域的名称重复。";
+MM.MSG_CouldNotFindRecordsetName  = "未找到 %s '%s'。请选择新的 %s。";
+MM.MSG_CouldNotFindColumnName     = "没有找到列 \"%s\"。请选择新的列。";
+MM.MSG_CouldNotFindFieldName      = "没有找到域 \"%s\"。请选择新的域。";
+MM.MSG_NestedRepeat = "'重复区域'已应用于当前所选范围周围";
+MM.MSG_SelectionContainsRepeatedRegion = "不支持嵌套的重复区域。\n" +
+		"请创建一个不包含重复区域的所选范围。";
+MM.MSG_SelectionIsInsideOfRepeatedRegion = "不支持嵌套的重复区域。\n" +
+		"请创建一个不包含重复区域的所选范围。";
+MM.MSG_NoOverlappingRepeatAndHide = "不支持交迭区域。请创建一个\n"+
+		"不与其它区域交迭的选取范围。";
+MM.MSG_NoRepeatsInCfoutput = "'重复区域'不能嵌套在 <cfoutput> 标签内。请修改您的选取范围。";
+MM.LABEL_RepeatTabbedOutlineLabel  = "重复";
+
+MM.MSG_NoOverlappingRegions = "不支持交迭服务器行为。\n请使所选范围不与其它服务器行为交迭。";
+MM.MSG_NoNestedRegions = "此服务器行为不支持嵌套。\n请使所选范围中不包括其它服务器行为。";
+MM.MSG_InvalidPageSize = "请为一次显示的记录数输入一个大于零的整数。";
+MM.MSG_InvalidMaxRows = "请为要显示的总记录数输入一个大于零的整数。";
+MM.MSG_InvalidStartRow = "请为起始记录输入一个大于零的整数。";
+
+// Conditional Region
+MM.LABEL_ConditionalTabbedOutlineLabel = "条件";
+MM.LABEL_MultConditionalTabbedOutlineLabel = "多条件";
+
+//CFRecordset
+MM.LABEL_TitleCFQuery = "CFQuery";
+MM.LABEL_ParamAttributesName = "名称: ";
+MM.LABEL_ParamAttributesDefault = "默认值: ";
+MM.MSG_InvalidSelectionCF = "请在数据库树中选择一个表、视图或列。";
+MM.MSG_ParameterAlreadyDefined = "已定义了参数'%s'。是否要改写现有的参数？";
+MM.MSG_ShouldOverwriteParameter = "参数'%s'被作为记录集粘贴的一部分放在该页上。\n" +
+		"但是，它已经存在于此页上，具有一个不同的默认值。\n" +
+		"点击'确定'以覆盖现有的默认值，或者点击'取消'以退出\n" +
+		"现有的值并继续数据集粘贴。";
+
+//CFParam
+MM.MSG_ProvideParamName = "请为该参数提供一个名称。";
+MM.MSG_ProvideUniqueParamName = "该页上已存在名为'%s'的 cfparam 标签。\n请提供一个唯一的 cfparam 标签名称。";
+
+//CFStoredProc
+MM.LABEL_TitleStoredProc = "预存过程";
+MM.LABEL_StoredProcRecordset = "预存过程中的记录集 (%s)";
+MM.MSG_NoStoredProcText = "请提供预存过程文本。";
+MM.MSG_NoStoredProcName = "请为该预存过程对象提供一个名称。";
+MM.MSG_InvalidStoredProcName = "这是一个无效的预存过程对象名称。请输入一个以字母开头并且只含有字母和数字的名称。";
+MM.MSG_DupeStoredProcName   = "预存过程名称已经存在。请输入一个唯一的名称。";
+MM.LABEL_StoredProcParamRow = "参数网格行:";
+MM.MSG_InvalidRunTimeVal = "变量的运行时值必须包含在 # 符号中:";
+MM.MSG_MissingCFSQLType = "变量缺少 SQL 数据类型:"
+MM.MSG_InvalidCFSQLType = "SQL 数据类型对变量无效:";
+MM.MSG_NeedCFSQLType    = "请输入下列类型之一:";
+MM.MSG_SQLDataTypeUnknown = "无法确定一个或多个变量的 ColdFusion SQL 数据类型。\n\n请输入适当的 ColdFusion SQL 数据类型。"
+MM.MSG_SQLTypeNotInMap      = "未识别的 SQL 类型：'%s'";
+MM.MSG_SQLTypeAsNumNotInMap = "未识别的 SQL 类型：'%s'";
+MM.MSG_DirStringFromCFType  = "地图中找不到 \"%s\" 类型的 Dir 字符串。";
+MM.MSG_DirString            = "地图中找不到 Dir 字符串 \"%s\"。";
+MM.MSG_DirNum               = "地图中找不到 Dir 数 \"%s\"。";
+MM.MSG_VarIsReservedWord    = "'%s' 是为 JavaScript 或 VBScript 保留的关键字。请为此变量另选一个名称。";
+// version5 additions
+MM.LABEL_DBVarName = "名称: ";
+MM.LABEL_VarType = "方向: ";
+MM.LABEL_CFSQLType = "SQL 类型:";
+MM.LABEL_VarValue = "运行时值: ";
+MM.LABEL_VarTestValue = "测试值:";
+MM.LABEL_CFVarName = "返回变量:";
+MM.MSG_MissingVariableNames = "请为所有参数提供名称。";
+MM.MSG_NoVariableForDefault = "所有页参数必须与预存过程参数相关联。\n" +
+		"请从下列项目中选择所有页参数名称\n" +
+		"现有的预存过程参数运行时值选择的。";
+MM.MSG_EnterTestValuesToContinue = "为了检索有关返回的 %s 的信息，\n" +
+		"每个预存过程输入参数都必须有测试值。\n" +
+		"点击“确定”以便立即输入测试值，或点击“取消”退出操作。";
+MM.MSG_WarnDelParentStoredProc = "此 %s 由预存过程'%s'返回。\n" +
+		"如果删除 %s，将同时删除预存过程。\n" +
+		"点击'确定'以继续，或者点击'取消'以取消删除操作。";
+MM.MSG_WarnDeleteReturnedRS = "此预存过程返回 %s 个'%s'。\n" +
+		"如果删除预存过程，将同时删除返回的 %s 数据源。\n" +
+		"点击'确定'以继续，或者点击'取消'以取消删除操作。";
+MM.MSG_MissingStatusVarName = "请输入状态代码变量名称或不选中'状态代码'复选框以忽略返回的状态代码。";
+MM.MSG_InvalidStatusVarName = "这是一个无效的状态代码变量名称。请输入一个以字母开头并且只含有字母和数字的名称。";
+MM.MSG_StatusVarIsReservedWord = "该状态代码变量名称是一个为 JavaScript 或 VBScript 保留的关键字。\n"
++ 		"请为此变量选择另一个名称。";
+MM.MSG_DupeStatusVarName = "为返回状态代码输入的变量名称已被使用。\n"
++ 		"请为状态代码输入一个唯一的名称。";
+MM.MSG_MissingParamDirection = "请为参数'%s'提供一个方向。";
+MM.MSG_MissingParamCFSQLType = "请为参数 '%s' 输入 SQL 数据类型。";
+MM.MSG_InvalidParamCFSQLType = "SQL 数据类型对于参数 '%s' 无效。";
+MM.MSG_MissingParamRunTimeVal = "请为参数 '%s' 输入运行时值。";
+MM.MSG_InvalidParamRunTimeVal = "对于参数'%s'，运行时值必须括在 # 符号中。";
+MM.MSG_MissingParamTestValue = "请为参数'%s'输入一个测试值。";
+MM.MSG_MissingReturnVarName = "请为输出参数'%s'输入一个返回变量名称。";
+MM.MSG_InvalidReturnVarName   = "参数'%s'具有无效的返回变量名称'%s'。请输入一个以字母（A-Z 或 a-z）开头并且只包含字母和数字的名称。";
+MM.MSG_ReturnVarIsReservedWord  = "参数'%s'对其返回变量名称'%s'使用保留关键字。请为此变量选择另一个名称。";
+MM.MSG_DupeVariableName     = "参数'%s'使用返回变量名称'%s'，该名称已被使用。请提供另一个名称。";
+
+//JSP Callable
+MM.LABEL_TitleCallable = "可调用对象";
+MM.MSG_NoSQLStatement = "请输入一个 SQL 语句。";
+MM.MSG_NoCallableName = "请为此可调用对象提供一个名称。";
+MM.MSG_InvalidCallableName = "无效的可调用对象名称。请给出一个以字母开头并且只包含字母和数字的名称。";
+MM.MSG_NotValidCallableTextForSP = "对可调用对象使用了无效的 SQL 语句。";
+
+//JSP Prepared
+MM.LABEL_TitlePrepared = "已准备";
+MM.MSG_NoPreparedName = "请为已准备对象提供一个名称。";
+MM.MSG_InvalidPreparedName = "无效的准备对象名称。请输入一个以字母开头并且只包含字母和数字的名称。";
+MM.MSG_MissingPreparedType = "请选择准备类型。";
+MM.LABEL_AddToColumn = "列";
+MM.LABEL_AddToSet = "SET";
+MM.LABEL_AddToWhere = "WHERE";
+MM.LABEL_AddToDelete = "DELETE";
+MM.MSG_NotValidPreparedTextForSP = "对预存过程使用了无效的 SQL。";
+MM.MSG_NotValidPreparedTextForInsert = "对 INSERT 语句使用了无效的 SQL。";
+MM.MSG_NotValidPreparedTextForUpdate = "对 UPDATE 语句使用了无效的 SQL。";
+MM.MSG_NotValidPreparedTextForDelete = "对 DELETE 语句使用了无效的 SQL。";
+
+//Recordset Navigation Bar
+MM.MSG_rsNavigationBarSaveDocument = "在能够复制导航图像之前，必须保存当前的文档。\n请在使用此对象前退出'导航条'对话框并保存文档。";
+
+//Recordset Navigation Status
+MM.LABEL_RSNavBeforeFirst = "记录";
+MM.LABEL_RSNavBeforeLast  = "到";
+MM.LABEL_RSNavBeforeTotal = "(总共 ";
+MM.LABEL_RSNavAfterTotal  = "";
+MM.LABEL_RSNavExampleText = "范例：记录 1 到 5 (总共 10 个记录)";
+MM.LABEL_RSNavTotal = "总数";
+
+//Master-Detail Page Set
+MM.MSG_invalidRS = "%s 无效。请在使用该服务器行为之前创建一个有效的 %s";
+MM.MSG_detailPageDialog = "选择详细页面";
+MM.MSG_columnsEmpty = "“控制页域”列表不能为空。请添加至少一个域。";
+MM.MSG_invalidDetailPageName = "详细页面名称无效:";
+MM.MSG_invalidLinkFromColumn = "无效的链接域。请选择域。";
+MM.MSG_invalidUniqueKeyColumn = "无效的唯一键。请选择一个唯一键。";
+
+//Radio Group
+MM.LABEL_Radio                  = "单选";
+MM.LABEL_RadioGroupDefaultName  = "RadioGroup";
+MM.MSG_NoRadioGroupName         = "需要有单选按钮组名称。已生成了一个唯一的名称。";
+MM.MSG_EnterLabelAndValue       = "请为所有单选按钮输入一个标签和值，或者点击“取消”。";
+MM.MSG_NeedAtLeastOneButton     = "单选按钮组必须至少有一个单选按钮。\n请添加一个按钮或单击“取消”。"
+MM.MSG_NeedARadioGroupName      = "请输入单选组名称或点击'取消'。";
+
+//Dynamic Menu
+MM.MSG_CompleteMandatoryMenuValues = "请完成下列域的值或者点击“取消”:\n\t-菜单名称\n\t-记录集\n\t-获取域自\n\t-获取值自";
+MM.LABEL_DynamicMenuDefaultName    = "动态菜单";
+MM.MSG_CreateUsingSB = "要创建动态菜单，请从服务器行为面板的 '+' 菜单\n"
++ 		"选择“动态菜单”服务器行为。";
+
+
+//Repeated Region
+MM.LABEL_RepeatedRegionContent  =  "请用您要重复的内容替换它。";
+
+//ASP.NET DataGrid + other ASP.NET objects/server behaviors
+
+MM.MSG_EmptyID               = "ID 不能空白。请输入有效字符串。";
+MM.MSG_InvalidID             = "这是无效的 ID。请输入只包含字母和数字的 ID。";
+MM.MSG_InvalidIDAutoFix      = "ID 属性可包含字母 (A-Z)、数字 (0-9) 或者下划线 (_)，并且必须以字母开头。";
+MM.MSG_NeedUniqueID          = "已经定义了一个名为“%s”的组件。组件的名称必须是唯一的。 名称不区分大小写。";
+MM.MSG_ValueOutOfRange       = "请输入一个介于 %d 和 %d 之间的值。";
+MM.MSG_DupeDataGrid          = "指定的数据网格 ID 已存在。请提供另一个 ID。"
+MM.MSG_UseMinusButton        = "选择此选项只部分删除 %s 行为，这会在代码中引起问题。若要完全删除，请在“服务器行为”面板中选择 %s，然后单击“减号”(-) 按钮。"
+MM.LABEL_DefaultColumnTitle  = "列标题";
+MM.LABEL_BoundColumnType     = "简单数据字段";
+MM.LABEL_TemplateColumnType  = "自由格式";
+MM.LABEL_HyperlinkColumnType = "超级链接";
+MM.LABEL_EditCmdColumnType   = "'编辑'、'更新'、'取消'按钮";
+MM.LABEL_DeleteColumnType    = "'删除'按钮";
+MM.LABEL_CancelCmdText       = "取消";
+MM.LABEL_EditCmdText         = "编辑";
+MM.LABEL_UpdateCmdText       = "更新";
+MM.LABEL_OtherType           = "其它";
+MM.LABEL_UserDefined         = "用户定义的";
+
+MM.MSG_EmptyField = "数据域不能空白。请输入有效的字符串。";
+MM.MSG_Form_RunAtAttrExists = "当前选定内容在一个没有“Runat=Server”属性的 Form 标签中。%s 对象将向封闭表单添加“Runat=Server”属性。但是，该页面上至少还有一个具有“Runat=Server”属性的 Form 标签。一个页面上有多个 Form 标签具有该属性是非法的。创建 %s 对象后，请确保只有一个 Form 标签具有“Runat=Server”属性。";
+MM.MSG_NoForm_RunAtAttrExists = "%s 对象将创建一个具有“Runat=Server”属性的新 Form 标签。但是，该页面上至少还有另外一个 Form 标签具有“Runat=Server”属性。在一个页面上有多个服务器端 Form 标签是非法的。创建 %s 对象后，请确保只有一个 Form 标签具有“Runat=Server”属性。";
+
+//ASP.NET DataList
+MM.LABEL_HeaderTemplateDesc = "用应显示在列顶部的标题替换此文本。";
+MM.LABEL_ItemTemplateDesc = "用应被重复的内容替换此文本。";
+MM.LABEL_AltItemTemplateDesc = "用应与项目交替出现的内容替换此文本。";
+MM.LABEL_EditItemTemplateDesc  = "用应该在要编辑某项时显示的内容替换此文本。";
+MM.LABEL_SelectedItemTemplateDesc  = "请用在选取一项时应显示的内容替换此文本。";
+MM.LABEL_SeparatorTemplateDesc  = "请用应在各项间显示的内容替换此文本。";
+MM.LABEL_FooterTemplateDesc = "用应显示在列底部的脚注文本替换此文本。";
+
+MM.MSG_InvalidColumnCount = "这是一个无效的表格列数。请输入一个大于零的数。"
+MM.MSG_DupeDataList       = "指定的数据列表 ID 已存在。请提供另一个 ID。"
+
+//**** Inspectors *****
+//ASP Cmd
+MM.MSG_InvalidTimeout ="“超时”必须是有效的整数。";
+
+//ASP Recordset
+MM.LABEL_CTForwardOnly = "仅向前";
+MM.LABEL_CTKeyset = "键集";
+MM.LABEL_CTDynamic = "动态";
+MM.LABEL_CTStatic = "静态";
+
+MM.LABEL_CLClient = "客户端";
+MM.LABEL_CLServer = "服务器";
+
+MM.LABEL_LTReadOnly="只读";
+MM.LABEL_LTPessimistic = "保守式";
+MM.LABEL_LTOptimistic = "开放式";
+MM.LABEL_LTBatchOptimistic = "开放式批处理";
+
+//ASP RR
+MM.MSG_InvalidRepeatName = "无效的重复区域名称。请输入以字母（A-Z 或 a-z）开头并且只包含字母和数字的名称。"
+MM.MSG_MissingRepeatName = "请为该重复区域提供名称。"
+
+//CF Query
+MM.LABEL_DefaultDBType = "ODBC";
+
+//JSP Callable
+MM.MSG_DuplicateCallableName = "指定的可调用名称已经存在。请提供另一个名称。"
+
+//JSP Prepared
+MM.MSG_DuplicatePreparedName = "指定的准备名称已经存在。请提供另一个名称。";
+
+//ASP.NET DataGrid
+MM.MSG_InvalidCellSpacing    = "单元格间距必须是数字。";
+MM.MSG_InvalidCellPadding    = "单元格边距必须是数字。";
+
+//********* Commands *************
+
+//Application
+MM.MSG_NoName = "请输入一个名称。";
+
+//Recordset, Simple Recordset
+MM.MSG_RunTimeValNotCFFormat = "ColdFusion 运行值必须为此格式：#x#"
+MM.MSG_YouNeedAConnection = "在创建 %s 之前，需要先创建一个数据库" +
+		"连接。  \n若要创建连接，请点击'定义...'按钮（位于" +
+		"'连接'下拉列表的右边）。"
+MM.MSG_NoRecordsetSQLStatement = "请输入一个 SELECT 语句，或者输入一个对返回记录集的预存过程的调用。";
+MM.MSG_NoSelectStatement = "请输入一个 SELECT 语句。";
+MM.MSG_CanOnlyUseButtonsOnSelectStatements = "“添加到 SQL”按钮只能用于 SELECT 语句。";
+MM.MSG_SQLNotSimple = "由于 SQL 太复杂，因此无法打开简单的 %s 对话框。";
+MM.LABEL_AddSelect = "SELECT";
+MM.BTN_Simple = "简单…";
+MM.BTN_Test = "测试";
+
+MM.BTN_ConnDefine  = "定义...";
+MM.BTN_ConnDSN    = "DSN...";
+MM.BTN_Import    = "导入";
+MM.BTN_Done      =  "完成";
+MM.BTN_Build    =  "建立";
+
+MM.MSG_CannotTestInsertUpdateDelete = "由于 UPDATE、DELETE 和 INSERT 语句不返回记录集，因此不能测试它们。";
+MM.MSG_ConnErrs = "无法从该连接检索表格，请点击“定义...”按钮以测试该连接。"
+MM.MSG_SelectColumns = "请选择一列或多列，或者选择'全部'。"
+MM.BTN_Advanced = "高级…";
+MM.MSG_CanOnlyUseThisOperatorOnAString = "选定的操作符对于该数据类型无效。";
+MM.MSG_MissingFilterVal = "请在滤镜中输入一个值。";
+MM.LABEL_ASP_Param_Types= new Array("URL 参数","表单变量","Cookie","阶段变量","应用程序变量","输入的值");
+MM.LABEL_ASPNET_Param_Types= new Array("URL 参数","表单变量","Cookie","阶段变量","应用程序变量","输入的值");
+MM.LABEL_CF_Param_Types= new Array("URL 参数","表单变量","Cookie","阶段变量","应用程序变量","输入的值");
+MM.LABEL_JSP_Param_Types= new Array("URL/表单变量","阶段变量","输入的值");
+MM.LABEL_PHP_Param_Types= new Array("URL 参数","表单变量","Cookie","阶段变量","服务器变量","输入的值");
+MM.MSG_DupeColumnWarning = "SELECT 语句已经包含一个名为  \"%s\" 的列。请确保使用表格名称限定\n列。";
+
+//Compound Object Edit Ops (these objects call commands, which do the work)
+MM.MSG_NeedRecordsetForObject = "在使用此对象之前，请先创建一个 %s。\n";
+MM.MSG_NeedOneColumnInList = "必须至少指定一列。";
+MM.LABEL_ColGrid= new Array("列","标签","显示为","提交为");
+MM.LABEL_RadioGrid= new Array("标签","值");
+MM.LABEL_MenuGrid= new Array("标签","值");
+// note: the LABEL variables cannot be listed in an array
+// due to the structure and complexity of the command file
+MM.LABEL_TextField     = "文本字段";
+MM.LABEL_TextArea      = "文本区域";
+MM.LABEL_Menu          = "菜单";
+MM.LABEL_CheckBox      = "复选框";
+MM.LABEL_RadioGroup    = "单选按钮组";
+MM.LABEL_FileField     = "文件域";
+MM.LABEL_HiddenField   = "隐藏域";
+MM.LABEL_PasswordField = "密码字段";
+
+//Edit Op field formats
+MM.LABEL_Text          = "文本";
+MM.LABEL_Numeric       = "数值";
+MM.LABEL_Date          = "日期";
+MM.LABEL_DateMSAccess  = "日期 MS Access";
+MM.LABEL_CheckBoxYN    = "复选框 Y,N";
+MM.LABEL_CheckBox10    = "复选框 1,0";
+MM.LABEL_CheckBoxNeg10 = "复选框 -1,0";
+MM.LABEL_CheckBoxAccess= "复选框 MS Access";
+
+MM.LABEL_Delimiter   = ":" // used to separate label:[form field]
+MM.LABEL_RadioButtons = "单选按钮";
+MM.LABEL_MenuItems    = "菜单项目";
+MM.BTN_InsertRecord  = "插入记录"; // appears on Submit button in user's document
+MM.BTN_UpdateRecord  = "更新记录"; // appears on Submit button in user's document
+MM.LABEL_Element     = "Element";       // as in, "form element"
+MM.LABEL_Label       = "标签";         // as in the label which appears by a form widget
+MM.LABEL_Password    = "密码";      // used to guess if a db col is used to store a password
+MM.MSG_NeedRecordsetForOption = "在选择此选项之前，必须先定义 %s。";
+MM.MSG_NoMoreColumnsToAdd     = "没有其它列可以添加。"
+MM.MSG_NoConnectionSelected   = "在更改此设置前，请先选择一个连接。";
+MM.Msg_NoColumnsInTable = "所选的表为空。请选择另一个表，然后重试。";
+MM.Msg_UnsupportedColumnsInTable = "所选的表格包含不受支持的 %s 类型的列。这些列不会自动包括在表单中，但可以通过点击 (+) 按钮来添加。"
+MM.MSG_NoDataSourceSelected   = "在更改此设置前，请先选择一个数据源。";
+
+
+//ColdFusion RDS Command
+MM.MSG_EnterPassword = "请输入密码。";
+
+//JSP Driver List Dialog
+MM.MSG_EnterDriver = "请输入驱动程序名称。";
+
+//Sort Table & Format Table Commands
+MM.MSG_SomeServerBehaviorsNotAllowed = "此命令不能用于包含'重复区域'、'显示区域'或'动态文本'服务器行为的表格。"
+MM.MSG_RegionServerBehaviorsNotAllowed = "此命令不能用于包含'重复区域'或'显示区域'服务器行为的表格。"
+
+//Radio Properties and Menu Properties Commands
+MM.LABEL_radioPropLabelPrefix = "按钮";
+MM.LABEL_menuPropLabelPrefix = "项目";
+
+//************** Log In Server Behaviors ***************
+
+//COMMON
+MM.MSG_OnlyOneInstanceAllowed = "一个页中只允许有此行为的一个实例。请修改现有的" +
+		"行为，方法是在服务器行为面板中双击它";
+
+//Login User
+MM.LABEL_TitleLoginUser = "登录用户";
+
+MM.LABEL_NoRecordsetFieldsFound = "*** 找不到记录集域";
+MM.MSG_MustSelectConnection     = "必须选择数据库连接和包含您的站点的用户名和密码信息的表格。";
+MM.MSG_MustSelectTable          = "必须选择包含您的站点的用户名和密码信息的表格。";
+
+MM.MSG_LoginUserNoValidForms    = "表单中的用户记录必须至少具有一个可以接受" +
+		"用户名和/或密码值的表单元素。请向表单中添加一个这样的元素并重试。"
+MM.MSG_LoginUserNoFormOnPage    = "要使用该行为，页面上必须有表单。请添加表单并重试。";
+MM.MSG_MustHaveSomethingInForm  = "所选表单不包含任何表单元素。\n" +
+		"向该表单添加至少一个表单元素并重试。"
+MM.MSG_MustSupplyRedirectPages  = "必须为该行为提供这两个重定向页。";
+MM.MSG_LoginUserNoTablesFound   = "无法从该连接读取表格。请打开连接对话" +
+		"以测试该连接。";
+MM.MSG_LoginUserPageRestricted  = "该页已经应用了“限制页访问”行为。除非用户" +
+		"已经登录，否则他们将无法访问该页。";
+MM.MSG_MustSelectUserNamePassword="为了选择数据库表，必须指定用户名和密码";
+
+
+
+
+//Restrict Access To Page
+MM.LABEL_TitleRestrictAccess     = "限制对页的访问";
+MM.MSG_MustSupplyUnauthorizedURL = "必须为该行为提供未授权访问 URL。";
+MM.MSG_UnknownAccessLevels       = "此行为所使用的访问级别未记录在此站点的" +
+		"备注文件中。按下'确定'以添加这些访问级别 (%s) 或者按下'取消'以移除这些访问级别。";
+MM.MSG_AccessListNotEnabled      = "您已选择了“用户名、密码和访问级别”安全方法。" +
+		"或者该登录页未选择此安全方法，或者没有用户" +
+		"登录页已被定义。请使用“登录用户”服务器行为定义登录页。";
+MM.MSG_NoAccessLevelsSelected    = "您已经选择了'用户名、密码和访问级别'安全方法，但是" +
+		"尚未选择任何访问级别。请定义并选择至少一个访问级别" +
+		"或者选择'用户名和密码'安全方法。";
+MM.MSG_RestAccessLoginPage       = "此页已经应用了'登录用户'行为。如果您限制对此页的访问，" +
+		"用户将无法使用此页登录。";
+MM.MSG_RestAccessWrongProtType   = "此页由'用户名、密码和访问级别'保护，但是'登录用户'" +
+		"行为仅使用'用户名和密码'保护此站点，或者在此站点没有定义用户" +
+		"登录页。若要修复此问题，可以通过用户名和密码保护此页，" +
+		"或者修改登录页以使用与此页相同的页限制" +
+		"机制。";
+
+//Logout User
+MM.LABEL_TitleLogoutUser         = "注销用户";
+MM.LABEL_LogoutNewLinkLabel      = "注销";
+MM.MSG_LogoutLinkIsMissing       = "该行为的链接丢失。该行为被重设为“当页载入时注销”。";
+
+//Check New Username
+MM.LABEL_TitleRedirectIfUsernameFound = "检查新用户名";
+
+MM.MSG_MustHaveInsertBehavior = "该服务器行为需要在页上存在'插入记录'行为。" +
+		"添加'插入记录'行为并重试。";
+MM.MSG_InsertBehaviorMissing  = "该行为使用的“插入记录”服务器行为已被删除。请删除该 " +
+		"行为或添加“插入记录”行为。";
+MM.MSG_OutOfSyncWithInsert    = "此页中的'插入记录'服务器行为已更改。您应当能够点击'确定' " +
+		"以便将此行为与'插入记录'行为同步。";
+MM.MSG_MustSupplyRedirectPage = "必须为该服务器行为提供一个重定向页。";
+MM.MSG_NoInsertBehavior       = "无法找到'插入记录'服务器行为。";
+MM.MSG_NoFormElementFound     = "无法在'插入记录'绑定阵列中找到表单元素。";
+
+//********* DataSources *************
+
+//Application
+MM.MSG_DefineApplication = "请为应用程序变量指定一个名称。"
+
+MM.MSG_DefineSite = "请定义一个站点。"
+MM.MSG_DesignNotesOff = "使用该功能之前必须在站点定义对话框中启用“设计备注”。";
+MM.MSG_PleaseSaveSite = "在使用此功能前，请将此文档放入站点中。";
+
+//ASP Command
+MM.MSG_CantDelColumn    = "不能从该对象中删除单独的列。若要删除整个对象，请选取父级并点击减号 [-] 按钮。";
+MM.LABEL_FirstRecordIndex = "[第一个记录索引]";
+MM.LABEL_LastRecordIndex  = "[最后一个记录索引]";
+MM.LABEL_TotalRecordIndex = "[总记录数]";
+
+//Request
+MM.MSG_RequestGiveName = "请为请求变量提供一个名称。"
+
+//Session
+MM.MSG_DefineSession = "请为阶段变量给定名称。"
+
+//Application
+MM.MSG_DefineApplication = "请命名应用程序变量。";
+
+//Form
+MM.MSG_DefineForm = "请命名表单变量。";
+
+//Client
+MM.MSG_DefineClient = "请命名客户端变量。";
+
+//Cookie
+MM.MSG_DefineCookie = "请命名 cookie  变量。";
+
+//Client
+MM.MSG_DefineClient = "请命名 CGI 变量。";
+
+//URL
+MM.MSG_DefineURL = "请命名 URL 变量。";
+
+//Server
+MM.MSG_DefineServer = "请命名服务器变量。";
+
+//Variables
+MM.MSG_DefineVariables = "请命名本地变量。";
+
+// Environment
+MM.MSG_DefineEnvironment = "请命名环境变量。";
+
+// Connection CF
+MM.LABEL_ConnectionVar = "数据源名称变量";
+MM.MSG_NeedCFDataSourceVar = "要查看该记录集的列，请将变量 (%s) 与数据源关联起来。若要完成此操作，请按加号 (+) 按钮并选择“数据源名称变量”。";
+MM.BTN_ShowAdvancedSettings  = "显示高级设置";
+MM.BTN_HideAdvancedSettings = "隐藏高级设置";
+
+//********* Translators *************
+
+//Common
+MM.MSG_ShortFileNotFound = "未找到文件";
+
+//ASP
+MM.MSG_ResponseBuffer = "设置了 response.buffer 属性的文档不能在'动态数据'模式下查看。"
+
+//********* Shared Controls *************
+
+//Tag menu
+MM.MSG_NoSpecificTag = "在使用此服务器行为之前，请先创建一个 \"%s\" 标签。";
+MM.MSG_CouldNotFindSelectedNode = "未能找到所选标签节点。";
+MM.MSG_CannotApplyInLiveData = "要应用该服务器行为，请退出“活动数据”视图。";
+
+//********* Shared Scripts *************
+
+// SB Manager
+MM.MSG_NoXmlFile = "Server behavior was not applied. Could not find a valid XML file that refers to the current server behavior and the current server model.";
+MM.MSG_NoGroupDataFile = "组数据文件 (\"%s\") 未找到。";
+MM.MSG_NoNodeSpecForRelInsert = "没有为节点相关的插入指定任何节点。";
+MM.MSG_NoMatchForParameter = "没有找到与参数 \"%s\" 匹配的项。";
+MM.MSG_ErrProcessingInsText     = "处理 insertText 标签时出错";
+MM.MSG_ErrMisplacedElseIf       = "在“elseif”之前应该有“if”。";
+MM.MSG_ErrMisplacedElse         = "在“else”之前应该有“if”或“elseif”。";
+MM.MSG_ErrMisplacedEndif        = "在“endif”之前应该有“if”、“elseif”或“else”。";
+MM.MSG_ErrMisplacedLoop         = "“loop'嵌套在另一个“loop”中。";
+MM.MSG_ErrMisplacedEndloop      = "在“endloop'之前应该有“loop”。";
+MM.MSG_ErrLoopParamNotArray     = "“loop”参数'%s'不是数组。";
+MM.MSG_ErrLoopParamsDiffLen     = "“loop”参数数组的长度必须相同。“loop”参数'%s'和以前的“loop”参数长度不相同。";
+MM.MSG_ErrArrayUsedOutsideLoop  = "数组参数'%s'未用于“loop”指令中，在该指令中它是一个声明的“loop”参数。"
+MM.MSG_ErrUnterminatedIf        = "在“if”之后应该有“endif”。";
+MM.MSG_ErrUnterminatedLoop      = "在“loop”之后应该有“endloop”。";
+MM.MSG_ErrLoopHasNoParams       = "“loop”中需要参数。";
+MM.MSG_ErrCouldNotEvalDirective = "由于 JavaScript 异常'%s'，不能计算指令表达式。";
+MM.MSG_ErrUnrecognizedDirective = "无法识别的指令'%s'。";
+
+
+//********* Connections *************
+
+// Late in the DuctTape development cycle, we decided to move some of the Connection
+// Manager from Javascript to C.  Rather than creating new C-level string resources,
+// I temporarily added code to ConnectionManager.cpp that references some the the
+// strings in this section. [dgeorge 10/03/00]
+
+// Connection Common
+MM.MSG_SelectName = "请指定一个名称。";
+MM.MSG_InvalidConnectionName = "请在名称中只使用字符 A-Z、a-z、0-9 和 _。";
+MM.MSG_ConnectionExists = "该站点已存在同名的连接。请指定唯一的名称。";
+MM.MSG_SpecifyDriver = "请指定一个驱动程序。";
+MM.MSG_SpecifyUrlString = "请指定一个 URL 字符串。";
+MM.MSG_SpecifyConnString = "请指定一个连接字符串。";
+MM.MSG_NoServerCfDSNs = "在'定义站点'中指定的服务器上没有 ColdFusion 数据源。无法创建该连接。";
+MM.MSG_NoLocalOdbcDSNs = "在您机器的服务器上没有 ODBC 数据源。无法创建该连接。";
+MM.MSG_ConnFileReadOnly = "不能保存连接，因为文件是只读的。\n\n请在编辑链接前使文件成为可写的。";
+MM.MSG_FileAlreadyExists = "无法创建连接，因为文件已经存在。\n\n请重命名该连接或文件。";
+MM.MSG_MacNameTooLong = "名称不能超过 27 个字符。请指定一个较短的名称。";
+MM.MSG_InvalidConnectionName2 = "连接名称不能以数字字符开头。请指定其它连接名称";
+
+//HTTP-ErrorCodes
+MM.MSG_HTTP200 = "状态正常";
+MM.MSG_HTTP400 = "无法理解的请求";
+MM.MSG_HTTP404 = "未找到请求的 URL";
+MM.MSG_HTTP404 = "服务器不支持请求的方法";
+MM.MSG_HTTP500 = "未知服务器错误";
+MM.MSG_HTTP503 = "已达到服务器的容量";
+
+//********* Tag Importers *************
+
+MM.MSG_ImportHTTPError   = "HTTP 错误 %s 导致标签导入失败。";
+MM.MSG_ImportHTTPTimeout   = "等待服务器响应时内部检查操作超时。更改“站点”首选项中的“FTP 超时”可以增加允许的时间。";
+MM.MSG_ImportCreateError = "无法创建标签导入文件 %s。";
+MM.MSG_URIMissing     = "请输入一个有效的 URL（位置）来定位该服务器上的标签库。";
+MM.MSG_PrefixMissing   = "请输入一个前缀（命令空间）以唯一地标识标签库。";
+MM.MSG_TLDPackageName   = "请选择 .tld 或 Java 存档文件（.jar 或 .zip）。";
+MM.MSG_JSTFolderName   = "请为 JRun 服务器标签选择文件夹位置。";
+MM.MSG_JSPSiteMissing   = "该标签导入程序仅适用于 JSP 服务器。";
+MM.MSG_JSPServerMissing   = "请选择要使用此标签导入程序的测试服务器。";
+MM.MSG_JSPFileExtension   = "请选择 .tld 文件或 .jar/.zip 文件。";
+MM.MSG_JARDoesNotContainTLD    = "所选 .jar 或 .zip 文件不包含标签库说明符 (.tld) 文件。";
+MM.MSG_TLDDoesNotContainTag    = "所选的 .tld 文件不包含任何要导入的标签。";
+MM.MSG_JSTDoesNotContainTag    = "指定的文件夹不包含任何要导入的标签。";
+MM.MSG_ImportNoTLDsINWEBXML    = "远端应用程序的 web.xml 不包含任何要导入的标签库定义。";
+MM.MSG_UpdateTagLibrary      = "已经存在具有相同前缀的标签库 %s。%s\n您想覆盖现有标签库吗？";
+MM.MSG_JARCONTAINSMULTIPLETLDS  = "该 .jar 文件包含多个 .tld 文件。Dreamweaver 当前不支持导入多个 .tld 文件";
+MM.MSG_JspPrefixInvalidName    = "前缀无效。请从前缀中移除空格和特殊字符。";
+MM.MSG_JspPrefixReserved    = "前缀中包含保留字。";
+MM.MSG_ASPNETSiteMissing    = "此标签导入程序仅适用于 ASP.NET 站点。";
+MM.MSG_ASPNETServerMissing    = "该标签导入程序需要远程服务器。";
+
+//********* WebServices *************
+
+MM.MSG_ProxyGenNameMissing       =  "'代理生成器名称'域不能为空。请输入一个名称并重试。";
+MM.MSG_ProxyGenCompileCmdMissing  =  "'生成代理命令'和'编译代理命令'两者不能都为空。请输入其中一个命令并重试。";
+MM.MSG_ProxyCompileCmdMissing    =  "编译代理命令不能为空。请输入命令，然后重试。";
+MM.MSG_ProxyDestOutputDirMissing  =  "目标输出不能为空。请输入一个输出目录，然后重试。";
+MM.MSG_ProxyDestOutputDirLengthInvalid ="目标输出目录长度超过了允许的最大长度。请选择一个较短的目录并重试。";
+MM.MSG_ProxyServerModelsMissing    =  "'支持的服务器模型'不能为空。请选择服务器模型，然后重试。";
+MM.MSG_WSDLFileReadError      =   "无法读取 WSDL 文件。";
+MM.MSG_LocalWSDLFileCreateError    =  "无法为远端 WSDL 创建本地文件。请检查 URL 并重试。";
+MM.MSG_BatchFileRunError      =   "运行批文件时出错。";
+MM.MSG_CreateBatchFileError      =  "不能创建批文件；在此处结束。";
+MM.MSG_WebServicesFolderMissing    =    "Web 服务配置目录不存在。";
+MM.MSG_WSDLFileNameMissing      =   "WSDL 文件名不能为空。请输入一个 WSDL 文件名，然后重试。";
+MM.MSG_IncorrectNodeNameError    =  "为该代理生成器选择的节点名称不正确。请选择正确的节点名称。有关更多信息，请参阅供应商说明文件。";
+MM.MSG_IncorrectProxyChooserExtError=   "%s 内部检查器不适用于 %s 文件。请选择正确的内部检查器，然后重试。";
+MM.MSG_WSProxyNotFoundWarning    =  "代理类文件没有 Web 服务代理。";
+MM.MSG_OutputFileMissing      =  "输出文件已丢失。";
+MM.MSG_OutputFileReadError      =   "无法读取输出文件。";
+MM.MSG_OutputDirInvalidError    =  "不支持为该代理指定的输出目录。请注意，不支持 UNC 路径。";
+MM.MSG_OutputDirMissingError    =  "为该代理指定的输出目录不存在。请创建该目录，然后重试。";
+MM.LABEL_OutputDirCreate      =  "输出目录不存在。您想创建它吗?";
+MM.MSG_OutputDirCreationError    =  "无法创建输出目录。";
+MM.MSG_SelectOutputProxyDir      =   "将代理保存在文件夹中。";
+MM.MSG_WinProxyGeneratorInstructions=   "若要为当前站点添加/编辑代理:\r\n1.浏览 UDDI 注册表以定位一个 WSDL URL，然后在 WSDL URL 域中输入 URL，并在必要时输入用户名和密码。\r\n2.从下拉列表中选择代理生成器。\r\n3.如果不存在输出目录，则为此代理生成器创建所选的'默认输出'目录。\r\n4.点击'建立代理'按钮来生成代理。\r\n5.经过编译的代理文件需要手动部署到服务器上。\r\n";
+MM.MSG_InvalidTokensError      =  "无效的标记 - %s（在 %s 字段中）";
+MM.MSG_GenerateProxyField      =  "代理生成器";
+MM.MSG_CompileProxyField      =  "代理编译器";
+MM.MSG_DefaultOutputDirField    =  "默认输出目录";
+MM.MSG_UnknownWSDLFormat      =  "此 URL 未使用 WSDL 格式或使用了未知的 WSDL 格式。";
+MM.MSG_NoLanguageSignature      =  "无语言签名。";
+MM.MSG_MissingAxisXercesJars    =  "缺少轴和 xerces .jar 文件！";
+MM.MSG_UnableToRunJavac        =  "无法运行 javac。";
+MM.MSG_UnableToGenerateProxy    =  "无法生成代理。";
+MM.MSG_FieldsNode          =  "域";
+MM.MSG_PropertiesNode        =  "属性";
+MM.LocationProxyClass			= "代理类的位置:";
+MM.FolderProxyClass			= "包含代理类的文件夹:";
+
+//********* Components *************
+
+MM.LABEL_Tables = "表";
+MM.LABEL_Views = "视图";
+MM.LABEL_StoredProcs = "预存过程";
+MM.LABEL_Required = "Required";
+MM.LABEL_AddUsingWSDLName = "使用 WSDL 添加";
+MM.LABEL_EditUsingWSDLName = "使用 WSDL 编辑";
+MM.LABEL_MarkupTags = "标签语言标签";
+MM.LABEL_ProxyGetClassName = "请选取代理类";
+
+MM.MSG_WinWebServicesInstructions  = "若要为当前站点添加新的 Web 服务：\n\n1.点击 + 工具条按钮以启动 Web 服务选择器。\n\n2.浏览到 UDDI 以定位 WSDL 文件。\n\n3.从 WSDL 生成一个代理。\n\n";
+MM.MSG_WinJavaBeanInstructions  =    "若要为当前站点添加新的 Java Bean：\n\n1.点击 + 工具条按钮以启动 Java Bean 选择器。\n\n2.选择一个类或者浏览以定位 .jar 文件中的一个类。\n\n";
+MM.MSG_MacWebServicesInstructions  = "要为当前站点添加新的 web 服务：\r\r1. 点击 + 工具栏按钮以启动代理类选择器。\r\r2.浏览以定位 .class 文件并选取内部检查器。\r\r3.代理类将会被进行内部检查并被添加到 Web 服务树。\r\r";
+MM.MSG_MacJavaBeanInstructions  =    "要为当前站点添加新的 Java Bean：\r\r1.点击 + 工具栏按钮以启动 Java Bean 选择器。\r\r2.选择一个类或者浏览以定位 .jar 文件中的类。\r\r";
+MM.MSG_JavaBeanAddToolTipText  =    "Java Bean 选择器";
+MM.MSG_JavaBeanDeleteToolTipText  =    "删除 Java Bean";
+MM.MSG_WebServicesAddToolTipText  =    "添加 Web 服务";
+MM.MSG_WebServicesDeleteToolTipText  =    "删除 Web 服务";
+MM.MSG_WebServicesRegenToolTipText  =    "重建代理";
+MM.MSG_WebServicesEditToolTipText   =    "编辑 Web 服务";
+MM.MSG_WebServicesDeployToolTipText = "将支持文件部署到测试服务器";
+MM.MSG_ComponentNotSupportedServerModel = "%s 组件模型不适用于 %s 服务器模型";
+MM.MSG_JavaBeanComponentType      = "JavaBean";
+MM.MSG_WebServicesComponentType      = "Web 服务";
+MM.MSG_EditWebServiceSelectionMissing  = "要编辑 web 服务，应该选中它。请选中后再试。";
+MM.MSG_DBInstructions          = "通过从加号 (+) 菜单进行选择以定义一个数据库连接。";
+MM.MSG_CFDBInstructions          = "使用加号  (+)  菜单选择 (%s) 上的远端数据源或本地 ODBC 数据源";
+MM.MSG_CFDBInstructions1        = "1. 请输入 (%s) 的 RDS 登录信息。";
+MM.MSG_CFDBInstructions2        = "2. 请确保具有在 (%s) 服务器上定义的数据源。";
+MM.MSG_SystemDataSources        = "%s 上的系统数据源";
+MM.MSG_ProxyChooserClassNameMissing    = "代理路径不能为空。请选择一个路径并重试。";
+MM.MSG_IntrospectorNameMissing      = "“内部检查器名称”不能空白。请选择一个内部检查器并重试。";
+MM.MSG_ViewData              = "查看数据";
+MM.MSG_JavaBean_InstructionsTitle    = "要检查并使用该站点可用的 JavaBean，请完成下列步骤";
+MM.MSG_JavaBean_InstructionsStep1    = "点击 + 工具栏按钮以启动 JavaBean 选择器";
+MM.MSG_JavaBean_InstructionsStep2    = "选择一个类或者浏览以定位 .jar 文件中的类。";
+MM.MSG_ProxyChooseFolder        = "选择文件夹";
+MM.MSG_ProxyNotFound          = "未在此位置找到代理";
+
+
+//********* Generic databse setup instructions *************
+
+MM.MSG_Dynamic_InstructionsTitle  = "若要在该页面上使用动态数据：";
+MM.MSG_Dynamic_InstructionsStep1  = "为该文件创建一个<a href=\"#\" onMouseDown=\"event:CreateSite\">站点</a>。";
+MM.MSG_Dynamic_InstructionsStep1A  = "为此文件配置<a href=\"#\" onMouseDown=\"event:CreateSite\">服务器</a>。";
+MM.MSG_Dynamic_InstructionsStep2  = "选择一种<a href=\"#\" onMouseDown=\"event:SetDocType\">文档类型</a>。";
+MM.MSG_ColdFusion_InstructionsStep2  = "选择一种<a href=\"#\" onMouseDown=\"event:SetDocType\">文档类型</a>。";
+MM.MSG_Dynamic_InstructionsStep3  = "设置站点的<a href=\"#\" onMouseDown=\"event:SetAppServer\">测试服务器</a>。";
+MM.MSG_Dynamic_InstructionsStep3A  = "Set up the server's <a href=\"#\" onMouseDown=\"event:CreateSite\">URL prefix</a>.";
+
+//********* CFCs *************
+
+MM.MSG_CFC_InstructionsTitle  = "要检查并使用 CFC:";
+// step 1 is the same as MM.MSG_Dynamic_InstructionsStep1
+// step 2 is the same as MM.MSG_ColdFusion_InstructionsStep2
+// step 3 is the same as MM.MSG_Dynamic_InstructionsStep3
+// step 4 is the same as MM.MSG_SetRDSPassword.
+MM.MSG_CFC_InstructionsStep5  = "单击“刷新”按钮。";
+
+MM.MSG_CFCAddToolTipText  = "创建新的 ColdFusion 组件 (CFC)。";
+MM.MSG_CFCsComponentType  = "CFC";
+MM.MSG_CFCsCreateToolTipText  = "创建新的 ColdFusion 组件 (CFC)。";
+MM.MSG_CFCsInsertToolTipText  = "插入用于调用函数的代码。";
+MM.MSG_CFCsDetailsToolTipText  = "获取详细信息。";
+MM.MSG_CFCsRefreshToolTipText  = "刷新 ColdFusion 组件 (CFC) 的列表。";
+MM.MSG_CFC_PropertiesNodeText  = "属性";
+MM.MSG_CFC_ThisCFCNodeText    = "此 CFC";
+MM.MSG_CFC_ThisPackageNodeText  = "此包";
+MM.MSG_CFC_ThisServerNodeText  = "此服务器";
+MM.MSG_CFC_AnyServerNodeText  = "任何服务器";
+MM.MSG_CFC_AKindOf        = "一种";
+MM.MSG_CFC_Required        = "必需";
+MM.MSG_CFC_Optional        = "可选";
+MM.MSG_CFC_CannotFindEntityToEdit  = "未在此 CFC 文件中找到您选择的组件、函数、属性或参数。";
+MM.MSG_CFC_PartiallyParsedTree  = "已找到一些包以及它们中的 CFC，但是没有找到所有包。某个问题使得无法列出其余的包。";
+MM.MSG_CFC_FailedToParseTree  = "无法列出这些包以及它们中的 CFC，有以下一些原因导致发生此情况。\n\n1. URL 前缀（在您设置该 Dreamweaver 站点时指定）可能有格式错误。请使用“站点”菜单中的“定义站点”检查 URL 前缀。\n2. URL 前缀可能对应于一个其 ColdFusion MX 当前没有运行的站点。\n3. URL 前缀可能对应于没有 ColdFusion 组件的站点。请按下此面板中的加号按钮以创建一个 ColdFusion 组件。";
+MM.MSG_CFC_LocalAndAppServerPathsNotSame  = "如果该站点文件的本地路径与为该站点的测试服务器定义的路径相同，则该面板仅能用于编辑 CFC。此外，对测试服务器的访问必须是本地/网络。通过使用'站点'菜单中的'定义站点'项，可以检查和更改这些路径。当前设置为：";
+MM.MSG_CFC_AppServerAccessType  = "测试服务器访问类型:";
+MM.MSG_CFC_LocalPathToFiles    = "文件的本地路径:";
+MM.MSG_CFC_AppServerPathToFile  = "文件的测试服务器路径:";
+
+MM.MSG_CFC_ParseErrEndQuote      = "语法分析错误:发现未预期的结束引号。";
+MM.MSG_CFC_ParseErrUnexpectedEQU  = "语法分析错误:发现未预期的 '='。";
+MM.MSG_CFC_ParseErrValue      = "语法分析错误:值超过了结束标签；引号不匹配?";
+MM.MSG_CFC_wddxPacketParserError  = "DOM 错误：wddxPacket 具有意外结构。";
+MM.MSG_CFC_UnnamedPackage      = "<无>";
+MM.MSG_CFC_PleasePutAValueHere    = "enter_value_here";
+MM.MSG_CFC_PleasePutAVariableHere  = "enter_unique_variable_name_here";
+MM.MSG_CFC_PleasePutAnIDfor      = "enter_id_here_for_instance_of___";
+MM.MSG_CFC_Invocation_Instruction1  = "*** 请阅读此 ***\n";
+MM.MSG_CFC_Invocation_Instruction2  = "CFINVOKE 标签用于调用 CFC 函数。\n\n";
+MM.MSG_CFC_Invocation_Instruction3  = "下面的代码是为了给您一个方便的起始点而提供的。\n在某些情况下，您可能在需要填入\n参数值的位置看到占位符。这些占位符类似于以下形式:\n\n";
+MM.MSG_CFC_Invocation_Instruction4  = "如果参数类型\n简单，参数值可以是数字、字符串等等。对于更复杂的参数类型（例如 Java 数据类型），\n需要创建并传递一个 ColdFusion 数据结构。\n\n";
+MM.MSG_CFC_Invocation_Instruction5  = "若要使用该标签，必须设置正确的命名空间。可以通过\n将以下标签添加到的文件的顶部来完成此设置:\n\n";
+MM.MSG_CFC_Invocation_Instruction6  = "ID 属性用于标识此 CFC 的特定实例。\n通过使用 Dreamweaver 的“服务器组件”面板中\n显示的树中与此 CFC 关联的“管理实例”上下文菜单项，\n您可以搜索合适的 ID。\n";
+
+MM.MSG_CFC_Details        = "详细信息";
+MM.MSG_CFC_TTT_Name        = "名称: ";
+MM.MSG_CFC_TTT_Physicalpath    = "路径:";
+MM.MSG_CFC_TTT_Extends      = "扩展: ";
+MM.MSG_CFC_TTT_Access      = "访问:";
+MM.MSG_CFC_TTT_ReturnType    = "返回值类型:";
+MM.MSG_CFC_TTT_OutputAllowed  = "允许的输出:";
+MM.MSG_CFC_TTT_Type        = "类型: ";
+MM.MSG_CFC_TTT_Required      = "必需: ";
+MM.MSG_CFC_TTT_Roles      = "角色:";
+MM.MSG_CFC_TTT_ImplementedIn  = "在 CFC 中实现:";
+MM.MSG_CFC_TTT_Inherited    = "继承的: ";
+MM.MSG_CFC_TTT_DefaultValue    = "默认值:";
+MM.MSG_CFC_TTT_Error      = "该 CFC 存在问题。它可能已不再存在或有语法错误。点击“刷新”按钮或双击该 CFC 以编辑其代码。";
+MM.MSG_CFC_TTT_Error_Short    = "存在与此 CFC 关联的问题。";
+
+//********* Web Services *************
+
+MM.MSG_WebService_InstructionsTitle  = "若要为当前站点添加新的 Web 服务：";
+// step 1 is the same as MM.MSG_Dynamic_InstructionsStep1
+// step 2 is the same as MM.MSG_Dynamic_InstructionsStep2
+MM.MSG_WebService_InstructionsStep3 = "在该系统上安装合适的 SDK 。对于 .NET 站点，这是 Microsoft .NET 框架 SDK。";
+MM.MSG_WebService_InstructionsStep4 = "按加号 (+) 按钮。";
+
+//********* Server Debug Output *************
+
+// step 1 is the same as MM.MSG_Dynamic_InstructionsStep1
+// step 2 is the same as MM.MSG_Dynamic_InstructionsStep2
+MM.MSG_ServerDebug_InstructionsStep3  = "设置该站点的<a href=\"#\" onMouseDown=\"event:SetAppServer\">测试服务器</a>。<br><br><a href=\"#\" onMouseDown=\"OnEnableDebuggingHelp()\">[启用]</a>服务器上的调试并<a href=\"#\" onMouseDown=\"OnSelectIPDebuggingHelp()\">[选择]</a> IP 地址以接收调试信息。";
+
+//********* Reflector Error Messages *************
+
+MM.MSG_ErrNodeName            = "错误...";
+MM.MSG_OUTOFMEMORY            = "内存不足";
+MM.MSG_INVALIDSIGNATURE          = "无效的代理 %s";
+MM.MSG_INVALIDFILENAME          = "代理 %s 不存在";
+MM.MSG_READFAILURE            = "无法读取文件 %s";
+MM.MSG_UNKNOWNERROR            = "读取代理 %s 时出现未知错误";
+MM.MSG_COMERROR              = "无效的代理：发生了 COM 错误 %s。请参阅 Microsoft 文档查看错误文本。";
+MM.MSG_MISSINGPROXYGENERATOR      = "缺少代理生成器 %s";
+
+/************************** TEMPLATES *************************/
+MM.MSG_AlreadyEdit = "选定内容已位于可编辑、重复或可选区域中。";
+MM.MSG_WrappingExistingEdit = "所选内容已经包含或重叠了一个可编辑、重复或可选区域。";
+MM.MSG_SaveDW4First = "这是一个 DW4 模板。如果要插入模板内容，必须首先将它保存为嵌套模板。";
+MM.MSG_CantInsertRepeatEntry = "所选范围不在重复区域中，不能插入新项。";
+MM.MSG_EditAttrNoTemplate = "文档不是模板。在能够编辑标签属性之前，必须将文档保存为模板。";
+MM.MSG_EditAttrLocked = "选择的标签或范围被锁定。不能在锁定的区域内编辑属性。";
+MM.MSG_InEdit = "您不能在可编辑的区域中生成可编辑的属性。在此模板的实例中标签已经完全可以编辑。";
+MM.MSG_NoRepeatEntries = "未选择任何重复项。";
+
+MM.RepeatTableRowsWarning    = "您必须选择一个位于表格内且不为空的行范围进行重复。";
+MM.CantSaveAsTemplateMessage = "不能将此文档保存为模板。";
+MM.MakeInstanceFirst = "可以从模板实例创建一个嵌套模板，但无法从模板文件自身创建。\n请首先创建一个此模板的实例，然后重试。";
+
+MM.TEMPLATE_UTILS_IllegalName = "该名称不能包含“<”、“>”、“&”、“\"”或“\'”字符";
+MM.TEMPLATE_UTILS_IllegalLabel = "标签不能包含“<”、“>”、“&”、“\"”或“\'”字符";
+MM.TEMPLATE_UTILS_EmptyName = "您必须输入一个名称。";
+MM.TEMPLATE_UTILS_AlreadyExists = "已存在同名可编辑区域。请挑选其他名称。";
+MM.TEMPLATE_UTILS_AlreadyExists_Repeat = "已存在同名重复内容。请挑选其他名称。";
+MM.TEMPLATE_UTILS_NumberNotAllowed = "不能在此处将数字作为名称使用。";
+MM.TEMPLATE_UTILS_DoCreateParam = "您输入了标签“%s”，它不在文档中出现。要创建具有此名称的新参数吗？";
+MM.TEMPLATE_UTILS_DoSaveAsTemplate = "该文档使用模板标签。需要将文档保存为模板才能使这些标签正常工作。\n您想现在另存为模板吗？";
+MM.TEMPLATE_UTILS_NoEditAreas = "该文档没有可编辑的区域。添加一些可编辑的区域后，才能在此模板实例中输入文本。";
+MM.TEMPLATE_UTILS_CantInsertRepeatHere = "不能在此处插入重复区域。";
+MM.TEMPLATE_UTILS_CantInsertOptionalHere = "不能在此处插入可选区域。";
+MM.TEMPLATE_UTILS_CantInsertEditableHere = "不能在此处插入可编辑区域。";
+MM.TEMPLATE_UTILS_CantMakeEditableAttrHere = "不能在可编辑的区域中生成可编辑的属性。";
+MM.TEMPLATE_UTILS_FeedYourHead = "HEAD 标签中没有可向其中插入模板属性标签的可编辑区域。请向基模板中的 HEAD 标签添加可编辑区域并重试。";
+MM.TEMPLATE_UTILS_EditOverlap = "可编辑区域中已有部分选择内容。";
+MM.TEMPLATE_UTILS_CantRemoveDW4TemplateContent = "不能从此实例中删除此可编辑区域。必须从模板中将其删除。";
+MM.TEMPLATE_UTILS_Label_Yes = "       是      ";
+MM.TEMPLATE_UTILS_Label_No =  "       否       ";
+MM.TEMPLATE_UTILS_Label_OK =  "       确定       ";
+MM.TEMPLATE_UTILS_Label_Cancel =  "     取消     ";
+MM.TEMPLATE_UTILS_LocalEdit_Suffix = "编辑(_E)";
+MM.TEMPLATE_UTILS_MultipleCellsNotAllowed = "您不能在多个表单元格周围创建模板区域。请选择整个表格行或分别选择每个表格单元格。";
+
+/**** OPTIONAL CONTENT *****/
+MM.Optional_LABEL_Basic    = "基本";
+MM.Optional_LABEL_Advanced = "高级";
+
+MM.Optional_MSG_None  = "<无>"; //Used in params popup.
+MM.Optional_MSG_MustPick = "您必须输入表达式或者挑选现有参数。若要在没有表达式或参数的情况下继续，请单击“基本”选项卡。"
+
+MM.Optional_MSG_ParamExists = "已经存在名为 \"%s\" 的模板属性。您想使用它吗?";
+
+MM.NewTemplateWarning = "Dreamweaver 会自动将此文档转换为模板。";
+MM.FunkyNestingWarning = '您已经将可编辑区域 %s 放在 <P> 标签或其它块标签内。此模板的用户将无法在该区域中创建新段落。如果要允许用户在该区域中创建新段落，请将该区域移到 <P> 标签的外部。';
+MM.FunkyNestingWarning2 = '您在 <p> 标签中放了一个可编辑区域 "%s"。此模板的用户将无法在此区域中创建新的段落。如果您要允许此操作，请将该区域移到 <p> 标签之外。如果您不想让用户进行此操作，则请将 paragraphWarn="false" 添加到 TemplateBeginEditable 标签中，以避免以后出现此警告。.';
+
+MM.LABEL_StoredProcDataSet      = "来自预存过程的数据集 (%s)";
+MM.LABEL_TitleShowIfEmptyDataSet  = "数据集为空时显示";
+MM.LABEL_TitleShowIfNotEmptyDataSet  = "数据集不为空显示";
+MM.MSG_NoDataSetName        = "请输入数据集名称。";
+MM.MSG_DupeDataSetName        = "指定的数据集名称已存在。请另外提供一个名称。";
+MM.MSG_InvalidDataSetName = "无效的数据集名称。请输入不包含空格并以字母开头的名称。";
+MM.MSG_UpdateDataSetRefs      = "数据集的重命名通过使用“查找/替换”对话框以交互方式完成，以便同时替换对该数据集的全部引用。请验证在此对话框中执行的每次替换都是有效的。单击“查找/替换”对话框中的“关闭”以使数据集名称保持不变。";
+
+MM.MSG_NeedPageNavDataSet =
+		"在插入此项目前，请先插入一个重现区域，\n" +
+		"为记录浏览设置的数据网格或数据列表行为。\n";
+
+MM.MSG_DataSetNotPageNav =
+		"没有为记录浏览设置指定的数据集。请\n" +
+		"请另外选择一个记录集，或者点击'取消'并创建\n" +
+		"为记录设置的重现区域、数据网格或数据列表\n" +
+		"浏览。\n";
+
+MM.MSG_DataSetAlreadyPaging =
+		"指定的数据集已支持记录浏览。\n" +
+		"请选择另一个数据集。\n";
+
+// These strings appear in the Insert > Server menu
+// The underscores represent the neumonic character
+
+MM.MENU_Recordset = "记录集(_R)";
+MM.MENU_RecordsetNavBar = "记录集导航条(_R)";
+MM.MENU_RecordsetNavStatus = "记录集导航状态(_N)";
+
+MM.MENU_DataSet = "数据集(_S)";
+MM.MENU_DataSetNavBar = "数据集导航条(_B)";
+MM.MENU_DataSetNavStatus = "数据集导航状态(_N)";
+
+// ASP.NET Recordset/Stored Proc dialogss
+MM.LABEL_ParamAttributesType = "类型: ";
+MM.LABEL_ParamAttributesValue = "值:";
+MM.LABEL_ParamAttributesSize = "大小:";
+MM.LABEL_ParamPlaceholder = "&nbsp;";
+MM.MSG_NeedParamTestValue = "请输入测试值。";
+MM.MSG_MissingParamSize = "请输入参数 '%s' 的大小。";
+
+//  ASP.NET DataGrid dialogs
+MM.MSG_NeedColumnTitle = "请输入标题。";
+MM.LABEL_DataGridColunmNames= new Array("标题","类型");
+MM.LABEL_LinkButton = "链接按钮";
+MM.LABEL_PushButton = "普通按钮";
+MM.LABEL_DataGridEditItemTemplateDesc =
+		"用应该在要编辑某项时显示的\n内容替换此文本。\n\n" +
+		"此数据网格支持下列控件:\n" +
+"	asp:textbox\n	asp:checkbox\n	asp:dropdownlist\n\n" +
+		"该控件的 ID 必须与其要绑定到的字段\n名称相匹配。";
+
+MM.MSG_MySQLWantsHostName =
+		"没有指定主机名。大多数生产 MySQL 环境\n" +
+		"需要主机名以连接数据库。\n";
+
+MM.MSG_MySQLWantsUserName =
+		"没有指定用户名。大多数生产 MySQL 环境\n" +
+		"需要用户名以连接数据库。\n";
+
+MM.MSG_MySQLWantsPassword =
+		"没有指定密码。大多数 MySQL 环境\n" +
+		"需要密码以连接数据库。\n";
+
+MM.MSG_MySQLRequiresDatabase = "请指定一个数据库。MySQL 需要数据库名称。\n" ;
+
+
+//  OLE DB templates
+
+MM.OLE_DB_TEMPLATE_Oracle_Microsoft_Provider = "Oracle (Microsoft 提供程序)";
+MM.OLE_DB_TEMPLATE_Oracle_Oracle_Provider = "Oracle (Oracle 提供程序)";
+MM.OLE_DB_TEMPLATE_Microsoft_SQL_Server = "Microsoft SQL 服务器";
+MM.OLE_DB_TEMPLATE_Microsoft_Access_97 = "Microsoft Access 97 (Microsoft Jet 3.5 提供程序)";
+MM.OLE_DB_TEMPLATE_Microsoft_Access_2000 = "Microsoft Access 2000 (Microsoft Jet 4.0 提供程序)";
+MM.OLE_DB_TEMPLATE_UDL_File = "UDL 文件";
+
+MM.LABEL_TitleDataSet        = "数据集";
+MM.LABEL_TitleDataGrid	     = "数据网格";
+MM.LABEL_TitleDataList       = "数据列表";
+MM.LABEL_TitleASPButton      = "asp:按钮";
+MM.LABEL_TitleASPImageButton = "asp:图像按钮";
+MM.LABEL_TitleASPTextbox     = "asp:文本框";
+MM.LABEL_TitleASPCheckbox    = "asp:复选框";
+MM.LABEL_TitleASPRadiobutton = "asp:单选按钮";
+MM.LABEL_TitleASPLabel       = "asp:标签";
+MM.LABEL_TitleASPDropDownList    = "asp:下拉列表";
+MM.LABEL_TitleASPListBox         = "asp:列表框";
+MM.LABEL_TitleASPCheckBoxList    = "asp:复选框列表";
+MM.LABEL_TitleASPRadioButtonList = "asp:单选按钮列表";
+
+// loading control errors
+
+MM.MSG_MENU_ERROR_1 = "“连接列菜单”控件出错：无法找到必需的“连接表菜单”控件";
+MM.MSG_MENU_ERROR_2 = "“连接存储过程菜单”控件出错：无法找到必需的“连接菜单”控件";
+MM.MSG_MENU_ERROR_3 = "“连接表菜单”控件出错：无法找到必需的“连接菜单”控件";
+MM.MSG_MENU_ERROR_4 = "“EditableRecordsetFieldMenu”控件出错：无法找到必需的“RecordsetMenu”控件";
+MM.MSG_MENU_ERROR_5 = "“表单字段菜单”控件出错：无法找到必需的“表单菜单”控件";
+MM.MSG_MENU_ERROR_6 = "“记录集字段菜单”控件出错：无法找到必需的“记录集菜单”控件";
+MM.MSG_MENU_ERROR_7 = "“记录集字段排序列表菜单”控件出错：无法找到必需的“记录集菜单”控件"
+
+// UsableNet extensions
+MM.LABEL_MANUAL	  = "manual";
+
+//--------------- END LOCALIZEABLE   ---------------
+
+  //********* Non-localizable Variable Names *************
+  MM.LABEL_Request  = "Request";
+  MM.LABEL_RequestJSP  = "request";
+  MM.LABEL_Session  = "Session";
+  MM.LABEL_SessionJSP  = "session";
+  MM.LABEL_Application = "Application";
+  MM.LABEL_Form = "Form";
+  MM.LABEL_Client = "Client";
+  MM.LABEL_Cookie = "Cookie";
+  MM.LABEL_CGI = "CGI";
+  MM.LABEL_URL = "URL";
+  MM.LABEL_Server = "Server";
+  MM.LABEL_Variables = "Variables";
+  MM.LABEL_Environment = "Environment";
+  
+  //Dynamic Data
+  MM.LABEL_DynamicExpression = "text";
+
+  MM.BTN_EngInsertRecord  = "Insert Record"; // appears on Submit button in user's document - leave in English for Latin1 docs
+  MM.BTN_EngUpdateRecord  = "Update Record"; // appears on Submit button in user's document
+
+  MM.MSG_dbgNoScript = new Array(strDbgNoScript, strDbgNoScriptDB);
+  MM.MSG_dbgNoApplet = new Array(strDbgNoApplet, strDbgNoAppletDB);
+
+  MM.OptionalAutonamePreamble = "OptionalRegion"; //Used for autonaming optional regions
+  MM.EditAutonamePreamble = "EditRegion";
+  MM.RepeatAutonamePreamble = "RepeatRegion";
+
+  // Leave in English for Latin1 docs in Asian languages to prevent corruption
+  MM.LABEL_EngRSNavBeforeFirst = "Records";
+  MM.LABEL_EngRSNavBeforeLast  = "to";
+  MM.LABEL_EngRSNavBeforeTotal = "of";
+  MM.LABEL_EngRSNavAfterTotal  = "";
+
+  MM.LABEL_EngNewMoveToFirstLinkLabel = "First";
+  MM.LABEL_EngNewMoveToPrevLinkLabel  = "Previous";
+  MM.LABEL_EngNewMoveToNextLinkLabel  = "Next";
+  MM.LABEL_EngNewMoveToLastLinkLabel  = "Last";
+
+  //********* Inspectors Coordinates *************
+
+  //ASP Command
+  MM.POS_AspCommand_Timeoutlabel_Left    = 94;
+  MM.POS_AspCommand_Timeoutlabel_Top    = 65;
+  MM.POS_AspCommand_PreparedSelection_Top  = 65;
+
+  //ASP Recordset
+  MM.POS_AspRecordset_SQLLayer_Left        = 104;
+  MM.POS_AspRecordset_ConnectionNameLayer_Left  = 104;
+  MM.POS_AspRecordset_CursorTypelabel_Top      = 52;
+  MM.POS_AspRecordset_CursorLocationlabel_Top    = 72;
+
+  //ASP RepeatedRegion
+  MM.POS_AspRepeatRegion_TimesLayerShowAllLabel_Top  = 28;
+  MM.POS_AspRepeatRegion_TimesLayerShowAllLabel_Left  = 357;
+
+  //ColdFusion CFLOOP
+  MM.POS_CFLoop_TimesLayerShowAllLabel_Top  = 28;
+  MM.POS_CFLoop__TimesLayerShowAllLabel_Left  = 357;
+
+  //ColdFusion CFQUERY
+  MM.POS_CFQuery_CursorTypelabel_Top  = 45;
+  MM.POS_CFQuery_CursorTypelabel_Left  = 114;
+
+  //ColdFusion STOREDPROC
+  MM.POS_CFStoredProc_Timeoutlabel_Top  = 44;
+  MM.POS_CFStoredProc_ReturnResultsetLayer_Top = 52;
+
+  //JSP Callable
+  MM.POS_JspCallable_TimeOutlabel_Left  = 94;
+  MM.POS_JspCallable_ReturnRecordsLayer_Left = 101;
+
+  //JSP Prepared
+  MM.POS_JspPrepared_ConnectionNameLayer_Left = 105;
+
+  //JSP RepeatedRegion
+  MM.POS_JspRepeatRegion_TimesLayerShowAllLabel_Top  = 28;
+  MM.POS_JspRepeatRegion_TimesLayerShowAllLabel_Left  = 357;
+
+  //JSP Resultset
+  MM.POS_JspResultset_ResultsetTypelabel_Top  = 52;
+  MM.POS_JspResultset_MaxRowslabel_Top    = 68;
+  MM.POS_JspResultset_TimeOutlabel_Top    = 68;
+  MM.POS_JspResultset_TimeOutlabel_Left    = 222;
+  MM.POS_JspResultset_MaxRowslabel_Left    = 103;
+
+  //Recordset Command
+  MM.POS_Recordset_PlusLayer_Left    = 74;
+  MM.POS_Recordset_MinusLayer_Left  = 96;
+
+  //ASP Command
+  MM.POS_AspCommand_PlusLayer_Left  = 65;
+  MM.POS_AspCommand_MinusLayer_Left  = 87;
+
+  //JSP Callable (SB)
+  MM.POS_JspCallable_PlusLayer_Left  = 74;
+  MM.POS_JspCallable_MinusLayer_Left  = 96;
+  MM.POS_JspCallable_PlusLayer_Top  = 122;
+  MM.POS_JspCallable_MinusLayer_Top  = 122;
+
+  //JSP Prepared (SB)
+  MM.POS_JspPrepared_PlusLayer_Left  = 73;
+  MM.POS_JspPrepared_MinusLayer_Left  = 95;
+
+  //ColdFusion STOREDPROC (SB)
+  MM.POS_CFStoredProc_PlusLayer_Left  = 75;
+  MM.POS_CFStoredProc_MinusLayer_Left  = 97;
+
+  //JavaBean
+  MM.POS_JavaBean_Top = 188;
+
+  // The following are used when generating unique
+  // recordset/dataset names (i.e. "Recordset1").
+  // The translations (if there are any) shouldn't
+  // contain high-ascii or double-byte.
+
+  MM.LABEL_RecordsetBaseName = "Recordset";
+  MM.LABEL_DataSetBaseName = "DataSet";
+  MM.LABEL_DataGridBaseName = "DataGrid";
+  MM.LABEL_DataListBaseName = "DataList";
+
+
+  // Shared file errors
+  
+  // first %s - function name, second - variable name, third - string that we're having trouble parsing.
+  MM.MSG_ParsingError = "ERROR in %s\nCannot parse the following value for %s:\n\n%s"; 
+  
+  //Added for ColdFusion 7 for Dreamweaver extension
+  	// messages
+	
+	MM.MSG_ValuePositiveInteger				= '值应该为正整数。';
+	MM.MSG_CFC_PP_InstructionsTitle			= '当前站点中没有已定义的 CFC。<br><br>'
+	MM.MSG_CFC_old_AdvRS					= "安装的 AdvRS 版本不得低于 2.7.7！\n记录集将不能正常工作。";
+	MM.MSG_CFC_Bad							= "存在与此 CFC 关联的问题。";
+	MM.MSG_RS_Type_Block					= '您不能更改此记录集的类型！';
+	MM.MSG_Select_Function					= "请选择函数或使用“新建函数”按钮来创建一个新函数。"
+	MM.MSG_Choose_Package					= "请选择包。";
+	MM.MSG_Choose_Component					= "请选择组件。";
+	MM.MSG_Choose_Function					= "请选择函数。";
+	MM.MSG_Invalid_SQL						= "请选择包含 CFQUERY（其中包含有效的 SQL 语句）的函数。";
+	MM.MSG_Enter_Function_Name				= "请输入函数名称。";
+	MM.MSG_Valid_Function_Name				= "请输入有效的函数名称。只允许使用字母数字字符 – 首字符必须为字母。";
+	MM.MSG_Existing_Function_Name			= "指定的函数名称已存在。请提供另一个名称。";
+	MM.MSG_NO_CFCOMPONENT					= "在当前文档中未找到 CFCOMPONENT 标签。";
+	MM.MSG_NoAdminPassword					= "没有为当前站点输入管理员密码。要立即指定密码吗？";
+	MM.MSG_CFError							= "There was an error while connecting to the ColdFusion Server. Here are some possible reasons for the problem:\n" +
+											  "   - The CF Admin Password is not set or is wrong;\n" +
+											  "   - The CF Server is not running;\n" + 
+											  "   - The CF Server version is smaller than 7.0;";
+	MM.MSG_DebuggingComplete				= "当前页面已调试完毕。调试结果显示在“结果”面板中。";
+	MM.MSG_DatabaseRequired					= "请为当前连接输入有效的数据库名称。";
+	MM.MSG_DatabaseFileRequired				= "请为当前连接输入有效的数据库文件。";
+	MM.MSG_ODBCDSNRequired					= "P请为当前连接输入有效的 ODBC 数据源名称。";
+	MM.MSG_SIDNameRequired					= "请为当前连接输入有效的 SID 名称。";
+	MM.MSG_HostNameRequired					= "请为当前连接输入有效的服务器（主机）名称。";
+	MM.MSG_InformixServerNameRequired		= "Please enter a valid Informix Server Name for the current connection.";
+	MM.MSG_JDBCUrlRequired					= "请为当前连接输入有效的 JDBC URL。";
+	MM.MSG_DriverClassRequired				= "请为当前连接输入有效的驱动程序类。";
+	MM.MSG_DataSourceTestOK					= "连接成功。";
+	MM.MSG_DSNAlreadyExists					= "您指定的数据源名称在服务器上已存在。\n请指定另一个有效的 DSN。";
+	MM.MSG_CFCNameRequired					= "请为您的 CFC 文件指定名称。";
+	MM.MSG_CFCDirectoryRequired				= "请为您的 CFC 文件指定目录。";
+	MM.MSG_CFCRecordsetRequired				= "请指定在您的 CFC 文件中定义的记录集名称。";
+	MM.MSG_CFCFunctionNameRequired			= "请指定包含记录集定义的函数名称。";
+	MM.MSG_CFCDatasourceRequired			= "请从 ColdFusion 服务器上定义的数据源中选择一个数据源。";
+	MM.MSG_CFCTableRequired					= "请从您的数据源中定义的表格中选择一个表格。";
+	MM.MSG_CFCFileWriteError				= "编写 .cfc 文件时出错。";
+	MM.MSG_CFCFileExists					= "该 CFC 文件已存在。请指定另一个文件名。";
+	MM.MSG_CFCFileMissing					= "在指定的位置无法找到所需组件！";
+	MM.MSG_CFCFilenameError					= "请输入有效的文件名。只允许使用字母数字字符。";
+	MM.MSG_CFCComponentNotInSite			= "您为 CFC 输入的目录不在您的当前站点中。请指定另一个目录。";
+	MM.MSG_CFCUploadError					= "上传服务器上的新 cfc 时出错。";
+	MM.MSG_DSWrongRestrictConn				= "“将连接限制为”属性应该包含整数值。";
+	MM.MSG_NewComponentNoValidFunction		= "没有函数包含在当前所选组件中定义的 returnType = 'query' 和 access != 'private' 属性。";
+	MM.MSG_NewComponentNoCFCsUploaded		= "在用于当前站点的 CF 服务器上没有上传的组件。";
+	MM.MSG_DSDescriptionNoClosedComment		= "在“描述”字段内，只有注释开始标签，没有注释结束标签。请插入注释结束标签。";
+	MM.MSG_DSConnStrNoClosedComment			= "在“连接字符串”字段内，只有注释开始标签，没有注释结束标签。请插入注释结束标签。";
+	MM.MSG_DSDescrFoundCommentTagUnclosed	= "在“描述”字段内有注释开始标签，但无法找到注释结束标签。\n通过在“描述”字段结尾处添加注释结束标签修复了该问题。";
+	MM.MSG_DSConnStrFoundCommentTagUnclosed	= "在“连接字符串”字段内有注释开始标签，但无法找到注释结束标签。\n通过在“连接字符串”字段结尾处添加注释结束标签修复了该问题。";
+	MM.MSG_CFAdminPasswordRequired			= "请指定有效的 CF 管理员密码。";
+	MM.MSG_CFErrorOccured					= "连接到 ColdFusion 服务器时出现以下错误:\n";
+	MM.MSG_DebuggingOff						= "在“ColdFusion 管理员”中调试当前被设置为关闭。\n ";
+	MM.MSG_RestoringLiveDebugButton			= "更新“LiveDebug”按钮时出错。";
+
+}
+
+
+	</script>
+</head>
+<body>
+</body>

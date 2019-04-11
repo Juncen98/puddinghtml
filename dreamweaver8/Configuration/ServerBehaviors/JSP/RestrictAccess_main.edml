@@ -1,0 +1,32 @@
+<participant>
+     <quickSearch><![CDATA[MM_authorizedUsers]]></quickSearch>
+     <insertText location="aboveHTML+10">
+<![CDATA[
+<%
+// *** Restrict Access To Page: Grant or deny access to this page
+String MM_authorizedUsers="@@accessLevels@@";
+String MM_authFailedURL="@@failureURL@@";
+boolean MM_grantAccess=false;
+if (session.getValue("@@MM_username@@") != null && !session.getValue("@@MM_username@@").equals("")) {
+  if (@@dontUseAccessLevel@@ || (session.getValue("@@MM_userAuthorization@@")=="") || 
+          (MM_authorizedUsers.indexOf((String)session.getValue("@@MM_userAuthorization@@")) >=0)) {
+    MM_grantAccess = true;
+  }
+}
+if (!MM_grantAccess) {
+  String MM_qsChar = "?";
+  if (MM_authFailedURL.indexOf("?") >= 0) MM_qsChar = "&";
+  String MM_referrer = request.getRequestURI();
+  if (request.getQueryString() != null) MM_referrer = MM_referrer + "?" + request.getQueryString();
+  MM_authFailedURL = MM_authFailedURL + MM_qsChar + "accessdenied=" + java.net.URLEncoder.encode(MM_referrer);
+  response.sendRedirect(response.encodeRedirectURL(MM_authFailedURL));
+  return;
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="accessLevels,failureURL,dontUseAccessLevel" limitSearch="all"><![CDATA[/[\r\n]\s*String\s+MM_authorizedUsers\s*=\s*"([^\r\n]*)"[\w\W]*[\r\n]\s*String\s+MM_authFailedURL\s*=\s*"([^\r\n]*)"[\w\W]*[\r\n]\s*boolean\s+MM_grantAccess\s*=\s*false[\w\W]*[\r\n]\s*if\s+\(\s*(\w+)\s*\|\|\s*\(\s*session\.getValue\s*\(\s*"/]]></searchPattern>
+       <searchPattern paramNames="failureURL_url" limitSearch="all"><![CDATA[/String\s+MM_authFailedURL\s*=\s*"([^\r\n]*?)"/]]></searchPattern>
+     </searchPatterns>
+</participant>

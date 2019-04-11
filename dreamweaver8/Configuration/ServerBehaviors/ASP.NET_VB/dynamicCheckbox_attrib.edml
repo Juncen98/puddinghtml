@@ -1,0 +1,6 @@
+<participant version="5.0">
+	<insertText location="nodeAttribute+Checked" nodeParamName="chbxNode"><![CDATA[<%# IIf((@@expression1@@ = "@@expression2@@"), true, false) %>]]></insertText>
+  <searchPatterns whereToSearch="tag+asp:checkbox">
+		<searchPattern paramNames="expression1,expression2" isOptional="false"><![CDATA[/\s*<%#\s*IIf\(\(([^\r\n]*?)\s*=\s* "([^\r\n]*?)"\),\s*true,\s*false\)\s*%>/i]]></searchPattern>
+	</searchPatterns>
+</participant>

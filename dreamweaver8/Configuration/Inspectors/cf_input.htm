@@ -1,0 +1,191 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 6.0//pi">
+<!-- tag:cfinput, priority:1, selection:exact,hline,vline ,serverModel:Cold Fusion -->
+<!-- Copyright 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<html xmlns:MMString="http://www.macromedia.com/schemes/data/string/">
+<head>
+<title>CFINPUT</title>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/TagEditClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<script src="../TagLibraries/CFML/strings.js"></script>
+<script src="../TagLibraries/CFML/loc_strings.js"></script>
+<script src="../TagLibraries/Html/loc_strings.js"></script>
+<script src="../TagLibraries/Html/strings.js"></script>
+<script src="cf_input.js"></script>
+<link href="_pi_common.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="piBody">
+<img id="piImage" name="piImage" src="textbox.gif"> 
+
+<div id="idBoxLayer"> 
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="left" height="17" NOWRAP id="HHH">CFInput</td>
+    </tr>
+    <tr>
+      <td align="left" nowrap>
+        <input name="theName" type="text" id="theName" onBlur="updateTag('name')">
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div id="TextPassword" class="topLayer" style="visibility:hidden;">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="15%" align="right" nowrap>值&nbsp;</td>
+      <td width="40%" nowrap><input name="text" type="text" id="text" style="width:100px; margin:0px;" onBlur="updateTag('text')">
+      <input name="image" type="image" onClick="getDynamicData(TP_TEXT); updateTag('text')" src="../Shared/MM/Images/DSL_D.gif" style="margin-left:0px; " width="15" height="14" MMString:alt="tooltip/bindDyanamicData"> </td>
+      <td width="16%" align="right" nowrap>遮罩层&nbsp;</td>
+      <td width="16%" align="left" nowrap><input name="theMask" type="text" id="theMask" style="width:100px; margin:0px;" onBlur="updateTag('mask')"></td>
+      <td width="16%" align="right" nowrap><input type="checkbox" name="readOnly" id="readOnly" style="margin-left:20px;" onClick="updateTag('readOnly')">只读</td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>&nbsp;&nbsp;文本模式&nbsp;</td>
+      <td nowrap>
+        <select name="textMode" id="select" onChange="updateTag('textMode')" style="width:104px; margin-left: 1px; margin-top:1px;">
+        </select>
+      </td>
+      <td align="right" nowrap>&nbsp;&nbsp;最大长度&nbsp;</td>
+      <td align="left" nowrap><input name="maxLength" type="text" id="maxLength" style="width:30px; margin:0px;" onBlur="updateTag('maxLength')"></td>
+      <td align="left" nowrap>&nbsp;</td>
+    </tr>
+  </table>
+</div>
+
+<div id="ButtonSubmitReset" class="topLayer" style="visibility: hidden;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" ID="Table1">
+	<tr>
+      <td width="15%" height="20" align="right" nowrap>动作 &nbsp;</td>
+      <td width="15%" height="0" rowspan="2" valign="top" nowrap>
+  	      <label style="display:block;" > 
+  	      <input type="radio" name="theSubmit" value="theSubmit" onClick="refreshRadioGroup('BSR', 'submit'); updateTag('type')" ID="Radio1">提交</label>
+       </td>
+      <td width="15%" valign="top" nowrap>
+        <label style="display:block;" >
+          <input type="radio" name="theReset" value="theReset" onClick="refreshRadioGroup('BSR', 'reset'); updateTag('type')" ID="Radio2">重置</label>
+      </td>
+      <td width="15%" valign="top" nowrap>
+        <label style="display:block;" >
+        <input type="radio" name="theNone" value="theNone" onClick="refreshRadioGroup('BSR', 'none'); updateTag('type')" ID="Radio3">无</label>
+      </td>
+      <td width="40%" valign="middle" nowrap>&nbsp;</td>
+    </tr>
+  </table>
+</div>
+
+<div id="CheckboxRadio" class="topLayer" style="visibility:hidden;">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="15%" align="right" nowrap>&nbsp;&nbsp;选定值&nbsp;</td>
+      <td width="15%" valign="middle" nowrap><input name="CR_theValue" type="text" id="CR_theValue" style="width:80px;" onBlur="updateTag('CR_value')"></td>
+      <td width="20%" align="right" valign="middle" nowrap><p>初始状态&nbsp;</td>
+      <td width="50%" valign="baseline" nowrap rowspan="2">
+	  	<label style="display:block;" ><input type="radio" name="CR_theChecked" value="CR_theChecked" onClick="refreshRadioGroup('CR', 'checked'); updateTag('CR_checked')">已选中</label>
+	  	<label style="display:block;" ><input type="radio" name="CR_theUnchecked" value="CR_theUnchecked" onClick="refreshRadioGroup('CR', 'unchecked'); updateTag('CR_checked')">未选中</label>
+	  </td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>&nbsp;</td>
+      <td align="center" nowrap>&nbsp;</td>
+      <td align="center" nowrap>&nbsp;</td>
+    </tr>
+  </table>
+</div>
+
+<div id="File" class="topLayer" style="visibility:hidden;">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="15%" align="right" nowrap>最大长度&nbsp;</td>
+      <td width="85%" nowrap><input name="F_maxLength" type="text" id="F_maxLength" style="width:30px" onBlur="updateTag('F_maxLength')"></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>&nbsp;</td>
+      <td nowrap>&nbsp;</td>
+    </tr>
+  </table>
+</div>
+
+<div id="Hidden" class="topLayer" style="visibility:hidden;">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="15%" align="right" nowrap>值&nbsp;</td>
+      <td width="85%" nowrap>
+	    <input name="H_theValue" type="text" id="H_theValue" style="width:180px;" onBlur="updateTag('H_value')"><input name="H_imageValue" type="image" onClick="getDynamicData(H_VALUE); updateTag('H_value')" src="../Shared/MM/Images/DSL_D.gif" width="15" height="14" MMString:alt="tooltip/bindDyanamicData">
+	  </td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>&nbsp;</td>
+      <td nowrap>&nbsp;</td>
+    </tr>
+  </table>
+</div>
+
+<div id="Image" class="topLayer" style="visibility:hidden;">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="right" nowrap>源文件&nbsp;</td>
+      <td nowrap><input name="I_theSrc" type="text" id="I_theSrc" style="width:200px;" onBlur="updateTag('I_src')"><input name="image" type="image" style="margin-left:5px;" onClick="fileBrowser(I_SRC); updateTag('I_src')" src="../Shared/MM/Images/Folder.gif" width="15" height="14" MMString:alt="tooltip/browseForFile"></td>
+      <td align="right" nowrap>对齐&nbsp;</td>
+      <td nowrap><select name="I_theAlign" id="I_theAlign" style="width:100px" onChange="updateTag('I_align')"></select></td>
+	  <td><input type="button" name="I_theEditImage" value="编辑图像" style="width:80px;height:20px" onClick="editImage()"></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>Alt&nbsp;</td>
+      <td nowrap><input name="I_theAlt" type="text" id="I_theAlt" style="width:100px;" onBlur="updateTag('I_alt')"></td>
+      <td align="right" nowrap>边框&nbsp;</td>
+      <td nowrap><input name="I_theBorder" type="text" id="I_theBorder" style="width:30px; margin:0px;" onBlur="updateTag('I_border')"></td>
+      <td nowrap></td>
+    </tr>
+  </table>
+</div>
+
+<div id="DatefieldDatechooser" class="topLayer" style="visibility:hidden;">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr valign="baseline">
+      <td width="15%" align="right" nowrap>值&nbsp;</td>
+      <td width="42%" nowrap><input name="DFDC_theValue" type="text" id="DFDC_theValue" style="width:180px;" onBlur="updateTag('DFDC_value')"><input name="DFDC_imageValue" type="image" onClick="getDynamicData(DFDC_VALUE); updateTag('DFDC_value')" src="../Shared/MM/Images/DSL_D.gif" width="15" height="14" MMString:alt="tooltip/bindDyanamicData"></td>
+      <td width="43%" nowrap></td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>&nbsp;</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap>&nbsp;</td>
+    </tr>
+  </table>
+</div>
+
+<div id="bottomLayer">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="11%" align="right" nowrap>验证&nbsp;</td>
+      <td width="20%" align="left" valign="middle" nowrap><select name="validateMenu" id="validateMenu" onChange="updateTag('validate')" style="width:100px">
+      </select></td>
+      <td width="15%" align="right" valign="middle" nowrap>标签&nbsp;</td>
+      <td width="20%" align="left" valign="middle" nowrap><input name="theLabel" type="text" id="theLabel" style="width:100px" onBlur="updateTag('label')"></td>
+      <td width="12%" align="right" nowrap>&nbsp;&nbsp;&nbsp;&nbsp;高度&nbsp;</td>
+      <td width="7%" nowrap><input name="theHeight" type="text" id="theHeight" style="width:30px" onBlur="updateTag('height')"></td>
+      <td width="15%" align="right" nowrap>&nbsp;&nbsp;&nbsp;&nbsp;大小&nbsp;</td>
+      <td width="10%" align="left" nowrap><input name="theSize" type="text" id="theSize" style="width:30px;" onBlur="updateTag('size')"></td>
+      <td width="10%" align="left" nowrap><input type="checkbox" name="theRequired" value="theRequired" style="margin-left:20px;"  onClick="updateTag('required')">必需的</td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>验证于&nbsp;</td>
+      <td align="left" valign="middle" nowrap><select name="theValidateAt" id="theValidateAt" onChange="updateTag('validateAt')" style="width:100px; margin-top:1px">
+      </select></td>
+      <td align="right" valign="middle" nowrap>&nbsp;&nbsp;图案&nbsp;</td>
+      <td align="left" valign="middle" nowrap><input name="thePattern" type="text" id="thePattern" style="width:100px" onBlur="updateTag('pattern')"></td>
+      <td align="right" nowrap>宽度&nbsp;</td>
+      <td nowrap><input name="theWidth" type="text" id="theWidth" style="width:30px" onBlur="updateTag('width')"></td>
+      <td align="right" nowrap>&nbsp;</td>
+      <td align="left" nowrap>&nbsp;</td>
+      <td align="right" width="100%" nowrap><input type="image" src="Img/tagDialog.gif" name="more" id="more2" title="Display Tag Editor for cfinput" onClick="displayTagDialog()" MMString:alt="tooltip/displayTagEditor" style="margin-left:25px;"></td>
+    </tr>
+  </table>
+</div>
+
+</body>
+</html>

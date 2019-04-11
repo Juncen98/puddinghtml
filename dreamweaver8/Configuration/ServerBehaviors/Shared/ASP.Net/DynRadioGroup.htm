@@ -1,0 +1,52 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+<TITLE>动态单选按钮组</TITLE>
+
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dotNetUtils.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/ASP.Net/DynRadioGroup.js"></SCRIPT>
+
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+<FORM NAME="theForm">
+  <TABLE BORDER=0 cellpadding="2" cellspacing="2">
+      <tr valign="baseline">
+        <td align="right" nowrap>RadioButton 组:</td>
+        <td nowrap>
+          <select style="width:234px" name="radioNodes" onChange="updateUI('radioNodes')">
+          </select>
+        </td>
+      </tr>
+      <tr valign="baseline">
+        <td align="right" nowrap valign="top">
+          组中的 RadioButton:
+        </td>
+        <td nowrap>
+          <select name="expression2" style="width:234px" size="4" onChange="updateUI('expression2')">
+          </select>
+        </td>
+      </tr>
+      <tr valign="baseline">
+        <td></td>
+        <td nowrap>
+          按钮值: <input type="text" style="width:166px" name="expression2_edit" onBlur="updateUI('expression2_edit')"></td>
+      </tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>选取值等于: </td>
+        <td nowrap>
+          <input type="text" name="expression1" style="width:234px" >
+          <input name="image" type=image onClick="dotNetUtils.getDynamicData(TEXT_EXP1)" src="../../Shared/UltraDev/Images/Boltup.gif" width="15" height="14" alt="绑定动态数据">
+      </tr>
+  </TABLE>
+</FORM>
+</BODY>
+</HTML>
+

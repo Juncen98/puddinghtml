@@ -1,0 +1,40 @@
+<participant>
+     <quickSearch><![CDATA[(MM_paramIsDefined]]></quickSearch>
+     <insertText location="aboveHTML+82">
+<![CDATA[
+<%
+// *** Move To Specific Record: handle detail parameter
+
+if (MM_paramIsDefined && MM_rsCount != 0) {
+
+  // get the value of the parameter
+  var param = String(Request(MM_paramName));
+
+  // find the record with the unique column value equal to the parameter value
+  for (MM_offset=0; !MM_rs.EOF; MM_offset++) {
+    if (MM_rs.Fields.Item(MM_uniqueCol).Value == param) break;
+    MM_rs.MoveNext();
+  }
+
+  // if not found, set the number of records and reset the cursor
+  if (MM_rs.EOF) {
+    if (MM_rsCount < 0) MM_rsCount = MM_offset;
+    if (MM_size < 0 || MM_size > MM_rsCount) MM_size = MM_rsCount;
+    MM_offset = 0;
+
+    // reset the cursor to the beginning
+    if (MM_rs.CursorType > 0) {
+      if (!MM_rs.BOF) MM_rs.MoveFirst();
+    } else {
+      MM_rs.Close();
+      MM_rs.Open();
+    }
+  }
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern><![CDATA[/param\s*=\s*String\(Request\(MM_paramName\)\)/]]></searchPattern>
+     </searchPatterns>
+</participant>

@@ -1,0 +1,27 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved. -->
+
+<title><MMString:LoadString id="insertbar/euro" /></TITLE>
+
+<SCRIPT SRC="characters.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+
+function isDOMRequired() { 
+	// Return false, indicating that this object is available in code view.
+	return false;
+}
+
+function objectTag() {
+  checkEncoding();
+  //	<!ENTITY euro   CDATA "&#8364;"  -- euro sign, U+20AC NEW -->
+  return "&#8364;"; // Supported starting in 4.0 browsers, valid HTML
+  //return "&euro;"; // Supported starting in 5.0 browsers, valid HTML
+}
+</SCRIPT>
+</HEAD>
+<BODY>
+
+</BODY>
+</HTML>

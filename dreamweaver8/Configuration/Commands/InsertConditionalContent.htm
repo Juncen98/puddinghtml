@@ -1,0 +1,162 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<TITLE>新建可选区域</TITLE>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. --> 
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+
+<!-- Include the UI helper functions -->
+<SCRIPT LANGUAGE="javascript" SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+
+<!-- Include DOM functions -->
+<SCRIPT LANGUAGE="javascript" SRC="../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<SCRIPT language="javascript" SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+
+<!-- Include the implementation for the hierarchical checkboxes. -->
+<SCRIPT LANGUAGE="javascript" SRC="../Shared/MM/Scripts/Class/classCheckbox.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../Shared/MM/Scripts/Class/TabControlClass.js"></SCRIPT>
+
+<SCRIPT LANGUAGE="javascript" SRC="../Shared/MM/Scripts/CMN/errmsg.js"></SCRIPT>
+<script language="javascript" src="../Shared/MM/Scripts/CMN/TemplateUtils.js"></script>
+
+<script src="../Shared/Common/Scripts/ListControlClass.js"></script>
+
+
+<SCRIPT LANGUAGE="javascript" SRC="InsertConditionalContent.js"></SCRIPT>
+
+<style type="text/css">
+<!--
+.pageBg        { position:absolute; left:18px; top:21px; width:10px; height:10px; z-index:1; visibility:hidden; }
+.tabLayer      { position:absolute; top:0px; width:70px; height:20px; z-index:8; visibility:hidden ;}
+.tabInnerLayer { position:absolute; width:75px; height:23px; z-index:8; left: 0px; top: 0px; visibility:inherit ;}
+.tabLabelLayer { position:absolute; width:69px; height:1px; z-index:8; left: 0px; top: 5px; visibility:inherit; text-align:center }
+-->
+</style>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()" class="content" >
+<!-- ---------------------------------------------------------------------- -->
+<!-- TAB DIVS -->
+
+<div class="pageBg" style="visibility:visible; left:4px; ">
+  <img name="tabBgWin" width="395" height="240" src="../Shared/MM/Images/transparent.gif">
+</div>
+
+<div id="Tab0" class="tabLayer" style="left: 8px; ">
+  <div class="tabInnerLayer"> <img src="../Shared/MM/Images/tabBg.gif"> </div>
+  <div id="Tab0Sel" class="tabInnerLayer" style="visibility:hidden">
+    <img src="../Shared/MM/Images/tabBgSel.gif"> </div>
+  <div name="Tab0Label" class="tabLabelLayer"></div>
+  <div class="tabInnerLayer">
+    <input type="image" src="../Shared/MM/Images/transparent.gif" width="69" height="21" onClick="T.showPageNum(0)"> </div>
+</div>
+<div id="Tab1" class="tabLayer" style="left: 78px; ">
+  <div class="tabInnerLayer"> <img src="../Shared/MM/Images/tabBg.gif"> </div>
+  <div id="Tab1Sel" class="tabInnerLayer" style="visibility:hidden">
+    <img src="../Shared/MM/Images/tabBgSel.gif"> </div>
+  <div name="Tab1Label" class="tabLabelLayer"></div>
+  <div class="tabInnerLayer">
+    <input type="image" src="../Shared/MM/Images/transparent.gif" width="69" height="21" onClick="T.showPageNum(1)"> </div>
+</div>
+
+
+<!-- ---------------------------------------------------------------------- -->
+<!-- PAGE DIVS -->
+<FORM NAME="theForm">
+
+ <div id="advanced" class="pageBg" style="width:395px; top:30px;">
+
+	  <TABLE BORDER=0 width=380>
+	  
+	  <TR><TD colspan=3>
+		选择现有参数或输入一个表达式，以确定该区域是否可见。
+	  </TD></TR>
+	  
+	   <TR>
+		   <TD>
+	         <P ALIGN=RIGHT><INPUT TYPE="radio" NAME="existingParamRadio" id="existingParam" VALUE="value" onClick="updateControls('existingParamRadio')">
+	      </TD>
+	      
+	       <TD nowrap>
+	         <P ALIGN=LEFT>使用参数:
+	      </TD>
+	      
+	      <TD>
+	         <P ALIGN=Left>
+	         
+          <SELECT NAME="existingParams" class="oneWordOptionList"  onChange="updateControls('existingParams')" >
+	            <OPTION>项 1
+	         </SELECT>
+	      </TD>
+	      
+	    </TR>
+	   <TR>
+	      <TD COLSPAN=3>
+	      </TD>
+	   </TR>
+	      
+	   <TR>
+		   <TD>
+	         <P ALIGN=RIGHT><INPUT TYPE="radio" id="exprRadio" NAME="expressionRadio" VALUE="value" onClick="updateControls('expressionRadio')">
+	      </TD>
+	      <TD nowrap>
+	         <P ALIGN=LEFT>输入表达式:
+	      </TD><TD>
+	      </TD>
+	   </TR>
+			<TR>
+			<TD></TD>
+	      <TD colspan=2>
+	      <TEXTAREA NAME="expression" ROWS=4 class="basicTextField" onChange="updateControls('expression');" onKeyUp="updateControls('expression');"></TEXTAREA>
+	      <!-- 
+	         <P><INPUT TYPE="text" NAME="expression" VALUE="" SIZE=30 onChange="updateControls('expression');" onKeyUp="updateControls('expression');" >
+	      -->
+	      <BR>例如：LANGUAGE=='English'
+	      </TD>
+	      </TR>
+	      
+	      <!--
+			<TR>
+	      <TD colspan=3>
+	       	(for example, "LANGUAGE=='English'". For details on using expressions with optional content, click the Help button.)
+	      -->
+	      
+	      </TD>
+	      </TR>
+	      
+	      	      
+		</TABLE>
+  </div>
+
+
+  <div id="basic" class="pageBg" style="width:345px; top:30px;">
+
+  <table border="0">
+	  <TR><TD colspan=2>
+	  </TD></TR>
+  
+    <tr valign="baseline">
+      <td align="right" nowrap>名称:</td>
+      <td align="left">
+        <input name="condName" type="text" class="medTField">
+      </td>
+    </tr>
+   <TR>
+      <TD>
+         <P>
+      </TD><TD>
+         <P><INPUT TYPE="checkbox" NAME="showByDefault" checked VALUE="value">&nbsp;默认显示 
+      </TD></TR>
+      
+   <TR> <TD colspan=2>
+   </TD></TR> 
+</TABLE>
+  </div>
+</FORM>
+</BODY>
+</HTML>

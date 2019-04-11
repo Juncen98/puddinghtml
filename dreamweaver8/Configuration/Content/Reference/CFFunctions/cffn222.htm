@@ -1,0 +1,195 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>QUERYNEW</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">QUERYNEW</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Creates an empty query (query object).
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+An empty query with a set of named columns, or an empty query. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Query functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>QueryNew(columnlist [, columntypelist])
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7: Added columntypelist parameter.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+QueryAddColumn, QueryAddRow, QuerySetCell; "Managing data types for columns" in Chapter&#160;22, "Using Query of Queries," ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+If you specify an empty string in the columnlist parameter, you must use the QueryAddColumn function to add columns to the query.
+</p>
+
+<p>
+Macromedia recommends that you use the optional columntypelist parameter. Without this parameter, ColdFusion must try to determine data types when it uses the query object in a query of queries. Determining data types requires additional processing, and can result in errors if ColdFusion does not guess a type correctly.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+The following example uses the QueryNew function to create an empty query with three columns. It populates two rows of the query and displays the contents of the query object and its metadata.
+</p>
+<pre>&lt;!--- Create a new three-column query, specifying the column data types ---&gt;
+&lt;cfset myQuery = QueryNew(&quot;Name, Time, Advanced&quot;, &quot;VarChar, Time, Bit&quot;)&gt;
+
+&lt;!--- Make two rows in the query ---&gt;
+&lt;cfset newRow = QueryAddRow(MyQuery, 2)&gt;
+
+&lt;!--- Set the values of the cells in the query ---&gt;
+&lt;cfset temp = QuerySetCell(myQuery, &quot;Name&quot;, &quot;The Wonderful World of CMFL&quot;, 1)&gt;
+&lt;cfset temp = QuerySetCell(myQuery, &quot;Time&quot;, &quot;9:15 AM&quot;, 1)&gt;
+&lt;cfset temp = QuerySetCell(myQuery, &quot;Advanced&quot;, False, 1)&gt;
+&lt;cfset temp = QuerySetCell(myQuery, &quot;Name&quot;, &quot;CFCs for Enterprise
+      Applications&quot;, 2)&gt;
+&lt;cfset temp = QuerySetCell(myQuery, &quot;Time&quot;, &quot;12:15 PM&quot;, 2)&gt;
+&lt;cfset temp = QuerySetCell(myQuery, &quot;Advanced&quot;, True, 2)&gt;
+
+&lt;h4&gt;The query object contents&lt;/h4&gt;
+&lt;cfoutput query = &quot;myQuery&quot;&gt;
+   #Name# #Time# #Advanced#&lt;br&gt;
+&lt;/cfoutput&gt;&lt;br&gt;
+&lt;br&gt;
+&lt;h4&gt;Using individual query data values&lt;/h4&gt;
+&lt;cfoutput&gt;
+   #MyQuery.name[2]# is at #MyQuery.Time[2]#&lt;br&gt;
+&lt;/cfoutput&gt;&lt;br&gt;
+&lt;br&gt;
+&lt;h4&gt;The query metadata&lt;/h4&gt;
+&lt;cfset querymetadata=getMetaData(myQuery)&gt;
+&lt;cfdump var=&quot;#querymetadata#&quot;&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="COLUMNLIST">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">COLUMNLIST</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Comma-delimited list of column names, or an empty string. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="COLUMNTYPELIST">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">COLUMNTYPELIST</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>(Optional) Comma-delimited list specifying column data types. ColdFusion generates an error if the data you add to the column is not of this type, or if it cannot convert the data to this type. The following data types are valid:</p><ul>
+
+<li>Integer: 32-bit integer</li>
+
+<li>BigInt: 64-bit integer</li>
+
+<li>Double: 64-bit decimal number</li>
+
+<li>Decimal: Variable length decimal, as specified by java.math.BigDecimal</li>
+
+<li>VarChar: String</li>
+
+<li>Binary: Byte array</li>
+
+<li>Bit: Boolean (1=True, 0=False)</li>
+
+<li>Time: Time</li>
+
+<li>Date: Date (can include time information)</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

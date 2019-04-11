@@ -1,0 +1,109 @@
+<!-- MENU-LOCATION=NONE -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<head>
+<!-- Include the UI helper functions -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<!-- Include DOM functions -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<script src="../Shared/MM/Scripts/Cmn/string.js"></script>
+<script src="../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../Shared/MM/Scripts/Class/FileClass.js"></script>
+<script src="ShortcutClass.js"></script> 
+<script src="../Shared/MM/Scripts/keyCodes.js"></script> 
+<SCRIPT src="../Shared/Common/Scripts/ImageButtonClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT>
+<!--Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved.-->
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+//--------------- END LOCALIZEABLE   ---------------
+
+//This class runs a standard dialog to fetch a string from the user. 
+//Callers should pass in a message string, a default value, a title string, and a result object. Upon
+//return the result object will have an attribute called 'returnValue'. 
+//This will be null if the user cancelled, or will be the string entered 
+//if they clicked OK. 
+
+var message = "Error: No message passed to GetString.htm."; 
+var defaultValue = ""; 
+var titleString = "";
+var returnObject = null; 
+
+function commandButtons()
+	{
+  	return new Array(
+  					MM.BTN_OK,"okClicked()",
+  					MM.BTN_Cancel,"window.close()");
+	}
+
+
+function isDOMRequired() {
+	return true;
+}
+
+
+//Just grab the first argument and stuff it into a global. 
+function receiveArguments()
+	{		
+	message = arguments[0]; 
+	defaultValue = arguments[1]; 
+	titleString = arguments[2]
+	returnObject = arguments[3]; 
+	returnObject.returnValue = null; 
+	} //receiveArguments
+	
+	
+function okClicked()
+	{
+	returnObject.returnValue = document.theForm.theText.value; 
+	window.close();
+	} //okClicked
+
+
+
+function initUI()
+	{
+	findObject("messageSpan").innerHTML = message; 	
+	findObject("title").innerHTML = titleString; 	
+	document.theForm.theText.value = defaultValue; 
+	document.theForm.theText.focus(); //set focus on textbox
+  	document.theForm.theText.select(); //set insertion point into textbox
+	} //initUI
+	
+
+//---------------    END JAVASCRIPT    ---------------
+
+
+
+</SCRIPT>
+
+
+
+<title>Dreamweaver</title>
+
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initUI();">
+
+<form name="theForm">
+
+<span name="messageSpan">
+This is a fairly long message so the dialog will format correctly
+ and not chop the string off if you need a longer string here, then just fill this in with some 
+ lorem ipsum, twenty-nine cents a bottle.</span>
+
+<TABLE BORDER=0>
+   <TR>
+      <TD>
+         <P>
+        <INPUT NAME="theText" TYPE="text" class="medTField" VALUE="">
+      </TD>
+   </TR>
+</TABLE>
+
+</form>
+</body>
+</html>

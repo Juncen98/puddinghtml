@@ -1,0 +1,81 @@
+<participant>
+     <quickSearch><![CDATA[MM_insert]]></quickSearch>
+     <insertText location="aboveHTML+20">
+<![CDATA[
+<%
+// *** Insert Record: 
+MM_editAction = request.getRequestURI();
+if (request.getQueryString() != null && request.getQueryString().length() > 0) MM_editAction += "?" + request.getQueryString();
+if (request.getParameter("MM_insert") != null) {
+
+  String MM_tableName = "@@table@@";
+  String MM_fields = "@@elemStr@@";
+  String MM_redirectPage = "@@url@@";
+
+  // create the field list array
+  java.util.StringTokenizer tokens = new java.util.StringTokenizer(MM_fields,",");
+  String[] MM_fieldsList = new String[tokens.countTokens()];
+  for (int i=0; tokens.hasMoreTokens(); i++) MM_fieldsList[i] = tokens.nextToken();
+
+  // create the insert sql statement
+  StringBuffer MM_tableValues = new StringBuffer(), MM_dbValues = new StringBuffer();
+  for (int i=0; i+4 < MM_fieldsList.length; i+=5) {
+    String formVal = ((request.getParameter(MM_fieldsList[i])!=null)?(String)request.getParameter(MM_fieldsList[i]):"");
+    String delim =    (MM_fieldsList[i+2].compareTo("none")!=0)?MM_fieldsList[i+2]:"";
+    String altVal =   (MM_fieldsList[i+3].compareTo("none")!=0)?MM_fieldsList[i+3]:"";
+    String emptyVal = (MM_fieldsList[i+4].compareTo("none")!=0)?MM_fieldsList[i+4]:"";
+    if (formVal.length() == 0) {
+      formVal = emptyVal;
+    } else {
+      if (altVal.length() != 0) {
+        formVal = altVal;
+      } else if (delim.compareTo("'") == 0) {  // escape quotes
+        StringBuffer escQuotes = new StringBuffer(formVal);
+        for (int j=0; j < escQuotes.length(); j++)
+          if (escQuotes.charAt(j) == '\'') escQuotes.insert(j++,'\'');
+        formVal = "'" + escQuotes + "'";
+      } else {
+        formVal = delim + formVal + delim;
+      }
+    }
+    MM_tableValues.append((i!=0)?",":"").append(MM_fieldsList[i+1]);
+    MM_dbValues.append((i!=0)?",":"").append(formVal);
+  }
+  String MM_insertStr = "insert into " + MM_tableName + " (" + MM_tableValues.toString() + ") values (" + MM_dbValues.toString() + ")";
+
+  // finish the sql and execute it
+  Driver MM_driver = (Driver)Class.forName("@@driver@@").newInstance();
+  Connection MM_connection = DriverManager.getConnection("@@conn@@", "@@username@@", "@@password@@");
+  PreparedStatement MM_insertStatement = MM_connection.prepareStatement(MM_insertStr);
+  MM_insertStatement.setQueryTimeout(0);
+  MM_insertStatement.executeUpdate();
+  MM_connection.close();
+
+  // redirect with URL parameters
+  if (MM_redirectPage.length() == 0) MM_redirectPage = request.getRequestURI();
+  if (MM_redirectPage.indexOf('?') == -1 && request.getQueryString() != null)
+    MM_redirectPage += "?" + request.getQueryString();
+  response.sendRedirect(response.encodeRedirectURL(MM_redirectPage));
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="conn"><![CDATA[/getConnection\(\s*"([^"]*)"/]]></searchPattern>
+       <searchPattern paramNames="username"><![CDATA[/getConnection\([^,]*,\s*"([^"]*)"/]]></searchPattern>
+       <searchPattern paramNames="password"><![CDATA[/getConnection\([^,]*,[^,]*,\s*"([^"]*)"/]]></searchPattern>
+       <searchPattern paramNames="driver"><![CDATA[/Class\.forName\("([^"]*)"\)/]]></searchPattern>
+       <searchPattern paramNames="table"><![CDATA[/MM_tableName\s*=\s*"([^"]*)";/]]></searchPattern>
+       <searchPattern paramNames="elemStr"><![CDATA[/MM_fields\s*=\s*"([^"]*)";/]]></searchPattern>
+       <searchPattern paramNames="url"><![CDATA[/MM_redirectPage\s*=\s*"([^"]*)";/]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="conn"><![CDATA[/(getConnection\(\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="username"><![CDATA[/(getConnection\([^,]*,\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="password"><![CDATA[/(getConnection\([^,]*,[^,]*,\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="driver"><![CDATA[/(Class\.forName\(")[^"]*("\))/g]]></updatePattern>
+       <updatePattern paramName="table"><![CDATA[/(MM_tableName\s*=\s*")[^"]*(";)/g]]></updatePattern>
+       <updatePattern paramName="elemStr"><![CDATA[/(MM_fields\s*=\s*")[^"]*(";)/g]]></updatePattern>
+       <updatePattern paramName="url"><![CDATA[/(MM_redirectPage\s*=\s*")[^"]*(";)/g]]></updatePattern>
+     </updatePatterns>
+</participant>

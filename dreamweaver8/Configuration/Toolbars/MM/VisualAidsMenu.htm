@@ -1,0 +1,36 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<html>
+<head>
+<title>View Options</title>
+
+<script language="JavaScript">
+function canAcceptCommand()
+{
+	var dom = dw.getDocumentDOM();
+	return (dom != null && (dom.getView() != 'browse'));
+}
+
+function getMenuID()
+{
+	var dom = dw.getDocumentDOM();
+	var menuID = '';
+	if (dom)
+	{
+		var view = dom.getView();
+		if (view == 'design' || view == 'split')
+		{
+			menuID = 'DWDesignVisualAidsPopup';
+		}
+		else
+		{
+			menuID = '';
+		}
+	}
+	return menuID;
+}
+</script>
+</head>
+
+<body>
+</body>
+</html>

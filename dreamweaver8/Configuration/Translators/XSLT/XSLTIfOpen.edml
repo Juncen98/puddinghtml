@@ -1,0 +1,13 @@
+<participant name="XSLTIfOpen">
+  <translator priority=400>
+    <searchPatterns>
+      <searchPattern>xsl:if</searchPattern>
+      <searchPattern paramNames="test"><![CDATA[/<xsl:if\s*test\s*=\s*["'](.+)["']\s*>/]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="tag+xsl:if" limitSearch="tagOnly" translationType="tabbed region start">
+        <display><![CDATA[xsl:if]]></display>
+      </translation>
+    </translations>
+  </translator>
+</participant>

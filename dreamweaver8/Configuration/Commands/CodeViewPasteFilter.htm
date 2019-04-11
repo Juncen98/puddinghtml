@@ -1,0 +1,43 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<TITLE>PasteManager</TITLE>
+<SCRIPT LANGUAGE="javascript" SRC="CVPF_DWHtml.js" />
+<SCRIPT LANGUAGE="javascript">
+<!--
+var g_text = null;
+var g_clipType = null;
+var g_docType = null;
+var g_returnValue = null;
+
+function receiveArguments()
+{
+	g_clipType = arguments[0];
+	g_docType = arguments[1];
+	g_text = arguments[2];
+	g_returnValue = arguments[3];
+}
+
+function run()
+{
+	var outText = g_text;
+
+	// Check to see if we want to apply the DWHtml filter to the paste text
+
+	if ( ( g_clipType == "dwhtml" || g_clipType == "unicodedwhtml" ) && g_docType == "html" )
+		outText = CVPF_DWHtml_Clean( outText );
+
+	g_returnValue[ 0 ] = outText;
+}
+
+function isDOMRequired()
+{
+	return false;
+}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY onload="run()">
+</BODY>
+</HTML>

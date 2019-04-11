@@ -1,0 +1,37 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Copyright 2001 Macromedia, Inc. All rights reserved. -->
+<title><MMString:LoadString id="insertbar/asp/aspelse" /></title>
+
+<script language="javascript">
+
+//---------------     API FUNCTIONS    ---------------
+
+function isDOMRequired() { 
+	// Return false, indicating that this object is available in code view.
+	return false;
+}
+
+function objectTag() {
+	// Determine string to insert based on server language.
+	var dom = dw.getDocumentDOM();
+	var docType = dom.documentType;
+	var retStr;
+	if (docType == 'ASP-JS'){
+		retStr = '<% else %>';
+	}else if (docType == 'ASP-VB'){
+		retStr = '<% Else %>';
+	}
+		
+  return retStr;
+}
+
+</script>
+	
+</head>
+
+<body>
+</body>
+
+</html>

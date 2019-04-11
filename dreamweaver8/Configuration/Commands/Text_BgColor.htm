@@ -1,0 +1,59 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<TITLE>╪сааяуи╚</TITLE>
+<script src="Text_BgColor.js"></script>
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+function receiveArguments()
+{
+	// Ignore arguments, and fetch the color from the picker prompt
+	// We'll use the helper api to find out the current value for the pickers use
+    var value = getCurrentValue();
+	var bgcolor = dw.promptForColor( value, MM.LABEL_HighlightColorTitle );
+	if ( bgcolor.length > 0 )
+	{
+		var handled = false;
+		handled = handleTable( setBgColor, bgcolor );
+	
+		if ( !handled ) 
+		{
+			if (bgcolor == ""){
+				dom.removeFontMarkupAsStyle('background-color');
+			}else{
+				dom.applyFontMarkupAsStyle('background-color',bgcolor);
+			}
+		}
+	}
+}
+
+function canAcceptCommand()
+{
+    // Make sure the focus is in the document.
+	var dom = dw.getDocumentDOM();
+
+    var retVal = false;
+
+    if (dw.getFocus() == 'document')
+        retVal = true;
+
+	if (dom)
+	{
+		var selectedNode = dom.getSelectedNode();
+		if (selectedNode.tagName && selectedNode.tagName == 'IMG')
+			retVal = false;
+	}
+
+    return retVal;
+}
+
+
+
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

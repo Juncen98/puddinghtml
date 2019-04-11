@@ -1,0 +1,47 @@
+<participant name="ParameterValue">
+  <translator priority=400>
+    <searchPatterns>
+      <searchPattern><![CDATA[/<%#/]]></searchPattern>
+      <searchPattern><![CDATA[/\.ParameterValue/]]></searchPattern>
+      <searchPattern paramNames="sp,param"><![CDATA[/(\w+)\.ParameterValue\("([@\w]+)"\)\.ToString\(\)/i]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="directive" translationType="dynamic data">
+        <openTag>MM_DYNAMIC_CONTENT</openTag>
+        <attributes>
+          <attribute><![CDATA[SOURCE="@@sp@@"]]></attribute>
+          <attribute><![CDATA[BINDING="@@param@@"]]></attribute>
+        </attributes>
+        <display><![CDATA[{@@sp@@.@@param@@}]]></display>
+        <closeTag>MM_DYNAMIC_CONTENT</closeTag>
+      </translation>
+      <translation whereToSearch="tag+INPUT" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="VALUE={@@sp@@.@@param@@}"]]></attribute>
+        </attributes>
+      </translation>
+      <translation whereToSearch="tag+OPTION" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="VALUE={@@sp@@.@@param@@}"]]></attribute>
+        </attributes>
+      </translation>
+      <translation whereToSearch="tag+SELECT" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="VALUE={@@sp@@.@@param@@}"]]></attribute>
+        </attributes>
+      </translation>
+      <translation whereToSearch="tag+TEXTAREA" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="VALUE={@@sp@@.@@param@@}"]]></attribute>
+        </attributes>
+      </translation>
+      <translation whereToSearch="tag+IMG" limitSearch="attribute+SRC" translationType="dynamic image">
+      </translation>
+      <translation whereToSearch="tag+IMG" limitSearch="attribute+*" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="VALUE={@@sp@@.@@param@@}"]]></attribute>
+        </attributes>
+      </translation>
+    </translations>
+  </translator>
+</participant>

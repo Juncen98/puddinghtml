@@ -1,0 +1,55 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<html>
+<head>
+<title>导出为 WAR</title>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<script src="exportAsWAR.js"></script>
+
+<script>
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_ErrorWARFolder = "无法创建 WAR 配置文件夹，进程已中止。";
+var	MSG_ErrorWARResponse = "无法创建 WAR 配置响应文件夹，进程已中止。";
+var MSG_ErrorCopy = "已中止：无法复制 jarArchiver\n";
+var MSG_ErrorCopyTo = "\nto:\n";
+var MSG_ErrorCreateWAR = "错误：无法创建 WAR 文件：\n";
+var MSG_ErrorLocateAppleScript = "错误：无法找到 AppleScript 文件：\n";
+var MSG_SpecifyArchiverFile= "使用此命令之前，您必须指定有效的 Java 归档程序 (JAR)。\n单击“设置”按钮以访问“Java/JSP 首选项”消息框并设置\n“Java 归档程序”字段。";
+var MSG_SpecifyPath = "请为要创建的 WAR 文件指定完整路径和名称。";
+
+//--------------- END LOCALIZEABLE   ---------------
+
+</script>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onload="initializeUI()">
+<form name="theForm">
+  <table border="0" cellpadding="4" cellspacing="2">
+    <tr>
+      <td align="right" width="80"> 
+        Export燗s:
+      </td>
+      <td width="380"> 
+        <input name="warName" type="text" class="largeTField">
+	  </td>
+	  <td width="70">
+		<input type="button" name="Browse" onClick="browseFolder();focus(this)" value="浏览...">
+      </td>
+    </tr>
+    <tr>
+      <td width="80">&nbsp;</td>
+      <td width="380"> 
+        <input type="checkbox" name="includeJSPs" value="checkbox">
+        包括 JSP</td>
+      <td width="70">
+		<input type="button" name="JavaJSP" onClick="dw.showPreferencesDialog('java/jsp')" value="设置...">
+	  </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

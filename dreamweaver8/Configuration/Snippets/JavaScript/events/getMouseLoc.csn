@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "获取鼠标位置" description = "用于确定当前鼠标坐标的代码。" preview="code" type="block">
+<insertText location="beforeSelection">
+<![CDATA[/* 
+Example:
+function test()
+{
+  if (document.layers) getMouseLoc;     //NS
+  else if (document.all) getMouseLoc(); //IE
+  alert(mouseLocation.x+","+mouseLocation.y);
+}
+in the BODY:
+<a href="#" onmouseover="test()">test</a>
+*/
+function Point(x,y) {  this.x = x; this.y = y; }
+mouseLocation = new Point(-500,-500);
+function getMouseLoc(e)
+{
+  if(!document.all)  //NS
+  {
+    mouseLocation.x = e.pageX;
+    mouseLocation.y = e.pageY;
+  }
+  else               //IE
+  {
+    mouseLocation.x = event.x + document.body.scrollLeft;
+    mouseLocation.y = event.y + document.body.scrollTop;
+  }
+  return true;
+}
+//NS init:
+if(document.layers){ document.captureEvents(Event.MOUSEMOVE); document.onMouseMove = getMouseLoc; }
+]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

@@ -1,0 +1,54 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<TITLE>使用代理类添加</TITLE>
+<SCRIPT>
+// Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved.
+var PROP_type = "Proxy";
+</SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/docInfo.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/niceName.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../Shared/MM/Scripts/CMN/helper.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Ultradev/Scripts/proxyCmn.js"></SCRIPT>
+<SCRIPT SRC="ProxyChooser.js"></script>
+<SCRIPT SRC="../WebServices/Introspectors/IntrospectorCommon.js"></SCRIPT>
+<SCRIPT SRC="../Components/Common/WebServices/WebServicesCommon.js"></SCRIPT>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY onLoad="initializeUI()">
+<FORM NAME="theForm" ACTION="">
+<table border=0>
+  <tr> 
+    <td align="left" valign="baseline" nowrap><span id="ClassesLabel">包含代理类的文件夹:</span></td>
+	<td align="left" valign="baseline" nowrap>&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="baseline" nowrap>
+      <input name="Class" class="xxlargeTField">
+      </input>
+    </td>
+    <td valign="baseline" nowrap>
+      <input type="button" value="浏览..." onClick="GetClass();focus(this)" name="button">
+    </td>
+  </tr>
+  <tr> 
+    <td align="left" valign="baseline" nowrap>使用以下对象读取代理:</td>
+	<td align="left" valign="baseline" nowrap>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left" valign="baseline" nowrap> 
+		<select name="introspectorslist" class="proxyList" onChange="checkEnableClass()">
+		</select>
+    </td>
+  </tr>
+</table>
+</form>
+ </BODY>
+</HTML>
+

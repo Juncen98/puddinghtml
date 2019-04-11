@@ -1,0 +1,298 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFMODULE</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFMODULE</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Invokes a custom tag for use in ColdFusion application pages. This tag processes custom tag name conflicts.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Application framework tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfmodule 
+   template = &quot;path&quot;
+   name = &quot;tag_name&quot;
+   attributeCollection = &quot;collection_structure&quot;
+   attribute_name1 = &quot;valuea&quot;
+   attribute_name2 = &quot;valueb&quot;
+   ...&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfapplication, cfassociate, cflock; Chapter&#160;11, "Creating and Using Custom CFML Tags" in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX: Changed behavior when using this tag within a custom tag: if the attribute_name parameter is the same as a key element within the attributeCollection parameter, ColdFusion now uses the name value that is within the attributeCollection parameter. (Earlier releases did not process this consistently.)
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+To name a ColdFusion page that contains the custom tag definition, including its path, use the template attribute. To refer to the custom tag in the ColdFusion installation directory, using dot notation to indicate its location, use the name attribute. 
+</p>
+
+<p>
+On UNIX systems, ColdFusion searches first for a file with a name that matches the name attribute, but is all lower case. If it does not find the file, it looks for a file name that matches the attribute with identical character casing.
+</p>
+
+<p>
+You can use attributeCollection and attribute_name in the same call. 
+</p>
+
+<p>
+Within the custom tag code, the attributes passed with attributeCollection are saved as independent attribute values, with no indication that they are grouped into a structure by the custom tag's caller.
+</p>
+
+<p>
+Similarly, if the custom tag uses a cfassociate tag to save its attributes, the attributes passed with attributeCollection are saved as independent attribute values, with no indication that they are grouped into a structure by the custom tag's caller.
+</p>
+
+<p>
+If you specify an end tag to cfmodule, ColdFusion calls your custom tag as if it had both a start and an end tag. For more information, see "Handling end tags" of Chapter&#160;11, "Creating and Using Custom CFML Tags" in ColdFusion MX Developer's Guide.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;cfmodule Example&lt;/h3&gt;
+&lt;p&gt;This view-only example shows use of cfmodule to call a custom tag inline.&lt;/
+p&gt;
+&lt;p&gt;This example uses a sample custom tag that is saved in myTag.cfm in 
+the snippets directory. You can also save ColdFusion custom tags in the 
+CFusionMX7\CustomTags directory.
+&lt;cfset attrCollection1 = StructNew()&gt;
+&lt;cfparam name=&quot;attrCollection1.value1&quot; default=&quot;22&quot;&gt;
+&lt;cfparam name=&quot;attrCollection1.value2&quot; default=&quot;45&quot;&gt;
+&lt;cfparam name=&quot;attrcollection1.value3&quot; default=&quot;88&quot;&gt;
+&lt;!--- Call the tag with CFMODULE with Name---&gt;
+&lt;cfmodule
+   Template=&quot;myTag.cfm&quot;
+   X=&quot;3&quot;
+   attributeCollection=#attrCollection1#
+   Y=&quot;4&quot;&gt;
+&lt;!--- Show the code. ---&gt;
+&lt;HR size=&quot;2&quot; color=&quot;#0000A0&quot;&gt;
+&lt;P&gt;Here is one way in which to invoke the custom tag,
+using the TEMPLATE attribute.&lt;/P&gt;
+&lt;cfoutput&gt;#HTMLCodeFormat(&quot; &lt;CFMODULE
+   Template=&quot;&quot;myTag.cfm&quot;&quot;
+   X=3
+   attributeCollection=##attrCollection1##
+   Y=4&gt;&quot;)#
+&lt;/cfoutput&gt;
+&lt;P&gt;The result: &lt;cfoutput&gt;#result#&lt;/cfoutput&gt;
+&lt;!--- Call the tag with CFMODULE with Name.---&gt;
+&lt;!---
+   &lt;CFMODULE
+      Name=&quot;myTag&quot;
+      X=&quot;3&quot;
+      attributeCollection=#attrCollection1#
+      Y=&quot;4&quot;&gt;
+---&gt;
+&lt;!--- Show the code. ---&gt;
+&lt;HR size=&quot;2&quot; color=&quot;#0000A0&quot;&gt;
+&lt;P&gt;Here is another way to invoke the custom tag,
+using the NAME attribute.&lt;/P&gt;
+&lt;cfoutput&gt;#HTMLCodeFormat(&quot; &lt;CFMODULE
+      NAME=&#39;myTag&#39;
+      X=3
+      attributeCollection=##attrCollection1##
+      Y=4&gt;&quot;)#
+&lt;/cfoutput&gt;
+&lt;P&gt;The result: &lt;cfoutput&gt;#result#&lt;/cfoutput&gt;
+&lt;!--- Call the tag using the shortcut notation. ---&gt;
+&lt;!---
+&lt;CF_myTag
+   X=&quot;3&quot;
+   attributeCollection=#attrCollection1#
+   Y=&quot;4&quot;&gt;
+---&gt;
+
+
+&lt;!--- Show the code. ---&gt;   
+&lt;p&gt;Here is the short cut to invoking the same tag.&lt;/p&gt;
+&lt;cfoutput&gt;#HTMLCodeFormat(   &quot;&lt;cf_mytag 
+   x = 3 
+   attributeCollection = ##attrcollection1## 
+   y = 4&gt;&quot;)#
+&lt;/cfoutput&gt;   
+&lt;p&gt;The result: &lt;cfoutput&gt;#result#&lt;/cfoutput&gt;&lt;/p&gt;   
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="TEMPLATE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TEMPLATE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required unless name attribute is used</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Mutually exclusive with the name attribute. A path to the page that implements the tag. </p><ul>
+
+<li>Relative path: expanded from the current page.</li>
+
+<li>Absolute path: expanded using ColdFusion mapping.</li>
+</ul>
+
+<p>A physical path is not valid. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="NAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required unless template attribute is used</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Mutually exclusive with the template attribute. A custom tag name, in the form &quot;Name.Name.Name...&quot; Identifies subdirectory, under the ColdFusion tag root directory, that contains custom tag page. For example (Windows format): </p><pre>&lt;cfmodule name = &quot;macromedia.Forums40.
+GetUserOptions&quot;&gt; 
+</pre>
+<p>This identifies the page GetUserOptions.cfm in the directory CustomTags\macromedia\Forums40 under the ColdFusion root directory.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ATTRIBUTECOLLECTION">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ATTRIBUTECOLLECTION</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Structure. A collection of key-value pairs that represent attribute names and values. You can specify multiple key-value pairs. You can specify this attribute only once. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ATTRIBUTE_NAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ATTRIBUTE_NAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Attribute for a custom tag. You can include multiple instances of this attribute to specify the parameters of a custom tag. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<participant name="transStatsFirstRecord">
+  <translator priority=400>
+    <searchPatterns>
+      <searchPattern><![CDATA[echo]]></searchPattern>
+      <searchPattern><![CDATA[($startRow_]]></searchPattern>
+      <searchPattern paramNames="rs"><![CDATA[/echo \(\$startRow_([^\r\n]*?) \+ 1\) (?=\r\n|\r|\n|\?>)/i]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="directive" translationType="dynamic data">
+        <openTag>MM_DYNAMIC_CONTENT</openTag>
+        <attributes>
+          <attribute><![CDATA[SOURCE=@@rs@@]]></attribute>
+        </attributes>
+        <display><![CDATA[{@@rs@@.FirstRecord}]]></display>
+        <closeTag>MM_DYNAMIC_CONTENT</closeTag>
+      </translation>
+    </translations>
+  </translator>
+</participant>

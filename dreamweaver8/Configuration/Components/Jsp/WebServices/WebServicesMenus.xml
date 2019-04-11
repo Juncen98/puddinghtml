@@ -1,0 +1,19 @@
+<!-- WARNING: DO NOT CHANGE ANY ID ATTRIBUTES ASSOCIATED WITH MENU ITEMS. -->
+<!-- Changing IDs will make it impossible for other developers to locate -->
+<!-- menu items for installation purposes. -->
+<shortcutlist id="DWWebServicesContext">
+	<shortcut key="Del" domRequired="false" enabled="(dw.serverComponentsPalette.getSelectedNode() != null && (dw.serverComponentsPalette.getSelectedNode().objectType=='Root'))" command="clickedDelete();"  id="DWShortcuts_ServerComponent_Delete" /> 	
+</shortcutlist>
+<menubar name="" id="DWWebServicesContext">
+    <menu name="服务器组件弹出式菜单" id="DWContext_WebServices">
+        <menuitem name="编辑 Web 服务"  domRequired="false"	enabled="dw.serverComponentsPalette.getSelectedNode() != null && (dw.serverComponentsPalette.getSelectedNode().objectType=='Root') && dw.serverComponentsPalette.getSelectedNode().wsRec != null && dw.serverComponentsPalette.getSelectedNode().wsRec[ProxyGeneratorNamePropName] != null" command="editWebService()" id="DWContext_WebServices_EditWebService" />
+        <menuitem name="重新生成代理"  domRequired="false"	enabled="dw.serverComponentsPalette.getSelectedNode() != null && (dw.serverComponentsPalette.getSelectedNode().objectType=='Root') && dw.serverComponentsPalette.getSelectedNode().wsRec != null && dw.serverComponentsPalette.getSelectedNode().wsRec[ProxyGeneratorNamePropName] != null" command="reGenerateProxy();" id="DWContext_WebServices_RegenerateProxy" />
+			  <separator/>
+				<menuitem name="插入代码" domRequired="false"		enabled="insertEnabled(dw.serverComponentsPalette.getSelectedNode());" command="clickedInsert(dw.serverComponentsPalette.getSelectedNode());" id="DWShortcuts_ServerComponent_Insert" />
+    </menu>
+</menubar>
+<menubar name="" id="DWWebServicesChoosersContext">
+    <menu name="服务器组件弹出式菜单" id="DWContext_WebServicesChooser">
+		<menuitem dynamic name="选择器" file="Menus/MM/WS_Choosers.htm" id="DWContext_WebServices_Chooser_List" />
+    </menu>
+</menubar>

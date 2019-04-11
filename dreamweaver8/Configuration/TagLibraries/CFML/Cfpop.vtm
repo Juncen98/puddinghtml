@@ -1,0 +1,30 @@
+<tag name="CFPOP" endtag="no">
+<tagformat nlbeforetag="1" nlaftertag="1"/>
+<tagdialog file="cfpop.htm" />
+  <attributes>
+    <attrib name="ACTION" type="ENUMERATED">
+      <attriboption value="GETALL"/>
+      <attriboption value="GETHEADERONLY"/>
+      <attriboption value="DELETE"/>
+    </attrib>
+    <attrib name="NAME" type="TEXT"/>
+    <attrib name="MESSAGENUMBER" type="TEXT"/>
+    <attrib name="ATTACHMENTPATH" type="DIRECTORY"/>
+    <attrib name="STARTROW" type="TEXT"/>
+    <attrib name="MAXROWS" type="TEXT"/>
+    <attrib name="SERVER" type="TEXT"/>
+    <attrib name="PORT" type="TEXT"/>
+    <attrib name="TIMEOUT" type="TEXT"/>
+    <attrib name="USERNAME" type="TEXT"/>
+    <attrib name="PASSWORD" type="TEXT"/>
+    <attrib name="GENERATEUNIQUEFILENAMES" type="ENUMERATED">
+      <attriboption value="Yes"/>
+      <attriboption value="No"/>
+    </attrib>
+  </attributes>
+  <attribcategories>
+    <attribgroup name="General" elements="name,messagenumber,startrow,maxrows,action" />
+    <attribgroup name="Getall" elements="attachmentpath,generateuniquefilenames" />
+    <attribgroup name="Server Info" elements="server,username,password,port,timeout" />
+  </attribcategories>
+</tag>

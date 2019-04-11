@@ -1,0 +1,9 @@
+<participant version="6.0">
+	<insertText location="aboveHTML+20"><![CDATA[<?php
+$currentPage = $_SERVER["PHP_SELF"];
+?>]]></insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern isOptional="false" limitSearch="all"><![CDATA[/\$currentPage = [^\r\n]*?;(?=\r\n|\r|\n|\?>)/i]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>["PHP_SELF"]</quickSearch>
+</participant>

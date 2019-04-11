@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<!DOCTYPE toolbarset SYSTEM "-//Macromedia//DWExtension toolbar 5.0">
+<toolbarset>
+
+  <toolbar id="MM_Toolbar_StyleRendering" label="样式呈现" initiallyVisible="false" backgroundStyle="gradient">
+
+  <!-- To save space, some of the less commonly used media type buttons -->
+  <!-- have been commented out to remove them from the toolbar          -->
+  <!-- Please Add, remove, and re-order media types as desired          -->
+
+    <radiobutton id="MM_mediatypes_screen"
+            menuid="MM_DWMenu_Toolbars_StyleRendering_Screen"
+            image="Toolbars/images/MM/T_CSSScreen_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_CSSScreen_Sm_D.png"
+			buttonGroup="mediatype"
+            tooltip="呈现屏幕媒体类型"
+			domRequired="FALSE"
+            enabled="dw.getDocumentDOM() != null"
+            checked="dw.cssStylePalette.getMediaType() == 'screen'"
+            command="if (dw.cssStylePalette.getMediaType() != 'screen') dw.cssStylePalette.setMediaType('screen');"
+            update="onEveryIdle"
+            />
+
+
+    <radiobutton id="MM_mediatypes_print"
+            menuid="MM_DWMenu_Toolbars_StyleRendering_Print"
+            image="Toolbars/images/MM/T_CSSPrint_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_CSSPrint_Sm_D.png"
+			buttonGroup="mediatype"
+            tooltip="呈现打印媒体类型"
+			domRequired="FALSE"
+            enabled="dw.getDocumentDOM() != null"
+            checked="dw.cssStylePalette.getMediaType() == 'print'"
+            command="if (dw.cssStylePalette.getMediaType() != 'print') dw.cssStylePalette.setMediaType('print');"
+            update="onEveryIdle"
+            />
+
+
+    <radiobutton id="MM_mediatypes_handheld"
+            menuid="MM_DWMenu_Toolbars_StyleRendering_Handheld"
+            image="Toolbars/images/MM/T_CSSHand_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_CSSHand_Sm_D.png"
+			buttonGroup="mediatype"
+            tooltip="呈现手持型媒体类型"
+			domRequired="FALSE"
+            enabled="dw.getDocumentDOM() != null"
+            checked="dw.cssStylePalette.getMediaType() == 'handheld'"
+            command="if (dw.cssStylePalette.getMediaType() != 'handheld') dw.cssStylePalette.setMediaType('handheld');"
+            update="onEveryIdle"
+            />
+
+
+    <radiobutton id="MM_mediatypes_projection"
+            menuid="MM_DWMenu_Toolbars_StyleRendering_Projection"
+            image="Toolbars/images/MM/T_CSSProj_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_CSSProj_Sm_D.png"
+			buttonGroup="mediatype"
+            tooltip="呈现投影媒体类型"
+			domRequired="FALSE"
+            enabled="dw.getDocumentDOM() != null"
+            checked="dw.cssStylePalette.getMediaType() == 'projection'"
+            command="if (dw.cssStylePalette.getMediaType() != 'projection') dw.cssStylePalette.setMediaType('projection');"
+            update="onEveryIdle"
+            />
+
+
+    <radiobutton id="MM_mediatypes_tty"
+            menuid="MM_DWMenu_Toolbars_StyleRendering_TTY"
+            image="Toolbars/images/MM/T_CSSTTY_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_CSSTTY_Sm_D.png"
+			buttonGroup="mediatype"
+            tooltip="呈现 TTY 媒体类型"
+			domRequired="FALSE"
+            enabled="dw.getDocumentDOM() != null"
+            checked="dw.cssStylePalette.getMediaType() == 'tty'"
+            command="if (dw.cssStylePalette.getMediaType() != 'tty') dw.cssStylePalette.setMediaType('tty');"
+            update="onEveryIdle"
+            />
+
+
+    <radiobutton id="MM_mediatypes_tv"
+            menuid="MM_DWMenu_Toolbars_StyleRendering_TV"
+            image="Toolbars/images/MM/T_CSSTV_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_CSSTV_Sm_D.png"
+			buttonGroup="mediatype"
+            tooltip="呈现 TV 媒体类型"
+			domRequired="FALSE"
+            enabled="dw.getDocumentDOM() != null"
+            checked="dw.cssStylePalette.getMediaType() == 'tv'"
+            command="if (dw.cssStylePalette.getMediaType() != 'tv') dw.cssStylePalette.setMediaType('tv');"
+            update="onEveryIdle"
+            />
+
+
+    <checkbutton id="MM_displaystyles"
+            menuid="MM_DWMenu_Toolbars_StyleRendering_DisplayStyles"
+            image="Toolbars/images/MM/T_DispStyles_Sm_N.png"
+            disabledImage="Toolbars/images/MM/T_DispStyles_Sm_D.png"
+            tooltip="切换 CSS 样式的显示"
+            enabled="dw.getDocumentDOM() != null"
+            checked="dw.cssStylePalette.getDisplayStyles() == true"
+            command="dw.cssStylePalette.setDisplayStyles(dw.cssStylePalette.getDisplayStyles() == false);"
+            update="onEveryIdle"
+            />
+
+  </toolbar>
+</toolbarset>

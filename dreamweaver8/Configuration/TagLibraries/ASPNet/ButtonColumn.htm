@@ -1,0 +1,146 @@
+<!-- Copyright 2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>HyperLinkColumn</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Controls/Scripts/MultiStateCheckBox.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+
+var theVisibleMultiStateCheckBox; 
+
+var BUTTONTYPELIST;
+var theUIObjects;
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function updateUI(itemName)
+{
+  switch(itemName)
+  {
+    case "visible":
+	  {
+	    theVisibleMultiStateCheckBox.updateUI(); 
+	    break; 
+	  } 	
+  }
+}
+
+function initializeUI()
+{
+	BUTTONTYPELIST = new ListControl("theButtonType"); 
+  theVisibleMultiStateCheckBox = new MultiStateCheckBox("thevisible");
+  theVisibleMultiStateCheckBox.initializeUI(); 
+
+  tagDialog.populateDropDownList(BUTTONTYPELIST, theButtonColumnButtonTypVal, theButtonColumnButtonTypVal, 1); 
+
+  theUIObjects = new Array(BUTTONTYPELIST);
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<div name="常规"> 
+  <input type="hidden" name="therunat" attname="runat" value="server" required="true" /> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">按钮类型: </td>
+      <td nowrap="nowrap">
+        <select name="theButtonType" class="oneWordOptionList" id="aspnet:PagerStyle:ButtonType" attname="ButtonType">
+           
+        </select>
+      </td>
+    </tr>   
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">命令名称: </td>
+      <td nowrap="nowrap">
+        <input name="theCommandName" type="text" class="basicTextField" id="aspnet:hyperlinkcolumn:CommandName" attname="CommandName" />
+      </td>
+    </tr>   
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">文本: </td>
+      <td nowrap="nowrap">
+        <input name="theText" type="text" class="basicTextField" id="aspnet:hyperlinkcolumn:Text" attname="Text" />
+      </td>
+    </tr>   
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">数据文本字段: </td>
+      <td nowrap="nowrap">
+        <input name="theDataTextField" type="text" class="basicTextField" id="aspnet:hyperlinkcolumn:DataTextField" attname="DataTextField" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">数据文本格式字符串: </td>
+      <td nowrap="nowrap">
+        <input name="theDataTextFormatString" type="text" class="basicTextField" id="aspnet:hyperlinkcolumn:DataTextFormatString" attname="DataTextFormatString" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">页脚样式: </td>
+      <td nowrap="nowrap">
+        <input name="theFooterStyle" type="text" class="basicTextField" id="aspnet:hyperlinkcolumn:FooterStyle" attname="FooterStyle" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">页脚文本: </td>
+      <td nowrap="nowrap">
+        <input name="theFooterText" type="text" class="basicTextField" id="aspnet:hyperlinkcolumn:FooterText" attname="FooterText" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">页眉图像 URL: </td>
+      <td nowrap="nowrap">
+        <input name="theHeaderImageUrl" type="text" class="basicTextField" id="aspnet:hyperlinkcolumn:HeaderImageUrl" attname="HeaderImageUrl" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">页眉样式: </td>
+      <td nowrap="nowrap">
+        <input name="theHeaderStyle" type="text" class="basicTextField" id="aspnet:hyperlinkcolumn:HeaderStyle" attname="HeaderStyle" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">标题文本: </td>
+      <td nowrap="nowrap">
+        <input name="theHeaderText" type="text" class="basicTextField" id="aspnet:hyperlinkcolumn:HeaderText" attname="HeaderText" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">项目样式: </td>
+      <td nowrap="nowrap">
+        <input name="theItemStyle" type="text" class="basicTextField" id="aspnet:hyperlinkcolumn:ItemStyle" attname="ItemStyle" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">排序表达式: </td>
+      <td nowrap="nowrap">
+        <input name="theSortExpression" type="text" class="basicTextField" id="aspnet:hyperlinkcolumn:SortExpression" attname="SortExpression" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="thevisible" attname="visible" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('visible');" > 
+        可见
+      </td>
+    </tr>  
+  </table>
+  </div>
+</body>
+</html>	

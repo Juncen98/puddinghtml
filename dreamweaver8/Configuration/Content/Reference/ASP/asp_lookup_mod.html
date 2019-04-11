@@ -1,0 +1,458 @@
+<html>
+<head>
+<title>asp lookup module</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script src="../lookupMod.js"></script>
+<script language="JavaScript">
+var BOOK_NAME = "O'REILLY ASP Reference";
+var KEYWORDS = new Array(
+		"#include", "Server-Side Includes", "include",
+		"Abandon", "Session Object", "Abandon",
+		"AbsolutePage", "Recordset Object ", "Recordset.AbsolutePage",
+		"AbsolutePosition", "Recordset Object ", "Recordset.AbsolutePosition",
+		"Accessory Files/Required DLL Files", "File Access Component", "AccessoryFilesRequiredDLLFiles",
+		"ActiveCommand", "Recordset Object ", "Recordset.ActiveCommand",
+		"rs.ActiveConnection", "Recordset Object ", "Recordset.ActiveConnection",
+		"comm.ActiveConnection", "Command Object ", "Command.ActiveConnection",
+		"ActiveConnection", "Record Object ", "Record.ActiveConnection",
+		"ActualSize", "Field Object ", "Field.ActualSize",
+		"Add", "Dictionary Object", "DictionaryAddMethod",
+		"AddHeader", "Response Object", "AddHeader",
+		"AddNew", "Recordset Object ", "Recordset.AddNew",
+		"Fields.Append", "Field Object ", "Fields.Append",
+		"Append", "Parameter Object ", "Parameters.Append",
+		"AppendChunk", "Parameter Object ", "Parameter.AppendChunk",
+		"AppendToLog", "Response Object", "AppendToLog",
+		"Application Object", "Application Object", "Description",
+		"ASPCode", "ASPError Object", "ASPCode",
+		"ASPDescription", "ASPError Object", "ASPDescription",
+		"ASPError", "ASPError Object", "Description",
+		"AtEndOfStream", "File Access Component", "AtEndOfStreamTextStreamObject",
+		"Attributes", "File Access Component", "AttributesFileObjectFolderObject",
+		"conn.Attributes", "Connection Object ", "Connection.Attributes",
+		"Attributes", "Property Object ", "Property.Attributes",
+		"Attributes", "Parameter Object ", "Parameter.Attributes",
+		"Attributes", "Field Object ", "Field.Attributes",
+		"AvailableSpace", "File Access Component", "AvailableSpaceDriveObject",
+		"BeginTrans", "Connection Object ", "Connection.BeginTrans",
+		"BeginTransComplete", "Connection Object ", "Connection.BeginTransComplete",
+		"BinaryRead", "Request Object", "BinaryRead",
+		"BinaryWrite", "Response Object", "BinaryWrite",
+		"Bookmark", "Recordset Object ", "Recordset.Bookmark",
+		"Buffer", "Response Object", "Buffer",
+		"CacheControl", "Response Object", "CacheControl",
+		"CacheSize", "Recordset Object ", "Recordset.CacheSize",
+		"rs.Cancel", "Recordset Object ", "Recordset.Cancel",
+		"conn.Cancel", "Connection Object ", "Connection.Cancel",
+		"Cancel", "Stream Object ", "Stream.Cancel",
+		"Cancel", "Record Object ", "Record.Cancel",
+		"comm.Cancel", "Command Object ", "Command.Cancel",
+		"CancelBatch", "Recordset Object ", "Recordset.CancelBatch",
+		"Fields.CancelUpdate", "Field Object ", "Fields.CancelUpdate",
+		"CancelUpdate", "Recordset Object ", "Recordset.CancelUpdate",
+		"Category", "ASPError Object", "Category",
+		"Response.Charset", "Response Object", "Charset",
+		"CharSet", "Stream Object ", "Stream.CharSet",
+		"Response.Clear", "Response Object", "Clear",
+		"Clear", "Error Object", "Errors.Clear",
+		"ClientCertificate", "Request Object", "ClientCertificate",
+		"Clone", "Recordset Object ", "Recordset.Clone",
+		"conn.Close", "Connection Object ", "Connection.Close",
+		"rs.Close", "Recordset Object ", "Recordset.Close",
+		"Close", "Stream Object ", "Stream.Close",
+		"Close", "Record Object ", "Record.Close",
+		"CodePage", "Session Object", "CodePage",
+		"CODEPAGE", "Preprocessing Directives", "CODEPAGE",
+		"Column", "ASPError Object", "Column",
+		"Command", "Command Object ", "Description",
+		"CommandStream", "Command Object ", "Command.CommandStream",
+		"CommandText", "Command Object ", "Command.CommandText",
+		"CommandTimeout", "Command Object ", "Command.CommandTimeout",
+		"CommandTimeout", "Connection Object ", "Connection.CommandTimeout",
+		"CommandType", "Command Object ", "Command.CommandType",
+		"CommitTrans", "Connection Object ", "Connection.CommitTrans",
+		"CommitTransComplete", "Connection Object ", "Connection.CommitTransComplete",
+		"CompareBookmarks", "Recordset Object ", "Recordset.CompareBookmarks",
+		"CompareMode", "Dictionary Object", "DictionaryCompareModeProperty",
+		"ConnectComplete", "Connection Object ", "Connection.ConnectComplete",
+		"Connection Object ", "Connection Object ", "Description",
+		"Connection.OpenSchema ", "Connection Object ", "Connection.OpenSchema",
+		"ConnectionString", "Connection Object ", "Connection.ConnectionString",
+		"ConnectionTimeout", "Connection Object ", "Connection.ConnectionTimeout",
+		"Application.Contents", "Application Object", "ContentsCollection",
+		"Session.Contents", "Session Object", "ContentsCollection",
+		"ContentType", "Response Object", "ContentType",
+		"Request.Cookies", "Request Object", "Cookies",
+		"Response.Cookies", "Response Object", "Cookies",
+		"Copy", "File Access Component", "CopyFileObjectFolderObject",
+		"CopyFolder", "File Access Component", "CopyFolderFileSystemObjectObject",
+		"CopyRecord", "Record Object ", "Record.CopyRecord",
+		"CopyTo", "Stream Object ", "Stream.CopyTo",
+		"Dictionary.Count", "Dictionary Object", "DictionaryCountProperty",
+		"Errors.Count", "Error Object", "Errors.Count",
+		"Fields.Count", "Field Object ", "Fields.Count",
+		"Count", "Parameter Object ", "Parameters.Count",
+		"CreateFolder", "File Access Component", "CreateFolderFileSystemObjectObject",
+		"CreateObject", "Server Object", "CreateObject",
+		"CreateParameter", "Command Object ", "Command.CreateParameter",
+		"CursorLocation", "Recordset Object ", "Recordset.CursorLocation",
+		"conn.CursorLocation", "Connection Object ", "Connection.CursorLocation",
+		"CursorType", "Recordset Object ", "Recordset.CursorType",
+		"DataFormat", "Field Object ", "Field.DataFormat",
+		"DataMember", "Recordset Object ", "Recordset.DataMember",
+		"DateCreated", "File Access Component", "DateCreatedFileObjectFolderObject",
+		"DefaultDatabase", "Connection Object ", "Connection.DefaultDatabase",
+		"DefinedSize", "Field Object ", "Field.DefinedSize",
+		"Delete", "File Access Component", "DeleteFileObjectFolderObject",
+		"Delete", "Recordset Object ", "Recordset.Delete",
+		"Delete", "Field Object ", "Fields.Delete",
+		"Delete", "Parameter Object ", "Parameters.Delete",
+		"DeleteRecord", "Record Object ", "Record.DeleteRecord",
+		"Description", "Error Object", "Error.Description",
+		"Description", "ASPError Object", "Description",
+		"Dialect", "Command Object ", "Command.Dialect",
+		"Dictionary", "Dictionary Object", "Description",
+		"Direction", "Parameter Object ", "Parameter.Direction",
+		"Disconnect", "Connection Object ", "Connection.Disconnect",
+		"Drive", "File Access Component", "DriveFileObjectFolderObject",
+		"EditMode", "Recordset Object ", "Recordset.EditMode",
+		"ENABLESESSIONSTATE", "Preprocessing Directives", "ENABLESESSIONSTATE",
+		"End", "Response Object", "End",
+		"EndOfRecordset", "Recordset Object ", "Recordset.EndOfRecordset",
+		"EOF", "Recordset Object ", "Recordset.EOF",
+		"EOS", "Stream Object ", "Stream.EOS",
+		"Error Object", "Error Object", "Description",
+		"Error.HelpContext", "Error Object", "Error.HelpContext",
+		"Error.HelpFile", "Error Object", "Error.HelpContext",
+		"Errors Collection ", "Error Object", "Errors",
+		"Errors", "Connection Object ", "Connection.Errors",
+		"Execute", "Connection Object ", "Connection.Execute",
+		"Execute", "Command Object ", "Command.Execute",
+		"Server.Execute", "Server Object", "Execute",
+		"ExecuteComplete", "Connection Object ", "Connection.ExecuteComplete",
+		"Exists", "Dictionary Object", "DictionaryExistsMethod",
+		"Expires", "Response Object", "Expires",
+		"ExpiresAbsolute", "Response Object", "ExpiresAbsolute",
+		"FetchComplete", "Recordset Object ", "Recordset.FetchComplete",
+		"FetchProgress", "Recordset Object ", "Recordset.FetchProgress",
+		"Field Object ", "Field Object ", "Description",
+		"Field.AppendChunk ", "Field Object ", "Field.AppendChunk",
+		"FieldChangeComplete", "Recordset Object ", "Recordset.FieldChangeComplete",
+		"Fields Collection ", "Field Object ", "Fields",
+		"Fields", "Recordset Object ", "Recordset.Fields",
+		"Fields", "Record Object ", "Record.Fields",
+		"File Access Component", "File Access Component", "Description",
+		"File", "ASPError Object", "File",
+		"FileSystem", "File Access Component", "FileSystemDriveObject",
+		"Filter", "Recordset Object ", "Recordset.Filter",
+		"Find", "Recordset Object ", "Recordset.Find",
+		"Flush", "Stream Object ", "Stream.Flush",
+		"Response.Flush", "Response Object", "Flush",
+		"Form", "Request Object", "Form",
+		"GetBaseName", "File Access Component", "GetBaseNameFileSystemObjectObject",
+		"GetChildren", "Record Object ", "Record.GetChildren",
+		"GetChunk", "Field Object ", "Field.GetChunk",
+		"GetLastError", "Server Object", "GetLastError",
+		"GetParentFolderName", "File Access Component", "GetParentFolderNameFileSystemObjectObject",
+		"GetRows", "Recordset Object ", "Recordset.GetRows",
+		"GetSpecialFolder", "File Access Component", "GetSpecialFolderFileSystemObjectObject",
+		"GetString", "Recordset Object ", "Recordset.GetString",
+		"GLOBAL.ASA", "GLOBAL.ASA", "Description",
+		"HTMLEncode", "Server Object", "HTMLEncode",
+		"Index", "Recordset Object ", "Recordset.Index",
+		"InfoMessage", "Connection Object ", "Connection.InfoMessage",
+		"IsClientConnected", "Response Object", "IsClientConnected",
+		"IsolationLevel", "Connection Object ", "Connection.IsolationLevel",
+		"IsReady", "File Access Component", "IsReadyDriveObject",
+		"IsRootFolder", "File Access Component", "IsRootFolderFolderObject",
+		"Item", "Field Object ", "Fields.Item",
+		"Item", "Error Object", "Errors.Item",
+		"Item", "Parameter Object ", "Parameters.Item",
+		"Item", "Dictionary Object", "DictionaryItemProperty",
+		"Items", "Dictionary Object", "DictionaryItemsMethod",
+		"Key", "Dictionary Object", "DictionaryKeyProperty",
+		"Keys", "Dictionary Object", "DictionaryKeysMethod",
+		"LANGUAGE", "Preprocessing Directives", "LANGUAGE",
+		"LCID", "Session Object", "LCID",
+		"LCID", "Preprocessing Directives", "LCID",
+		"Line", "ASPError Object", "Line",
+		"LineSeparator", "Stream Object ", "Stream.LineSeparator",
+		"LoadFromFile", "Stream Object ", "Stream.LoadFromFile",
+		"Lock", "Application Object", "Lock",
+		"LockType", "Recordset Object ", "Recordset.LockType",
+		"MapPath", "Server Object", "MapPath",
+		"MarshalOptions", "Recordset Object ", "Recordset.MarshalOptions",
+		"MaxRecords", "Recordset Object ", "Recordset.MaxRecords",
+		"Mode", "Stream Object ", "Stream.Mode",
+		"Mode", "Record Object ", "Record.Mode",
+		"Mode", "Connection Object ", "Connection.Mode",
+		"Move", "Recordset Object ", "Recordset.Move",
+		"MoveComplete", "Recordset Object ", "Recordset.MoveComplete",
+		"MoveFirst", "Recordset Object ", "Recordset.MoveFirst",
+		"MoveFolder", "File Access Component", "MoveFolderFileSystemObjectObject",
+		"MoveRecord", "Record Object ", "Record.MoveRecord",
+		"Name", "Parameter Object ", "Parameter.Name",
+		"Name", "Property Object ", "Property.Name",
+		"Name", "Command Object ", "Command.Name",
+		"Name", "Field Object ", "Field.Name",
+		"NamedParameters", "Command Object ", "Command.NamedParameters",
+		"NativeError", "Error Object", "Error.NativeError",
+		"NextRecordset", "Recordset Object ", "Recordset.NextRecordset",
+		"Number", "ASPError Object", "Number",
+		"Number", "Error Object", "Error.Number",
+		"NumericScale", "Parameter Object ", "Parameter.NumericScale",
+		"NumericScale", "Field Object ", "Field.NumericScale",
+		"ObjectContext Object", "ObjectContext Object", "Description",
+		"OnEnd", "Application Object", "OnEnd",
+		"OnStart", "Application Object", "OnStart",
+		"OnTransactionAbort", "ObjectContext Object", "OnTransactionAbort",
+		"OnTransactionCommit", "ObjectContext Object", "OnTransactionCommit",
+		"Open", "Record Object ", "Record.Open",
+		"Open", "Recordset Object ", "Recordset.Open",
+		"Open", "Connection Object ", "Connection.Open",
+		"Open", "Stream Object ", "Stream.Open",
+		"OpenAsTextStream", "File Access Component", "OpenAsTextStreamFileObject",
+		"OriginalValue", "Field Object ", "Field.OriginalValue",
+		"PageCount", "Recordset Object ", "Recordset.PageCount",
+		"PageSize", "Recordset Object ", "Recordset.PageSize",
+		"Parameter Object ", "Parameter Object ", "Description",
+		"Parameters Collection", "Parameter Object ", "Parameters",
+		"Parameters", "Command Object ", "Command.Parameters",
+		"ParentFolder", "File Access Component", "ParentFolderFileObjectFolderObject",
+		"ParentURL", "Record Object ", "Record.ParentURL",
+		"PICS", "Response Object", "PICS",
+		"Position", "Stream Object ", "Stream.Position",
+		"Precision", "Field Object ", "Field.Precision",
+		"Precision", "Parameter Object ", "Parameter.Precision",
+		"Prepared", "Command Object ", "Command.Prepared",
+		"Properties", "Connection Object ", "Connection.Properties",
+		"Properties", "Command Object ", "Command.Properties",
+		"Properties", "Parameter Object ", "Parameter.Properties",
+		"Properties", "Field Object ", "Field.Properties",
+		"Properties", "Recordset Object ", "Recordset.Properties",
+		"Properties", "Record Object ", "Record.Properties",
+		"Property Object ", "Property Object ", "Description",
+		"Provider", "Connection Object ", "Connection.Provider",
+		"QueryString", "Request Object", "QueryString",
+		"Read", "Stream Object ", "Stream.Read",
+		"ReadLine", "File Access Component", "ReadLineTextStreamObject",
+		"ReadText", "Stream Object ", "Stream.ReadText",
+		"Record Object ", "Record Object ", "Description",
+		"RecordChangeComplete", "Recordset Object ", "Recordset.RecordChangeComplete",
+		"RecordCount", "Recordset Object ", "Recordset.RecordCount",
+		"Recordset Object ", "Recordset Object ", "Description",
+		"Recordset.BOF Property/Recordset.EOF Property ", "Recordset Object ", "Recordset.BOF",
+		"RecordsetChangeComplete", "Recordset Object ", "Recordset.RecordsetChangeComplete",
+		"RecordType", "Record Object ", "Record.RecordType",
+		"Redirect", "Response Object", "Redirect",
+		"Refresh", "Error Object", "Errors.Refresh",
+		"Refresh", "Parameter Object ", "Parameters.Refresh",
+		"Refresh", "Field Object ", "Fields.Refresh",
+		"Remove", "Application Object", "Remove",
+		"Remove", "Session Object", "Remove",
+		"Remove", "Dictionary Object", "DictionaryRemoveMethod",
+		"RemoveAll", "Dictionary Object", "DictionaryRemoveAllMethod",
+		"RemoveAll", "Application Object", "RemoveAll",
+		"RemoveAll", "Session Object", "RemoveAll",
+		"Requery", "Recordset Object ", "Recordset.Requery",
+		"Request Object", "Request Object", "Description",
+		"Response Object", "Response Object", "Description",
+		"Resync", "Field Object ", "Fields.Resync",
+		"Resync", "Recordset Object ", "Recordset.Resync",
+		"RollbackTrans", "Connection Object ", "Connection.RollbackTrans",
+		"RollbackTransComplete", "Connection Object ", "Connection.RollbackTransComplete",
+		"Save", "Recordset Object ", "Recordset.Save",
+		"SaveToFile", "Stream Object ", "Stream.SaveToFile",
+		"ScriptTimeout", "Server Object", "ScriptTimeout",
+		"Seek", "Recordset Object ", "Recordset.Seek",
+		"Server Object", "Server Object", "Description",
+		"Server-Side Includes", "Server-Side Includes", "Description",
+		"Server-Side Includes: Comments/Troubleshooting", "Server-Side Includes", "ServerSideIncludesCommentsTroubleshooting",
+		"ServerVariables", "Request Object", "ServerVariables",
+		"Session Object", "Session Object", "Description",
+		"Session Object Events and Session Scope", "GLOBAL.ASA", "SessionObjectEventsandSessionScope",
+		"Session_OnEnd", "Session Object", "Session_OnEnd",
+		"Session_OnStart", "Session Object", "Session_OnStart",
+		"SessionID", "Session Object", "SessionID",
+		"SetAbort", "ObjectContext Object", "SetAbort",
+		"SetComplete", "ObjectContext Object", "SetComplete",
+		"SetEOS", "Stream Object ", "Stream.SetEOS",
+		"Size", "Parameter Object ", "Parameter.Size",
+		"Size", "Stream Object ", "Stream.Size",
+		"SkipLine", "Stream Object ", "Stream.SkipLine",
+		"Sort", "Recordset Object ", "Recordset.Sort",
+		"Source", "Record Object ", "Record.Source",
+		"Source", "Recordset Object ", "Recordset.Source",
+		"Source", "ASPError Object", "Source",
+		"Source", "Error Object", "Error.Source",
+		"SQLState", "Error Object", "Error.SQLState",
+		"State", "Connection Object ", "Connection.State",
+		"State", "Command Object ", "Command.State",
+		"State", "Stream Object ", "Stream.State",
+		"State", "Record Object ", "Record.State",
+		"State", "Recordset Object ", "Recordset.State",
+		"Session.StaticObjects", "Session Object", "StaticObjectsCollection",
+		"StaticObjects", "Application Object", "StaticObjects",
+		"Response.Status", "Response Object", "Status",
+		"Status", "Field Object ", "Field.Status",
+		"Status", "Recordset Object ", "Recordset.Status",
+		"StayInSync", "Recordset Object ", "Recordset.StayInSync",
+		"Stream Object ", "Stream Object ", "Description",
+		"Supports", "Recordset Object ", "Recordset.Supports",
+		"Request", "Request Object", "TheASPRequestObject",
+		"Timeout", "Session Object", "Timeout",
+		"TotalBytes", "Request Object", "TotalBytes",
+		"TRANSACTION", "Preprocessing Directives", "TRANSACTION",
+		"Transfer", "Server Object", "Transfer",
+		"Type", "Parameter Object ", "Parameter.Type",
+		"Type", "Field Object ", "Field.Type",
+		"Type", "Property Object ", "Property.Type",
+		"Type", "Stream Object ", "Stream.Type",
+		"UnderlyingValue", "Field Object ", "Field.UnderlyingValue",
+		"Unlock", "Application Object", "Unlock",
+		"Update", "Field Object ", "Fields.Update",
+		"Update", "Recordset Object ", "Recordset.Update",
+		"UpdateBatch", "Recordset Object ", "Recordset.UpdateBatch",
+		"URLEncode", "Server Object", "URLEncode",
+		"Value", "Property Object ", "Property.Value",
+		"Value", "Parameter Object ", "Parameter.Value",
+		"Value", "Field Object ", "Field.Value",
+		"Version", "Connection Object ", "Connection.Version",
+		"WillChangeField", "Recordset Object ", "Recordset.WillChangeField",
+		"WillChangeRecord", "Recordset Object ", "Recordset.WillChangeRecord",
+		"WillChangeRecordset", "Recordset Object ", "Recordset.WillChangeRecordset",
+		"WillConnect", "Connection Object ", "Connection.WillConnect",
+		"WillExecute", "Connection Object ", "Connection.WillExecute",
+		"WillMove", "Recordset Object ", "Recordset.WillMove",
+		"Write", "File Access Component", "WriteTextStreamObject",
+		"Write", "Stream Object ", "Stream.Write",
+		"Response.Write", "Response Object", "Write",
+		"WriteLine", "File Access Component", "WriteLineTextStreamObject",
+		"WriteText", "Stream Object ", "Stream.WriteText"
+);
+
+// ASP Lookup Module
+function referenceLookup()
+{
+  var aspVal = null;
+ 	var keyword = "";
+  var dom = dw.getDocumentDOM();
+  if (dom){
+    var JSIndex = dom.documentType.indexOf('ASP-JS');
+    var VBIndex = dom.documentType.indexOf('ASP-VB');
+    // The idea here is that we don't want to bother doing ASP keyword processing if
+    // the file is not an ASP file.
+    if ((JSIndex == -1) && (VBIndex == -1))
+    {
+  		aspVal = new Array("");
+    }
+    else
+    {
+      var docEl = dom.documentElement;
+    	var wholeDoc = docEl.outerHTML;
+    	var theSel = dom.source.getSelection();
+     	var startPoint = searchBackwards(theSel[0],dom);
+  	var endPoint = searchForwards(theSel[1],dom,wholeDoc.length);
+  	var j;
+  	keyword = dom.source.getText(startPoint,endPoint);
+  	// Special cases (multiple entries for single keyword)
+  	if (keyword == "ActiveConnection") {
+  		if (getPrevWord(startPoint,dom).toLowerCase().indexOf('comm') != -1){
+  			keyword = "comm.ActiveConnection";
+  		}else if (getPrevWord(startPoint,dom).toLowerCase().indexOf('rs') != -1){
+  			keyword = "rs.ActiveConnection";
+  		}
+  	}else if (keyword == "Append") {
+  		if (getPrevWord(startPoint,dom) == "Fields"){
+  			keyword = "Fields.Append";
+  		}
+  	}else if (keyword == "Attributes") {
+  		if (getPrevWord(startPoint,dom).toLowerCase().indexOf('conn') != -1){
+  			keyword = "conn.Attributes";
+  		}
+  	}else if (keyword == "Cancel") {
+  		if (getPrevWord(startPoint,dom).toLowerCase().indexOf('comm') != -1){
+  			keyword = "comm.Cancel";
+  		}else if (getPrevWord(startPoint,dom).toLowerCase().indexOf('rs') != -1){
+  			keyword = "rs.Cancel";
+  		}else if (getPrevWord(startPoint,dom).toLowerCase().indexOf('conn') != -1){
+  			keyword = "conn.Cancel";
+  		}
+  	}else if (keyword == "CancelUpdate") {
+  		if (getPrevWord(startPoint,dom) == "Fields"){
+  			keyword = "Fields.CancelUpdate";
+  		}
+  	}else if (keyword == "Charset") {
+  		if (getPrevWord(startPoint,dom) == "Response"){
+  			keyword = "Response.Charset";
+  		}
+  	}else if (keyword == "Clear") {
+  		if (getPrevWord(startPoint,dom) == "Response"){
+  			keyword = "Response.Clear";
+  		}
+  	}else if (keyword == "Close") {
+  		if (getPrevWord(startPoint,dom).toLowerCase().indexOf('conn') != -1){
+  			keyword = "conn.Close";
+  		}else if (getPrevWord(startPoint,dom).toLowerCase().indexOf('rs') != -1){
+  			keyword = "rs.Close";
+  		}
+  	}else if (keyword == "Contents") {
+  		if (getPrevWord(startPoint,dom) == "Application"){
+  			keyword = "Application.Contents";
+  		}else if (getPrevWord(startPoint,dom) == "Session"){
+  			keyword = "Session.Contents";
+  		}
+  	}else if (keyword == "Cookies") {
+  		if (getPrevWord(startPoint,dom) == "Request"){
+  			keyword = "Request.Cookies";
+  		}else if (getPrevWord(startPoint,dom) == "Response"){
+  			keyword = "Response.Cookies";
+  		}
+  	}else if (keyword == "Count") {
+  		if (getPrevWord(startPoint,dom) == "Errors"){
+  			keyword = "Errors.Count";
+  		}else if (getPrevWord(startPoint,dom) == "Fields"){
+  			keyword = "Fields.Count";
+  		}else if (getPrevWord(startPoint,dom) == "Dictionary"){
+  			keyword = "Dictionary.Count";
+  		}
+  	}else if (keyword == "CursorLocation") {
+  		if (getPrevWord(startPoint,dom).toLowerCase().indexOf('conn') != -1){
+  			keyword = "conn.CursorLocation";
+  		}
+  	}else if (keyword == "Execute") {
+  		if (getPrevWord(startPoint,dom) == "Server"){
+  			keyword = "Server.Execute";
+  		}
+  	}else if (keyword == "Flush") {
+  		if (getPrevWord(startPoint,dom) == "Response"){
+  			keyword = "Response.Flush";
+  		}
+  	}else if (keyword == "StaticObjects") {
+  		if (getPrevWord(startPoint,dom) == "Session"){
+  			keyword = "Session.StaticObjects";
+  		}
+  	}else if (keyword == "Status") {
+  		if (getPrevWord(startPoint,dom) == "Response"){
+  			keyword = "Response.Status";
+  		}
+  	}else if (keyword == "Write") {
+  		if (getPrevWord(startPoint,dom) == "Response"){
+  			keyword = "Response.Write";
+  		}
+  	}
+  	aspVal = getTopic(keyword);
+  }
+	if (!aspVal){
+		aspVal = new Array("");
+	}
+}
+  return aspVal;
+}
+</script>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+</body>
+</html>

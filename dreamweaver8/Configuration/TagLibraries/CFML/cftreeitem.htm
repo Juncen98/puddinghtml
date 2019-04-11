@@ -1,0 +1,93 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFTREEITEM</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script>
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">值: </td>
+      <td nowrap="nowrap"> 
+        <input name="thevalue" type="text" class="basicTextField" id="attr:cftreeitem:value" attname="value" required="true" />
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">显示: </td>
+      <td nowrap="nowrap"> 
+        <input name="display" type="text" class="basicTextField" id="attr:cftreeitem:display" attname="display" />
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">父级: </td>
+      <td nowrap="nowrap"> 
+        <input name="theparent" type="text" class="basicTextField" id="attr:cftreeitem:parent" attname="parent" />
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">查询名称: </td>
+      <td nowrap="nowrap"> 
+        <input name="thequery" type="text" class="basicTextField" id="attr:cftreeitem:query" attname="query" />
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">图像: </td>
+      <td nowrap="nowrap"> 
+        <input name="theimg" type="text" class="basicTextField" id="attr:cftreeitem:img" attname="img" />&nbsp;
+        <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('theimg');focus(this)">
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">图像打开: </td>
+      <td nowrap="nowrap"> 
+        <input name="theimgopen" type="text" class="basicTextField" id="attr:cftreeitem:imgopen" attname="imgopen" />&nbsp;
+        <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('theimgopen');focus(this)">
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">HREF: </td>
+      <td nowrap="nowrap"> 
+        <input name="thehref" type="text" class="basicTextField" id="attr:cftreeitem:href" attname="href" />
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">目标: </td>
+      <td nowrap="nowrap"> 
+        <input name="thetarget" type="text" class="basicTextField" id="attr:cftreeitem:target" attname="target" />
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap"> 
+        <input type="checkbox" id="attr:cftreeitem:queryasroot" name="thequeryasroot" attname="queryasroot" truevalue="yes" falsevalue="no"/>
+        作为根进行查询</td>
+    </tr>
+    <tr valign="baseline">  
+      <td nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap"> 
+        <input type="checkbox" id="attr:cftreeitem:expand" name="theexpand" attname="expand" truevalue="yes" falsevalue="no" checked="true" />
+        扩展</td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

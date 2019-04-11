@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>Whitespace</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">Whitespace</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+
+<p>XML 1.0 defines whitespace as a
+space, tab, carriage return, or line feed. XML 1.1 also includes the
+newline character NEL (<span class="LITERAL">#x85</span>) and Unicode line
+separator (<span class="LITERAL">#x2028</span>) in whitespace. Whitespace
+serves the same purpose in XML as it does in most programming and
+natural languages: to separate tokens and language elements from one
+another. To an XML parser, all whitespace in element content is
+significant and will be passed to the client application. Whitespace
+within tags—for instance, between attributes—is not
+significant. Consider the following example:</p>
+
+<span class="PROGRAMLISTING"><pre>&lt;p&gt;  This sentence has extraneous 
+  line breaks.&lt;/p&gt;</pre></span>
+
+
+<p>After parsing, the character data from this example element is passed
+to the underlying application as:</p>
+
+<span class="PROGRAMLISTING"><pre>   This sentence has extraneous
+line breaks.</pre></span>
+
+
+<p>Although XML specifies that all whitespace in element content be
+preserved for use by the client application, an additional facility
+is available to the XML author to further hint that an
+element's character data's space
+and formatting should be preserved. For more information, see the
+discussion of the <span class="LITERAL">xml:space</span> attribute in <link linkend="ch21-77057-SpAtt">&gt;Special Attributes</link> later in this chapter.</p>
+
+<p>To simplify the lives of software developers, parsers are expected to
+normalize all occurrences of the carriage return
+(<span class="LITERAL">#xD</span>) character to a single line feed
+(<span class="LITERAL">#xA</span>) character. When the carriage return
+character appears directly before a line feed, it is simply removed.
+This results in a document that contains only single line feed
+characters to mark line ends. In XML 1.1, this normalization to a
+line feed character also occurs for the Unicode characters
+<span class="LITERAL">#x85</span> (NEXT LINE, NEL) and
+<span class="LITERAL">#x2028</span> (LINE SEPARATOR).</p>
+</td></tr>
+</table>
+</div>
+</body>
+</html>

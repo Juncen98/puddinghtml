@@ -1,0 +1,34 @@
+<participant>
+  <quickSearch><![CDATA[MM_Logoutnow]]></quickSearch>
+  <insertText location="aboveHTML+8">
+<![CDATA[
+<%
+// *** Logout the current user.
+MM_Logout = String(Request.ServerVariables("URL")) + "?MM_Logoutnow=1";
+if (String(Request("MM_Logoutnow"))=="1") {
+  Session.Contents.Remove("@@MM_username@@");
+  Session.Contents.Remove("@@MM_userAuthorization@@");
+  var MM_logoutRedirectPage = "@@redirectPage@@";
+  // redirect with URL parameters (remove the "MM_Logoutnow" query param).
+  if (MM_logoutRedirectPage == "") MM_logoutRedirectPage = String(Request.ServerVariables("URL"));
+  if (String(MM_logoutRedirectPage).indexOf("?") == -1 && Request.QueryString != "") {
+    var MM_newQS = "?";
+    for (var items=new Enumerator(Request.QueryString); !items.atEnd(); items.moveNext()) {
+      if (String(items.item()) != "MM_Logoutnow") {
+        if (MM_newQS.length > 1) MM_newQS += "&";
+        MM_newQS += items.item() + "=" + Server.URLencode(Request.QueryString(items.item()));
+      }
+    }
+    if (MM_newQS.length > 1) MM_logoutRedirectPage += MM_newQS;
+  }
+  Response.Redirect(MM_logoutRedirectPage);
+}
+%>
+]]>
+  </insertText>
+    <searchPatterns whereToSearch="directive">
+      <searchPattern paramNames="" limitSearch="all"><![CDATA[/Request\s*\(\s*"MM_Logoutnow"\s*\)/]]></searchPattern>
+      <searchPattern paramNames="redirectPage" limitSearch="all"><![CDATA[/var\s+MM_logoutRedirectPage\s*=\s*"([^\r\n]*)"/]]></searchPattern>
+      <searchPattern paramNames="redirectPage_url" limitSearch="all"><![CDATA[/var\s+MM_logoutRedirectPage\s*=\s*"([^\r\n]*)"/]]></searchPattern>
+    </searchPatterns>
+</participant>

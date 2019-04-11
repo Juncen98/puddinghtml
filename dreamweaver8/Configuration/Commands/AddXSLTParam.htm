@@ -1,0 +1,46 @@
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html xmlns:MMString="http://www.macromedia.com/schemes/data/string/">
+<head>
+<title><MMString:loadstring id="XMLXSL_SB/AddTitle"/></title>
+
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/SBDatabaseCallClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/TextField.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/DynamicTextField.js"></SCRIPT>
+<SCRIPT SRC="../ServerBehaviors/Shared/ASP.Net/DatabaseCallClass.js"></SCRIPT>
+<SCRIPT SRC="../ServerBehaviors/Shared/ASP.Net/RecordsetClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+
+<SCRIPT SRC="AddXSLTParam.js"></SCRIPT>
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="initializeUI()">
+<form>
+  <table border="0">
+
+    <tr VALIGN="baseline">
+      <td ALIGN="right" nowrap><MMString:loadstring id="XMLXSL_SB/ParamName"/></td>
+      <td nowrap><select name="ParamName" editable="true" class="paramTypeList" style="width:200px" /></td>					
+    </tr>
+    
+    <tr VALIGN="baseline"> 
+    <td ALIGN="right" nowrap><MMString:loadstring id="XMLXSL_SB/ParamValue"/></td>
+      <td valign="middle" nowrap><input name="DefaultValue" type="text" class="basicTextField" style="width:200px" onBlur="updateDefaultState()"/>&nbsp;<input type="image" src="../Shared/UltraDev/Images/Boltup.gif" onClick="launchLocalDynamicData()" name="image"></td>
+    </tr>
+
+    <tr VALIGN="baseline"> 
+    <td ALIGN="right" nowrap><MMString:loadstring id="XMLXSL_SB/ParamDefValue"/></td>
+      <td nowrap valign="middle"><input name="RuntimeValue" type="text" class="basicTextField" style="width:200px" /></td>
+    </tr>
+
+   </table>
+</form>
+</body>
+</html>

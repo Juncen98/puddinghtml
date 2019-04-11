@@ -1,0 +1,483 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>LSCURRENCYFORMAT</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">LSCURRENCYFORMAT</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Formats a number in a locale-specific currency format. For countries that use the euro, the result depends on the JVM. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+A formatted currency value. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Display and formatting functions, International functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>LSCurrencyFormat(number [, type ])
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+LSEuroCurrencyFormat, LSIsCurrency, LSParseCurrency, LSParseEuroCurrency, SetLocale; "Handling data in ColdFusion&#160;MX" in Chapter&#160;17, "Developing Globalized Applications," in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX: Changed formatting behavior: this function might return different formatting than in earlier releases. If a negative number is passed to it, it returns a negative number. If type = &quot;local&quot;, it returns the value in the current locale's standard format. If type = &quot;international&quot;, it returns the value in the current locale's international standard format. This function uses Java standard locale formatting rules on all platforms.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+This function uses Java standard locale formatting rules on all platforms.
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>With a Sun 1.3.1-compliant JVM, use the LSEuroCurrencyFormat function to format euro currency values.</td>
+  </tr>
+</table>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Currency output</span>
+<p>
+The following table shows sample currency output. For locales that use Euro, the Local and International columns contains two entries. The first is entry is the result with a Sun the 1.4.1-compliant JVM, the second entry is the result with a 1.3.1-compliant JVM. 
+</p>
+
+<p>
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr align="center">    <th>&#160;</th>
+    <th>&#160;</th>
+    <th>&#160;</th>
+    <th>&#160;</th>
+</tr>
+  <tr align="left">    <td>
+<p>Chinese (China)</p></td>
+    <td>
+<p>¥100,000.00</p></td>
+    <td>
+<p>CNY100,000.00</p></td>
+    <td>
+<p>100,000.00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Chinese (Hong Kong)</p></td>
+    <td>
+<p>HK$100,000.00</p></td>
+    <td>
+<p>HKD100,000.00</p></td>
+    <td>
+<p>100,000.00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Chinese (Taiwan)</p></td>
+    <td>
+<p>NT$100,000.00</p></td>
+    <td>
+<p>TWD100,000.00</p></td>
+    <td>
+<p>100,000.00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Dutch (Belgian)</p></td>
+    <td>
+<p>100.000,00 ¤</p>
+<p>100.000,00 BF</p></td>
+    <td>
+<p>BEF100.000,00</p>
+<p>EUR100.000,00</p></td>
+    <td>
+<p>100.000,00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Dutch (Standard)</p></td>
+    <td>
+<p>¤ 100.000,00</p>
+<p>fl 100.000,00</p></td>
+    <td>
+<p>NLG100.000,00</p>
+<p>EUR100.000,00</p></td>
+    <td>
+<p>100.000,00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>English (Australian)</p></td>
+    <td>
+<p>$100,000.00</p></td>
+    <td>
+<p>AUD100,000.00</p></td>
+    <td>
+<p>100,000.00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>English (Canadian)</p></td>
+    <td>
+<p>$100,000.00</p></td>
+    <td>
+<p>CAD100,000.00</p></td>
+    <td>
+<p>100,000.00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>English (New Zealand)</p></td>
+    <td>
+<p>$100,000.00</p></td>
+    <td>
+<p>NZD100,000.00</p></td>
+    <td>
+<p>100,000.00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>English (UK)</p></td>
+    <td>
+<p>£100,000.00</p></td>
+    <td>
+<p>GBP100,000.00</p></td>
+    <td>
+<p>100,000.00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>English (US)</p></td>
+    <td>
+<p>$100,000.00</p></td>
+    <td>
+<p>USD100,000.00</p></td>
+    <td>
+<p>100,000.00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>French (Belgian)</p></td>
+    <td>
+<p>100.000,00 ¤</p>
+<p>100.000,00 FB</p></td>
+    <td>
+<p>EUR100.000,00</p>
+<p>BEF100.000,00 </p></td>
+    <td>
+<p>100.000,00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>French (Canadian)</p></td>
+    <td>
+<p>100 000,00 $</p></td>
+    <td>
+<p>CAD100 000,00</p></td>
+    <td>
+<p>100 000,00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>French (Standard)</p></td>
+    <td>
+<p>100 000,00 ¤</p>
+<p>100 000,00 F</p></td>
+    <td>
+<p>EUR100 000,00</p>
+<p>FRF100 000,00</p></td>
+    <td>
+<p>100 000,00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>French (Swiss)</p></td>
+    <td>
+<p>SFr. 100&#39;000.00</p></td>
+    <td>
+<p>CHF100&#39;000.00</p></td>
+    <td>
+<p>100&#39;000.00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>German (Austrian)</p></td>
+    <td>
+<p>¤ 100.000,00</p>
+<p>öS 100.000,00</p></td>
+    <td>
+<p>EUR100.000,00</p>
+<p>ATS100.000,00</p></td>
+    <td>
+<p>100.000,00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>German (Standard)</p></td>
+    <td>
+<p>100.000,00 ¤</p>
+<p>100.000,00 DM</p></td>
+    <td>
+<p>EUR100.000,00</p>
+<p>DEM100.000,00</p></td>
+    <td>
+<p>100.000,00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>German (Swiss)</p></td>
+    <td>
+<p>SFr. 100&#39;000.00</p></td>
+    <td>
+<p>CHF100&#39;000.00</p></td>
+    <td>
+<p>100&#39;000.00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Italian (Standard)</p></td>
+    <td>
+<p>¤ 100.000,00</p>
+<p>L. 10.000.000</p></td>
+    <td>
+<p>EUR10.000.000</p>
+<p>ITL10.000.000</p></td>
+    <td>
+<p>10.000.000</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Italian (Swiss)</p></td>
+    <td>
+<p>SFr. 100&#39;000.00</p></td>
+    <td>
+<p>CHF100&#39;000.00</p></td>
+    <td>
+<p>100&#39;000.00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Japanese</p></td>
+    <td>
+<p>¥100,000</p></td>
+    <td>
+<p>JPY100,000</p></td>
+    <td>
+<p>JPY100,000</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Korean</p></td>
+    <td>
+<p><strike>W</strike>100,000</p></td>
+    <td>
+<p>KRW100,000</p></td>
+    <td>
+<p>100,000</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Norwegian (Bokmal)</p></td>
+    <td>
+<p>kr 100 000,00</p></td>
+    <td>
+<p>NOK100 000,00</p></td>
+    <td>
+<p>100 000,00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Norwegian (Nynorsk)</p></td>
+    <td>
+<p>kr 100 000,00</p></td>
+    <td>
+<p>NOK100 000,00</p></td>
+    <td>
+<p>100 000,00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Portuguese (Brazilian)</p></td>
+    <td>
+<p>R$100.000,00</p></td>
+    <td>
+<p>BRC100.000,00</p></td>
+    <td>
+<p>100.000,00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Portuguese (Standard)</p></td>
+    <td>
+<p>100.000,00 ¤</p>
+<p>R$100.000,00</p></td>
+    <td>
+<p>EUR100.000,00</p>
+<p>BRC100.000,00</p></td>
+    <td>
+<p>100.000,00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Spanish (Mexican)</p></td>
+    <td>
+<p>$100,000.00</p></td>
+    <td>
+<p>MXN100,000.00</p></td>
+    <td>
+<p>100,000.00</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Spanish (Modern)</p></td>
+    <td>
+<p>100.000,00 ¤</p>
+<p>10.000.000 Pts</p></td>
+    <td>
+<p>EUR10.000.000</p>
+<p>ESP10.000.000</p></td>
+    <td>
+<p>10.000.000</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Spanish (Standard)</p></td>
+    <td>
+<p>100.000,00 ¤</p>
+<p>10.000.000 Pts</p></td>
+    <td>
+<p>ESP10.000.000</p>
+<p>EUR10.000.000</p></td>
+    <td>
+<p>10.000.000</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Swedish</p></td>
+    <td>
+<p>100.000,00 kr</p></td>
+    <td>
+<p>SEK100.000,00</p></td>
+    <td>
+<p>100.000,00</p></td>
+</tr>
+</table>
+</div>
+<p>
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>ColdFusion maps Spanish (Modern) to the Spanish (Standard) format. </td>
+  </tr>
+</table>
+<p>
+To set the default display format of date, time, number, and currency values, use the SetLocale function. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;LSCurrencyFormat Example&lt;/h3&gt;
+&lt;p&gt;LSCurrencyFormat returns a currency value using the locale 
+convention. Default value is &quot;local.&quot;
+&lt;!--- loop through list of locales; show currency values for 100,000 units ---&gt;
+&lt;cfloop LIST = &quot;#Server.Coldfusion.SupportedLocales#&quot;
+index = &quot;locale&quot; delimiters = &quot;,&quot;&gt;
+   &lt;cfset oldlocale = SetLocale(locale)&gt;
+   &lt;cfoutput&gt;&lt;p&gt;&lt;b&gt;&lt;I&gt;#locale#&lt;/I&gt;&lt;/b&gt;&lt;br&gt;
+      Local: #LSCurrencyFormat(100000, &quot;local&quot;)#&lt;br&gt;
+      International: #LSCurrencyFormat(100000, &quot;international&quot;)#&lt;br&gt;
+      None: #LSCurrencyFormat(100000, &quot;none&quot;)#&lt;br&gt;
+      &lt;hr noshade&gt;
+   &lt;/cfoutput&gt;
+&lt;/cfloop&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="NUMBER">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NUMBER</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Currency value</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TYPE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TYPE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+<ul>
+
+<li>local: the currency format and currency symbol used in the locale. </li>
+</ul>
+
+<p>	- With JDK 1.3, the default for Euro Zone countries is their local currency.</p>
+<p>	- With JDK 1.4, the default for Euro Zone countries is the euro.</p><ul>
+
+<li>international: the international standard currency format and currency symbol of the locale. </li>
+
+<li>none: the currency format used in the locale; no currency symbol</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- SAFE-IN-TEMPLATES -->
+<HTML>
+<HEAD>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+<SCRIPT SRC="Change Property.js"></SCRIPT>
+<SCRIPT SRC="MM_findObj.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/docInfo.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/niceName.js"></SCRIPT>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<SCRIPT LANGUAGE="javascript">
+// Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved.
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_UnnamedObj = "只能更改 *已命名的* 对象，请点击取消或使用属性检查器将您的对象命名。";
+var MSG_NoSelection = "请选取一个对象然后输入要更改的内容，或点击「取消」。";
+var MSG_TagNotFound = '无法找到 "%s" 标签。';
+var MSG_ObjNotFound = '无法找到 "%s" 对象。';
+
+var MENUITEM_Searching = "正在搜寻...";
+var MENUITEM_NoTypeSelected = "请先选择对象的类型";
+var MENUITEM_ItemsNotFnd = "无法找到 %s"; // %s is a requested tag, such as FORM
+
+//This must parallel (same order) the TAGTYPES array defined with globals
+TAGNAMES= new Array("layer","div","span","image","form","checkbox","radio","text","textarea","password","select");
+
+var BROWSERS = new Array("NS3","IE3","NS4","IE4"); //short names for different browsers
+var DEFAULT_BROWSER = 3; //index (0-3) in the BROWSERS list, I chose "IE4"
+//--------------- END LOCALIZEABLE   ---------------
+//---------------    END JAVASCRIPT    ---------------
+</SCRIPT>
+<TITLE>改变属性</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+</HEAD>
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm">
+   <DIV ALIGN="center">
+     
+    <TABLE BORDER=0 cellpadding="2" cellspacing="4">
+      <TR valign="baseline">
+        <TD ALIGN="right" NOWRAP>
+          对象类型:</TD>
+        <TD NOWRAP COLSPAN=2>
+          <SELECT NAME="typeOfObj" class="itemList" onChange="loadAllMenus()">
+            <OPTION>*** 正在载入... ******
+          </select></TD>
+      </TR>
+	  <TR valign="baseline">
+        <TD ALIGN="right" NOWRAP>
+          命名对象:</TD>
+        <TD NOWRAP COLSPAN=2>
+          <SELECT NAME="namedObjs" class="namedObjectsList">
+            <OPTION>*** 请先选择对象类型 **
+          </select></TD>
+      </TR>
+	  <TR valign="baseline">
+        <TD ALIGN="right" NOWRAP>
+          属性:</TD>
+        <TD NOWRAP>
+          <INPUT TYPE="radio" NAME="theRadio" CHECKED>
+          选择:</TD>
+        <TD NOWRAP>
+          <SELECT NAME="propMenu" class="propertyList" onChange="selectRadio(0)">
+            <OPTION SELECTED>*********
+          </select>
+          <SELECT NAME="browserMenu" style="width:80px" onChange="loadPropMenu()">
+            <OPTION SELECTED>***
+          </select></TD>
+      </TR>
+      <TR valign="baseline">
+        <TD></TD>
+        <TD NOWRAP>
+          <INPUT NAME="theRadio" TYPE="radio">
+          输入:</TD>
+        <TD NOWRAP>
+          <INPUT NAME="theProp" TYPE="text" class="basicTextField" onBlur="if(this.value)selectRadio(1)"></TD>
+      </TR>
+      <TR valign="baseline">
+        <TD ALIGN="right" NOWRAP>
+          新的值:</TD>
+        <TD NOWRAP COLSPAN=2>
+          <input name="theValue" type="text" class="basicTextField"></TD>
+      </TR>
+     </TABLE>
+   </DIV>
+  </FORM>
+</BODY>
+</HTML>

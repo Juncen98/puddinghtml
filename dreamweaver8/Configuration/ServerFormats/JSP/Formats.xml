@@ -1,0 +1,67 @@
+<formats id="DWMenu_ServerFormatDef_JSP_1">
+	<separator />
+	<menu name = "日期/时间" id="DWMenu_ServerFormatDef_JSP_1_DATETIME">
+		<format	file="日期/时间"	title = "日期/时间 - 常规格式"		expression="<%\s*=.*DoDateTime\(.*, java\.text\.DateFormat\.MEDIUM, null\)\s*[^%>]*%>"		strNamedFormat="generalDate"	nLCID="" id="DWMenu_ServerFormatDef_JSP_1_DT1"/>
+		<format	file="日期/时间"	title = "日期/时间 - 长格式"		expression="<%\s*=.*DoDateTime\(.*, java\.text\.DateFormat\.LONG, null\)\s*[^%>]*%>"		strNamedFormat="long"	nLCID="" id="DWMenu_ServerFormatDef_JSP_1_DT2"	/>
+		<format	file="日期/时间"	title = "日期/时间 - 短格式"		expression="<%\s*=.*DoDateTime\(.*, java\.text\.DateFormat\.SHORT, null\)\s*[^%>]*%>"		strNamedFormat="short"	nLCID="" id="DWMenu_ServerFormatDef_JSP_1_DT3"	/>
+		<format	file="日期/时间"	title = "日期/时间 - 2000年1月17日星期一"		expression="<%\s*=.*DoDateTime\(.*, java\.text\.DateFormat\.FULL, java\.util\.Locale\.CHINA\)\s*[^%>]*%>"		strNamedFormat="full"	nLCID="CHINA"	id="DWMenu_ServerFormatDef_JSP_SC_DT1"/>
+		<format	file="日期/时间"	title = "日期/时间 - 2000年1月17日"		expression="<%\s*=.*DoDateTime\(.*, java\.text\.DateFormat\.LONG, java\.util\.Locale\.CHINA\)\s*[^%>]*%>"		strNamedFormat="long"	nLCID="CHINA"	id="DWMenu_ServerFormatDef_JSP_SC_DT2"/>
+		<format	file="日期/时间"	title = "日期/时间 - Monday, January 17, 2000"		expression="<%\s*=.*DoDateTime\(.*, java\.text\.DateFormat\.FULL, java\.util\.Locale\.US\)\s*[^%>]*%>"		strNamedFormat="full"	nLCID="US" id="DWMenu_ServerFormatDef_JSP_1_DT4"/>
+		<format	file="日期/时间"	title = "日期/时间 - 17 January 2000"		expression="<%\s*=.*DoDateTime\(.*, java\.text\.DateFormat\.LONG, java\.util\.Locale\.UK\)\s*[^%>]*%>"		strNamedFormat="long"	nLCID="UK"	id="DWMenu_ServerFormatDef_JSP_1_DT5"/>
+		<format	file="日期/时间"	title = "日期/时间 - January 17, 2000"		expression="<%\s*=.*DoDateTime\(.*, java\.text\.DateFormat\.LONG, java\.util\.Locale\.CANADA\)\s*[^%>]*%>"		strNamedFormat="long"	nLCID="CANADA"	id="DWMenu_ServerFormatDef_JSP_1_DT6"/>
+		<format	file="日期/时间"	title = "日期/时间 - 00-1-17"		expression="<%\s*=.*DoDateTime\(.*, java\.text\.DateFormat\.SHORT, java\.util\.Locale\.PRC\)\s*[^%>]*%>"		strNamedFormat="short"	nLCID="PRC"	id="DWMenu_ServerFormatDef_JSP_1_DT7"/>
+		<format	file="日期/时间"	title = "日期/时间 - 00-01-17"		expression="<%\s*=.*DoDateTime\(.*, java\.text\.DateFormat\.SHORT, java\.util\.Locale\.KOREA\)\s*[^%>]*%>"		strNamedFormat="short"	nLCID="KOREA" id="DWMenu_ServerFormatDef_JSP_1_DT8"/>
+		<format	file="日期/时间"	title = "日期/时间 - 1/17/00"		expression="<%\s*=.*DoDateTime\(.*, java\.text\.DateFormat\.SHORT, java\.util\.Locale\.US\)\s*[^%>]*%>"		strNamedFormat="short"	nLCID="US"	id="DWMenu_ServerFormatDef_JSP_1_DT9"/>
+		<format	file="日期/时间"	title = "日期/时间 - 17/01/00"		expression="<%\s*=.*DoDateTime\(.*, java\.text\.DateFormat\.SHORT, java\.util\.Locale\.UK\)\s*[^%>]*%>"		strNamedFormat="short"	nLCID="UK"	id="DWMenu_ServerFormatDef_JSP_1_DT10"/>
+	</menu>
+	<separator />
+	<menu name = "货币" id="DWMenu_ServerFormatDef_JSP_1_CURRENCY">
+		<format	file="货币"		title = "货币 - 默认值"	expression="<%\s*=.*DoFormatCurrency\(.*, -1, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1" UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_JSP_1_CY1"/>
+		<format	file="货币"		title = "货币 - 2 个小数位"		expression="<%\s*=.*DoFormatCurrency\(.*, 2, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="2"	 	UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_JSP_1_CY2"/>
+		<format	file="货币"		title = "货币 - 舍入为整数"	expression="<%\s*=.*DoFormatCurrency\(.*, 0, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="0"		UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_JSP_1_CY3"/>
+		<format	file="货币"		title = "货币 - 若为负数则使用 ()"		expression="<%\s*=.*DoFormatCurrency\(.*, -1, -1, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	UseParensForNegativeNumbers="-1"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_JSP_1_CY4"/>
+		<format	file="货币"		title = "货币 - 若为负数则使用减号"	expression="<%\s*=.*DoFormatCurrency\(.*, -1, 0, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	UseParensForNegativeNumbers="0"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_JSP_1_CY5"/>
+		<format	file="货币"		title = "货币 - 将位分组"			expression="<%\s*=.*DoFormatCurrency\(.*, -1, -2, -1\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	UseParensForNegativeNumbers="-2"	GroupDigits="-1"	id="DWMenu_ServerFormatDef_JSP_1_CY6"/>
+		<format	file="货币"		title = "货币 - 不将位分组"	expression="<%\s*=.*DoFormatCurrency\(.*, -1, -2, 0\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	UseParensForNegativeNumbers="-2"	GroupDigits="0"	id="DWMenu_ServerFormatDef_JSP_1_CY7"/>
+	</menu>
+	<menu name = "百分比" id="DWMenu_ServerFormatDef_JSP_1_PERCENT">
+		<format	file="百分比"		title = "百分比 - 默认值"	expression="<%\s*=.*DoFormatPercent\(.*, -1, -2, -2\)\s*[^%>]*%>"	NumDigitsAfterDecimal="-1"	UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_JSP_1_PT1"/>
+		<format	file="百分比"		title = "百分比 - 2 个小数位"		expression="<%\s*=.*DoFormatPercent\(.*, 2, -2, -2\)\s*[^%>]*%>"			NumDigitsAfterDecimal="2"		UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_JSP_1_PT2"/>
+		<format	file="百分比"		title = "百分比 - 舍入为整数"	expression="<%\s*=.*DoFormatPercent\(.*, 0, -2, -2\)\s*[^%>]*%>"			NumDigitsAfterDecimal="0"		UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_JSP_1_PT3"/>
+		<format	file="百分比"		title = "百分比 - 若为负数则使用 () "		expression="<%\s*=.*DoFormatPercent\(.*, -1, -1, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	UseParensForNegativeNumbers="-1"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_JSP_1_PT4"/>
+		<format	file="百分比"		title = "百分比 - 若为负数则使用减号"		expression="<%\s*=.*DoFormatPercent\(.*, -1, 0, -2\)\s*[^%>]*%>"			NumDigitsAfterDecimal="-1"	UseParensForNegativeNumbers="0"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_JSP_1_PT5"/>
+		<format	file="百分比"		title = "百分比 - 将位分组"			expression="<%\s*=.*DoFormatPercent\(.*, -1, -2, -1\)\s*[^%>]*%>"			NumDigitsAfterDecimal="-1"	UseParensForNegativeNumbers="-2"	GroupDigits="-1"	id="DWMenu_ServerFormatDef_JSP_1_PT6"/>
+		<format	file="百分比"		title = "百分比 - 不将位分组"	expression="<%\s*=.*DoFormatPercent\(.*, -1, -2, 0\)\s*[^%>]*%>"			NumDigitsAfterDecimal="-1"	UseParensForNegativeNumbers="-2"	GroupDigits="0"	id="DWMenu_ServerFormatDef_JSP_1_PT7"/>
+	</menu>
+	<menu name = "数字" id="DWMenu_ServerFormatDef_JSP_1_NUMBER">
+		<format	file="数字"		title = "数字 - 默认值"	expression="<%\s*=.*DoFormatNumber\(.*, -1, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_JSP_1_NO1"/>
+		<format	file="数字"		title = "数字 - 2 个小数位"		expression="<%\s*=.*DoFormatNumber\(.*, 2, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="2"	 UseParensForNegativeNumbers="-2"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_JSP_1_NO2"/>
+		<format	file="数字"		title = "数字 - 舍入为整数"		expression="<%\s*=.*DoFormatNumber\(.*, 0, -2, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="0"		UseParensForNegativeNumbers="-2"	GroupDigits="-2" id="DWMenu_ServerFormatDef_JSP_1_NO3"/>
+		<format	file="数字"		title = "数字 - 若为负数则使用 ()"			expression="<%\s*=.*DoFormatNumber\(.*, -1, -1, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	UseParensForNegativeNumbers="-1"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_JSP_1_NO4"/>
+		<format	file="数字"		title = "数字 - 若为负数则使用减号"		expression="<%\s*=.*DoFormatNumber\(.*, -1, 0, -2\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	UseParensForNegativeNumbers="0"	GroupDigits="-2"	id="DWMenu_ServerFormatDef_JSP_1_NO5"/>
+		<format	file="数字"		title = "数字 - 将位分组"			expression="<%\s*=.*DoFormatNumber\(.*, -1, -2, -1\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	UseParensForNegativeNumbers="-2"	GroupDigits="-1"	id="DWMenu_ServerFormatDef_JSP_1_NO6"/>
+		<format	file="数字"		title = "数字 - 不将位分组"	expression="<%\s*=.*DoFormatNumber\(.*, -1, -2, 0\)\s*[^%>]*%>"		NumDigitsAfterDecimal="-1"	 UseParensForNegativeNumbers="-2"	GroupDigits="0"	id="DWMenu_ServerFormatDef_JSP_1_NO7"/>
+	</menu>
+	<separator />
+	<menu name = "AlphaCase" id="DWMenu_ServerFormatDef_JSP_1_ALPHACASE">
+		<format	file="AlphaCase"	title = "AlphaCase - 大写"	expression="<%\s*=.*\.toString\(\)\.toUpperCase\(\)\s*[^%>]*%>"			uppercase="true"	id="DWMenu_ServerFormatDef_JSP_1_CASEUPPER"/>
+		<format	file="AlphaCase"	title = "AlphaCase - 小写"	expression="<%\s*=.*\.toString\(\)\.toLowerCase\(\)\s*[^%>]*%>"			uppercase="false"	id="DWMenu_ServerFormatDef_JSP_1_CASELOWER"/>
+	</menu>
+	<format	file="修整"			title = "修整 - 两侧"		expression="<%\s*=.*\.toString\(\)\.trim\(\)\s*[^%>]*%>"		side="both"	id="DWMenu_ServerFormatDef_JSP_1_TRIMBOTH"/>
+	<separator />
+	<menu name = "数学" id="DWMenu_ServerFormatDef_JSP_1_Math">
+		<format	file="数学"			title = "数学 - 绝对值（双精度型）"	expression="<%\s*=.*DoMathAbs\(.*,1\)\s*[^%>]*%>"		formattype="1" func="abs" id="DWMenu_ServerFormatDef_JSP_1_DOUBLEABS"/>
+		<format	file="数学"			title = "数学 - 绝对值（浮点型）"	expression="<%\s*=.*DoMathAbs\(.*,2\)\s*[^%>]*%>"		formattype="2" func="abs"	id="DWMenu_ServerFormatDef_JSP_1_FLOATABS"/>
+		<format	file="数学"			title = "数学 - 绝对值（整数型）"	expression="<%\s*=.*DoMathAbs\(.*,3\)\s*[^%>]*%>"		formattype="3"	func="abs" id="DWMenu_ServerFormatDef_JSP_1_INTEGEABS"/>
+		<format	file="数学"			title = "数学 - 绝对值（长型）"	expression="<%\s*=.*DoMathAbs\(.*,4\)\s*[^%>]*%>"		formattype="4"	func="abs" id="DWMenu_ServerFormatDef_JSP_1_LONGABS"/>
+		<format	file="数学"			title = "数学 - 舍入整数（双精度型）"	expression="<%\s*=.*DoMathRound\(.*,1\)\s*[^%>]*%>"		formattype="1"  func="round"	id="DWMenu_ServerFormatDef_JSP_1_DOUBLEROUND"/>
+		<format	file="数学"			title = "数学 - 舍入整数（浮点型）"	expression="<%\s*=.*DoMathRound\(.*,2\)\s*[^%>]*%>"		formattype="2"  func="round"	id="DWMenu_ServerFormatDef_JSP_1_FLOATROUND"/>
+	</menu>
+	<separator />
+	
+	<format	file="常规"		title = "编码 - Response.EncodeURL"		expression="<%\s*=.*response\.encodeURL\(.*\)\s*[^%>]*%>"		func="response.encodeURL" id="DWMenu_ServerFormatDef_JSP_1_URLENCODE"	/>
+	<format	file="常规"		title = "路径 - GetRealPath"		expression="<%\s*=.*getServletConfig\(\)\.getServletContext\(\).\getRealPath\(.*\)\s*[^%>]*%>"	func="getServletConfig().getServletContext().getRealPath" id="DWMenu_ServerFormatDef_JSP_1_SERVERPATH"/>
+    <format file="FirstRSstat"  title = "记录集统计信息 - 第一个索引"     visibility="hidden" expression="<%\s*=\s*\(\s*\w+_first\s*\)\s*%>" id="DWMenu_ServerFormatDef_JSP_1_FIRSTREC" />
+    <format file="LastRSstat"   title = "记录集统计信息 - 最后一个索引"      visibility="hidden" expression="<%\s*=\s*\(\s*\w+_last\s*\)\s*%>"  id="DWMenu_ServerFormatDef_JSP_1_LASTREC" />
+    <format file="TotalRSstat"  title = "记录集统计信息 - 记录总数"   visibility="hidden" expression="<%\s*=\s*\(\s*\w+_total\s*\)\s*%>" id="DWMenu_ServerFormatDef_JSP_1_TOTALREC" />
+</formats>

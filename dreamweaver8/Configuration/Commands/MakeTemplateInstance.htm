@@ -1,0 +1,130 @@
+<!-- MENU-LOCATION=NONE -->
+
+<html>
+
+<head>
+
+<!-- Include the UI helper functions -->
+
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+
+<!-- Include DOM functions -->
+
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+
+<script src="../Shared/MM/Scripts/Cmn/string.js"></script>
+
+<script src="../Shared/Common/Scripts/ListControlClass.js"></script>
+
+<script src="../Shared/MM/Scripts/Class/FileClass.js"></script>
+
+<script src="ShortcutClass.js"></script> 
+
+<script src="../Shared/MM/Scripts/keyCodes.js"></script> 
+
+<SCRIPT src="../Shared/Common/Scripts/ImageButtonClass.js"></SCRIPT>
+
+<SCRIPT language="javascript" SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/templateUtils.js"></SCRIPT>
+
+<SCRIPT>
+
+<!--Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved.-->
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+
+
+var MSG_SaveFirst = "此模板具有未保存的更改。是否要在基于该模板创建文档前保存该文档？";
+
+
+
+//--------------- END LOCALIZEABLE   ---------------
+
+
+
+function isDOMRequired() {
+
+	return true;
+
+}
+
+
+
+
+
+function doCommand()
+
+	{
+
+	if (dw.getDocumentDOM() == null)
+
+		return false; 
+
+		
+
+	if (dw.canSaveDocument(dw.getDocumentDOM()))
+
+		{
+
+		if (RunDSConfirmDialog(MSG_SaveFirst, "MakeInstance_Save", true))
+
+			dw.saveDocument(dw.getDocumentDOM()); 
+
+		}
+
+		
+
+	dw.newFromTemplate(dw.getDocumentDOM().URL); 
+
+	}
+
+	
+
+
+
+function canAcceptCommand()
+
+	{
+
+	return dw.getDocumentDOM() != null && dw.getDocumentDOM().getIsTemplateDocument();
+
+	} //canAcceptCommand
+
+
+
+
+
+//---------------    END JAVASCRIPT    ---------------
+
+
+
+
+
+
+
+
+
+</SCRIPT>
+
+
+
+<title></title>
+
+
+
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+
+
+<body onLoad="doCommand();">
+
+</body>
+
+</html>
+

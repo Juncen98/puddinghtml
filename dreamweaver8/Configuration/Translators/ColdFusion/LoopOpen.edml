@@ -1,0 +1,12 @@
+<participant name="LoopOpen">
+  <translator priority=400>
+    <searchPatterns>
+      <searchPattern paramNames=",expression"><![CDATA[/<cfloop[^>]*?(condition|query|collection|index)\s*=\s*("[^"]+"|[^>"\s\r\n]+)[^>]*?>/gi]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="tag+cfloop" limitSearch="tagOnly" translationType="tabbed region start">
+        <display><![CDATA[%3Ccfloop%3E]]></display>
+      </translation>
+    </translations>
+  </translator>
+</participant>

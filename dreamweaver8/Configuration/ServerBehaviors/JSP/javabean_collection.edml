@@ -1,0 +1,18 @@
+<participant>
+     <quickSearch><![CDATA[jsp:useBean]]></quickSearch>
+     <insertText location="50">
+<![CDATA[
+<jsp:useBean id="@@Id@@_coll" class="@@CollectionClass@@" scope="@@Scope@@"/>
+]]>
+    </insertText>
+     <searchPatterns whereToSearch="tag+jsp:useBean">
+       <searchPattern paramNames="Id">/id\s*\=\s*"(\w+)_coll"/</searchPattern>
+       <searchPattern paramNames="CollectionClass">/class\s*\=\s*"([^"]+)"/</searchPattern>
+       <searchPattern paramNames="Scope">/scope\s*\=\s*"(\w+)"/</searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="Id"><![CDATA[/(id\s*=\s*")\w+(_coll")/]]></updatePattern>
+       <updatePattern paramName="CollectionClass"><![CDATA[/(class\s*=\s*")[^"]+(")/]]></updatePattern>
+       <updatePattern paramName="Scope"><![CDATA[/(scope\s*=\s*")\w+(")/]]></updatePattern>
+     </updatePatterns>
+</participant>

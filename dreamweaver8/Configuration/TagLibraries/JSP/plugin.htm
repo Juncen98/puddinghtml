@@ -1,0 +1,128 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>jsp:plugin</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var JSPLUGINTYPELIST;
+var JSPLUGINALIGNLIST;
+var theUIObjects;
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function initializeUI()
+{
+	JSPLUGINTYPELIST = new ListControl("thetype"); 
+	JSPLUGINALIGNLIST = new ListControl("thealign");
+ 
+	theUIObjects = new Array(JSPLUGINTYPELIST,JSPLUGINALIGNLIST); 
+
+  tagDialog.populateDropDownList(JSPLUGINTYPELIST, thePluginTypesCap, thePluginTypesVal,1); 
+  tagDialog.populateDropDownList(JSPLUGINALIGNLIST, theAlignmentsCap, theAlignmentsVal,1)
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类型: </td>
+      <td nowrap="nowrap">
+        <select name="thetype" class="oneWordOptionList" id="attr:jsp:plugin:type" attname="type" required="true">
+           
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">代码: </td>
+      <td nowrap="nowrap">
+        <input name="thecode" type="text" class="basicTextField" id="attr:jsp:plugin:code" attname="code" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">代码库: </td>
+      <td nowrap="nowrap">
+        <input name="thecodebase" type="text" class="basicTextField" id="attr:jsp:plugin:codebase" attname="codebase" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:jsp:plugin:name" attname="name" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">对齐: </td>
+      <td nowrap="nowrap">
+        <select name="thealign" class="alignList" id="attr:jsp:plugin:align" attname="align"> 
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">高度: </td>
+      <td nowrap="nowrap">
+        <input name="theheight" type="text" class="smallNumOrChar" id="attr:jsp:plugin:height" attname="height" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">宽度: </td>
+      <td nowrap="nowrap">
+        <input name="thewidth" type="text" class="smallNumOrChar" id="attr:jsp:plugin:width" attname="width" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">水平间距: </td>
+      <td nowrap="nowrap">
+        <input name="thehspace" type="text" class="smallNumOrChar" id="attr:jsp:plugin:hspace" attname="hspace" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">垂直间距: </td>
+      <td nowrap="nowrap">
+        <input name="thevspace" type="text" class="smallNumOrChar" id="attr:jsp:plugin:vspace" attname="vspace" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">JRE 版本: </td>
+      <td nowrap="nowrap">
+        <input name="thejreversion" type="text" class="basicTextField" id="attr:jsp:plugin:jreversion" value="1.1" attname="jreversion" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">Netscape 插件 URL: </td>
+      <td nowrap="nowrap">
+        <input name="thenspluginurl" type="text" class="basicTextField" id="attr:jsp:plugin:nspluginurl" attname="nspluginurl" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">IE 插件 URL: </td>
+      <td nowrap="nowrap">
+        <input name="theiepluginurl" type="text" class="basicTextField" id="attr:jsp:plugin:iepluginurl" attname="iepluginurl" />
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

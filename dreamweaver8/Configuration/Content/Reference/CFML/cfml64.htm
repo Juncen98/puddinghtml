@@ -1,0 +1,1027 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFINDEX</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFINDEX</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Populates a Verity collection with metadata and creates indexes for searching it. Verity is a search engine that you can integrate in a ColdFusion application to search physical files of various types or a database query. Indexing database columns that result from a query lets users search the query data much faster than they could if you used multiple SQL queries to return the same data. 
+</p>
+
+<p>
+You must define a Verity collection using the ColdFusion MX Administrator or the cfcollection tag before creating indexes for the collection.
+</p>
+
+<p>
+You also can index a Verity collection using the ColdFusion MX Administrator or by using a native Verity indexing tool, such as Vspider or MKVDK. These options, however, limit you to indexing a collection of files in a directory path.
+</p>
+
+<p>
+For more information on creating, indexing, and searching a Verity collection, see Chapter 24, "Building a Search Interface" in ColdFusion MX Developer's Guide.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Extensibility tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfindex 
+   collection = &quot;collection_name&quot;
+   action = &quot;action&quot;
+   type = &quot;type&quot;
+   title = &quot;title&quot;
+   key = &quot;ID&quot;
+   body = &quot;body&quot;
+   custom1 = &quot;custom_value&quot;
+   custom2 = &quot;custom_value&quot;
+custom3 = &quot;custom_value&quot;
+custom4 = &quot;custom_value&quot;
+   category = &quot;category_name&quot;
+   categoryTree = &quot;category_tree&quot;
+   URLpath = &quot;URL&quot;
+   extensions = &quot;file_extensions&quot;
+   query = &quot;query_name&quot;
+   recurse = &quot;yes&quot; or &quot;no&quot;
+   language = &quot;language&quot;&gt;
+   status = &quot;status&quot;&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfcollection, cfexecute, cfobject, cfreport, cfsearch, cfwddx
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7: 
+</p>
+<ul>
+
+<li>Added the status, category, and categoryTree attributes. </li>
+
+<li>Removed reference to external collections.</li>
+
+<li>Removed suggested cflock usage.</li>
+</ul>
+
+<p>
+ColdFusion&#160;MX: 
+</p>
+<ul>
+
+<li>The action attribute value optimize is obsolete. It does not work, and might cause an error, in ColdFusion&#160;MX.</li>
+
+<li>Changed the external attribute behavior: it is not necessary to specify the external attribute. (ColdFusion automatically detects whether a collection is internal or external.)</li>
+
+<li>Changed Verity operations behavior: ColdFusion supports Verity operations on Acrobat PDF files.</li>
+
+<li>Changed thrown exceptions: this tag can throw the SEARCHENGINE exception.</li>
+
+<li>Changed acceptable collection naming: this tag accepts collection names that include spaces.</li>
+
+<li>Changed query result behavior: the cfindex tag can index the query results from a cfsearch tag.</li>
+</ul>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+The attributes settings that the cfindex tag requires depend on whether you set the query attribute. If you set the query attribute to a valid query name, it specifies that cfindex is to index the data in the query rather than indexing documents on a disk. If you do not set the query attribute, cfindex assumes it is indexing a file (type = file), a set of files in a directory path (type = path), or text that you provide in the body attribute (type = custom). 
+</p>
+
+<p>
+If you set the query attribute to a valid query name, the cfindex tag creates indexes as specified by the following attributes and their values: 
+</p>
+
+<p>
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr align="center">    <th>&#160;</th>
+    <th>&#160;</th>
+</tr>
+  <tr align="left">    <td>
+<p>File</p></td>
+    <td>
+<p>The key attribute is the name of a column in the query that contains a full filename (including path). </p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Path</p></td>
+    <td>
+<p>The key attribute is the name of a column in the query that contains a directory pathname.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>&#160;</p></td>
+    <td>
+<p>The extensions and recurse attributes, if specified, elaborate on which files are included. If the action is delete, cfindex deletes keys for the collection.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Custom</p></td>
+    <td>
+<p>The key attribute specifies a column name that contains anything you want; for example, the primary key value in the database. It must be unique because this is the primary key in the collection. If the action is delete, the key attribute is the name of a column in the query that contains the keys to delete.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>&#160;</p></td>
+    <td>
+<p>The body attribute is required and is a comma-delimited list of the names of the columns that contain the text data to be indexed.</p></td>
+</tr>
+</table>
+</div>
+<p>
+</p>
+
+<p>
+If you do not set the query attribute, the cfindex tag creates indexes as specified by the following attributes and their values:
+</p>
+
+<p>
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr align="center">    <th>&#160;</th>
+    <th>&#160;</th>
+</tr>
+  <tr align="left">    <td>
+<p>File</p></td>
+    <td>
+<p>The key attribute is required and is a full pathname to a file.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Path</p></td>
+    <td>
+<p>The key attribute is required and it is a directory pathname.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>&#160;</p></td>
+    <td>
+<p>The extensions and recurse attributes, if specified, designate which types of files are included. If the action is delete, both the keys and the document files are deleted.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>Custom</p></td>
+    <td>
+<p>The key attribute is an identifier that specifies the key. If the action is delete, the key attribute is the document key to delete.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>&#160;</p></td>
+    <td>
+<p>The body attribute is required and is the text to be indexed.</p></td>
+</tr>
+</table>
+</div>
+<p>
+</p>
+
+<p>
+If type is not specified but query is set, ColdFusion sets the type to the default value of custom. 
+</p>
+
+<p>
+If neither type nor query is set, ColdFusion sets type to the default value of file. 
+</p>
+
+<p>
+If type equals custom, all attributes except for key and body can specify a literal value, not only a column name. This allows you to change a field to empty in the collection.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Status attribute</span>
+<p>
+The status attribute provides the following information and diagnostics about the result of a cfindex operation:
+</p>
+
+<p>
+</p><div align="left">
+<table border="1">
+  <caption></caption>
+  <tr align="center">    <th>&#160;</th>
+    <th>&#160;</th>
+    <th>&#160;</th>
+</tr>
+  <tr align="left">    <td>
+<p>BADKEYS</p></td>
+    <td>
+<p>Struct</p></td>
+    <td>
+<p>A structure of keys with diagnostic messages about the indexing of these keys. If there are no bad keys, this key does not exist.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>DELETED</p></td>
+    <td>
+<p>Number</p></td>
+    <td>
+<p>The number of keys deleted.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>MESSAGES</p></td>
+    <td>
+<p>Array</p></td>
+    <td>
+<p>An array of diagnostic messages, including nonfatal errors and warnings, returned from the Verity K2 Index server. If there are no messages, this key does not exist.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>INSERTED</p></td>
+    <td>
+<p>Number</p></td>
+    <td>
+<p>The number of keys inserted into the collection.</p></td>
+</tr>
+  <tr align="left">    <td>
+<p>UPDATED</p></td>
+    <td>
+<p>Number</p></td>
+    <td>
+<p>The number of keys updated in the collection.</p></td>
+</tr>
+</table>
+</div>
+<p>
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!--- EXAMPLE #1 Index a file, type = &quot;file&quot;. ----------------------------&gt;
+&lt;!--- Example dumps content of status variable (info). -------------------&gt;
+&lt;cfindex collection=&quot;CodeColl&quot; 
+   action=&quot;refresh&quot; 
+   type=&quot;file&quot;
+   key=&quot;C:\blackstone\wwwroot\vw_files\cfindex.htm&quot; 
+   urlpath=&quot;http://localhost:8500/vw_files/&quot;
+   language=&quot;English&quot;
+   title=&quot;Cfindex Reference page&quot;
+   status=&quot;info&quot;&gt;
+
+&lt;!--- Search for Attributes. ---&gt;
+&lt;cfsearch
+   name = &quot;mySearch&quot;
+   collection = &quot;CodeColl&quot;
+   criteria = &quot;Attributes&quot;
+   contextpassages = &quot;1&quot;
+   maxrows = &quot;100&quot;&gt;
+&lt;cfoutput&gt;
+   key=#mySearch.key#&lt;br /&gt;
+   title=#mySearch.title#&lt;br /&gt;
+   context=#mySearch.context#&lt;br /&gt;
+   url=#mySearch.url#&lt;br /&gt;
+&lt;/cfoutput&gt;
+
+&lt;cfdump var=&quot;#info#&quot;&gt;
+
+&lt;!--- EXAMPLE #2 Index a path (type = &quot;path&quot;). ------------------------------&gt;
+&lt;cfindex collection=&quot;CodeColl&quot; 
+   action=&quot;refresh&quot; 
+   type=&quot;path&quot;
+   key=&quot;C:\inetpub\wwwroot\vw_files\newspaper\sports&quot; 
+   urlpath=&quot;http://localhost/vw_files/newspaper/sports&quot;
+   extensions = &quot;.htm, .html&quot;
+   recurse=&quot;no&quot;
+   language=&quot;English&quot;
+   categoryTree=&quot;vw_files/newspaper/sports&quot;
+   category=&quot;Giants&quot;&gt;
+
+&lt;!--- Search for any references to criteria. ---&gt;
+&lt;cfsearch
+   name = &quot;mySearch&quot;
+   collection = &quot;CodeColl&quot;
+   categoryTree=&quot;vw_files/newspaper/sports&quot;
+   category=&quot;Giants&quot;
+   criteria = &quot;Williams&quot; 
+   contextpassages = &quot;1&quot;
+   maxrows = &quot;100&quot;&gt;
+&lt;cfoutput&gt;
+   key=#mySearch.key#&lt;br /&gt;
+   title=#mySearch.title#&lt;br /&gt;
+   context=#mySearch.context#&lt;br /&gt;
+   url=#mySearch.url#&lt;br /&gt;
+&lt;/cfoutput&gt;
+
+&lt;!---EXAMPLE #3: Index a QUERY (type = &quot;custom&quot;) using custom1. ------------&gt;
+&lt;!--- Retrieve data from the table. ---&gt;
+&lt;cfquery name=&quot;getCourses&quot; datasource=&quot;cfdocexamples&quot;&gt;
+   SELECT * FROM COURSES
+&lt;/cfquery&gt;
+
+&lt;!--- Update the collection with the above query results. ---&gt;
+&lt;!--- key is Course_ID in the Courses table. ----&gt;
+&lt;!--- body specifies the columns to be indexed for searching. ---&gt;
+&lt;!--- custom1 specifies the value of the Course_Number column. ---&gt;
+
+&lt;cfindex 
+   query=&quot;getCourses&quot;
+   collection=&quot;CodeColl&quot;
+   action=&quot;Update&quot;
+   type=&quot;Custom&quot;
+   key=&quot;Course_ID&quot;
+   title=&quot;Courses&quot;
+   body=&quot;Course_ID,Descript&quot;
+   custom1=&quot;Course_Number&quot;
+&gt;
+&lt;h2&gt;Indexing Complete&lt;/h2&gt;
+&lt;!--- cno supplies value for searching custom1; 
+      could be form input instead. ---&gt;
+&lt;cfset cno = &quot;540&quot;&gt;
+&lt;cfsearch
+   name = &quot;mySearch&quot;
+   collection = &quot;CodeColl&quot;
+   criteria = &quot;CF_CUSTOM1 &lt;MATCHES&gt; #cno#&quot;
+   contextpassages = &quot;1&quot;
+   maxrows = &quot;100&quot;&gt;
+&lt;!--- Returns indexed values (Course_ID and Descript) for 
+      Course_Number 540. ---&gt;
+&lt;cfoutput&gt;
+   key=#mySearch.key#&lt;br /&gt;
+   title=#mySearch.title#&lt;br /&gt;
+   context=#mySearch.context#&lt;br /&gt;
+   url=#mySearch.url#&lt;br /&gt;
+&lt;/cfoutput&gt;
+
+&lt;!--- EXAMPLE #4 Index a FILE within a QUERY (type= &quot;file&quot;). ---------------&gt;
+&lt;!--- Retrieve row with a column that contains a filename (Contract_File). ---&gt;
+&lt;cfquery name=&quot;getEmps&quot; datasource=&quot;cfdocexamples&quot;&gt;
+   SELECT * FROM EMPLOYEE WHERE EMP_ID = 1
+&lt;/cfquery&gt;
+
+&lt;!--- Update the collection with the above query results. ---&gt;
+&lt;!--- key specifies the column that contains a complete filename. ---&gt;
+&lt;!--- file is indexed in same way as if no query involved. ---&gt;
+&lt;cfindex 
+   query=&quot;getEmps&quot;
+   collection=&quot;CodeColl&quot;
+   action=&quot;Update&quot;
+   type=&quot;file&quot;
+   key=&quot;Contract_File&quot;   
+   title=&quot;Contract_File&quot;
+   body=&quot;Emp_ID,FirstName,LastName,Contract_File&quot;&gt;
+
+&lt;h2&gt;Indexing Complete&lt;/h2&gt;
+&lt;cfsearch
+   name = &quot;mySearch&quot;
+   collection = &quot;CodeColl&quot;
+   criteria = &quot;vacation&quot;
+   contextpassages = &quot;1&quot;
+   maxrows = &quot;100&quot;&gt;
+&lt;cfoutput&gt;
+   key=#mySearch.key#&lt;br /&gt;
+   title=#mySearch.title#&lt;br /&gt;
+   context=#mySearch.context#&lt;br /&gt;
+   url=#mySearch.url#&lt;br /&gt;
+&lt;/cfoutput&gt;
+
+&lt;!--- EXAMPLE # 5 Index a PATH within a QUERY. ----------------------------&gt;
+&lt;!--- Retrieve a row with a column that contains a path (Project_Docs). ---&gt;
+&lt;cfquery name=&quot;getEmps&quot; datasource=&quot;cfdocexamples&quot;&gt;
+   SELECT * FROM EMPLOYEE WHERE Emp_ID = 15
+&lt;/cfquery&gt;
+
+&lt;!--- Update the collection with the above query results. ---&gt;
+&lt;!--- key specifies a column that contains a directory path. ---&gt;
+&lt;!--- path is indexed in same way as if no query involved. ---&gt;
+&lt;cfindex 
+   query=&quot;getEmps&quot;
+   collection=&quot;CodeColl&quot;
+   action=&quot;update&quot;
+   type=&quot;path&quot;
+   key=&quot;Project_Docs&quot;
+   title=&quot;Project_Docs&quot;
+   body=&quot;Emp_ID,FirstName,LastName,Project_Docs&quot;&gt;
+
+&lt;h2&gt;Indexing Complete&lt;/h2&gt;
+
+&lt;cfsearch
+   name = &quot;getEmps&quot;
+   collection = &quot;CodeColl&quot;
+   criteria = &quot;cfsetting&quot;
+   contextpassages = &quot;1&quot;
+   maxrows = &quot;100&quot;&gt;
+&lt;cfoutput&gt;
+   key=#getEmps.key#&lt;br /&gt;
+   title=#getEmps.title#&lt;br /&gt;
+   context=#getEmps.context#&lt;br /&gt;
+   url=#getEmps.url#&lt;br /&gt;
+&lt;/cfoutput&gt;
+
+&lt;!--- EXAMPLE #6 Deletes keys in the CodeColl collection for html files ---&gt;
+&lt;!--- in the specified directory (but not in subdirectories). -------------&gt;
+
+&lt;cfindex collection=&quot;CodeColl&quot; 
+   action=&quot;delete&quot; 
+   type=&quot;path&quot;
+   key=&quot;C:\CFusionMX7\wwwroot\vw_files\newspaper&quot; 
+   urlpath=&quot;http://localhost:8500/vw_files/newspaper&quot;
+   extensions = &quot;.htm, .html&quot;
+   recurse=&quot;no&quot;&gt;
+
+&lt;!--- EXAMPLE #7 Purges all keys in the CodeColl collection ---&gt;
+&lt;!--- with recursion. -------------------------------------------------------&gt;
+
+&lt;cfindex collection=&quot;CodeColl&quot; 
+   action=&quot;purge&quot; 
+   type=&quot;path&quot;
+   key=&quot;C:\CFusionMX7\wwwroot\vw_files\newspaper&quot;&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="COLLECTION ">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">COLLECTION </td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Name of a collection that is registered by ColdFusion; for example, &quot;personnel&quot;.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ACTION ">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ACTION </td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<ul>
+
+<li>update: updates a collection and adds key to the index. </li>
+
+<li>delete: removes collection documents as specified by the key attribute.</li>
+
+<li>purge: deletes all of the documents in a collection. Causes the collection to be taken offline, preventing searches.</li>
+
+<li>refresh: deletes all of the documents in a collection, and then performs an update.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TYPE ">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TYPE </td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "custom, if query attribute is specified. Otherwise, file. "
+
+<ul>
+
+<li>file: applies action value to filename, including path. Expects a filename in the key attribute.</li>
+
+<li>path: applies action to files in a directory path that pass the extensions filter. Expects a directory name in the key attribute.</li>
+
+<li>custom: applies action to custom data; for example, to data from a query. </li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TITLE ">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TITLE </td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Provides a title for the document if one cannot be extracted from the document.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="KEY ">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">KEY </td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "(empty string)"
+
+
+<p>The value specified for key depends on the type attribute:</p><ul>
+
+<li>If type = &quot;file&quot;, the directory path and filename for the file,</li>
+
+<li>If type = &quot;path&quot;, the directory path for the location of the files.</li>
+
+<li>If type = &quot;custom&quot;, a unique identifier that specifies the location of the data, For a query, the name of the column that holds the primary key, for example. If not a query, an identifier such as the URL for a web page, for example.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="BODY ">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">BODY </td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required if type = custom</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<ul>
+
+<li>ASCII text to index.</li>
+
+<li>Query column names, if name is specified in query.</li>
+</ul>
+
+<p>You can specify columns in a delimited list; for example: &quot;emp_name, dept_name, location&quot;.</p>
+<p>This attribute is ignored if type is file or path, and is invalid if action is delete.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="CUSTOM1">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">CUSTOM1</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Use to index discrete values in collection records, which lets you search for specific records using the Verity MATCHES operator. By contrast, values specified in the body attribute are concatenated and searched as a body of text using the specified criteria.</p>
+<p>If type = query, a query column name. If type = custom, a data field to be indexed. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="CUSTOM2">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">CUSTOM2</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Usage is the same as for custom1. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="CUSTOM3">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">CUSTOM3</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Usage is the same as for custom1.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="CUSTOM4">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">CUSTOM4</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Usage is the same as for custom1.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="CATEGORY">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">CATEGORY</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>A string value that specifies one or more search categories for which to index the data. You can define multiple categories, separated by commas, for a single index. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="CATEGORYTREE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">CATEGORYTREE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>A string value that specifies a hierarchical category or category tree for searching. It is a series of categories separated by forward slashes (&quot;/&quot;). You can specify only one category tree.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="URLPATH ">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">URLPATH </td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>If type is file or path, specifies the URL path. During indexing, this pathname is prefixed to filenames and returned from a search as the url.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="EXTENSIONS ">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">EXTENSIONS </td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "htm, "
+<strong>Default value:</strong> "html,"
+<strong>Default value:</strong> "cfm, "
+<strong>Default value:</strong> "cfml, "
+<strong>Default value:</strong> "dbm, "
+<strong>Default value:</strong> "dbml"
+
+
+<p>Delimited list of file extensions that ColdFusion uses to index files, if type = &quot;Path&quot;. </p>
+<p>&quot;*.&quot; returns files with no extension. ".*" returns all files.</p>
+<p>For example, the following code returns files with a listed extension or no extension: </p>
+<p>extensions == &quot;.htm, .html, .cfm, .cfml, &quot;*.&quot;</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="QUERY">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">QUERY</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional.</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>The name of the query against which the collection is generated.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="RECURSE ">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">RECURSE </td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "no"
+
+<ul>
+
+<li>yes: if type = &quot;path&quot;, indexes qualified files in directories below the path specified in the key attribute.</li>
+
+<li>no</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="LANGUAGE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">LANGUAGE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "English"
+
+
+<p>For options, see cfcollection. Requires the appropriate Verity Locales language pack (Western Europe, Asia, Multilanguage, Eastern Europe/Middle Eastern). </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="STATUS">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STATUS</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>The name of the structure into which ColdFusion&#160;MX returns status information.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

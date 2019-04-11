@@ -1,0 +1,45 @@
+<!DOCTYPE html SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Copyright 2004 Macromedia, Inc. All rights reserved. -->
+<title>插入 FlashPaper</title>
+
+<script src="FlashPaper.js"></script>
+<script src="../Shared/MM/Scripts/CMN/errmsg.js"></script>
+<script src="../Shared/MM/Scripts/CMN/string.js"></script>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<script src="../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<!-- End removal area. -->
+<script>
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_InvalidWidthHeight = "对于要插入的鼠标经过图像对象,原始图像文件和鼠标经过图像文件都必须指定.";
+//--------------- END LOCALIZEABLE   ---------------
+</script>
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="initializeUI()">
+<form name="flashPaperForm" id="flashPaperForm">
+  <div align="center">
+    <table border=0 cellpadding="2" cellspacing="4">
+   <tr>
+      <td align="right" valign="baseline" nowrap>源:</td>
+      <td valign="baseline" nowrap>
+         <input name="tbSource" type="text" class="largeTField">
+         <input type="button" value="浏览..." onClick="document.flashPaperForm.tbSource.value = dreamweaver.browseForFileURL();focus(this)">
+     </td>
+   </tr>
+   <tr>
+      <td align="right" valign="baseline" nowrap>高度:</td>
+      <td valign="baseline" nowrap>
+      <input name="tbHeight" type="text" class="smallNumOrChar">
+      宽度:	<input name="tbWidth" type="text" class="smallNumOrChar">
+	  </td>
+   </tr>
+   </table>
+   </div>
+</form>
+</body>
+</html>

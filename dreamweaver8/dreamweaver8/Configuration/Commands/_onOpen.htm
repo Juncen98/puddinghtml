@@ -1,0 +1,25 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<TITLE>on Open</TITLE>
+<SCRIPT LANGUAGE="javascript">
+<!-- Copyright 2000, 2001, 2002, 2003 Macromedia, Inc. All rights reserved. -->
+function onOpen() {
+  if (!MM.onOpenFileList)
+  {
+	  // Search for all files ending with the _onOpen name.
+	  var filePath = dw.getConfigurationPath()+'/Commands/';
+	  var fileFilter = '?*_onOpen.htm';
+	  MM.onOpenFileList = DWfile.listFolder(filePath+fileFilter, 'files');
+   }
+  for (var i = 0; i < MM.onOpenFileList.length; i++) {
+    // Call each specified command file.
+    dw.popupCommand(MM.onOpenFileList[i]);
+  }
+}
+</SCRIPT>
+</HEAD>
+<BODY onLoad="onOpen()">
+</BODY>
+</HTML>
+

@@ -1,0 +1,157 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<title>插入 Flash文本</title>
+<link rel="stylesheet" href="mmres://user_interface_dialog.css">
+
+<script src="Flash Text.js"> </script>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT src="../Shared/Common/Scripts/ImageButtonClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/flashObjects.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<script>
+// Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved.
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_NoFontsInstalled = "你的系统中没有安装字体.";
+var MSG_SaveAsFieldIsEmpty = "在创建新文本前请填写另存为域.";
+var MSG_InvalidColor = '"%s" 不是有效的颜色值。请输入一个十六进制值 (#RRGGBB) 或一个标准的颜色名称。';
+var MSG_DocRelLinkWarning = "如果你需要将文本保存到其他文件夹,";
+var MSG_NoFlashTextDocRelLinkDiffFolder = "Flash 文本对象不能创建.请使用绝对链接(http://)或将对象保存到与HTML文档相同的文件夹中.";
+var MSG_SiteRelLinkWarning = "站点相对链接在 Flash 影片中不能工作";
+var MSG_LocalURLLinkWarning = "本地文件URLs在Flash影片中不能工作.";
+var MSG_PleaseEnterText = "请在文本域中输入文本.";
+var MSG_FilenameStartWithSpace = "文件名称不能以空格开头.";
+var MSG_InvalidLink = '"%s" 是一个 %s.请使用绝对链接或文档相对链接 ';
+var MSG_InvalidFileName = '"%s" 是一个无效文件名, 或者文件路径或文件名中含有中文字符. 请输入一个不同的名称或路径.';
+var MSG_InitGeneratorFailed = "不能创建 Flash 文本对象因为Dreamweaver 的一个组件丢失,请重新安装Dreamweaver.";
+var MSG_InitGeneratorFailedMac = "不能创建Flash文本对象.请确定Mac OS Runtime for Java (MRJ) 2.2 或更高版本及Dreamweaver均已正确安装,你可以在 http://www.apple.com/java下载到MRJ";
+var MSG_InvalidData = "非法数据";
+var MSG_OutOfMemory = "没有足够的内存完成该操作.";
+var MSG_UnknownError = "未知错误";
+var MSG_InvalidTemplate = "不能创建Flash文本因为文本模板被错误修改,请重新安装Dreamweaver.";
+var MSG_FontDoesNotExist = '名为 "%s"的字体在你的系统中不存在.请选择其他的字体';
+var MSG_FrameNotFound = '目标名称"%s" 在页面中不存在,请选择其他的目标.'
+var MSG_FileAlreadyExists = "%s 已经存在,你要替换该文件吗?";
+var MSG_ReadOnlyFile = "%s是一个只读文件.请选择其他的名称.";
+var MSG_ExceedCharacterLimit = '你已经超过了最多字符数限制.点击确定截断1024字符以后的数据';
+var LABEL_Select = "选择文件";
+var LABEL_SelectFolder = "选择文件夹";
+var LABEL_SiteRelativeLink = "站点相对链接";
+var LABEL_LocalFileURL = "本地文件URL";
+var LABEL_DefaultSystemFontMac = "Osaka";						// needs relavant fonts for J, K, C
+var LABEL_DefaultSystemFontWin = "MS UI Gothic";
+//--------------- END LOCALIZEABLE   ---------------
+</script>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()"  onReloadFontList="reloadFonts();">
+<form method="post" action="" name="theForm">
+  <table border="0" cellspacing="2" cellpadding="4" width="363">
+    <tr>
+      <td valign="baseline">
+        <div align="right">字体:</div>
+      </td>
+      <td valign="baseline">
+        <div align="left">
+          <select name="fontMenu" class="fontList" onChange='updateUI("fontMenu");'>
+            <option selected>加载字体...</option>
+          </select>
+          <img src="../Shared/MM/Images/transparent.gif" width="20" height="8">大小:
+          <input name="sizeField" type="text" class="smallNumOrChar" onBlur='updateUI("sizeField")' value="30" maxlength="3">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline"> </td>
+      <td valign="baseline">
+		<input type="image" name="boldBtn" alt="粗体" src="../Shared/MM/Images/bold.gif" width="18" height="17" onClick="updateUI('boldBtn')"
+		><input type="image" name="italicBtn" alt="斜体" src="../Shared/MM/Images/italic.gif" width="18" height="17" onClick="updateUI('italicBtn')"
+		><input type="image" name="leftAlignBtn" alt="左对齐" src="../Shared/MM/Images/leftAlign.gif" width="18" height="17"
+		><input type="image" name="centerAlignBtn" alt="居中对齐" src="../Shared/MM/Images/centerAlign.gif" width="18" height="17"
+		><input type="image" name="rightAlignBtn" alt="右对齐" src="../Shared/MM/Images/rightAlign.gif" width="18" height="17"
+      ></td>
+    </tr>
+    <tr>
+      <td valign="baseline">
+        <div align="right">颜色:</div>
+      </td>
+      <td valign="baseline" nowrap>
+        <div align="left"><img src="../Shared/MM/Images/transparent.gif" width="5" height="1">
+          <input type="mmcolorbutton" name="textColorP" value="#000000" onChange='updateUI("textColorP")'>
+          <input type="text" name="textColorField" size="12" value="#000000" maxlength="7" onBlur='updateUI("textColorField")'>
+          <img src="../Shared/MM/Images/transparent.gif" width="16" height="1">
+					转滚颜色:
+          <input type="mmcolorbutton" name="rolloverColorP" value="" onChange='updateUI("rolloverColorP")'>
+          <input name="rolloverColorField" type="text" class="smallTField" onBlur='updateUI("rolloverColorField")' value="" maxlength="7">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><div align="right">文本:</div></td>
+      <td>
+        <textarea name="textInputField"  wrap="OFF" class="designNoteInfoOrValue" style="width:300px; height:100px; font-family:; font-size:12px; color:;" maxlength="1024"></textarea>
+      </td>
+    <tr>
+		<td></td>
+		<td>
+        <input type="checkbox" name="fontCheckBox" value="checkbox" checked onClick='updateUI("fontCheckBox");focus(this)'>
+        显示字体
+        </td>
+    </tr>
+    <tr>
+      <td valign="baseline"></td>
+    </tr>
+    <tr>
+      <td valign="baseline" nowrap>
+        <div align="right">链接: </div>
+      </td>
+      <td valign="baseline">
+        <input name="linkField" type="text" class="basicTextField"  onBlur="updateUI('linkField')" value="">
+        <input type="button" name="linkButton" value="浏览..." onClick="updateUI('linkButton');focus(this)">
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline">
+        <div align="right">目标:</div>
+      </td>
+      <td valign="baseline">
+        <select name="targetMenu" class="targetList">
+          <option selected>_Parent</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" nowrap>
+	  <div align="right">背景色:</div>
+	  </td>
+      <td valign="baseline">
+        <img src="../Shared/MM/Images/transparent.gif" width="5" height="1">
+        <input type="mmcolorbutton" name="bgColorP" value="" onChange='updateUI("bgColorP")'>
+        <input name="bgColorField" type="text" class="smallTField" onBlur='updateUI("bgColorField")' value="" maxlength="7">
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" nowrap>
+        <div align="right">另存为:</div>
+      </td>
+      <td valign="baseline">
+        <input name="saveAsField" type="text" class="basicTextField" onBlur="updateUI('saveAsField')">
+        <input type="button" name="saveAsButton" value="浏览..." onClick="updateUI('saveAsButton');focus(this)">
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline"></td>
+      <td valign="baseline" height="50"><br>
+        <span name="warningMessage" style="width:300px;">
+        </span></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

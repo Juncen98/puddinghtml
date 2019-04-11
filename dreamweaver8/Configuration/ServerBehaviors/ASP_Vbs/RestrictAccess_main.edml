@@ -1,0 +1,31 @@
+<participant>
+     <quickSearch><![CDATA[MM_authorizedUsers]]></quickSearch>
+     <insertText location="aboveHTML+10">
+<![CDATA[
+<%
+' *** Restrict Access To Page: Grant or deny access to this page
+MM_authorizedUsers="@@accessLevels@@"
+MM_authFailedURL="@@failureURL@@"
+MM_grantAccess=false
+If Session("@@MM_username@@") <> "" Then
+  If (@@dontUseAccessLevel@@ Or CStr(Session("@@MM_userAuthorization@@"))="") Or _
+         (InStr(1,MM_authorizedUsers,Session("@@MM_userAuthorization@@"))>=1) Then
+    MM_grantAccess = true
+  End If
+End If
+If Not MM_grantAccess Then
+  MM_qsChar = "?"
+  If (InStr(1,MM_authFailedURL,"?") >= 1) Then MM_qsChar = "&"
+  MM_referrer = Request.ServerVariables("URL")
+  if (Len(Request.QueryString()) > 0) Then MM_referrer = MM_referrer & "?" & Request.QueryString()
+  MM_authFailedURL = MM_authFailedURL & MM_qsChar & "accessdenied=" & Server.URLEncode(MM_referrer)
+  Response.Redirect(MM_authFailedURL)
+End If
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="accessLevels,failureURL,dontUseAccessLevel" limitSearch="all"><![CDATA[/[\r\n]\s*MM_authorizedUsers\s*=\s*"([^\r\n]*)"[\w\W]*[\r\n]\s*MM_authFailedURL\s*=\s*"([^\r\n]*)"[\w\W]*[\r\n]\s*MM_grantAccess\s*=\s*false[\w\W]*[\r\n]\s*If\s+\(\s*(\w+)\s+Or\s+CStr\s*\(\s*Session\s*\(\s*"/]]></searchPattern>
+       <searchPattern paramNames="failureURL_url" limitSearch="all"><![CDATA[/MM_authFailedURL\s*=\s*"([^\r\n]*?)"/]]></searchPattern>
+     </searchPatterns>
+</participant>

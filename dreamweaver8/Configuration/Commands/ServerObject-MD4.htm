@@ -1,0 +1,136 @@
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+
+<SCRIPT src="../Shared/UltraDev/Scripts/sbManager.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/enableControl.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/file.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/RadioGroupClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssClasses.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ParseSimpleSQL.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/SQLTypes.js"></SCRIPT>
+<SCRIPT SRC="../ServerBehaviors/Shared/Recordset.js"></SCRIPT>
+<SCRIPT SRC="../ServerBehaviors/Shared/CheckDupeObjName.js"></SCRIPT>
+<SCRIPT SRC="../ServerBehaviors/Shared/RSSeverModelSwitches.js"></SCRIPT>
+<SCRIPT SRC="ServerObject-MD4.js"></SCRIPT>
+
+
+<TITLE>插入主详细页集</TITLE>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+<form name="theForm">
+  <DIV ALIGN="center">
+<table border=0>
+  <tr> 
+    <td height="43" align="right" valign="baseline" nowrap> 记录集: </td>
+    <td valign="baseline" nowrap> <p> 
+        <select name="Recordset" class="rsNameList" onChange="RecordsetChanged()">
+          <option>*** 未找到记录集</option>
+        </select>
+      </p></td>
+  </tr>
+  <tr> 
+    <td align="right" valign="top" nowrap> 主页字段:  </td>
+    <td valign="baseline" nowrap> <table border=0>
+        <tr> 
+          <td valign="baseline" width="107"> <input type="image" name="AddButton2" alt="添加项" src="../Shared/MM/Images/btnAdd.gif"  onClick="onAddButtonClicked();focus(this)"> 
+            <input type="image" name="RemoveButton2" alt="移除项" src="../Shared/MM/Images/btnDel.gif"  onClick="onRemoveButtonClicked();focus(this)"></td>
+          <td valign="baseline" align="right" nowrap width="88"><input type="image" alt="在列表中上移项" name="MoveUp" onClick="onMoveUpClicked();focus(this)" border="0" src="../Shared/MM/Images/btnUp.gif" > 
+            <input type="image" alt="在列表中下移项" name="MoveDown" onClick="onMoveDownClicked();focus(this)" border="0" src="../Shared/MM/Images/btnDown.gif" > 
+          </td>
+        </tr>
+        <tr> 
+          <td valign="top" colspan=2><select name="ColumnsToShow" size="6" multiple class="itemList">
+            </select> </td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr> 
+    <td height="1"></td>
+  </tr>
+  <tr> 
+    <td align="right" valign="baseline" nowrap> 以此链接到详细信息: </td>
+    <td valign="baseline" nowrap> <select name="LinkColumn" class="dataSourceList">
+      </select></td>
+  </tr>
+  <tr> 
+    <td height="1"></td>
+  </tr>
+  <tr> 
+    <td align="right" valign="baseline" nowrap> 传递唯一键: </td>
+    <td valign="baseline" nowrap> <select name="KeyColumn" class="dataSourceList">
+      </select>
+    </td>
+  </tr>
+  <tr> 
+    <td height="1"></td>
+  </tr>
+  <tr> 
+    <td align="right" valign="top" nowrap> 显示: </td>
+    <td valign="baseline" nowrap> <table border="0">
+        <tr> 
+          <td valign="baseline" nowrap> <input type="radio" name="RecordCount" value="Repeat" onClick=setCount(this) checked>
+            <input name="RepeatCount" type="text" class="smallNumOrChar" value="10">
+            记录 </td>
+        </tr>
+        <tr> 
+          <td valign="baseline" nowrap> <input type="radio" name="RecordCount" value="All" onClick=setCount(this)>
+            所有记录 </td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr> 
+    <td height="1"></td>
+  </tr>
+  <tr> 
+    <td colspan="2" align="right" valign="baseline" nowrap> <hr> </td>
+  </tr>
+  <tr> 
+    <td align="right" valign="baseline" nowrap> 详细页名称: </td>
+    <td valign="baseline" nowrap> <input name="DetailFileName" type="text" class="medTField"> 
+      <input type="button" name="BrowseButton" value="浏览..." onClick="browseButtonClicked();focus(this)"></td>
+  </tr>
+  <tr> 
+    <td height="1"></td>
+  </tr>
+  <tr> 
+    <td align="right" valign="top" nowrap>详细页字段: </td>
+    <td valign="baseline" nowrap> <table border=0>
+        <tr> 
+          <td valign="baseline" width="107"> <input type="image" name="DetailAddButton" alt="添加项" src="../Shared/MM/Images/btnAdd.gif"  onClick="onDetailAddButtonClicked();focus(this)"> 
+            <input type="image" name="DetailRemoveButton" alt="移除项" src="../Shared/MM/Images/btnDel.gif"  onClick="onDetailRemoveButtonClicked();focus(this)"></td>
+          <td valign="baseline" align="right" nowrap width="89"> <input type="image" name="DetailMoveUp" alt="在列表中上移项" onClick="onDetailMoveUpClicked();focus(this)" border="0" src="../Shared/MM/Images/btnUp.gif" > 
+            <input type="image" name="DetailMoveDown" alt="在列表中下移项" onClick="onDetailMoveDownClicked();focus(this)" border="0" src="../Shared/MM/Images/btnDown.gif" > 
+          </td>
+        </tr>
+        <tr> 
+          <td valign="top" colspan=2> <select name="DetailColumnsToShow" size="6" multiple class="itemList">
+            </select></td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr> 
+    <td height="1"></td>
+  </tr>
+</table>
+  </DIV>
+</form>
+</BODY>
+</HTML>

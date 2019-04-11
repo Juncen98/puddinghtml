@@ -1,0 +1,204 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>JAVACAST</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">JAVACAST</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Converts the data type of a ColdFusion variable to pass as an argument to an overloaded method of a Java object. Use only for scalar and string arguments.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+The variable, as type type.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+String functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>JavaCast(type, variable)
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+CreateObject, cfobject
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+Use after creating a Java object with the cfobject tag, before calling one of its methods. If the method takes more than one overloaded argument, you must call JavaCast for each one. Use JavaCast only when a method is overloaded (because its arguments can take more than one data type, not because the method can take a variable number of arguments). 
+</p>
+
+<p>
+JavaCast cannot be used to cast between complex objects, nor to cast to a super-class. 
+</p>
+
+<p>
+Use the result of this function only on calls to Java objects, as shown in the following example:
+</p>
+<pre>&lt;cfscript&gt;
+    x = CreateObject(&quot;java&quot;, &quot;test.Hello&quot;);
+    x.init();
+    ret = x.sayHello(JavaCast(&quot;null&quot;, &quot;&quot;));
+&lt;/cfscript&gt;
+</pre><table>
+  <tr valign="top">
+    <td width="30"><strong>Warning: </strong></td>
+    <td>Do not assign the results of JavaCast(&quot;null&quot;,&quot;&quot;) to a ColdFusion variable. Unexpected results will occur. </td>
+  </tr>
+</table>
+<p>
+Because there is not a one-to-one correspondence between internally stored ColdFusion types and Java scalar types, some conversions cannot be performed. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+The method fooMethod in the class fooClass takes one overloaded argument. The fooClass class is defined as follows: 
+</p>
+<pre>public class fooClass {
+   public fooClass () {
+   }
+   public String fooMethod(String arg) {
+      return &quot;Argument was a String&quot;;
+   }
+   public String fooMethod(int arg) {
+      return &quot;Argument was an Integer&quot;;
+   }
+</pre>
+<p>
+}
+</p>
+
+<p>
+Within ColdFusion, you use the following code:
+</p>
+<pre>&lt;cfobject
+action=&quot;create&quot;
+    type = &quot;java&quot;
+    class = &quot;fooClass&quot; 
+    name = obj&gt;
+
+&lt;!--- ColdFusion can treat this as a string or a real number ---&gt;
+&lt;cfset x = 33&gt;
+
+Perform an explicit cast to an int and call fooMethod:&lt;br&gt;
+&lt;cfset myInt = JavaCast(&quot;int&quot;, x)&gt; 
+&lt;cfoutput&gt;#obj.fooMethod(myInt)#&lt;/cfoutput&gt;
+&lt;br&gt;&lt;br&gt;
+Perform an explicit cast to a string and call fooMethod:&lt;br&gt;
+&lt;cfset myString = javaCast(&quot;String&quot;, x)&gt; 
+&lt;cfoutput&gt;#obj.fooMethod(myString)#&lt;/cfoutput&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="TYPE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TYPE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Data type to which to convert variable:</p><ul>
+
+<li>boolean</li>
+
+<li>int</li>
+
+<li>long</li>
+
+<li>float</li>
+
+<li>double</li>
+
+<li>string</li>
+
+<li>null</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="VARIABLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">VARIABLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A ColdFusion variable that holds a scalar or string type. Must be &quot;&quot; if type is null.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

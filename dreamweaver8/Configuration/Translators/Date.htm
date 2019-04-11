@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- Copyright 2000, 2001, 2002, 2003 Macromedia, Inc. All rights reserved. -->
+<title>Dynamic Date</script></title>
+<meta http-equiv="Content-Type" content="text/html; charset=">
+<script language="JavaScript">
+
+
+function translateMarkup( docNameStr, siteRootStr, inStr )
+{
+   //if there are no dates in this document, return empty string
+   if (inStr.indexOf("#BeginDate")==-1)
+      return "";
+
+   // if this file has already been translated with the date translator,
+   // don't translate it again.
+   if (inStr.indexOf('<MM:BeginLock type="mmdate"') != -1)
+      return "";
+
+   var datePattern= /(\<!-[-]?\s*#BeginDate format:)([^\s]*)(\s*[-]?-\>)([^\<]*)(\<!-- #EndDate --\>)/g;
+
+   var outStr = inStr.replace(datePattern,'<MM:BeginLock type="mmdate" format="$2"' +
+              ' orig="' + escape("$&") + '">$4<MM:EndLock>')
+
+   return outStr;
+} 
+
+
+function getTranslatorInfo()
+{
+	returnArray = new Array(7);
+	
+	returnArray[0] = "MM_Date"				// The translatorClass
+	returnArray[1] = "Date" 	            // The title
+	returnArray[2] = "0" 					// The number of extensions. 0 indicates to run against all extensions
+	returnArray[3] = "1" 					// The number of expressions"
+	returnArray[4] = "<!-- #BeginDate"		// Expression for open
+	returnArray[5] = "byString"			    // Run if doc contains expr
+	returnArray[6] = "50"					// priority order to apply translator
+		
+	return returnArray;
+} // getTranslatorInfo()
+
+</script>
+</head>
+
+<body bgcolor="#FFFFFF">
+<script language="JavaScript">
+
+</script>
+</body>
+</html>

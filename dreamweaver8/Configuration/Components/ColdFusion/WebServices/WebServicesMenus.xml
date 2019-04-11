@@ -1,0 +1,27 @@
+<!-- This file contains all the menus for Dreamweaver. -->
+<!-- The main menu bar is located at the end of this file -->
+
+<!-- WARNING: DO NOT CHANGE ANY ID ATTRIBUTES ASSOCIATED WITH MENU ITEMS. -->
+<!-- Changing IDs will make it impossible for other developers to locate -->
+<!-- menu items for installation purposes. -->
+
+
+<shortcutlist app="ultradev" id="DWWebServicesContext">
+	<shortcut key="Del" domRequired="false" enabled="(dw.serverComponentsPalette.getSelectedNode() != null && (dw.serverComponentsPalette.getSelectedNode().objectType=='Root'))" command="clickedDelete();"  id="DWShortcuts_ServerComponent_Delete" />
+</shortcutlist>
+
+<menubar name="" app="ultradev" id="DWWebServicesContext">
+    <menu name="Server Component Popup" id="DWContext_WebServices">
+        <menuitem name="Edit Web Service" domRequired="false"	enabled="dw.serverComponentsPalette.getSelectedNode() != null && (dw.serverComponentsPalette.getSelectedNode().objectType=='Root') && dw.serverComponentsPalette.getSelectedNode().wsRec != null && dw.serverComponentsPalette.getSelectedNode().wsRec[ProxyGeneratorNamePropName] != null" command="editWebService()"		id="DWContext_WebServices_EditWebService" />
+        <menuitem name="Regenerate Proxy" domRequired="false"	enabled="dw.serverComponentsPalette.getSelectedNode() != null && (dw.serverComponentsPalette.getSelectedNode().objectType=='Root') && dw.serverComponentsPalette.getSelectedNode().wsRec != null && dw.serverComponentsPalette.getSelectedNode().wsRec[ProxyGeneratorNamePropName] != null" command="reGenerateProxy();" id="DWContext_WebServices_RegenerateProxy" />
+			  <separator/>
+				<menuitem name="Insert Code" domRequired="false" enabled="insertEnabled(dw.serverComponentsPalette.getSelectedNode());" command="clickedInsert(dw.serverComponentsPalette.getSelectedNode());" id="DWShortcuts_ServerComponent_Insert" />
+    </menu>
+</menubar>
+
+<menubar name="" app="ultradev" id="DWWebServicesChoosersContext">
+    <menu name="Server Component Popup" id="DWContext_WebServicesChooser">
+		<menuitem dynamic name="Choosers"	app="ultradev" file="Menus/MM/WS_Choosers.htm" id="DWContext_WebServices_Chooser_List" />
+    </menu>
+</menubar>
+	

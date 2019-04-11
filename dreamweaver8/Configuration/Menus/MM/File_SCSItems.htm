@@ -1,0 +1,48 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>Õ¾µã</TITLE>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+<!--
+	function receiveArguments()
+	{
+		site.scsNewFeature(arguments[0]);
+	}
+
+	function canAcceptCommand()
+	{
+		// can't set the current site if there are no sites
+		return ((site.getSCSNewFeatures().length > 0) && (site.canSCSNewFeature(arguments[0])));
+	}
+
+	// getDynamicContent returns the contents of a dynamically generated menu.
+	// returns an array of strings to be placed in the menu, with a unique
+	// identifier for each item separated from the menu string by a semicolon.
+	//
+	// return null from this routine to indicate that you are not adding any
+	// items to the menu
+	function getDynamicContent(itemID)
+	{
+		var newFeatures = null;
+		newFeatures = new Array();
+		var newFeatureList = site.getSCSNewFeatures();
+		var i;
+
+		if (newFeatureList.length > 0)
+		{
+			for (i=0; i<newFeatureList.length; i++)
+			{
+				newFeatures[i] = new String(newFeatureList[i]);
+				newFeatures[i] += ";id='"+escQuotes(newFeatureList[i])+"'"; // menu item names must be unique, so we'll use them for IDs.
+			}
+		}
+		return newFeatures;
+	}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

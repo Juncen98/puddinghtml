@@ -1,0 +1,28 @@
+<tag name="CFCACHE" endtag="no">
+<tagformat nlbeforetag="1" nlaftertag="1"/>
+<tagdialog file="cfcache.htm"/>
+  <attributes>
+    <attrib name="ACTION" type="ENUMERATED">
+      <attriboption value="CACHE"/>
+      <attriboption value="FLUSH"/>
+      <attriboption value="CLIENTCACHE"/>
+      <attriboption value="OPTIMAL"/>
+    </attrib>
+    <attrib name="CACHEDIRECTORY" type="DIRECTORY"/>
+    <attrib name="DIRECTORY" type="DIRECTORY"/>
+    <attrib name="EXPIREURL" type="TEXT"/>
+    <attrib name="PASSWORD" type="TEXT"/>
+    <attrib name="PORT" type="TEXT"/>
+    <attrib name="PROTOCOL" type="ENUMERATED">
+      <attriboption value="http://"/>
+      <attriboption value="https://"/>
+    </attrib>
+    <attrib name="TIMEOUT" type="TEXT"/>
+    <attrib name="TIMESPAN" type="TEXT"/>
+    <attrib name="USERNAME" type="TEXT"/>
+  </attributes>
+  <attribcategories>
+    <attribgroup name="General" elements="username,password,timeout,port,cachedirectory,action,protocol" />
+    <attribgroup name="Flush" elements="directory,expireurl,timespan" />
+  </attribcategories>
+</tag>

@@ -1,0 +1,236 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>DATECOMPARE</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">DATECOMPARE</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Performs a full date/time comparison of two dates.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span><ul>
+
+<li>-1, if date1 is earlier than date2</li>
+
+<li>0, if date1 is equal to date2</li>
+
+<li>1, if date1 is later than date2</li>
+</ul>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Date and time functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>DateCompare(&quot;date1&quot;, &quot;date2&quot; [, &quot;datePart&quot;])
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+CreateDateTime, DatePart
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+When passing a date/time object as a string, you must enclose it in quotation marks. Otherwise, it is interpreted as a numeric representation of a date/time object.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;DateCompare Example&lt;/h3&gt;
+&lt;p&gt;The DateCompare function compares two date/time values.
+&lt;cfif IsDefined(&quot;FORM.date1&quot;)&gt;
+   &lt;cfif IsDate(FORM.date1) and IsDate(FORM.date2)&gt;
+      &lt;cfset comparison = DateCompare(FORM.date1, FORM.date2, FORM.precision)&gt;
+
+&lt;!--- switch on the variable to give various responses ---&gt;
+      &lt;cfswitch expression = #comparison#&gt;
+         &lt;cfcase value = &quot;-1&quot;&gt;
+            &lt;h3&gt;&lt;cfoutput&gt;#DateFormat(FORM.date1)# 
+            #TimeFormat(FORM.date1)#&lt;/cfoutput&gt; (Date 1) is
+            earlier than &lt;cfoutput&gt;#DateFormat(FORM.date2)#
+            #TimeFormat(FORM.date2)#&lt;/cfoutput&gt; (Date 2)&lt;/h3&gt;
+            &lt;I&gt;The dates are not equal&lt;/I&gt;
+         &lt;/cfcase&gt;
+         &lt;cfcase value = &quot;0&quot;&gt;
+            &lt;h3&gt;&lt;cfoutput&gt;#DateFormat(FORM.date1)#
+            #TimeFormat(FORM.date1)#&lt;/cfoutput&gt; (Date 1) is equal
+            to &lt;cfoutput&gt;#DateFormat(FORM.date2)#
+            #TimeFormat(FORM.date2)#&lt;/cfoutput&gt; (Date 2)&lt;/h3&gt;
+            &lt;I&gt;The dates are equal!&lt;/I&gt;
+         &lt;/cfcase&gt;
+         &lt;cfcase value = &quot;1&quot;&gt;
+            &lt;h3&gt;&lt;cfoutput&gt;#DateFormat(FORM.date1)#
+            #TimeFormat(FORM.date1)#&lt;/cfoutput&gt; (Date 1) is later
+            than &lt;cfoutput&gt;#DateFormat(FORM.date2)#
+            #TimeFormat(FORM.date2)#&lt;/cfoutput&gt; (Date 2)&lt;/h3&gt;
+            &lt;I&gt;The dates are not equal&lt;/I&gt;
+         &lt;/cfcase&gt;
+         &lt;CFDEFAULTCASE&gt;
+            &lt;h3&gt;This is the default case&lt;/h3&gt;
+         &lt;/CFDEFAULTCASE&gt;
+      &lt;/cfswitch&gt;
+   &lt;cfelse&gt;
+      &lt;h3&gt;Enter two valid date values&lt;/h3&gt;
+   &lt;/cfif&gt;
+&lt;/cfif&gt;
+
+&lt;form action = &quot;datecompare.cfm&quot; method=&quot;post&quot;&gt;
+&lt;hr size = &quot;2&quot; color = &quot;#0000A0&quot;&gt;
+&lt;p&gt;Date 1
+&lt;br&gt;&lt;input type = &quot;Text&quot; name = &quot;date1&quot; 
+      value = &quot;&lt;cfoutput&gt;#DateFormat(Now())# #TimeFormat(Now())#
+&lt;/cfoutput&gt;&quot;&gt;
+&lt;p&gt;Date 2
+&lt;br&gt;&lt;input type = &quot;Text&quot; name = &quot;date2&quot; 
+      value = &quot;&lt;cfoutput&gt;#DateFormat(Now())# #TimeFormat(Now())#
+&lt;/cfoutput&gt;&quot;&gt;
+&lt;p&gt;Specify precision to the:
+&lt;br&gt;&lt;select name = &quot;precision&quot;&gt;
+         &lt;option value = &quot;s&quot;&gt;
+            Second
+         &lt;/option&gt;   
+         &lt;option value = &quot;n&quot;&gt;
+            Minute
+         &lt;/option&gt;   
+         &lt;option value = &quot;h&quot;&gt;
+            Hour
+         &lt;/option&gt;   
+         &lt;option value = &quot;d&quot;&gt;
+            Day
+         &lt;/option&gt;
+         &lt;option value = &quot;m&quot;&gt;
+            Month
+         &lt;/option&gt;   
+         &lt;option value = &quot;yyyy&quot;&gt;
+            Year
+         &lt;/option&gt;
+   &lt;/select&gt;
+&lt;p&gt;&lt;input type = &quot;Submit&quot; value = &quot;Compare these dates&quot; name = &quot;&quot;&gt; 
+&lt;input type = &quot;reset&quot;&gt;
+&lt;/form&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="DATE1">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DATE1</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Date/time object, in the range 100 AD-9999 AD.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DATE2">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DATE2</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Date/time object, in the range 100 AD-9999 AD.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DATEPART">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DATEPART</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Optional. String. Precision of the comparison. </p><ul>
+
+<li>s&#160;Precise to the second (default)</li>
+
+<li>n&#160;Precise to the minute</li>
+
+<li>h&#160;Precise to the hour</li>
+
+<li>d&#160;Precise to the day</li>
+
+<li>m&#160;Precise to the month</li>
+
+<li>yyyy&#160;Precise to the year</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

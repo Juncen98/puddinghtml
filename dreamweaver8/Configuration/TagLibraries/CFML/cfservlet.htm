@@ -1,0 +1,61 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFSERVLET</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script>
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">代码: </td>
+      <td nowrap="nowrap"> 
+        <input name="thecode" type="text" class="basicTextField" id="attr:cfservlet:code" attname="code" required="true" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">Jrun 代理: </td>
+      <td nowrap="nowrap"> 
+        <input name="thejrunproxy" type="text" class="basicTextField" id="attr:cfservlet:jrunproxy" attname="proxy" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">超时: </td>
+      <td nowrap="nowrap"> 
+        <input name="thetimeout" type="text" class="basicTextField" id="attr:cfservlet:timeout" attname="timeout" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap"> 
+        <input type="checkbox" id="attr:cfservlet:writeoutput" name="thewriteoutput" attname="writeoutput" truevalue="yes" falsevalue="" /> 写输出
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap"> 
+        <input type="checkbox" id="attr:cfservlet:debug" name="thedebug" attname="debug" truevalue="yes" falsevalue=""/> 调试
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

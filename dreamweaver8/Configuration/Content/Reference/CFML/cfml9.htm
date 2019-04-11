@@ -1,0 +1,644 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFCALENDAR</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFCALENDAR</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Puts an interactive Macromedia Flash format calendar in an HTML or Flash form. Not supported in XML format forms. The calendar lets a user select a date for submission as a form variable.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Forms tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfcalendar 
+name = &quot;name of calendar&quot;
+height = &quot;height&quot;
+width = &quot;width&quot;
+selectedDate = &quot;date&quot;
+startRange = &quot;first disabled date&quot;
+endRange = &quot;last disabled date&quot;
+disabled = &quot;true&quot;, &quot;false&quot;, or no attribute value
+mask = &quot;character pattern&quot;
+dayNames = &quot;days-of-the-week labels&quot;
+monthNames = &quot;month labels&quot;
+visible = &quot;Yes&quot; or &quot;No&quot;
+enabled = &quot;Yes&quot; or &quot;No&quot;
+tooltip = &quot;Tip text&quot;
+onChange = &quot;actionscript to invoke&quot;&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfform, cfgrid, cfinput, cfselect, cfslider, cftextarea, cftree; "About Flash form styles" in Chapter&#160;29, "Creating Forms in Macromedia Flash" in ColdFusion MX Developer's Guide.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7: Added tag.
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+The cfcalendar tag displays a calendar month, showing the month, the year, a grid of the days of the month, and headings for the days of the week. The calendar contains forward and back arrow buttons to let you change the month and year that are displayed.
+</p>
+
+<p>
+If you include a value for the selectedDate attribute, that date is highlighted in green and determines the month and year that display initially. Changing the month and year display does not change the selected date. A user can change the selected date by clicking a different date on the calendar. The onChange attribute can specify an ActionScript event handler function that runs when the user selects a date.
+</p>
+
+<p>
+The current date is highlighted in reverse (that is, a white number on a black background). If the selected date is in a different month or year, however, the current date does not appear unless you move to it by clicking the forward or back arrows.
+</p>
+
+<p>
+The mask attribute lets you specify the format of the selected date that is returned to the application.
+</p>
+
+<p>
+You can use the keyboard to access and select dates from a cfcalendar control: 
+</p>
+<ul>
+
+<li>Use the Up, Down, Left, and Right Arrow keys to change the selected date. </li>
+
+<li>Use the Home and End keys to reach the first and last enabled date in a month, respectively.</li>
+
+<li>Use the Page Up and Page Down keys to reach the previous and next month, respectively. </li>
+</ul>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>The cfcalendar tag is not supported in XML format forms. </td>
+  </tr>
+</table>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+This example produces a 200-pixel by 150-pixel calendar with a Flash haloBlue skin. It displays abbreviated month names and two-character days of the week. It initially displays today's date as determined by the selectedDate attribute. When you click the Save button, the form submits back to the current page, which displays the submitted information.
+</p>
+
+<p>
+The example also has three dateField controls that let the user change the initial selected date that displays on the calendar and a blocked-out date range. The initial blocked-out date is a four-day period immediately preceding today's date.
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>This example must be modified to work in locales that do not use mm/dd/yyyy date formats. To do so, use the LSDateFormat function in place of the DateFormat function and a mask that is appropriate for your locale, such as dd/mm/yyyy.</td>
+  </tr>
+</table><pre>&lt;!--- Set initial selected and blocked-out dates.---&gt; 
+&lt;cfparam name=&quot;Form.startdate&quot; default=&quot;#dateformat(now()-5, &#39;mm/dd/yyyy&#39;)#&quot;&gt;
+&lt;cfparam name=&quot;Form.enddate&quot; default=&quot;#dateformat(now()-1, &#39;mm/dd/yyyy&#39;)#&quot;&gt;
+&lt;cfparam name=&quot;Form.selectdate&quot; default=&quot;#dateformat(now(), &#39;mm/dd/yyyy&#39;)#&quot;&gt;
+
+&lt;!--- If the form has been submitted, display the selected date. ---&gt;
+&lt;cfif isDefined(&quot;Form.submitit&quot;)&gt;
+   &lt;cfoutput&gt;&lt;b&gt;You selected #Form.selectedDate#&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;/cfoutput&gt;
+&lt;/cfif&gt;
+
+&lt;b&gt;Please select a date on the calendar and click Save.&lt;/b&gt;&lt;br&gt;
+&lt;br&gt;
+&lt;cfform name=&quot;form1&quot; format=&quot;Flash&quot; skin=&quot;haloBlue&quot; width=&quot;375&quot; height=&quot;350&quot; &gt;
+   &lt;cfcalendar name=&quot;selectedDate&quot; 
+      selectedDate=&quot;#Form.selectdate#&quot;
+      startRange=&quot;#Form.startdate#&quot;
+      endRange=&quot;#Form.enddate#&quot; 
+      mask=&quot;mmm dd, yyyy&quot; 
+      dayNames=&quot;SU,MO,TU,WE,TH,FR,SA&quot;
+      monthNames=&quot;JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC&quot;
+      style=&quot;rollOverColor:##FF0000&quot;
+      width=&quot;200&quot; height=&quot;150&quot; &gt;
+   &lt;cfinput type=&quot;dateField&quot; name=&quot;startdate&quot; label=&quot;Block out starts&quot;
+      width=&quot;100&quot; value=&quot;#Form.startdate#&quot;&gt;
+   &lt;cfinput type=&quot;dateField&quot; name=&quot;enddate&quot; label=&quot;Block out ends&quot; width=&quot;100&quot;
+      value=&quot;#Form.enddate#&quot;&gt;
+   &lt;cfinput type=&quot;dateField&quot; name=&quot;selectdate&quot; label=&quot;Initial date&quot; width=&quot;100&quot;
+      value=&quot;#Form.selectdate#&quot; &gt;
+   &lt;cfinput type=&quot;Submit&quot; name=&quot;submitit&quot; value=&quot;Save&quot; width=&quot;100&quot;&gt; 
+&lt;/cfform&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="NAME">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NAME</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>The name of the calendar.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="HEIGHT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">HEIGHT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Determined by Flash"
+
+
+<p>The vertical dimension of the calendar specified in pixels.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="WIDTH">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">WIDTH</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Determined by Flash"
+
+
+<p>The horizontal dimension of the calendar specified in pixels.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SELECTEDDATE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SELECTEDDATE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "None (Flash shows the current month)"
+
+
+<p>The date that is initially selected. It is highlighted in a color determined by the form skin. Must be in mm/dd/yyyy or dd/mm/yyyy format, depending on the current locale. (Use the setlocale tag to set the locale, if necessary.)</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="STARTRANGE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STARTRANGE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>The start of a range of dates that are disabled. Users cannot select dates from this date through the date specified by the endRange attribute.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ENDRANGE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ENDRANGE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>The end of a range of dates that are disabled. Users cannot select dates from the date specified by the startRange attribute through this date.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DISABLED">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DISABLED</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "not disabled"
+
+
+<p>Disables all user input, making the control read-only. To disable input, specify disabled without an attribute or disabled=&quot;Yes&quot; (or any ColdFusion positive boolean value, such as True). To enable input, omit the attribute or specify disabled=&quot;No&quot; (or any ColdFusion negative boolean value, such as False).</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="MASK">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">MASK</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "MM/DD/YYYY"
+
+
+<p>A pattern that specifies the format of the submitted date. Mask characters are:</p><ul>
+
+<li>D = day; can use 0-2 mask characters</li>
+
+<li>M = month; can use 0-4 mask characters</li>
+
+<li>Y = year; can use 0, 2, or 4 characters</li>
+
+<li>E = day in week; can use 0-4 characters</li>
+
+<li>Any other character = put the character in the specified location</li>
+</ul>
+
+<p>For more information on masking, see "Masking input data" in the cfinput reference page.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="FIRSTDAYOFWEEK">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">FIRSTDAYOFWEEK</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "0"
+
+
+<p>Integer in the range 0-6 specifying the first day of the week in the calendar: 0 indicates Sunday; 6 indicates Saturday.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="DAYNAMES">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">DAYNAMES</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "S, M, T, W, Th, F, S"
+
+
+<p>A comma-delimited list that sets the names of the weekdays displayed in the calendar. Sunday is the first day and the rest of the weekday names follow in the normal order.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="MONTHNAMES">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">MONTHNAMES</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "January, February, March, April, May, June, July, August, September, October, November, December"
+
+
+<p>A comma-delimited list of the month names that are displayed at the top of the calendar.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="STYLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STYLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Flash ActionScript style or styles to apply to the calendar. For more information, see Chapter&#160;29, "Setting styles and skins in Flash forms" in ColdFusion MX Developer's Guide.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ENABLED">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ENABLED</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Yes"
+
+<strong>Default value:</strong> "Flash only: Boolean value specifying whether the control is enabled. A disabled control appears in light gray. This is the inverse of the disabled attribute."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="VISIBLE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">VISIBLE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "Yes"
+
+<strong>Default value:</strong> "Flash only: Boolean value specifying whether to show the control. Space that would be occupied by an invisible control is blank."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="TOOLTIP">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TOOLTIP</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional </td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<strong>Default value:</strong> "Flash only: Text to display when the mouse pointer hovers over the control."
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="ONCHANGE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ONCHANGE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>ActionScript that runs when the user selects a date.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

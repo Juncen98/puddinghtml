@@ -1,0 +1,254 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<title>CFREPORT</title>
+		<link rel="stylesheet" href="../../fields.css">
+			<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+			<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+			<script src="loc_strings.js"></script>
+			<script src="strings.js"></script>
+			<script src="RBlaunch.js"></script>
+			<script>
+/************************* GLOBAL VARS **************************/
+
+var TYPELIST;
+var FORMATLIST;
+var PDFENCRYPTIONLIST;
+var PDFPERMISSIONSLIST;
+var theUIObjects;
+
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj,theUIObjects);
+}
+
+function applyTag(tagNodeObj)
+{
+  var format = FORMATLIST.getValue();
+  if( format.toLowerCase() == "pdf" ){
+  	theUIObjects  = new Array(TYPELIST, FORMATLIST, PDFENCRYPTIONLIST, PDFPERMISSIONSLIST);
+  }
+  else {
+  	theUIObjects  = new Array(TYPELIST, FORMATLIST);
+  }
+  tagDialog.applyTagCommon(tagNodeObj,theUIObjects);
+}
+
+function initializeUI()
+{
+  TYPELIST = new ListControl("thetype");
+  tagDialog.populateDropDownList(TYPELIST, theReportTypeCap, theReportTypeVal, 0);
+  
+  FORMATLIST = new ListControl("theformat");
+  tagDialog.populateDropDownList(FORMATLIST, theReportFormatCap, theReportFormatVal, 0);
+ 
+  PDFENCRYPTIONLIST = new ListControl("theencryption");
+  tagDialog.populateDropDownList(PDFENCRYPTIONLIST, theReportPDFEncryptionCap, theReportPDFEncryptionVal, 0);
+
+  PDFPERMISSIONSLIST = new ListControl("thepermissions");
+  tagDialog.populateDropDownList(PDFPERMISSIONSLIST, theReportPDFPermissionsCap, theReportPDFPermissionsVal, 0);
+ 
+  theUIObjects  = new Array(TYPELIST, FORMATLIST, PDFENCRYPTIONLIST, PDFPERMISSIONSLIST);
+}
+
+function callRB(templateObjectName) {
+	var templateObj = dwscripts.findDOMObject(templateObjectName);
+	launchRB(templateObj.value);
+}
+
+function syncTemplatePath(sourceObjectName, targetObjectName) 
+{
+	var sourceObj = dwscripts.findDOMObject(sourceObjectName);
+	var targetObj = dwscripts.findDOMObject(targetObjectName);
+	if( sourceObj && targetObj ){
+		targetObj.value = sourceObj.value;
+	}
+}
+
+			</script>
+	</head>
+	<body onLoad="initializeUI();">
+		<div name="常规">
+			<table border="0" cellspacing="4">
+				<tr>
+					<td valign="baseline" align="right" nowrap="nowrap">选取模板:
+					</td>
+					<td nowrap="nowrap">
+						<input name="thetemplate" type="text" class="basicTextField" id="attr:cfreport:template"
+							onBlur="syncTemplatePath('thetemplate', 'edittemplate');" attname="template" required="true" />&nbsp;
+						<input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('thetemplate');focus(this);syncTemplatePath('thetemplate', 'edittemplate');" />
+						<input type="button" name="edit" value="编辑" onClick="callRB('thetemplate');" alt="Run CF Report Builder" />
+						<input type="image" src="../../Objects/CFML Advanced/CFReportBuilder_button.png" name="CFRBimage" />
+					</td>
+				</tr>
+				<tr>
+					<td valign="baseline" align="right" nowrap="nowrap">格式:
+					</td>
+					<td nowrap="nowrap">
+						<select name="theformat" class="oneWordOptionList" id="attr:cfreport:format" attname="format"
+							editable="false" required="true">
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td valign="baseline" align="right" nowrap="nowrap">名称:
+					</td>
+					<td nowrap="nowrap">
+						<input name="thename" type="text" class="basicTextField" id="attr:cfreport:name" attname="name" />
+					</td>
+				</tr>
+				<tr>
+					<td valign="baseline" align="right" nowrap="nowrap">文件名称:
+					</td>
+					<td nowrap="nowrap">
+						<input name="thefilename" type="text" class="basicTextField" id="attr:cfreport:filename"
+							attname="filename" />
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" align="right" nowrap="nowrap">查询:
+					</td>
+					<td nowrap="nowrap">
+						<input name="thequery" type="text" class="basicTextField" id="attr:cfreport:query" attname="query" />
+					</td>
+				</tr>
+				<tr>
+					<td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+					<td nowrap="nowrap">
+						<input type="checkbox" id="attr:cfreport:overwrite" name="overwrite" attname="overwrite"
+							truevalue="yes" falsevalue="no" />覆盖</td>
+					覆盖</td>
+				</tr>
+			</table>
+		</div>
+		<div name="CF Report Builder">
+			<table border="0" cellspacing="4">
+				<tr>
+					<td valign="baseline" align="right" nowrap="nowrap">创建模板:
+					</td>
+					<td nowrap="nowrap">
+						<input type="button" name="create" value="创建" onClick="newTemplate();" /> <input type="image" src="../../Objects/CFML Advanced/CFReportBuilder_button.png" name="CFRBimage" />
+					</td>
+				</tr>
+				<tr>
+					<td valign="baseline" align="right" nowrap="nowrap">编辑模板:
+					</td>
+					<td nowrap="nowrap">
+						<input name="edittemplate" type="text" class="basicTextField" onBlur="syncTemplatePath('edittemplate', 'thetemplate');"
+							id="attr:cfreport:edittemplate" attname="template" />&nbsp; <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('edittemplate');focus(this);syncTemplatePath('edittemplate', 'thetemplate');" />
+						<input type="button" name="edit" value="编辑" onClick="callRB('edittemplate');" alt="Run CF Report Builder" />
+						<input type="image" src="../../Objects/CFML Advanced/CFReportBuilder_button.png" name="CFRBimage" />
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div name="条件">
+			<textarea name="html:cfreport:innerHTML" class="contentsField" wrap="VIRTUAL" attname="innerHTML"></textarea>
+		</div>
+		<div name="仅 PDF 格式">
+			<table border="0" cellspacing="4">
+				<tr>
+					<td valign="baseline" align="right" nowrap="nowrap">加密:
+					</td>
+					<td nowrap="nowrap">
+						<select name="theencryption" type="text" class="oneWordOptionList" id="attr:cfreport:encryption"
+							attname="encryption">
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td valign="baseline" align="right" nowrap="nowrap">所有者密码:</td>
+					<td nowrap="nowrap">
+						<input name="theownerpassword" class="basicTextField" id="attr:cfreport:ownerpassword"
+							attname="ownerpassword" />
+					</td>
+				</tr>
+				<tr>
+					<td valign="baseline" align="right" nowrap="nowrap">用户密码:</td>
+					<td nowrap="nowrap">
+						<input name="theuserpassword" class="basicTextField" id="attr:cfreport:userpassword" attname="userpassword" />
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" align="right" nowrap="nowrap">权限:</td>
+					<td nowrap="nowrap">
+						<select name="thepermissions" size="8" multiple class="multiWordOptionList" style="width:200px;"
+							id="attr:cfreport:permissions" attname="permissions" editable="false">
+						</select>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div name="Crystal">
+			<table border="0" cellspacing="4">
+				<tr>
+					<td valign="baseline" align="right" nowrap="nowrap">报表文件:
+					</td>
+					<td nowrap="nowrap">
+						<input name="thereport" type="text" class="basicTextField" id="attr:cfreport:report" attname="report" />&nbsp;
+						<input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('thereport');focus(this)" />
+					</td>
+				</tr>
+				<tr>
+					<td valign="baseline" align="right" nowrap="nowrap">排序依据字段:
+					</td>
+					<td nowrap="nowrap">
+						<input name="theorderby" type="text" class="basicTextField" id="attr:cfreport:orderby"
+							attname="orderby" />
+					</td>
+				</tr>
+				<tr>
+					<td valign="baseline" align="right" nowrap="nowrap">类型:
+					</td>
+					<td nowrap="nowrap">
+						<select name="thetype" class="oneWordOptionList" id="attr:cfreport:type" attname="type"
+							editable="false">
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td valign="baseline" align="right" nowrap="nowrap">数据源:
+					</td>
+					<td nowrap="nowrap">
+						<input name="thedatasource" type="text" class="medTField" id="attr:cfreport:datasource"
+							attname="datasource" />
+					</td>
+				</tr>
+				<tr>
+					<td valign="baseline" align="right" nowrap="nowrap">用户名:
+					</td>
+					<td nowrap="nowrap">
+						<input name="theusername" type="text" class="medTField" id="attr:cfreport:username" attname="username" />
+					</td>
+				</tr>
+				<tr>
+					<td valign="baseline" align="right" nowrap="nowrap">密码:
+					</td>
+					<td nowrap="nowrap">
+						<input name="thepassword" type="text" class="medTField" id="attr:cfreport:password" attname="password" />
+					</td>
+				</tr>
+				<tr>
+					<td valign="baseline" align="right" nowrap="nowrap">超时:
+					</td>
+					<td nowrap="nowrap">
+						<input name="thetimeout" type="text" class="medTField" id="attr:cfreport:timeout" attname="timeout" />
+					</td>
+				</tr>
+				<tr>
+					<td valign="baseline" align="right" nowrap="nowrap">公式:
+					</td>
+					<td nowrap="nowrap">
+						<input name="theformula" type="text" class="medTField" id="attr:cfreport:formula" attname="formula" />
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

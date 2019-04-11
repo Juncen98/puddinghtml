@@ -1,0 +1,98 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<HTML xmlns:MMString="http://www.macromedia.com/schemes/data/string/">
+<HEAD>
+<title>XSL ×ª»»</title>
+
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+
+
+<SCRIPT SRC="../../Shared/Controls/Scripts/TextField.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/URLTextField.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/TextFieldCommaList.js"></SCRIPT>
+
+<SCRIPT SRC="../Shared/XSL Transformation.js"></SCRIPT>
+
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+<FORM NAME="theForm">
+  <TABLE BORDER=0>
+    <TR>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP>
+ <MMString:loadstring id="XMLXSL_SB/XSLFile" />
+      </TD>
+      <TD VALIGN="baseline" NOWRAP>
+        <INPUT TYPE="text" NAME="xslFile" STYLE="width:250px">&nbsp;<input name="xslBrowse" type="button" value="" style="width:80px" onClick="browseForXSLTFile();focus(this);autoPopulateXML();">
+      </TD>
+    </TR>
+    <TR><TD HEIGHT="1"></TD></TR>
+    <TR>
+      <TD ALIGN="right" VALIGN="baseline" NOWRAP>
+ <MMString:loadstring id="XMLXSL_SB/XMLFile" />
+      </TD>
+      <TD VALIGN="baseline" NOWRAP>
+        <INPUT TYPE="text" NAME="xmlFile" STYLE="width:250px">&nbsp;<input name="xmlBrowse" type="button" value="" style="width:80px" onClick="browseForXMLFile();focus(this);">
+      </TD>
+    </TR>
+    <TR><TD HEIGHT="1"></TD></TR>    
+    <TR>
+      <TD ALIGN="right" VALIGN="top" NOWRAP>
+ <MMString:loadstring id="XMLXSL_SB/XSLParams" /></TD>
+      <TD NOWRAP>
+         <img src="../../Shared/MM/Images/transparent.gif" WIDTH="2" HEIGHT="1">
+          <input type="image" name="plusButton" src="../../Shared/UltraDev/Images/PlusButton.gif" value="+"  onClick="updateUI('plusButton','onClick')">
+          <input type="image" name="minusButton" src="../../Shared/UltraDev/Images/MinusButtonEnabled.gif" value="-" onClick="updateUI('minusButton','onClick')">
+      </TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+		<TD NOWRAP>
+         <table cellpadding="0" cellspacing="0" border="0">
+           <tr nowrap>
+             <td valign="baseline">
+							 <select name="ParamList" size="4" class="paramNameList" onChange="updateUI('ParamList','onChange')" style="width:150px">
+               </select>
+             </td>
+             <td width="6">&nbsp; </td>
+             <td valign="top" nowrap>
+              <table cellpadding="0" cellspacing="0" border="1" width="100%">
+                <tr nowrap><td valign="top" NOWRAP>
+                <table cellpadding="0" cellspacing="0" width="210px">
+                  <tr nowrap>
+                    <td>
+                      <span name="ParamName">-</span>
+                    </td>
+                  </tr>
+                  <tr nowrap>
+                    <td>
+                      <span name="ParamDefault">-</span>
+                    </td>
+                  </tr>
+                  <tr nowrap>
+                    <td height="3">
+                    </td>
+                  </tr>
+                  <tr nowrap>
+                    <td>
+                      <input name="EditCFParam" type="button" onClick="updateUI('editCFParam','onclick')" value="" disabled="disabled">
+                    </td>
+                  </tr>
+                </table>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </TD>
+    </TR>
+    <TR><TD HEIGHT="1"></TD></TR>
+  </TABLE>
+</FORM>
+</BODY>
+</HTML>
+

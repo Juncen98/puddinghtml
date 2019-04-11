@@ -1,0 +1,46 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<html>
+<head>
+<title>记录集字段编号列表</title>
+<script>
+
+function controlFiles() {
+  return new Array(
+  "Shared/Common/Scripts/ListControlClass.js",
+  "Shared/Controls/Scripts/RecordsetFieldsOrderedList.js",
+	"Shared/MM/Scripts/Cmn/DOM.js");
+
+}
+
+
+function controlSource(name)
+{
+return '<table border=0>' +
+  '<tr>' +
+    '<td valign="baseline">' +
+      '<input type="image" name="AddButton" src="../../Shared/MM/Images/btnAdd.gif"  onClick = "_' + name + '.updateUI(\'addField\');focus(this)" >' +
+      '<input type="image" name="RemoveButton" src="../../Shared/MM/Images/btnDel.gif"  onClick = "_' + name + '.updateUI(\'removeField\');focus(this)" >' +
+    '</td>' +
+    '<td valign="baseline" align="right" nowrap>' +
+      '<input type="image" name="MoveUpButton"  border="0" src="../../Shared/MM/Images/btnUp.gif"  onClick = "_' + name + '.updateUI(\'moveFieldUp\');focus(this)" >' +
+      '<input type="image" name="MoveDownButton"  border="0" src="../../Shared/MM/Images/btnDown.gif" onClick = "_' + name + '.updateUI(\'moveFieldDown\');focus(this)" >' +
+    '</td>' +
+    '<td></td>' +
+  '</tr>' +
+  '<tr>' +
+    '<td valign="top" colspan=2>' +
+      '<select name="' + name + '" size="6" multiple style="width:200px" >' +
+      '</select>' +
+    '</td>' +
+    '<td> </td>' +
+  '</tr>' +
+'</table>'
+}
+
+</script>
+</head>
+
+<body text="#000000">
+
+</body>
+</html>

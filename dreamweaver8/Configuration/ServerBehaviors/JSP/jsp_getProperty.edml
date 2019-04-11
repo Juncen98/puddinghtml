@@ -1,0 +1,35 @@
+<participant name="jsp_getProperty">
+  <quickSearch><![CDATA[jsp:getProperty]]></quickSearch>
+  <insertText location="replaceSelection">
+    <![CDATA[<jsp:getProperty name="@@beanName@@" property="@@property@@"/>]]>
+  </insertText>
+  <searchPatterns whereToSearch="tag+jsp:getProperty">
+    <searchPattern paramNames="beanName"><![CDATA[/name\s*\=\s*"(\w+)"/i]]></searchPattern>
+    <searchPattern paramNames="property"><![CDATA[/property\s*\=\s*"(\w+)"/i]]></searchPattern>
+  </searchPatterns>
+  <translator>
+    <searchPatterns>
+      <searchPattern><![CDATA[<jsp:]]></searchPattern>
+      <searchPattern paramNames="beanName"><![CDATA[/name\s*\=\s*"(\w+)"/i]]></searchPattern>
+      <searchPattern paramNames="property"><![CDATA[/property\s*\=\s*"(\w+)"/i]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="tag+jsp:getProperty" limitSearch="all" translationType="dynamic data">
+        <openTag>MM_DYNAMIC_CONTENT</openTag>
+        <attributes>
+          <attribute><![CDATA[SOURCE="@@beanName@@"]]></attribute>
+          <attribute><![CDATA[BINDING="@@property@@"]]></attribute>
+        </attributes>
+        <display><![CDATA[{@@beanName@@.@@property@@}]]></display>
+        <closeTag>MM_DYNAMIC_CONTENT</closeTag>
+      </translation>
+      <translation whereToSearch="tag+INPUT" limitSearch="attribute+VALUE" translationType="dynamic data">
+        <attributes>
+          <attribute><![CDATA[mmTranslatedValueDynValue="VALUE={@@beanName@@.@@property@@}"]]></attribute>
+        </attributes>
+      </translation>
+      <translation whereToSearch="tag+IMG" limitSearch="attribute+SRC" translationType="dynamic image"/>
+      <translation whereToSearch="tag+*" limitSearch="attribute+*" translationType="dynamic data"/>
+    </translations>
+  </translator>
+</participant>

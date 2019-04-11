@@ -1,0 +1,52 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>╡Циообнд</TITLE>
+<SCRIPT LANGUAGE="javascript">
+<!--
+function receiveArguments()
+{
+	var layerType = arguments[0];
+	if (layerType == "span")
+		dw.getDocumentDOM().setLayerTag('SPAN');
+	if (layerType == "div")
+		dw.getDocumentDOM().setLayerTag('DIV');
+	if (layerType == "layer")
+		dw.getDocumentDOM().setLayerTag('LAYER')
+	if (layerType == "ilayer")
+		dw.getDocumentDOM().setLayerTag('ILAYER');
+}
+
+function canAcceptCommand()
+{
+	return true;
+}
+
+function isCommandChecked()
+{
+	var selarray = dw.getSelection();
+	var theNode = dw.offsetsToNode(selarray[0],selarray[1]);
+	var alignAttr = "";
+	var bResult = false;
+	var layerType = arguments[0];
+
+	if (theNode.nodeType == Node.ELEMENT_NODE)
+	{
+		if (theNode.tagName == "SPAN" && layerType == "span")
+			bResult = true;
+		if (theNode.tagName == "DIV" && layerType == "div")
+			bResult = true;
+		if (theNode.tagName == "LAYER" && layerType == "layer")
+			bResult = true;
+		if (theNode.tagName == "ILAYER" && layerType == "ilayer")
+			bResult = true;
+	}
+	return bResult;
+}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

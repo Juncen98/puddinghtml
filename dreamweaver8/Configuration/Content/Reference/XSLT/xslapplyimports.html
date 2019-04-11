@@ -1,0 +1,297 @@
+<html>
+<head>
+<title>&lt;xsl:apply-imports&gt;</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">&lt;xsl:apply-imports&gt;</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+Allows you to apply any overridden templates to the current node. It is comparable to the <span class="LITERAL">super()</span> method in Java.
+</td></tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Category</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>Instruction</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Required Attributes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>None.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Optional Attributes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>None.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Content</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>None. <span class="LITERAL">&lt;xsl:apply-imports&gt;</span> is an empty element. </p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Appears in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>
+<span class="LITERAL">&lt;xsl:apply-imports&gt;</span> appears inside a template. </p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Defined in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>XSLT section 5.6, Overriding Template Rules.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>Here is a short XML file we'll use to illustrate <span class="LITERAL">&lt;xsl:apply-imports&gt;</span>:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;test&gt;
+<!--<?troff .Nd 10?>-->
+  &lt;p&gt;This is a test XML document used by several 
+  of our sample stylesheets.&lt;/p&gt;
+  &lt;question&gt;
+    &lt;text&gt;When completed, the Eiffel Tower was the 
+    tallest building in the world.&lt;/text&gt;
+    &lt;true correct="yes"&gt;You're correct!  The Eiffel 
+    Tower was the world's tallest building until 1930.&lt;/true&gt;
+    &lt;false&gt;No, the Eiffel Tower was the world's tallest 
+    building for over 30 years.&lt;/false&gt;
+  &lt;/question&gt;
+  &lt;question&gt;
+    &lt;text&gt;New York's Empire State Building knocked the 
+    Eiffel Tower from its pedestal.&lt;/text&gt;
+    &lt;true&gt;No, that's not correct.&lt;/true&gt;
+    &lt;false correct="yes"&gt;Correct!  New York's Chrysler 
+    Building, completed in 1930, became the world's tallest.&lt;/false&gt;
+  &lt;/question&gt;
+&lt;/test&gt;</pre></span>
+<p>Here's the stylesheet we'll import:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+
+  &lt;xsl:output method="html"/&gt;
+
+  &lt;xsl:template match="/"&gt;
+    &lt;html&gt;
+      &lt;body&gt;
+        &lt;xsl:for-each select="//text|//true|//false"&gt;
+          &lt;p&gt;
+            &lt;xsl:apply-templates select="."/&gt;
+          &lt;/p&gt;
+        &lt;/xsl:for-each&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match="text"&gt;
+    &lt;xsl:text&gt;True or False: &lt;/xsl:text&gt;&lt;xsl:value-of select="."/&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match="true|false"&gt;
+    &lt;b&gt;&lt;xsl:value-of select="name()"/&gt;:&lt;/b&gt;
+    &lt;br/&gt;
+    &lt;xsl:value-of select="."/&gt;
+  &lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</pre></span>
+
+<!--<?troff .nD 10?>-->
+<p>This template provides basic formatting for the
+<span class="LITERAL">&lt;true&gt;</span> and <span class="LITERAL">&lt;false&gt;</span>
+elements, as shown in <link linkend="xslt-APPA-FIG-1">Figure A-1</link>.</p>
+<figure id="xslt-APPA-FIG-1" label="A-1">
+        <p class="TITLE">Document generated with basic formatting</p>
+        <graphic depth="317" width="455" fileref="figs/xslt.aa01.gif"/>
+      </figure>
+<p>We'll illustrate <span class="LITERAL">&lt;xsl:apply-imports&gt;</span> with this stylesheet, which imports the other stylesheet:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+
+  &lt;xsl:import href="imported.xsl"/&gt;
+  &lt;xsl:output method="html"/&gt;
+
+  &lt;xsl:template match="/"&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;A Brief Test&lt;/title&gt;
+        &lt;style&gt;
+          &lt;xsl:comment&gt; 
+            p.question {font-size: 125%; font-weight: bold} 
+            p.right    {color: green}
+            p.wrong    {color: red}
+          &lt;/xsl:comment&gt;
+        &lt;/style&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;h1&gt;A Brief Test&lt;/h1&gt;
+        &lt;xsl:for-each select="//question"&gt;
+          &lt;table border="1"&gt;
+            &lt;xsl:apply-templates select="text"/&gt;
+            &lt;xsl:apply-templates select="true|false"/&gt;
+          &lt;/table&gt;
+          &lt;br/&gt;
+        &lt;/xsl:for-each&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match="text"&gt;
+    &lt;tr bgcolor="lightslategray"&gt;
+      &lt;td&gt;
+        &lt;p class="question"&gt;
+          &lt;xsl:apply-imports/&gt;
+        &lt;/p&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match="true|false"&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;xsl:choose&gt;
+          &lt;xsl:when test="@correct='yes'"&gt;
+            &lt;p class="right"&gt;
+              &lt;xsl:apply-imports/&gt;
+            &lt;/p&gt;
+          &lt;/xsl:when&gt;
+          &lt;xsl:otherwise&gt;
+            &lt;p class="wrong"&gt;
+              &lt;xsl:apply-imports/&gt;
+            &lt;/p&gt;
+          &lt;/xsl:otherwise&gt;
+        &lt;/xsl:choose&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</pre></span>
+<p>Using <span class="LITERAL">&lt;xsl:apply-imports&gt;</span> allows us to augment the behavior of the imported templates.  Our new stylesheet produces this document:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;META http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+&lt;title&gt;A Brief Test&lt;/title&gt;
+&lt;style&gt;
+&lt;!-- 
+            p.question {font-size: 125%; font-weight: bold} 
+            p.right    {color: green}
+            p.wrong    {color: red}
+          --&gt;
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;A Brief Test&lt;/h1&gt;
+&lt;table border="1"&gt;
+&lt;tr bgcolor="lightslategray"&gt;
+&lt;td&gt;
+&lt;p class="question"&gt;True or False: When completed, the Eiffel 
+Tower was the tallest building in the world.&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;p class="right"&gt;
+&lt;b&gt;true:&lt;/b&gt;
+&lt;br&gt;You're correct!  The Eiffel Tower was the world's tallest 
+building until 1930.&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;p class="wrong"&gt;
+&lt;b&gt;false:&lt;/b&gt;
+&lt;br&gt;No, the Eiffel Tower was the world's tallest building for 
+over 30 years.&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;br&gt;
+&lt;table border="1"&gt;
+&lt;tr bgcolor="lightslategray"&gt;
+&lt;td&gt;
+&lt;p class="question"&gt;True or False: New York's Empire State Building 
+knocked the Eiffel Tower from its pedestal.&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;p class="wrong"&gt;
+&lt;b&gt;true:&lt;/b&gt;
+&lt;br&gt;No, that's not correct.&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+<!--<?troff .Nd 10?>-->
+&lt;tr&gt;
+&lt;td&gt;
+&lt;p class="right"&gt;
+&lt;b&gt;false:&lt;/b&gt;
+&lt;br&gt;Correct!  New York's Chrysler Building, completed in 1930, 
+became the world's tallest.&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;br&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></span>
+<p>When rendered, this stylesheet looks like <link linkend="xslt-APPA-FIG-2">Figure A-2</link>.</p>
+<figure id="xslt-APPA-FIG-2" label="A-2">
+        <p class="TITLE">Document generated with &lt;xsl:apply-imports&gt;</p>
+        <graphic depth="367" width="455" fileref="figs/xslt.aa02.gif"/>
+      </figure>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

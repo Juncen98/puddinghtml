@@ -1,0 +1,144 @@
+<html>
+<head>
+<title>substring-before() Function</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">substring-before() Function</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+Returns the substring of the first argument before the first occurrence of the second argument in the first argument. If the second argument does not occur in the first argument, the <span class="LITERAL">substring-before()</span> function returns an empty string. </td></tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Inputs</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>Two strings. The first string is the string to be searched, and the second string is the string to be searched for in the first string. </p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Output</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>The portion of the first argument that occurs before the first occurrence of the second argument. If the second argument does not appear in the first argument, the function returns an empty string. </p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Defined in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>XPath section 4.2, String Functions.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>This stylesheet uses the <span class="LITERAL">replace-substring</span> named template. It passes three arguments to the <span class="LITERAL">replace-substring</span> template: the original string, the substring to be searched for in the original string, and the substring to replace the target substring in the original string. The <span class="LITERAL">replace-substring</span> template uses the <span class="LITERAL">contains()</span>, <span class="LITERAL">substring-after()</span>, and <span class="LITERAL">substring-before()</span> functions extensively. </p>
+<p>Here is our sample stylesheet. It replaces all occurrences of <span class="LITERAL">World</span> with the string "Mundo":</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"&gt;
+
+  &lt;xsl:output method="text"/&gt;
+
+  &lt;xsl:template match="/"&gt;
+    &lt;xsl:variable name="test"&gt;
+      &lt;xsl:call-template name="replace-substring"&gt;
+        &lt;xsl:with-param name="original"&gt;Hello World!&lt;/xsl:with-param&gt;
+        &lt;xsl:with-param name="substring"&gt;World&lt;/xsl:with-param&gt;
+        &lt;xsl:with-param name="replacement"&gt;Mundo&lt;/xsl:with-param&gt;
+      &lt;/xsl:call-template&gt;
+    &lt;/xsl:variable&gt;
+    &lt;xsl:value-of select="$test"/&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template name="replace-substring"&gt;
+    &lt;xsl:param name="original"/&gt;
+    &lt;xsl:param name="substring"/&gt;
+    &lt;xsl:param name="replacement" select="''"/&gt;
+    &lt;xsl:variable name="first"&gt;
+      &lt;xsl:choose&gt;
+        &lt;xsl:when test="contains($original, $substring)"&gt;
+          &lt;xsl:value-of select="substring-before($original, $substring)"/&gt;
+        &lt;/xsl:when&gt;
+        &lt;xsl:otherwise&gt;
+          &lt;xsl:value-of select="$original"/&gt;
+        &lt;/xsl:otherwise&gt;
+      &lt;/xsl:choose&gt;
+    &lt;/xsl:variable&gt;
+    &lt;xsl:variable name="middle"&gt;
+      &lt;xsl:choose&gt;
+        &lt;xsl:when test="contains($original, $substring)"&gt;
+          &lt;xsl:value-of select="$replacement"/&gt;
+        &lt;/xsl:when&gt;
+        &lt;xsl:otherwise&gt;
+          &lt;xsl:text&gt;&lt;/xsl:text&gt;
+        &lt;/xsl:otherwise&gt;
+      &lt;/xsl:choose&gt;
+    &lt;/xsl:variable&gt;
+    &lt;xsl:variable name="last"&gt;
+      &lt;xsl:choose&gt;
+        &lt;xsl:when test="contains($original, $substring)"&gt;
+          &lt;xsl:choose&gt;
+            &lt;xsl:when test="contains(substring-after($original, $substring), 
+                                      $substring)"&gt;
+              &lt;xsl:call-template name="replace-substring"&gt;
+                &lt;xsl:with-param name="original"&gt;
+                  &lt;xsl:value-of 
+                    select="substring-after($original, $substring)"/&gt;
+                &lt;/xsl:with-param&gt;
+                &lt;xsl:with-param name="substring"&gt;
+                  &lt;xsl:value-of select="$substring"/&gt;
+                &lt;/xsl:with-param&gt;
+                &lt;xsl:with-param name="replacement"&gt;
+                  &lt;xsl:value-of select="$replacement"/&gt;
+                &lt;/xsl:with-param&gt;
+              &lt;/xsl:call-template&gt;
+            &lt;/xsl:when&gt;
+            &lt;xsl:otherwise&gt;
+              &lt;xsl:value-of select="substring-after($original, $substring)"/&gt;
+            &lt;/xsl:otherwise&gt;
+          &lt;/xsl:choose&gt;
+        &lt;/xsl:when&gt;
+        &lt;xsl:otherwise&gt;
+          &lt;xsl:text&gt;&lt;/xsl:text&gt;
+        &lt;/xsl:otherwise&gt;
+      &lt;/xsl:choose&gt;
+    &lt;/xsl:variable&gt;
+    &lt;xsl:value-of select="concat($first, $middle, $last)"/&gt;
+  &lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</pre></span>
+<p>The stylesheet produces these results, regardless of the XML document used as input:</p>
+<span class="PROGRAMLISTING"><pre>
+Hello Mundo!
+</pre></span>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

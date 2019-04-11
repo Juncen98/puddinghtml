@@ -1,0 +1,243 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFLOGIN</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFLOGIN</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+A container for user login and authentication code. ColdFusion runs the code in this tag if a user is not already logged in. You put code in the tag that authenticates the user and identifies the user with a set of roles. Used with cfloginuser tag.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Security tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cflogin
+   idletimeout = &quot;value&quot;
+   applicationToken = &quot;token&quot;
+   cookieDomain = &quot;domain&quot;
+   ...
+   &lt;cfloginuser
+      name = &quot;name&quot;
+      password = &quot;password-string&quot;
+      roles = &quot;roles&quot;&gt;
+   ...&gt;
+&lt;/cflogin&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfloginuser, cflogout, GetAuthUser, IsUserInRole, Chapter&#160;16, "Securing Applications" in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion MX&#160;6.1: Changed behavior: the cflogin variable exists when ColdFusion receives a request with NTLM or Digest (CFHTTP Negotiated header) authentication information.
+</p>
+
+<p>
+ColdFusion&#160;MX: Added this tag.
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+The body of this tag executes only if there is no logged-in user. When using application-based security, you put code in the body of the cflogin tag to check the user-provided ID and password against a data source, LDAP directory, or other repository of login identification. The body must include a cfloginuser tag to establish the authenticated user&#39;s identity in ColdFusion.
+</p>
+
+<p>
+You control the data source and are responsible for coding the SQL within the cflogin tag, and you must make sure that the associated database has user, password, and role information.
+</p>
+
+<p>
+The cflogin tag has a built-in cflogin structure that contains two variables, cflogin.name and cflogin.password, if the page is executing in response to any of the following:
+</p>
+<ul>
+
+<li>Submission of a form that contains input fields with the names j_username and j_password.</li>
+
+<li>A request that uses CFHTTP Basic authentication, and therefore includes an Authorization header with the username and password.</li>
+
+<li>A request that uses NTLM or Digest authentication. In this case, the username and password are hashed using a one-way algorithm in the Authorization header; ColdFusion gets the username from the web server and sets the cflogin.password value to the empty string.</li>
+</ul>
+
+<p>
+You can use these values in the cflogin tag body to authenticate the user, and, in the cfloginuser tag, to log the user in. The structure is only available in the cflogin tag body.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span>
+<p>
+The following example shows a simple authentication. This code is typically in the Application.cfc onRequestStart method or in the application.cfm page.
+</p>
+<pre>&lt;cflogin&gt;
+   &lt;cfif NOT IsDefined(&quot;cflogin&quot;)&gt;
+      &lt;cfinclude template=&quot;loginform.cfm&quot;&gt;
+      &lt;cfabort&gt;
+   &lt;cfelse&gt;
+      &lt;cfif cflogin.name eq &quot;admin&quot;&gt;
+         &lt;cfset roles = &quot;user,admin&quot;&gt;
+      &lt;cfelse&gt;
+            &lt;cfset roles = &quot;user&quot;&gt;
+      &lt;/cfif&gt;
+      &lt;cfloginuser name = &quot;#cflogin.name#&quot; password = &quot;#cflogin.password#&quot;
+         roles = &quot;#roles#&quot; /&gt;
+   &lt;/cfif&gt;
+&lt;/cflogin&gt;
+</pre>
+<p>
+The following view-only example checks the user ID and password against a data source:
+</p>
+<pre>&lt;cfquery name=&quot;qSecurity&quot;
+   datasource=&quot;UserRolesDb&quot;&gt;
+   select Roles FROM SecurityRoles
+   where username=&lt;cfqueryparam value=&quot;#cflogin.name#&quot;
+      CFSQLTYPE=&quot;CF_SQL_VARCHAR&quot;
+   and password=&lt;cfqueryparam value=&quot;#cflogin.password#&quot;
+      CFSQLTYPE=&quot;CF_SQL_VARCHAR&quot;
+&lt;/cfquery&gt;
+
+&lt;cfif qSecurity.recordcount gt 0&gt;
+&lt;cfloginuser name = &quot;#cflogin.name#&quot;
+password = &quot;#cflogin.password#&quot;
+roles = &quot;#trim(qSecurity.Roles)#&quot; &gt;
+&lt;/cfif&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="IDLETIMEOUT">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">IDLETIMEOUT</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "1800"
+
+
+<p>Time interval, in seconds, after which ColdFusion logs off the user.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="APPLICATIONTOKEN">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">APPLICATIONTOKEN</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+<strong>Default value:</strong> "The current application name"
+
+
+<p>Unique application identifier. Limits the login validity to one application, as specified by the cfapplication tag or the Application.cfc file.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="COOKIEDOMAIN">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">COOKIEDOMAIN</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Optional</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+
+<p>Domain of the cookie that is used to mark a user as logged in. Use this attribute to enable a user login cookie to work with multiple clustered servers in the same domain.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

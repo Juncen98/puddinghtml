@@ -1,0 +1,119 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>ARRAYSUM</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">ARRAYSUM</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Array sum function.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+The sum of values in an array. If the array parameter value is an empty array, returns zero. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Array functions, Mathematical functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>ArraySum(array)
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;ArraySum Example&lt;/h3&gt;
+&lt;p&gt;This example uses ArraySum to add two numbers together.&lt;br&gt; &lt;/p&gt;
+&lt;!--- After checking whether the form has been submitted, the code creates 
+an array and assigns the form fields to the first two elements in 
+the array. ---&gt;
+&lt;cfif IsDefined(&quot;FORM.submit&quot;)&gt;
+   &lt;cfset myNumberArray = ArrayNew(1)&gt;
+   &lt;cfset myNumberArray[1] = number1&gt;
+   &lt;cfset myNumberArray[2] = number2&gt;
+      
+   &lt;cfif Form.Submit is &quot;Add&quot;&gt;   
+      &lt;!--- use ArraySum to add the number in the array ---&gt;
+      &lt;p&gt;The sum of the numbers is
+      &lt;cfoutput&gt;#ArraySum(myNumberArray)#.&lt;/cfoutput&gt;
+   &lt;/cfif&gt;   
+&lt;/cfif&gt;   
+&lt;!--- This form provides two numeric fields that are added when the form is
+submitted. ---&gt;
+&lt;form action = &quot;arraysum.cfm&quot; method=&quot;post&quot;&gt;
+   &lt;input type = &quot;hidden&quot; name = &quot;number1_Float&quot;&gt;
+   &lt;input type = &quot;hidden&quot; name = &quot;number2_Float&quot;&gt;
+   &lt;input type = &quot;text&quot; name = &quot;number1&quot;&gt;
+   &lt;br&gt;
+   &lt;input type = &quot;text&quot; name = &quot;number2&quot;&gt;
+   &lt;br&gt;
+   &lt;input type = &quot;submit&quot; name = &quot;submit&quot; value = &quot;Add&quot;&gt;
+&lt;/form&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="ARRAY">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ARRAY</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Name of an array </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

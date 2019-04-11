@@ -1,0 +1,172 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFLOOP</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var SELECTORLIST;
+var theUIObjects;
+var applyType = "dynamic"; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  if (tagNodeObj.getAttribute("list") != null){
+    SELECTORLIST.setIndex(3);
+  }else if (tagNodeObj.getAttribute("condition") != null){
+    SELECTORLIST.setIndex(1);    
+  }else if (tagNodeObj.getAttribute("query") != null){
+    SELECTORLIST.setIndex(2);    
+  }else if (tagNodeObj.getAttribute("collection") != null){
+    SELECTORLIST.setIndex(4);    
+  }else{
+    SELECTORLIST.setIndex(0);    
+  } 
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.inspectTagCommon(tagNodeObj, null, applyType, activeDisplayNode, SELECTORLIST); 
+}
+
+function applyTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.applyTagCommon(tagNodeObj, null, applyType, activeDisplayNode); 
+}
+
+function updateUI()
+{
+  var curDiv = SELECTORLIST.getValue(); 
+
+  tagDialog.showOnlyThisLayer(curDiv); 
+}
+
+function initializeUI()
+{
+  SELECTORLIST = new ListControl("theselector"); 
+  theUIObjects = new Array(SELECTORLIST);
+
+  tagDialog.populateDropDownList(SELECTORLIST, theSelLoopVal, theSelLoopVal, 0); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+<div name="常规"> 
+<br /> 
+循环类型: 
+<select name="theselector" class="selectorList" id="attr:cfloop:selector" onChange="updateUI();" editable="false">
+</select>
+<hr width="100%"> 
+<div id="theindexloop" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">索引: </td>
+      <td nowrap="nowrap">
+        <input name="theindex" type="text" class="basicTextField" id="attr:cfloop:index" attname="index" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">从: </td>
+      <td nowrap="nowrap">
+        <input name="thefrom" type="text" class="basicTextField" id="attr:cfloop:from" attname="from" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">到: </td>
+      <td nowrap="nowrap">
+        <input name="theto" type="text" class="basicTextField" id="attr:cfloop:to" attname="to" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">步骤: </td>
+      <td nowrap="nowrap">
+        <input name="thestep" type="text" class="basicTextField" id="attr:cfloop:step" attname="step" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="theconditionalloop" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">条件: </td>
+      <td nowrap="nowrap">
+        <input name="thecondition" type="text" class="basicTextField" id="attr:cfloop:condition" attname="condition" required="true" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="thequeryloop" style="position:absolute;width:200px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" width="300" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">查询名称:</td>
+      <td nowrap="nowrap">
+        <input name="thequery" type="text" class="basicTextField" id="attr:cfloop:query" attname="query" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">起始行: </td>
+      <td nowrap="nowrap">
+        <input name="thestartrow" type="text" class="basicTextField" id="attr:cfloop:startrow" attname="startrow" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">结束行: </td>
+      <td nowrap="nowrap">
+        <input name="theendrow" type="text" class="basicTextField" id="attr:cfloop:endrow" attname="endrow" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="thelistloop" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">索引: </td>
+      <td nowrap="nowrap">
+        <input name="theindex" type="text" class="basicTextField" id="attr:cfloop:index" attname="index" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">列表: </td>
+      <td nowrap="nowrap">
+        <input name="thelist" type="text" class="basicTextField" id="attr:cfloop:list" attname="list" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">定界符: </td>
+      <td nowrap="nowrap">
+        <input name="thedelimiters" type="text" class="basicTextField" id="attr:cfloop:delimiters" attname="delimiters" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="thecollectionloop" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">集合: </td>
+      <td nowrap="nowrap">
+        <input name="thecollection" type="text" class="basicTextField" id="attr:cfloop:collection" attname="collection" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">项: </td>
+      <td nowrap="nowrap">
+        <input name="theitem" type="text" class="basicTextField" id="attr:cfloop:item" attname="item" required="true" />
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+</html>

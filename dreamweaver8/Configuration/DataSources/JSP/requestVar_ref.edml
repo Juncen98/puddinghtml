@@ -1,0 +1,9 @@
+<participant>
+     <quickSearch><![CDATA[getParameter]]></quickSearch>
+     <insertText location="replaceSelection">
+<![CDATA[<%= ((request.getParameter("@@bindingName@@")!=null)?request.getParameter("@@bindingName@@"):"") %>]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName,bindingName"><![CDATA[/\b(request)\.getParameter\(\s*"?([^\)"]+)"?\)/i]]></searchPattern>
+     </searchPatterns>
+</participant>

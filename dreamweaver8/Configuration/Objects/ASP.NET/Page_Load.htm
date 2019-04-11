@@ -1,0 +1,48 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Copyright 2001, 2002, 2003 Macromedia, Inc. All rights reserved. -->
+<title><MMString:LoadString id="insertbar/aspnet/pageLoad" /></title>
+
+<script language="javascript">
+
+//---------------     API FUNCTIONS    ---------------
+
+function isDOMRequired()
+{ 
+	// Return false, indicating that this object is available in code view.
+	return false;
+}
+
+function objectTag()
+{
+	// Manually insert code, and then put IP inside it.
+	var dom = dw.getDocumentDOM();
+	var docType = dom.documentType;
+	var before,after;
+	
+	if (docType == 'ASP.NET_CSharp')
+	{
+		before = '<' + 'script runat="server">\nprotected void Page_Load(Object Src, EventArgs E)\n{\n  if (!IsPostBack) DataBind();';
+		after  = '\n}\n</' + 'script>';
+	}
+	else if (docType == 'ASP.NET_VB')
+	{
+		before = '<' + 'script runat="server">\nSub Page_Load(Src As Object, E As EventArgs)\nIf Not IsPostBack Then\nDataBind()\nEnd If';
+		after  = '\nEnd Sub\n</' + 'script>';
+	}
+		
+	dom.source.wrapSelection(before,after);
+
+  // Just return -- don't do anything else.
+  return;
+}
+
+</script>
+	
+</head>
+
+<body>
+</body>
+
+</html>

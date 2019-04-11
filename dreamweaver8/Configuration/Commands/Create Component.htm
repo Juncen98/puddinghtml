@@ -1,0 +1,259 @@
+<!-- MENU-LOCATION=NONE -->
+<!DOCTYPE HTML PUBLIC "-//Macromedia//DWExtension layout-engine 8.0//dialog">
+
+<html>
+<head>
+<title>创建组件</title>
+<script language="JavaScript">
+// Copyright 2002, 2003, 2004 Macromedia, Inc. All rights reserved.
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+LABEL_SECTIONS= new Array("组件","属性","函数","参数");
+VALUE_SECTIONS= new Array("componentSection","propertiesSection","methodsSection","parametersSection");
+
+var LABEL_DirBrowse = '组件文件输出目录';
+
+var LABEL_Component = "组件";
+var LABEL_Property = "属性";
+var LABEL_Method = "函数";
+var LABEL_Parameter = "参数";
+
+var MSG_Error_Header = "创建组件之前请更正以下内容:";
+
+var MSG_Error_BlankName = "%s 名称不能为空白，并且只能包含'_'和字母数字字符。\r\n";
+var MSG_Error_NameExists = "'%s' 已经作为 %s 名称存在。\r\n";
+var MSG_Error_CompFileOutputDir = ". 您必须提供一个目录来保存该组件文件。\r\n";
+
+var MSG_DeclinedOverwrite = "用户已拒绝文件覆盖。";
+var MSG_TemplateSaved = "已将该组件保存到模板。";
+var MSG_OverwriteExisting = "文件已存在。是否覆盖？";
+var MSG_CreateDirectory = "组件文件输出目录'%s”不存在。\n\n" +
+		"是否希望为您创建该目录？\n"
+var MSG_ContinueCancel = "已经选中用于保存该组件信息的复选框。\n\n" +
+		"如果取消'创建组件”窗口，则不会将信息保存到模板。\n\n" +
+		"是否继续取消？";
+var MSG_FileWriteError = "错误: 无法写入文件: %s";
+var MSG_RequiredField = "(*) 表示必填字段";
+
+var LABEL_FileGeneratedBy = "<!--- 由 %s %s 生成 - %s --->\r\n\r\n";
+
+//--------------- END LOCALIZEABLE   ---------------
+</script>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<script SRC="../Shared/MM/Scripts/CMN/DOM.js"></script>
+<script SRC="../Shared/Common/Scripts/ListControlClass.js"></script>
+<script SRC="../Shared/Common/Scripts/RadioGroupClass.js"></script>
+<script SRC="../Shared/Common/Scripts/TagEditClass.js"></script>
+<script SRC="../Shared/MM/Scripts/Class/TabControlClass.js"></script>
+<SCRIPT SRC="../Shared/MM/Scripts/CFCutilities.js"></SCRIPT>
+<script SRC="Create Component.js"></script>
+
+<script SRC="wddxDes.js"></script>
+
+<script>
+function windowDimensions()
+{
+  if (navigator.platform.charAt(0)=="M")
+    return "570,420";
+  else
+    return "";
+}
+</script>
+
+<style type="text/css">
+    #info { color: blue; }
+    .section { position:absolute; width:435px; height:400px; left:105px; top:20px; visibility:hidden; }
+    .required { font-weight: bold; }
+    SELECT { width: 200px; }
+    .selectbox_section { width: 90px; }
+    /* .label { text-align: right; white-space:nowrap; } */
+    .label { text-align: right; }
+</style>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onload="initializeUI();">
+
+<form>
+<table border="0" width="510">
+  <tr valign="top">
+    <td width="70">部分</td>
+    <td rowspan="3" width="445"></td>
+  </tr>
+  <tr valign="top">
+    <td width="70">
+      <select name="section" size="25" onChange="updateUI('section')" class="selectbox_section"></select>
+    </td>
+  </tr>
+</table>
+
+<span id="componentSection" style="z-index:101;" class="section">
+    <table border=0 width="435">
+
+
+    <tr><td colspan="2">组件<br><hr size="2" width="100%"></td></tr>
+    <tr>
+        <td class="label">显示名称:&nbsp;</td>
+        <td><input name="compDisplayName" type="text" class="basicTextField" onBlur="T.update('compDisplayName')" value=""></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label">提示:&nbsp;</td>
+        <td><input name="compDescription" type="text" class="basicTextField"onBlur="T.update('compDescription')" value=""></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label">扩展:&nbsp;</td>
+        <td><select name="compParent" editable="true" onChange="this.value=this.options[this.selectedIndex].value" onBlur="T.update('compParent')"></select>
+            <input type="image" name="btn_compParentRefresh" src="../Shared/MM/Images/refresh.gif" onClick="repopulateCompParent();" width="16" height="16" alt="刷新可用组件的列表" border="0">
+        </td>
+    </tr>
+    <tr><td height="50"></td></tr>
+    <tr>
+        <td class="label">名称:&nbsp;</td>
+        <td><input name="compName" type="text" class="basicTextField" onBlur="T.update('compName')" value=""></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label" nowrap>组件目录:&nbsp;</td>
+        <td><select name="compFileOutputDir" editable="true" onChange="this.editText=this.options[this.selectedIndex].value"></select>
+            <input type="button" name="FolderBrowse" value="浏览..." onclick="T.update('FolderBrowse')"></td>
+    </tr>
+    </table>
+ </span>
+
+<span id="propertiesSection" style="z-index:102;" class="section">
+    <table border="0" width="435">
+    <tr><td colspan="2">属性<br><hr size=2 width="100%"></td></tr>
+    <tr>
+        <td class="label" valign="top"><img src="../Shared/MM/Images/transparent.gif" width="10" height="4"><br>属性:&nbsp;</td>
+        <td><input type="image" name="btn_propPlus" onClick="T.update('btn_propPlus')" src="../Shared/UltraDev/Images/PlusButton.gif" border="0" >
+            <input type="image" name="btn_propMinus" onClick="T.update('btn_propMinus')" src="../Shared/UltraDev/Images/MinusButtonEnabled.gif" border="0" ><br>
+            <select name="properties" size="6" onChange="T.update('properties')"></select>
+        <td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label">名称:&nbsp;</td>
+        <td><input name="propName" type="text" class="basicTextField" onBlur="T.update('propName')" value=""></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label">显示名称:&nbsp;</td>
+        <td><input name="propDisplayName" type="text" class="basicTextField" onBlur="T.update('propDisplayName')" value=""></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label">提示:&nbsp;</td>
+        <td><input name="propDescription" type="text" class="basicTextField" onBlur="T.update('propDescription')" value=""></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label">类型:&nbsp;</td>
+        <td><select name="propType" editable="true" onChange="T.update('propType')" onBlur="T.update('propType')"></select></td>
+    </tr>
+    </table>
+</span>
+
+
+<span id="methodsSection" style="z-index:103;" class="section">
+    <table border="0" width="435">
+    <tr><td colspan="2">函数<br><hr size=2 width="100%"></td></tr>
+    <tr>
+        <td class="label" valign="top"><img src="../Shared/MM/Images/transparent.gif" width="10" height="4"><br>函数:&nbsp;</td>
+        <td><input type="image" name="btn_methodPlus" onClick="T.update('btn_methodPlus')" src="../Shared/UltraDev/Images/PlusButton.gif" border="0">
+            <input type="image" name="btn_methodMinus" onClick="T.update('btn_methodMinus')" src="../Shared/UltraDev/Images/MinusButtonEnabled.gif" border="0"><br>
+            <select name="methods" size="6" onChange="T.update('methods')"></select>
+        <td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label">名称:&nbsp;</td>
+        <td><input name="methodName" type="text" class="basicTextField" onBlur="T.update('methodName')" value=""></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label">显示名称:&nbsp;</td>
+        <td><input name="methodDisplayName" type="text" class="basicTextField" onBlur="T.update('methodDisplayName')" value=""></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label">提示:&nbsp;</td>
+        <td><input name="methodDescription" type="text" class="basicTextField" onBlur="T.update('methodDescription')" value=""></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label">访问:&nbsp;</td>
+        <td><select name="methodAccess" onBlur="T.update('methodAccess')" onChange="T.update('methodAccess')" ></select></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label">返回值类型:&nbsp;</td>
+        <td><select name="methodResultType" editable="true" onChange="T.update('methodResultType')" onBlur="T.update('methodResultType')"></select></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label">角色:&nbsp;</td>
+        <td><input name="methodRoles" type="text" class="basicTextField" onBlur="T.update('methodRoles')" value=""></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label">输出:&nbsp;</td>
+        <td><input type="checkbox" name="methodOutput" onClick="T.update('methodOutput')"></td>
+    </tr>
+    </table>
+</span>
+
+
+<span id="parametersSection" style="z-index:104;" class="section">
+    <table border="0" width="435">
+    <tr><td colspan="2">函数参数<br><hr size=2 width="100%"></td></tr>
+    <tr>
+        <td class="label">可用函数:&nbsp;</td>
+        <td><select name="readOnlyMethods" onChange="T.update('readOnlyMethods')"></select></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label" valign="top"><img src="../Shared/MM/Images/transparent.gif" width="10" height="4"><br>参数:&nbsp;</td>
+        <td><input type="image" name="btn_parameterPlus" onClick="T.update('btn_parameterPlus')" src="../Shared/UltraDev/Images/PlusButton.gif" border="0">
+            <input type="image" name="btn_parameterMinus" onClick="T.update('btn_parameterMinus')" src="../Shared/UltraDev/Images/MinusButtonEnabled.gif" border="0"><br>
+            <select name="parameters" size="6" onChange="T.update('parameters')"></select>
+        <td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label">名称:&nbsp;</td>
+        <td><input name="parameterName" type="text" class="basicTextField" onBlur="T.update('parameterName')" value=""></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label">显示名称:&nbsp;</td>
+        <td><input name="parameterDisplayName" type="text" class="basicTextField" onBlur="T.update('parameterDisplayName')" value=""></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label">提示:&nbsp;</td>
+        <td><input name="parameterDescription" type="text" class="basicTextField" onBlur="T.update('parameterDescription')" value=""></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label">类型:&nbsp;</td>
+        <td><select name="parameterType" editable="true" onChange="T.update('parameterType')" onBlur="T.update('parameterType')"></select></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label">必需:&nbsp;</td>
+        <td><input type="checkbox" name="parameterRequired" onClick="T.update('parameterRequired')"></td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr>
+        <td class="label">默认值:&nbsp;</td>
+        <td><input name="parameterDefaultValue" type="text" class="basicTextField" onBlur="T.update('parameterDefaultValue')" value=""></td>
+    </tr>
+    </table>
+</span>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<participant name="transRepeatRegion_Start">
+  <translator>
+    <searchPatterns>
+      <searchPattern paramNames="rs"><![CDATA[/do(\r\n|\r|\n| )\{(\r\n|\r|\n| )(?=\r\n|\r|\n|\?>)/i]]></searchPattern>
+      <searchPattern requiredLocation="trailing"><![CDATA[/\} while \(\$row_([^\r\n]*?) = mysql_fetch_assoc\([^\r\n]*?\)\); (?=\r\n|\r|\n|\?>)/i]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="directive" translationType="tabbed region start">
+        <openTag>MM_REPEATEDREGION</openTag>
+          <attributes>
+            <attribute><![CDATA[SOURCE="@@rs@@"]]></attribute>
+          </attributes>
+        <display>MM.LABEL_RepeatTabbedOutlineLabel</display>
+      </translation>
+    </translations>
+  </translator>
+</participant>

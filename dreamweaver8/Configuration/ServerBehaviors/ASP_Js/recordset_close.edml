@@ -1,0 +1,13 @@
+<participant>
+     <quickSearch><![CDATA[Close()]]></quickSearch>
+     <insertText location="belowHTML+50">
+<![CDATA[
+<%
+@@rsName@@.Close();
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName"><![CDATA[/<%\s*(\w+)\.Close\(\);\s*%>/]]></searchPattern>
+     </searchPatterns>
+</participant>

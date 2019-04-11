@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "浏览器信息" description = "用于集中浏览器信息的 JavaScript 类。" preview="code" type="block">
+<insertText location="beforeSelection">
+<![CDATA[// Example:
+// var b = new BrowserInfo();
+// alert(b.version); 
+function BrowserInfo()
+{
+  this.name = navigator.appName;
+  this.codename = navigator.appCodeName;
+  this.version = navigator.appVersion.substring(0,4);
+  this.platform = navigator.platform;
+  this.javaEnabled = navigator.javaEnabled();
+  this.screenWidth = screen.width;
+  this.screenHeight = screen.height;
+}
+]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

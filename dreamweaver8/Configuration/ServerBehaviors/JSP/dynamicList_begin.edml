@@ -1,0 +1,13 @@
+<participant>
+     <quickSearch><![CDATA[_hasData]]></quickSearch>
+     <insertText location="lastChildOfNode" nodeParamName="selectNode">
+<![CDATA[
+<%
+while (@@rsName@@_hasData) {
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName"><![CDATA[/<%\s*while\s*\((\w+)_hasData\)\s*\{\s*%>/]]></searchPattern>
+     </searchPatterns>
+</participant>

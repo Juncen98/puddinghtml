@@ -1,0 +1,151 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>jrun:select</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var SELECTORLIST;
+var theUIObjects;
+var applyType = "dynamic"; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.inspectTagCommon(tagNodeObj, null, applyType, activeDisplayNode, SELECTORLIST); 
+}
+
+function applyTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.applyTagCommon(tagNodeObj, null, applyType, activeDisplayNode); 
+}
+
+function updateUI()
+{
+  var curDiv = SELECTORLIST.getValue(); 
+
+  tagDialog.showOnlyThisLayer(curDiv); 
+}
+
+function initializeUI()
+{
+	SELECTORLIST = new ListControl("theselector"); 
+	theUIObjects = new Array(SELECTORLIST);
+	
+  tagDialog.populateDropDownList(SELECTORLIST, theSelSelectCap, theSelSelectVal, 0); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+
+<div name="常规"> 
+ 
+从此处取数据: 
+<select name="theselector" class="selectorList" id="attr:jrunselect:selector" onChange="updateUI();" attname="" editable="false">
+</select>
+<hr width="100%"> 
+<div id="thehashtable" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 43px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:jspselect:name" attname="name" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">大小: </td>
+      <td nowrap="nowrap">
+        <input name="thesize" type="text" class="basicTextField" id="attr:jspselect:size" attname="size" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">哈希表: </td>
+      <td nowrap="nowrap">
+        <input name="thehashtable" type="text" class="basicTextField" id="attr:jspselect:hashtable" attname="hashtable" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:jspselect:required" name="therequired" attname="required" truevalue="true" falsevalue="" /> 必需的
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">选定的: </td>
+      <td nowrap="nowrap">
+        <input name="theselected" type="text" class="basicTextField" id="attr:jspselect:selected" attname="selected" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">onError: </td>
+      <td nowrap="nowrap">
+        <input name="theonerror" type="text" class="basicTextField" id="attr:jspselect:onerror" attname="onError" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="thecolumns" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 43px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:jspselect:name" attname="name" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">查询: </td>
+      <td nowrap="nowrap">
+        <input name="thequery" type="text" class="basicTextField" id="attr:jspselect:query" attname="query" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">值: </td>
+      <td nowrap="nowrap">
+        <input name="thevalue" type="text" class="basicTextField" id="attr:jspselect:value" attname="value" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">显示: </td>
+      <td nowrap="nowrap">
+        <input name="thedisplay" type="text" class="basicTextField" id="attr:jspselect:display" attname="display" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:jspselect:required" name="therequired" attname="required" truevalue="true" falsevalue="" /> 必需的
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">选定的: </td>
+      <td nowrap="nowrap">
+        <input name="theselected" type="text" class="basicTextField" id="attr:jspselect:selected" attname="selected" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">onError: </td>
+      <td nowrap="nowrap">
+        <input name="theonerror" type="text" class="basicTextField" id="attr:jspselect:onerror" attname="onError" />
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>xml lookup module</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script src="../lookupMod.js"></script>
+<script language="JavaScript">
+var BOOK_NAME = "O'REILLY XML in a Nutshell";
+var KEYWORDS = new Array(
+		"ANY", "Any Element Type", "Description",
+		"CDATA", "CDATA (Character Data) Sections", "Description",
+		"encoding", "Encoding Declaration", "Description",
+		"id", "ID", "Description",
+		"IDREF", "IDREF", "Description",
+		"NOTATION", "Notation Declaration", "Description",
+		"standalone", "Standalone Declaration", "Description",
+		"version", "Version Information", "Description",
+		"?xml", "XML Declaration", "Description"
+		);
+
+// XML Lookup Module
+function referenceLookup()
+{
+  var xmlVal = null;
+ 	var keyword = "";
+  var dom = dw.getDocumentDOM();
+  if (dom){
+    var xmlIndex = dom.documentType.indexOf('XML');
+    // The idea here is that we don't want to bother doing XML keyword processing if
+    // the file is not an XML file.
+    if (xmlIndex == -1)
+    {
+  		xmlVal = new Array("");
+    }
+    else
+    {
+      var docEl = dom.documentElement;
+    	var wholeDoc = docEl.outerHTML;
+    	var theSel = dom.source.getSelection();
+     	var startPoint = searchBackwards(theSel[0],dom);
+  		var endPoint = searchForwards(theSel[1],dom,wholeDoc.length);
+ 		 	var j;
+	  	keyword = dom.source.getText(startPoint,endPoint);
+	  	xmlVal = getTopic(keyword);
+		}
+  }
+	if (!xmlVal){
+		xmlVal = new Array("");
+	}
+  return xmlVal;
+}
+</script>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+</body>
+</html>

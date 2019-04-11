@@ -1,0 +1,102 @@
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+
+<html>
+<head>
+<title>添加列</title>
+<script>
+//--------------- LOCALIZEABLE GLOBALS---------------
+var MSG_DelRowsTitle = "删除表格行";
+var MSG_DelColsTitle = "删除表格列";
+var MSG_DelCellsTitle = "删除表格单元格";
+
+var MSG_DelRowsMessage = "行数目:";
+var MSG_DelCellsMessage = "单元格数目:";
+var MSG_DelColumnsMessage = "列数目:";
+
+
+//--------------- END LOCALIZEABLE   ---------------
+
+
+//This command runs a dialog that asks the user for the number of 
+//rows, columns or cells to delete, then does the operation on the current selection.
+//The first parameter passed in should be either "rows", "cells", or "columns".
+
+
+var dialogType = null; 
+var lastCellCount = 1;
+var lastRowCount = 1; 
+var lastColCount = 1; 
+
+
+function receiveArguments()
+	{
+	dialogType = arguments[0]; 
+	}
+	
+function canAcceptCommand()
+	{
+	dialogType = arguments[0]; 
+	
+	if (dialogType == "rows")
+		return dw.getFocus() == 'document' && dw.getDocumentDOM().canDeleteTableRow(); 
+	else if (dialogType == "columns")
+		return dw.getFocus() == 'document' && dw.getDocumentDOM().canDeleteTableColumn();
+
+	return false; 
+	} //canAcceptCommand
+	
+	
+function doCommand()
+	{
+	if (dialogType == null)
+		return; 
+		
+	var result = new Object(); 
+	result.returnValue = null; 
+
+	if (dialogType == "rows")
+		dw.runCommand("GetString.htm", MSG_DelRowsMessage, "" + lastRowCount, MSG_DelRowsTitle, result); 
+	else if (dialogType == "columns")
+		dw.runCommand("GetString.htm", MSG_DelCellsMessage, "" + lastColCount, MSG_DelColsTitle, result); 
+	else 
+		dw.runCommand("GetString.htm", MSG_DelColumnsMessage, "" + lastCellCount, MSG_DelCellsTitle, result); 
+	
+	if (result.returnValue != null)
+		{
+		if (dialogType == "rows")
+			{
+			lastRowCount = result.returnValue; 
+			for (var i=0; i<lastRowCount;i++)
+				{
+				if (!dw.getDocumentDOM().canDeleteTableRow())
+					break; 
+					
+				dw.getDocumentDOM().deleteTableRow(lastRowCount, true);
+				}
+			}
+		else if (dialogType == "columns") 
+			{
+			lastColCount = result.returnValue; 
+			
+			for (var i=0; i<lastColCount;i++)
+				{
+				if (!dw.getDocumentDOM().canDeleteTableColumn())
+					break; 
+					
+				dw.getDocumentDOM().deleteTableColumn(lastColCount, true);
+				}
+			}
+		}
+		
+	dialogType = null; 
+	} //doCommand
+	
+</script>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onload="doCommand()">
+</body>
+</html>

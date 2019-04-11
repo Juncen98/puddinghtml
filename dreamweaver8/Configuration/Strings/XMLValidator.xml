@@ -1,0 +1,774 @@
+<strings>
+    <!-- XML Validator strings these strings are used when Validating XML Documents -->
+    <!-- The strings are used by the xerces library compiled by the XML4C project -->
+   
+   
+   
+   
+    
+    <!-- Warnings -->
+    
+	<string id="XMLValidator/NotationAlreadyExists" value="已声明标记“{0}”"/>
+   	<string id="XMLValidator/AttListAlreadyExists" value="已经为元素 '{1}' 声明了属性 '{0}'"/>
+    <string id="XMLValidator/ContradictoryEncoding" value="编码（{0}，通过 XMLDecl 或手动设置）与自动感知的编码冲突，正在忽略它"/>
+    <string id="XMLValidator/UndeclaredElemInCM" value="内容模型中引用了元素 '{0}'，但该元素从未被声明"/>
+    <string id="XMLValidator/UndeclaredElemInAttList" value="列表属性中引用了元素 '{0}'，但该元素从未被声明"/>
+    <string id="XMLValidator/XMLException_Warning" value="发生异常！类型：{0}，消息：{1}"/>
+    <string id="XMLValidator/Scan_CouldNotOpenSource_Warning" value="警告：无法打开主文档实体。Id={0}"/>
+
+    <!-- Errors -->
+    
+    <string id="XMLValidator/FeatureUnsupported" value="不支持 {0}"/>
+    <string id="XMLValidator/TopLevelNoNameComplexType" value="错误：顶层 complexType 没有名称 - 声明被忽略"/>
+    <string id="XMLValidator/TopLevelNoNameAttribute" value="全局声明属性必须有一个名称 - 属性声明被忽略"/>
+    <string id="XMLValidator/NoNameRefAttribute" value="属性必须有一个名称或引用 - 属性声明被忽略"/>
+    <string id="XMLValidator/GlobalNoNameElement" value="全局声明元素必须有一个名称 - 元素声明被忽略"/>
+    <string id="XMLValidator/NoNameRefElement" value="元素必须有一个名称或引用属性 - 元素被忽略"/>
+    <string id="XMLValidator/NoNameRefGroup" value="&lt;group&gt; 必须有一个名称或引用属性 - 声明被忽略"/>
+    <string id="XMLValidator/NoNameRefAttGroup" value="&lt;attributeGroup&gt; 必须有一个名称或引用属性 - 声明被忽略"/>
+    <string id="XMLValidator/AnonComplexTypeWithName" value="元素 {0} 中的匿名 complexType 有一个名称属性"/>
+    <string id="XMLValidator/AnonSimpleTypeWithName" value="元素 {0} 中的匿名 simpleType 有一个名称属性"/>
+    <string id="XMLValidator/InvalidElementContent" value="元素信息项的内容不匹配（annotation?、(simpleType | complexType)?、(unique | key | keyref)*）"/>
+    <string id="XMLValidator/UntypedElement" value="无类型元素： {0}"/>
+    <string id="XMLValidator/SimpleTypeContentError" value="simpleType 的内容有错误"/>
+    <string id="XMLValidator/ExpectedSimpleTypeInList" value="{0} 的 'list' 声明需要 simpleType"/>
+    <string id="XMLValidator/ListUnionRestrictionError" value="List | Union | Restriction 的内容对类型 {0} 无效"/>
+    <string id="XMLValidator/SimpleTypeDerivationByListError" value="由 {0} 的列表派生的内容有错误"/>
+    <string id="XMLValidator/ExpectedSimpleTypeInRestriction" value="{0} 的 'restriction' 声明需要 simpleType"/>
+    <string id="XMLValidator/DuplicateFacet" value="已定义方面 {0} - 正在忽略"/>
+    <string id="XMLValidator/ExpectedSimpleTypeInUnion" value="{0} 的 'union' 声明需要 simpleType"/>
+    <string id="XMLValidator/EmptySimpleTypeContent" value="SimpleType 内容为空"/>
+    <string id="XMLValidator/InvalidSimpleContent" value="simpleContent 元素的内容无效。内容必须是 RESTRICTION 或 EXTENSION"/>
+    <string id="XMLValidator/UnspecifiedBase" value="必须为 RESTRICTION 或 EXTENSION 元素指定 BASE 属性"/>
+    <string id="XMLValidator/InvalidComplexContent" value="complexContent 元素的内容无效。内容必须是 RESTRICTION 或 EXTENSION"/>
+    <string id="XMLValidator/SchemaElementContentError" value="&lt;schema&gt; 元素信息项的内容有错误"/>
+    <string id="XMLValidator/ContentError" value="内容 (annotation?,..) 对于类型 {0} 不正确"/>
+    <string id="XMLValidator/UnknownSimpleType" value="未知的 simpleType： {0}"/>
+    <string id="XMLValidator/UnknownComplexType" value="未知的 complexType： {0}"/>
+    <string id="XMLValidator/UnresolvedPrefix" value="前缀：'{0}' 不能被解析为 URI"/>
+    <string id="XMLValidator/RefElementNotFound" value="在架构中未找到引用元素 {0}"/>
+    <string id="XMLValidator/TypeNotFound" value="在 {0}:{1} 中未找到类型"/>
+    <string id="XMLValidator/TopLevelAttributeNotFound" value="无法找到顶层属性： {0}"/>
+    <string id="XMLValidator/InvalidChildInComplexType" value="复杂类型中的子类型 '{0}' 无效"/>
+    <string id="XMLValidator/BaseTypeNotFound" value="无法找到基类型： {0}"/>
+    <string id="XMLValidator/NoAttributeInSchema" value="架构中未定义属性 '{0}'："/>
+    <string id="XMLValidator/DatatypeValidatorCreationError" value="创建数据类型验证器时出错："/>
+    <string id="XMLValidator/InvalidChildFollowingSimpleContent" value="complexType 中 simpleContent 子类型后面的子类型无效"/>
+    <string id="XMLValidator/InvalidChildFollowingConplexContent" value="complexType 中 complexContent 子类型后面的子类型无效"/>
+    <string id="XMLValidator/InvalidComplexTypeBlockValue" value="complexType 的 'block' 属性值必须为 #all | list(restriction,extension)；找到 {0}"/>
+    <string id="XMLValidator/InvalidComplexTypeFinalValue" value="complexType 的 'final' 属性值必须为 #all | list(restriction,extension)；找到 {0}"/>
+    <string id="XMLValidator/AttributeDefaultFixedValue" value="一个属性不能同时有 'fixed' 和 'default' - 使用 default"/>
+    <string id="XMLValidator/NotOptionalDefaultAttValue" value="如果 default 和 use 同时存在，则 use 必须具有值 'optional'。"/>
+    <string id="XMLValidator/LocalAttributeWithNameRef" value="本地属性：{0} 也定义了引用 - 名称被忽略"/>
+    <string id="XMLValidator/GlobalAttributeWithNameRef" value="全局属性：'{0}' 不能定义引用"/>
+    <string id="XMLValidator/DuplicateAttribute" value="错误：属性 '{0}' 在同一范围内声明了一次以上 - 正在忽略"/>
+    <string id="XMLValidator/AttributeWithTypeAndSimpleType" value="属性声明不能同时包含一个 type 声明和一个 simpleType 声明"/>
+    <string id="XMLValidator/AttributeSimpleTypeNotFound" value="未找到属性 {2} 的 SimpleType ({0}:{1})"/>
+    <string id="XMLValidator/ElementWithFixedAndDefault" value="一个元素不能同时有 'fixed' 和 'default'"/>
+    <string id="XMLValidator/DeclarationWithNameRef" value="{0}:'{1}' 也定义了引用 - 名称被忽略"/>
+    <string id="XMLValidator/BadAttWithRef" value="ref 不能与 type、abstract、block、final、nillable、default 或 fixed 中的任何一个一起出现"/>
+    <string id="XMLValidator/InvalidDeclarationName" value="无效的 {0} 名称:'{1}' - 声明被忽略"/>
+    <string id="XMLValidator/GlobalElementWithRef" value="全局声明元素 {0} 不能具有 ref 属性 - 引用被忽略"/>
+    <string id="XMLValidator/ElementWithTypeAndAnonType" value="元素 '{0}' 不能同时具有 type 属性和 simpleType/complexType 类型的子类型"/>
+    <string id="XMLValidator/NotSimpleOrMixedElement" value="元素 {0} 具有 fixed 值或 default 值，并且必须有一个混合式简单内容模型或简单内容模型"/>
+    <string id="XMLValidator/DisallowedSimpleTypeExtension" value="{1} 所使用的 simpleType {0} 具有值 'final'，该值不允许扩展"/>
+    <string id="XMLValidator/InvalidSimpleContentBase" value="被指定为 simpleContent 元素中的基的类型 '{0}' 不能有 complexContent"/>
+    <string id="XMLValidator/InvalidComplexTypeBase" value="类型 '{0}' 为简单类型。它不能在 complexType 的 RESTRICTION 派生中使用"/>
+    <string id="XMLValidator/InvalidChildInSimpleContent" value="simpleContent 定义中 RESTRICTION 或 EXTENSION 元素的后面有无效的子元素"/>
+    <string id="XMLValidator/InvalidChildInComplexContent" value="complexContent 定义中 RESTRICTION 或 EXTENSION 元素的后面有无效的子元素"/>
+    <string id="XMLValidator/AnnotationError" value="批注只能出现一次：类型 {0}"/>
+    <string id="XMLValidator/DisallowedBaseDerivation" value="基类型 {0} 不允许将其自身用作 restriction 的基和/或 list 和/或 union 中的类型"/>
+    <string id="XMLValidator/SubstitutionRepeated" value="列表中已存在值 'substitution'"/>
+    <string id="XMLValidator/UnionRepeated" value="列表中已存在值 'union'"/>
+    <string id="XMLValidator/ExtensionRepeated" value="列表中已存在值 'extension'"/>
+    <string id="XMLValidator/ListRepeated" value="列表中已存在值 'list'"/>
+    <string id="XMLValidator/RestrictionRepeated" value="列表中已存在值 'restriction'"/>
+    <string id="XMLValidator/InvalidBlockValue" value="无效的 block 值： {0}"/>
+    <string id="XMLValidator/InvalidFinalValue" value="无效的 final 值： {0}"/>
+    <string id="XMLValidator/InvalidSubstitutionGroupElement" value="元素 {0} 不能属于以 {1} 开头的替换组"/>
+    <string id="XMLValidator/SubstitutionGroupTypeMismatch" value="元素 {0} 的类型不是从位于替换组开头的元素的类型派生的"/>
+    <string id="XMLValidator/DuplicateElementDeclaration" value="同一范围内有重复的元素声明：{0} "/>
+    <string id="XMLValidator/InvalidElementBlockValue" value="元素的 'block' 属性值必须为 #all | list(substitution,restriction,extension)；找到 {0}"/>
+    <string id="XMLValidator/InvalidElementFinalValue" value="元素的 'final' 属性值必须为 #all | list(restriction,extension)；找到 {0}"/>
+    <string id="XMLValidator/InvalidAttValue" value="以下属性的值 '{0}' 无效："/>
+    <string id="XMLValidator/AttributeRefContentError" value="存在 Ref，但找到 simpleType/form/type"/>
+    <string id="XMLValidator/DuplicateRefAttribute" value="complexType 中有重复的引用属性 {0}:{1}"/>
+    <string id="XMLValidator/ForbiddenDerivationByRestriction" value="基类型 '{0}' 或架构禁止 restriction 的派生"/>
+    <string id="XMLValidator/ForbiddenDerivationByExtension" value="基类型 '{0}' 或架构禁止 extension 的派生"/>
+    <string id="XMLValidator/BaseNotComplexType" value="complexContent 元素中指定的基类型必须为 complexType"/>
+    <string id="XMLValidator/ImportNamespaceDifference" value="导入的架构 '{0}' 所具有的 targetNameSpace '{1}' 与声明的 '{2}' 不同"/>
+    <string id="XMLValidator/ImportRootError" value="无法为导入的架构 {0} 获取文档根"/>
+    <string id="XMLValidator/DeclarationNoSchemaLocation" value="必须指定 '{0}' 元素的 schemaLocation 属性。"/>
+    <string id="XMLValidator/IncludeNamespaceDifference" value="包含的架构 '{0}' 有不同的 targetNameSpace '{1}'"/>
+    <string id="XMLValidator/OnlyAnnotationExpected" value="内容中最多需要一个 &lt;annotation&gt; 元素。"/>
+    <string id="XMLValidator/InvalidAttributeContent" value="属性 '{0}={1}' 的内容必须为 (annotation?, simpleType?)"/>
+    <string id="XMLValidator/AttributeRequired" value="属性 '{0}' 必须出现在 {1} {2} 声明中"/>
+    <string id="XMLValidator/AttributeDisallowed" value="属性 '{0}' 不能出现在 {1} {2} 声明中"/>
+    <string id="XMLValidator/InvalidMin2MaxOccurs" value="minOccurs '{0}' 的值不能大于 maxOccurs '{1}' 的值"/>
+    <string id="XMLValidator/AnyAttributeContentError" value="'anyAttribute' 元素的子元素中最多可以包含一个 'annotation' 元素"/>
+    <string id="XMLValidator/NoNameGlobalElement" value="全局 &lt;{0}&gt; 必须有一个名称 - 声明被忽略"/>
+    <string id="XMLValidator/NoCircularDefinition" value="不允许循环定义： '{0}'"/>
+    <string id="XMLValidator/DuplicateGlobalType" value="全局 {0}:'{1}' 声明了一次以上，或者同时被声明为 {2}"/>
+    <string id="XMLValidator/DuplicateGlobalDeclaration" value="全局 {0}:'{1}' 声明了一次以上"/>
+    <string id="XMLValidator/WS_CollapseExpected" value="方面 'whiteSpace' 的值 '{0}' 无效。值应为 'collapse'。"/>
+    <string id="XMLValidator/Import_1_1" value="&lt;import&gt; 元素的命名空间必须不同于 &lt;import&gt;ing 架构的 targetNamespace"/>
+    <string id="XMLValidator/Import_1_2" value="如果 &lt;import&gt; 元素的命名空间不存在，则 &lt;import&gt;ing 架构必须有 targetNamespace"/>
+    <string id="XMLValidator/ElemIDValueConstraint" value="元素 '{0}' 不能有值约束:'{1}'，因为其类型是从 ID 派生的"/>
+    <string id="XMLValidator/NoNotationType" value="在元素/属性 '{0}' 中的架构中直接使用 NOTATION 是错误的"/>
+    <string id="XMLValidator/EmptiableMixedContent" value="对于元素 '{0}'，如果 {content type} 为 mixed，则 {content type} 的粒子必须是可清空的"/>
+    <string id="XMLValidator/EmptyComplexRestrictionDerivation" value="complexType 的内容为 EMPTY，但基不为空或没有可清空的粒子。"/>
+    <string id="XMLValidator/MixedOrElementOnly" value="基类型：'{0}' 和派生类型：'{1}' 的内容类型必须都是 mixed 或 element-only。"/>
+    <string id="XMLValidator/InvalidContentRestriction" value="内容类型不是基的内容类型的有效 restriction。"/>
+    <string id="XMLValidator/ForbiddenDerivation" value="基类型 '{0}' 或架构禁止 extension 或 restriction 的派生"/>
+    <string id="XMLValidator/AtomicItemType" value="{item type definition} 的 {variety} 必须为 atomic 或 union（其中所有的成员类型必须为 atomic）"/>
+    <string id="XMLValidator/MemberTypeNoUnion" value="{member type definitions} 的 {variety} 必须全部为 atomic 或 list"/>
+    <string id="XMLValidator/GroupContentError" value="group:'0' 必须包含 (all | choice | sequence)"/>
+    <string id="XMLValidator/AttGroupContentError" value="attributeGroup:'0' 必须匹配 (annotation?.((attribute | attributeGroup)*, anyAttribute?))"/>
+    <string id="XMLValidator/MinMaxOnGroupChild" value="模型组定义的子级不能指定 minOccurs 或 maxOccurs 属性。"/>
+    <string id="XMLValidator/DeclarationNotFound" value="没有在架构中找到 {0} -'{1}:{2}'-"/>
+    <string id="XMLValidator/AllContentLimited" value="内容为 'all' 的组必须仅以复杂类型定义的内容类型显示。"/>
+    <string id="XMLValidator/BadMinMaxAllCT" value="当模型组有构成复杂类型的 {content type} 的 {compositor} 'all' 时，minOccurs=maxOccurs=1"/>
+    <string id="XMLValidator/BadMinMaxAllElem" value="在 'all' 架构组件中，元素的 minOccurs/maxOccurs 的值必须为 '0' 或 '1'。"/>
+    <string id="XMLValidator/NoCircularAttGroup" value="在 &lt;redefine&gt; 的外部不允许循环 attributeGroup 引用 -{0}-"/>
+    <string id="XMLValidator/DuplicateAttInDerivation" value="属性 '{0}' 已在基中定义，不应该出现在 extension 的派生中。"/>
+    <string id="XMLValidator/NotExpressibleWildCardIntersection" value="{attributes wildcard} 的内涵交集必须可以表示"/>
+    <string id="XMLValidator/BadAttDerivation_1" value="基类型定义没有任何属性"/>
+    <string id="XMLValidator/BadAttDerivation_2" value="属性 '{0}' 的“必需”设置与基的该设置不一致"/>
+    <string id="XMLValidator/BadAttDerivation_3" value="属性 '{0}' 的类型必须正确地从基中的属性类型派生"/>
+    <string id="XMLValidator/BadAttDerivation_4" value="属性 '{0}' 或者不是固定的，或者其值不同于基的值"/>
+    <string id="XMLValidator/BadAttDerivation_5" value="属性 '{0}' 就基通配符约束而言具有无效的目标命名空间，或者基没有通配符"/>
+    <string id="XMLValidator/BadAttDerivation_6" value="属性通配符存在于派生类型中，而不存在于基中"/>
+    <string id="XMLValidator/BadAttDerivation_7" value="派生类型中的属性通配符不是基的属性通配符的有效子集"/>
+    <string id="XMLValidator/BadAttDerivation_8" value="如果基属性 use 被禁止，则属性 '{0}' 无法修改派生类型中的 'use' 属性"/>
+    <string id="XMLValidator/AllContentError" value="&lt;all&gt; 的内容仅限于元素。遇到 '{0}' 并将其忽略。"/>
+    <string id="XMLValidator/RedefineNamespaceDifference" value="重定义架构 '{0}' 具有不同的 targetNameSpace '{1}'。"/>
+    <string id="XMLValidator/Redefine_InvalidSimpleType" value="&lt;redefine&gt; 的 simpleType 子级必须将一个限制元素作为子级"/>
+    <string id="XMLValidator/Redefine_InvalidSimpleTypeBase" value="simpleType 的限制子级的基属性必须与重定义 simpleType 的名称属性相同"/>
+    <string id="XMLValidator/Redefine_InvalidComplexType" value="&lt;redefine&gt; 的 complexType 子级必须将一个限制或扩展元素作为孙辈"/>
+    <string id="XMLValidator/Redefine_InvalidComplexTypeBase" value="限制/扩展的基属性必须与 &lt;redefine&gt; 中 complexType 的名称属性相同"/>
+    <string id="XMLValidator/Redefine_InvalidGroupMinMax" value="包含对重定义的组的引用的组 '{0}' 必须具有 minOccurs = maxOccurs = 1"/>
+    <string id="XMLValidator/Redefine_DeclarationNotFound" value="在要重定义的架构中无法找到对应于 '{0}' 的声明"/>
+    <string id="XMLValidator/Redefine_GroupRefCount" value="如果 &lt;redefine&gt; 元素的组子级包含一个引用自身的组，它必须正好有 1 个引用。"/>
+    <string id="XMLValidator/Redefine_AttGroupRefCount" value="如果 &lt;redefine&gt; 元素的 attributeGroup 包含一个对自身的引用，此引用必须正好为 1"/>
+    <string id="XMLValidator/Notation_InvalidDecl" value="表示法 '{0}' 的声明无效"/>
+    <string id="XMLValidator/Notation_DeclNotFound" value="未找到表示法声明 '{0}:{1}'"/>
+    <string id="XMLValidator/IC_DuplicateDecl" value="有多个名为 '{0}' 的标识约束。"/>
+    <string id="XMLValidator/IC_BadContent" value="标识约束的内容必须匹配 (annotation?, selector, field+)"/>
+    <string id="XMLValidator/IC_KeyRefReferNotFound" value="关键字引用声明 '{0}' 引用了名为 '{1}' 的未知关键字。"/>
+    <string id="XMLValidator/IC_KeyRefCardinality" value="keyref '{0}' 和关键字 '{1}' 的字段基数必须匹配。"/>
+    <string id="XMLValidator/IC_XPathExprMissing" value="Xpath 表达式丢失或为空"/>
+    <string id="XMLValidator/PD_EmptyBase" value="complexType 有内容，但是基为空"/>
+    <string id="XMLValidator/AttUseCorrect" value="属性引用的 {value constraint} 不是固定的，或者与 '{0}' 的固定 {value constraint} 不同"/>
+    <string id="XMLValidator/AttDeclPropCorrect3" value="属性 '{0}={1}' 的 {type definition} 是 ID 或是从 ID 派生，并且必须没有 {value constraint}"/>
+    <string id="XMLValidator/AttDeclPropCorrect5" value="在同一个复杂类型中不能出现多个从类型 ID 派生的属性 - '{0}' 被忽略"/>
+    <string id="XMLValidator/AttGrpPropCorrect3" value="在同一个属性组中不能出现多个从类型 ID 派生的属性 - '{0}' 被忽略"/>
+    <string id="XMLValidator/InvalidTargetNSValue" value="'' 不是 targetNamespace 属性的合法值；该属性肯定不存在或者包含一个非空值"/>
+    <string id="XMLValidator/DisplayErrorMessage" value="{0}"/>
+    <string id="XMLValidator/XMLException_Error" value="发生异常！类型：{0}，消息：{1}"/>
+    
+
+    <string id="XMLValidator/ElementNotDefined" value="未知元素 '{0}'"/>
+    <string id="XMLValidator/AttNotDefined" value="未定义属性 '{0}'"/>
+    <string id="XMLValidator/NotationNotDeclared" value="已引用标记“{0}”但从未声明"/>
+    <string id="XMLValidator/RootElemNotLikeDocType" value="根元素不同于 DOCTYPE"/>
+    <string id="XMLValidator/RequiredAttrNotProvided" value="未提供所需的属性“{0}”"/>
+    <string id="XMLValidator/ElementNotValidForContent" value="元素 '{0}' 对于内容模型 '{1}' 无效 "/>
+    <string id="XMLValidator/BadIDAttrDefType" value="ID 属性必须是 #IMPLIED 或 #REQUIRED"/>
+    <string id="XMLValidator/InvalidEmptyAttValue" value="这种类型的属性不能有空值"/>
+    <string id="XMLValidator/ElementAlreadyExists" value="元素 '{0}' 已经被声明"/>
+    <string id="XMLValidator/MultipleIdAttrs" value="元素 '{0}' 有多个 ID 属性"/>
+    <string id="XMLValidator/ReusedIDValue" value="{0}”已被使用"/>
+    <string id="XMLValidator/IDNotDeclared" value="ID 属性 '{0}' 被引用，但从未被声明"/>
+    <string id="XMLValidator/UnknownNotRefAttr" value="属性“{0}”引用了未知标记“{1}”"/>
+    <string id="XMLValidator/UndeclaredElemInDocType" value="DOCTYPE 中使用了元素 '{0}'，但该元素从未被声明"/>
+    <string id="XMLValidator/EmptyNotValidForContent" value="空内容对于内容模型 '{0}' 无效："/>
+    <string id="XMLValidator/AttNotDefinedForElement" value="没有为元素“{1}”声明属性“{0}”"/>
+    <string id="XMLValidator/BadEntityRefAttr" value="类型 ENTITY/ENTITIES 的属性必须引用外部的未分析实体"/>
+    <string id="XMLValidator/UnknownEntityRefAttr" value="属性 '{0}' 引用了未知实体 '{1}'"/>
+    <string id="XMLValidator/NotEnoughElemsForCM" value="没有足够的元素匹配内容模型： '{0}' "/>
+    <string id="XMLValidator/NoCharDataInCM" value="内容模型不允许字符数据"/>
+    <string id="XMLValidator/DoesNotMatchEnumList" value="属性 '{0}' 与它的定义枚举列表或表示法列表不匹配"/>
+    <string id="XMLValidator/AttrValNotName" value="属性 '{0}' 的值必须为名称或名称标记"/>
+    <string id="XMLValidator/NoMultipleValues" value="属性 '{0}' 不支持多个值"/>
+    <string id="XMLValidator/NotSameAsFixedValue" value="属性 '{0}' 有一个值 '{1}'，该值与它的 #FIXED 值 '{2}' 不匹配"/>
+    <string id="XMLValidator/RepElemInMixed" value="元素类型在“混合”内容模型中不能复制"/>
+    <string id="XMLValidator/NoValidatorFor" value="数据类型 {0} 没有验证器"/>
+    <string id="XMLValidator/IncorrectDatatype" value="不正确的数据类型：{0}"/>
+    <string id="XMLValidator/NotADatatype" value="{0} 不是数据类型。"/>
+    <string id="XMLValidator/TextOnlyContentWithType" value="如果指定 type 属性，content 属性必须为 'textOnly'。"/>
+    <string id="XMLValidator/NestedOnlyInElemOnly" value="仅在 elementOnly 内容中允许嵌套元素声明"/>
+    <string id="XMLValidator/EltRefOnlyInMixedElemOnly" value="仅在 mixed 或 elementOnly 内容中允许元素引用"/>
+    <string id="XMLValidator/OnlyInEltContent" value="仅在 elementOnly 内容中允许 {0}。"/>
+    <string id="XMLValidator/OrderIsAll" value="如果顺序为 all，则不允许 {0}。"/>
+    <string id="XMLValidator/DatatypeWithType" value="仅当指定 type 属性时才能使用数据类型限定符。"/>
+    <string id="XMLValidator/DatatypeQualUnsupported" value="不支持数据类型限定符 {0}。"/>
+    <string id="XMLValidator/GroupContentRestricted" value="错误：{0} 内容必须为 element、group 和 modelGroupRef 之一。显示的为 {1}"/>
+    <string id="XMLValidator/UnknownBaseDatatype" value="类型 {1} 的未知基类型 {0}。"/>
+    <string id="XMLValidator/OneOfTypeRefArchRef" value="只能有 type 属性和 ref 属性之一。"/>
+    <string id="XMLValidator/NoContentForRef" value="具有 ref 属性的 &lt;{0}&gt; 声明不能有子内容。"/>
+    <string id="XMLValidator/IncorrectDefaultType" value="{0} 的不正确的默认值类型： {1}"/>
+    <string id="XMLValidator/IllegalAttContent" value="属性组中的非法内容 {0}"/>
+    <string id="XMLValidator/ValueNotInteger" value="{0} 的值不是整数。"/>
+    <string id="XMLValidator/DatatypeError" value="数据类型错误：类型：{0}，消息：{1}。"/>
+    <string id="XMLValidator/SchemaError" value="架构错误：类型：{0}，消息：{1}"/>
+    <string id="XMLValidator/TypeAlreadySet" value="已经声明元素的类型。"/>
+    <string id="XMLValidator/ProhibitedAttributePresent" value="找到禁止的属性。"/>
+    <string id="XMLValidator/IllegalXMLSpace" value="非法 xml:space 声明。"/>
+    <string id="XMLValidator/NotBoolean" value="{0} 不是 boolean 类型。"/>
+    <string id="XMLValidator/NotDecimal" value="{0} 不是 decimal 类型。"/>
+    <string id="XMLValidator/FacetsInconsistent" value="方面与基类型不一致。"/>
+    <string id="XMLValidator/IllegalFacetValue" value="方面 {1} 的非法值 {0}。"/>
+    <string id="XMLValidator/IllegalDecimalFacet" value="decimal 类型的非法方面。"/>
+    <string id="XMLValidator/UnknownFacet" value="未知方面： {0}。"/>
+    <string id="XMLValidator/InvalidEnumValue" value="枚举常数的无效值：{0}。"/>
+    <string id="XMLValidator/OutOfBounds" value="{0} 超出界限:[{1} {3} X  {4} {2} ]。"/>
+    <string id="XMLValidator/NotAnEnumValue" value="{0} 不是指定的枚举值之一。"/>
+    <string id="XMLValidator/NotInteger" value="{0} 不是 integer 类型。"/>
+    <string id="XMLValidator/IllegalIntegerFacet" value="Integer 类型的非法方面。"/>
+    <string id="XMLValidator/NotReal" value="{0} 不是 double 类型。"/>
+    <string id="XMLValidator/IllegalRealFacet" value="Real 类型的非法方面。"/>
+    <string id="XMLValidator/ScaleLargerThanPrecision" value="Scale 方面必须小于或等于 Precision 方面"/>
+    <string id="XMLValidator/PrecisionExceeded" value="{0} 超出 precision 方面 {1}"/>
+    <string id="XMLValidator/ScaleExceeded" value="{0} 超出 scale 方面 {1}"/>
+    <string id="XMLValidator/NotFloat" value="{0} 不是 float 类型。"/>
+    <string id="XMLValidator/SchemaRootError" value="无法找回架构文档的根元素 {0}。"/>
+    <string id="XMLValidator/WrongTargetNamespace" value="{0} 中的架构所具有的目标命名空间与实例文档 {1} 中指定的不同。"/>
+    <string id="XMLValidator/SimpleTypeHasChild" value="在元素 {0} 中：在简单类型内容中，不能有元素子级。"/>
+    <string id="XMLValidator/NoDatatypeValidatorForSimpleType" value="此元素 {0} 具有一个 simpletype，但是没有找到数据类型验证器。"/>
+    <string id="XMLValidator/GrammarNotFound" value="没有 uri 语法： {0}。"/>
+    <string id="XMLValidator/NillNotAllowed" value="nillable 等于 false 时，不能为元素 {0} 指定 xsi:nil"/>
+    <string id="XMLValidator/NilAttrNotEmpty" value="具有属性 xsi:nil=true 的元素 {0} 必须为空"/>
+    <string id="XMLValidator/FixedDifferentFromActual" value="元素 '{0}' 的内容与元素架构声明中的固定属性值不同。"/>
+    <string id="XMLValidator/NoDatatypeValidatorForAttribute" value="未找到此属性 {0} 的数据类型验证器。"/>
+    <string id="XMLValidator/GenericError" value="分析时出现架构错误"/>
+    <string id="XMLValidator/ElementNotQualified" value="应该限定元素 '{0}'"/>
+    <string id="XMLValidator/ElementNotUnQualified" value="应该取消限定元素 '{0}'"/>
+    <string id="XMLValidator/IllegalRefInStandalone" value="在独立文档中不允许引用外部实体声明 '{0}'。"/>
+    <string id="XMLValidator/NoDefAttForStandalone" value="元素 '{1}' 的属性 '{0}' 具有一个默认值，并且必须在独立文档中指定。"/>
+    <string id="XMLValidator/NoAttNormForStandalone" value="属性 '{0}' 不能由独立文档中的标准化更改。"/>
+    <string id="XMLValidator/NoWSForStandalone" value="对于独立文档中的元素，外部声明的元素之间不能有空白。"/>
+    <string id="XMLValidator/VC_EntityNotFound" value="未找到实体“{0}”"/>
+    <string id="XMLValidator/PartialMarkupInPE" value="参数实体替换文本中的部分标记。"/>
+    <string id="XMLValidator/DatatypeValidationFailure" value="验证 '{0}' 失败"/>
+    <string id="XMLValidator/UniqueParticleAttributionFail" value="'{0}' 和 '{1}' 违反“唯一粒子属性”规则"/>
+    <string id="XMLValidator/NoAbstractInXsiType" value="抽象类型 '{0}' 不应在 xsi:type 中使用"/>
+    <string id="XMLValidator/NoDirectUseAbstractElement" value="必须指定抽象元素 {0} 替换组的成员"/>
+    <string id="XMLValidator/NoUseAbstractType" value="元素 {0} 是用抽象类型声明的。请使用 xsi:type 指定非抽象类型"/>
+    <string id="XMLValidator/BadXsiType" value="在 xsi:type 处理中找到无法解析的类型 '{0}'"/>
+    <string id="XMLValidator/NonDerivedXsiType" value="在 xsi:type 中使用的类型 '{0}' 不是从元素 '{1}' 的类型派生的"/>
+    <string id="XMLValidator/NoSubforBlock" value="元素 '{0}' 有分块约束而且不允许替换"/>
+    <string id="XMLValidator/AttributeNotQualified" value="属性 '{0}' 应该被限定"/>
+    <string id="XMLValidator/AttributeNotUnQualified" value="属性 '{0}' 应该被取消限定"/>
+    <string id="XMLValidator/IC_FieldMultipleMatch" value="字段与它的选择器范围内的多个值匹配；字段必须与唯一的值匹配"/>
+    <string id="XMLValidator/IC_UnknownField" value="内部标识约束错误；未知字段。"/>
+    <string id="XMLValidator/IC_AbsentKeyValue" value="标识约束 4.2.1：元素 '{0}' 的键没有值。"/>
+    <string id="XMLValidator/IC_UniqueNotEnoughValues" value="没有为元素 '{0}' 的 &lt;unique&gt; 标识约束指定足够的值。"/>
+    <string id="XMLValidator/IC_KeyNotEnoughValues" value="没有为元素 '{0}' 的 &lt;key name={1}&gt; 标识约束指定足够的值。"/>
+    <string id="XMLValidator/IC_KeyRefNotEnoughValues" value="没有为元素 '{0}' 的 &lt;keyref name={1}&gt; 标识约束指定足够的值。"/>
+    <string id="XMLValidator/IC_KeyMatchesNillable" value="标识约束 4.2.3：元素 '{0}' 的键与将 nillable 设置为 true 的元素相匹配。"/>
+    <string id="XMLValidator/IC_DuplicateUnique" value="为元素 '{0}' 的标识约束声明的唯一值重复。"/>
+    <string id="XMLValidator/IC_DuplicateKey" value="为元素 '{0}' 的标识约束声明的键值重复。"/>
+    <string id="XMLValidator/IC_KeyRefOutOfScope" value="keyref '{0}' 引用的键值/唯一值超出范围。"/>
+    <string id="XMLValidator/IC_KeyNotFound" value="未找到元素 '{0}' 的标识约束的键。"/>
+
+
+    <!-- Fatal Error -->
+    
+    <string id="XMLValidator/ExpectedCommentOrCDATA" value="需要注释或 CDATA"/>
+    <string id="XMLValidator/ExpectedAttrName" value="需要属性名"/>
+    <string id="XMLValidator/ExpectedNotationName" value="需要表示法名称"/>
+    <string id="XMLValidator/NoRepInMixed" value="对于混合内容模型，重复每个元素是不合法的"/>
+    <string id="XMLValidator/BadDefAttrDecl" value="错误的默认属性声明"/>
+    <string id="XMLValidator/ExpectedDefAttrDecl" value="需要默认属性声明，采用 #IMPLIED "/>
+    <string id="XMLValidator/AttListSyntaxError" value="属性列表语法错误"/>
+    <string id="XMLValidator/ExpectedEqSign" value="应为等号"/>
+    <string id="XMLValidator/DupAttrName" value="复制属性名"/>
+    <string id="XMLValidator/BadIdForXMLLangAttr" value="xml:lang 属性的错误 ID '{0}'"/>
+    <string id="XMLValidator/ExpectedElementName" value="需要元素名"/>
+    <string id="XMLValidator/MustStartWithXMLDecl" value="必须以 XMLDecl 开头"/>
+    <string id="XMLValidator/CommentsMustStartWith" value="注释必须以 &lt;!-- 开头"/>
+    <string id="XMLValidator/InvalidDocumentStructure" value="无效的文档结构"/>
+    <string id="XMLValidator/ExpectedDeclString" value="应为“version=”、“encoding=”或“standalone=”"/>
+    <string id="XMLValidator/BadXMLVersion" value="错误的 XML 版本字符串"/>
+    <string id="XMLValidator/UnsupportedXMLVersion" value="不受支持的 XML 版本“{0}”"/>
+    <string id="XMLValidator/UnterminatedXMLDecl" value="未终止的 XML 声明"/>
+    <string id="XMLValidator/BadXMLEncoding" value="错误的 XML 编码声明，'{0}'"/>
+    <string id="XMLValidator/BadStandalone" value="错误的独立声明"/>
+    <string id="XMLValidator/UnterminatedComment" value="未结束的注释"/>
+    <string id="XMLValidator/PINameExpected" value="需要处理指令名"/>
+    <string id="XMLValidator/UnterminatedPI" value="未结束的处理指令"/>
+    <string id="XMLValidator/InvalidCharacter" value="无效字符 (Unicode: 0x{0})"/>
+    <string id="XMLValidator/UnexpectedTextBeforeRoot" value="根元素前面的文本不是所需的"/>
+    <string id="XMLValidator/UnterminatedStartTag" value="未结束的开始标签，'{0}'"/>
+    <string id="XMLValidator/ExpectedAttrValue" value="需要属性值"/>
+    <string id="XMLValidator/UnterminatedEndTag" value="未结束的结束标签"/>
+    <string id="XMLValidator/ExpectedAttributeType" value="元素 '{1}' 的属性 '{0}' 需要类型（CDATA、ID、NMTOKEN..）"/>
+    <string id="XMLValidator/ExpectedEndOfTagX" value="需要标签 '{0}' 结束"/>
+    <string id="XMLValidator/ExpectedMarkup" value="需要标签名、注释、PI 或其他标记"/>
+    <string id="XMLValidator/NotValidAfterContent" value="内容后无效"/>
+    <string id="XMLValidator/ExpectedComment" value="需要注释"/>
+    <string id="XMLValidator/ExpectedCommentOrPI" value="应为注释或处理说明"/>
+    <string id="XMLValidator/ExpectedWhitespace" value="应为空白"/>
+    <string id="XMLValidator/NoRootElemInDOCTYPE" value="DOCTYPE 中没有根元素"/>
+    <string id="XMLValidator/ExpectedQuotedString" value="需要引用字符串"/>
+    <string id="XMLValidator/ExpectedPublicId" value="需要公共 ID"/>
+    <string id="XMLValidator/InvalidPublicIdChar" value="公共 ID 中存在无效字符 (Unicode: 0x{0})"/>
+    <string id="XMLValidator/UnterminatedDOCTYPE" value="未终止的 DOCTYPE 声明"/>
+    <string id="XMLValidator/InvalidCharacterInIntSubset" value="内部子集中的无效字符（Unicode：0x{0}）"/>
+    <string id="XMLValidator/ExpectedCDATA" value="需要 CDATA 部分"/>
+    <string id="XMLValidator/InvalidInitialNameChar" value="无效的初始名称字符"/>
+    <string id="XMLValidator/InvalidNameChar" value="无效的名称字符"/>
+    <string id="XMLValidator/UnexpectedWhitespace" value="意外的空白"/>
+    <string id="XMLValidator/InvalidCharacterInAttrValue" value="属性值中的无效字符（Unicode：0x{0}）"/>
+    <string id="XMLValidator/ExpectedMarkupDecl" value="需要标记声明"/>
+    <string id="XMLValidator/TextDeclNotLegalHere" value="此处文本声明不合法"/>
+    <string id="XMLValidator/ConditionalSectInIntSubset" value="内部子集中的条件部分"/>
+    <string id="XMLValidator/ExpectedPEName" value="需要参数实体名"/>
+    <string id="XMLValidator/UnterminatedEntityDecl" value="未结束的实体声明，'{0}'"/>
+    <string id="XMLValidator/InvalidCharacterRef" value="无效的字符引用"/>
+    <string id="XMLValidator/UnterminatedCharRef" value="未结束的字符引用"/>
+    <string id="XMLValidator/ExpectedEntityRefName" value="需要引用的实体名"/>
+    <string id="XMLValidator/EntityNotFound" value="未找到实体“{0}"/>
+    <string id="XMLValidator/NoUnparsedEntityRefs" value="未分析的实体引用 '{0}' 在此处无效"/>
+    <string id="XMLValidator/UnterminatedEntityRef" value="未终止的实体引用"/>
+    <string id="XMLValidator/RecursiveEntity" value="递归实体扩展"/>
+    <string id="XMLValidator/PartialMarkupInEntity" value="实体值中的部分标记"/>
+    <string id="XMLValidator/UnterminatedElementDecl" value="未结束的元素声明，'{0}'"/>
+    <string id="XMLValidator/ExpectedContentSpecExpr" value="需要元素 '{0}' 的内容规范表达式"/>
+    <string id="XMLValidator/ExpectedAsterisk" value="需要星号"/>
+    <string id="XMLValidator/UnterminatedContentModel" value="未结束的内容模型"/>
+    <string id="XMLValidator/ExpectedSystemId" value="需要系统 ID"/>
+    <string id="XMLValidator/ExpectedSystemOrPublicId" value="需要系统或公共 ID"/>
+    <string id="XMLValidator/UnterminatedNotationDecl" value="未结束的表示法声明"/>
+    <string id="XMLValidator/ExpectedSeqChoiceLeaf" value="需要 ','、'|' 或 ')' 字符"/>
+    <string id="XMLValidator/ExpectedChoiceOrCloseParen" value="需要 '|' 或 ')' 字符"/>
+    <string id="XMLValidator/ExpectedSeqOrCloseParen" value="元素 '{0}' 的内容模型中需要 ',' 或 ')' 字符或右括号"/>
+    <string id="XMLValidator/ExpectedEnumValue" value="需要属性 '{0}' 的枚举值"/>
+    <string id="XMLValidator/ExpectedEnumSepOrParen" value="需要 | 枚举分隔符或右括号"/>
+    <string id="XMLValidator/UnterminatedEntityLiteral" value="未结束的实体文本"/>
+    <string id="XMLValidator/MoreEndThanStartTags" value="结束标签比开始标签多"/>
+    <string id="XMLValidator/ExpectedOpenParen" value="需要左括号"/>
+    <string id="XMLValidator/AttrAlreadyUsedInSTag" value="属性 '{0}' 已经在元素 '{1}' 中使用"/>
+    <string id="XMLValidator/BracketInAttrValue" value="'&lt;' 字符不能在属性 '{0}' 中使用，通过 &amp;lt; 时除外"/>
+    <string id="XMLValidator/Expected2ndSurrogateChar" value="前导代用字符后面没有另一个合法的字符"/>
+    <string id="XMLValidator/ExpectedEndOfConditional" value="需要 ']]>' 结束条件部分"/>
+    <string id="XMLValidator/ExpectedIncOrIgn" value="此处需要 INCLUDE 或 IGNORE"/>
+    <string id="XMLValidator/ExpectedINCLUDEBracket" value="INCLUDE 或 IGNORE 的后面应该有 ["/>
+    <string id="XMLValidator/ExpectedTextDecl" value="此处需要 TextDecl：&lt;?xml ...."/>
+    <string id="XMLValidator/ExpectedXMLDecl" value="此处需要 XMLDecl：&lt;?xml ...."/>
+    <string id="XMLValidator/UnexpectedEOE" value="意外的实体 {0} 结尾"/>
+    <string id="XMLValidator/PEPropogated" value="PE 传播到 int/ext 子集以外，丢弃额外的文本"/>
+    <string id="XMLValidator/ExtraCloseSquare" value="找到额外的 ] 字符，被忽略"/>
+    <string id="XMLValidator/PERefInMarkupInIntSubset" value="PE 引用不能在内部子集的标记内"/>
+    <string id="XMLValidator/EntityPropogated" value="实体传播到“其它”的内容部分以外"/>
+    <string id="XMLValidator/ExpectedNumericalCharRef" value="&amp;# 的后面应该有一个数字字符值"/>
+    <string id="XMLValidator/ExpectedOpenSquareBracket" value="此处需要左括号 ('[')"/>
+    <string id="XMLValidator/BadSequenceInCharData" value="字符数据中不允许有序列 ']]>'"/>
+    <string id="XMLValidator/IllegalSequenceInComment" value="注释中的非法序列 '--'"/>
+    <string id="XMLValidator/UnterminatedCDATASection" value="未结束的 CDATA 部分"/>
+    <string id="XMLValidator/ExpectedNDATA" value="需要 NDATA"/>
+    <string id="XMLValidator/NDATANotValidForPE" value="NDATA 对于参数实体不合法"/>
+    <string id="XMLValidator/HexRadixMustBeLowerCase" value="十六进制基数字符引用必须使用 'x'，而不是 'X'"/>
+    <string id="XMLValidator/DeclStringRep" value="已经设置 '{0}'。忽略多余的设置"/>
+    <string id="XMLValidator/DeclStringsInWrongOrder" value="XMLDecl 字符串的顺序必须是：version、encoding、standalone"/>
+    <string id="XMLValidator/NoExtRefsInAttValue" value="不能从属性值引用外部实体"/>
+    <string id="XMLValidator/XMLDeclMustBeLowerCase" value="XML 或文本声明必须以 '&lt;?xml' 而不是 '&lt;?XML' 开头"/>
+    <string id="XMLValidator/ExpectedEntityValue" value="应为文本实体值或 PUBLIC/SYSTEM ID"/>
+    <string id="XMLValidator/BadDigitForRadix" value="'{0}' 对于所指示的基数不是有效数字"/>
+    <string id="XMLValidator/EndedWithTagsOnStack" value="输入在所有开始标签结束之前结束。最后一个开始标签是 '{0}'"/>
+    <string id="XMLValidator/AmbiguousContentModel" value="元素 '{0}' 的内容模型不明确"/>
+    <string id="XMLValidator/NestedCDATA" value="不允许嵌套 CDATA 部分"/>
+    <string id="XMLValidator/UnknownPrefix" value="前缀 '{0}' 未映射到任何 URI"/>
+    <string id="XMLValidator/PartialTagMarkupError" value="开始标签和结束标签在不同的实体中"/>
+    <string id="XMLValidator/EmptyMainEntity" value="主 XML 文档不能为空"/>
+    <string id="XMLValidator/CDATAOutsideOfContent" value="CDATA 不能在根元素的外面"/>
+    <string id="XMLValidator/OnlyCharRefsAllowedHere" value="此处只有数字字符实体或特殊的字符实体是合法的"/>
+    <string id="XMLValidator/Unexpected2ndSurrogateChar" value="得到意外的尾部代用字符"/>
+    <string id="XMLValidator/NoPIStartsWithXML" value="任何处理指令都不能以 'xml' 开头"/>
+    <string id="XMLValidator/XMLDeclMustBeFirst" value="XML 或文本声明必须在第 1/1 行/列开始"/>
+    <string id="XMLValidator/XMLVersionRequired" value="XMLDecl 中需要 'version=' 字符串"/>
+    <string id="XMLValidator/StandaloneNotLegal" value="只允许在主 XML 实体中使用 'standalone=' 字符串"/>
+    <string id="XMLValidator/EncodingRequired" value="文本声明中必须有 'encoding=' 字符串"/>
+    <string id="XMLValidator/TooManyColonsInName" value="启用命名空间时，名称只能有一个冒号字符"/>
+    <string id="XMLValidator/InvalidColonPos" value="启用命名空间时，冒号不能是第一个字符或最后一个字符"/>
+    <string id="XMLValidator/ColonNotLegalWithNS" value="启用命名空间时，此名称中不允许使用冒号"/>
+    <string id="XMLValidator/SysException" value="处理过程中发生系统异常"/>
+    <string id="XMLValidator/XMLException_Fatal" value="发生异常！类型：{0}，消息：{1}"/>
+    <string id="XMLValidator/UnexpectedEOF" value="不能预期的文件尾异常。消息： {0}"/>
+    <string id="XMLValidator/UnexpectedError" value="意外错误"/>
+    <string id="XMLValidator/BadSchemaLocation" value="schemaLocation 属性不包含值对。"/>
+    <string id="XMLValidator/NoGrammarResolver" value="内部错误：没有用于 TraverseSchema 的 GrammarResolver"/>
+    <string id="XMLValidator/SchemaScanFatalError" value="在架构扫描期间遇到致命错误"/>    
+
+    
+    <string id="XMLValidator/Array_BadIndex" value="索引超出数组范围 "/>
+    <string id="XMLValidator/Array_BadNewSize" value="新的大小小于旧的大小"/>
+    <string id="XMLValidator/AttrList_BadIndex" value="给定的索引超出最大属性索引"/>
+    <string id="XMLValidator/AttDef_BadAttType" value="传递的 AttTypes 值未知"/>
+    <string id="XMLValidator/AttDef_BadDefAttType" value="传递的 DefAttTypes 值未知"/>
+    <string id="XMLValidator/Bitset_BadIndex" value="位索引超出集大小"/>
+    <string id="XMLValidator/Bitset_NotEqualSize" value="位集的大小不同"/>
+    <string id="XMLValidator/BufMgr_NoMoreBuffers" value="缓冲管理器无法提供更多的缓冲区"/>
+    <string id="XMLValidator/BufMgr_BufferNotInPool" value="在此管理器的池中未找到传递的缓冲区"/>
+    <string id="XMLValidator/CPtr_PointerIsZero" value="未设置指针"/>
+    <string id="XMLValidator/CM_BinOpHadUnaryType" value="二元操作节点有一个一元节点类型"/>
+    <string id="XMLValidator/CM_MustBeMixedOrChildren" value="内容类型必须为 mixed 或 children"/>
+    <string id="XMLValidator/CM_NoPCDATAHere" value="此处 PCDATA 节点无效"/>
+    <string id="XMLValidator/CM_NotValidForSpecType" value="{0} 操作对规范类型无效"/>
+    <string id="XMLValidator/CM_UnaryOpHadBinType" value="一元操作节点有一个二元节点类型"/>
+    <string id="XMLValidator/CM_UnknownCMType" value="未知的内容模型类型"/>
+    <string id="XMLValidator/CM_UnknownCMSpecType" value="未知的内容规范类型"/>
+    <string id="XMLValidator/CM_NoParentCSN" value="父元素没有内容规范节点"/>
+    <string id="XMLValidator/CM_NotValidSpecTypeForNode" value="规范类型对 {0} 无效"/>
+    <string id="XMLValidator/DTD_UnknownCreateReason" value="创建原因枚举有一个未知值"/>
+    <string id="XMLValidator/ElemStack_EmptyStack" value="元素堆栈为空"/>
+    <string id="XMLValidator/ElemStack_BadIndex" value="给定的元素堆栈索引超出了堆栈顶部"/>
+    <string id="XMLValidator/ElemStack_StackUnderflow" value="当弹出请求发生时，元素堆栈已为空"/>
+    <string id="XMLValidator/ElemStack_NoParentPushed" value="请求了父操作，但堆栈上只有一个元素"/>
+    <string id="XMLValidator/Enum_NoMoreElements" value="枚举符中没有包含更多的元素"/>
+    <string id="XMLValidator/File_CouldNotOpenFile" value="无法打开文件： {0}"/>
+    <string id="XMLValidator/File_CouldNotGetCurPos" value="无法查询当前文件位置"/>
+    <string id="XMLValidator/File_CouldNotCloseFile" value="无法关闭文件"/>
+    <string id="XMLValidator/File_CouldNotSeekToEnd" value="无法搜寻到文件尾"/>
+    <string id="XMLValidator/File_CouldNotSeekToPos" value="无法搜寻到文件中的所需位置"/>
+    <string id="XMLValidator/File_CouldNotDupHandle" value="无法复制控制块"/>
+    <string id="XMLValidator/File_CouldNotReadFromFile" value="无法从文件读取数据"/>
+    <string id="XMLValidator/File_CouldNotResetFile" value="无法重设到文件开头"/>
+    <string id="XMLValidator/File_CouldNotGetSize" value="无法确定文件大小"/>
+    <string id="XMLValidator/File_CouldNotGetBasePathName" value="无法确定文件的基路径名"/>
+    <string id="XMLValidator/File_BasePathUnderflow" value="基路径的级别太少，无法编进相对部分"/>
+    <string id="XMLValidator/Gen_ParseInProgress" value="分析时不能调用分析"/>
+    <string id="XMLValidator/Gen_NoDTDValidator" value="看到了 DOCTYPE，但安装的验证器不识别 DTD"/>
+    <string id="XMLValidator/Gen_CouldNotOpenDTD" value="无法打开 DTD 文件 '{0}'"/>
+    <string id="XMLValidator/Gen_CouldNotOpenExtEntity" value="无法打开外部实体 '{0}'"/>
+    <string id="XMLValidator/Gen_UnexpectedEOF" value="不需要输入结尾"/>
+    <string id="XMLValidator/HshTbl_ZeroModulus" value="哈希模数不能为零"/>
+    <string id="XMLValidator/HshTbl_BadHashFromKey" value="关键字的哈希操作返回一个无效的错误哈希值"/>
+    <string id="XMLValidator/HshTbl_NoSuchKeyExists" value="在哈希表中无法找到关键字 '{0}'"/>
+    <string id="XMLValidator/Mutex_CouldNotCreate" value="无法创建互斥体"/>
+    <string id="XMLValidator/Mutex_CouldNotClose" value="无法关闭互斥体"/>
+    <string id="XMLValidator/Mutex_CouldNotLock" value="无法锁定互斥体"/>
+    <string id="XMLValidator/Mutex_CouldNotUnlock" value="无法解锁互斥体"/>
+    <string id="XMLValidator/Mutex_CouldNotDestroy" value="无法破坏互斥体"/>
+    <string id="XMLValidator/NetAcc_InternalError" value="{0} NetAccessor 时出错。消息： {1}"/>
+    <string id="XMLValidator/NetAcc_InitFailed" value="无法初始化 NetAccessor。错误={0}"/>
+    <string id="XMLValidator/NetAcc_TargetResolution" value="无法解析主机/地址 '{0}'"/>
+    <string id="XMLValidator/NetAcc_CreateSocket" value="无法创建 URL '{0}' 的套接字。错误={1}"/>
+    <string id="XMLValidator/NetAcc_ConnSocket" value="无法连接 URL '{0}' 的套接字。错误={1}"/>
+    <string id="XMLValidator/NetAcc_WriteSocket" value="无法写入套接字。错误={0}"/>
+    <string id="XMLValidator/NetAcc_ReadSocket" value="无法从套接字读取。错误={0}"/>
+    <string id="XMLValidator/Pool_ElemAlreadyExists" value="元素 {0} 已存在"/>
+    <string id="XMLValidator/Pool_BadHashFromKey" value="关键字的哈希操作返回一个无效的错误哈希值"/>
+    <string id="XMLValidator/Pool_InvalidId" value="传递的 ID 对该池无效"/>
+    <string id="XMLValidator/Pool_ZeroModulus" value="模数值不能为零"/>
+    <string id="XMLValidator/RdrMgr_ReaderIdNotFound" value="从未找到所指示的阅读器 ID"/>
+    <string id="XMLValidator/Reader_BadAutoEncoding" value="自动编码枚举有一个未知值"/>
+    <string id="XMLValidator/Reader_CouldNotDecodeFirstLine" value="无法解码第一行实体： {0}"/>
+    <string id="XMLValidator/Reader_EOIInMultiSeq" value="在多字节序列的中间部分遇到输入结尾"/>
+    <string id="XMLValidator/Reader_SrcOfsNotSupported" value="当前的代码转换服务不支持源偏移信息"/>
+    <string id="XMLValidator/Reader_EncodingStrRequired" value="EBCDIC 文件必须提供 encoding= 字符串"/>
+    <string id="XMLValidator/Scan_CouldNotOpenSource" value="无法打开主文档实体。Id={0}"/>
+    <string id="XMLValidator/Scan_UnbalancedStartEnd" value="找到不对应的开始/结束标签，无法继续"/>
+    <string id="XMLValidator/Scan_BadPScanToken" value="scanNext() 调用目前是非法的"/>
+    <string id="XMLValidator/Stack_BadIndex" value="索引超出了堆栈顶部"/>
+    <string id="XMLValidator/Stack_EmptyStack" value="堆栈为空，无法访问成员"/>
+    <string id="XMLValidator/Str_ZeroSizedTargetBuf" value="目标缓冲区的最大值不能为零"/>
+    <string id="XMLValidator/Str_UnknownRadix" value="不支持给定的基数。使用 2、8、10 或 16"/>
+    <string id="XMLValidator/Str_TargetBufTooSmall" value="目标缓冲区太小，无法接受结果"/>
+    <string id="XMLValidator/Str_StartIndexPastEnd" value="开始索引超出了字符串结尾"/>
+    <string id="XMLValidator/Str_ConvertOverflow" value="表示的值溢出输出二进制结果"/>
+    <string id="XMLValidator/Strm_StdErrWriteFailure" value="无法写入标准错误"/>
+    <string id="XMLValidator/Strm_StdOutWriteFailure" value="无法写入标准输出"/>
+    <string id="XMLValidator/Strm_ConWriteFailure" value="无法写入控制台"/>
+    <string id="XMLValidator/StrPool_IllegalId" value="字符串池 ID 是非法的"/>
+    <string id="XMLValidator/Trans_CouldNotCreateDefCvtr" value="无法创建默认代码转换器"/>
+    <string id="XMLValidator/Trans_InvalidSizeReq" value="xlat 的最大大小大于声明的块大小"/>
+    <string id="XMLValidator/Trans_Unrepresentable" value="Unicode 字符 0x{0} 无法在编码 {1} 中表示"/>
+    <string id="XMLValidator/Trans_NotValidForEncoding" value="字符 {0} 对编码 {1} 无效"/>
+    <string id="XMLValidator/Trans_BadBlockSize" value="请求的块大小与构造时设置的大小不相等"/>
+    <string id="XMLValidator/Trans_BadSrcSeq" value="遇到无效的多字节源文本序列"/>
+    <string id="XMLValidator/Trans_BadSrcCP" value="对于编码 {1}，{0} 是无效值"/>
+    <string id="XMLValidator/Trans_BadTrailingSurrogate" value="前导代用字符的后面没有结尾字符"/>
+    <string id="XMLValidator/Trans_CantCreateCvtrFor" value="无法为编码 {0} 创建转换器："/>
+    <string id="XMLValidator/URL_MalformedURL" value="URL 的格式不正确"/>
+    <string id="XMLValidator/URL_UnsupportedProto" value="URL 使用的协议不受支持"/>
+    <string id="XMLValidator/URL_UnsupportedProto1" value="不支持的 URL 协议： '{0}'"/>
+    <string id="XMLValidator/URL_OnlyLocalHost" value="目前仅支持本地主机"/>
+    <string id="XMLValidator/URL_NoProtocolPresent" value="不存在协议前缀"/>
+    <string id="XMLValidator/URL_ExpectingTwoSlashes" value="协议后面需要 //"/>
+    <string id="XMLValidator/URL_IncorrectEscapedCharRef" value="% 后面必须跟有两个十六进制数字"/>
+    <string id="XMLValidator/URL_UnterminatedHostComponent" value="未结束的主机组件"/>
+    <string id="XMLValidator/URL_RelativeBaseURL" value="URL 的基部分不能是相对的"/>
+    <string id="XMLValidator/URL_BaseUnderflow" value="基部分的级别太少，无法编进相对部分"/>
+    <string id="XMLValidator/URL_BadPortField" value="端口字段必须是 16 位十进制数字"/>
+    <string id="XMLValidator/Vector_BadIndex" value="传递的索引超出了矢量结尾"/>
+    <string id="XMLValidator/Val_InvalidElemId" value="元素 ID 无效"/>
+    <string id="XMLValidator/Val_CantHaveIntSS" value="当重用 Grammar 时，不允许有内部子集"/>
+    <string id="XMLValidator/XMLRec_UnknownEncoding" value="传递的识别器编码未知"/>
+    <string id="XMLValidator/Parser_Parse1" value="错误的字符"/>
+    <string id="XMLValidator/Parser_Parse2" value="无效的参照号码"/>
+    <string id="XMLValidator/Parser_Next1" value="\ 后面需要有一个字符"/>
+    <string id="XMLValidator/Parser_Next2" value="'?' 不是需要的。需要 '(?:' 或 '(?=' 或 '(?!' 或 '(?&lt;' 或 '(?#' 或 '(?&gt;'?"/>
+    <string id="XMLValidator/Parser_Next3" value="'(?&lt;=' 或 '(?&lt;!'"/>
+    <string id="XMLValidator/Parser_Next4" value="注释未结束"/>
+    <string id="XMLValidator/Parser_Factor1" value="需要 ')'"/>
+    <string id="XMLValidator/Parser_Factor2" value="修改符组中的意外模式结尾"/>
+    <string id="XMLValidator/Parser_Factor3" value="需要“:”"/>
+    <string id="XMLValidator/Parser_Factor4" value="条件组中的意外模式结尾"/>
+    <string id="XMLValidator/Parser_Factor5" value="条件模式中需要以下任一项：向后引用、锚记、lookahead、lookbehind"/>
+    <string id="XMLValidator/Parser_Factor6" value="条件组中有三个以上的选择"/>
+    <string id="XMLValidator/Parser_Atom1" value="U+0040-U+005f 中的字符必须跟在 \c 后面"/>
+    <string id="XMLValidator/Parser_Atom2" value="需要一个类别字符或 '{'"/>
+    <string id="XMLValidator/Parser_Atom3" value="属性名没有以 '}' 结尾"/>
+    <string id="XMLValidator/Parser_Atom4" value="意外的元字符"/>
+    <string id="XMLValidator/Parser_Atom5" value="未知属性"/>
+    <string id="XMLValidator/Parser_CC1" value="POSIX 字符类必须以 ':]' 结尾"/>
+    <string id="XMLValidator/Parser_CC2" value="字符类中意外的模式结尾"/>
+    <string id="XMLValidator/Parser_CC3" value="POSIX 字符类的未知名称"/>
+    <string id="XMLValidator/Parser_CC4" value="'-' 在此处无效"/>
+    <string id="XMLValidator/Parser_CC5" value="需要 ']'"/>
+    <string id="XMLValidator/Parser_CC6" value="'[' 在字符类中无效。写入 '\['"/>
+    <string id="XMLValidator/Parser_CC7" value="']' 在字符类中无效。写入 '\]'"/>
+    <string id="XMLValidator/Parser_Ope1" value="需要 ='['"/>
+    <string id="XMLValidator/Parser_Ope2" value="需要 ')' 或 '-[' 或 '+[' 或 '&amp;['"/>
+    <string id="XMLValidator/Parser_Ope3" value="范围结束代码点 '{0}' 比开始代码点 '{1}' 小"/>
+    <string id="XMLValidator/Parser_Descape1" value="无效的 Unicode 十六进制表示法"/>
+    <string id="XMLValidator/Parser_Descape2" value="在十六进制表示法中溢出"/>
+    <string id="XMLValidator/Parser_Descape3" value="'\x{' 必须以 '}' 结束"/>
+    <string id="XMLValidator/Parser_Descape4" value="无效的 Unicode 代码点"/>
+    <string id="XMLValidator/Parser_Descape5" value="锚记不能在这里"/>
+    <string id="XMLValidator/Parser_Process1" value="此表达式在当前选项设置中不受支持"/>
+    <string id="XMLValidator/Parser_Process2" value="正则表达式：在 charRange 中有不识别的字符 '{0}'"/>
+    <string id="XMLValidator/Gen_NoSchemaValidator" value="看到了一个架构，但安装的验证器不识别架构"/>
+    <string id="XMLValidator/XUTIL_UnCopyableNodeType" value="{0} 节点类型对复制无效"/>
+    <string id="XMLValidator/SubGrpComparator_NGR" value="SubstitutionGroupComparator 没有语法解析器"/>
+    <string id="XMLValidator/FACET_Invalid_Len" value="Length 值 '{0}' 无效"/>
+    <string id="XMLValidator/FACET_Invalid_maxLen" value="maxLength 值 '{0}' 无效"/>
+    <string id="XMLValidator/FACET_Invalid_minLen" value="minLength 值 '{0}' 无效"/>
+    <string id="XMLValidator/FACET_NonNeg_Len" value="Length 值 '{0}' 必须是 nonNegativeInteger"/>
+    <string id="XMLValidator/FACET_NonNeg_maxLen" value="maxLength 值 '{0}' 必须是 nonNegativeInteger"/>
+    <string id="XMLValidator/FACET_NonNeg_minLen" value="minLength 值 '{0}' 必须是 nonNegativeInteger"/>
+    <string id="XMLValidator/FACET_Len_maxLen" value="length 和 maxLength 均为方面的成员是错误的"/>
+    <string id="XMLValidator/FACET_Len_minLen" value="length 和 minLength 均为方面的成员是错误的"/>
+    <string id="XMLValidator/FACET_maxLen_minLen" value="maxLength 值 '{0}' 必须大于 minLength 值 '{1}'"/>
+    <string id="XMLValidator/FACET_bool_Pattern" value="布尔型数据类型中的唯一约束方面是 PATTERN"/>
+    <string id="XMLValidator/FACET_Invalid_Tag" value="无效的方面标签 '{0}'"/>
+    <string id="XMLValidator/FACET_Len_baseLen" value="Length 值 '{0}' 必须等于基 Length '{1}'"/>
+    <string id="XMLValidator/FACET_minLen_baseminLen" value="minLength 值 '{0}' 必须大于或等于基 minLength '{1}'"/>
+    <string id="XMLValidator/FACET_minLen_basemaxLen" value="minLength 值 '{0}' 必须小于或等于基 maxLength '{1}'"/>
+    <string id="XMLValidator/FACET_maxLen_basemaxLen" value="maxLength 值 '{0}' 必须小于或等于基 maxLength '{1}'"/>
+    <string id="XMLValidator/FACET_maxLen_baseminLen" value="maxLength 值 '{0}' 必须大于或等于基 minLength '{1}'"/>
+    <string id="XMLValidator/FACET_enum_base" value="枚举值 = '{0}' 必须来自基的值空间"/>
+    <string id="XMLValidator/FACET_Invalid_WS" value="空白值 '{0}' 必须是 'preserve'、'replace' 和 'collapse' 之一"/>
+    <string id="XMLValidator/FACET_WS_collapse" value="whiteSpace = 'preserve' 或 'replace' 且 base.whiteSpace = 'collapse' 是错误的。"/>
+    <string id="XMLValidator/FACET_WS_replace" value="whiteSpace = 'preserve' 且 base.whiteSpace = 'replace' 是错误的。"/>
+    <string id="XMLValidator/FACET_Invalid_MaxIncl" value="MaxInclusive '{0}' 无效"/>
+    <string id="XMLValidator/FACET_Invalid_MaxExcl" value="MaxExclusive '{0}' 无效"/>
+    <string id="XMLValidator/FACET_Invalid_MinIncl" value="MinInclusive '{0}' 无效"/>
+    <string id="XMLValidator/FACET_Invalid_MinExcl" value="MinExclusive '{0}' 无效"/>
+    <string id="XMLValidator/FACET_Invalid_TotalDigit" value="TotalDigit 值 '{0}' 无效"/>
+    <string id="XMLValidator/FACET_Invalid_FractDigit" value="FractionDigit 值 '{0}' 无效"/>
+    <string id="XMLValidator/FACET_NonNeg_TotalDigit" value="TotalDigit 值 '{0}' 必须是 nonNegativeInteger"/>
+    <string id="XMLValidator/FACET_NonNeg_FractDigit" value="FractionDigit 值 '{0}' 必须是 nonNegativeInteger"/>
+    <string id="XMLValidator/FACET_max_Incl_Excl" value="为同一数据类型同时指定 maxInclusive 和 maxExclusive 是错误的"/>
+    <string id="XMLValidator/FACET_min_Incl_Excl" value="为同一数据类型同时指定 minInclusive 和 minExclusive 是错误的"/>
+    <string id="XMLValidator/FACET_maxExcl_minExcl" value="maxExclusive 值 '{0}' 必须大于 minExclusive 值 '{1}'"/>
+    <string id="XMLValidator/FACET_maxExcl_minIncl" value="maxExclusive 值 '{0}' 必须大于 minInclusive 值 '{1}'"/>
+    <string id="XMLValidator/FACET_maxIncl_minExcl" value="maxInclusive 值 '{0}' 必须大于 minExclusive 值 '{1}'"/>
+    <string id="XMLValidator/FACET_maxIncl_minIncl" value="maxInclusive 值 '{0}' 必须大于 minInclusive 值 '{1}'"/>
+    <string id="XMLValidator/FACET_TotDigit_FractDigit" value="TotalDigit 值 '{0}' 必须大于 FractionDigit 值 '{1}'"/>
+    <string id="XMLValidator/FACET_maxIncl_base_maxExcl" value="maxInclusive 值 '{0}' 必须小于基的 maxExclusive 值 '{1}'"/>
+    <string id="XMLValidator/FACET_maxIncl_base_maxIncl" value="maxInclusive 值 '{0}' 必须小于或等于基的 maxInclusive 值 '{1}'"/>
+    <string id="XMLValidator/FACET_maxIncl_base_minIncl" value="maxInclusive 值 '{0}' 必须大于或等于基的 minInclusive 值 '{1}'"/>
+    <string id="XMLValidator/FACET_maxIncl_base_minExcl" value="maxInclusive 值 '{0}' 必须大于基的 minExclusive 值 '{1}'"/>
+    <string id="XMLValidator/FACET_maxExcl_base_maxExcl" value="maxExclusive 值 '{0}' 必须小于或等于基的 maxExclusive 值 '{1}'"/>
+    <string id="XMLValidator/FACET_maxExcl_base_maxIncl" value="maxExclusive 值 '{0}' 必须小于或等于基的 maxInclusive 值 '{1}'"/>
+    <string id="XMLValidator/FACET_maxExcl_base_minIncl" value="maxExclusive 值 '{0}' 必须大于基的 minInclusive 值 '{1}'"/>
+    <string id="XMLValidator/FACET_maxExcl_base_minExcl" value="maxExclusive 值 '{0}' 必须大于基的 minExclusive 值 '{1}'"/>			
+    <string id="XMLValidator/FACET_minExcl_base_maxExcl" value="minExclusive 值 '{0}' 必须小于基的 maxExclusive 值 '{1}'"/>
+    <string id="XMLValidator/FACET_minExcl_base_maxIncl" value="minExclusive 值 '{0}' 必须小于或等于基的 maxInclusive 值 '{1}'"/>
+    <string id="XMLValidator/FACET_minExcl_base_minIncl" value="minExclusive 值 '{0}' 必须大于基的 minInclusive 值 '{1}'"/>
+    <string id="XMLValidator/FACET_minExcl_base_minExcl" value="minExclusive 值 '{0}' 必须大于基的 minExclusive 值 '{1}'"/>
+    <string id="XMLValidator/FACET_minIncl_base_maxExcl" value="minInclusive 值 '{0}' 必须小于基的 maxExclusive 值 '{1}'"/>
+    <string id="XMLValidator/FACET_minIncl_base_maxIncl" value="minInclusive 值 '{0}' 必须小于或等于基的 maxInclusive 值 '{1}'"/>
+    <string id="XMLValidator/FACET_minIncl_base_minIncl" value="minInclusive 值 '{0}' 必须大于或等于基的 minInclusive 值 '{1}'"/>
+    <string id="XMLValidator/FACET_minIncl_base_minExcl" value="minInclusive 值 '{0}' 必须大于基的 minExclusive 值 '{1}'"/>
+    <string id="XMLValidator/FACET_maxIncl_notFromBase" value="maxInclusive 值 '{0}' 必须来自基的值空间"/>
+    <string id="XMLValidator/FACET_maxExcl_notFromBase" value="maxExclusive 值 '{0}' 必须来自基的值空间"/>
+    <string id="XMLValidator/FACET_minIncl_notFromBase" value="minInclusive 值 '{0}' 必须来自基的值空间"/>
+    <string id="XMLValidator/FACET_minExcl_notFromBase" value="minExclusive 值 '{0}' 必须来自基的值空间"/>
+    <string id="XMLValidator/FACET_totalDigit_base_totalDigit" value="totalDigit 值 '{0}' 必须小于或等于基的 totalDigit 值 '{1}'"/>
+    <string id="XMLValidator/FACET_fractDigit_base_totalDigit" value="fractDigit 值 '{0}' 必须小于或等于基的 totalDigit 值 '{1}'"/>
+    <string id="XMLValidator/FACET_fractDigit_base_fractDigit" value="fractDigit 值 '{0}' 必须小于或等于基的 fractDigit 值 '{1}'"/>
+    <string id="XMLValidator/FACET_maxIncl_base_fixed" value="maxInclusive '{0}' 必须等于基的 maxInclusive '{1}'（固定）"/>
+    <string id="XMLValidator/FACET_maxExcl_base_fixed" value="maxExclusive '{0}' 必须等于基的 maxExclusive '{1}'（固定）"/>
+    <string id="XMLValidator/FACET_minIncl_base_fixed" value="minInclusive '{0}' 必须等于基的 minInclusive '{1}'（固定）"/>
+    <string id="XMLValidator/FACET_minExcl_base_fixed" value="minExclusive '{0}' 必须等于基的 minExclusive '{1}'（固定）"/>
+    <string id="XMLValidator/FACET_totalDigit_base_fixed" value="totalDigit '{0}' 必须等于基的 totalDigit '{1}' （固定）"/>
+    <string id="XMLValidator/FACET_fractDigit_base_fixed" value="fractDigit '{0}' 必须等于基的 fractDigit '{1}'（固定）"/>
+    <string id="XMLValidator/FACET_maxLen_base_fixed" value="maxLen '{0}' 必须等于基的 maxLen '{1}'（固定）"/>
+    <string id="XMLValidator/FACET_minLen_base_fixed" value="minLen '{0}' 必须等于基的 minLen '{1}'（固定）"/>
+    <string id="XMLValidator/FACET_len_base_fixed" value="len '{0}' 必须等于基的 len '{1}'（固定）"/>
+    <string id="XMLValidator/FACET_whitespace_base_fixed" value="whitespace '{0}' 必须等于基的 whitespace '{1}'（固定）"/>
+    <string id="XMLValidator/FACET_internalError_fixed" value="内部错误：固定"/>		
+    <string id="XMLValidator/FACET_List_Null_baseValidator" value="List 中的空基验证器 "/>
+    <string id="XMLValidator/FACET_Union_Null_memberTypeValidators" value="Union 中的空成员类型验证器 "/>
+    <string id="XMLValidator/FACET_Union_Null_baseValidator" value="Union 中的空基验证器"/>
+    <string id="XMLValidator/FACET_Union_invalid_baseValidatorType" value="Union 的基验证器的类型 '{0}' 也必须是 union "/>
+    <string id="XMLValidator/VALUE_NotMatch_Pattern" value="值 '{0}' 与正则表达式方面 '{1}' 不匹配"/>
+    <string id="XMLValidator/VALUE_Not_Base64" value="值 '{0}' 使用的不是 Base64 编码 "/>
+    <string id="XMLValidator/VALUE_Not_HexBin" value="值 '{0}' 使用的不是 HexBin 编码 "/>
+    <string id="XMLValidator/VALUE_GT_maxLen" value="长度为 '{1}' 的值 '{0}' 超出最大长度方面 '{2}' "/>
+    <string id="XMLValidator/VALUE_LT_minLen" value="长度为 '{1}' 的值 '{0}' 小于最小长度方面 '{2}' "/>
+    <string id="XMLValidator/VALUE_NE_Len" value="长度为 '{1}' 的值 '{0}' 与长度方面 '{2}' 不相等 "/>
+    <string id="XMLValidator/VALUE_NotIn_Enumeration" value="值 '{0}' 不在枚举中 "/>
+    <string id="XMLValidator/VALUE_exceed_totalDigit" value="总位数为 '{1}' 的值 '{0}' 超出总位数方面 '{2}' "/>
+    <string id="XMLValidator/VALUE_exceed_fractDigit" value="小数位数为 '{1}' 的值 '{0}' 超出 小数位数方面 '{2}' "/>
+    <string id="XMLValidator/VALUE_exceed_maxIncl" value="值 '{0}' 必须小于或等于 MaxInclusive '{1}' "/>
+    <string id="XMLValidator/VALUE_exceed_maxExcl" value="值 '{0}' 必须小于 MaxExclusive '{1}' "/>
+    <string id="XMLValidator/VALUE_exceed_minIncl" value="值 '{0}' 必须大于或等于 MinInclusive '{1}' "/>
+    <string id="XMLValidator/VALUE_exceed_minExcl" value="值 '{0}' 必须大于 MinExclusive '{1}' "/>
+    <string id="XMLValidator/VALUE_WS_replaced" value="值 '{0}' 不是替换的空白 "/>
+    <string id="XMLValidator/VALUE_WS_collapsed" value="值 '{0}' 不是折叠的空白 "/>
+    <string id="XMLValidator/VALUE_Invalid_NCName" value="值 '{0}' 不是有效 NCName "/>
+    <string id="XMLValidator/VALUE_Invalid_Name" value="值 '{0}' 不是有效 Name "/>
+    <string id="XMLValidator/VALUE_ID_Not_Unique" value="ID '{0}' 不唯一 "/>
+    <string id="XMLValidator/VALUE_ENTITY_Invalid" value="值 '{0}' 不是有效 ENTITY "/>
+    <string id="XMLValidator/VALUE_QName_Invalid" value="值 '{0}' 不是有效 QName "/>
+    <string id="XMLValidator/VALUE_NOTATION_Invalid" value="NOTATION '{0}' 必须是有效 QName "/>
+    <string id="XMLValidator/VALUE_no_match_memberType" value="值 '{0}' 与 union 的任何成员类型都不匹配 "/>
+    <string id="XMLValidator/VALUE_URI_Malformed" value="值 '{0}' 不是有效 URI "/>
+    <string id="XMLValidator/XMLNUM_emptyString" value=" 遇到空字符串。"/>
+    <string id="XMLValidator/XMLNUM_WSString" value=" 字符串中只有空白。"/>
+    <string id="XMLValidator/XMLNUM_2ManyDecPoint" value=" 遇到一个以上的小数点。"/>
+    <string id="XMLValidator/XMLNUM_Inv_chars" value=" 遇到无效字符。"/>
+    <string id="XMLValidator/XMLNUM_null_ptr" value=" 遇到空指针。"/>
+    <string id="XMLValidator/XMLNUM_URI_Component_Empty" value=" 不能用空 '{0}' 来构造 URI "/>
+    <string id="XMLValidator/XMLNUM_URI_Component_for_GenURI_Only" value=" '{0}'，'{1}' 只能为普通 URI 设置！ "/>
+    <string id="XMLValidator/XMLNUM_URI_Component_Invalid_EscapeSequence" value=" '{0}' 包含无效的转义序列 '{1}'"/>
+    <string id="XMLValidator/XMLNUM_URI_Component_Invalid_Char" value=" '{0}' 包含无效字符 '{1}'"/>
+    <string id="XMLValidator/XMLNUM_URI_Component_Set_Null" value=" '{0}' 不能设置为空 "/>
+    <string id="XMLValidator/XMLNUM_URI_Component_Not_Conformant" value=" '{0}' 不是一致的 '{1}' "/>
+    <string id="XMLValidator/XMLNUM_URI_No_Scheme" value=" 在 URI 中未找到方案"/>
+    <string id="XMLValidator/XMLNUM_URI_NullHost" value=" '{0}'，如果未指定主机，则不能指定 '{1}' "/>
+    <string id="XMLValidator/XMLNUM_URI_NullPath" value=" '{0}'，如果未指定路径，则不能指定 '{1}' "/>
+    <string id="XMLValidator/XMLNUM_URI_Component_inPath" value=" '{0}'，不能在路径中指定 '{1}'"/>
+    <string id="XMLValidator/XMLNUM_URI_PortNo_Invalid" value=" 端口号 '{0}' 应该在 (0, 65535) 内 "/>
+    <string id="XMLValidator/XMLNUM_DBL_FLT_maxNeg" value=" 值 '{0}' 应该大于最大负值 '{1}' "/>
+    <string id="XMLValidator/XMLNUM_DBL_FLT_maxPos" value=" 值 '{0}' 应该小于最大负值 '{1}' "/>
+    <string id="XMLValidator/XMLNUM_DBL_FLT_minNegPos" value=" 值 '{0}' 应该位于 '{1}' 的范围内，'{2}' "/>
+    <string id="XMLValidator/XMLNUM_DBL_FLT_InvalidType" value=" 类型 '{0}' 无效：内部错误 "/>
+    <string id="XMLValidator/XMLNUM_DBL_FLT_No_Exponent" value=" 值 '{0}' 应该有指数。 "/>
+    <string id="XMLValidator/Regex_Result_Not_Set" value="未设置结果。"/>
+    <string id="XMLValidator/Regex_CompactRangesError" value="CompactRanges - 内部错误"/>
+    <string id="XMLValidator/Regex_MergeRangesTypeMismatch" value="Merge Ranges - 不匹配的类型"/>
+    <string id="XMLValidator/Regex_SubtractRangesError" value="SubtractRanges - 内部错误"/>
+    <string id="XMLValidator/Regex_IntersectRangesError" value="IntersectRanges - 内部错误"/>
+    <string id="XMLValidator/Regex_ComplementRangesInvalidArg" value="ComplementRanges - 参数必须是 RangeToken"/>
+    <string id="XMLValidator/Regex_InvalidCategoryName" value="无效的类别名称： {0}"/>
+    <string id="XMLValidator/Regex_KeywordNotFound" value="未找到关键字 '{0}'"/>
+    <string id="XMLValidator/Regex_BadRefNo" value="参照号码必须大于 0"/>
+    <string id="XMLValidator/Regex_UnknownOption" value="未知选项： {0}"/>
+    <string id="XMLValidator/Regex_UnknownTokenType" value="未知的标记类型"/>
+    <string id="XMLValidator/Regex_RangeTokenGetError" value="为 {0} 获取 RangeToken 失败 "/>
+    <string id="XMLValidator/Regex_NotSupported" value="不支持"/>
+    <string id="XMLValidator/Regex_InvalidChildIndex" value="无效的子索引"/>
+    <string id="XMLValidator/Regex_InvalidQuantifier" value="'{0}' 中有无效的限定符"/>
+    <string id="XMLValidator/NEL_RepeatedCalls" value="每个进程只能调用一次启用 NEL 选项。"/>
+    <string id="XMLValidator/RethrowError" value="{0}"/>
+    <string id="XMLValidator/Out_Of_Memory" value="操作符 new 失败。内存可能不足"/>
+    <string id="XMLValidator/DV_InvalidOperation" value="不允许此操作"/>
+    <string id="XMLValidator/XPath_NoAttrSelector" value="选择器无法选择属性"/>
+    <string id="XMLValidator/XPath_NoUnionAtStart" value="xpath 值不能以 '|' 开头"/>
+    <string id="XMLValidator/XPath_NoMultipleUnion" value="xpath 值中不能有 '||'"/>
+    <string id="XMLValidator/XPath_MissingAttr" value="xpath 中缺少属性名"/>
+    <string id="XMLValidator/XPath_ExpectedToken1" value="需要 xpath 句元 'NAMETEST_QNAME' 或 'NAMETEST_ANY' 或 'NAMETEST_NAMESPACE'"/>
+    <string id="XMLValidator/XPath_PrefixNoURI" value="前缀 '{0}' 未绑定到 xpath 值中的命名空间 URI"/>
+    <string id="XMLValidator/XPath_NoDoubleColon" value="xpath 表达式中不能使用双冒号"/>
+    <string id="XMLValidator/XPath_ExpectedStep1" value="'AXISNAME_CHILD::' 句元后面需要步长"/>
+    <string id="XMLValidator/XPath_ExpectedStep2" value="xpath 中 '//' 的后面需要步长"/>
+    <string id="XMLValidator/XPath_ExpectedStep3" value="xpath 中 '/' 的后面需要步长"/>
+    <string id="XMLValidator/XPath_NoForwardSlash" value="xpath 中 '//' 的后面不能有 '/'"/>
+    <string id="XMLValidator/XPath_NoDoubleForwardSlash" value="'//' 只能跟在 xpath 开头的 '.' 后面"/>
+    <string id="XMLValidator/XPath_NoForwardSlashAtStart" value="xpath 值不能以 '/' 开头"/>
+    <string id="XMLValidator/XPath_NoSelectionOfRoot" value="不允许选择 xpath 的根"/>
+    <string id="XMLValidator/XPath_EmptyExpr" value="空 xpath 表达式"/>
+    <string id="XMLValidator/XPath_NoUnionAtEnd" value="xpath 表达式不能以 '|' 结尾"/>
+    <string id="XMLValidator/XPath_InvalidChar" value="xpath 中跟在 '.' 后面的字符无效"/>
+    <string id="XMLValidator/XPath_TokenNotSupported" value="不支持 XPath 句元"/>
+    <string id="XMLValidator/XPath_FindSolution" value="找到一种解决方案！"/>
+    <string id="XMLValidator/DateTime_Assert_Buffer_Fail" value="尚未初始化缓冲区！"/>
+    <string id="XMLValidator/DateTime_dt_missingT"        value="缺少 'T'！ '{0}' "/>
+    <string id="XMLValidator/DateTime_gDay_invalid"       value="无效的 gDay！ '{0}' "/>
+    <string id="XMLValidator/DateTime_gMth_invalid"      value="无效的 gMonth！ '{0}' "/>
+    <string id="XMLValidator/DateTime_gMthDay_invalid"   value="无效的 gMonthDay！ '{0}' "/>
+    <string id="XMLValidator/DateTime_dur_Start_dashP"    value="持续时间应该以 '-' 或 'P' 开头 '{0}' "/>
+    <string id="XMLValidator/DateTime_dur_noP"            value="持续时间应该总是包含 'P'！ '{0}' "/>
+    <string id="XMLValidator/DateTime_dur_DashNotFirst"   value="'-' 只能出现在开头！ '{0}' "/>
+    <string id="XMLValidator/DateTime_dur_inv_b4T"        value="持续时间中 'T' 前面有无效内容！ '{0}' "/>
+    <string id="XMLValidator/DateTime_dur_NoTimeAfterT"   value="持续时间中 'T' 后面没有时间元素！ '{0}' "/>
+    <string id="XMLValidator/DateTime_dur_NoElementAtAll" value="持续时间应该至少包含元素！ '{0}' "/>
+    <string id="XMLValidator/DateTime_date_incomplete"    value="日期不完整！ '{0}' "/>
+    <string id="XMLValidator/DateTime_date_invalid"       value="无效的日期！ '{0}' "/>
+    <string id="XMLValidator/DateTime_time_incomplete"    value="时间不完整！ '{0}' "/>
+    <string id="XMLValidator/DateTime_time_invalid"       value="无效的时间！ '{0}' "/>
+    <string id="XMLValidator/DateTime_ms_noDigit"         value="'.' 存在时 ms 也应该存在！ '{0}' "/>
+    <string id="XMLValidator/DateTime_ym_incomplete"      value="YearMonth 不完整！ '{0}' "/>
+    <string id="XMLValidator/DateTime_ym_invalid"         value="缺少年分隔符或者它的位置不正确！ '{0}' "/>
+    <string id="XMLValidator/DateTime_year_tooShort"      value="年必须为 'CCYY' 格式！ '{0}' "/>
+    <string id="XMLValidator/DateTime_year_leadingZero"   value="年中存在无效的前导零！ '{0}' "/>
+    <string id="XMLValidator/DateTime_ym_noMonth"         value="YearMonth 中缺少月！ '{0}' "/>
+    <string id="XMLValidator/DateTime_tz_noUTCsign"       value="需要 TimeZone！ '{0}' "/>
+    <string id="XMLValidator/DateTime_tz_stuffAfterZ"     value="'Z' 后面应该为空！ '{0}' "/>
+    <string id="XMLValidator/DateTime_tz_invalid"         value="无效的 TimeZone！ '{0}' "/>
+    <string id="XMLValidator/DateTime_year_zero"          value="年 (0000) 是无效的年值！ '{0}' "/>
+    <string id="XMLValidator/DateTime_mth_invalid"        value="月的值必须为 1 至 12！ '{0}' "/>
+    <string id="XMLValidator/DateTime_day_invalid"        value="日期的值必须为 1 至 31！ '{0}' "/>
+    <string id="XMLValidator/DateTime_hour_invalid"       value="小时的值必须为 0 至 23！ '{0}' "/>
+    <string id="XMLValidator/DateTime_min_invalid"        value="分钟的值必须为 0 至 59！ '{0}' "/>
+    <string id="XMLValidator/DateTime_second_invalid"     value="秒的值必须为 0 至 60！ '{0}' "/>
+    <string id="XMLValidator/DateTime_tz_hh_invalid"      value="分钟的值必须为 0 至 59！ '{0}' "/>
+    <string id="XMLValidator/PD_NSCompat1" value="NSCompat：基中的通配符不允许 '{0}' 的命名空间"/>
+    <string id="XMLValidator/PD_OccurRangeE" value="'{0}' 的事件范围不是基元素范围的有效 restriction "/>
+    <string id="XMLValidator/PD_NameTypeOK1" value="NameAndTypeOK：restriction 中的 name/uri 元素与对应基元素的 name/uri 不匹配"/>
+    <string id="XMLValidator/PD_NameTypeOK2" value="NameAndTypeOK：restriction 中元素 '{0}' 为 nillable，但在基中该元素不为 nillable"/>
+    <string id="XMLValidator/PD_NameTypeOK3" value="NameAndTypeOK：元素 '{0}' 不是固定的，或者未固定在基中的相同值上"/>
+    <string id="XMLValidator/PD_NameTypeOK4" value="NameAndTypeOK：对元素 '{0}' 禁用的替换不是基元素中禁用的替换的超集"/>
+    <string id="XMLValidator/PD_NameTypeOK5" value="NameAndTypeOK：元素 '{0}' 的类型不是从基的类型派生的"/>
+    <string id="XMLValidator/PD_NameTypeOK6" value="NameAndTypeOK：派生元素 '{0}' 的标识约束比基元素 '{1}' 少"/>
+    <string id="XMLValidator/PD_NameTypeOK7" value="NameAndTypeOK：派生元素 '{0}' 含有基元素 '{1}' 中未出现的标识约束"/>
+    <string id="XMLValidator/PD_RecurseAsIfGroup" value="RecurseAsIfGroup：元素 '{0}' 所属的组的种类与基的不同"/>
+    <string id="XMLValidator/PD_Recurse1" value="组的事件范围不是基组的事件范围的有效 restriction"/>
+    <string id="XMLValidator/PD_Recurse2" value="Recurse：粒子之间不存在完整的功能映射"/>
+    <string id="XMLValidator/PD_ForbiddenRes1" value="'any' 禁止 restriction：Choice,Seq,All,Elt"/>
+    <string id="XMLValidator/PD_ForbiddenRes2" value="'all' 禁止 restriction：Choice,Seq,Elt"/>
+    <string id="XMLValidator/PD_ForbiddenRes3" value="'choice' 禁止 restriction：All,Seq,Leaf"/>
+    <string id="XMLValidator/PD_ForbiddenRes4" value="'sequence' 禁止 restriction：Elt"/>
+    <string id="XMLValidator/PD_NSSubset1" value="通配符的事件范围不是基通配符范围的 restriction"/>
+    <string id="XMLValidator/PD_NSSubset2" value="通配符不是基中对应通配符的子集"/>
+    <string id="XMLValidator/PD_NSRecurseCheckCardinality1" value="组的事件范围不是基通配符范围的 restriction"/>
+    <string id="XMLValidator/PD_RecurseUnordered" value="RecurseUnordered：粒子之间不存在完整的功能映射"/>
+    <string id="XMLValidator/PD_MapAndSum" value="MapAndSum：粒子之间不存在完整的功能映射"/>
+    <string id="XMLValidator/PD_InvalidContentType" value="粒子派生：无效的内容规范节点类型"/>
+
+    <string id="XMLValidator/BadMajorCode" value="createMessage 的 majorCode 参数超出范围"/>
+    <string id="XMLValidator/MessageFormatFailure" value="格式化以下消息时出现内部错误："/>
+    <string id="XMLValidator/UnterminatedPEReference" value="参数实体引用必须以 ';' 分隔符结束。"/>
+    <string id="XMLValidator/ExternalIDRequired" value="外部实体声明必须以 SYSTEM 或 PUBLIC 开始"/>
+    <string id="XMLValidator/RecursiveReference" value="递归引用 {0}（引用路径： '{1}'）"/>
+    <string id="XMLValidator/ImproperDeclarationNesting" value="必须适当嵌套参数实体 `(0)'' 的替换文本"/>
+    <string id="XMLValidator/ErrorMessageAvailable" value="有一条消息用于显示此错误。"/>
+    <string id="XMLValidator/IncompleteContent" value="元素 '{0}' 的内容不完整"/>
+    <string id="XMLValidator/UnterminatedSystemID" value="系统 ID 需要有一个终止字符。"/>
+    <string id="XMLValidator/UnterminatedPublicID" value="公共 ID 需要有一个终止字符。"/>
+    <string id="XMLValidator/UnterminatedEnumeration" value="枚举需要有一个终止字符。"/>
+    <string id="XMLValidator/CDEndInContent" value="内容部分的结尾处应该有一个 CD。"/>
+    <string id="XMLValidator/TwoColonsInQName" value="QName 中应该有两个冒号 ('::')。"/>
+    <string id="XMLValidator/MarkupNotRecognized" value="不识别标记标签。"/>
+    <string id="XMLValidator/URIFragmentInSystemId" value="系统 ID 中存在 URI 碎片"/>
+    <string id="XMLValidator/ElementTypeReqInElementDecl" value="需要在声明元素时声明元素类型。"/>
+    <string id="XMLValidator/UnterminatedAttributeValue" value="属性值需要有一个终止字符。"/>
+    <string id="XMLValidator/MaximumCodeReached" value="已达到代码的最大大小。"/>
+
+
+</strings>

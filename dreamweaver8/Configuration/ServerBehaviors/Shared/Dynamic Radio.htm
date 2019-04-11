@@ -1,0 +1,77 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+
+<SCRIPT>
+// Copyright 2001-2002 Macromedia, Inc. All rights reserved.
+var PROP_type = "DynamicRadio";
+</SCRIPT>
+
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/sbManager.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/TagMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/DynamicExpressionTextfield.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Dynamic Radio.js"></script>
+<SCRIPT SRC="../Shared/DynamicRadioButtonMasks.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/dynamicCmn.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/file.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/niceName.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssClasses.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/Cmn/DOM.js"></SCRIPT>
+
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm" ACTION="">
+    
+  <table border="0" cellpadding="4" cellspacing="2">
+      
+    <tr valign="baseline">
+        
+      <td align="right" nowrap>单选按钮组: </td>
+      <td nowrap>
+          <select name="radioNode" class="tagList" onChange="updateUI('radioNode')">
+          </select>
+        </td>
+    </tr>
+      
+    <tr valign="baseline">
+        
+      <td align="right" nowrap valign="top">
+          <img src="../../Shared/MM/Images/transparent.gif" height="3" width="20"><br>
+          单选按钮值: 
+        </td>
+      <td nowrap>
+          <select name="expression2" size="4" class="paramNameList" onChange="updateUI('expression2')">
+          </select>
+        </td>
+    </tr>
+      
+    <tr valign="baseline">
+        
+      <td></td>
+      <td nowrap>
+          值: 
+        <input name="expression2_edit" type="text" class="medTField" style="width:166px" onBlur="updateUI('expression2_edit')">
+        </tr>
+      
+    <tr valign="baseline">
+        
+      <td align="right" nowrap>选取值等于: </td>
+      <td nowrap>
+          <input name="expression1" type="text" class="basicTextField" >
+          <input type=image src="../../Shared/UltraDev/Images/Boltup.gif" onClick="launchDynamicData(document.expression1)" name="image">
+        </tr>
+    
+  </table>
+  </FORM>
+</BODY>
+</HTML>

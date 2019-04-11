@@ -1,0 +1,47 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+
+<SCRIPT>
+// Copyright 2001-2002 Macromedia, Inc. All rights reserved.
+var MOVE_TYPE       = "Last";
+var PROP_TYPE       = "moveToLastRecord";
+</SCRIPT>
+
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/RecordsetMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/TagMenu.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Move To Records.js"></SCRIPT>
+
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm" ACTION="">
+    <TABLE BORDER=0>
+      <TR>
+        <TD ALIGN="right" VALIGN="baseline" NOWRAP>链接: </TD>
+        <TD VALIGN="baseline" NOWRAP>
+          <SELECT NAME="linkNode" class="tagList">
+            <OPTION SELECTED>*** 未找到链接</OPTION>
+          </SELECT>
+        </TD>
+      </TR>
+      <tr><td height="1"></td></tr>
+      <TR>
+        <TD ALIGN="right" VALIGN="baseline" NOWRAP>记录集: </TD>
+        <TD VALIGN="baseline" NOWRAP>
+          <SELECT NAME="rs" class="rsNameList">
+            <OPTION SELECTED>*** 未找到记录集</OPTION>
+          </SELECT>
+        </TD>
+      </TR>
+    </TABLE>
+  </FORM>
+</BODY>
+</HTML>

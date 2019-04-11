@@ -1,0 +1,21 @@
+<participant version="5.0">
+  <insertText location="afterSelection">
+  <![CDATA[
+    <form method="post" name="@@FormName@@" action="<?php echo $editFormAction; ?>">
+	    <table align="@@TableAlign@@">  
+	      <@ loop (@@ElementString@@) @>
+	        @@ElementString@@
+	      <@ endloop @>
+	      <tr valign="baseline"> 
+	        <td nowrap align="right">&nbsp;</td>
+	        <td><input type="submit" value="@@ButtonText@@"></td>
+	      </tr>      
+	    </table>
+	    <@ loop (@@HiddenFieldName@@, @@HiddenFieldValue@@) @>
+	      <input type="hidden" name="@@HiddenFieldName@@" value="@@HiddenFieldValue@@">
+	    <@ endloop @>    
+    </form>
+    <p>&nbsp;</p>
+  ]]>
+</insertText>
+</participant>

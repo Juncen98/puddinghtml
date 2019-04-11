@@ -1,0 +1,38 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<HTML>
+<HEAD><link href="../../fields.css" rel="stylesheet" type="text/css">
+<SCRIPT LANGUAGE="javascript" SRC="Play Sound.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/DOM.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/file.js"></SCRIPT>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<SCRIPT LANGUAGE="javascript">
+// Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved.
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_NoSndFile = "请输入声音文件名或点击「取消」。"
+//--------------- END LOCALIZEABLE   ---------------
+//---------------    END JAVASCRIPT    ---------------
+</SCRIPT>
+<TITLE>播放声音</TITLE>
+</HEAD>
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm">
+    <DIV ALIGN="center">
+
+    <TABLE BORDER=0 cellpadding="2" cellspacing="4">
+      <TR>
+        <TD VALIGN="baseline" nowrap> 播放声音:</TD>
+        <TD VALIGN="baseline" nowrap>
+          <INPUT NAME="sndFileObj" TYPE="TEXT" class="largeTField"></TD>
+        <TD VALIGN="baseline" nowrap>
+          <INPUT value="浏览..." TYPE="button" onClick="browseFile(document.theForm.sndFileObj);focus(this)">
+        </TD>
+      </TR>
+    </TABLE>
+    </DIV>
+  </FORM>
+</BODY></HTML>

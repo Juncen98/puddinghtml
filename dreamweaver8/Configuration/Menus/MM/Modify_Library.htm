@@ -1,0 +1,37 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>ÐÞ¸Ä¿â</TITLE>
+<SCRIPT LANGUAGE="javascript">
+<!--
+	function receiveArguments()
+	{
+		dw.setFloaterVisibility('assets', true);
+		dw.assetPalette.setSelectedCategory('library');
+		dw.assetPalette.newAsset();
+		return true;
+	}
+
+	// not checking the arguments here because we enable all the menu
+	// items with the same code
+	function canAcceptCommand()
+	{
+		var selarray = dw.getSelection();
+		var result = false;
+
+		if (!(dw.getFocus() == 'document' && dw.getDocumentDOM().getFocus() != 'frameset'))
+			return false;
+
+		if (selarray[0] != selarray[1])
+		{
+			result = true;
+		}
+		return result;
+	}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

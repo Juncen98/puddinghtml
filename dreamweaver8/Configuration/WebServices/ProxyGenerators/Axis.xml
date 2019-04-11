@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxyrec>
+	<doctitle>
+		<![CDATA[Default Proxy Generator]]>
+	</doctitle>
+	<properties>
+		<filename>
+			<![CDATA[DefaultProxyGen.htm]]>
+		</filename>
+		<introspectorfilename>
+			<![CDATA[ReflectJava]]>
+		</introspectorfilename>
+		<servermodels>
+			<![CDATA[JSP,UD4 - JSP]]>
+		</servermodels>
+		<compileproxy>
+			<![CDATA[$$JAVAC -g -classpath "$$COMPILEDIR;$$CONFIGDIR\Classes\" *.java]]>
+		</compileproxy>
+		<generateproxy>
+			<![CDATA[$$JAVA -cp $$CONFIGDIR\Classes\ org.apache.axis.wsdl.WSDL2Java --verbose $$WSDLFILE]]>
+		</generateproxy>
+		<file>
+			<![CDATA[Axis]]>
+		</file>
+		<outputdir>
+			<![CDATA[$$SITEROOT/WEB-INF/classes]]>
+		</outputdir>
+	</properties>
+</proxyrec>

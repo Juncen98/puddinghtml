@@ -1,0 +1,215 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>FORM</title>
+  
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+var TARGETLIST;
+var METHODLIST;
+var LANGUAGELIST;
+var DIRLIST;
+var ENCTYPELIST;
+
+var theUIObjects; 
+var theGetTypes; 
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function updateEncTypeList(submissionMethod){
+	// Remember old value if there was one
+	var oldValue = ENCTYPELIST.getValue();
+	
+	// Null out the list first, then add the new values.
+	if (submissionMethod == 'get'){
+		ENCTYPELIST.setAll(new Array(0),new Array(0));
+		tagDialog.populateDropDownList(ENCTYPELIST, theFormEncTypeGetVal, theFormEncTypeGetVal, 1);
+	}else{
+		ENCTYPELIST.setAll(new Array(0),new Array(0));
+		tagDialog.populateDropDownList(ENCTYPELIST, theFormEncTypePostVal, theFormEncTypePostVal, 1);
+	}
+	
+	// If the user had already chosen application/x-www-form-urlencoded
+	// and then changed from get to post, leave the enctype field as-is.
+	// If instead she'd chosen multipart/form-data and changed from post
+	// to get, choose the blank item (multipart/form-data is not a valid
+	// enctype for get).
+	if (submissionMethod == 'get' && oldValue == 'multipart/form-data'){
+		ENCTYPELIST.pickValue("");
+	}else{
+		ENCTYPELIST.pickValue(oldValue);
+	}
+}
+
+function initializeUI()
+{
+	TARGETLIST = new ListControl("thetarget"); 
+	METHODLIST = new ListControl("themethod"); 
+	LANGUAGELIST = new ListControl("thelang"); 
+	DIRLIST = new ListControl("thedir"); 
+	ENCTYPELIST = new ListControl("theenctype"); 
+
+	theUIObjects  = new Array(LANGUAGELIST,DIRLIST,TARGETLIST,METHODLIST,ENCTYPELIST); 
+
+  tagDialog.populateDropDownList(LANGUAGELIST, theLanguagesCap, theLanguagesVal, 1); 
+  tagDialog.populateDropDownList(DIRLIST, theDirectionCap, theDirectionVal, 1); 
+  tagDialog.populateDropDownList(TARGETLIST, theTargetVal, theTargetVal, 1); 
+  tagDialog.populateDropDownList(METHODLIST, theMethodTypesVal, theMethodTypesVal, 0); 
+  tagDialog.populateDropDownList(ENCTYPELIST, theFormEncTypeGetVal, theFormEncTypeGetVal, 1); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">操作: </td>
+      <td nowrap="nowrap">
+        <input name="theaction" type="text" class="basicTextField" id="attr:form:action" attname="action" required="true" />&nbsp;
+        <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('theaction');focus(this)">
+      </td> 
+    </tr> 
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">方法: </td>
+      <td nowrap="nowrap">
+        <select name="themethod" class="oneWordOptionList" id="attr:form:method" onChange="updateEncTypeList(METHODLIST.getValue())" attname="method" editable="false">
+           
+        </select>
+      </td> 
+    </tr> 
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">编码类型: </td>
+      <td nowrap="nowrap">
+        <select name="theenctype" class="mimeTypesList" id="attr:form:enctype" attname="enctype" editable="true">
+           
+        </select>
+      </td> 
+    </tr> 
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:form:name" attname="name" />
+      </td> 
+    </tr> 
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">目标: </td>
+      <td nowrap="nowrap">
+        <select name="thetarget" class="targetList" id="attr:form:target" attname="target" editable="true"> 
+        </select>
+      </td> 
+    </tr> 
+  </table>
+</div> 
+<div name="样式表/辅助功能"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类: </td>
+      <td nowrap="nowrap">
+        <input name="theclass" type="text" class="basicTextField" id="attr:form:class" attname="class" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="attr:form:id" attname="id" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">样式: </td>
+      <td nowrap="nowrap">
+        <input name="thestyle" type="text" class="basicTextField" id="attr:form:class" attname="style" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">标题: </td>
+      <td nowrap="nowrap">
+        <input name="thetitle" type="text" class="basicTextField" id="attr:form:title" attname="title" />
+      </td>
+    </tr>
+  </table> 
+</div>
+<div name="语言"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">方向: </td>
+      <td nowrap="nowrap">
+        <select name="thedir" class="dirLangList" id="attr:form:dir" attname="dir"> 
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" nowrap="nowrap"></td>
+      <td nowrap="nowrap"></td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">语言: </td>
+      <td nowrap="nowrap">
+        <select name="thelang" class="dirLangList" id="attr:form:lang" attname="lang" editable="true"> 
+        </select>
+      </td>
+    </tr>
+  </table>
+</div> 
+<div name="事件"> 
+  <div name="onSubmit"> 
+    <textarea name="theonSubmit" attname="onSubmit" id="attr:acronym:onSubmit" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onReset"> 
+    <textarea name="theonReset" attname="onReset" id="attr:acronym:onReset" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onClick"> 
+    <textarea name="theonClick" attname="onClick" id="attr:acronym:onclick" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onDblClick"> 
+    <textarea name="theonDblClick" attname="onDblClick" id="attr:acronym:ondblclick" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseDown"> 
+    <textarea name="theonMouseDown" attname="onMouseDown" id="attr:acronym:onmousedown" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseUp"> 
+    <textarea name="theonMouseUp" attname="onMouseUp" id="attr:acronym:onmouseup" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseOver"> 
+    <textarea name="theonMouseOver" attname="onMouseOver" id="attr:acronym:onmouseover" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseMove"> 
+    <textarea name="theonMouseMove" attname="onMouseMove" id="attr:acronym:onmousemove" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onMouseOut"> 
+    <textarea name="theonMouseOut" attname="onMouseOut" id="attr:acronym:onmouseout" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onKeyPress"> 
+    <textarea name="theonKeyPress" attname="onKeyPress" id="attr:acronym:onkeypress" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onKeyDown"> 
+    <textarea name="theonKeyDown" attname="onKeyDown" id="attr:acronym:onkeydown" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onKeyUp"> 
+    <textarea name="theonKeyUp" attname="onKeyUp" id="attr:acronym:onkeyup" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+</div>
+</div>
+
+</body>
+</html>

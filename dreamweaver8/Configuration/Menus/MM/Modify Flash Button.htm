@@ -1,0 +1,146 @@
+<html>
+<head>
+<title>ÐÞ¸Ä Flash °´Å¥</title>
+<!--Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved.-->
+<script src="../../Shared/MM/Scripts/Class/FileClass.js"></script>
+<script src="../../Shared/MM/Scripts/CMN/DOM.js"></script>
+<SCRIPT LANGUAGE="Javascript">
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MENU_Edit = "±à¼­(_T)...";
+var MENU_EditWithFlash = "ÓÃ Flash ±à¼­(_T)";
+
+//-------------- END LOCALIZEABLE -------------------
+
+//var SWF_FILE_TYPE = "dwButton";
+var SWF_FILE_PATH;
+
+function init()
+{
+  var commandName = SWFFile.getObjectType(SWF_FILE_PATH);
+  if( commandName )
+  {
+	commandName = commandName + '.htm';
+	retVal = dw.runCommand(commandName, SWF_FILE_PATH);
+  }
+  else
+  {
+    var flashApp = dw.getFlashPath();
+    retVal = dw.openWithApp(SWF_FILE_PATH, flashApp[1]);
+  }
+}
+
+function canAcceptCommand()
+{
+  var retVal = false;
+  SWF_FILE_PATH = getNodeSourcePath();
+  if (SWF_FILE_PATH)
+    retVal = SWFFile.getObjectType(SWF_FILE_PATH);
+  if (retVal)
+	return true;
+
+  // check for Flash 6
+  if (SWF_FILE_PATH)
+    retVal = dw.validateFlash(6.0);
+  if (!isFlashlet() && retVal)
+	return true;
+
+  return false;
+}
+
+function setMenuText()
+{
+  SWF_FILE_PATH = getNodeSourcePath();
+  if (SWF_FILE_PATH)
+  {
+	if( SWFFile.getObjectType(SWF_FILE_PATH) )
+		return MENU_Edit;
+  }
+
+  return MENU_EditWithFlash;
+}
+
+function getNodeSourcePath()
+{
+  var docDOM = dw.getDocumentDOM('document');
+  var selectedNode, retVal, srcAttr;
+  var theFile;
+  if (docDOM)
+  {
+    selectedNode = docDOM.getSelectedNode();
+	if (selectedNode.nodeType!=Node.ELEMENT_NODE) return retVal;
+//	embedTag = selectedNode.getElementsByTagName("EMBED");
+    srcAttr = getButtonAttribute("PARAM","MOVIE",selectedNode);
+	if (!srcAttr)
+	  srcAttr = getButtonAttribute("EMBED","SRC",selectedNode);
+	if (srcAttr)
+	{
+	  retVal =File.getFullUrl(srcAttr, docDOM.URL);
+	}
+  }
+  return retVal;
+}
+
+
+function isFlashlet()
+{
+	var dom = dw.getDocumentDOM('document');
+	var selectedNode, retVal, srcAttr;
+	var retVal = false;
+	if (dom)
+	{
+		selectedNode = dom.getSelectedNode();
+		if (selectedNode.nodeType!=Node.ELEMENT_NODE) return retVal;
+		//	embedTag = selectedNode.getElementsByTagName("EMBED");
+		flashletAttr = getButtonAttribute("PARAM","FLASH_COMPONENT",selectedNode);
+		if (flashletAttr)
+	 		retVal = true;
+	}
+	return retVal;
+}
+
+function getButtonAttribute(tagType,attr,selection)
+{
+  var retVal="";
+  var paramNodeArray = new Array();
+  var embedNodeArray = new Array();
+  var objectNode;
+  var found=false;
+  if (selection.tagName == "OBJECT")
+    objectNode = selection;
+  else if (selection.tagName == "EMBED")
+    embedNodeArray.push(selection);
+  if (objectNode && objectNode.hasChildNodes())
+  {
+    paramNodeArray = selection.getElementsByTagName("PARAM");
+	embedNodeArray = selection.getElementsByTagName("EMBED");
+  }
+  if (tagType=="EMBED" || tagType=="OBJECT")
+  {
+    if (tagType=="EMBED" && (embedNodeArray[0] && embedNodeArray[0].nodeType==Node.ELEMENT_NODE))
+	  retVal = embedNodeArray[0].getAttribute(attr);
+	else if (objectNode && objectNode.nodeType==Node.ELEMENT_NODE && tagType=="OBJECT")
+	  retVal = objectNode.getAttribute(attr);
+  }
+  else   // paramenter tag
+  {
+    for(var i=0; i < paramNodeArray.length; i++)
+	{
+	  if (paramNodeArray[i].getAttribute("NAME").toLowerCase()==attr.toLowerCase())
+	  {
+	    retVal= paramNodeArray[i].getAttribute("VALUE");
+		found=true;
+		break;
+	  }
+	}
+  }
+  return retVal;
+}
+
+</SCRIPT>
+</HEAD>
+
+<BODY onLoad="init()">
+</BODY>
+</HTML>

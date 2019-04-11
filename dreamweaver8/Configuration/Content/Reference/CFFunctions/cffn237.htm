@@ -1,0 +1,195 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>REREPLACENOCASE</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">REREPLACENOCASE</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Uses a regular expression to search a string for a string pattern and replace it with another. The search is case-insensitive.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span><ul>
+
+<li>If scope = &quot;one&quot;: returns a string with the first occurrence of the regular expression replaced by the value of substring. </li>
+
+<li>If scope = &quot;all&quot;: returns a string with all occurrences of the regular expression replaced by the value of substring. </li>
+
+<li>If the function finds no matches: returns a copy of the string, unchanged.</li>
+</ul>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+String functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>REReplaceNoCase(string, reg_expression, substring [, scope ])
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+REFind, REFindNoCase, Replace, ReplaceList
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX: Changed behavior: this function inserts the following special characters in regular expression replacement strings, to control case conversion: \u, \U, \l, \L, and \E. If any of these strings is present in a ColdFusion 5 application, you must insert a backslash before it (for example, change &quot;\u&quot; to &quot;\\u&quot;). 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+For details on using regular expressions, see Chapter&#160;7, "Using Regular Expressions in Functions," in ColdFusion MX Developer's Guide.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;p&gt;The REReplaceNoCase function returns &lt;i&gt;string&lt;/i&gt; with a regular 
+expression replaced with &lt;i&gt;substring&lt;/i&gt; in the specified scope. 
+This is a case-insensitive search.
+&lt;p&gt;REReplaceNoCase(&quot;cabaret&quot;,&quot;C|B&quot;,&quot;G&quot;,&quot;ALL&quot;):   
+&lt;cfoutput&gt;#REReplaceNoCase(&quot;cabaret&quot;,&quot;C|B&quot;,&quot;G&quot;,&quot;ALL&quot;)#&lt;/cfoutput&gt;
+&lt;p&gt;REReplaceNoCase(&quot;cabaret&quot;,&quot;[A-Z]&quot;,&quot;G&quot;,&quot;ALL&quot;):   
+&lt;cfoutput&gt;#REReplaceNoCase(&quot;cabaret&quot;,&quot;[A-Z]&quot;,&quot;G&quot;,&quot;ALL&quot;)#&lt;/cfoutput&gt;
+&lt;p&gt;REReplaceNoCase(&quot;I LOVE JELLIES&quot;,&quot;jell(y|ies)&quot;,&quot;cookies&quot;):   
+&lt;cfoutput&gt;#REReplaceNoCase(&quot;I LOVE JELLIES&quot;,&quot;jell(y|ies)&quot;,&quot;cookies&quot;)#
+&lt;/cfoutput&gt;
+&lt;p&gt;REReplaceNoCase(&quot;I LOVE JELLY&quot;,&quot;jell(y|ies)&quot;,&quot;cookies&quot;):   
+&lt;cfoutput&gt;#REReplaceNoCase(&quot;I LOVE JELLY&quot;,&quot;jell(y|ies)&quot;,&quot;cookies&quot;)#
+&lt;/cfoutput&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="STRING">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STRING</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A string or a variable that contains one.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="REG_EXPRESSION">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">REG_EXPRESSION</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Regular expression to replace. For more information, see Chapter&#160;7, "Using Regular Expressions in Functions," in ColdFusion MX Developer's Guide. </p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SUBSTRING">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SUBSTRING</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>A string or a variable that contains one. Replaces reg_expression.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="SCOPE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">SCOPE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+<ul>
+
+<li>one: replaces the first occurrence of the regular expression. Default.</li>
+
+<li>all: replaces all occurrences of the regular expression.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

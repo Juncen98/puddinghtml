@@ -1,0 +1,176 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFREGISTRY</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var GETALLTYPELIST;
+var GETTYPELIST;
+var SETTYPELIST;
+var SELECTORLIST;
+var theUIObjects;
+var applyType = "dynamic"; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode, SELECTORLIST); 
+}
+
+function applyTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects, applyType, activeDisplayNode); 
+}
+
+function updateUI()
+{
+  var curDiv = SELECTORLIST.getValue(); 
+
+  tagDialog.showOnlyThisLayer(curDiv); 
+}
+
+function initializeUI()
+{
+	GETALLTYPELIST = new ListControl("thegetalltype"); 
+	GETTYPELIST = new ListControl("thegettype"); 
+	SETTYPELIST = new ListControl("thesettype"); 
+	SELECTORLIST = new ListControl("theselector"); 
+	theUIObjects = new Array(GETALLTYPELIST, GETTYPELIST,SETTYPELIST,SELECTORLIST); 
+
+  tagDialog.populateDropDownList(GETALLTYPELIST, theRegistryGetAllTypeCap, theRegistryGetAllTypeVal, 0); 
+  tagDialog.populateDropDownList(GETTYPELIST, theRegistryGetSetTypeCap, theRegistryGetSetTypeVal, 0); 
+  tagDialog.populateDropDownList(SETTYPELIST, theRegistryGetSetTypeCap, theRegistryGetSetTypeVal, 0); 
+  tagDialog.populateDropDownList(SELECTORLIST, theSelRegistryVal, theSelRegistryVal, 0); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+
+<div name="常规"> 
+<br /> 
+操作: 
+<select name="theselector" class="selectorList" id="attr:cfregistry:selector" onChange="updateUI();" attname="action" editable="false">
+</select>
+<hr width="100%"> 
+<div id="thegetall" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">分支: </td>
+      <td nowrap="nowrap">
+        <input name="thebranch" type="text" class="basicTextField" id="attr:cfregistry:branch" attname="branch" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类型: </td>
+      <td nowrap="nowrap">
+        <select name="thegetalltype" class="oneWordOptionList" id="attr:cfregistry:type" attname="type" editable="true">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:cfregistry:name" attname="name" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">排序: </td>
+      <td nowrap="nowrap">
+        <input name="thesort" type="text" class="medTField" id="attr:cfregistry:sort" attname="sort" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="theget" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">分支: </td>
+      <td nowrap="nowrap">
+        <input name="thebranch" type="text" class="basicTextField" id="attr:cfregistry:branch" attname="branch" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">项: </td>
+      <td nowrap="nowrap">
+        <input name="theentry" type="text" class="basicTextField" id="attr:cfregistry:entry" attname="entry" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类型: </td>
+      <td nowrap="nowrap">
+        <select name="thegettype" class="oneWordOptionList" id="attr:cfregistry:type" attname="type" editable="true">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">变量: </td>
+      <td nowrap="nowrap">
+        <input name="thevariable" type="text" class="basicTextField" id="attr:cfregistry:variable" attname="variable" required="true" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="theset" style="position:absolute;width:200px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">分支: </td>
+      <td nowrap="nowrap">
+        <input name="thebranch" type="text" class="basicTextField" id="attr:cfregistry:branch" attname="branch" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">项: </td>
+      <td nowrap="nowrap">
+        <input name="theentry" type="text" class="basicTextField" id="attr:cfregistry:entry" attname="entry" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类型: </td>
+      <td nowrap="nowrap">
+        <select name="thesettype" class="oneWordOptionList" id="attr:cfregistry:type" attname="type" editable="true">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">变量: </td>
+      <td nowrap="nowrap">
+        <input name="thevariable" type="text" class="basicTextField" id="attr:cfregistry:variable" attname="variable" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="thedelete" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">分支: </td>
+      <td nowrap="nowrap">
+        <input name="thebranch" type="text" class="basicTextField" id="attr:cfregistry:branch" attname="branch" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">项: </td>
+      <td nowrap="nowrap">
+        <input name="theentry" type="text" class="basicTextField" id="attr:cfregistry:entry" attname="entry" />
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+</html>

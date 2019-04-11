@@ -1,0 +1,199 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>CFDOCUMENTITEM</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">CFDOCUMENTITEM</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Specifies action items for a PDF or FlashPaper document created by the cfdocument tag. Actions include the following:
+</p>
+<ul>
+
+<li>Page break</li>
+
+<li>Header</li>
+
+<li>Footer</li>
+</ul>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Data output tags
+</p>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="syntax"><span class="title">Syntax</span><pre>&lt;cfdocument ...&gt;
+Syntax 1
+&lt;cfdocumentitem type = &quot;pagebreak&quot;/&gt;
+
+Syntax 2
+   &lt;cfdocumentitem 
+      type = &quot;header&quot; or &quot;footer&quot;&gt;
+header/footer text
+&lt;/cfdocumentitem&gt;
+
+&lt;/cfdocument&gt;
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+cfreport, cfdocument, cfdocumentsection
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX&#160;7: Added this tag.
+</p>
+
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+Use the cfdocumentitem tag to control the formatting of a PDF or FlashPaper report. This tag must be wrapped inside a &lt;cfdocument&gt; &lt;/cfdocument&gt; pair.
+</p>
+
+<p>
+Write code for one cfdocumentitem tag for each pagebreak, running header, or running footer. 
+</p>
+
+<p>
+You can use the cfdocument scope variable, cfdocument.currentpagenumber, to display the current page number in a header or footer. You can also use cfdocument.totalpagecount to display the total number of pages. For example:
+</p>
+<pre>...
+&lt;cfdocumentItem type= &quot;footer&gt;
+&#160;&#160;&#160;#cfdocument.currentpagenumber# of #cfdocument.totalpagecount#
+&lt;/cfdocumentitem&gt;
+</pre>
+<p>
+You can use cfdocumentitem tags with or without the cfdocumentsection tag, as follows:
+</p>
+
+<p>
+<b>Without cfdocumentsection</b>&#160;The cfdocumentitem attribute applies to the entire document, as follows:
+</p>
+<ul>
+
+<li>If the tag is at the top of the document, it applies to the entire document.</li>
+
+<li>If the tag is in the middle of the document, it applies to the rest of the document.</li>
+
+<li>If the tag is at the end of the document, it has no affect.</li>
+</ul>
+
+<p>
+<b>With cfdocumentsection tags</b>&#160;The cfdocumentitem attribute applies only to the section and overrides previously specified header and footer specifications.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;cfquery datasource=&quot;cfdocexamples&quot; name=&quot;parksQuery&quot;&gt;
+SELECT parkname, suptmgr from parks
+&lt;/cfquery&gt;
+
+&lt;cfdocument format=&quot;PDF&quot;&gt;
+  &lt;cfdocumentitem type=&quot;header&quot;&gt;National Parks Report&lt;/cfdocumentitem&gt;
+  &lt;!--- Use a footer with current page of totalpages format ---&gt;
+  &lt;cfdocumentitem type=&quot;footer&quot;&gt;
+    &lt;cfoutput&gt;Page #cfdocument.currentpagenumber# of 
+#cfdocument.totalpagecount#&lt;/cfoutput&gt;
+ &lt;/cfdocumentitem&gt;
+
+&lt;h1&gt;Park list&lt;/h1&gt;
+&lt;table width=&quot;95%&quot; border=&quot;2&quot; cellspacing=&quot;2&quot; cellpadding=&quot;2&quot; &gt;
+  &lt;tr &gt;
+    &lt;th&gt;Park&lt;/th&gt;
+    &lt;th&gt;Manager&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;cfoutput query=&quot;parksQuery&quot;&gt;
+   &lt;tr&gt;
+    &lt;td&gt;&lt;font size=&quot;-1&quot;&gt;#parkname#&lt;/font&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;font size=&quot;-1&quot;&gt;#suptmgr#&lt;/font&gt;&lt;/td&gt;
+   &lt;/tr&gt;
+ &lt;/cfoutput&gt;
+&lt;/table&gt;
+&lt;/cfdocument&gt; 
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="TYPE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">TYPE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+  <tr>
+  <td valign="top" class="syntax">&nbsp;</td>
+  <td valign="top" nowrap class="requirements">Required</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="clearseparation">&nbsp;</td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="2" class="description">
+
+
+<strong>Default value:</strong> "Specifies the action:"
+<ul>
+
+<li>pagebreak: start a new page at the location of the tag.</li>
+
+<li>header: use the text between the &lt;cfdocumentitem&gt; and &lt;/cfdocumentitem&gt; tags as the running header.</li>
+
+<li>footer: use the text between the &lt;cfdocumentitem&gt; and &lt;/cfdocumentitem&gt; tags as the running footer.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

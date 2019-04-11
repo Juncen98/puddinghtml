@@ -1,0 +1,71 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>¿ò¼Ü</TITLE>
+<SCRIPT LANGUAGE="javascript">
+<!--
+function receiveArguments()
+{
+	var itemID = arguments[0];
+	if (itemID == "DefaultTarget")
+		dw.getDocumentDOM().setLinkTarget('');
+	else
+		dw.getDocumentDOM().setLinkTarget(itemID);
+}
+
+function canAcceptCommand()
+{
+	if (dw.getDocumentDOM() == null)
+		return false;
+     
+	// We need to have a link before we can set the target.
+	return dw.getDocumentDOM().getLinkHref().length > 0;
+}
+
+function isCommandChecked()
+{
+	var itemID = arguments[0];
+	if (dw.getDocumentDOM() == null)
+		return false;
+
+	if (itemID == "DefaultTarget")
+		return (dw.getDocumentDOM().getLinkTarget() == "");
+	else
+		return (dw.getDocumentDOM().getLinkTarget() == itemID);
+}
+
+// getDynamicContent returns the contents of a dynamically generated menu.
+// returns an array of strings to be placed in the menu, with a unique
+// identifier for each item separated from the menu string by a semicolon.
+//
+// return null from this routine to indicate that you are not adding any
+// items to the menu
+function getDynamicContent(itemID)
+{
+	var frames = null;
+	frames = new Array("%_blank;id='_blank'","%_parent;id='_parent'","%_self;id='_self'","%_top;id='_top'");
+	var i,j;
+	if (dw.getDocumentDOM() != null){
+    var frameList = dw.getDocumentDOM('document').getFrameNames();
+	  if (frameList)
+	  {
+		  if (frameList.length > 0)
+		  {
+			  j=frames.length; // don't overwite the ones already in the array
+			  for (i=0; i<frameList.length; i++)
+			  {
+				  frames[i+j] = new String(frameList[i]);
+				  frames[i+j] += ";id='"+escQuotes(frameList[i])+"'";
+			  }
+		  }
+	  }
+  }
+	return frames;
+}
+// -->
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

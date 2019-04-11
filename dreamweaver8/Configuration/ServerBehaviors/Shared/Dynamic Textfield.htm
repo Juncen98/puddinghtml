@@ -1,0 +1,48 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+
+<SCRIPT>
+// Copyright 2001-2002 Macromedia, Inc. All rights reserved.
+var PROP_type = "DynamicTextField";
+</SCRIPT>
+
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+
+<SCRIPT SRC="../../Shared/Controls/Scripts/DynamicExpressionTextfield.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/TagMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Dynamic Textfield.js"></script>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/dynamicCmn.js"></script>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm" ACTION="">
+    <table border="0">
+      <tr valign="baseline">
+        <td align="right" nowrap>文本域:</td>
+        <td nowrap>
+          <select name="textNode" class="tagList">
+          </select>
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>将值设置为: </td>
+        <td nowrap>
+          <input name="expression1" type="text" class="basicTextField">
+           <input type=image src="../../Shared/UltraDev/Images/Boltup.gif" onClick="launchDynamicData(document.expression1)" name="image">
+       </td>
+      </tr>
+    </table>
+  </FORM>
+</BODY>
+</HTML>

@@ -1,0 +1,73 @@
+<participant>
+     <quickSearch><![CDATA[MM_update]]></quickSearch>
+     <insertText location="aboveHTML+20">
+<![CDATA[
+<% 
+// *** Update Record: construct a sql update statement and execute it
+var MM_editAction = Request.ServerVariables("URL");
+if (Request.QueryString != "") MM_editAction += "?" + Request.QueryString;
+if (String(Request("MM_update")) != "undefined" &&
+    String(Request("MM_recordId")) != "undefined") {
+
+  var MM_tableName = "@@table@@";
+  var MM_tableCol = "@@col@@";
+  var MM_recordId = "@@colQuote@@" + Request.Form("MM_recordId") + "@@colQuote@@";
+  var MM_fields = "@@elemStr@@";
+  var MM_redirectPage = "@@url@@";
+
+  // create the sql update statement
+  var MM_updateStr = "update " + MM_tableName + " set ";
+  var MM_fieldsArray = MM_fields.split(",");
+  for (var i=0; i+4 < MM_fieldsArray.length; i+=5) {
+    var formVal = String(Request.Form(MM_fieldsArray[i]));
+    var delim =    (MM_fieldsArray[i+2] != "none") ? MM_fieldsArray[i+2] : "";
+    var altVal =   (MM_fieldsArray[i+3] != "none") ? MM_fieldsArray[i+3] : "";
+    var emptyVal = (MM_fieldsArray[i+4] != "none") ? MM_fieldsArray[i+4] : "";
+    if (formVal == "" || formVal == "undefined") {
+      formVal = emptyVal;
+    } else {
+      if (altVal != "") {
+        formVal = altVal;
+      } else if (delim == "'") { // escape quotes
+        formVal = "'" + formVal.replace(/'/g,"''") + "'";
+      } else {
+        formVal = delim + formVal + delim;
+      }
+    }
+    MM_updateStr += ((i != 0) ? "," : "") + MM_fieldsArray[i+1] + " = " + formVal;
+  }
+  MM_updateStr += " where " + MM_tableCol + " = " + MM_recordId;
+
+  // execute the update
+  var MM_updateCmd = Server.CreateObject('ADODB.Command');
+  MM_updateCmd.ActiveConnection = "@@conn@@";
+  MM_updateCmd.CommandText = MM_updateStr;
+  MM_updateCmd.Execute();
+
+  // redirect with URL parameters
+  if (MM_redirectPage == '') MM_redirectPage = Request.ServerVariables('URL');
+  if (String(MM_redirectPage).indexOf('?') == -1 && Request.QueryString != '')
+    MM_redirectPage += '?' + Request.QueryString;
+  Response.Redirect(MM_redirectPage);
+}
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="conn"><![CDATA[/ActiveConnection\s*=\s*"([^"]*)";/]]></searchPattern>
+       <searchPattern paramNames="table"><![CDATA[/MM_tableName\s*=\s*"([^"]*)";/]]></searchPattern>
+       <searchPattern paramNames="col"><![CDATA[/MM_tableCol\s*=\s*"([^"]*)";/]]></searchPattern>
+       <searchPattern paramNames="colQuote"><![CDATA[/MM_recordId\s*=\s*"([^"]*)"/]]></searchPattern>
+       <searchPattern paramNames="elemStr"><![CDATA[/MM_fields\s*=\s*"([^"]*)";/]]></searchPattern>
+       <searchPattern paramNames="url"><![CDATA[/MM_redirectPage\s*=\s*"([^"]*)";/]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="conn"><![CDATA[/(ActiveConnection\s*=\s*")[^"]*(";)/g]]></updatePattern>
+       <updatePattern paramName="table"><![CDATA[/(MM_tableName\s*=\s*")[^"]*(";)/g]]></updatePattern>
+       <updatePattern paramName="col"><![CDATA[/(MM_tableCol\s*=\s*")[^"]*(";)/g]]></updatePattern>
+       <updatePattern paramName="colQuote"><![CDATA[/(MM_recordId\s*=\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="colQuote"><![CDATA[/(Request\.Form\("MM_recordId"\)\s*\+\s*")[^"]*(")/g]]></updatePattern>
+       <updatePattern paramName="elemStr"><![CDATA[/(MM_fields\s*=\s*")[^"]*(";)/g]]></updatePattern>
+       <updatePattern paramName="url"><![CDATA[/(MM_redirectPage\s*=\s*")[^"]*(";)/g]]></updatePattern>
+     </updatePatterns>
+</participant>

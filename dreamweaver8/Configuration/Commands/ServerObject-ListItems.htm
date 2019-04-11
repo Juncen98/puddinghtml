@@ -1,0 +1,117 @@
+<!-- MENU-LOCATION=NONE -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<html>
+<head>
+<title>列表项</title>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="EditOpsCustomObjs.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/TreeControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/RadioGroup.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/RecordsetMenu.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/RecordsetFieldMenu.js"></SCRIPT>
+<SCRIPT SRC="ServerObject-MenuProps.js"></SCRIPT>
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+</head>
+<body body onload="initializeUI()">
+<form name="form2" method="post" action="">
+  <table border="0" width="400px">
+      <tr>
+        <td align="right" valign="baseline" width="120">填充列表项:</td>
+        <td valign="baseline" nowrap>
+          <input type="radio" name="Populate" value="radiobutton" onClick="showDifferentLayer('manual')" checked>
+          手动</td>
+      </tr>
+      <tr>
+        <td align="right" valign="baseline">&nbsp;</td>
+        <td valign="baseline" nowrap>
+          <input type="radio" name="Populate" value="radiobutton" onClick="showDifferentLayer('database')">
+          来自数据库</td>
+      </tr>
+	  <tr>
+	    <td height="190px" colspan="2">&nbsp;</td>
+      </tr>
+    </table>
+
+<div id="manualLayer" style="position:absolute; z-index:1; left: 8px; top: 60px; visibility: hidden;">
+ <table border="0">
+      <tr>
+	<td nowrap valign="baseline" align="right" width="120">列表项:</td>
+        <td nowrap align="left">
+          <input type="image" name="elemAdd" src="../Shared/MM/Images/btnAdd.gif" onClick="addNewRow();focus(this)"  alt="添加项">
+          <input type="image" name="elemDel" src="../Shared/MM/Images/btnDel.gif" onClick="delRow();focus(this);"  alt="移除项">
+          <img src="../Shared/MM/Images/transparent.gif" height=8 width="155"> 
+          <input type="image" border="0" name="elemUp" src="../Shared/MM/Images/btnUp.gif"  onClick="moveRowUp();focus(this)" alt="上移项">
+          <input type="image" border="0" name="elemDown" src="../Shared/MM/Images/btnDown.gif"  onClick="moveRowDown();focus(this)" alt="下移项">
+        </td>
+      </tr>
+      <tr>
+        <td nowrap valign="top" align="right">&nbsp;</td>
+        <td nowrap align="left">
+          <mm:treecontrol style="width:248px;height:96px" name="MenuGrid" onChange="displayGridValues()">
+		<mm:treecolumn width="110"> <mm:treecolumn width="110">
+          </mm:treecontrol>
+        </td>
+      </tr>
+      <tr>
+        <td nowrap valign="baseline" align="right">标签:</td>
+        <td nowrap align="left">
+          <input name="MenuText" type="text" style="width:150px" onBlur="updateGridRow()">
+        </td>
+      </tr>
+      <tr>
+        <td nowrap valign="baseline" align="right">值:</td>
+        <td nowrap align="left">
+          <input name="MenuValue" type="text" style="width:150px" onBlur="updateGridRow()">
+        </td>
+      </tr>
+      <tr>
+        <td nowrap valign="baseline" align="right">选取值等于: </td>
+        <td nowrap align="left">
+          <input name="DefaultValueManual" type="text" style="width:240px">
+          <input type="image" name="bindDynData" src="../Shared/UltraDev/Images/Boltup.gif" width="15" height="14" align="absbottom" onClick="displayDynamicDataDialog(_DefaultManual)" alt="绑定动态数据">
+        </td>
+      </tr>  
+    </table>
+</div>
+
+<div id="databaseLayer" style="position:absolute; z-index:2; left: 8px; top: 60px; visibility: hidden;">
+<table border="0">
+      <tr>
+        <td align="right" valign="baseline" nowrap><span id="记录集DisplayName">Recordset</span>:</td>
+        <td valign="baseline" nowrap colspan="4">
+          <select name="RecordsetName" style="width:150px" onChange="updateColumns()">
+          </select>                   
+        </td>
+      </tr>
+	  <tr><td height="1"></td></tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap>获取标签自: </td>
+        <td valign="baseline" nowrap colspan="4">
+          <select name="MenuLabels" style="width:150px">
+          </select>
+        </td>
+      </tr>
+	  <tr><td height="1"></td></tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap>获取值自: </td>
+        <td valign="baseline" nowrap colspan="4">
+          <select name="MenuValues" style="width:150px">
+          </select>
+        </td>
+      </tr>      
+	  <tr><td height="1"></td></tr>
+      <tr>
+        <td align="right" valign="baseline" nowrap>选取值等于: </td>
+        <td nowrap align="left">
+          <input name="DefaultValueDatabase" type="text" style="width:240px" >
+	  <input type="image" src="../Shared/UltraDev/Images/Boltup.gif" width="15" height="14" align="absbottom" onClick="displayDynamicDataDialog(TF_DEFAULT_DATABASE)" alt="绑定动态数据">
+        </td>
+      </tr> 
+    </table>
+</div>
+</form>
+</body>
+</html>

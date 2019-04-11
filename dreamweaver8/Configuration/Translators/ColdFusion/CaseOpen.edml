@@ -1,0 +1,12 @@
+<participant name="CaseOpen">
+  <translator priority=400>
+    <searchPatterns>
+      <searchPattern paramNames=",expression"><![CDATA[/<cfcase[^>]*?(value)\s*=\s*("[^"]+"|[^>"\s\r\n]+)[^>]*?>/gi]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="tag+cfcase" limitSearch="tagOnly" translationType="tabbed region start">
+        <display><![CDATA[%3Ccfcase%3E]]></display>
+      </translation>
+    </translations>
+  </translator>
+</participant>

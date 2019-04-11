@@ -1,0 +1,10 @@
+<participant>
+  <searchPatterns whereToSearch="directive">
+    <searchPattern paramNames=",,include_url"><![CDATA[/(include|require|virtual)(_once)?\s*\(\s*["|']([^"^']*)["|']\s*\)\s*;?/im]]></searchPattern>
+  </searchPatterns>
+  <translator>
+    <searchPatterns whereToSearch="directive">
+      <searchPattern paramNames=",,,ssi_includeUrl"><![CDATA[/<\?(php)?\s+(include|require|virtual)(_once)?\s*\(\s*["|']([^"^']*)["|']\s*\)\s*;?\s*\?>/im]]></searchPattern>
+    </searchPatterns>
+  </translator>
+</participant>

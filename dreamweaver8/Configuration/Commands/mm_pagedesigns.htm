@@ -1,0 +1,69 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<title>插入并保存页面设计</title>
+<script language="JavaScript">
+function saveDesign(){
+  // Start with serverSite and localSite being false
+  var serverSite = false;
+  var localSite = false;
+  
+  // Get the names of all the sites the user has defined,
+  // both regular and FTP/RDS.
+  var allSites = site.getSites();
+
+  // Check to see whether the user has only regular sites,
+  // only FTP/RDS sites, or both types of sites defined.
+  // We'll use this information to determine whether to
+  // give them a local/server save option or to go directly
+  // to the appropriate Save dialog.
+  var currSite = "";
+  while ((!serverSite || !localSite) && allSites.length > 0){
+    currSite = allSites.pop();
+    if (site.getIsServerSite(currSite))
+      serverSite = true;
+    else
+      localSite = true;
+  }
+        
+  // If the user has both types of sites defined, show the
+  // "where would you like to save?" dialog
+  if (localSite && serverSite){
+    dw.runCommand('Save Page Design.htm');
+    var where = MM.commandReturnValue;
+    if (where == "server"){
+      serverSite = true;
+      localSite = false;
+    }
+    else if (where == "local"){
+      serverSite = false;
+      localSite = true;
+    }
+    else{
+      serverSite = false;
+      localSite = false;
+    }
+  }
+  
+  // If the user opted to save on a server (either explicitly
+  // by saying so in the "where do you want to save?" dialog,
+  // or implicitly by only having FTP/RDS sites defined), 
+  // show the Save to remote site dialog.
+  if (serverSite)
+    dw.saveDocumentToRemoteServer(dw.getDocumentDOM());
+  
+  // otherwise, if the user opted to save locally (either
+  // explicitly or implicitly), show the regular Save dialog.  
+  else if (localSite)
+    dw.saveDocument(dw.getDocumentDOM());
+  
+  // else
+  // user clicked Cancel. don't bother showing any save dialogs.
+  // page will show up in DW unstyled.
+}
+</script>
+</head>
+
+<body onLoad="saveDesign()">
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+
+<SCRIPT>
+// Copyright 2001-2002 Macromedia, Inc. All rights reserved.
+var EDIT_TYPE       = "MM_delete";
+var HELP_DOC         = MM.HELP_ssDeleteRecord;
+var PROP_TYPE       = "deleteRecord";
+</SCRIPT>
+
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/SQLTypes.js"></SCRIPT>
+<SCRIPT SRC="../Shared/EditOperations.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+<FORM name="theForm">
+  <TABLE border="0">
+    <tr valign="baseline">
+      <td align="right" nowrap>连接:</td>
+      <td nowrap>
+        <select name="connectionList" class="connNameList" onChange="updateUI('connectionList')" wrap="virtual">
+          <OPTION selected></OPTION>
+        </select>
+        <input type="button" value="定义..." onClick="updateUI('defineConnection')">
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>从表格中删除: </td>
+      <td>
+        <select name="tableList" class="connRSTableList" onChange="updateUI('tableList')" wrap="virtual">
+          <OPTION selected></OPTION>
+        </select>
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>选取记录自: </td>
+      <td nowrap>
+        <select name="rsList" class="rsNameList" onChange="updateUI('rsList')" wrap="virtual">
+          <OPTION selected></OPTION>
+        </select>
+      </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <tr valign="baseline">
+      <td align="right">唯一键列: </td>
+      <td nowrap>
+        <select name="tableColList" class="columnNameList" onChange="updateUI('tableColList')" wrap="virtual">
+          <OPTION selected></OPTION>
+        </select>
+        <input type="checkbox" name="colIsNum" checked>
+        数字 </td>
+    </tr>
+    <tr><td height="1"></td></tr>
+    <TR>
+      <TD align="right" valign="baseline" nowrap>提交此表单以删除:</TD>
+      <TD valign="baseline" nowrap>
+        <SELECT name="formList" class="tagList">
+          <OPTION selected></OPTION>
+        </select>
+      </TD>
+    </TR>
+    <tr>
+      <td align="right" valign="baseline" nowrap>删除后，转到: </td>
+      <td valign="baseline" nowrap>
+        <input name="redirectURL" type="text" class="largeTField">
+        <input type="button" value="浏览..." onClick="updateUI('browseForFile');focus(this)">
+      </td>
+    </tr>
+  </TABLE>
+</FORM>
+</BODY>
+</HTML>

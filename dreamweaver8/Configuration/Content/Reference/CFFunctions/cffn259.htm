@@ -1,0 +1,198 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>STRUCTDELETE</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">STRUCTDELETE</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Removes an element from a structure. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+Boolean value. The value depends on the indicatenotexisting parameter value.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Structure functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>StructDelete(structure, key [, indicatenotexisting ])
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+Structure functions; "Modifying a ColdFusion XML object" in Chapter&#160;35, "Using XML and WDDX," in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">History</span>
+<p>
+ColdFusion&#160;MX: Changed behavior: this function can be used on XML objects.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;StructDelete Function&lt;/h3&gt;
+&lt;!--- Delete the surrounding comments to make this page work
+&lt;p&gt;This example uses the StructInsert and StructDelete functions. 
+&lt;!--- Establish params for first time through ---&gt;
+&lt;cfparam name = &quot;firstname&quot; default = &quot;Mary&quot;&gt;
+&lt;cfparam name = &quot;lastname&quot; default = &quot;Sante&quot;&gt;
+&lt;cfparam name = &quot;email&quot; default = &quot;msante@allaire.com&quot;&gt;
+&lt;cfparam name = &quot;phone&quot; default = &quot;777-777-7777&quot;&gt;
+&lt;cfparam name = &quot;department&quot; default = &quot;Documentation&quot;&gt; 
+
+ &lt;cfif IsDefined(&quot;FORM.Delete&quot;)&gt;
+     &lt;cfoutput&gt;
+     Field to be deleted: #form.field#
+    &lt;/cfoutput&gt;
+    &lt;p&gt;
+    &lt;CFScript&gt;
+       employee = StructNew();
+       StructInsert(employee, &quot;firstname&quot;, firstname);
+       StructInsert(employee, &quot;lastname&quot;, lastname);
+       StructInsert(employee, &quot;email&quot;, email);
+       StructInsert(employee, &quot;phone&quot;, phone);
+       StructInsert(employee, &quot;department&quot;, department); 
+    &lt;/CFScript&gt;
+     Before deletion, employee structure looks like this: 
+    &lt;cfdump var=&quot;#employee#&quot;&gt;
+    &lt;br&gt;
+    &lt;cfset rc = StructDelete(employee, &quot;#form.field#&quot;, &quot;True&quot;)&gt;
+    &lt;cfoutput&gt;
+       Did I delete the field &quot;#form.field#&quot;? The code indicates: #rc#&lt;br&gt;
+        The structure now looks like this:&lt;br&gt;
+        &lt;cfdump var=&quot;#employee#&quot;&gt;
+        &lt;br&gt;
+   &lt;/cfoutput&gt;
+&lt;/cfif&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;form method=&quot;post&quot; action = &quot;#CGI.Script_Name#&quot;&gt;
+   &lt;p&gt;Select the field to be deleted:&amp;nbsp;
+   &lt;select name = &quot;field&quot;&gt;
+   &lt;option value = &quot;firstname&quot;&gt;first name
+   &lt;option value = &quot;lastname&quot;&gt;last name
+   &lt;option value = &quot;email&quot;&gt;email
+   &lt;option value = &quot;phone&quot;&gt;phone
+   &lt;option value = &quot;department&quot;&gt;department
+   &lt;/select&gt;
+   &lt;input type = &quot;submit&quot; name = &quot;Delete&quot; value = &quot;Delete&quot;&gt;
+&lt;/form&gt;
+Delete this comment to make this page work ---&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="STRUCTURE">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">STRUCTURE</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Structure or a variable that contains one. Contains element to remove.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="KEY">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">KEY</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Element to remove.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+<div id="INDICATENOTEXISTING">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">INDICATENOTEXISTING</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+<ul>
+
+<li>True: returns Yes if key exists; No if it does not.</li>
+
+<li>False: returns Yes regardless of whether key exists. Default.</li>
+</ul>
+
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

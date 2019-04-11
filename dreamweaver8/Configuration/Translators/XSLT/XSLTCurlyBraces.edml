@@ -1,0 +1,11 @@
+<participant name="XSLTCurlyBraces">
+  <translator priority=400>
+    <searchPatterns>
+      <searchPattern paramNames=",expression,"><![CDATA[/{([\w\-_]+\s*\(\s*)?([\.@\w\/\-_]+)(,.+)?}/]]></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="tag+IMG" limitSearch="attribute+SRC" translationType="dynamic image"/>
+      <translation whereToSearch="tag+*" limitSearch="attribute+*" translationType="dynamic data"/>
+    </translations>
+  </translator>
+</participant>

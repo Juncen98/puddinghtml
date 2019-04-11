@@ -1,0 +1,41 @@
+<participant>
+     <quickSearch><![CDATA[MM_moveFirst]]></quickSearch>
+     <insertText location="aboveHTML+92">
+<![CDATA[
+<%
+// *** Move To Record: set the strings for the first, last, next, and previous links
+
+var MM_moveFirst="",MM_moveLast="",MM_moveNext="",MM_movePrev="";
+var MM_keepMove = MM_keepBoth;  // keep both Form and URL parameters for moves
+var MM_moveParam = "index";
+
+// if the page has a repeated region, remove 'offset' from the maintained parameters
+if (MM_size > 1) {
+  MM_moveParam = "offset";
+  if (MM_keepMove.length > 0) {
+    params = MM_keepMove.split("&");
+    MM_keepMove = "";
+    for (var i=0; i < params.length; i++) {
+      var nextItem = params[i].substring(0,params[i].indexOf("="));
+      if (nextItem.toLowerCase() != MM_moveParam) {
+        MM_keepMove += "&" + params[i];
+      }
+    }
+    if (MM_keepMove.length > 0) MM_keepMove = MM_keepMove.substring(1);
+  }
+}
+
+// set the strings for the move to links
+if (MM_keepMove.length > 0) MM_keepMove = Server.HTMLEncode(MM_keepMove) + "&";
+var urlStr = Request.ServerVariables("URL") + "?" + MM_keepMove + MM_moveParam + "=";
+MM_moveFirst = urlStr + "0";
+MM_moveLast  = urlStr + "-1";
+MM_moveNext  = urlStr + (MM_offset + MM_size);
+MM_movePrev  = urlStr + Math.max(MM_offset - MM_size,0);
+%>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern><![CDATA[/var\s*MM_moveFirst\s*=\s*""/]]></searchPattern>
+     </searchPatterns>
+</participant>

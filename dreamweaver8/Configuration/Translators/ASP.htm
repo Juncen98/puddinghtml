@@ -1,0 +1,403 @@
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<TITLE>ASP JavaScript Translator</TITLE>
+
+<meta http-equiv="Content-Type" content="text/html; charset=">
+
+<script SRC="../Shared/MM/Scripts/CMN/quickString.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="TransData.js"></SCRIPT>
+<SCRIPT SRC="TMCallback.js"></SCRIPT>
+<SCRIPT SRC="Translator.js"></SCRIPT>
+<SCRIPT SRC="TranslationManager.js"></SCRIPT>
+
+<SCRIPT>
+
+// *************** GLOBALS VARS *****************
+
+var SERVER_MODEL_NAME    = "ASP";
+var SERVER_MODEL_FOLDERS = "|ASP_JS|ASP_VBS|";
+var SERVER_MODEL_FOLDER  = "";
+var TRANSLATOR_CLASS     = "MM_ASPSCRIPT";
+var TRANSLATOR_NAME      = SERVER_MODEL_NAME;
+
+var SUCCESS_MARKER    = "<!-- MMDW:success -->";
+var FIRST_MARKER      = "<!--MMDW 0 -->";
+
+var BEGIN_LOCK        = "<mm:beginlock translatorClass=\"MM_LIVE_DATA\" type=\"" + TRANSLATOR_CLASS + "\" orig=\"%s\">";
+var END_LOCK          = "<mm:endlock>";
+var TRANSLATED_ATTR   = "mmvisible=false";
+
+var debugTranslator   = false;
+var macBeforeFileName = "Desktop:BeforeTranslation.txt";
+var macAfterFileName  = "Desktop:AfterTranslation.txt";
+var winBeforeFileName = "C:\\BeforeTranslation.txt";
+var winAfterFileName  = "C:\\AfterTranslation.txt";
+
+var liveDebugTranslator   = false;
+var liveMacBeforeFileName = "Desktop:LiveBeforeTranslation.txt";
+var liveMacAfterFileName  = "Desktop:LiveAfterTranslation.txt";
+var liveWinBeforeFileName = "C:\\LiveBeforeTranslation.txt";
+var liveWinAfterFileName  = "C:\\LiveAfterTranslation.txt";
+
+
+// ******************* API **********************
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   getTranslatorInfo
+//
+// DESCRIPTION:
+//   Provides information about the translator and the files it can
+//   act upon
+//
+// ARGUMENTS:
+//   none
+//
+// RETURNS:
+//   JavaScript array
+//--------------------------------------------------------------------
+
+function getTranslatorInfo()
+{
+  returnArray = new Array(8);
+
+  returnArray[0] = TRANSLATOR_CLASS;   // The TRANSLATOR_CLASS
+  returnArray[1] = TRANSLATOR_NAME;    // The title
+  returnArray[2] = "1" 				   // The number of extensions
+  returnArray[3] = "%ASP-VB%" 		   // Extensions - indicate that we run on any
+									   // extension for the ASP document type
+									   // as defined in MMDocumentTypes.xml
+  returnArray[4] = "2";                // The number of expressions
+  returnArray[5] = "<%";               // Expression for PI and insert
+  returnArray[6] = "MM_XSLT_SB"			//XSLT Translator is can be on
+  returnArray[7] = "byString";         // Run if doc contains expr
+  returnArray[8] = "50";               // priority order to apply translator
+
+  return returnArray
+}
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   translateMarkup
+//
+// DESCRIPTION:
+//   This function performs the translation.
+//
+// ARGUMENTS:
+//   docNameStr - string - URL of the document to be translated
+//   siteRootStr - string - URL of the site root
+//   inStr - string - the contents of the document
+//
+// RETURNS:
+//   string - the translated contents of the document
+//--------------------------------------------------------------------
+
+function translateMarkup(docNameStr, siteRootStr, inStr)
+{
+  var outStr = "";
+
+  SERVER_MODEL_FOLDER = "";
+  if (dw.getDocumentDOM())
+  {
+    SERVER_MODEL_FOLDER = dw.getDocumentDOM().serverModel.getFolderName();
+    if (SERVER_MODEL_FOLDER == "")
+    {
+      SERVER_MODEL_FOLDER = dw.getDocumentDOM().getServerModelFolderNameFromDoc();
+    }
+  }
+  if (SERVER_MODEL_FOLDERS.indexOf("|" + SERVER_MODEL_FOLDER + "|") != -1 &&
+      inStr.length > 0)
+  {
+
+    if (debugTranslator)
+    {
+      if (dwscripts.IS_MAC)
+        DWfile.write( macBeforeFileName, inStr );
+      else
+        DWfile.write( winBeforeFileName, inStr );
+    }
+
+    outStr = miniTranslateMarkup(docNameStr, siteRootStr, inStr);
+
+    // update Server Behavior list
+    dw.serverBehaviorInspector.findAllServerBehaviors();
+
+    if (debugTranslator)
+    {
+      if (dwscripts.IS_MAC)
+        DWfile.write( macAfterFileName, outStr );
+      else
+        DWfile.write( winAfterFileName, outStr );
+    }
+
+  }
+
+  return outStr;
+}
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   miniTranslateMarkup
+//
+// DESCRIPTION:
+//   This function translates the given string.  It is broken out
+//   so that other functions can call the translator.
+//
+// ARGUMENTS:
+//   docNameStr - string - URL of the document to be translated
+//   siteRootStr - string - URL of the site root
+//   inStr - string - the contents of the document
+//
+// RETURNS:
+//   string - the translated contents of the document
+//--------------------------------------------------------------------
+
+function miniTranslateMarkup(docNameStr, siteRootStr, inStr)
+{
+  var outStr = "";
+
+  // translate
+  if (inStr.indexOf("<%") != -1)
+  {
+    var TM = new TranslationManager(TRANSLATOR_CLASS, SERVER_MODEL_FOLDER, "");
+    TM.serverModelAlwaysCheckAttribute = myAlwaysCheckAttribute;
+    //TM.defaultDirectiveTag = "MM_ASPSCRIPT";
+    outStr = TM.translate(inStr);
+  }
+
+  return outStr;
+}
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   myAlwaysCheckAttribute
+//
+// DESCRIPTION:
+//   This function is called by the translation manager to determine
+//   if the given attribute code should be checked for dynamic info.
+//
+// ARGUMENTS:
+//   code - string - the code to check
+//
+// RETURNS:
+//   boolean
+//--------------------------------------------------------------------
+
+function myAlwaysCheckAttribute(code)
+{
+  var result = (code.indexOf("<%") != -1);
+  return result;
+}
+
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   stripLeadingMarkers
+//
+// DESCRIPTION:
+//   Remove all "MMDW" comments that occur prior to any static HTML.
+//   If we leave these markers in the code, and if they happen to
+//   fall before a directive that includes the line
+//
+//     Response.Buffer=true
+//
+//   then the presence of the HTML comment will cause the page
+//   to fail to execute.
+//
+// ARGUMENTS:
+//   code - string - the string to strip
+//
+// RETURNS:
+//   string - the same string, with the markers stripped
+//--------------------------------------------------------------------
+
+function stripLeadingMarkers(str)
+{
+  var i;
+ 
+  // If "MMDW 0" is at the very beginning of the document, then there
+  // is no static HTML before the first server markup
+  if (str.indexOf(FIRST_MARKER) == 0)
+    str = str.substr(FIRST_MARKER.length);
+
+  // If the comment indicating the end of a block of server markup
+  // is followed by whitepsace and then a comment indicating the start
+  // of another block of server markup, then continue to strip the
+  // comments, because we still haven't encountered any static HTML
+  i = 1;
+  while (true)
+  {
+    var startMarker = "<!--MMDW " + (i++) + " -->";
+    var endMarker   = "<!--MMDW " + (i++) + " -->";
+    
+    var startIndex = str.indexOf(startMarker);
+    var endIndex =   str.indexOf(endMarker);
+    if (startIndex == -1 || endIndex == -1)
+      break;
+
+    var afterMarkerIndex = startIndex + startMarker.length;
+    var betweenMarkers = str.substr(afterMarkerIndex, endIndex - afterMarkerIndex);
+    if (betweenMarkers.search(/\S/) != -1)
+      break;
+
+    afterMarkerIndex = endIndex + endMarker.length;
+    str = str.substr(0, startIndex) + str.substr(afterMarkerIndex);
+  }
+
+  return str;
+}
+
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   liveDataTranslateMarkup
+//
+// DESCRIPTION:
+//   This function performs the translation while in live data mode
+//
+// ARGUMENTS:
+//   docNameStr - string - the URL of the document to be translated
+//   siteRootStr - string - the URL of the site root
+//   inStr - string - the contents of the document
+//
+// RETURNS:
+//   string - the translated contents of the document
+//--------------------------------------------------------------------
+
+function liveDataTranslateMarkup( docNameStr, siteRootStr, inStr )
+{
+  var outStr = "";
+
+  SERVER_MODEL_FOLDER = "";
+  if (dw.getDocumentDOM())
+  {
+    SERVER_MODEL_FOLDER = dw.getDocumentDOM().serverModel.getFolderName();
+  }
+  if (SERVER_MODEL_FOLDERS.indexOf("|" + SERVER_MODEL_FOLDER + "|") != -1 &&
+      inStr.length > 0)
+  {
+
+    if (liveDebugTranslator)
+    {
+      if (dwscripts.IS_MAC)
+        DWfile.write( liveMacBeforeFileName, inStr );
+      else
+        DWfile.write( liveWinBeforeFileName, inStr );
+    }
+
+    var success = true;
+    var translated = "";
+
+    // Send init tags to the server and request requst them
+    var initTags = dreamweaver.getLiveDataInitTags();
+    if (initTags.length > 0)
+    {
+      // Add a marker at the end so we can check for successful completion
+      initTags = initTags + SUCCESS_MARKER;
+
+      // Send file to server and get the response
+      translated = dreamweaver.liveDataTranslate(docNameStr, initTags);
+
+      // If we can't find our marker, report that an error occurred
+      if (translated.data.lastIndexOf(SUCCESS_MARKER) == -1)
+      {
+        dreamweaver.setLiveDataError(translated.data);
+        success = false;
+      }
+    }
+
+    // if initialization was successful, send the document
+    if (success)
+    {
+      // Wrap labels around the server directives
+      LiveDataTranslator.initialize();
+      LiveDataTranslator.beginPreTranslate("<%", "%>", null, null);
+      dreamweaver.scanSourceString(inStr, LiveDataTranslator);
+      var labels = LiveDataTranslator.endPreTranslate(inStr);
+
+      // Add a marker at the end so we can check for successful completion
+      var labelsAndMarker = labels + SUCCESS_MARKER;
+
+      // If the document begins with server markup, strip off the "MMDW"
+      // comments that appear before the first static HTML.  We'll add them
+      // back in later.  If these comments aren't stripped, then a 
+      // Response.Buffer=true directive will fail, because that directive
+      // must appear before any static HTML.
+      labelsAndMarker = stripLeadingMarkers(labelsAndMarker);
+
+      // If we send a file with Mac-style "\r" line endings to a Unix server,
+      // the server will ignore the "\r" characters (line ending is "\n" on
+      // Unix) and send back a file with no line endings.  Instead, we'll
+      // convert line endings to "\r\n" before sending to the server.
+      labelsAndMarker = LiveDataTranslator.setLineEndingsToMatch("\r\n", labelsAndMarker);
+
+      // Send file to server and get the response
+      translated = dreamweaver.liveDataTranslate(docNameStr, labelsAndMarker);
+
+      // If we can't find our marker, report that an error occurred
+      var index = translated.data.lastIndexOf(SUCCESS_MARKER);
+      if (index == -1)
+      {
+        // Request page without the labels, so we get the right line numbers
+        inStr = inStr + SUCCESS_MARKER;
+        translated = dreamweaver.liveDataTranslate(docNameStr, inStr);
+
+        // Tell Dreamweaver to display an error
+        dreamweaver.setLiveDataError(translated.data);
+
+        LiveDataTranslator.cleanup();
+        success = false;
+      }
+    }
+
+    // if the page was returned successfully, get the returned string
+    if (success)
+    {
+      translated.data = translated.data.substr(0, index);
+
+      // Add back the leading markers that were stripped earlier
+      if (translated.data.indexOf(FIRST_MARKER) == -1)
+        translated.data = FIRST_MARKER + translated.data;
+
+      // Some HTTP servers change the line endings in the file
+      translated.data = LiveDataTranslator.setLineEndingsToMatch(inStr, translated.data);
+
+      // If the scripts on the page were executed and there are scripts
+      // on the page, then remove the labels and add lock tags
+      if (translated.data != labels)
+      {
+        LiveDataTranslator.beginPostTranslate();
+        dreamweaver.scanSourceString(translated.data, LiveDataTranslator);
+        outStr = LiveDataTranslator.endPostTranslate(inStr, translated.data, BEGIN_LOCK, END_LOCK, TRANSLATED_ATTR);
+        LiveDataTranslator.cleanup();
+      }
+    }
+
+    if (liveDebugTranslator)
+    {
+      if (dwscripts.IS_MAC)
+        DWfile.write( liveMacAfterFileName, outStr );
+      else
+        DWfile.write( liveWinAfterFileName, outStr );
+    }
+
+  }
+
+  return outStr;
+}
+
+</SCRIPT>
+
+</HEAD>
+
+<BODY>
+</BODY>
+</HTML>

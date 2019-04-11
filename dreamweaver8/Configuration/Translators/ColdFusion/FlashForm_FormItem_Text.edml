@@ -1,0 +1,15 @@
+<participant name="FlashForm_FormItem_Text">
+  <translator priority=450 TYPE="renderer">
+    <searchPatterns>
+      <searchPattern requiredLocation="tagName">cfformitem</searchPattern>
+      <searchPattern requiredLocation="attribute+type">text</searchPattern>
+	  <searchPattern paramNames="styleValue" requiredLocation="attribute+style" isOptional="true"></searchPattern>
+	  <searchPattern paramNames="bindValue" requiredLocation="attribute+bind"></searchPattern>
+    </searchPatterns>
+    <translations>
+      <translation whereToSearch="tag+cfformitem" limitSearch="all" translationType="as is">
+		<display><![CDATA[<p style="@@styleValue@@">@@bindValue@@</p>]]></display>
+      </translation>
+    </translations>
+  </translator>
+</participant>

@@ -1,0 +1,221 @@
+<html>
+<head>
+<title>&lt;xsl:with-param&gt;</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="Description">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+<tr>
+<td valign="top" class="NAME">&lt;xsl:with-param&gt;</td>
+<td valign="top" class="COMPATIBILITY">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+</tr>
+<tr>
+<td valign="top" colspan="2" class="description">
+Defines a parameter to be passed to a template. When the template is invoked, values can be passed in for the parameter.</td></tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Category</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>Subinstruction (<span class="LITERAL">&lt;xsl:with-param&gt;</span> always appears inside an <span class="LITERAL">&lt;xsl:apply-templates&gt;</span> or <span class="LITERAL">&lt;xsl:call-template&gt;</span> element)</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Description</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p> <span class="LITERAL">&lt;xsl:with-param&gt;</span> defines a parameter to be passed to a template. When the template is invoked, values can be passed in for the parameter. The value of the parameter can be defined in one of three ways:</p>
+<ul>
+        <dd>If the <span class="LITERAL">&lt;xsl:with-param&gt;</span> element is empty and does not contain a <span class="LITERAL">select</span> attribute, then no value is passed to the template.</p>
+        </li>
+        <dd>If the <span class="LITERAL">&lt;xsl:with-param&gt;</span> element is empty and has a <span class="LITERAL">select</span> attribute, the value of the parameter is the value of the <span class="LITERAL">select</span> attribute.</p>
+        </li>
+        <dd>If the <span class="LITERAL">&lt;xsl:with-param&gt;</span> element contains an XSLT template, the value of the parameter is the result of processing the template.</p>
+        </li>
+      </ul>
+<p>If no value is passed to the template (<span class="LITERAL">&lt;xsl:with-param name="x"/&gt;</span>), then the default value of the parameter, if any, is used instead. The default value of the parameter is defined on the <span class="LITERAL">&lt;xsl:param&gt;</span> element inside the <span class="LITERAL">&lt;xsl:template&gt;</span> itself; see the description of the <span class="LITERAL">&lt;xsl:param&gt;</span> element for more details.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Required Attributes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<dl>
+<dt>
+name
+</dt>
+<dd>
+Names this parameter.
+<P></p>
+</dl>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Optional Attributes</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<dl>
+<dt>
+select
+</dt>
+<dd>
+An XPath expression that defines the value of this parameter.
+<P></p>
+</dl>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Content</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>The <span class="LITERAL">&lt;xsl:with-param&gt;</span> element can be empty, or it can contain an XSLT template. If it contains an XSLT template, the value of the <span class="LITERAL">select</span> attribute (if any exists) is ignored. </p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Appears in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>
+<span class="LITERAL">&lt;xsl:apply-templates&gt;</span> and <span class="LITERAL">&lt;xsl:call-template&gt;</span>.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Defined in</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>XSLT section 11.6, Passing Parameters to Templates. </p>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" class="TITLE">Example</td>
+</tr>
+<tr>
+<td colspan="2" class="description">
+<p>Here is a stylesheet with a number of parameters. Notice that some parameters are global and defined outside the stylesheet:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+
+  &lt;xsl:output method="text"/&gt;
+
+  &lt;xsl:variable name="newline"&gt;
+&lt;xsl:text&gt;
+&lt;/xsl:text&gt;
+  &lt;/xsl:variable&gt;
+
+  &lt;xsl:param name="favoriteNumber" select="23"/&gt;
+  &lt;xsl:param name="favoriteColor"/&gt;
+
+  &lt;xsl:template match="/"&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:value-of select="list/title"/&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:variable name="listitems" select="list/listitem"/&gt;
+    &lt;xsl:call-template name="processListitems"&gt;
+      &lt;xsl:with-param name="items" select="$listitems"/&gt;
+      &lt;xsl:with-param name="color" select="'yellow'"/&gt;
+      &lt;xsl:with-param name="number" select="$favoriteNumber"/&gt;
+    &lt;/xsl:call-template&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template name="processListitems"&gt;
+    &lt;xsl:param name="items"/&gt;
+    &lt;xsl:param name="color" select="'blue'"/&gt;
+
+    &lt;xsl:for-each select="$items"&gt;
+      &lt;xsl:value-of select="position()"/&gt;
+      &lt;xsl:text&gt;.  &lt;/xsl:text&gt;
+      &lt;xsl:value-of select="."/&gt;
+      &lt;xsl:value-of select="$newline"/&gt;
+    &lt;/xsl:for-each&gt;
+
+    &lt;xsl:value-of select="$newline"/&gt;
+    
+    &lt;xsl:text&gt;Your favorite color is &lt;/xsl:text&gt;
+    &lt;xsl:value-of select="$favoriteColor"/&gt;
+    &lt;xsl:text&gt;.&lt;/xsl:text&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+    &lt;xsl:text&gt;The color passed to this template is &lt;/xsl:text&gt;
+    &lt;xsl:value-of select="$color"/&gt;
+    &lt;xsl:text&gt;.&lt;/xsl:text&gt;
+    &lt;xsl:value-of select="$newline"/&gt;
+  &lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</pre></span>
+<p>We'll use this stylesheet to transform this document:</p>
+<span class="PROGRAMLISTING"><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;list xml:lang="en"&gt;
+  &lt;title&gt;Albums I've bought recently:&lt;/title&gt;
+  &lt;listitem&gt;The Sacred Art of Dub&lt;/listitem&gt;
+  &lt;listitem&gt;Only the Poor Man Feel It&lt;/listitem&gt;
+  &lt;listitem&gt;Excitable Boy&lt;/listitem&gt;
+  &lt;listitem xml:lang="sw"&gt;Aki Special&lt;/listitem&gt;
+  &lt;listitem xml:lang="en-gb"&gt;Combat Rock&lt;/listitem&gt;
+  &lt;listitem xml:lang="zu"&gt;Talking Timbuktu&lt;/listitem&gt;
+  &lt;listitem xml:lang="jz"&gt;The Birth of the Cool&lt;/listitem&gt;
+&lt;/list&gt;</pre></span>
+<p>Our stylesheet contains two global parameters, <span class="LITERAL">favoriteNumber</span> and <span class="LITERAL">favoriteColor</span>, and defines a default value for <span class="LITERAL">favoriteNumber</span>. The stylesheet also passes a parameter from the <span class="LITERAL">match="/"</span> template to the <span class="LITERAL">name="processListitems"</span> template; that parameter contains a node-set. Here are the results of the transformation:</p>
+<span class="PROGRAMLISTING"><pre>
+
+Albums I've bought recently:
+1.  The Sacred Art of Dub
+2.  Only the Poor Man Feel It
+3.  Excitable Boy
+4.  Aki Special
+5.  Combat Rock
+6.  Talking Timbuktu
+7.  The Birth of the Cool
+
+Your favorite color is orange.
+The color passed to this template is yellow.</pre></span>
+<p>To generate these results with Xalan, we use this command:</p>
+<span class="PROGRAMLISTING"><pre>
+java org.apache.xalan.xslt.Process -in test4.xml -xsl with-param.xsl 
+  -param favoriteColor orange</pre></span>
+<p>The command should appear on a single line. See <link linkend="xslt-CHP-4-SECT-4.3">Section 4.4.3</link> in <link linkend="xslt-CHP-4">Chapter 4</link> for a complete discussion of global parameters and how you define them for various XSLT processors.
+
+
+
+
+
+</p>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

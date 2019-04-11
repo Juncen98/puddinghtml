@@ -1,0 +1,90 @@
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<head>
+
+<title>超级链接列</title>
+
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ImageButtonClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/DBTreeControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/SSClasses.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/enableControl.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/SBDatabaseCallClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/Checkbox.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/TextField.js"></SCRIPT>
+
+<SCRIPT SRC="DataGridColumn.js"></SCRIPT>
+<SCRIPT SRC="DataGridLink.js"></SCRIPT>
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onload="initializeUI()">
+<form name="theForm">
+  <table border=0>
+    <tr> 
+      <td height="1"></td>
+    </tr>
+    <tr> 
+      <td align="right" nowrap>标题:</td>
+      <td colspan=5 align="left" nowrap> <input name="Title" type="text" class="basicTextField"> 
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap>超级链接文本:</td>
+      <td align="left" nowrap> <input type="radio" value="static" name="HyperlinkType" onClick="onHyperlinkTypeChanged()" checked></td>
+      <td align="right" nowrap>静态文本:</td>
+      <td align="left" nowrap>&nbsp; </td>
+      <td align="left" colspan=2 nowrap> <input name="HyperlinkStaticText" type="text" class="basicTextField"> 
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap></td>
+      <td align="left" nowrap> <input type="radio" value="dynamic" name="HyperlinkType" onClick="onHyperlinkTypeChanged()"></td>
+      <td align="right" nowrap>数据字段: </td>
+      <td align="left" nowrap>&nbsp; </td>
+      <td align="left" colspan=2 nowrap> <select name="HyperlinkDataField" class="dataSourceList">
+        </select> </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap>&nbsp;</td>
+      <td colspan="2" align="right" valign="baseline" nowrap>格式字符串:</td>
+      <td align="right" valign="baseline" nowrap>&nbsp;</td>
+      <td align="left" colspan=2 nowrap> <input name="HyperlinkFormatString" type="text" class="largeTField"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap>链接页:</td>
+      <td align="left" nowrap> <input type="radio" value="static" name="LinkedPageType" onClick="onLinkedPageTypeChanged()" checked></td>
+      <td align="right" nowrap>静态 URL: </td>
+      <td align="left" nowrap>&nbsp; </td>
+      <td align="left" colspan=2 nowrap> <input name="LinkedPageStaticURL" type="text" class="largeTField"> 
+        <input type="button" name="LinkedPageBrowseButton" value="浏览..." onClick="onBrowseClicked('LinkedPageStaticURL')"> 
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap></td>
+      <td align="left" nowrap> <input type="radio" value="dynamic" name="LinkedPageType" onClick="onLinkedPageTypeChanged()"></td>
+      <td align="right" nowrap>数据字段:  </td>
+      <td align="left" nowrap>&nbsp; </td>
+      <td align="left" colspan=2 nowrap> <select name="LinkedPageDataField" class="dataSourceList">
+        </select> </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap></td>
+      <td colspan="2" align="right" nowrap>格式字符串:</td>
+      <td align="left" nowrap>&nbsp;</td>
+      <td align="left" colspan=2 nowrap> <input name="LinkedPageFormatString" type="text" class="largeTField">
+        <input type="button" name="LinkedPageFormatStringBrowseButton" value="浏览..." onClick="onBrowseClicked('LinkedPageFormatString')"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

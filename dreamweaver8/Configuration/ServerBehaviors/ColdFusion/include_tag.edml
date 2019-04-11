@@ -1,0 +1,10 @@
+<participant>
+  <searchPatterns whereToSearch="tag+cfinclude">
+    <searchPattern paramNames="include_url" limitSearch="attribute+template" />
+  </searchPatterns>
+  <translator>
+    <searchPatterns>
+      <searchPattern paramNames="ssi_includeUrl"><![CDATA[/<cfinclude\s+template\s*=\s*["|']([^"^']*)["|']\s*>/im]]></searchPattern>
+    </searchPatterns>
+  </translator>
+</participant>

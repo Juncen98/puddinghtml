@@ -1,0 +1,187 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<head>
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+
+<!-- Common Functions-->
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+
+<!-- Server Behavior Classes -->
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/SBDatabaseCallClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/TagEditClass.js"></SCRIPT>
+
+<!-- Control Classes -->
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/GridControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/DBTreeControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/CFDataSourceMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/ConnectionStoredProcMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/TextField.js"></SCRIPT>
+
+<SCRIPT src="CFStoredProc.js"></SCRIPT>
+
+<title>预存过程</title>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body text="#000000" onload="initializeUI();">
+<form>
+  <table>
+    <tr valign="baseline">
+      <td align="right" nowrap>数据源: </td>
+      <td nowrap="nowrap">
+        <select name="ConnectionName" class="dataSourceList" onchange="updateUI('ConnectionName','onChange')" wrap="virtual">
+        </select>
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>用户名: </td>
+      <td> <input name="UserName" type="text" class="basicTextField">
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>密码: </td>
+      <td> <input name="Password" type="text" class="basicTextField">
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>过程: </td>
+      <td> <select name="Procedure" class="procList" onChange="updateUI('Procedure','onChange')">
+        </select> </td>
+    </tr>
+    <tr>
+      <td align="right" valign="top" nowrap>参数:  </td>
+      <td NOWRAP COLSPAN="2">
+        <table cellpadding="0" cellspacing="0">
+          <tr>
+            <td> <select name="VariableList" size="8" class="paramNameList" onChange="updateUI('VariableList','onChange')">
+              </select>
+            </td>
+            <td width="6">&nbsp; </td>
+            <td valign="top" nowrap>
+              <table cellpadding="0" cellspacing="0" border="1" width="100%">
+                <tr nowrap><td valign="top" NOWRAP>
+                <table cellpadding="0" cellspacing="0" width="210px">
+                  <tr nowrap>
+                    <td>
+                      <span name="DBVarName">-</span>
+                    </td>
+                  </tr>
+                  <tr nowrap>
+                    <td>
+                      <span name="VarType">-</span>
+                    </td>
+                  </tr>
+                  <tr nowrap>
+                    <td>
+                      <span name="CFSQLType">-</span>
+                    </td>
+                  </tr>
+                  <tr nowrap>
+                    <td>
+                      <span name="CFVarName">-</span>
+                    </td>
+                  </tr>
+                  <tr nowrap>
+                    <td>
+                      <span name="VarValue">-</span>
+                    </td>
+                  </tr>
+                  <tr nowrap>
+                    <td>
+                      <span name="VarTestValue">-</span>
+                    </td>
+                  </tr>
+                  <tr nowrap>
+                    <td height="3">
+                    </td>
+                  </tr>
+                  <tr nowrap>
+                    <td>
+                      <input name="EditVariable" type="button" onClick="updateUI('EditVariable','onclick')" value="编辑..." disabled="disabled">
+                    </td>
+                  </tr>
+                </table>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="top" nowrap>
+        页参数:  </td>
+      <td NOWRAP COLSPAN="2">
+        <img src="../../Shared/MM/Images/transparent.gif" WIDTH="2" HEIGHT="1">
+        <input type="image" name="PlusButtonParams" src="../../Shared/UltraDev/Images/PlusButton.gif" value="+"  onClick="updateUI('PlusButtonParams','onClick');">
+        <input type="image" name="MinusButtonParams" src="../../Shared/UltraDev/Images/MinusButtonEnabled.gif" value="-" onClick="updateUI('MinusButtonParams','onClick');">
+        <br>
+        <table cellpadding="0" cellspacing="0">
+          <tr>
+            <td> <select name="ParamList" size="4" class="paramNameList" onChange="updateUI('ParamList','onChange')">
+              </select>
+            </td>
+            <td width="6">&nbsp; </td>
+            <td valign="top" nowrap>
+              <table cellpadding="0" cellspacing="0" border="1" width="100%">
+                <tr nowrap><td valign="top" NOWRAP>
+                <table cellpadding="0" cellspacing="0" width="210px">
+                  <tr nowrap>
+                    <td>
+                      <span name="ParamName">-</span>
+                    </td>
+                  </tr>
+                  <tr nowrap>
+                    <td>
+                      <span name="ParamDefault">-</span>
+                    </td>
+                  </tr>
+                  <tr nowrap>
+                    <td height="3">
+                    </td>
+                  </tr>
+                  <tr nowrap>
+                    <td>
+                      <input name="EditParam" type="button" onClick="updateUI('EditParam','onclick')" value="编辑..." disabled="disabled">
+                    </td>
+                  </tr>
+                </table>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" nowrap> </td>
+      <td>
+        <table>
+          <tr valign="baseline">
+            <td>
+              <table cellpadding="0" cellspacing="0" border="0">
+                <tr valign="baseline">
+                  <td nowrap align="left"><input type="checkbox" name="ReturnsRecordset" value="checked"  onClick="updateUI('ReturnsRecordset','onClick')"> 返回具有以下名称的记录集:  </td>
+                  <td nowrap align="left"><input name="RecordsetName" type="text" disabled class="basicTextField"></td>
+                  <td nowrap align="left"><img src="../../Shared/MM/Images/transparent.gif" height="1" width="4"></td>
+                  <td nowrap align="left"><input type="button" onClick="updateUI('TestButton','onclick')" name="TestButton" value="测试" disabled="disabled" style="width:55px"></td>
+                </tr>
+                <tr valign="baseline">
+                  <td nowrap align="left"><input type="checkbox" name="ReturnsStatusCode" value="checked"  onClick="updateUI('ReturnsStatusCode','onClick')"> 返回具有以下名称的状态代码:  </td>
+                  <td nowrap align="left" colspan="3"><input name="StatusCodeVarName" type="text" disabled class="basicTextField"></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+  </table>
+</form>
+</body>
+</html>

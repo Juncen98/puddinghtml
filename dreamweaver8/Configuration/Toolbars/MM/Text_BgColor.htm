@@ -1,0 +1,60 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>±³¾°ÑÕÉ«</TITLE>
+<script src="../../Commands/Text_BgColor.js"></script>
+<script language="javascript" src="../siteSettings_TEMP.js"></script>
+<SCRIPT LANGUAGE="javascript">
+<!--
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MENU_Default = "Ä¬ÈÏ(_D)";
+
+//--------------- END LOCALIZEABLE   ---------------
+
+function receiveArguments(){
+	var bgcolor = arguments[0];
+	var dom = dw.getDocumentDOM();
+
+	var handled = false;
+
+	handled = handleTable( setBgColor, bgcolor );
+
+	if ( !handled ) 
+	{
+		if (bgcolor == ""){
+			dom.removeFontMarkupAsStyle('background-color');
+		}else{
+			dom.applyFontMarkupAsStyle('background-color',bgcolor);
+		}
+	}
+}
+
+function canAcceptCommand(){
+    // Make sure the focus is in the document.
+	var dom = dw.getDocumentDOM();
+    var retVal = false;
+    if (dw.getFocus() == 'document')
+	{
+        retVal = true;
+	}
+
+	if (dom)
+	{
+		if (!isSelectionTextuallyModifiable(dom))
+		{
+			retVal = false;
+		}
+	}
+
+    return retVal;
+}
+
+
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

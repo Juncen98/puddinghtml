@@ -1,0 +1,194 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<TITLE>设计备注多文件编辑</TITLE>
+<SCRIPT SRC="DesignNotesMultiFile.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/Class/TabControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/Class/NameValuePairClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<SCRIPT LANGUAGE="javascript">
+<!--
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var LABEL_BasicInfo = "基本信息";
+var LABEL_AllInfo   = "所有信息";
+
+var MSG_NotSaved = "使用此项功能前，请先储存您的文件。";
+var MSG_InvalidName = "名称中不可以含有引号。";
+var MSG_ReadOnlyFile = "对于只读文件不能编辑设计备注.请在编辑之前注销该文件"
+
+//First item must be blank
+STATUS_ITEMS= new Array("","草稿","保留1","保留2","保留3","alpha","beta","最终版","特别注意");
+//--------------- END LOCALIZEABLE   ---------------
+// -->
+</SCRIPT>
+
+<STYLE TYPE="text/css">
+<!--
+.pageBg        { position:absolute; left:9px; top:31px; width:10px; height:10px; z-index:1; visibility:hidden; }
+.tabLayer      { position:absolute; top:10px; width:70px; height:20px; z-index:8; visibility:hidden ;}
+.tabInnerLayer { position:absolute; width:75px; height:23px; z-index:8; left: 0px; top: 0px; visibility:inherit ;}
+.tabLabelLayer { position:absolute; width:69px; height:1px; z-index:8; left: 0px; top: 5px; visibility:inherit; text-align:center }
+-->
+</STYLE>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI();findObject('loading').visibility='hidden'" >
+<!-- ---------------------------------------------------------------------- -->
+<!-- TAB DIVS -->
+
+<div class="pageBg" style="visibility:visible; left:4px; ">
+  <img name="tabBgWin" width="435" height="320" src="../Shared/MM/Images/transparent.gif">
+</div>
+
+<div id="Tab0" class="tabLayer" style="left: 8px; ">
+  <div class="tabInnerLayer"> <img src="../Shared/MM/Images/tabBg.gif"> </div>
+  <div id="Tab0Sel" class="tabInnerLayer" style="visibility:hidden">
+    <img src="../Shared/MM/Images/tabBgSel.gif"> </div>
+  <div name="Tab0Label" class="tabLabelLayer"></div>
+  <div class="tabInnerLayer">
+    <input type="image" alt="基本信息" src="../Shared/MM/Images/transparent.gif" width="69" height="21" onClick="T.showPageNum(0)"> </div>
+</div>
+<div id="Tab1" class="tabLayer" style="left: 78px; ">
+  <div class="tabInnerLayer"> <img src="../Shared/MM/Images/tabBg.gif"> </div>
+  <div id="Tab1Sel" class="tabInnerLayer" style="visibility:hidden">
+    <img src="../Shared/MM/Images/tabBgSel.gif"> </div>
+  <div name="Tab1Label" class="tabLabelLayer"></div>
+  <div class="tabInnerLayer">
+    <input type="image" alt="所有信息" src="../Shared/MM/Images/transparent.gif" width="69" height="21" onClick="T.showPageNum(1)"> </div>
+</div>
+
+
+<!-- ---------------------------------------------------------------------- -->
+<!-- PAGE DIVS -->
+<div class="pageBg" id="loading" style="visibility:visible; left:4px; ">
+  <table width="435" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+  <td height="320" align="center"><p>
+  正在载入...
+  </p>
+  </td>
+  </tr>
+  </table>
+</div>
+
+
+  <div id="mainLayer" class="pageBg">
+    <form>
+    <table border="0">
+    <tr>
+      <td height=10></td>
+    </tr>
+    <tr>
+      <td nowrap>
+        <div align="right">文件:</div>
+      </td>
+      <td>&nbsp;&nbsp;<span name="fileName1"></span></td>
+    </tr>
+    <tr>
+      <td nowrap>
+        <div align="right">位置:</div>
+      </td>
+      <td>&nbsp;&nbsp;<span name="filePath1"></span></td>
+    </tr>
+    <tr>
+      <td height=5></td>
+    </tr>
+    <tr>
+      <td nowrap>
+        <div align="right">状态:</div>
+      </td>
+      <td><select name="statusMenu" class="oneWordOptionList" onChange="T.update('statusMenu')">
+            <option selected></option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td align="right"><input type="image" alt="插入日期" src="../Shared/MM/Images/dateBtn.gif" onClick="T.update('insertDate')"></td>
+    </tr>
+    <tr>
+      <td nowrap height="9"></td>
+      <td rowspan="2" valign="top">
+        <textarea name="notesField" rows="8" wrap="VIRTUAL" class="designNoteInfoOrValue" style="width:348px" onBlur="T.update('notesField')"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td nowrap valign="top">
+        <div align="right">备注:</div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <hr>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input name="openChbx" type="checkbox" value="checkbox" onClick="T.update('openChbx')">
+        文件打开时显示</td>
+    </tr>
+    </table>
+    </form>
+  </div>
+
+  <div id="allLayer" class="pageBg">
+    <form>
+    <table border="0">
+      <tr>
+        <td height=10></td>
+      </tr>
+      <tr>
+        <td nowrap>
+          <div align="right">文件:</div>
+        </td>
+        <td>&nbsp;&nbsp;<span name="fileName2"></span></td>
+      </tr>
+      <tr>
+        <td nowrap>
+          <div align="right">位置:</div>
+        </td>
+        <td>&nbsp;&nbsp;<span name="filePath2"></span></td>
+      </tr>
+      <tr> <td height=4></td> </tr>
+      <tr>
+        <td></td>
+        <td>&nbsp;&nbsp;<input type="image" alt="添加项" src="../Shared/MM/Images/btnAdd.gif" onClick="T.update('addItem');focus(this)">
+            &nbsp;<input type="image" alt="移除项" src="../Shared/MM/Images/btnDel.gif" onClick="T.update('delItem');focus(this)">
+        </td>
+      <tr>
+        <td nowrap height="6"></td>
+        <td rowspan=2><select name="allItems" size="8" class="designNoteInfoOrValue" onChange="T.update('allItems')">
+            <option></option>
+          </select>
+        </td>
+      <tr>
+        <td nowrap valign="top" align="right">信息:
+        </td>
+      </tr>
+      <tr>
+        <td nowrap valign="baseline" align="right">名称:
+        </td>
+        <td nowrap valign="baseline"><input name="itemName" type="text" class="basicTextField" onBlur="T.update('itemName')" maxlength="64">
+        </td>
+      </tr>
+      <tr>
+        <td nowrap valign="top" align="right">值:
+        </td>
+        <td nowrap valign="top"><textarea name="itemValue" wrap="virtual" class="designNoteInfoOrValue" onBlur="T.update('itemValue')"></textarea>
+        </td>
+      </tr>
+    </table>
+    </form>
+  </div>
+</BODY>
+</HTML>
+

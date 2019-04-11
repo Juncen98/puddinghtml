@@ -1,0 +1,30 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>ä¯ÀÀÆ÷Ä¿±ê¼ì²é</TITLE>
+<SCRIPT LANGUAGE="javascript">
+<!--
+function doBTC()
+{
+	dw.getDocumentDOM().runValidation('auto-explicit', true, true);
+	dw.showResults('btc', dw.getDocumentDOM().URL);
+}
+
+function canAcceptCommand()
+{
+  var retVal = false;
+  if (dw.getDocumentDOM() != null){
+	var parseMode = dw.getDocumentDOM().getParseMode();
+	if (parseMode == 'html' || parseMode == 'css'){
+	  retVal = true;
+	}
+  }
+  return retVal;
+}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY onLoad="doBTC()">
+</BODY>
+</HTML>

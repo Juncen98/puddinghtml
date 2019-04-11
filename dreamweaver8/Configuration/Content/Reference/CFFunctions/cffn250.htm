@@ -1,0 +1,149 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>SIN</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">SIN</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Calculates the sine of an angle that is entered in radians.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+A number; the sine of the angle.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Mathematical functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>Sin(number)
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+ASin, Cos, ACos, Tan, Atn, Pi
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+The range of the result is -1 to 1. 
+</p>
+
+<p>
+To convert degrees to radians, multiply degrees by <font face="Symbol">p</font>/180. To convert radians to degrees, multiply radians by 180/<font face="Symbol">p</font>.
+</p>
+<table>
+  <tr valign="top">
+    <td width="30"><strong>Note: </strong></td>
+    <td>Because the function uses floating point arithmetic, it returns a very small number (such as 6.12323399574E-017) for angles that should produce 0. To test for a 0 value, check whether the value is less than 0.0000000000001.</td>
+  </tr>
+</table>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;Sin Example&lt;/h3&gt;
+&lt;!--- Calculate sine if form has been submitted ---&gt;
+&lt;cfif IsDefined(&quot;FORM.sinNum&quot;)&gt;
+&lt;!--- Make sure input is a number ---&gt;
+   &lt;cfif IsNumeric(#FORM.sinNum#)&gt;
+&lt;!--- Convert degrees to radians, call the Sin function. ---&gt;
+        &lt;cfset sinValue=#Sin((Form.sinNum * PI()) / 180)#&gt;
+&lt;!--- 0.0000000000001 is the function&#39;s precision limit.
+     If absolute value of returned sine value is 
+     less, set result to 0 ---&gt;
+        &lt;cfif Abs(sinValue) LT 0.0000000000001&gt;
+           &lt;cfset sinValue=0&gt;
+        &lt;/cfif&gt;
+        &lt;cfoutput&gt;
+          Sin(#FORM.sinNum#) = #sinValue#&lt;br&gt;&lt;br&gt;
+        &lt;/cfoutput&gt;
+   &lt;cfelse&gt;
+&lt;!--- If input is not a number, show an error message ---&gt;
+      &lt;h4&gt;You must enter a numeric angle in degrees.&lt;/h4&gt;
+   &lt;/cfif&gt;
+&lt;/cfif&gt;
+&lt;form action = &quot;#CGI.script_name#&quot; method=&quot;post&quot;&gt;
+    Enter an angle in degrees to get its sine:
+    &lt;br&gt;&lt;input type = &quot;Text&quot; name = &quot;sinNum&quot; size = &quot;15&quot;&gt;
+    &lt;br&gt;&lt;br&gt;
+    &lt;input type = &quot;Submit&quot; name = &quot;&quot;&gt;&amp;nbsp;&amp;nbsp;
+    &lt;input type = &quot;RESET&quot;
+&lt;/form&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="NUMBER">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">NUMBER</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>Angle, in radians for which to calculate the sine.</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

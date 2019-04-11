@@ -1,0 +1,97 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 6.0//pi">
+<!-- tag:cfselect, priority:1, selection:exact,hline,vline ,serverModel:Cold Fusion -->
+<!-- Copyright 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<html>
+<head>
+<title>CFINPUT</title>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/TagEditClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/TagEditClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/sbUtils.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/EditableRecordsetMenu.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<script src="../TagLibraries/CFML/strings.js"></script>
+<script src="../TagLibraries/CFML/loc_strings.js"></script>
+<script src="cf_select.js"></script>
+<link href="_pi_common.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="piBody">
+<img id="piImage" name="piImage" src="Img/select.gif"> 
+
+<div id="idBoxLayer"> 
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="left" height="17" NOWRAP>CFSELECT</td>
+    </tr>
+    <tr>
+      <td align="left" nowrap>
+        <input name="theName" type="text" id="theName" onBlur="updateTag('name')">
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div id="topLayer">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="right" nowrap>类型&nbsp;</td>
+      <td  width="5%" rowspan="2" valign="top" nowrap>
+	  	<div style="margin-top:0px;">
+			<label style="display:block;" ><input type="radio" name="theMenu" value="theMenu" id="theMenu" onClick="refreshRadioGroup('theType', 'theMenu'); updateTag('type')">菜单</label>
+       	  <label style="display:block;" ><input type="radio" name="theList" value="theList" id="theList" onClick="refreshRadioGroup('theType', 'theList'); updateTag('type')">列表</label>
+		</div>
+	  </td>
+      <td align="right" nowrap>&nbsp;&nbsp;列表高度&nbsp;</td>
+      <td align="left" nowrap><input name="theSize" type="text" id="theSize" style="width:30px; margin:0px" onBlur="updateTag('size')">&nbsp;行数</td>
+      <td align="right" nowrap><input type="button" name="theListValues" value="编辑值..." id="theListValues" onClick="listValues()" style="margin-left:20px; height:20px"></td>
+      <td align="right" nowrap>&nbsp;&nbsp;&nbsp;&nbsp;初始选择&nbsp;</td>
+      <td rowspan="2" align="left" nowrap><select id="theSelected" name="theSelected" size="3" style="width:70px; margin-left:0px; margin-right:0px;" onChange="updateTag('selected')">
+      </select></td>
+    </tr>
+	<tr>
+	  <td>&nbsp;</td>
+	  <td colspan="2" align="left" nowrap>&nbsp;&nbsp;&nbsp; <input type="checkbox" name="theAllowMultiple" value="theAllowMultiple" id="theAllowMultiple"  style="margin-left:2px" onClick="updateTag('allowMultiple')">允许选择多个列表 </td>
+    </tr>
+  </table>
+</div>
+
+
+<div id="bottomLayer"> 
+  <table width="100%" border="0" cellpadding="1" cellspacing="0">
+    <tr>
+      <td align="right" nowrap>&nbsp;&nbsp;记录集&nbsp;</td>
+      <td nowrap><select name="theQuery" editable="true" id="theQuery" style="magin-left:5px; width:90px" onChange="updateTag('query')" onBlur="updateTag('query')">
+          <option></option>
+        </select><!--<input name="theQuery" type="text" id="theQuery" style="width:70px" onBlur="updateTag('query')">--></td>
+      <td align="right" nowrap>&nbsp;值列&nbsp;</td>
+      <td align="left" valign="middle" nowrap><input name="theValue" type="text" id="theValue" style="width:70px" onBlur="updateTag('value')"></td>
+      <td align="right" valign="middle" nowrap>&nbsp;&nbsp;Flash 高度&nbsp;</td>
+      <td align="left" valign="middle" nowrap><input name="theHeight" type="text" id="theHeight" style="width:30px" onBlur="updateTag('height')"> 
+      像素</td>
+      <td align="right" nowrap>&nbsp;&nbsp;&nbsp;&nbsp;消息&nbsp;</td>
+      <td nowrap><input name="theMessage" type="text" id="theMessage" style="width:70px" onBlur="updateTag('message')"></td>
+      <td width="100%" nowrap>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>&nbsp;&nbsp;显示列&nbsp;</td>
+      <td nowrap><input name="theDisplay" type="text" id="theDisplay" style="margin-left:0px; width:90px" onBlur="updateTag('display')"></td>
+      <td align="right" nowrap>&nbsp; Flash 标签&nbsp;</td>
+      <td align="left" nowrap><input name="theLabel" type="text" id="theLabel" style="width:70px" onBlur="updateTag('label')"></td>
+      <td align="right" nowrap>&nbsp;Flash&nbsp;宽度&nbsp;</td>
+      <td align="left" nowrap><input name="theWidth" type="text" id="theWidth" style="width:30px" onBlur="updateTag('width')"> 
+      像素</td>
+      <td align="right" nowrap>&nbsp;</td>
+      <td valign="top" nowrap><input type="checkbox" name="theRequired" value="theRequired"" onClick="updateTag('required')">必需的</td>
+      <td width="100%" align="left" valign="bottom" nowrap>&nbsp;<input name="tagEditorButton" type="image" id="tagEditorButton" style="margin-left:1px;" title="Display Tag Editor for cfinput" onClick="displayTagDialog()" src="Img/tagDialog.gif" alt="为 cfinput 显示标签编辑器"></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

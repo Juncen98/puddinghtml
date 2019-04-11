@@ -1,0 +1,129 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFINSERT</title>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var DBTYPELIST;
+var theUIObjects;
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function initializeUI()
+{
+	DBTYPELIST = new ListControl("thedbtype"); 
+	theUIObjects = new Array(DBTYPELIST); 
+
+  tagDialog.populateDropDownList(DBTYPELIST, theInsertDBTypeVal, theInsertDBTypeVal, 0)
+	DBTYPELIST.setIndex(0);
+}
+
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">数据源: </td>
+      <td nowrap="nowrap"> 
+        <input name="thedatasource" type="text" class="basicTextField" id="attr:cfinsert:datasource" attname="datasource" required="true" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">DB 类型: </td>
+      <td nowrap="nowrap"> 
+        <select name="thedbtype" class="oneWordOptionList" id="attr:cfinsert:dbtype" attname="dbtype" editable="true">
+        </select>
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">DB 服务器: </td>
+      <td nowrap="nowrap"> 
+        <input name="thedbserver" type="text" class="basicTextField" id="attr:cfinsert:dbserver" attname="dbserver" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">DB 名称: </td>
+      <td nowrap="nowrap"> 
+        <input name="thedbname" type="text" class="basicTextField" id="attr:cfinsert:dbname" attname="dbname" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">用户名: </td>
+      <td nowrap="nowrap"> 
+        <input name="theusername" type="text" class="medTField" id="attr:cfinsert:username" attname="username" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">密码: </td>
+      <td nowrap="nowrap"> 
+        <input name="thepassword" type="text" class="medTField" id="attr:cfinsert:password" attname="password" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">提供程序: </td>
+      <td nowrap="nowrap"> 
+        <input name="theprovider" type="text" class="basicTextField" id="attr:cfinsert:provider" attname="provider" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">提供程序 DSN: </td>
+      <td nowrap="nowrap"> 
+        <input name="theproviderdsn" type="text" class="basicTextField" id="attr:cfinsert:providerdsn" attname="providerdsn" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">连接字符串: </td>
+      <td nowrap="nowrap"> 
+        <input name="theconnectstring" type="text" class="basicTextField" id="attr:cfinsert:connectstring" attname="connectstring" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">表格名称: </td>
+      <td nowrap="nowrap"> 
+        <input name="thetablename" type="text" class="basicTextField" id="attr:cfinsert:tablename" attname="tablename" required="true" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">表格所有者: </td>
+      <td nowrap="nowrap"> 
+        <input name="thetableowner" type="text" class="basicTextField" id="attr:cfinsert:tableowner" attname="tableowner" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">表格限定符: </td>
+      <td nowrap="nowrap"> 
+        <input name="thetablequalifier" type="text" class="basicTextField" id="attr:cfinsert:tablequalifier" attname="tablequalifier" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="top" align="right" nowrap="nowrap">表单字段: </td>
+      <td nowrap="nowrap"> 
+        <textarea id="attr:cfinsert:formfields" name="theformfields" attname="formfields" style="width:200px;" rows="2" wrap="virtual"></textarea>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

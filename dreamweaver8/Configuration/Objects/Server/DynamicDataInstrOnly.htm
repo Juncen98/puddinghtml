@@ -1,0 +1,97 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<title><MMString:LoadString id="insertbar/server/dynamicText" /></title>
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/dwscriptsServer.js"></script>
+<script src="../../Shared/UltraDev/Scripts/ssCmnElements.js"></script>
+<script src="serverObjectsCommon.js"></script>
+<script>
+//--------------------------------------------------------------------
+// FILE:
+//   DynamicDataInstrOnly.htm
+//
+// Description:
+//   This file is used by C code launching the dynamic data dialog. It
+//   is used only to show the instruction steps dialog as it appears for
+//   the application objects (rather than reimplementing the exact same
+//   thing in C). Pass true for bDynDataInstrOnly parameter below to 
+//   slightly change wording in the instruction steps dialog from the
+//   typical wording for the application objects.
+//--------------------------------------------------------------------
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   getSetupSteps
+//
+// DESCRIPTION:
+//   Returns an array of steps to be displayed in an instructions
+//   dialog.  The first element of the array is the text that appears
+//   above the list.  The remaining elements are the steps, which will
+//   be rendered in a numbered list.
+//
+//   The steps are each HTML, which may contain JavaScript event
+//   handlers.  The event handlers can either be a JavaScript script
+//   or an "event:KeyWord" syntax.  If the latter is used, then the
+//   handler for KeyWord is implemented internally in the Dreamweaver
+//   executable.
+//
+// ARGUMENTS:
+//   none
+//
+// RETURNS:
+//   the array described above
+//--------------------------------------------------------------------
+function getSetupSteps()
+{
+  return getSetupStepsForServerObject(false, true);
+}
+
+
+
+//--------------------------------------------------------------------
+// FUNCTION:
+//   setupStepsCompleted
+//
+// DESCRIPTION:
+//   Returns the number of steps (in the list of steps returned from
+//   getSetupSteps) that have already been completed.  This number is
+//   used to determine how many steps will have a check mark next to
+//   them.
+//
+// ARGUMENTS:
+//   none
+//
+// RETURNS:
+//   An integer - the number of check marks to be displayed, or -1
+//   if all steps have been completed.
+//--------------------------------------------------------------------
+function setupStepsCompleted()
+{
+  var excludeRecordset = false;
+
+  var dom = dw.getDocumentDOM();
+  var isXSLTDocType = dwscripts.isXSLTDoc();
+  if (!isXSLTDocType)
+  {
+	  if (dw.dbi)
+	  {
+		var dataSources = dw.dbi.getDataSources();
+		// If there are other data sources, accept these in lieu of
+		// a recordset.
+		if (dataSources != null && dataSources.length > 0)
+		  excludeRecordset = true;
+	  }
+  }
+
+  return setupStepsCompletedForServerObject(excludeRecordset);
+}
+</script>
+
+</head>
+
+<body>
+
+</body>
+</html>

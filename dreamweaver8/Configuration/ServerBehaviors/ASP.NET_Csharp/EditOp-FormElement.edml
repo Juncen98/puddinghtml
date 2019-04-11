@@ -1,0 +1,173 @@
+<participant version="5.0">
+  <insertText location="afterSelection">
+	<![CDATA[
+	  <@ if (@@ElementType@@ == "textfield") @>
+	    <tr valign="baseline">
+	      <td nowrap align="right">@@ElementLabel@@</td>
+	      <td>
+		  <@ if (@@UseWebFormControl@@) @>
+		  <asp:textbox id="@@ElementName@@" <@ if (@@ElementValue@@) @>text='@@ElementValue@@' <@ endif @>TextMode="SingleLine" Columns="32" runat="server" />
+		  <@ else @>
+	      <input type="text" name="@@ElementName@@" value="@@ElementValue@@" size="32">
+		  <@ endif @>
+          </td>
+	    </tr>
+	  <@ elseif (@@ElementType@@ == "passwordfield") @>
+	    <tr valign="baseline">
+	      <td nowrap align="right">@@ElementLabel@@</td>
+	      <td>
+		  <@ if (@@UseWebFormControl@@) @>
+		  <asp:textbox id="@@ElementName@@" <@ if (@@ElementValue@@) @>text='@@ElementValue@@' <@ endif @>TextMode="Password" Columns="32" runat="server" />
+          <@ else @>
+          <input type="password" name="@@ElementName@@" value="@@ElementValue@@" size="32">
+          <@ endif @>
+		  </td>
+	    </tr>
+	  <@ elseif (@@ElementType@@ == "textarea") @>
+	    <tr valign="baseline">
+	      <td nowrap align="right" valign="top">@@ElementLabel@@</td>
+	      <td>
+		  <@ if (@@UseWebFormControl@@) @>
+          <asp:textbox id="@@ElementName@@" <@ if (@@ElementValue@@) @>text='@@ElementValue@@' <@ endif @>TextMode="Multiline" Columns="50" Rows="5" runat="server" />
+          <@ else @>
+          <textarea name="@@ElementName@@" cols="50" rows="5">@@ElementValue@@</textarea>          
+          <@ endif @>
+	      </td>
+	    </tr>
+	  <@ elseif (@@ElementType@@ == "text") @>
+	    <tr valign="baseline">
+	      <td nowrap align="right">@@ElementLabel@@</td>
+          <td>
+		  <@ if (@@UseWebFormControl@@) @>
+		  <asp:label id="@@ElementName@@" <@ if (@@ElementValue@@) @>text='@@ElementValue@@' <@ endif @>runat="server" />
+          <@ else @>
+          @@ElementValue@@
+          <@ endif @>
+		  </td>
+	    </tr>
+	  <@ elseif (@@ElementType@@ == "checkbox") @>
+	    <tr valign="baseline">
+	      <td nowrap align="right">@@ElementLabel@@</td>
+          <td>
+		  <@ if (@@UseWebFormControl@@) @>
+		  <asp:checkbox id="@@ElementName@@" runat="server" checked='@@CheckedState@@' />
+          <@ else @>
+          <input type="checkbox" name="@@ElementName@@" value="@@ElementValue@@" @@ElementChecked@@ >
+		  <@ endif @>
+		  </td>
+	    </tr>
+	  <@ elseif (@@ElementType@@ == "dynamiccheckbox") @>
+	    <tr valign="baseline">
+	      <td nowrap align="right">@@ElementLabel@@</td>
+	      <td>
+		  <@ if (@@UseWebFormControl@@) @>
+		  <asp:checkbox id="@@ElementName@@" runat="server" checked='@@CheckedState@@' />
+          <@ else @>
+          <input type="checkbox" name="@@ElementName@@" value="@@ElementValue@@" @@ElementChecked@@ >
+		  <@ endif @>
+		  </td>
+	    </tr>
+      <@ elseif (@@ElementType@@ == "menu") @>
+        <tr valign="baseline">
+          <td nowrap align="right">@@ElementLabel@@</td>
+          <td>
+		    <@ if (@@UseWebFormControl@@) @>
+            <@ if (@@SelectedValue@@.length > 0) @>
+			<% @@ElementName@@.SelectedIndex = @@ElementName@@.Items.IndexOf(@@ElementName@@.Items.FindByValue(@@SelectedValue@@)); %>
+            <@ endif @>
+            <asp:dropdownlist id="@@ElementName@@" runat="server">
+              <@ loop (@@OptionValue@@, @@OptionText@@) @>
+			    <asp:listitem value="@@OptionValue@@" >@@OptionText@@</asp:listitem>
+		      <@ endloop @>
+            </asp:dropdownlist>
+            <@ else @>
+            <select name="@@ElementName@@">
+  	          <@ loop (@@OptionValue@@, @@OptionText@@, @@OptionSelected@@) @>
+	  	        <option value="@@OptionValue@@" @@OptionSelected@@>@@OptionText@@</option>
+	          <@ endloop @>
+            </select>
+            <@ endif @>
+          </td>
+        </tr> 
+      <@ elseif (@@ElementType@@ == "radiogroup") @>
+        <tr valign="baseline">
+          <td nowrap align="right">@@ElementLabel@@</td>
+          <td valign="baseline">
+            <table>
+	          <tr>
+	            <td>
+		          <@ if (@@UseWebFormControl@@) @>
+                  <@ if (@@SelectedValue@@.length > 0) @>
+                  <% @@ElementName@@.SelectedIndex = @@ElementName@@.Items.IndexOf(@@ElementName@@.Items.FindByValue(@@SelectedValue@@)); %>
+                  <@ endif @>
+                  <asp:radiobuttonlist id="@@ElementName@@" runat="server">
+	                <@ loop (@@OptionText@@, @@OptionValue@@) @>
+       			      <asp:listitem value="@@OptionValue@@" >@@OptionText@@</asp:listitem>
+		            <@ endloop @>
+                  </asp:radiobuttonlist>
+                  <@ else @>
+	              <@ loop (@@OptionText@@, @@OptionValue@@, @@OptionSelected@@) @>
+                    <input type="radio" name="@@ElementName@@" value="@@OptionValue@@" @@OptionSelected@@>@@OptionText@@
+	              <@ endloop @>
+				  <@ endif @>
+				</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      <@ elseif (@@ElementType@@ == "dynamicmenu") @>
+        <tr valign="baseline">
+          <td nowrap align="right">@@ElementLabel@@</td>
+          <td>
+            <@ if (@@UseWebFormControl@@) @>
+            <@ if (@@SelectedValue@@.length > 0) @>
+            <% @@ElementName@@.SelectedIndex = @@ElementName@@.Items.IndexOf(@@ElementName@@.Items.FindByValue(@@SelectedValue@@)); %>
+            <@ endif @>
+            <asp:dropdownlist id="@@ElementName@@"
+              DataSource="<%# @@RecordsetName@@.DefaultView %>"
+              DataTextField="@@DynOptionText@@"
+              DataValueField="@@DynOptionValue@@"
+			  runat="server">
+            </asp:dropdownlist>
+            <@ else @>
+            <select name="@@ElementName@@">
+              <asp:repeater
+                DataSource="<%# @@RecordsetName@@.DefaultView %>"
+			    runat="server">
+				<itemtemplate>
+                  <option value='<%# @@RecordsetName@@.FieldValue("@@DynOptionValue@@", Container) %>' @@DynOptionSelected@@><%# @@RecordsetName@@.FieldValue("@@DynOptionText@@", Container) %></option>
+                </itemtemplate>
+			  </asp:repeater>
+            </select>
+            <@ endif @>
+          </td>
+        </tr>
+      <@ elseif (@@ElementType@@ == "dynamicradiogroup") @>
+        <tr valign="baseline">
+          <td nowrap align="right">@@ElementLabel@@</td>
+          <td>
+		    <@ if (@@UseWebFormControl@@) @>
+            <@ if (@@SelectedValue@@.length > 0) @>
+            <% @@ElementName@@.SelectedIndex = @@ElementName@@.Items.IndexOf(@@ElementName@@.Items.FindByValue(@@SelectedValue@@)); %>
+            <@ endif @>
+            <asp:radiobuttonList id="@@ElementName@@"
+                 DataSource="<%# @@RecordsetName@@.DefaultView %>"
+                 DataTextField="@@DynOptionText@@"
+                 DataValueField="@@DynOptionValue@@"
+                 runat="server">
+            </asp:radiobuttonList>
+			<@ else @>
+            <asp:repeater
+              DataSource="<%# @@RecordsetName@@.DefaultView %>"
+			  runat="server">
+		      <itemtemplate>
+                <input type="radio" name="@@ElementName@@" value='<%# @@RecordsetName@@.FieldValue("@@DynOptionValue@@", Container) %>' @@DynOptionSelected@@><%# @@RecordsetName@@.FieldValue("@@DynOptionText@@", Container) %>
+              </itemtemplate>
+			</asp:repeater>
+			<@ endif @>
+          </td>
+        </tr>
+	  <@ endif @>
+  ]]>
+</insertText>
+</participant>

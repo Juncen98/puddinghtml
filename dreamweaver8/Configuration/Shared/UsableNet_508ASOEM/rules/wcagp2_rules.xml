@@ -1,0 +1,4368 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+  505/W3C Accessibility Suite OEM V2 for Macromedia Dreamweaver
+  (C) Copyright 2005 UsableNet Inc. All rights reserved.
+-->
+<!-- $Id: wcagp2_rules.xml,v 1.33 2005/04/14 09:25:29 malex Exp $ -->
+
+<!--
+<!DOCTYPE un:rules SYSTEM "rules.dtd" [
+<!ENTITY % entities SYSTEM "entities.dtd">
+%entities;
+]>
+-->
+
+<un:rules xmlns:un="http://usablenet.com/namespaces/508_rules">
+
+  <un:category>
+    <un:categoryTitle>           ALL
+    </un:categoryTitle>
+    <un:categoryDescription>
+This category contains all rules.
+    </un:categoryDescription>
+  </un:category>
+
+
+  <un:category>
+    <un:categoryTitle>
+      W3C/WCAG P.2 accessibility
+    </un:categoryTitle>
+     
+    <un:categoryDescription>
+
+ This category contains the accessibility (priority 2) rules
+specified by the W3C/WAI group
+(http://www.w3.org/TR/WAI-WEBCONTENT). See WAI references
+at http://www.w3.org/WAI/References for additional material
+on web accessibility issues.
+
+    </un:categoryDescription>
+  </un:category>
+   
+
+  <un:category>
+    <un:categoryTitle>           images
+    </un:categoryTitle>
+    <un:categoryDescription>
+
+This category contains rules dealing with images embedded
+in HTML documents.
+
+    </un:categoryDescription>
+  </un:category>
+
+  <un:category>
+    <un:categoryTitle>           manual
+    </un:categoryTitle>
+    <un:categoryDescription>
+This category contains rules requiring manual inspection of the HTML
+documents.
+    </un:categoryDescription>
+  </un:category>
+
+  <un:category>
+    <un:categoryTitle>           forms
+    </un:categoryTitle>
+    <un:categoryDescription>
+This category contains rules dealing with FORMs and related elements.
+    </un:categoryDescription>
+  </un:category>
+
+  <un:category>
+    <un:categoryTitle>           frames
+    </un:categoryTitle>
+    <un:categoryDescription>
+This category contains rules dealing with FRAMEs and related elements.
+    </un:categoryDescription>
+  </un:category>
+
+  <un:category>
+    <un:categoryTitle>           tables
+    </un:categoryTitle>
+    <un:categoryDescription>
+This category contains rules dealing with TABLEs and related elements.
+    </un:categoryDescription>
+  </un:category>
+
+  <un:category>
+    <un:categoryTitle>           imagemaps
+    </un:categoryTitle>
+    <un:categoryDescription>
+This category contains rules dealing with image maps.
+    </un:categoryDescription>
+  </un:category>
+
+  <un:category>
+    <un:categoryTitle>           links
+    </un:categoryTitle>
+    <un:categoryDescription>
+This category contains rules dealing with images within links and navigation bars.
+    </un:categoryDescription>
+  </un:category>
+
+  <un:category>
+    <un:categoryTitle>           scripts
+    </un:categoryTitle>
+    <un:categoryDescription>
+This category contains rules dealing with programmatic objects.
+    </un:categoryDescription>
+  </un:category>
+
+  <un:category>
+     <un:categoryTitle>          meta
+     </un:categoryTitle>
+     <un:categoryDescription>
+This category contains rules that deal with META elements of HTML.
+     </un:categoryDescription>
+  </un:category>
+   
+  <un:category>
+    <un:categoryTitle>
+      css
+    </un:categoryTitle>
+    <un:categoryDescription>
+      This category contains tests dealing with Cascading Style Sheets.
+    </un:categoryDescription>
+  </un:category>
+
+  <un:category>
+    <un:categoryTitle>
+      suggestions
+    </un:categoryTitle>
+     
+    <un:categoryDescription>
+      This category contains rules that suggest ways in which to
+      use the LIFT Online service at www.usablenet.com.
+    </un:categoryDescription>
+  </un:category>
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>Ensure sufficient contrast between foreground and background colors</un:ruleTitle>
+      <un:ruleID>                  fgColOverBgCol
+    </un:ruleID>
+
+    <un:guideline abbr="WCAG 2.2 P2">WAI / WCAG 1.0 Priority 2 checkpoint 2.2</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:ruleCategory> images
+    </un:ruleCategory>
+      <un:ruleCategory> imagemaps
+    </un:ruleCategory>
+      <un:ruleCategory> css
+    </un:ruleCategory>
+
+      <un:pbmDescription>
+
+<p>
+  The page contains images, objects or applets. There might be cases where the contrast
+  between foreground and background colors is not sufficient to differentiate them.
+
+</p>
+      </un:pbmDescription>
+      <un:pbmExplanation>
+         <p>
+  There are many situations where a poor choice of color hinders
+  perception and comprehension of some information item or image in a
+  page.
+</p>
+         <p>
+  This may depend on many factors including:
+</p>
+         <ul>
+            <li> poor choice of background/foreground colors;</li>
+            <li> the website visitor  uses a screen incapable of rendering colors
+      with the same quality as the one used by the page designer;</li>
+            <li> the visitor is accessing the page via a black and white
+      screen on a PDA or cell phone;</li>
+            <li> the visitor needs to print the page on a black and white printer;</li>
+            <li> the visitor is color-blind.</li>
+         </ul>
+
+<p>
+From the W3C guidelines:
+</p>
+
+<p>
+<strong>Guideline 2.  Don't rely on color alone.
+<br/>
+Ensure that text and graphics are understandable when viewed without color.</strong>
+</p>
+<p>
+If color alone is used to convey information, people who cannot
+differentiate between certain colors and users with devices that have
+non-color or non-visual displays will not receive the
+information. When foreground and background colors are too close to
+the same hue, they may not provide sufficient contrast when viewed
+using monochrome displays or by people with different types of color
+deficits.
+</p>
+
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+  Check that colors and colored items in the page can be clearly
+  differentiated in all the possible contexts in which website visitors may be
+  using the page.
+  <br/>
+  Make sure that the contrast between foreground and background items is
+  conveyed by other means in addition to colors, such as levels of
+  luminosity (i.e. black and white contrast), different font styles,
+  font sizes, or font faces.
+</p>
+
+         <p>
+  If color is used, consider exaggerating the differences
+  between foreground and background colors by making colors differ in
+  all the following three parameters:
+</p>
+
+         <ul>
+
+            <li>
+               <strong>hue</strong>
+            </li>
+
+            <li>
+               <strong>saturation</strong>
+            </li>
+
+            <li>
+               <strong>brightness</strong>
+            </li>
+
+         </ul>
+
+         <p>
+  Easy ways to test the page are:
+</p>
+
+         <ul>
+            <li> view the page on a black and white screen and go through each
+       of its elements;</li>
+            <li> print the page on a black and white printer;</li>
+            <li> take the printout and copy it two or three times
+       to see how it degrades. This will demonstrate where it is necessary to
+       add redundant cues (like underlying links)
+       or whether the cues are too small or
+       indistinct to hold up well.</li>
+         </ul>
+
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>Use markup rather than images</un:ruleTitle>
+      <un:ruleID>                  mrkpRtImg
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 3.1 P2">WAI / WCAG 1.0 Priority 2 checkpoint 3.1</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:ruleCategory> images
+    </un:ruleCategory>
+      <un:ruleCategory> imagemaps
+    </un:ruleCategory>
+      <un:ruleCategory> css
+    </un:ruleCategory>
+
+      <un:pbmDescription>
+         <p>The page contains images that might contain information
+         that is not appropriately marked up in HTML.<br/>
+	 For example, MathML may be used to mark up mathematical equations, and
+    style sheets to format text and control 
+    layout. <br/>
+    It is best to avoid using images to represent text.  A better choice would be to use text and style sheets.
+    </p>
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+         <p>The W3C states (<a
+         href="http://www.w3.org/TR/WCAG10-CORE-TECHS/#structure">http://www.w3.org/TR/WCAG10-CORE-TECHS/#structure</a>):</p>
+	 <blockquote>
+	 
+<p>When designing a document or series of documents, content
+developers should strive first to identify the desired structure for
+their documents before evaluating how the documents will be
+presented to the user. Distinguishing the structure of a document from
+how the content is presented offers a number of advantages, including
+improved accessibility, manageability, and portability.</p>
+
+<p>Identifying what is structure and what is presentation may be
+challenging at times. For instance, many content developers consider
+that a horizontal line communicates a structural division. This may be
+true for sighted users, but to unsighted users or users without
+graphical browsers, a horizontal line may have next to no meaning. For
+example, in HTML content developers should use the HTML 4.01 heading
+elements (H1-H6) to identify new sections. These may be
+<em>complemented</em> by visual cues or other means such as horizontal
+rules, but should not be replaced by them.</p>
+
+<p>The opposite holds true as well. Content developers should not use
+structural elements to achieve presentation effects. For instance in
+HTML, even though the BLOCKQUOTE element may cause indented text in
+some browsers, it is designed to identify a quotation, not to create a
+presentation side-effect. BLOCKQUOTE elements used for indentation
+confuse users and search robots alike, who expect the element to be
+used to mark up block quotations.</p>
+
+<p>To determine if content is structural or presentational, create an
+outline of the document. Each point in the hierarchy denotes a
+structural change. Use structural markup to mark these changes and
+presentational markup to make them more apparent visually and
+aurally. Notice that horizontal rules will not appear in this outline
+and therefore are not structural, but
+presentational. <strong>Note:</strong> This quick test addresses
+chapter, section, and paragraph structure. To determine structure
+within phrases, look for abbreviations, changes in natural language,
+definitions, and list items.</p>
+</blockquote>
+
+<p>
+In another document (<a href="&url_wcag;">&wcag;</a>) it says:
+</p>
+<blockquote>
+<p>
+<strong>Guideline 3.  Use markup and style sheets and do so properly.
+<br/>
+Mark up documents with the proper structural elements. Control
+presentation with style sheets rather than with presentation elements
+and attributes.</strong> 
+</p>
+<p>
+Using markup improperly (not according to specification) hinders
+accessibility. Misusing markup for a presentation effect (e.g., using
+a table for layout or a header to change the font size) makes it
+difficult for users with specialized software to understand the
+organization of the page or to navigate through it. Furthermore, using
+presentation markup rather than structural markup to convey structure
+(e.g., constructing what looks like a table of data with an HTML PRE
+element) makes it difficult to render a page intelligibly to other
+devices [...] . 
+</p>
+<p>
+Content developers may be tempted to use (or misuse) constructs that
+achieve a desired formatting effect on older browsers. These practices cause accessibility problems.  It is best to consider whether the formatting effect is critical enough to warrant
+making the document inaccessible to some users. 
+</p>
+<p>
+At the other extreme, content developers must not sacrifice
+appropriate markup because a certain browser or assistive technology
+does not process it correctly. For example, it is appropriate to use
+the TABLE element in HTML to mark up tabular information even though
+some older screen readers may not handle side-by-side text correctly
+(refer to checkpoint 10.3). Using TABLE correctly and creating tables
+that transform easily (refer to guideline 5) makes it possible for
+software to render tables in a way other than as two-dimensional grids.  
+</p>
+</blockquote>
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+<p>
+If the image contains 
+</p>
+<ul>
+<li> text that is rendered graphically in a fancy font, use the CSS
+properties for fonts to achieve a similar effect;</li>
+<li>
+a mathematical formula, then use MathML to encode it; see the <a
+href="&url_w3c_mathml;">W3C page on MathML</a>.
+</li>
+</ul>
+
+      </un:pbmCorrection>
+
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+    <un:rule manual="true" enabled="true">
+    <un:ruleTitle>Document should be valid with respect to published grammars</un:ruleTitle>
+    <un:ruleID>                  docValFrmGrm
+    </un:ruleID>
+
+    <un:guideline abbr="WCAG 3.2 P2">WAI / WCAG 1.0 Priority 2 checkpoint 3.2</un:guideline>
+
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:ruleCategory> css
+    </un:ruleCategory>
+
+
+    <un:pbmDescription>
+<p>The guideline requires that the page is valid.</p>
+
+    </un:pbmDescription>
+
+
+    <un:pbmMessage name="xml" title="Validate XML code">
+Use the XML Validator to check this page.
+    </un:pbmMessage>
+    <un:pbmMessage name="xsl" title="Validate XSL code">
+Use the XML Validator to check the XSL style sheets linked to the page.
+    </un:pbmMessage>
+    <un:pbmMessage name="html" title="Validate HTML code">
+Use the Markup Validator to check this page.
+    </un:pbmMessage>
+    <un:pbmMessage name="xhtml" title="Validate XHTML code">
+Use the XML Validator to check this XHTML page.
+    </un:pbmMessage>
+    <un:pbmMessage name="css" title="Validate CSS code">
+Use a CSS validator to check the CSS style sheets linked by the page.
+    </un:pbmMessage>
+
+    <un:pbmExplanation>
+         <p>
+By using appropriate coding standards, it is possible to develop
+documents that are guaranteed to be potentially (and eventually)
+compatible with all types of Internet browsers and agents.
+	 </p>
+
+<p>
+In contrast, coding for a specific browser type and version,
+May lead to documents that are unreadable as new versions of
+that browser are developed, and as new browsers are used. Consider
+that in addition to mainstream browsers, website visitors may also use
+speaking browsers (e.g. Home Page Reader), text only browsers
+(e.g. lynx), or mini browsers on PDAs and cell phones. In addition to
+human visitors, the site may be visited by crawlers of search engines
+and of more specialized information gathering agents. These will also
+benefit from a document that is compliant with known standards.
+</p>
+
+<p>
+Using syntax validators will help to determine if there are
+mistakes in the documents; mistakes that were inserted
+inadvertently into the document that could lead to unexpected, and
+sometimes undetected, accessibility issues.
+</p>
+    </un:pbmExplanation>
+
+    <un:pbmCorrection>
+<p>
+Make sure that the page contains valid code. Use the Markup Validator,
+the XML Validator or a CSS validator to check if there are problems
+and to find viable solutions.
+</p>
+
+<p>
+Make sure the page contains absolutely valid code.
+</p>
+    </un:pbmCorrection>
+
+    </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+  <un:rule manual="false" enabled="true">
+      <un:ruleTitle>Use a public text identifier in a DOCTYPE statement</un:ruleTitle>
+      <un:ruleID>                  publicDoctype
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 3.2 P2">WAI / WCAG 1.0 Priority 2 checkpoint 3.2</un:guideline>
+
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+<p>
+  The DOCTYPE element is missing or is not valid.
+</p>
+
+      </un:pbmDescription>
+
+    <un:pbmMessage name="none" title="DOCTYPE is missing">
+  The page has no DOCTYPE element defined.
+    </un:pbmMessage>
+    <un:pbmMessage name="toomany" title="DOCTYPE is defined more than once">
+  The page contains more than one instance of DOCTYPE. 
+    </un:pbmMessage>
+    <un:pbmMessage name="badformed" title="DOCTYPE is not well-formed">
+  The page has a DOCTYPE element that is not well formed.
+    </un:pbmMessage>
+    <un:pbmMessage name="notpublished" title="DOCTYPE does not refer to a published DTD">
+  The page has a DOCTYPE element that does not refer to a published, official DTD.
+    </un:pbmMessage>
+
+      <un:pbmExplanation>
+
+<p>
+  According to HTML standards, each HTML document requires a Document
+  Type Declaration. The "DOCTYPE" begins the HTML document
+  and tells which version of HTML to expect when processing the
+  document.
+</p>
+<p>
+The DOCTYPE declaration identifies the computer language and version
+in which the document has been coded. With this information
+browsers can interpret accessibility features in the document
+correctly. <br/> This requirement is important for accessibility
+because assistive technologies may rely on this declaration to
+determine how to process the document.
+</p>
+<p>
+When using non-HTML documents (for example when using <abbr title="Synchronized Multimedia Integration Language">SMIL</abbr> or
+<abbr title="Scalable Vector Graphics">SVG</abbr>) use the
+appropriate DOCTYPE declaration for that markup language to ensure that
+browsers do not attempt to interpret it incorrectly as HTML.
+</p>
+
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+<p>
+  If the DOCTYPE element is missing, then add one. If it is not valid,
+  then edit and correct it. <br/>
+</p>
+
+<p>
+Check the validity of the DOCTYPE by using the Validator.
+</p>
+
+
+
+<p>
+  The DOCTYPE should contain the HTML language version that is used. For example, HTML 4.01 can be based on three different
+  variants (i.e. three DTDs). It is important to include one of the 
+  following document type declarations in the documents. 
+  The DTDs vary in the elements they support.<br/>
+  To define the DOCTYPE of the page include one of the following 
+  just before the <strong>HTML</strong> tag, at the beginning 
+  of the document:
+<pre>
+  &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+       "http://www.w3.org/TR/html4/strict.dtd"&gt;
+</pre> 
+<pre>
+  &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+       "http://www.w3.org/TR/html4/loose.dtd"&gt;
+</pre> 
+<pre>
+  &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" 
+       "http://www.w3.org/TR/html4/frameset.dtd"&gt;
+</pre> 
+
+The following DOCTYPE is for XHMTL strict (and similar ones exist for
+the Transitional and Frameset flavors: see the <a href="http://www.w3.org/MarkUp/#xhtml1">XHTML 1.0 page</a> by W3C):
+
+<pre>
+  &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+</pre>
+</p>
+
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="false" enabled="true">
+      <un:ruleTitle>Use style sheets</un:ruleTitle>
+      <un:ruleID>                  SSCtrlLyPr
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 3.3 P2">WAI / WCAG 1.0 Priority 2 checkpoint 3.3</un:guideline> 
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> tables
+    </un:ruleCategory>
+      <un:ruleCategory> frames
+    </un:ruleCategory>
+      <un:ruleCategory> forms
+    </un:ruleCategory>
+      <un:ruleCategory> css
+    </un:ruleCategory>
+
+      <un:pbmDescription>
+         <p>
+The page contains tags or attributes that are deprecated (i.e. that
+have disappeared from HTML 4.01, and whose usage is discouraged by the W3C). These
+tags/attributes can be safely replaced with appropriate CSS rules. 
+	 </p>
+
+<p>See the list of <a href="http://www.w3.org/TR/REC-html40/index/elements.html">HTML 4.01 deprecated tags</a>.</p>
+      </un:pbmDescription>
+
+      <un:pbmExplanation>
+         <p>
+By using CSS presentation rules rather than (deprecated) HTML tags
+and attributes the following advantages are achieved:
+	 </p>
+<ul>
+<li> the code you develop is more up to the standards, and will be
+automatically compatible when all the browsers and agents will catch
+up with the standards;
+</li>
+<li> the developed pages will be much easier to maintain (since
+presentation related code should be isolated in the CSS style sheet
+that is shared by all, or most, of the pages);
+</li>
+<li> the developed pages will be less cluttered since there is no need
+to repeatedly use tags like FONT to specify font faces and
+colors. This will improve the download time (since the page size is
+reduced and the browser can only download the CSS file once from the site);
+</li>
+<li> It is possible to reuse the same HTML page, and apply more than one
+CSS file to it to allow the user of the browser to choose which
+rendering style to use (among those that are defined).
+</li>
+</ul>
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+         <p>
+Replace the deprecated tags and attributes by appropriate CSS
+properties and rules. For example, use the CSS 'font' properties (e.g.
+<code>font-size, font-family, font-weight</code>) instead of the
+HTML FONT element to control font styles; use <code>style="{float:
+left}"</code> instead of <code>align="left"</code>; use <code>
+style="border:none" </code> instead of <code> border="0" </code>
+(within IMG tags).
+	 </p>
+<p>See the list of <a href="http://www.w3.org/TR/REC-html40/index/elements.html">HTML 4.01 deprecated tags</a>.</p>
+
+      </un:pbmCorrection>
+
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="false" enabled="true">
+      <un:ruleTitle>Use percentage values for frame sizes</un:ruleTitle>
+      <un:ruleID>                  frameSize
+    </un:ruleID>
+
+      <un:guideline abbr="WCAG 3.4 P2">WAI / WCAG 1.0 Priority 2 checkpoint 3.4</un:guideline>
+
+         <un:ruleCategory>   W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+    <un:ruleCategory>   ALL
+    </un:ruleCategory>
+    <un:ruleCategory>   frames
+    </un:ruleCategory>
+
+    <un:pbmDescription>
+
+         <p>
+	 The page contains frameset(s) that specify frame size using
+	 absolute, rather than relative, units.
+	 </p>
+
+      </un:pbmDescription>
+      <un:pbmMessage name="rows" title="Frame with fixed height">
+ROWS attribute specifies fixed heights for inner frames.
+    </un:pbmMessage>
+      <un:pbmMessage name="cols" title="Frame with fixed width">
+COLS attribute specifies fixed widths for inner frames.
+    </un:pbmMessage>
+      <un:pbmExplanation>
+
+         <p>Whenever possible it is best to use relative units. 
+	 </p>
+
+    <p>Use percentage units rather than absolute units for frame height and
+    width.  
+    </p>
+
+<p>
+In this way the visual layout of the page will be "liquid", in the
+sense that it can adapt to the specific browser being used and the
+specific screen that supports it.
+</p>
+
+<p>
+In the specific case of frames, using percentage values has the
+advantage that the browser user (the website visitor) can resize the
+entire window, or single frames at will without affecting the
+ability to experience the content of the page.
+</p>
+
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+	 <p>
+	 Use percentage values rather than absolute
+	 values. Replace the values in the attributes ROWS and/or COLS
+	 of the frameset with percentage values. 
+	 </p>
+
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="false" enabled="true">
+      <un:ruleTitle>Use percentage values for table sizes</un:ruleTitle>
+      <un:ruleID>                  tableSize
+    </un:ruleID>
+
+      <un:guideline abbr="WCAG 3.4 P2">WAI / WCAG 1.0 Priority 2 checkpoint 3.4</un:guideline>
+      
+    <un:ruleCategory>   W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+    <un:ruleCategory>   ALL
+    </un:ruleCategory>
+      <un:ruleCategory> tables
+    </un:ruleCategory>
+
+      <un:pbmDescription>
+
+         <p>The page contains tables that specify width and/or
+         height for rows and/or columns in absolute units rather
+         than relative ones, like percentages.
+	 </p>
+
+      </un:pbmDescription>
+      <un:pbmMessage name="table" title="TABLE with fixed width">
+WIDTH attribute specifies a fixed size for TABLE.
+    </un:pbmMessage>
+      <un:pbmMessage name="cell-width" title="Table cell with fixed width">
+WIDTH attribute specifies a fixed width for table cell.
+    </un:pbmMessage>
+      <un:pbmMessage name="cell-height" title="Table cell with fixed height">
+HEIGHT attribute specifies a fixed height for cell.
+    </un:pbmMessage>
+      <un:pbmExplanation>
+
+         <p>Whenever possible it is best to use relative units. 
+	 </p>
+
+    <p>Use
+    percentage units rather than absolute ones for tables' height and
+    width.  
+    </p>
+
+<p>
+In this way the visual layout of the page will be "liquid", in the
+sense that it can adapt to the specific browser being used and the
+specific screen that supports it.
+</p>
+
+<p>
+In the specific case of tables, using percentage values has the
+advantage that the browser user (the website visitor) can resize the
+entire window at will without affecting the ability to experience the
+content of the page.
+</p>
+      </un:pbmExplanation>
+
+
+      <un:pbmCorrection>
+	 <p>
+	 For table and table cells sizes use percentage values rather than absolute
+	 values. Replace the values in the attributes WIDTH and/or HEIGHT
+	 of TABLE, TH or TD elements with percentage values. 
+	 </p>
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="false" enabled="true">
+      <un:ruleTitle>Use relative units in CSS</un:ruleTitle>
+      <un:ruleID>                  relThAbsUnitMrkpSS
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 3.4 P2">WAI / WCAG 1.0 Priority 2 checkpoint 3.4</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> css
+    </un:ruleCategory>
+
+      <un:pbmDescription>
+
+         <p>The page refers to CSS properties  that are
+         specified using absolute units (such as 'in', 'px', 'mm') rather
+         than relative units (such as '%', 'em'). These units are used
+         in STYLE attributes or in external CSS files linked to via the
+         LINK element.
+	 </p>
+
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+         <p>Whenever possible it is best to use relative units.
+	 </p>
+
+<p>
+In this way the visual layout of the page will be "liquid", in the
+sense that it can adapt to the specific browser being used, the
+specific screen that supports it, and the font size that a user might
+want to select as a default.
+</p>
+
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+         <p>Use relative rather than absolute units in  style sheet
+         property values. Replace all occurrences of units like 'px',
+         'pt', 'pc', 'cm', 'mm' with percentages or 'em'.
+	 </p>
+
+	 <p>
+	 Use absolute units only when the type of device that
+	 will be used by the website visitor is certain (like a webTV), or
+	 in cases where the object to be displayed has a geometry that
+	 cannot be changed without becoming distorted (like a
+	 gif image).
+	 </p>
+	 <p>
+	 It is best to avoid using absolute units for font size.
+	 </p>
+
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   
+<un:rule manual="true" enabled="true">
+      <un:ruleTitle>Use relative units in CSS box properties</un:ruleTitle>
+      <un:ruleID>                  relThAbsUnitMrkpSSBox
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 3.4 P2">WAI / WCAG 1.0 Priority 2 checkpoint 3.4</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:ruleCategory> css
+    </un:ruleCategory>
+
+      <un:pbmDescription>
+
+         <p>The page refers to CSS properties  that are
+         specified using absolute units (like 'in', 'px', 'mm') rather
+         than relative ones (like '%', 'em'). These units are used
+         in STYLE attributes or in external CSS files linked to via the
+         LINK element.
+	 </p>
+
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+         <p>Whenever possible it is best to use relative units.
+	 </p>
+
+<p>
+In this way the visual layout of the page will be "liquid", in the
+sense that it can adapt to the specific browser being used, the
+specific screen that supports it, and the font size that a user might
+want to select as a default.
+</p>
+
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+         <p>Use relative rather than absolute units in  style sheet
+         property values. Replace all occurrences of units like 'px',
+         'pt', 'pc', 'cm', 'mm' with percentages or 'em'.
+	 </p>
+
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+<!-- ====================================================================== -->
+
+<un:rule manual="false" enabled="true">
+      <un:ruleTitle>Use header elements</un:ruleTitle>
+      <un:ruleID>                  useHeaders
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 3.5 P2">WAI / WCAG 1.0 Priority 2 checkpoint 3.5</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page does not contain header element (H1, H2, ... or H7).
+	 </p>
+
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+         <p>
+Use HTML headers (H1, H2, ..., H7) to create a hierarchy of
+different sections of content shown in the page.
+	 </p>
+<p>
+In this way, visitors of the website can glance through an outline of
+the document and identify the part that is most useful
+without having to read through all of the text.
+</p>
+<p>
+In addition, with several reading browsers or screen readers it is
+possible to obtain a list of all the headers included in the document
+and jump directly to a specific header. This is very beneficial to
+people who cannot see the document if, for example, they are visually
+impaired, blind or they access the web through a telephone service.
+This way the visitor does not have to listen to every word of the text
+before reaching the content that is of most interest.
+</p>
+
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Include one or more header elements in the document. Respect the hierarchical levels: for example, jump from H1 to H2, but avoid
+'gaps' like jumping from H1 to H3.
+	 </p>
+    
+<p>
+A quick test to determine which headers are needed is to create an
+outline of the content of the page. Start with a level (for example, H3)
+and mark subsequent sections of the outline with that header (
+H3). When a more detailed section in the 
+Outline is reached, use a higher level of header (like H4).
+</p>
+<p>
+If the default formatting of the headers is not acceptable, define a CSS
+class with the desired properties, and use that class every time a header is used.
+</p>
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>Use header elements according to specification</un:ruleTitle>
+      <un:ruleID>                  hdElAccSpec
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 3.5 P2">WAI / WCAG 1.0 Priority 2 checkpoint 3.5</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page contains header elements (H1, H2, ... or H7).
+	 </p>
+
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+         <p>
+Use HTML headers (H1, H2, ..., H7) according to specification.
+	 </p>
+
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Respect the hierarchical levels: jump from H1 to H2, but
+avoid 'gaps' like jumping from H1 to H3.
+	 </p>
+    
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>Properly mark up lists and related items</un:ruleTitle>
+      <un:ruleID>                  mrkLstItmPrp
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 3.6 P2">WAI / WCAG 1.0 Priority 2 checkpoint 3.6</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page contains at least one pair of identical images that are not spacers and that 
+might be used as bullets in a table-formatted list of items.
+	 </p>
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+         <p>
+Whenever visual clues are used (e.g. indenting) to suggest appropriate
+nesting of content items, it must be noted that those clues will not be
+available to people who cannot use or take advantage of
+two-dimensional graphic rendering. This includes visually impaired and
+blind persons, as well as those using a non-graphical browser, like a
+reading browser for telephone or a small PDA screen.
+	 </p>
+
+<p>
+It is therefore important to use the appropriate structural
+markup that HTML offers to encode such important clues. A user of a
+screen reader or of a speaking browser can navigate through the
+levels of nested lists if they are properly encoded. They can jump
+directly to a certain item.
+</p>
+
+<p>
+If multiple levels of ordered (numbered) lists are used, ensure that
+the numbered headings that are shown contain contextual
+information. For example the items of the second level list should be
+numbered like 1.1, 1.2 ... or 1.a, 1.b, etc. Since users can navigate
+freely, the goal of using contextual information is that when an item
+is read, potentially out of context, it will contain enough
+information for the listener to understand which item of which list is
+being read.
+</p>
+
+<p>
+If the same items were numbered, for example: 1, 2, 3, etc.,then the
+listener would not be able to differentiate when the items are part of
+a secondary list.
+</p>
+    
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+<p>
+Check if the images used in this page are used as bullets in
+itemized lists of objects. If this is the case, replace the table and
+images with the appropriate markup. Use a list as a wrapper and a list
+item (LI or DD and DT) to mark each item within these lists. 
+</p>
+
+<p>
+Use unordered lists (UL), ordered (i.e. numbered) lists (OL), or definition
+lists (DL). Lists can be nested in various ways, for example, by using a UL
+within a LI of an OL. It is also possible to change the symbol that is used as a 
+bullet by using the appropriate CSS property (list-style).
+</p>
+<p>
+More details can be found on <a
+href="&url_w3c_html_tech;#lists">&w3c_html_tech;</a>. 
+</p>
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>Mark up quotations</un:ruleTitle>
+      <un:ruleID>                  mrkpQuot
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 3.7 P2">WAI / WCAG 1.0 Priority 2 checkpoint 3.7</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page may contain quotations (references to comments made by an outside source) that are not properly coded in HTML.
+	 </p>
+
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+         <p>
+Appropriate markup of quotations is useful for website visitors using
+screen readers or reading browsers because the browser may use a
+different voice or a different pitch when reading the quotations.
+	 </p>
+<p>
+In this way the listener is able to perceive the difference in the
+discourse.
+</p>
+
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Check if the page contains quotations (i.e. references comments made by an outside source). If so, ensure that they are correctly marked up in HTML with
+BLOCKQUOTE or with Q elements. A better option would be if the formatting
+properties are specified with CSS rules.
+	 </p>
+
+<p>
+Use the BLOCKQUOTE element to mark up a long quotation (one or
+more paragraphs long). Use the Q element to quote a
+shorter sentence. (BLOCKQUOTE is a block-level tag; Q is an
+inline-level tag.)
+</p>
+    
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>Avoid using quotation markup for formatting effects</un:ruleTitle>
+      <un:ruleID>                  noQtMrkpFrmEff
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 3.7 P2">WAI / WCAG 1.0 Priority 2 checkpoint 3.7</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page contains text that is marked up with BLOCKQUOTE or with
+Q. If this text is not a quotation, then the HTML code should be changed.
+	 </p>
+    
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+<p>
+Misusing these tags (for achieving certain formatting effects) hinders
+accessibility. When a screen reader or reading browser reads the
+improperly marked up text, it will use a special voice or pitch to
+make it clear to the listener that it is a quotation (i.e. a reference
+to comments made by an outside source).
+</p>
+
+<p>
+A listener would be confused if the "quotation" is indeed a part of the
+content of the page that was simply embedded in BLOCKQUOTE or Q for
+formatting purposes.
+</p>
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Please check if the text included in the BLOCKQUOTE (or Q) element in
+the page is indeed a quotation. 	 
+	 </p>
+<p>
+If not, consider removing the BLOCKQUOTE (or Q) tag and replace it
+with a DIV (or SPAN) tag associated to a CSS class that specifies the
+formatting properties would be achieved with BLOCKQUOTE (or Q).
+</p>
+
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>Layout tables should make sense when linearized</un:ruleTitle>
+      <un:ruleID>                  linTbUseLyNoSs
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 5.3 P2">WAI / WCAG 1.0 Priority 2 checkpoint 5.3</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:ruleCategory> tables
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page contains at least one table that is supposed to be for layout
+purposes (i.e. it does not contain CAPTION, THEAD, TH and TFOOT).
+	 </p>
+<p>
+When linearized, its contents should be read in the expected order and
+should make sense.
+</p>
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+         <p>
+Often when accessibility is considered only after page templates have
+been defined and implemented, the table 
+organization used to lay out the content on a page does not function
+properly with non-graphical browsers.
+	 </p>
+<p>
+The most common mistake is to forget that HTML tables lay out the
+information row by row. 
+</p>
+
+<p>
+Non-graphical browsers follow the row by row order when presenting the
+content of the table. Even if visual clues would suggest a column by
+column reading order.
+</p>
+
+<p>
+Consider the following example (from <a
+href="&url_w3c_html_tech;#tables-layout">&w3c_html_tech;</a>): 
+</p>
+
+<blockquote>
+<p>... if a table is rendered like this on the screen:</p>
+
+<pre>
+There is a 30% chance of               Classes at the University of Wisconsin 
+rain showers this morning, but they    will resume on September 3rd. 
+should stop before the weekend.
+</pre>
+
+<p>This might be read by a screen reader as:</p>
+
+<pre>
+There is a 30% chance of Classes at the University of Wisconsin
+rain showers this morning, but they will resume on September 3rd. 
+should stop before the weekend.
+</pre>
+</blockquote>
+    
+<p>
+<strong>Linearization</strong> is the process of transforming a
+two-dimensional structure, like a table, into a mono-dimensional
+structure. It is the process that any speaking browser or screen
+reader has to follow in order to render the content of the page via
+audio.
+</p>
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Make sure that, when linearized, the content of the layout tables used in the page can be read in the appropriate order. This is conceptually
+easy: just imagine stripping out all of the tags.
+	 </p>
+
+<p>
+In certain cases, it is also possible to check by running a piece of paper down the
+page and reading the page line by line to provide some clues of possible
+problems. 
+</p>
+
+<p>
+Consider that tables used to present tabular data should not be
+linearized as suggested here. They have to be appropriately marked up
+(with TH, SCOPE, AXIS, ID and HEADERS tags and attributes) to be
+accessible. Other tests within this program implement the appropriate
+WCAG or Section 508 guidelines.
+</p>
+
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>Avoid using structural markup for visual formatting</un:ruleTitle>
+      <un:ruleID>                  noStrMrkpVslFrmTbLy
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 5.4 P2">WAI / WCAG 1.0 Priority 2 checkpoint 5.4</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:ruleCategory> tables
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page contains a table that appears to be used to present tabular
+information, rather than to layout the page. ("Tabular information"
+means that the two-dimensional grid offered by the table is used to
+represent logical relationships among the data included in table
+cells).
+	 </p>
+<p>
+Make sure that the table is indeed used to present tabular information.
+</p>
+<p>
+If the table does not represent relationships between information
+items, but is solely used for implementing a grid on the screen,
+then the page fails this test.
+</p>
+
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+         <p>
+Using markup like TH for its visual effect hinders accessibility. In
+fact, some assistive technology, like reading browsers, uses the content
+of the TH element when the user navigates through a table. Each time a
+user visits a cell of the table, the browser will try to locate the
+corresponding header cell (that is marked with a TH) and read its
+content. In this way the user is able to understand what the
+context is for the cell being visited.
+	 </p>
+<p>
+However, if THs are used for visual purposes only, then to the reading
+browser user the context will appear very chaotic and confusing.
+</p>
+
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Inspect the table and its content to determine if the table is
+used to present tabular information. 
+	 </p>
+<p>
+If it is used for layout purposes only, it should
+not use tags like CAPTION, TH, THEAD, TFOOT to obtain special
+formatting effects.
+</p>
+
+<p>
+Remove CAPTION, THEAD and TFOOT, and replace all the TH with corresponding
+TDs. Then define a CSS class with the formatting properties that are necessary (like "font-weight: bold; text-align: center;") and add that
+class to each newly created TD.
+</p>
+
+    
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="false" enabled="true">
+      <un:ruleTitle>Use device-independent event handlers</un:ruleTitle>
+      <un:ruleID>                  inptDevIndEvHndScrApl
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 6.4 P2">WAI / WCAG 1.0 Priority 2 checkpoint 6.4</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> scripts
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page contains handlers for some mouse event for which there is no
+corresponding keyboard event handler.
+	 </p>
+<p>
+In particular:
+</p>
+<ul>
+   <li> the event handler <strong>ondblclick</strong> has no
+   corresponding, in HTML 4.01, keyboard event; therefore it should not
+   be used.   
+   </li>
+   <li> the event handler <strong>onmousedown</strong> has to be
+   paired with <strong>onkeydown</strong>;
+   </li>
+   <li> the event handler <strong>onmouseup</strong> has to be
+   paired with <strong>onkeyup</strong>;
+   </li>
+   <li> the event handler <strong>onclick</strong> has to be
+   paired with <strong>onkeypress</strong>;
+   </li>
+   <li> the event handler <strong>onmouseover</strong> has to be paired
+   with <strong>onfocus</strong> on links and most form controls
+   (where it is usually used to implement rollovers);
+   on text fields within forms, <strong>onclick</strong> should be
+   <strong>replaced</strong> by <strong>onfocus</strong>, since
+   onfocus will give the focus to the text fields both in cases where
+   the user clicks the mouse or control-tabs to that field.
+   </li>
+   <li> the event handler <strong>onmouseout</strong> should be paired
+   with <strong>onblur</strong>.
+   </li>
+</ul>
+      </un:pbmDescription>
+      <un:pbmMessage name="no_both" title="Redundant input mechanisms not provided">
+Provide redundant input mechanisms (i.e., specify two handlers for the same element).
+     </un:pbmMessage>
+      <un:pbmMessage name="bad_attr" title="Double-clicking has no keyboard equivalent">
+In HTML 4.01 there is no keyboard equivalent to double-clicking ("ondblclick").
+     </un:pbmMessage>
+      <un:pbmExplanation>
+
+<p>
+An event handler is a script that is invoked when a certain event
+occurs (e.g, the mouse moves, a key is pressed, the document is
+loaded, etc.). Event handlers are attached to HTML elements
+via event handler attributes (like "ONMOUSEDOWN", "ONCLICK",
+"ONKEYUP", etc.). 
+</p>
+
+<p>
+Often the effect of an event handler is purely decorative:
+highlighting some text, or an image, or changing the color of some
+portion of the page. In other cases, however, the event handler performs
+more important activities: it validates the inputs to a form; shows
+a rollover menu; opens up a new window; etc. <br/>
+In all of these cases, where the content being provided changes or the
+navigation options offered to the visitor change, the event handler
+must be made fully accessible to offer the same changes to
+users of assistive or limited technology.
+</p>
+<p>
+If an event handler refers only to a specific device (like the mouse,
+as is the case with "ONMOUSEOVER" for example) then for a browser user
+with no mouse (for example a user with motor disabilities or a
+driver having to view the website on a PC installed in a car) would
+not be able to experience the effect of the handler.
+</p>
+<p>
+According to the W3C, <strong>device independence</strong> means (<a
+href="&url_wcag;#device-independent">&wcag;</a>): 
+</p>
+<blockquote>
+ Users must be able to interact with a user agent (and the document it
+ renders) using the supported input and output devices of their choice
+ and according to their needs. Input devices may include pointing
+ devices, keyboards, Braille devices, head wands, microphones, and
+ others. Output devices may include monitors, speech synthesizers, and
+ Braille devices. 
+</blockquote>
+
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+      <p>
+Inspect all of the event handlers defined in the page. Consider
+only those handlers that either change the page content (by adding or
+removing text, images, layers, or other objects) or the navigation
+options (menus, new windows, navbars, links).      
+      </p>
+<p>
+If any of these are specified using device dependent events
+(i.e. ONDBLCLICK, ONCLICK, ONKEYPRESS, ONKEYDOWN, ONMOUSEDOWN,
+ONKEYUP, ONMOUSEUP, ONMOUSEOVER, ONMOUSEOUT, ONFOCUS, ONBLUR) then
+they should be paired with event handlers for the other device as well.
+</p>
+<p>
+In particular:
+</p>
+<ul>
+  <li> in links and most form controls, pair ONCLICK with ONKEYPRESS, and
+  viceversa.  This can be achieved by
+  defining the one that is missing with the same script used for the
+  existing one;
+  </li>
+   <li>  on text fields within forms, replace ONCLICK with ONFOCUS   </li>
+  <li> never use ONDBLCLICK, as there is no keyboard equivalent handler.</li>
+  <li> always pair ONKEYDOWN with ONMOUSEDOWN;  </li>
+  <li> always pair ONKEYUP with ONMOUSEUP;  </li>
+   <li> always pair ONMOUSEOVER with ONFOCUS;</li>
+   <li> always pair ONMOUSEOUT with ONBLUR.   </li>
+</ul>
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="false" enabled="true">
+      <un:ruleTitle>Avoid JavaScript links</un:ruleTitle>
+      <un:ruleID>                  noJSLinks
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 6.5 P2">WAI / WCAG 1.0 Priority 2 checkpoint 6.5</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> links
+    </un:ruleCategory>
+      <un:ruleCategory> scripts
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page contains a link that can be followed only by browsers that
+support JavaScript.
+</p>
+
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+         <p>
+Links that activate scripts can only be followed by browsers capable
+of executing JavaScript. Not all browsers are able to execute
+JavaScript.  Consider for
+example textual browsers like <a
+href="http://lynx.browser.org">lynx</a>, or browsers coupled with
+screen readers, or browsers for PDAs or cellular phones.
+</p>
+
+         <p>
+
+A user with such browsers would not be able to navigate the page. Even
+if other ways to reach that destination are available (i.e. links or
+buttons), the user would face such a link, and assume that it would
+work as any other does.  However, the browser's failure to follow it
+the link could possibly increase user frustration and confusion.
+</p>
+    
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Replace the link that directly starts the script with other
+ways to start it, like defining a button, separately defining the
+script (remember also the NOSCRIPT element) and binding an event (like
+ONKEYPRESS and ONCLICK) on the button to the script.
+</p>
+    
+      </un:pbmCorrection>
+
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="false" enabled="true">
+      <un:ruleTitle>FRAMESET should have valid NOFRAMES</un:ruleTitle>
+      <un:ruleID>         validNOFRAMES
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 6.5 P2">WAI / WCAG 1.0 Priority 2 checkpoint 6.5</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> frames
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+<p>
+ The <strong>&lt;NOFRAMES&gt;</strong> element is not present or it does not contain
+ a link to an alternative version of the page.
+</p>
+
+      </un:pbmDescription>
+      <un:pbmMessage name="none" title="'NOFRAMES' section is not defined">
+FRAMESET page without a NOFRAMES section.
+    </un:pbmMessage>
+      <un:pbmMessage name="empty" title="'NOFRAMES' section is empty">
+NOFRAMES section exists but it is empty.
+    </un:pbmMessage>
+      <un:pbmMessage name="placeholder" title="'NOFRAMES' section with placeholder text">
+NOFRAMES section seems to tell the user that they should upgrade
+to a browser that supports frames.
+    </un:pbmMessage>
+      <un:pbmMessage name="link" title="'NOFRAMES' section without link">
+NOFRAMES section does not contain a link to a site alternative page.
+    </un:pbmMessage>
+      <un:pbmExplanation>
+
+         <p>
+Without specifying a <strong>&lt;NOFRAMES&gt;</strong> element, the site may
+appear as a blank page to users with browsers unable to handle frames,
+such as early versions of popular browsers
+and current special-purpose browsers like voice-enabled
+computers and browsers for PDAs.
+</p>
+
+         <p>
+The <strong>&lt;NOFRAMES&gt;</strong> element should be used to provide users of
+browsers unable to handle frames an <strong>alternative</strong> way to access the site,
+possibly with <strong>degraded graphic and interaction quality</strong>.<br/>
+For example, a <strong>&lt;NOFRAMES&gt;</strong> element containing text stating that the page
+cannot be displayed by the browser being used
+<strong>does not help</strong> users access the page.
+</p>
+
+
+      </un:pbmExplanation>
+ 
+      <un:pbmCorrection>
+
+         <p>
+A valid NOFRAMES section should exist within the outer FRAMESET section.<br/>
+Remember that a NOFRAMES section is valid if it:
+</p>
+
+         <ul>
+            <li>contains at least one word of text or accessible HTML code; </li>
+            <li>provides the necessary links to navigate the site;</li>
+            <li>does not tell the users that they should upgrade to a browser that supports frames.</li>
+         </ul>
+
+         <p>
+A NOFRAMES element that does not contain links
+prevents the reader from accessing the same navigation
+options offered to those with frames-enabled browsers.
+</p>
+
+         <p>
+Consider adding the following HTML code before the last <strong>&lt;/FRAMESET&gt;</strong>
+tag in the document:
+</p>
+
+         <pre>
+     &lt;NOFRAMES&gt;
+     &lt;P&gt;Here is the &lt;A href="main-noframes.html"&gt;
+              non-frame based version of the document.&lt;/A&gt;&lt;/P&gt;
+     &lt;/NOFRAMES&gt;
+</pre>
+
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>Dynamic content should be accessible</un:ruleTitle>
+      <un:ruleID>                  dynCntAcc
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 6.5 P2">WAI / WCAG 1.0 Priority 2 checkpoint 6.5</un:guideline>
+      
+
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> scripts
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page uses scripts that may change the content or the navigation
+options of the document. All of these scripts should change the page in such a
+way that assistive technologies can recognize these
+changes and appropriately notify can be given to the website
+visitor.
+	 </p>
+
+      </un:pbmDescription>
+
+      <un:pbmMessage name="link" title="Script Link modifies page content.">
+Some link (like 'javascript:...') contains JavaScript instructions that modify page content.
+    </un:pbmMessage>
+      <un:pbmMessage name="event" title="Event handler modifies page content.">
+Event handler (like 'onMouseOver') contains JavaScript instructions that modify page content.
+    </un:pbmMessage>
+      <un:pbmMessage name="globals" title="SCRIPT element modifies page content.">
+SCRIPT element contains JavaScript instructions that modify page content.
+    </un:pbmMessage>
+
+      <un:pbmExplanation>
+
+         <p>
+It is best to avoid using scripts to create new content or navigation
+options. Visitors with browsers that do not support the scripts will
+not get that content or those options.
+	 </p>
+
+<p>
+The W3C says (<a href="&url_w3c_html_tech;#scripts-gt">&w3c_html_tech;</a>):
+</p>
+<blockquote>
+Content developers must ensure that pages are accessible with scripts
+turned off or in browsers that don't support scripts. 
+
+<ul>
+   <li>
+    Avoid creating content on the fly on the client. If a user's
+    browser does not handle scripts, no content will be generated or
+    displayed. However, this is different than displaying or hiding
+    already existing content by using a combination of style sheets
+    and scripting; if there is no script, then the content is always
+    shown. This also does not rule out generating pages on the fly on
+    the server-side and delivering them to the client. </li>
+   <li>Avoid creating links that use "JavaScript" as the URI. If a
+    user is not using scripts, then they won't be able to link since
+    the browser can't create the link content. </li>
+</ul>
+</blockquote>
+
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Check if the scripts used by this page do create new content or
+navigation options. An easy way for testing this is to disable script
+execution on the browser and use the page.
+	 </p>
+    
+<p>
+If some scripts add new content or navigation options,
+then it is best to find an alternative way to achieve the desired effects.
+</p>
+<p>
+For example, would a server-side script (and a form) achieve the same
+effect? Is it possible to make the page show its entire content if the browser
+does not support scripts (for example by defining several layers)?
+</p>
+<p>
+If all the content is defined within layers, and the script is used to
+make a layer appear only when certain conditions occur, then
+browsers that do not support scripts will render all the layers in
+the order in which they are defined in the HTML file. In this case,
+it is best to ensure that this way of presenting the content is
+effective enough (for example by providing appropriate context for
+each of the layers).
+</p>
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="false" enabled="true">
+      <un:ruleTitle>Avoid causing content to blink</un:ruleTitle>
+      <un:ruleID>                  avdCsgCntBlk
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 7.2 P2">WAI / WCAG 1.0 Priority 2 checkpoint 7.2</un:guideline>
+     
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> css
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page contains the BLINK tag, which is a non standard tag.
+	 </p>
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+         <p>
+The BLINK tag will turn on and off its content. The user of
+the browser will in no way be able to stop this on/off behavior. 
+	 </p>
+<p>
+This blinking behavior is very distracting to the eye, and will make
+it very difficult to concentrate on the task of reading the
+information in the page or in filling in the form contained in the
+page. 
+</p>
+<p>
+The consequences will be even more significant on users that suffer
+from cognitive disorders, as they will have a very hard time 
+concentrating on the page content. Consider also users of screen
+magnifiers who may read a small portion of the page that overlaps
+with the blinking text. In these cases, a large part of the magnified
+screen will blink; again making it very hard for these users to
+concentrate on the task.
+</p>
+<p>
+Consider that, in a sense, everyone is cognitively disabled
+when under stress. For example, when buying an e-ticket for a flight from a
+kiosk in a very noisy and crowded airport, with a long line of
+people waiting for the same kiosk, most people will be unable to
+fully concentrate on the task. A blinking element in the page will not
+help the user to complete the purchase.
+</p>
+    
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Replace the BLINK tag with another formatting property that does not
+require the text to appear and disappear with no control given to the
+website visitor. 
+	 </p>
+<p>
+Remember that the W3C (<a href="&url_w3c_html_tech;#style-text">&w3c_html_tech;</a>) suggests
+not to use BLINK and neither MARQUEE.
+</p>
+<p>
+If blinking effect is required, implement it using the css property 'text-decoration: blink'. In this way the end result will be
+the same, however:
+
+</p>
+<ul>
+<li> the website visitor can choose to disable CSS processing by the
+browser, and the blinking will stop;</li>
+<li> A better option is to provide more than one CSS style file linked
+to the page.  It is still possible for most of the properties to
+remain the
+same (in the all the files) except for the 'text-decoration: blink'. In
+this way the visitor (using an up-to-date browser) can switch between
+the style files and choose the 
+one that does everything that is needed, except for the blinking.
+</li>
+<li> the HTML file will contain valid code and will be smaller (as the
+blinking property will be written only once in the external style file).
+</li>
+</ul>    
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>Avoid objects that may cause the screen to blink</un:ruleTitle>
+      <un:ruleID>                  avdElmScrBlk
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 7.2 P2">WAI / WCAG 1.0 Priority 2 checkpoint 7.2</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:ruleCategory> scripts
+    </un:ruleCategory>
+      <un:ruleCategory> images
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page contains objects (scripts, applets, HTML objects)
+that might cause blinking on the screen. If this is the case, it is best to
+modify or remove them.
+	 </p>
+      </un:pbmDescription>
+      <un:pbmMessage name="APPLET" title="APPLET is used">
+APPLET is used: is it causing the screen to blink? If so,
+please modify or remove the applet.
+      </un:pbmMessage>
+      <un:pbmMessage name="OBJECT" title="OBJECT is used">
+OBJECT is used: is it causing the screen to blink? If so,
+please modify or remove the object.
+      </un:pbmMessage>
+      <un:pbmMessage name="EMBED" title="EMBED is used">
+EMBED is used: is it causing the screen to blink? If so,
+please modify or remove the object.
+      </un:pbmMessage>
+      <un:pbmMessage name="SCRIPT" title="SCRIPT is used">
+SCRIPT is used: is it causing the screen to blink? If so,
+please modify or remove the script.
+      </un:pbmMessage>
+      <un:pbmExplanation>
+       <p>
+The object (script, applet, HTML objects) causes blinking and 
+the user of the browser will in no way be able to stop this on/off behavior.
+	 </p>
+<p>
+This blinking behavior is very distracting to the eye, and will make
+it very difficult to concentrate on the task of reading the
+information in the page or in filling in the form contained in the
+page. 
+</p>
+<p>
+The consequences will be even more significant on users that suffer
+from cognitive disorders, as they will have a very hard time
+concentrating on the page content. Consider also users of screen
+magnifiers, who may read a small portion of the page that overlaps
+with the blinking text. In these cases, a large part of the magnified
+screen will blink; again making it very hard for these users to
+concentrate on the task.
+</p>
+<p>
+Consider that, in a sense, everyone is cognitively disabled
+when under stress. For example, when buying an e-ticket for a flight from a
+kiosk in a very noisy and crowded airport, with a long line of
+people waiting for the same kiosk, most people will be unable to
+fully concentrate on the task. A blinking element in the page will not
+help the user to complete the purchase.
+</p>    
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Check if the object causes blinking (i.e. a constant on/off
+behavior of part of the screen) that does not stop and that cannot be stopped by the website
+visitor.
+	 </p>
+<p>
+If so, modify the object behavior so that no blinking occurs, or so
+that the visitor has the means to stop it from blinking. Alternatively
+,set the object to blink a couple of times and then come to 
+rest. 
+</p>
+    
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>GIFs should not cause the screen to blink</un:ruleTitle>
+      <un:ruleID>                  gifNoScrBlk
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 7.2 P2">WAI / WCAG 1.0 Priority 2 checkpoint 7.2</un:guideline>
+     
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:ruleCategory> scripts
+    </un:ruleCategory>
+      <un:ruleCategory> images
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page contains images that might cause blinking on the screen. If
+this is the case, it is best to modify or remove them.
+	 </p>
+      </un:pbmDescription>
+      <un:pbmExplanation>
+       <p>
+The image causes blinking and the user of the browser will in no way 
+be able to stop this on/off behavior.
+	 </p>
+<p>
+This blinking behavior is very distracting to the eye, and will make
+it very difficult to concentrate on the task of reading the
+information on the page, or filling in the form contained on the
+page. 
+</p>
+<p>
+The consequences will be even more significant for users that suffer
+from cognitive disorders, as they will have a very hard time 
+concentrating on the page content. Consider also users of screen
+magnifiers who may read a small portion of the page that overlaps
+with the blinking content. In these cases, a large part of the magnified
+screen will blink; again making it very hard for these users to
+concentrate on the task at hand.
+</p>
+<p>
+Consider that, in a sense, everyone is cognitively disabled
+when under stress. For example, when buying an e-ticket for a flight from a
+kiosk in a very noisy and crowded airport, with a long line of
+people waiting for the same kiosk, most people will be unable to
+fully concentrate on the task. A blinking element in the page will not
+help the user to complete the purchase.
+</p>        
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Check if the image causes blinking (i.e. a constant on/off
+behavior of part of the screen) that does not stop and that cannot be
+stopped by the website visitor.
+	 </p>
+<p>
+If so, modify the image so that no blinking occurs, or so
+that it blinks a couple of times and then comes to 
+rest. 
+</p>
+    
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>GIFs should not cause movement</un:ruleTitle>
+      <un:ruleID>                  gifNoMvmPg
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 7.3 P2">WAI / WCAG 1.0 Priority 2 checkpoint 7.3</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:ruleCategory> scripts
+    </un:ruleCategory>
+      <un:ruleCategory> images
+    </un:ruleCategory>
+      <un:pbmDescription>
+         <p>
+The page contains images that might have moving content. If
+this is the case, it is best to modify or remove them.
+	 </p>
+      </un:pbmDescription>
+      <un:pbmExplanation>
+       <p>
+The image has moving content, and the user of the browser will in no way
+be able to stop this behavior.
+	 </p>
+<p>
+This behavior is very distracting to the eye, and will make
+it very difficult to concentrate on the task of reading the
+information in the page or filling in the form contained in the
+page. 
+</p>
+<p>
+The consequences will be even more significant on users that suffer
+from cognitive disorders, as they will have a very hard time
+concentrating on the page content. Consider also users of screen
+magnifiers who may read a small portion of the page that overlaps
+with the moving part. In these cases, a large part of the magnified
+screen will display a portion of the content that will move out of
+sight or change. The user will need to continuously reposition the
+screen magnifier by tracking the moving content, making it extremely
+hard for these users to concentrate on the task at hand.
+</p>
+<p>
+Consider that, in a sense, everyone is cognitively disabled
+when under stress. For example, when buying an e-ticket for a flight from a
+kiosk in a very noisy and crowded airport, with a long line of
+people waiting for the same kiosk, most people will be unable to
+fully concentrate on the task. A moving element in the page will not
+help the user to complete the purchase.
+</p>        
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Check if the image has moving content that does not stop and that cannot be
+stopped by the website visitor.
+	 </p>
+<p>
+If so, modify the image so that no movement occurs, or so
+that the movement occurs only a couple of times and then comes to 
+rest. 
+</p>
+
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>Objects should not cause movement</un:ruleTitle>
+      <un:ruleID>                  objNoMvmPg
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 7.3 P2">WAI / WCAG 1.0 Priority 2 checkpoint 7.3</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:ruleCategory> scripts
+    </un:ruleCategory>
+      <un:ruleCategory> images
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page contains scripts, applets or objects that
+might have moving content. If this is the case, it is best to modify or
+remove them.
+	 </p>
+      </un:pbmDescription>
+      <un:pbmMessage name="APPLET" title="APPLET is used">
+APPLET is used: is it causing movement in the page? If so,
+please modify or remove the applet.
+      </un:pbmMessage>
+      <un:pbmMessage name="OBJECT" title="OBJECT is used">
+OBJECT is used: is it causing movement in the page? If so,
+please modify or remove the object.
+      </un:pbmMessage>
+      <un:pbmMessage name="EMBED" title="EMBED is used">
+EMBED is used: is it causing movement in the page? If so,
+please modify or remove the object.
+      </un:pbmMessage>
+      <un:pbmMessage name="SCRIPT" title="SCRIPT is used">
+SCRIPT is used: is it causing movement in the page? If so,
+please modify or remove the script.
+      </un:pbmMessage>
+      <un:pbmExplanation>
+
+       <p>
+The object has moving content, and the user of the browser is in no way 
+able to stop this behavior.
+
+	 </p>
+
+<p>
+This behavior is very distracting to the eye, and will make
+it very difficult to concentrate on the task of reading the
+information on the page or filling in the form contained in the
+page. 
+</p>
+<p>
+The consequences will be even more significant on users that suffer
+from cognitive disorders, as they will have a very hard time 
+concentrating on the page content. Consider also users of screen
+magnifiers who may read a small portion of the page that overlaps
+with the moving part. In these cases, a large part of the magnified
+screen will display a portion of the content that will move out of
+sight or change. The user will need to continuously and accurately reposition the
+screen magnifier by tracking the moving content, making it extremely
+hard for these users to concentrate on the task at hand.
+</p>
+<p>
+Consider that, in a sense, everyone is cognitively disabled
+when under stress. For example, when buying an e-ticket for a flight from a
+kiosk in a very noisy and crowded airport, with a long line of
+people waiting for the same kiosk, most people will be unable to
+fully concentrate on the task. A moving element in the page will not
+help the user to complete the purchase.
+</p>   
+<p>
+Finally, consider that screen readers are unable to read moving text.
+</p>
+     
+    
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Check if the object causes moving content that does not stop and that cannot be
+stopped by the website visitor.
+	 </p>
+<p>
+If so, modify the object so that no movement occurs, or so
+that the movement occurs only a couple of times and then comes to 
+rest. As a better choice, modify the object so that the website visitor can
+decide to stop the movement.
+</p>
+    
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+<un:rule manual="false" enabled="true">
+      <un:ruleTitle>Avoid MARQUEE elements</un:ruleTitle>
+      <un:ruleID>                  avoidMarquee
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 7.3 P2">WAI / WCAG 1.0 Priority 2 checkpoint 7.3</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:pbmDescription>
+<p>
+The page contains the <strong>MARQUEE</strong> element which creates a
+scrolling text area.
+</p>
+      </un:pbmDescription>
+      <un:pbmExplanation>
+<p>
+  Animated features within a page negatively affect the way in 
+  which a user looks and reads the page content. Users will be 
+  continuously distracted away from the most important page content.
+</p>
+<p>
+  In addition, users browsing this page with a browser that cannot 
+  understand the <strong>MARQUEE</strong> element will be presented 
+  with a page that does not work as intended.
+</p>
+<p>
+  Many browsers don't support MARQUEE, like Netscape Navigator and Opera. 
+  In addition, MARQUEE is not a standard HTML 3.2 or HTML 4.0 tag.
+</p>
+   
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+<p>
+Try to avoid using that animation effect. Try
+substituting it with a table layout or, as a better choice, with a clever
+usage of CSS properties.
+</p>
+<p>
+Remember that the W3C (<a
+href="http://www.w3.org/TR/WCAG10-HTML-TECHS/#style-text">HTML
+Techniques for Web Content Accessibility Guidelines 1.0</a>) suggests
+not to use BLINK and neither MARQUEE.
+</p>
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="false" enabled="true">
+      <un:ruleTitle>Avoid auto-refreshing pages</un:ruleTitle>
+      <un:ruleID>                  avdAutRfrPg
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 7.4 P2">WAI / WCAG 1.0 Priority 2 checkpoint 7.4</un:guideline>
+      
+      <un:ruleCategory> meta
+    </un:ruleCategory>
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+  The page is automatically updated after a given time.
+  It is best to remove this behavior.
+</p>
+
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+         <p>
+  Pages that are automatically updated may pose significant problems to
+  users who are disabled or who use technology that hinders normal
+  interaction patterns.
+</p>
+
+         <p>
+  For example, screen readers might not be working properly when the
+  page updates, or people with physical disabilities might not be able
+  to move quickly or accurately through the page content and navigation
+  items. Users without disabilities may also face problems if, for various reasons, they
+  are slow in reading the page; for example if they use a very slow Internet
+  connection, or if they use a small screen that forces them to slow down
+  the reading pace.
+</p>
+
+         <p>
+  Until browsers will allow users to turn off these automatically
+  updating features, do not use auto-refresh.
+</p>
+    
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Until browsers will allow users to turn off these automatically
+updating features, do not use auto-refresh or auto-redirect.
+</p>
+
+         <p>
+Try to achieve a similar effect by specifying cache expiration dates
+and by appropriately configuring the web server. This would not affect the 
+accessibility of the pages because they would change only as an
+effect of the user explicitly reloading the page on the browser.
+</p>
+    
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="false" enabled="true">
+      <un:ruleTitle>Avoid redirecting pages by markup</un:ruleTitle>
+      <un:ruleID>                  avdRedPgMarkp
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 7.5 P2">WAI / WCAG 1.0 Priority 2 checkpoint 7.5</un:guideline>
+      
+      <un:ruleCategory> meta
+    </un:ruleCategory>
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+ When this page is loaded by the browser, after a given amount of time
+ a new page is automatically loaded and displayed.
+  It is best to remove this behavior.
+</p>
+
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+         <p>  
+  Pages that are automatically updated may pose significant problems to
+  users who are disabled or use technology that hinders normal
+  interaction patterns.
+</p>
+
+         <p>
+  People with disabilities might not be able
+  to move quickly or accurately through the page content and navigation
+  items before it changes. Users without disabilities may also face problems if, for various reasons, they
+  are slow in reading the page; for example, if they use a very slow Internet
+  connection, or if they use a small screen that forces them to slow down
+  the reading pace.
+</p>
+
+         <p>
+  Until browsers will allow users to turn off these automatically
+  updating features, do not use auto-refresh.
+</p>
+
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+  Until browsers will allow users to turn off these automatically
+  updating features, do not use auto-refresh or auto-redirect.
+</p>
+
+         <p>
+  If auto redirect is needed, then implement it using the redirection
+  capabilities offered by the server and by allowing the user to
+  specify when to load the next page. This would not affect
+  accessibility of the pages because the page would change only as an
+  effect of the user explicitly (re)loading the page.
+</p>
+
+         <p>
+  If this is not possible, and the redirect
+  META tag is still required, then it is best to enrich the two pages with links that
+  connect them, in both directions. In this way, if the redirect is
+  too fast, the visitor at least has the ability to go back to the
+  previous page. If the redirect is too slow, the visitor has the
+  ability to move forward at will.
+</p>
+<p>
+ Please notice that this solution, although more usable than the META
+ redirect alone, does not satisfy the current guideline/checkpoint.
+</p>
+    
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="false" enabled="true">
+      <un:ruleTitle>Jump menu should be device-independent</un:ruleTitle>
+      <un:ruleID>                  JmpMenu
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 9.2 P2">WAI / WCAG 1.0 Priority 2 checkpoint 9.2</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> forms
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+  The page contains a <strong>jump menu</strong> (i.e. a menu with a
+  list of options each leading to a different page) based on a
+  <strong>SELECT</strong> element with an <strong>ONCHANGE</strong>
+  event handler that loads another page. This behavior prevents
+  visitors using keyboards to scroll through the list to select an
+  option.
+</p>
+    
+      </un:pbmDescription>
+      <un:pbmMessage name="mm_jump" title="MM_jumpMenu() function is used">
+  MM_jumpMenu() is used to load pages in current or parent window.
+</un:pbmMessage>
+      <un:pbmMessage name="self_jump" title="window.location property is used">
+  The ONCHANGE event handler associated with SELECT element contains a
+  JavaScript instruction to load pages in current or parent window.
+</un:pbmMessage>
+      <un:pbmExplanation>
+
+         <p>
+  The JavaScript code associated with the SELECT element does not allow the user to
+  scroll through the available options when using a keyboard. It is not
+  <strong>device independent</strong>.
+</p>
+
+         <p>
+  JavaScript code is device independent if: 
+  <br/>
+  users can interact with a website using input and output devices of
+  their choice. Input devices may include pointing devices, keyboards,
+  Braille devices, microphones, and others. Output devices
+  may include monitors, speech synthesizers, and Braille devices.
+</p>
+         <p> Generally, pages that allow keyboard interaction are also
+  accessible through speech input or a command line interface.
+</p>
+  
+         <p>
+  Remember also that a <strong>jump menu</strong> works only if
+  JavaScript is enabled and available on users' browsers.  There are
+  browsers that do not support JavaScript (e.g. for cell phones and
+  PDAs) and there are organizations that turn off JavaScript from
+  normal browsers for security reasons. <br/> Include a NOSCRIPT tag
+  with alternative and equivalent content and interaction (i.e. links
+  and forms).
+</p>
+
+
+         <p>
+Consider also writing a server-side script to process the URLs passed
+by the menu and to deliver the appropriate page.
+</p>
+    
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+There are two steps to make the jump menu device independent:
+</p>
+
+         <ol>
+
+            <li>remove the <strong>ONCHANGE</strong> attribute from the SELECT
+element;</li> 
+
+            <li>add a button (INPUT of type BUTTON) after the menu;</li>
+
+            <li>assign an attribute ONCLICK to the button with the content of
+the ONCHANGE attribute previously removed. </li>
+<li> Finally, put the same content inside the ONKEYPRESS attribute.</li>
+
+         </ol>
+
+
+
+         <p>
+When adding a Dreamweaver <strong>jump menu</strong> object to the
+document, it is possible to automatically insert a button after the
+menu. Simply enable the checkbox '<strong>Insert Go Button After
+Menu</strong>'. Remember to remove the ONCHANGE attribute of SELECT
+and to add ONKEYPRESS to the button.  
+</p>
+ 
+
+
+         <p>
+For example, the following code is <strong>wrong</strong>:
+</p>
+
+         <pre>
+&lt;form name="select_country"&gt;
+Select a country:
+  &lt;select name="country" onChange="MM_jumpMenu('parent',this,0)"&gt;
+   &lt;option value="http://www.this_site.com/be" selected&gt;Belgium&lt;/option&gt;
+   &lt;option value="http://www.this_site.com/us"&gt;United States&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/form&gt;
+</pre>
+
+
+         <p>
+An accessible version is:
+</p>
+
+
+         <pre>
+&lt;form name="select_country" action="http://www.this_site.com/jump.cgi"&gt;
+Select a country: 
+  &lt;select name="country"&gt;
+   &lt;option value="http://www.this_site.com/be" selected&gt;Belgium&lt;/option&gt;
+   &lt;option value="http://www.this_site.com/us"&gt;United States&lt;/option&gt;
+  &lt;/select&gt;
+ &lt;input type="submit" value="Go"&gt;
+&lt;/form&gt;
+</pre>
+
+
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>Objects should have device-independent interface</un:ruleTitle>
+      <un:ruleID>                  elmOwnIntfDecIndp
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 9.2 P2">WAI / WCAG 1.0 Priority 2 checkpoint 9.2</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:ruleCategory> scripts
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page contains event handlers and/or objects (using
+OBJECT, EMBED, APPLET tags) that should provide a user interface that
+is device independent. 
+	 </p>
+<p>
+Make sure if the event handlers and/or objects offer a user interface, that the interface can
+be operated with any possible input device. 
+</p>
+
+      </un:pbmDescription>
+      <un:pbmMessage name="APPLET" title="APPLET is used">
+An applet is used: check that it is device-independent.
+    </un:pbmMessage>
+      <un:pbmMessage name="OBJECT" title="OBJECT is used">
+A plug-in is used: check that it is device-independent.
+    </un:pbmMessage>
+      <un:pbmMessage name="EMBED" title="EMBED is used">
+A plug-in is used: check that it is device-independent.
+    </un:pbmMessage>
+      <un:pbmMessage name="javascript" title="Javascript event handler is used">
+A JavaScript event handler is used: check that it is device-independent.
+    </un:pbmMessage>
+      <un:pbmExplanation>
+
+         <p>
+Programmatic objects can have their own user interface that is not
+directly implemented in HTML. If this user interface cannot be
+operated (and perceived) with all the input and output devices that
+can be used by disabled users, then the page is not accessible.
+	 </p>
+
+      <p>
+        As defined by W3C/WAI (see <a
+        href="&url_wcag10;#device-independent">&wcag;</a>), "device
+        independence" means that visitors must be able to interact with a
+        website using the supported input and output devices of their
+        choice and according to their needs. Input devices may include
+        pointing devices, keyboards, Braille devices, head wands,
+        microphones, and others. Output devices may include monitors,
+        speech synthesizers, and Braille devices.
+      </p>
+       
+      <p>
+        Note that "device-independent support" does not mean that
+        the browser must support every input or output device. It
+        should offer redundant input and output mechanisms for
+        those devices that are supported. For example, if a browser
+        supports keyboard and mouse input, users should be able to
+        interact with all features using either the keyboard or the
+        mouse.
+      </p>
+       
+      <p>
+        Device-independent access means that the visitor may interact
+        with the browser or document with a preferred input (or
+        output) device. For example, if a form control can only be
+        activated with a mouse or other pointing device, someone
+        using the page without sight, with voice input, or with a
+        keyboard will not be able to use the form. The form is an
+        example of device dependence, because its use would be
+        possible only through a mouse.
+      </p>
+       
+      <p>
+        Generally, pages that allow keyboard interaction are also
+        accessible through speech input or a command-line
+        interface.
+      </p>
+
+
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>Potentially critical objects are Java applets, VB scripts,
+         objects used via plug-ins like Flash, Shockwave, RealAudio, and
+          RealVideo. </p>
+
+	  <p>
+	  Examine these objects and determine whether the
+	  user interface they offer (buttons, images, text, etc.) can be
+	  operated by devices other than the mouse.
+	  </p>
+
+	  <p>
+	  As a quick test, try to use all the features of the
+	  page with the keyboard only (don't touch the mouse). Is it possible to
+	  get to all the controls (links, buttons, etc.) and operate all of them? 
+	  </p>
+
+	  <p>
+	  If this quick test fails, then the page is not
+	  accessible. If it succeeds, do a more thorough
+	  test with assistive technology.
+	  </p>
+
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="false" enabled="true">
+      <un:ruleTitle>Specify logical event handlers</un:ruleTitle>
+      <un:ruleID>                  spcLgcRtDDEvHndScr
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 9.3 P2">WAI / WCAG 1.0 Priority 2 checkpoint 9.3</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> scripts
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page contains BUTTON, INPUT, SELECT or TEXTAREA elements that
+specify event handlers that are device dependent (i.e. they handle
+events that can be generated by a specific input device.)
+	 </p>
+
+      </un:pbmDescription>
+
+    <un:pbmMessage name="reset" title="RESET button handlers">
+Substitute device-dependent event handlers (like ONCLICK) with ONRESET (in the FORM element).
+    </un:pbmMessage>
+      <un:pbmMessage name="submit" title="SUBMIT button handlers">
+Substitute device-dependent event handlers (like ONKEYPRESS) with ONSUBMIT (in the FORM element).
+    </un:pbmMessage>
+      <un:pbmMessage name="focus" title="Text field handlers">
+Substitute input device-dependent event handlers (like ONCLICK) with
+    ONFOCUS (in the text field).
+    </un:pbmMessage>
+    <un:pbmMessage name="onchange" title="Radio button and checkbox handlers">
+Substitute input device-dependent event handlers (like onClick) with
+    ONCHANGE (in the radio button or checkbox).
+    </un:pbmMessage>
+      <un:pbmMessage name="select" title="List/Menu handlers">
+Substitute ONCLICK attribute with ONCHANGE (in the SELECT element).
+    </un:pbmMessage>
+
+      <un:pbmExplanation>
+
+         <p>
+The user interface offered by a web page should be perceivable and
+operable by everyone, regardless of physical, cognitive or technical
+disabilities. In particular it must be device-independent.
+This is crucial for pages that include forms.
+	 </p>
+      <p>
+        As defined by W3C/WAI (see <a
+        href="&url_wcag10;#device-independent">&wcag;</a>), "device
+        independence" means that visitors must be able to interact with a
+        website using the supported input and output devices of their
+        choice and according to their needs. Input devices may include
+        pointing devices, keyboards, Braille devices, head wands,
+        microphones, and others. Output devices may include monitors,
+        speech synthesizers, and Braille devices.
+      </p>
+       
+      <p>
+        Note that "device-independent support" does not mean that
+        the browser must support every input or output device. It
+        should offer redundant input and output mechanisms for
+        those devices that are supported. For example, if a browser
+        supports keyboard and mouse input, users should be able to
+        interact with all features using either the keyboard or the
+        mouse.
+      </p>
+       
+      <p>
+        Device-independent access means that the visitor may interact
+        with the browser or document with a preferred input (or
+        output) device. For example, if a form control can only be
+        activated with a mouse or other pointing device, someone
+        using the page without sight, with voice input, or with a
+        keyboard will not be able to use the form. The form is an
+        example of device dependence, because its use would be
+        possible only through a mouse.
+      </p>
+       
+      <p>
+        Generally, pages that allow keyboard interaction are also
+        accessible through speech input or a command-line
+        interface.
+      </p>
+      </un:pbmExplanation>
+ 
+      <un:pbmCorrection>
+
+         <p>
+In general, it is best to substitute event handlers within forms as follows:
+	 </p>
+<ul>
+<li> on INPUT (type=submit or type=reset or type=image) or BUTTON
+remove events handlers like ONCLICK, ONDBLCLICK, ONKEYPRESS,
+ONKEYDOWN, ONKEYUP, ONMOUSEDOWN, ONMOUSEUP and add
+<strong>ONRESET</strong> (if type=reset) or 
+<strong>ONSUBMIT</strong>  to the entire form;
+</li>
+<li> on checkboxes and radiobuttons, remove handlers for ONCLICK, ONDBLCLICK, ONKEYPRESS,
+ONKEYDOWN, ONKEYUP, ONMOUSEDOWN, ONMOUSEUP and add
+<strong>ONCHANGE</strong> (to the radiobutton or checkbox);
+</li>
+<li> on text fields, replace handlers for ONCLICK, ONDBLCLICK,
+ONMOUSEDOWN, ONMOUSEUP with <strong>ONFOCUS</strong>;
+</li>
+<li> on SELECT lists, replace handlers for ONCLICK, ONDBLCLICK,
+ONMOUSEDOWN, ONMOUSEUP with <strong>ONCHANGE</strong>.
+</li>
+</ul>
+
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>Inform users if new windows appear</un:ruleTitle>
+      <un:ruleID>                  winAppWttInfUsr
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 10.1 P2">WAI / WCAG 1.0 Priority 2 checkpoint 10.1</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> scripts
+    </un:ruleCategory>
+      <un:ruleCategory> frames
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page contains links that may cause the browser to open a new window
+(either via a TARGET attribute or via a javascript:window.open()
+instruction). If this is the case, ensure that the visitor is
+told that this is the behavior. If the user is not notified, then the page
+fails to satisfy this checkpoint.
+	 </p>
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+         <p>
+When the browser opens a new window, as an effect of clicking on a
+link or button, the environment in which the user is working changes.
+It changes because:
+	 </p>
+<ul>
+<li> some features of the browser itself in the new window  may change. For example, the browser's 
+buttons may be hidden completely, the geometry and position of
+the new window change, the new window is opened on top of the
+old one, or  other times it is opened below;
+</li>
+<li> even if not disabled, the "Back" button of the browser does not
+work, since in the new window there is no "URL history" (and no
+previous URL).
+</li>
+</ul>
+<p>
+These two factors, possibly combined together, amplify the possible
+difficulties experienced by visitors, especially those who are
+disabled or use disabling technologies. For example, if the new
+window is opened with the same size and position as the old one, on
+top of the old one, it might appear to a visitor as the
+<strong>same</strong> window. The visitor might interpret the fact
+that the Back button does not work as a bug of the browser (and might
+restart the browser) or a bug in the site (and might switch to another
+one).
+</p>
+<p>
+For visually impaired visitors it is even worse: screen readers might
+not be able to tell them that there is a new window. Screen magnifiers
+users might have a very hard time in guessing that there is a new
+window somewhere and  where the new window is placed.
+</p>
+<p>
+Therefore it is crucial that the visitor is told that a new window is
+being opened. Obviously the visitor should be told that
+<strong>before</strong> opening the window. 
+</p>
+<p>
+In all cases, the new window should contain a button that
+leads the visitor back to the page that has opened the window (or
+alternatively that closes it). These buttons will work also if the new
+window has disabled the standard browser buttons.
+</p>
+
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Try to avoid opening new browser windows.
+	 </p>
+<p>
+If this is not possible, notify the user that a new window will be opened
+when the user clicks on a certain link or button. For example, write
+"(new window)" just before the link text, within the link text, or
+write it in the link TITLE attribute. Another option is to systematically adopt in the
+site a small icon whose meaning is "new window being opened" and put
+that icon in the link label (set its ALT to something like
+"new window"). More details on <a
+href="http://www.matterform.com/index.php?page=/qbullets/index.php">Qbullets</a>
+(animated GIFs must be avoided).
+</p>
+
+<p>
+In all cases, add a "Close" or a "Back" button to the new window that
+would close the new window or lead to the previous page, respectively.
+</p>
+    
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="false" enabled="true">
+      <un:ruleTitle>Inform users if pop-up windows appear</un:ruleTitle>
+      <un:ruleID>                  popAppWttInfUsr
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 10.1 P2">WAI / WCAG 1.0 Priority 2 checkpoint 10.1</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> Scripts
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page contains a script, associated to the BODY tag that could
+open a new window when the page is loaded by the browser (i.e. a
+pop-up window). If this is the case, the page fails to satisfy the
+checkpoint. 
+	 </p>
+    
+      </un:pbmDescription>
+      <un:pbmMessage name="page" title="Scripts open new windows">
+Scripts inside the page contain or call functions that contain window.open() instruction.
+    </un:pbmMessage>
+      <un:pbmMessage name="body" title="ONLOAD attribute of BODY opens new windows">
+The ONLOAD attribute of BODY tag contains a window.open() instruction.
+    </un:pbmMessage>
+      <un:pbmExplanation>
+
+         <p>
+When the browser opens a pop-up window the environment in which the
+user is working changes. 
+It changes because:
+	 </p>
+<ul>
+<li> some features of the browser itself in the new window may change.  For example,
+the browser's 
+buttons may be hidden completely, the geometry and position of
+the new window change, the new window is opened on top of the
+old one, or, other times it is opened below;
+</li>
+<li> even if it is not disabled, the "Back" button of the browser does not
+work, since in the new window there is no "URL history" (and no
+previous URL).
+</li>
+<li> for pop-up windows the change is even worse, since they appear
+without any explicit action from the user side (except for clicking on
+a link or typing a URL).
+</li>
+</ul>
+<p>
+These factors, possibly combined together, amplify the possible
+difficulties experienced by visitors, especially those who are
+disabled or use disabling technologies. For example, if the new
+window is opened with the same size and position as the old one, on
+top of the old one, it might appear to a visitor as the
+<strong>same</strong> window. The visitor might interpret the fact
+that the Back button does not work as a bug of the browser (and might
+restart the browser) or a bug in the site (and might switch to another
+one).
+</p>
+<p>
+For visually impaired visitors it is even worse: screen readers might
+not be able to notify the user that there is a new window. Screen magnifiers
+users might have a very hard time in guessing that there is a new
+window somewhere and  where the new window is placed.
+</p>
+<p>
+Therefore it is crucial that in general the visitor is told that a new
+window is being opened. Obviously the visitor should be told that
+<strong>before</strong> opening the window, which for pop-up windows
+is not a viable solution.
+</p>
+<p>
+In all cases, the new window should contain a button that
+leads the visitor back to the page that has opened the window (or
+alternatively that closes it). These buttons will work also if the new
+window has disabled the standard browser buttons.
+</p>
+
+    
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Try to avoid opening new pop-up windows.
+	 </p>
+
+<p>
+If opening new pop-up windows is a required behavior, add a "Close" button to the new window that
+would close the new window.
+</p>
+
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>Properly position implicit labels in forms</un:ruleTitle>
+      <un:ruleID>                  implAssLblFrmCtrlPrPos
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 10.2 P2">WAI / WCAG 1.0 Priority 2 checkpoint 10.2</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:ruleCategory> forms
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page contains forms with controls. If the labels of these controls
+are not properly positioned, (to the left or on the top of the
+control), then the page fails to satisfy this checkpoint.
+	 </p>
+
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+         <p>
+Consider that not all visitors can get a bi-dimensional view of the
+form, and they might not be able to take advantage of visual clues
+that have been added to the graphical design of the form (like
+vertical alignment of controls, or little boxes that act as a frame
+for a number of controls, or different background colors).
+	 </p>
+<p>
+This may happen because the visitor uses a different media to
+experience the form (like via audio rendering of the form), because
+the visitor uses a screen magnifier that shows only a very limited
+portion of the form, or because the visitor uses a very small,
+black and white PDA screen.
+</p>
+<p>
+In all of these cases the visitors are likely to miss the intended
+meaning of a field or control, and might be unable to figure out what
+they should type or do.
+</p>
+    
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Ensure that the labels for the fields and controls do exist, and
+are positioned to the left or on the top of the control to which they refer. Be aware of the potential problems that might arise when using
+tables to layout the content of the form.
+	 </p>
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>Use last appropriate W3C technologies</un:ruleTitle>
+      <un:ruleID>                  useLstW3CTch
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 11.1 P2">WAI / WCAG 1.0 Priority 2 checkpoint 11.1</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+This is a generic warning. It is best to always use the latest
+technologies released by the W3C that are appropriate for the task.
+	 </p>
+    
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+         <p>
+It is best to always code up to the latest standards, and let the
+browsers (and other technologies) catch up. In this way the developed pages
+do not need to follow the evolution of the browsers.
+	 </p>
+<p>
+This means for example to use XHTML, CSS, SMIL (for multimedia
+captioning), MathML (for marking up mathematical formulas), XML and
+XSL (for completely separating content from presentation), P3P (for
+representing privacy information).
+</p>
+
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Review the latest W3C recommendations on the <a href="http:w3.org">World
+Wide Web Consortium</a>.
+	 </p>
+    
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="false" enabled="true">
+      <un:ruleTitle>Avoid deprecated features of W3C technologies</un:ruleTitle>
+      <un:ruleID>                  avdDepFtW3CTch
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 11.2 P2">WAI / WCAG 1.0 Priority 2 checkpoint 11.2</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page contains tags  that are deprecated in HTML
+4.01. Avoid using them.
+	 </p>
+
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+         <p>
+Deprecated tags and attributes are not part of an HTML standard. They
+have been removed from the standard, by the W3C, because they are
+redundant with other tags or technology and because they are against
+the latest development trends of the standards.
+	 </p>
+<p>
+For example, the FONT tag is deprecated because it is possible to specify all
+the font properties using CSS rules (redundancy). In addition a higher level of modularity and a better separation between
+structure and presentation (trends) is achieved.
+</p>
+    
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+To see the deprecated tags and attributes refer to
+the official HTML document <a
+href="&url_w3c_html401;/appendix/changes.html#h-A.3.1.2">&w3c_html401;</a>.
+	 </p>
+
+<p>
+Some of the following tags have been found in the page:
+</p>
+<ul>
+ <li> APPLET </li>
+ <li>BASEFONT </li>
+ <li>CENTER </li>
+ <li>DIR </li>
+ <li>FONT </li>
+ <li>ISINDEX </li>
+ <li>MENU </li>
+ <li> S </li>
+ <li>STRIKE </li>
+ <li>U </li>
+ <li>LISTING </li>
+ <li>PLAINTEXT </li>
+ <li>XMP </li>
+ </ul>
+    
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>Describe frames and their relationship</un:ruleTitle>
+      <un:ruleID>                  dscFrmRlshTtNoClr
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 12.2 P2">WAI / WCAG 1.0 Priority 2 checkpoint 12.2</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:ruleCategory> frames
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page contains FRAMESET and FRAME elements with a TITLE attribute. 
+Check that the attribute describes the purpose of the frame and
+how the frame relates to the other frames of the page.
+	 </p>
+<p>
+If necessary add a LONGDESC attribute as well.
+</p>
+      </un:pbmDescription>
+
+      <un:pbmExplanation>
+
+<p>
+Frames are mainly used for grouping information and navigation items,
+and displaying them with a certain page layout. However, some assistive
+technologies (reading browsers, screen readers, textual browsers) are
+not able to employ the visual layout. These tools therefore render
+each single frame out of context, without any reference to the other
+frames. The user of these tools cannot perceive the other frames and
+their content. That is why it is important that each frame carries
+within it a description that allows the user to build the context.
+</p>
+<p>
+Names like "top", "bottom-left" that are usually adopted for frame
+names are not sufficiently descriptive and don't help the user in
+building the missing context.
+</p>
+         <p>
+Consider the following example (taken from <a href="http://www.w3.org/TR/WCAG10-HTML-TECHS/#frame-text-equivalent">HTML Techniques for Web Content Accessibility Guidelines 1.0</a>
+and slightly modified):
+	 </p>
+<pre>
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+    &lt;TITLE&gt;Today's news&lt;/TITLE&gt;
+  &lt;/HEAD&gt;
+
+  &lt;FRAMESET cols="10%,*,10%"&gt;
+
+  &lt;FRAMESET rows="20%,*"&gt;
+    &lt;FRAME src="promo.html" name="promo" title="promotions"&gt;
+    &lt;FRAME src="sitenavbar.html" name="navbar" 
+       title="Sitewide navigation bar" longdesc="frameset-desc.html#navbar"&gt;
+  &lt;/FRAMESET&gt;
+
+  &lt;FRAME src="story.html" name="story" title="Selected story - main content" 
+     longdesc="frameset-desc.html#story"&gt;
+
+  &lt;FRAMESET rows="*,20%"&gt;
+    &lt;FRAME src="headlines.html" name="index" title="Index of other 
+      national headlines" longdesc="frameset-desc.html#headlines"&gt;
+    &lt;FRAME src="ad.html" name="adspace" title="Advertising"&gt;
+  &lt;/FRAMESET&gt;
+
+  &lt;NOFRAMES&gt;
+    &lt;p&gt;&lt;a href="noframes.html"&gt;No frames version&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;a href="frameset-desc.html"&gt;Descriptions of frames.&lt;/a&gt;&lt;/p&gt;
+
+  &lt;/NOFRAMES&gt;
+
+  &lt;/FRAMESET&gt;
+&lt;/HTML&gt;
+</pre>
+
+<p>frameset-desc.html might say something like:</p>
+
+<pre>
+#Navbar - this frame provides links to the &lt;a href="sitenavbar.html"&gt;major 
+          sections of the site&lt;/a&gt;:  World News, National News,
+          Local News, Technological News,
+          and Entertainment News.
+
+#Story  - this frame displays the &lt;a href="story.html"&gt;currently selected story&lt;/a&gt;.
+
+#Index  - this frame provides links to the day's 
+          &lt;a href="headlines.html"&gt;headline stories&lt;/a&gt; within this section.  
+</pre>
+
+<p>
+Notice the NOFRAMES element is useful when special purpose
+browsers are used that do not support frames (for example on PDAs and
+cell phones).
+</p>
+    
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+<p>
+Ensure that the TITLE attribute of FRAME
+clearly describes the purpose of the frame and its relationship with
+the companion frames. If TITLE is not enough (for example because images, links, or other markup is required) also use the LONGDESC
+attribute to provide a link to an HTML file containing a longer description. <br/>
+See the Explanation section for a detailed example.
+</p>
+<p>
+The NAME attribute is usually used for
+programming purposes and it should not contain white spaces. The TITLE
+attribute, which may contain spaces, can be used to set a more
+descriptive text. In general, it is safe to use both.
+</p>
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+<!-- ====================================================================== -->
+
+  <un:rule manual="false" enabled="true">
+    <un:ruleTitle>FRAME should have valid LONGDESC</un:ruleTitle>
+    <un:ruleID>                  FRAME_vLDESC
+    </un:ruleID>
+
+    <un:guideline abbr="WCAG 12.2 P2">WAI / WCAG 1.0 Priority 2 checkpoint 12.2</un:guideline>
+
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> frames
+    </un:ruleCategory>
+
+    <un:pbmDescription>
+         <p>
+The page contains FRAMESET and FRAME elements with a LONGDESC attribute
+that is not valid. 
+	 </p>
+    </un:pbmDescription>
+
+
+   <un:pbmMessage name="LD_attr_empty" title="LONGDESC attribute is empty">
+Invalid LONGDESC attribute of FRAME element: it is empty.
+   </un:pbmMessage>
+   <un:pbmMessage name="LD_attr_blank" title="LONGDESC attribute is blank">
+Invalid LONGDESC attribute of FRAME element: it is blank.
+   </un:pbmMessage>
+   <un:pbmMessage name="LD_url_empty" title="LONGDESC file is empty">
+Invalid LONGDESC attribute of FRAME element: mentioned file is empty.
+   </un:pbmMessage>
+   <un:pbmMessage name="LD_url_nofile" title="LONGDESC file does not exist">
+Invalid LONGDESC attribute of FRAME element: mentioned file does not exist.
+   </un:pbmMessage>
+   <un:pbmMessage name="LD_url_nohtml" title="LONGDESC file is not HTML">
+Invalid LONGDESC attribute of FRAME element: mentioned file is not an HTML file.
+   </un:pbmMessage>
+   <un:pbmMessage name="LD_url_badresponse" title="LONGDESC URL gives error response">
+Invalid LONGDESC attribute of FRAME element: got an HTTP error response (file not found?).
+   </un:pbmMessage>
+   <un:pbmMessage name="LD_url_badproto" title="Unknown protocol for LONGDESC file">
+Invalid LONGDESC attribute of FRAME element: it is a URL not based on HTTP nor FTP protocol.
+   </un:pbmMessage>
+
+
+   <un:pbmExplanation>
+
+<p>
+Frames are mainly used for grouping information and navigation items,
+and displaying them with a certain page layout. However some assistive
+technologies (reading browsers, screen readers, textual browsers) are
+not able to employ the visual layout. These tools therefore render
+each single frame out of context, without any reference to the other
+frames. The user of these tools cannot perceive the other frames and
+their content. That is why it is important that each frame carries
+within it a description that allows the user to build the context.
+</p>
+<p>
+Names like "top", "bottom-left" that are usually adopted for frame
+names are not sufficiently descriptive and do not help the user in
+building the missing context.
+</p>
+         <p>
+Consider the following example (taken from <a href="http://www.w3.org/TR/WCAG10-HTML-TECHS/#frame-text-equivalent">HTML Techniques for Web Content Accessibility Guidelines 1.0</a>
+and slightly modified):
+	 </p>
+<pre>
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+    &lt;TITLE&gt;Today's news&lt;/TITLE&gt;
+  &lt;/HEAD&gt;
+
+  &lt;FRAMESET cols="10%,*,10%"&gt;
+
+  &lt;FRAMESET rows="20%,*"&gt;
+    &lt;FRAME src="promo.html" name="promo" title="promotions"&gt;
+    &lt;FRAME src="sitenavbar.html" name="navbar" 
+       title="Sitewide navigation bar" longdesc="frameset-desc.html#navbar"&gt;
+  &lt;/FRAMESET&gt;
+
+  &lt;FRAME src="story.html" name="story" title="Selected story - main content" 
+     longdesc="frameset-desc.html#story"&gt;
+
+  &lt;FRAMESET rows="*,20%"&gt;
+    &lt;FRAME src="headlines.html" name="index" title="Index of other 
+      national headlines" longdesc="frameset-desc.html#headlines"&gt;
+    &lt;FRAME src="ad.html" name="adspace" title="Advertising"&gt;
+  &lt;/FRAMESET&gt;
+
+  &lt;NOFRAMES&gt;
+    &lt;p&gt;&lt;a href="noframes.html"&gt;No frames version&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;a href="frameset-desc.html"&gt;Descriptions of frames.&lt;/a&gt;&lt;/p&gt;
+
+  &lt;/NOFRAMES&gt;
+
+  &lt;/FRAMESET&gt;
+&lt;/HTML&gt;
+</pre>
+
+<p>frameset-desc.html might say something like:</p>
+
+<pre>
+#Navbar - this frame provides links to the &lt;a href="sitenavbar.html"&gt;major 
+          sections of the site&lt;/a&gt;:  World News, National News,
+          Local News, Technological News,
+          and Entertainment News.
+
+#Story  - this frame displays the &lt;a href="story.html"&gt;currently selected story&lt;/a&gt;.
+
+#Index  - this frame provides links to the day's 
+          &lt;a href="headlines.html"&gt;headline stories&lt;/a&gt; within this section.  
+</pre>
+
+<p>
+Notice the NOFRAMES element is useful when special purpose
+browsers are used that do not support frames (for example on PDAs and
+cell phones).
+</p>
+
+    </un:pbmExplanation>
+
+    <un:pbmCorrection>
+<p>
+It appears that a long description for a frame is needed,as there is
+a LONGDESC attribute that is already defined. However, the value of the
+LONGDESC attribute is not valid. <br/>
+A valid LONGDESC satisfies all the following conditions:
+</p>
+<ol>
+<li>it is not empty (i.e. different than "")</li>
+<li>it is not blank (i.e. with one or more spaces, " ")</li>
+<li>the file it refers to is not empty or blank</li>
+<li>the file it refers to exists and contains HTML code</li>
+<li>the file it refers to can be accessed via HTTP or FTP.</li>
+</ol>
+<p>
+See the Explanation section for a detailed example.
+</p>
+    </un:pbmCorrection>
+
+    </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+
+      <un:ruleTitle>Divide information into appropriate manageable groups</un:ruleTitle>
+      <un:ruleID>                  dvdInfAppMngGrp
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 12.3 P2">WAI / WCAG 1.0 Priority 2 checkpoint 12.3</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:ruleCategory> tables
+    </un:ruleCategory>
+      <un:ruleCategory> forms
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+<p>
+Ensure that text contained in the page is appropriately divided
+into manageable groups (headings, list items, etc.).
+</p>
+    
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+         <p>
+The reading pattern on the computer screen is very different than on
+paper due to the difference in the physical properties of those two
+supports, and the difference in the two tasks for the user.
+	 </p>
+
+<p>
+When a person reads a web page from a computer screen, the page is
+actually scanned to determine its overall structure and sections of
+content. Titles, headings, bold faced text, underlined links, or indented
+items quickly catch the user's attention.
+</p>
+<p>
+Large blocks of text are read only after this scanning process ends,
+and <strong>only if</strong> something in it has caught the user's
+interest. 
+</p>
+<p>
+In addition, assistive technologies often provide the means to
+automatically group information and render this information
+separately. For example, they render one frame at the time; they allow
+the user to jump to a certain section (marked up with a header H1, H2,
+...); they render a hotspot (i.e. image map) as a group, etc. In this
+way, a user of assistive technologies can take advantage of this division into
+groups of content or navigation items.
+</p>
+
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Use all the possible means to split large blocks of text, form
+controls, and links into smaller groups.
+	 </p>
+         <p> For example, use OPTGROUP to group OPTION elements inside
+     a SELECT; group form controls 
+     with FIELDSET and LEGEND; use nested lists where appropriate; use
+     headings to structure documents, etc. 
+</p>
+
+    
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="false" enabled="true">
+      <un:ruleTitle>Add explicit labels to form controls</un:ruleTitle>
+      <un:ruleID>                  assLblExpCtrl
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 12.4 P2">WAI / WCAG 1.0 Priority 2 checkpoint 12.4</un:guideline>
+   
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> forms
+    </un:ruleCategory>
+      <un:pbmDescription>
+<p>
+ The page contains a form whose controls are not explicitly linked
+ to LABEL elements.
+</p>
+
+      </un:pbmDescription>
+      <un:pbmMessage name="text_nolabel" title="Text field without label">
+The text field element (INPUT with type TEXT) is not associated to any label.
+    </un:pbmMessage>
+      <un:pbmMessage name="textarea_nolabel" title="Multi line text field without label">
+The multi line text field element (TEXTAREA) is not associated to any label.
+    </un:pbmMessage>
+      <un:pbmMessage name="password_nolabel" title="Passowrd field without label">
+The password field element (INPUT with type PASSWORD) is not associated to any label.
+</un:pbmMessage>
+      <un:pbmMessage name="radio_nolabel" title="Radio button without label">
+The radio button element (INPUT with type RADIO) is not associated to any label.
+    </un:pbmMessage>
+      <un:pbmMessage name="checkbox_nolabel" title="Checkbox without label">
+The checkbox element (INPUT with type CHECKBOX) is not associated to any label.
+    </un:pbmMessage>
+      <un:pbmMessage name="file_nolabel" title="File field without label">
+The file field element (INPUT with type FILE) is not associated to any label.
+    </un:pbmMessage>
+      <un:pbmMessage name="select_nolabel" title="List/menu without label">
+The list/menu element (SELECT) is not associated to any label.
+    </un:pbmMessage>
+      <un:pbmExplanation>
+
+         <p>
+  When navigating through a form using the tab key, a visually enabled
+  user can easily associate the controls with the labels that are
+  placed near them. For a screen reader user, however, this
+  information is not enough.  It is necessary to explicitly specify which
+  label is linked to which form control.
+</p>
+
+         <p>
+  The best way to achieve this is provided by the <strong>LABEL</strong>
+  element. LABEL must contain the actual text labeling, the form
+  control, and its attribute <strong>FOR</strong> must contain the
+  <strong>ID</strong> of the control.
+</p>
+
+         <p>
+  One LABEL can point only to one control, or more than one LABEL can
+  point to the same control. This feature is not yet implemented by all
+  screen readers, so it is recommended to assign only one LABEL
+  to each control.
+</p>
+
+         <p>
+  It is possible to implicitly associate a label to a control: 
+  insert both the label and the control as contents of the LABEL
+  element. While this technique is suggested by HTML 4.01
+  Recommendation, it is not supported by all screen readers yet.
+</p>
+
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+There are three steps for associating a label to a control:
+</p>
+
+         <ol>
+  
+            <li>assign a unique identifier to the control using the
+  <strong>ID</strong> attribute;</li> 
+  
+            <li>create a <strong>LABEL</strong> element containing the
+  text or image label to
+  associate to the control;</li> 
+
+            <li>add the <strong>FOR</strong> attribute to the LABEL element with the
+  control's ID as value.</li> 
+
+         </ol>
+
+	 <p>Example:</p>
+<pre>
+&lt;form action="submit" method="post"&gt;
+   &lt;label for="firstname"&gt;First name: &lt;/label&gt;
+   &lt;input type="text" id="firstname"&gt;
+   &lt;label for="lastname"&gt;Last name: &lt;/label&gt;
+   &lt;input type="text" id="lastname"&gt;
+&lt;/form&gt;
+</pre>
+
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>Clearly identify the target of each link</un:ruleTitle>
+      <un:ruleID>                  clrIdtTrgLnk
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 13.1 P2">WAI / WCAG 1.0 Priority 2 checkpoint 13.1</un:guideline>
+     
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:ruleCategory> links
+    </un:ruleCategory>
+      <un:ruleCategory> imagemaps
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+<p>
+  The page contains links with text labels (i.e. A elements with
+  textual content). Ensure that labels are meaningful, informative
+  and brief. 
+</p>
+
+<p> Link text should be meaningful enough to make sense when read out
+    of context -- either on its own or as part of a sequence of
+    links. Link text should also be terse. For example, in HTML, write
+    "Information about version 4.3" instead of "click here" or "click"
+    or "here" or "go". In addition to clear link text, content
+    developers may further clarify the target of a link with an
+    informative link title (e.g., in HTML, the "title" attribute).
+</p>
+
+    
+      </un:pbmDescription>
+
+     <un:pbmMessage name="not_mean" title="Content of TITLE attribute is empty or blank">
+The TITLE attribute is empty or blank.
+     </un:pbmMessage>
+
+     <un:pbmMessage name="no_title" title="The TITLE attribute is missing">
+The TITLE attribute is missing in link text element.
+     </un:pbmMessage>
+
+      <un:pbmExplanation>
+
+         <p>
+Most assistive technologies are able to extract all the links from the
+page and render them as a separate list. In these cases, from the
+information that is contained in the link label (i.e. content), and in
+the link title attribute, users have to be able to understand where
+the link leads.
+	 </p>
+<p>
+For this reason, links like "more info", especially if repeated several
+times in the page, are not clear enough when taken out from the
+context. 
+</p>
+
+<p>
+Consider also that link labels should provide as much information as
+needed for the user to discern what the destination of the
+link is. The user should have  a clear understanding of where a link goes
+<strong>before</strong> clicking it. Otherwise, the user will have to
+spend time waiting for the new page to be downloaded and displayed,
+and spend effort in reading it, possibly to no avail.
+</p>
+<p>
+This is especially important for links leading to very heavy pages (to
+warn the user of a longer than usual response time), or to pages
+requiring specific plug-ins (like PDF, Flash, MS Word, etc.).
+</p>
+    
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+<p>
+Edit the label of the link so that it
+clearly describes where the link is directed. The description should be brief
+and clearly understood if read out of the context (i.e. in
+a list of all the links of the page).
+</p>
+<p>
+If the link label is not enough, also use the link title (which in
+many browsers will be displayed as a tool-tip, in a small temporary
+window, when the mouse is moved over the link). If link titles are used, however,
+use them consistently on all the links of the site.
+</p>
+
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="false" enabled="true">
+      <un:ruleTitle>Use meaningful labels for links</un:ruleTitle>
+      <un:ruleID>                  useMngLblLnk
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 13.1 P2">WAI / WCAG 1.0 Priority 2 checkpoint 13.1</un:guideline>
+    
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> links
+    </un:ruleCategory>
+      <un:ruleCategory> imagemaps
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page contains links whose label (i.e. the content of the A
+element) or title (the TITLE attribute of A) appears not to be
+informative enough. Ensure that labels are meaningful, informative
+  and brief. 
+</p>
+
+<p> Link text should be meaningful enough to make sense when read out
+    of context -- either on its own or as part of a sequence of
+    links. Link text should also be terse. For example, in HTML, write
+    "Information about version 4.3" instead of "click here" or "click"
+    or "here" or "go". In addition to clear link text, content
+    developers may further clarify the target of a link with an
+    informative link title (e.g., in HTML, the "title" attribute).
+	 </p>
+
+      </un:pbmDescription>
+      <un:pbmMessage name="content" title="Link target is not clear by its content">
+Link target is not clear by its content.
+      </un:pbmMessage>
+      <un:pbmMessage name="title" title="Link target is not clear by its title attribute">
+Link target is not clear by its title attribute.
+      </un:pbmMessage>
+      <un:pbmExplanation>
+         <p>
+Most assistive technologies are able to extract all the links from the
+page and render them as a separate list. In these cases, from the
+information that is contained in the link label (i.e. content), and in
+the link title attribute, users have to be able to understand where
+the link leads.
+	 </p>
+<p>
+For this reason, links like "more info", especially if repeated several
+times in the page, are not clear enough when taken out from the
+context. 
+</p>
+
+<p>
+Consider also that link labels should provide as much information as
+needed for the user to discern what the destination of the
+link is. The user should have  a clear understanding of where a link goes
+<strong>before</strong> clicking it. Otherwise the user will have to
+spend time in waiting for the new page to be downloaded and displayed,
+and spend effort in reading it, possibly to no avail.
+</p>
+<p>
+This is especially important for links leading to very heavy pages (to
+warn the user of a longer than usual response time), or to pages
+requiring specific plug-ins (like PDF, Flash, MS Word, etc.).
+</p>
+
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+<p>
+Edit the label of the link so that it
+clearly describes where the link goes. The description should be brief
+and as much as possible understood if read out of the context (i.e. in
+a list of all the links of the page).
+</p>
+<p>
+If the link label is not enough, also use the link title (which in
+many browsers will be displayed as a tool-tip, in a small temporary
+window, when the mouse is moved over the link). If you use link titles,
+however, use them consistently on all the links of the site.
+</p>
+
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+  <un:rule manual="false" enabled="true">
+    <un:ruleTitle>Do not use the same link phrase more than once when the links point to different URLs</un:ruleTitle>
+    <un:ruleID>                  sameLnkDiffUrls
+    </un:ruleID>
+
+    <un:guideline abbr="WCAG 13.1 P2">WAI / WCAG 1.0 Priority 2 checkpoint 13.1</un:guideline>
+
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> links
+    </un:ruleCategory>
+    <un:pbmDescription>
+
+<p>
+The page contains two or more links that have the same link label
+but that point to different URLs.
+</p>
+
+<p>
+A link label is considered as the text equivalent of the link content
+and link title. In other words, all the text contained within A and /A,
+the ALT of images contained within A and /A and the value of the TITLE
+attribute if specified.
+</p>
+
+    </un:pbmDescription>
+
+    <un:pbmExplanation>
+         <p>
+Do not use the same link phrase more than once when the links point to
+different URLs.  If more than one link on a page shares the same link
+text, all of those links should point to the same resource. Such
+consistency will help page design as well as accessibility.
+
+	 </p>
+<p>
+When the same link label re-occurs, there is an implication that the
+link points to the same place. If it does not, users may be surprised
+and disoriented. It is best to assume that many users are not very
+familiar with the way in which the website functions, and therefore there
+is a high risk that they get confused and perhaps leave the site.
+</p>
+
+<p>
+In addition, screen readers and reading browsers often allow the user
+to render the list of links of the page in a different pop-up
+window. Each link is shown out of its context. If two links have the
+same label then the user would assume they lead to the same place. The
+user might then be unable to reach a certain page or Online service.
+</p>
+    </un:pbmExplanation>
+
+    <un:pbmCorrection>
+
+<p>
+Try to use different link labels for links leading to different
+documents. Also whenever possible, it is best to use informative labels.<br/>
+If this is not possible, (for example when it is necessary repeat the
+same link "Buy Online" for several products listed in the page), then
+try distinguish the links by specifying a different value for the "title"
+attribute of each A element.
+</p>
+    </un:pbmCorrection>
+
+    </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="false" enabled="true">
+      <un:ruleTitle>Provide metadata to pages and sites</un:ruleTitle>
+      <un:ruleID>                  prvMtdtPgSt
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 13.2 P2">WAI / WCAG 1.0 Priority 2 checkpoint 13.2</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> links
+    </un:ruleCategory>
+      <un:ruleCategory> meta
+    </un:ruleCategory>
+      <un:ruleCategory> imagemaps
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page does not contain, in its HEAD section, any LINK element that
+specifies relations between this page and other documents or
+information items.
+	 </p>
+<p> For example, use RDF to indicate the document's author, the type
+     of content, etc. Some HTML user agents can build navigation tools
+     from document relations described by the HTML LINK element and
+     "rel" or "rev" attributes (e.g., rel="next", rel="previous",
+     rel="index", etc.).
+</p>    
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+  <p>
+The LINK element defines a link that is not shown to the user, but it
+is used by the browser for special purposes. It conveys information
+that the browser can process in several ways (for example Mozilla can display
+a special navigation bar; lynx presents these links in a special
+section of its display).
+  </p>
+<p>
+In general LINK represents a relationship between the current document
+and something else. An example is the relationship between the current
+HTML document and an external CSS file. Another example is to
+represent the next and previous document in a sequence of documents
+(like for different chapters in a tutorial).
+</p>
+<p>
+Consider the following example by the W3C (<a
+href="&url_w3c_html401;struct/links.html#h-12.3">&w3c_html401;</a>):
+</p>
+
+<pre>
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd"&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+  &lt;TITLE&gt;Chapter 2&lt;/TITLE&gt;
+
+  &lt;LINK rel="Index" href="../index.html"&gt;
+  &lt;LINK rel="Next"  href="Chapter3.html"&gt;
+  &lt;LINK rel="Prev"  href="Chapter1.html"&gt;
+&lt;/HEAD&gt;
+...the rest of the document...
+</pre>
+
+<p>In the following example, also taken from the same source, the
+HREFLANG attribute to tell search engines where to find Dutch,
+Portuguese, and Arabic versions of a document.  Note the use of the
+CHARSET attribute for the Arabic manual. Note also the use of the LANG
+attribute to indicate that the value of the title attribute for the
+LINK element designating the French manual is in French.
+</p>
+
+<pre>
+&lt;HEAD&gt;
+&lt;TITLE&gt;The manual in English&lt;/TITLE&gt;
+&lt;LINK title="The manual in Dutch"
+      type="text/html"
+      rel="alternate"
+      hreflang="nl" 
+      href="http://someplace.com/manual/dutch.html"&gt;
+&lt;LINK title="The manual in Portuguese"
+      type="text/html"
+      rel="alternate"
+      hreflang="pt" 
+      href="http://someplace.com/manual/portuguese.html"&gt;
+&lt;LINK title="The manual in Arabic"
+      type="text/html"
+      rel="alternate"
+      charset="ISO-8859-6"
+      hreflang="ar" 
+      href="http://someplace.com/manual/arabic.html"&gt;
+&lt;LINK lang="fr" title="La documentation en Fran&amp;ccedil;ais"
+      type="text/html"
+      rel="alternate"
+      hreflang="fr"
+      href="http://someplace.com/manual/french.html"&gt;
+&lt;/HEAD&gt;
+</pre>
+
+<p>In the following example, search engines are told where to find the printed
+version of a manual.</p>
+
+<pre>
+&lt;HEAD&gt;
+&lt;TITLE&gt;Reference manual&lt;/TITLE&gt;
+&lt;LINK media="print" title="The manual in postscript"
+      type="application/postscript"
+      rel="alternate"
+      href="http://someplace.com/manual/postscript.ps"&gt;
+
+&lt;/HEAD&gt;
+</pre>
+
+<p>And here where to find the front
+page of a collection of documents.</p>
+
+<pre>
+&lt;HEAD&gt;
+&lt;TITLE&gt;Reference manual -- Page 5&lt;/TITLE&gt;
+&lt;LINK rel="Start" title="The first page of the manual"
+      type="text/html"
+      href="http://someplace.com/manual/start.html"&gt;
+
+&lt;/HEAD&gt;
+</pre>    
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Consider adding LINK elements to the HEAD section to represent
+relationships between this page and other documents.
+	 </p>
+    
+<p>
+The list of possible relationships between documents that
+can be represented by the LINK element from <a
+href="&url_w3c_html401;/types.html#type-links">&w3c_html401;</a>.
+</p>
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+  <un:rule manual="false" enabled="true">
+
+    <un:ruleTitle>Page title should be well defined</un:ruleTitle>
+
+    <un:ruleID>                  validPageTitle
+    </un:ruleID>
+
+    <un:guideline abbr="WCAG 13.2 P2">WAI / WCAG 1.0 Priority 2 checkpoint 13.2</un:guideline>
+
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> meta
+    </un:ruleCategory>
+    <un:pbmDescription>
+<p>
+  The page has no valid TITLE.
+</p>
+    </un:pbmDescription>
+
+    <un:pbmMessage name="none" title="Page TITLE is missing">
+  The page has no TITLE element.
+    </un:pbmMessage>
+    <un:pbmMessage name="empty" title="Page TITLE is empty">
+  Empty content ("") specified for the TITLE element.
+    </un:pbmMessage>
+    <un:pbmMessage name="toomany" title="TITLE is defined more than once">
+  The page contains more than one instance of TITLE. 
+    </un:pbmMessage>
+    
+    <un:pbmMessage name="toolong" title="Page TITLE is too long">
+  The TITLE of the page is longer than 64 characters.
+    </un:pbmMessage>
+    <un:pbmMessage name="nothead" title="Page TITLE not included in HEAD">
+  The page TITLE is not included in the HEAD element.
+    </un:pbmMessage>
+    <un:pbmMessage name="html" title="Page TITLE includes HTML">
+  The page TITLE contains HTML tags.
+    </un:pbmMessage>
+    <un:pbmMessage name="placeholder" title="Page TITLE with placeholder text">
+  The page TITLE seems to contain only placeholder text.
+    </un:pbmMessage>
+
+
+    <un:pbmExplanation>
+<p>
+  The TITLE tag defines the document's title for:
+</p>
+<ul>
+  <li> browser windows</li>
+  <li> speaking browsers</li>
+  <li> bookmark lists</li>
+  <li> history lists</li>
+  <li> search engine results lists</li>
+</ul>
+<p>
+  A poor, or missing, TITLE would make the page much more difficult to
+  locate and understand in any situation where the user is required to
+  identify a window, figure out the context, selecting an item from a
+  bookmark list or search results. <br/>
+  This often occurs when using assistive technology, since the page
+  title is the first thing that is presented to the user and
+  should clarify the new context brought by the page.
+</p>
+<p>
+  To be effective titles should be <strong>brief</strong> and
+  <strong>informative</strong> (i.e. adequately describe the page). <br/>
+  Citing Nielsen, <strong>a page title needs to be a pearl of
+  clarity</strong>.
+</p>
+<p>
+  Titles should not contain HTML tags, as they would not be interpreted
+  by browsers (and would clutter the meaningful part of the title).
+</p>
+<p>
+  Finally, a page should contain exactly one title: if more than one is
+  present only one of them will be considered by browsers.
+</p>
+
+<p>
+Consider also that often screen readers, when presenting the available
+frames to the user, read the page TITLE of the framed pages (not only
+the TITLE attribute of the FRAME element). Therefore, it is important for
+page TITLEs of framed pages to be well defined and meaningful.
+</p>
+    </un:pbmExplanation>
+
+    <un:pbmCorrection>
+<p>
+  To define the title of the page include the following HTML code
+  just below the <strong>HTML</strong> tag at the beginning of the document:
+<pre>
+&lt;HEAD&gt;
+ &lt;TITLE&gt;
+  Buy the best strawberries fields in the world
+ &lt;/TITLE&gt;
+&lt;/HEAD&gt;
+</pre> 
+</p>
+
+<p>
+  With Dreamweaver this can be achieved in a more simple way: simply fill-in the
+  title box on top of the Editor window.
+</p>
+
+<p>
+  Consider that titles, to be effective, have to satisfy the
+  following conditions:
+</p>
+<ul>
+  <li> a title should be <strong>brief</strong> and
+       <strong>informative</strong></li> 
+  <li> should not contain HTML tags</li>
+  <li> should be defined only once in a document.</li>
+</ul>
+    </un:pbmCorrection>
+  </un:rule>
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>Provide information about site organization</un:ruleTitle>
+      <un:ruleID>                  prvInfGnrLytSt
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 13.3 P2">WAI / WCAG 1.0 Priority 2 checkpoint 13.3</un:guideline>
+     
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:ruleCategory> imagemaps
+    </un:ruleCategory>
+      <un:ruleCategory> links
+    </un:ruleCategory>
+      <un:ruleCategory> tables
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+If not present, add a site map to the site and describe how
+content is organized throughout the site. Highlight also the
+accessibility features that are available on the site.
+	 </p>
+    
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+         <p>
+Consider a site map as the table of contents of the site. It is a
+powerful means for visitors to understand the layout of the site.
+	 </p>
+<p>
+Consider also that for non-sighted users, experiencing a site
+takes much longer, since they have to listen to the content of the
+pages they visit. This takes much longer than just glancing it.
+</p>
+    
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+<p>
+Implement a site map either graphically, or as a set of nested lists
+(like in a table of content of a book), or use any other effective
+means for describing categories of information items.
+</p>
+
+<p>
+If accessibility features implemented on the page are described, then
+users may configure the specific assistive technology that they are
+using to fit these solutions.
+</p>
+    
+      </un:pbmCorrection>
+   </un:rule>
+
+
+
+
+
+<!-- ====================================================================== -->
+
+   <un:rule manual="true" enabled="true">
+      <un:ruleTitle>Use navigation mechanisms appropriately</un:ruleTitle>
+      <un:ruleID>                  useNvgMchApp
+      </un:ruleID>
+
+      <un:guideline abbr="WCAG 13.4 P2">WAI / WCAG 1.0 Priority 2 checkpoint 13.4</un:guideline>
+      
+      <un:ruleCategory> W3C/WCAG P.2 accessibility
+    </un:ruleCategory>
+      <un:ruleCategory> ALL
+    </un:ruleCategory>
+      <un:ruleCategory> manual
+    </un:ruleCategory>
+      <un:ruleCategory> scripts
+    </un:ruleCategory>
+      <un:ruleCategory> links
+    </un:ruleCategory>
+      <un:ruleCategory> imagemaps
+    </un:ruleCategory>
+      <un:pbmDescription>
+
+         <p>
+The page seems to contain a navigation bar. Ensure that
+navigation bars across the site are consistent.
+	 </p>
+
+      </un:pbmDescription>
+      <un:pbmExplanation>
+
+         <p>
+Consistency is a key factor for achieving an accessible and usable
+site. In fact, if a feature (like a navigation bar) is used
+consistently through the pages of the site, the visitor will quickly
+grasp the meaning of the navigation bar, and of its buttons/links, and
+will be able to use it without hesitation.
+	 </p>
+<p>
+If, on the other side, a group of links keeps changing from page to
+page, then a visitor has to re-learn it each time it appears. This is
+time consuming, requires effort on the user and is more error prone
+(the user might click involuntarily on a link).
+</p>
+    
+      </un:pbmExplanation>
+
+      <un:pbmCorrection>
+
+         <p>
+Look at all the navigation bars in the site and ensure that they
+are as consistent as possible in the ordering, positioning, formatting
+and labeling of their links.
+	 </p>
+      </un:pbmCorrection>
+   </un:rule>
+
+
+</un:rules>

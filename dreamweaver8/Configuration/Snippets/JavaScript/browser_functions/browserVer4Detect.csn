@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<snippet name = "浏览器检测：版本 4" description = "用于区分版本小于 4 和版本为 4 或更高的浏览器的代码。" preview="code" type="block">
+<insertText location="beforeSelection">
+<![CDATA[function browserVer4Detect()
+{
+  if(navigator.appVersion.substring(0,1) < 4)
+    URLStr = "1.html";
+  else
+    URLStr = "2.html";
+  window.location = URLStr;
+}
+]]>
+</insertText>
+<insertText location="afterSelection"><![CDATA[]]>
+</insertText>
+</snippet>

@@ -1,0 +1,169 @@
+<!-- Copyright 2003 Macromedia, Inc. All rights reserved.  -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<teamadminStrings xmlns:MMString="http://www.macromedia.com/schemes/data/string/">
+<html>
+<head>
+<title>最近修改的项目</title>
+<script src="../../Shared/MM/Scripts/CMN/UI.js"></script>
+<script language="JavaScript" src="../../Shared/MM/Scripts/CMN/DOM.js"></script>
+<script language="JavaScript" src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script language="JavaScript" src="../../Shared/MM/Scripts/Class/PreferencesClass.js"></script>
+<script language="JavaScript" src="../Reports.js"></script>
+<script language="JavaScript" src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script language="JavaScript" src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script language="JavaScript" src="../../Shared/Common/Scripts/RadioGroupClass.js"></script>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<script src="../TeamAdminCommon.js"></script>
+<script src="RecentlyModified.js"></script>
+<script language="JavaScript">
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+ARR_FullMonths= new Array("1","2","3","4","5","6","7","8","9","10","11","12");
+var startYear = 0;
+var endYear = 6;
+
+//alert messages
+MM.MSG_enterNumberBetween = "请为“Days”输入一个介于 1 到 999 之间的数字。";
+MM.MSG_noTestServerDefined = "请输入查看动态页的测试服务器 URL。";
+MM.MSG_contribute = "(对于“仅 Contribute 站点”)";
+
+//Report display.
+MM.MSG_FileName = "文件名";
+MM.MSG_Modified = "已修改";
+MM.MSG_ModifiedDt = "修改日期";
+MM.MSG_ModifiedBy = "修改者";
+MM.MSG_ReportDt = "报告日期:";
+MM.MSG_TotalFiles = "找到的总文件数:";
+MM.MSG_DateRange = "日期范围:";
+MM.MSG_To = "至";
+MM.MSG_Notknown = "* Dreamweaver 无法确定谁最后修改了此文件。";
+MM.MSG_NotContribute = "文件有可能已被 Contribute 以外的其他程序编辑。";
+
+MM.Lable_recentlyModified = "最近修改的项目";
+MM.Column_NotKnown = "未知*";
+MM.Column_View = "视图";
+
+//--------------- END LOCALIZEABLE   ---------------
+
+</script>
+</head>
+<body onLoad = "initializeUI()">
+<form name="myForm" id="myForm" >
+<input name="daysModifiedhid" type="hidden" value="0">
+<input name="viewPathhid" type="hidden" value="0">
+
+  <table width="100%" border="0">
+    <tr>
+      <td align="Left" nowrap>
+        <input type="radio" name="optDaysModified" value="radio" checked="True" onClick="onChangeRadio()">
+      </td>
+      <td colspan="3" align="Left" nowrap>
+        <label><MMString:loadString id="reports_0" /></label>
+      </td>
+    </tr>
+    <tr>
+      <td align="Left" nowrap>&nbsp;</td>
+      <td align="Left" nowrap>&nbsp;</td>
+      <td align="Left" colspan="2" valign="baseline" nowrap>
+        <input name="numDays" type="text" maxlength="3"  size="7" value="7">
+        &nbsp;
+        <label><MMString:loadString id="reports_1" /></label>
+      </td>
+    </tr>
+    <tr>
+      <td align="Left" nowrap>
+        <input type="radio" name="optDaysModified" value="radio" onClick="onChangeRadio()">
+      </td>
+      <td colspan="3" align="Left" nowrap>
+        <label><MMString:loadString id="reports_2" /></label>
+      </td>
+    </tr>
+    <tr>
+      <td align="Left" nowrap>&nbsp;</td>
+      <td align="Left" nowrap>&nbsp;</td>
+      <td align="Left" colspan="2" nowrap>
+        <select name="fromYear" onChange="onChangeFromYear()" style="width:75px" disabled>
+          <option value="" selected></option>
+        </select>
+	年
+        <select name="fromMonth" onChange="onChangeFromMonth()" style="width:50px" disabled>
+          <option value="" selected></option>
+        </select>
+	月
+        <select name="fromDay" style="width:50px" disabled>
+          <option value="" selected></option>
+        </select>
+	日
+      </td>
+    </tr>
+    <tr>
+      <td align="Left" nowrap>&nbsp;</td>
+      <td align="Left" nowrap>
+        <label><MMString:loadString id="reports_3" /></label>
+      </td>
+      <td align="Left" colspan="2" nowrap>
+        <select name="toYear" style="width:75px" onchange ="onChangeToYear()" disabled>
+        </select>
+	年
+        <select name="toMonth" onChange="onChangeToMonth()" style="width:50px" disabled>
+        </select>
+	月
+        <select name="toDay" style="width:50px" disabled>
+        </select>
+	日
+      </td>
+    </tr>
+	<tr>
+	</tr>
+    <tr>
+      <td colspan="2" align="Right" nowrap>
+        <label><MMString:loadString id="reports_4" /></label>
+      <td colspan="2" align="Left" valign="baseline" nowrap>
+        <input type="text" name="modifiedBy" disabled>
+      </td>
+	</tr>
+	<tr>
+	  <td colspan="2" align="Left" nowrap>&nbsp;
+
+	  </td>
+      <td colspan="2" align="Left" nowrap>
+        <label><Div id="Contribute"></Div></label>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <hr>
+      </td>
+    </tr>
+    <tr>
+      <td align="Left" nowrap>&nbsp;</td>
+      <td colspan="3" align="left">
+        <label><MMString:loadString id="reports_6" /></label>
+      </td>
+    </tr>
+    <tr>
+      <td align="Left" nowrap>
+        <input type="radio" name="ViewPath" value="radio" checked="True" onClick="onChangeView()">
+      </td>
+      <td colspan="3" align="Left" nowrap>
+        <label><MMString:loadString id="reports_7"/></label>
+      </td>
+    </tr>
+    <tr>
+      <td align="Left" nowrap>
+        <input type="radio" name="ViewPath" value="radio" onClick="onChangeView()">
+      </td>
+      <td colspan="3" align="Left" nowrap>
+        <label><MMString:loadString id="reports_8" /></label>
+      </td>
+    </tr>
+	<tr>
+	</tr>
+    <tr>
+      <td colspan="2" align="Left" nowrap>&nbsp;</td>
+	  <td colspan="2" align="Left" valign="baseline" nowrap><input size="40" type="text" value ="" name="otherLocation" ></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<title>复制副本</title>
+<script src="duplicate set.js"></script>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<script src="../Shared/MM/Scripts/Cmn/string.js"></script>
+<script src="../Shared/MM/Scripts/Class/FileClass.js"></script>
+<script>
+// Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved.
+
+//--------------- LOCALIZEABLE GLOBALS---------------
+var MSG_NameUsedByFactorySet = "你不能创建名为 %s 的复制副本因为这是一个出厂设置。";
+var MSG_ShortcutSetAlreadyExists = '名为"%s"的设置已经存在,你想用该设置替换现存设置吗? ';
+var MSG_InvalidFileNameCannotSave = "%s是一个非法文件名.请选择其他名称."
+var MSG_SetNameIsTheSame ="你不能使用同样名称.";
+var LABEL_Copy = "复制";
+//--------------- END LOCALIZEABLE   ---------------
+//---------------    END JAVASCRIPT    ---------------
+</script>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+<form name="theForm">
+  <div align="center">
+    <table border=0 cellpadding="2" cellspacing="4">
+      <tr>
+        <td valign="baseline" nowrap> 复制副本名称:</td>
+        <td valign="baseline" nowrap>
+          <input name="duplicateSetNameField" type="TEXT" class="largeTField" value="" maxlength="27">
+        </td>
+      </tr>
+    </table>
+  </div>
+</form>
+</body>
+</html>

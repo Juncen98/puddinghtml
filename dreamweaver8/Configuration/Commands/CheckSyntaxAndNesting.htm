@@ -1,0 +1,40 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Copyright 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<title>新建可编辑区域</title>
+<script language="javascript" src="../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<script language="javascript" src="../Shared/MM/Scripts/CMN/string.js"></script>
+<script language="javascript" src="../Shared/MM/Scripts/CMN/TemplateUtils.js"></script>
+<script language="javascript" src="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+
+<script language="javascript" >
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MSG_CorrectSyntax = '模板语法正确';
+
+//--------------- END LOCALIZEABLE ------------------
+function canAcceptCommand()
+	{
+	return ( dw.getFocus() != 'browser' && 
+				dw.getDocumentDOM() != null && 
+				dw.getDocumentDOM() != null && 
+				dw.getDocumentDOM().getIsTemplateDocument());
+	}
+	
+function doCommand()
+	{
+		
+	if (dw.getDocumentDOM().checkTemplateSyntax())
+		{
+		CheckFunkyTemplateNesting();
+		dw.runCommand('NotifyDialog.htm', MSG_CorrectSyntax);
+		}
+	}
+</script>
+</head>
+
+<body onLoad="doCommand()">
+
+</body>
+</html>

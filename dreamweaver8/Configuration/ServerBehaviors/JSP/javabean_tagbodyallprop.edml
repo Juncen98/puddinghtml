@@ -1,0 +1,12 @@
+<participant>
+     <quickSearch><![CDATA[jsp:setProperty]]></quickSearch>
+     <insertText location="aboveHTML+40">
+<![CDATA[
+	<jsp:setProperty name="@@allname@@" property="*"/>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="tag+jsp:setProperty">
+       <searchPattern paramNames="allname" limitSearch="attribute+name"></searchPattern>
+       <searchPattern limitSearch="attribute+property">/\*/</searchPattern>
+     </searchPatterns>
+</participant>

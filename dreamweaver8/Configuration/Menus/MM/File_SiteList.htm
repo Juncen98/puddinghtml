@@ -1,0 +1,60 @@
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2000, 2001, 2002 Macromedia, Inc. All rights reserved. -->
+<TITLE>Õ¾µã</TITLE>
+<SCRIPT LANGUAGE="javascript" SRC="../../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+<!--
+	function receiveArguments()
+	{
+		site.setCurrentSite(arguments[0]);
+	}
+
+	function canAcceptCommand()
+	{
+		// can't set the current site if there are no sites
+		return site.getSites().length > 0;
+	}
+
+	function isDOMRequired()
+	{
+	  return false;
+	}
+	
+	function isCommandChecked()
+	{
+		// since our item IDs are the site names themselves, checking
+		// the current site is easy - just compare the ID to the current site.
+		return (arguments[0] == site.getCurrentSite());
+	}
+
+	// getDynamicContent returns the contents of a dynamically generated menu.
+	// returns an array of strings to be placed in the menu, with a unique
+	// identifier for each item separated from the menu string by a semicolon.
+	//
+	// return null from this routine to indicate that you are not adding any
+	// items to the menu
+	function getDynamicContent(itemID)
+	{
+		var sites = null;
+		sites = new Array();
+		var siteList = site.getSites();
+		var i;
+
+		if (siteList.length > 0)
+		{
+			for (i=0; i<siteList.length; i++)
+			{
+				sites[i] = new String(siteList[i]);
+				sites[i] += ";id='"+siteList[i]+"'"; // site names must be unique, so we'll use them for IDs.
+			}
+		}
+		return sites;
+	}
+// -->   
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

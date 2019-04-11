@@ -1,0 +1,126 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>jrun:xslt</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var SELECTORLIST;
+var theUIObjects;
+var applyType = "dynamic"; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  var curValue = (tagNodeObj.innerHTML.length > 0) ? "input" : "empty"; 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+
+  tagDialog.inspectTagCommon(tagNodeObj, null, applyType, activeDisplayNode, SELECTORLIST);
+}
+
+function applyTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue(); 
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.applyTagCommon(tagNodeObj, null, applyType, activeDisplayNode); 
+}
+
+function updateUI()
+{
+  var curDiv = SELECTORLIST.getValue(); 
+
+  tagDialog.showOnlyThisLayer(curDiv); 
+}
+
+function initializeUI()
+{
+	SELECTORLIST = new ListControl("theselector"); 
+	theUIObjects = new Array(SELECTORLIST);
+	
+  tagDialog.populateDropDownList(SELECTORLIST, theSelXSLTCap, theSelXSLTVal, 0); 
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+
+<div name="常规">
+<table>
+  <tr>
+    <td valign="baseline" align="right" nowrap="nowrap">类型: </td>
+    <td nowrap="nowrap">
+      <select name="theselector" class="selectorList" id="attr:jrunxslt:selector" onChange="updateUI();" attname="" editable="false">
+</select>
+    </td>
+  </tr>
+</table>
+<hr width="100%"> 
+<div id="theinput" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 43px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">XSL: </td>
+      <td nowrap="nowrap">
+        <input name="thexsl" type="text" class="basicTextField" id="attr:jrunxslt:xsl" attname="xsl" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="attr:jrunxslt:id" attname="id" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">范围: </td>
+      <td nowrap="nowrap">
+        <input name="thescope" type="text" class="basicTextField" id="attr:jrunxslt:scope" attname="scope" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="right" nowrap="nowrap">XML 输入: </td>
+      <td nowrap="nowrap">
+        <textarea id="attr:jrunxslt:xmlinput" name="thexmlinput" attname="innerHTML" style="width:200px" wrap="virtual"></textarea>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="theempty" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 43px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">XML: </td>
+      <td nowrap="nowrap">
+        <input name="thexml" type="text" class="basicTextField" id="attr:jrunxsltempty:xml" attname="xml" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">XSL: </td>
+      <td nowrap="nowrap">
+        <input name="thexsl" type="text" class="basicTextField" id="attr:jrunxsltempty:xsl" attname="xsl" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="attr:jrunxsltempty:id" attname="id" />
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">范围: </td>
+      <td nowrap="nowrap">
+        <input name="thescope" type="text" class="basicTextField" id="attr:jrunxsltempty:scope" attname="scope" />
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

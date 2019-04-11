@@ -1,0 +1,150 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+
+<SCRIPT>
+// Copyright 2002 Macromedia, Inc. All rights reserved.
+var HELP_DOC = MM.HELP_sbLoginUser;
+</SCRIPT>
+
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/RadioGroupClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/CFDataSourceMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/ConnectionTableMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/ConnectionColumnMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/TextField.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/accessControlCmn.js"></SCRIPT>
+<SCRIPT SRC="../Shared/AccessControlCmn.js"></SCRIPT>
+<SCRIPT SRC="Login User.js"></SCRIPT>
+
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<TITLE>登录用户</TITLE>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm" ACTION="">
+    <table border="0">
+      <tr valign="baseline">
+        <td nowrap align="right">从表单获取输入: </td>
+        <td nowrap>
+          <select name="FormNode" class="tagList" onChange="updateUI('FormNode','onChange')">
+          </select>
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td nowrap align="right">用户名字段: </td>
+        <td nowrap>
+          <select name="UsernameField" class="columnNameList">
+          </select>
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td nowrap align="right">密码字段: </td>
+        <td nowrap>
+          <select name="PasswordField" class="columnNameList">
+          </select>
+        </td>
+      </tr>
+      <tr valign="baseline"><td colspan="3" nowrap><hr></td></tr>
+      <tr valign="baseline">
+        <td nowrap align="right">使用数据源验证:</td>
+        <td nowrap>
+          <select name="ConnectionName" class="connNameList" onChange="updateUI('ConnectionName','onChange')">
+          </select>
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>数据源用户名:</td>
+        <td colspan="2" nowrap>
+          <input name="UserName" type="text" class="medTField" onBlur="updateUI('UserName','onBlur')">
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>数据源密码:</td>
+        <td colspan="2" nowrap>
+          <input name="Password" type="text" class="medTField" onBlur="updateUI('Password','onBlur')">
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td nowrap align="right">表格: </td>
+        <td nowrap>
+          <select name="TableName" class="connRSTableList"  onChange="updateUI('TableName','onChange')">
+          </select>
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td nowrap align="right">用户名列: </td>
+        <td nowrap>
+          <select name="UsernameCol" class="columnNameList">
+          </select>
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td nowrap align="right">密码列: </td>
+        <td nowrap>
+          <select name="PasswordCol" class="columnNameList">
+          </select>
+        </td>
+      </tr>
+      <tr valign="baseline"><td colspan="3" nowrap><hr></td></tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>如果登录成功，转到: </td>
+        <td nowrap>
+          <input name="SuccessURL" type="text" class="basicTextField">
+          <input type="button" value="浏览..." onClick="updateUI('SuccessURL','onClick')">
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td nowrap>&nbsp;</td>
+        <td nowrap>
+          <input name="GoToReferrerURL" type="checkbox" >
+          转到前一个URL（如果它存在）</td>
+      </tr>
+      <tr valign="baseline">
+        <td nowrap align="right">如果登录失败，转到: </td>
+        <td nowrap>
+          <input name="FailureURL" type="text" class="basicTextField">
+          <input type="button" value="浏览..." onClick="updateUI('FailureURL','onClick')">
+        </td>
+      </tr>
+      <tr valign="baseline"><td colspan="3" nowrap><hr></td></tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>基于以下项限制访问:  </td>
+        <td nowrap>
+          <input type="radio" name="securityMethod" value="securityMethodUP" onClick="updateUI('securityMethod')" checked>
+          用户名和密码</td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>&nbsp;</td>
+        <td nowrap>
+          <input type="radio" name="securityMethod" value="securityMethodUPA" onClick="updateUI('securityMethod')">
+          用户名、密码和访问级别</td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>&nbsp;</td>
+        <td nowrap> 获取级别自: 
+          
+        <select name="AuthLevelCol" class="columnNameList">
+          </select>
+        </td>
+      </tr>
+    </table>
+  </FORM>
+</BODY>
+</HTML>

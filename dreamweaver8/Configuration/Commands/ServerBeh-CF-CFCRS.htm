@@ -1,0 +1,98 @@
+<!-- MENU-LOCATION=NONE -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<html>
+<HEAD>
+<!-- Interakt Online - 2004. Based on original Macromedia work. -->
+<SCRIPT SRC="../Shared/UltraDev/Scripts/SQLTypes.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/Class/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CFCutilities.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/errmsg.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/SBDatabaseCallClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/RecordsetDialogClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/SQLStatementClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/ListMenu.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/TextField.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/RsTypeMenu.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ssCmnElements.js"></SCRIPT>
+<SCRIPT SRC="ServerBeh-CF-CFCRS.js"></SCRIPT>
+<script src="ServerBeh-CFC-common.js"></script>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<TITLE>CFC 查询</TITLE>
+</HEAD>
+<BODY onload="initialiseUI()">
+<div id="loadingLayer" style="position:absolute; visibility:visible; left:45%; top:35%;">正在载入 CFC ....</div>
+<div id="mainLayer" style="position:absolute; visibility:hidden;">
+  <form>
+    <table border=0>
+      <tr>
+        <td nowrap align="right">名称:</td>
+        <td colspan="2"><input type="text" name="rsName" style="width:195px"></td>
+      </tr>
+      <tr>
+        <td nowrap align="right">包:</td>
+        <td colspan="2"><select name="CFCPackage" style="width:195px" onChange="updateUI('CFCPackage')">
+          </select>
+          <input type="image" border="0" name="refreshCFCS" src="../Shared/MM/Images/refresh.gif" width="18" height="15" onClick="refreshCFCS()">
+        </td>
+      </tr>
+      <tr>
+        <td nowrap align="right">组件:</td>
+        <td colspan="2"><select name="CFCs" style="width:195px" onChange="updateUI('CFCs')">
+          </select>
+          <input type="button" name="Button" value="创建新组件..." onClick="newComponent()">
+        </td>
+      </tr>
+      <tr>
+        <td nowrap align="right">函数:</td>
+        <td colspan="2"><select name="CFCFunction" style="width:195px" onChange="updateUI('CFCFunction')">
+          </select>
+          <!-- TBD <input type="button" name="Button" value="Create new function..." onClick="newFunctionForCFQuery()"> -->
+        </td>
+      </tr>
+      <tr>
+        <td nowrap align="right">连接:</td>
+        <td colspan="2"><select name="CFCConnection" style="width:195px" disabled="true">
+            <option selected="true">首先选择一个 CFC 记录集</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td nowrap align="right" valign="top"><br>
+          SQL:</td>
+        <td colspan="2" width="420"><textarea name="CFCsql" style="width:400px;height:110px;" disabled="true" wrap="virtual">首先选择一个 CFC 记录集</textarea>
+        </td>
+      </tr>
+      <tr>
+        <td align="right" valign="top" nowrap><br>
+          参数:</td>
+        <td><select size="5" style="width:200px" name="CFCParameters" onChange="updateUI('CFCParameters')">
+          </select>
+        </td>
+        <td align="left"><table width="180" style="border-color:#999999; border-style:solid; border-width:1px; margin:2px; ">
+          <tr nowrap>
+            <td><span name="ParamName">-</span> </td>
+          </tr>
+          <tr nowrap>
+            <td><span name="ParamDefault">-</span> </td>
+          </tr>
+          <tr nowrap>
+            <td height="3"></td>
+          </tr>
+          <tr nowrap>
+            <td><input name="editCFParam" type="button" onClick="updateUI('editCFParam','onclick')" value="编辑..." disabled="true">
+            </td>
+          </tr>
+        </table></td>
+      </tr>
+    </table>   
+  </form>
+</div>
+</BODY>
+</HTML>

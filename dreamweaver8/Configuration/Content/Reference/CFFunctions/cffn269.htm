@@ -1,0 +1,114 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>STRUCTNEW</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">STRUCTNEW</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Creates a structure.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+A structure.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+Structure functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>StructNew()
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+Structure functions; "Structure functions" in Chapter&#160;5, "Using Arrays and Structures," in ColdFusion MX Developer's Guide
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+None
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;!--- Shows StructNew. Calls CF_ADDEMPLOYEE, which uses the |
+addemployee.cfm file to add employee record to database. ---&gt;
+&lt;h1&gt;Add New Employees&lt;/h1&gt;
+&lt;cfparam name = &quot;FORM.firstname&quot; default = &quot;&quot;&gt;
+&lt;cfparam name = &quot;FORM.lastname&quot; default = &quot;&quot;&gt;
+&lt;cfparam name = &quot;FORM.email&quot; default = &quot;&quot;&gt;
+&lt;cfparam name = &quot;FORM.phone&quot; default = &quot;&quot;&gt;
+&lt;cfparam name = &quot;FORM.department&quot; default = &quot;&quot;&gt; 
+&lt;cfif FORM.firstname EQ &quot;&quot;&gt;
+ &lt;p&gt;Please fill out the form.
+&lt;cfelse&gt;
+   &lt;cfoutput&gt;
+  &lt;cfscript&gt;
+   employee = StructNew();
+   StructInsert(employee, &quot;firstname&quot;, FORM.firstname);
+   StructInsert(employee, &quot;lastname&quot;, FORM.lastname);
+   StructInsert(employee, &quot;email&quot;, FORM.email);
+   StructInsert(employee, &quot;phone&quot;, FORM.phone);
+   StructInsert(employee, &quot;department&quot;, FORM.department);
+ &lt;/cfscript&gt;
+   &lt;p&gt;First name is #StructFind(employee, &quot;firstname&quot;)#
+   &lt;p&gt;Last name is #StructFind(employee, &quot;lastname&quot;)#
+   &lt;p&gt;EMail is #StructFind(employee, &quot;email&quot;)#
+   &lt;p&gt;Phone is #StructFind(employee, &quot;phone&quot;)#
+   &lt;p&gt;Department is #StructFind(employee, &quot;department&quot;)#
+   &lt;/cfoutput&gt;
+&lt;!--- Call the custom tag that adds employees ---&gt;
+ &lt;CF_ADDEMPLOYEE EMPINFO = &quot;#employee#&quot;&gt;
+&lt;/cfif&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+
+  </body>
+</html>

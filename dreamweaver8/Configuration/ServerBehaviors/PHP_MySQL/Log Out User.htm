@@ -1,0 +1,57 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+
+<SCRIPT>
+// Copyright 2001-2003 Macromedia, Inc. All rights reserved.
+var HELP_DOC = MM.HELP_sbLogoutUser;
+</SCRIPT>
+
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/RadioGroupClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/TagMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/URLTextField.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/accessControlCmn.js"></SCRIPT>
+<SCRIPT SRC="../Shared/AccessControlCmn.js"></SCRIPT>
+<SCRIPT SRC="Log Out User.js"></SCRIPT>
+
+<TITLE>注销用户</TITLE>
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+  <FORM NAME="theForm" ACTION="">
+    <table border="0">
+      <tr valign="baseline">
+        <td align="right" nowrap>在以下情况下注销: </td>
+        <td nowrap>
+          <input type="radio" name="logoutWhen" value="logoutWhenLinkClicked" onClick="onClickLogoutWhenLinkClicked()" checked>
+          单击链接: 
+          <select name="linkTag" style="width:200px" onChange="onChangeLink()">
+          </select>
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>&nbsp;</td>
+        <td nowrap>
+          <input type="radio" name="logoutWhen" value="logoutWhenPageLoads" onClick="onClickLogoutWhenPageLoads()">
+          页面载入
+        </td>
+      </tr>
+      <tr><td height="1"></td></tr>
+      <tr valign="baseline">
+        <td align="right" nowrap>在完成后，转到: </td>
+        <td nowrap>
+          <input name="redirectPage" type="text" style="width:220px" value="" onFocus="focus(this)">
+          <input name="btnFileBrowser" type="button" value="浏览..." onClick="onClickBtnFileBrowser();focus(this)">
+        </td>
+      </tr>
+    </table>
+  </FORM>
+</BODY>
+</HTML>

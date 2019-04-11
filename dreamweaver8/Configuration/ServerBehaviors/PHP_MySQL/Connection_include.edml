@@ -1,0 +1,8 @@
+<participant name="Connection_include" version="5.0">
+	<insertText location="aboveHTML+5"><![CDATA[<?php @@UrlFormat@@('@@ConnectionPath@@'); ?>]]></insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="ConnectionPath" isOptional="false" limitSearch="all"><![CDATA[/\s*<\?php\s+(?:require|include|virtual)(?:_once)?\('([^\r\n]*?)'\);\s*\?>\s*/i]]></searchPattern>
+	    <searchPattern paramNames=",ConnectionName," isOptional="true" limitSearch="all"><![CDATA[/'([^']*)Connections\/(\w+)\.(\w+)'/i]]></searchPattern>  
+	</searchPatterns>
+	<quickSearch><![CDATA[<?php]]></quickSearch>
+</participant>

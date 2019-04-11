@@ -1,0 +1,112 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFMAILPARAM</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var SELECTORLIST;
+var theUIObjects;
+var applyType = "dynamic";
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue();
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.inspectTagCommon(tagNodeObj, null, applyType, activeDisplayNode, SELECTORLIST);
+}
+
+function applyTag(tagNodeObj)
+{
+  var curValue = SELECTORLIST.getValue();
+  var activeDisplayNode = dwscripts.findDOMObject("the" + curValue);
+  tagDialog.applyTagCommon(tagNodeObj, null, applyType, activeDisplayNode);
+}
+
+function updateUI()
+{
+  var curDiv = SELECTORLIST.getValue();
+
+  tagDialog.showOnlyThisLayer(curDiv);
+}
+
+function initializeUI()
+{
+	SELECTORLIST = new ListControl("theselector");
+	TYPELIST = new ListControl("thetype");
+	theUIObjects = new Array(SELECTORLIST,TYPELIST);
+
+  tagDialog.populateDropDownList(SELECTORLIST, theSelMailparamCap, theSelMailparamVal, 0);
+  tagDialog.populateDropDownList(TYPELIST, theMailparamTypeCap, theMailparamTypeVal, 1);
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+
+<div name="常规">
+<br />
+类型:
+<select name="theselector" class="selectorList" id="attr:cfmailparam:selector" onChange="updateUI();" editable="false">
+</select>
+<hr width="100%">
+<div id="theheader" style="position:absolute;width:350px;height:115px;z-index:1;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:cfmailparam:name" attname="name" required="true" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">值: </td>
+      <td nowrap="nowrap">
+        <input name="thevalue" type="text" class="basicTextField" id="attr:cfmailparam:value" attname="value" required="true" />
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="thefile" style="position:absolute;width:350px;height:115px;z-index:2;visibility: hidden;left: 0px;top: 55px;">
+  <table border="0" cellspacing="4">
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">文件: </td>
+      <td nowrap="nowrap">
+        <input name="thefile" type="text" class="medTField" id="attr:cfmailparam:file" attname="file" required="true" />&nbsp;
+		    <input type="button" name="browseBtn" value="浏览..." onClick="tagDialog.browseFile('thefile',document.layers[0].document.layers['thefile'],true);focus(this)" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">类型: </td>
+      <td nowrap="nowrap">
+        <select name="thetype" type="text" id="attr:cfmailparam:type" attname="type" editable="true" >
+		</select>
+      </td>
+    </tr>
+	<tr>
+      <td align="right" valign="baseline" nowrap="nowrap">内容 ID: </td>
+      <td nowrap="nowrap">
+        <input name="thecontentid" type="text" class="basicTextField" id="attr:cfmailparam:contentid" attname="contentid" />
+      </td>
+    </tr>
+	<tr>
+      <td align="right" valign="baseline" nowrap="nowrap">布署: </td>
+      <td nowrap="nowrap">
+        <input name="thedisposition" type="text" class="basicTextField" id="attr:cfmailparam:disposition" attname="disposition" />
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+</html>

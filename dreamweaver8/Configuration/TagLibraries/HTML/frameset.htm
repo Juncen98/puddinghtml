@@ -1,0 +1,140 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>FRAMESET</title>
+  
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script>
+var COLORP_BORDER;  
+var TEXT_BORDER; 
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj); 
+  initializeUI(); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj); 
+}
+
+function updateUI(itemName)
+{
+  switch(itemName)
+  {
+    case "borderColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_BORDER,TEXT_BORDER);
+      break;
+    }
+    case "bordercolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_BORDER,TEXT_BORDER);
+      break;
+    }
+  }
+}
+
+function initializeUI()
+{
+  COLORP_BORDER = dwscripts.findDOMObject("borderColorPicker");
+  TEXT_BORDER = dwscripts.findDOMObject("thebordercolor");
+
+  tagDialog.updateColorPicker("colorField",COLORP_BORDER,TEXT_BORDER);
+
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI();">
+
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">行数: </td>
+      <td nowrap="nowrap">
+        <input name="therows" type="text" class="smallNumOrChar" id="attr:frameset:rows" attname="rows" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">列数: </td>
+      <td nowrap="nowrap">
+        <input name="thecols" type="text" class="smallNumOrChar" id="attr:frameset:cols" attname="cols" />
+      </td>
+    </tr>
+	</table>
+</div>
+<div name="浏览器特定的">
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:frameset:frameborder" name="theframeborder" attname="frameborder" truevalue="yes" falsevalue="no" checked="true" /> 显示边框&nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;3+&nbsp;<img src="../../Shared/MM/Images/Netscape.gif" alt="Netscape" align="absmiddle">&nbsp;3+&nbsp;<img src="../../Shared/MM/Images/Opera.gif" alt="Opera" align="absmiddle">&nbsp;4+
+      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" nowrap="nowrap">边框颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="borderColorPicker" value="" onChange="updateUI('borderColorPicker')"> 
+        <input name="thebordercolor" type="text" class="smallTField" id="att:frameset:bordercolor" onBlur="updateUI('bordercolor')" value="" attname="bordercolor">&nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;4+&nbsp;<img src="../../Shared/MM/Images/Netscape.gif" alt="Netscape" align="absmiddle">&nbsp;3+
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">边框宽度: </td>
+      <td nowrap="nowrap">
+        <input name="theborder" type="text" class="smallNumOrChar" id="attr:frameset:border" attname="border" />&nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;4+&nbsp;<img src="../../Shared/MM/Images/Netscape.gif" alt="Netscape" align="absmiddle">&nbsp;3+&nbsp;<img src="../../Shared/MM/Images/Opera.gif" alt="Opera" align="absmiddle">&nbsp;2.1+
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">框架间距: </td>
+      <td nowrap="nowrap">
+        <input name="theframespacing" type="text" class="smallNumOrChar" id="attr:frameset:framespacing" attname="framespacing" />&nbsp;<img src="../../Shared/MM/Images/IE.gif" alt="Internet Explorer" align="absmiddle">&nbsp;3+
+      </td>
+    </tr>
+  </table> 
+</div> 
+<div name="样式表/辅助功能"> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">类: </td>
+      <td nowrap="nowrap">
+        <input name="theclass" type="text" class="basicTextField" id="attr:frameset:class" attname="class" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">ID: </td>
+      <td nowrap="nowrap">
+        <input name="theid" type="text" class="medTField" id="attr:frameset:id" attname="id" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">样式: </td>
+      <td nowrap="nowrap">
+        <input name="thestyle" type="text" class="basicTextField" id="attr:frameset:class" attname="style" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">标题: </td>
+      <td nowrap="nowrap">
+        <input name="thetitle" type="text" class="basicTextField" id="attr:frameset:title" attname="title" />
+      </td>
+    </tr>
+  </table> 
+</div>
+<div name="事件"> 
+  <div name="onLoad"> 
+    <textarea name="theonLoad" attname="onLoad" id="attr:frameset:onload" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+  <div name="onUnload"> 
+    <textarea name="theonUnload" attname="onUnload" id="attr:frameset:onunload" class="contentsField"  wrap="VIRTUAL"></textarea>
+  </div> 
+</div>
+</body>
+</html>

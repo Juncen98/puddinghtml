@@ -1,0 +1,10 @@
+<participant version="5.0">
+	<insertText location="aboveHTML+20"><![CDATA[<cfparam name="@@ParamName@@" default="@@Default@@"<@ if (@@ParamType@@) @> type="@@ParamType@@"<@ endif @>>]]></insertText>
+	<searchPatterns whereToSearch="tag+cfparam">
+    <searchPattern limitSearch="all" isOptional="false"><![CDATA[]]></searchPattern>
+    <searchPattern paramNames="ParamName" limitSearch="attribute+NAME" isOptional="false"><![CDATA[]]></searchPattern>
+    <searchPattern paramNames="Default" limitSearch="attribute+DEFAULT" isOptional="true"><![CDATA[]]></searchPattern>
+    <searchPattern paramNames="ParamType" limitSearch="attribute+TYPE" isOptional="true"><![CDATA[]]></searchPattern>
+	</searchPatterns>
+	<quickSearch>cfparam</quickSearch>
+</participant>

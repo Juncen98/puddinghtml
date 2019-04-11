@@ -1,0 +1,25 @@
+<participant name="Statistics">
+		<translator priority=405>
+			<searchPatterns>
+				<searchPattern><![CDATA[<%=]]></searchPattern>
+				<searchPattern><![CDATA[_]]></searchPattern>
+				<searchPattern paramNames="rs,col"><![CDATA[/[^"]\b(\w+)_(first|last|total)\b[^"]/i]]></searchPattern>
+			</searchPatterns>
+			<translations>
+				<translation whereToSearch="directive" translationType="dynamic data">
+					<openTag>MM_DYNAMIC_CONTENT</openTag>
+					<attributes>
+						<attribute><![CDATA[SOURCE=@@rs@@]]></attribute>
+						<attribute><![CDATA[BINDING="@@col@@ record"]]></attribute>
+					</attributes>
+					<display><![CDATA[{@@rs@@_@@col@@}]]></display>
+					<closeTag>MM_DYNAMIC_CONTENT</closeTag>
+				</translation>
+				<translation whereToSearch="tag+INPUT" limitSearch="attribute+VALUE" translationType="dynamic data">
+					<attributes>
+						<attribute><![CDATA[mmTranslatedValueDynValue="VALUE={@@rs@@_@@col@@}"]]></attribute>
+					</attributes>
+				</translation>
+			</translations>
+		</translator>
+</participant>

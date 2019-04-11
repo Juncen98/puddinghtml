@@ -1,0 +1,21 @@
+<participant version="5.0">
+<insertText location="aboveHTML+30">
+<![CDATA[
+<cfif IsDefined("@@PrimaryKeyParameter@@") AND #@@PrimaryKeyParameter@@# NEQ ""<@ if (@@DeleteIfDefined@@ && (@@PrimaryKeyParameter@@ != @@DeleteIfDefined@@)) @> AND IsDefined("@@DeleteIfDefined@@")<@ endif @>> 
+  <cfquery datasource="@@ConnectionName@@"<@ if (@@UserName@@)@> username="@@UserName@@"<@endif@><@if (@@Password@@) @> password="@@Password@@"<@endif@>>
+    @@SQLStatement@@
+  </cfquery>
+  <@ if (@@RedirectURL@@) @>
+  <cflocation url="@@RedirectURL@@">
+  <@ endif @>
+</cfif>
+]]>
+</insertText>
+
+<searchPatterns whereToSearch="tag+CFIF">
+  <searchPattern paramNames="PrimaryKeyParameter,DeleteIfDefined,ConnectionName,UserName,Password,SQLStatement,RedirectURL" isOptional="false" limitSearch="all"><![CDATA[/<cfif IsDefined\("[^\r\n]*?"\) AND #([^\r\n]*?)# NEQ ""(?: AND IsDefined\("([^\r\n]*?)"\))?>[\S\s]*/i]]>
+  </searchPattern>
+</searchPatterns>
+<quickSearch>DELETE FROM</quickSearch>
+
+</participant>

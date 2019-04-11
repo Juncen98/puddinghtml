@@ -1,0 +1,48 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<!-- Copyright 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<html>
+<head>
+<title>导出表格</title>
+<script src="Export Table.js"></script>
+<script src="../Shared/MM/Scripts/CMN/UI.js"></script>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/displayHelp.js"></SCRIPT>
+<!-- End removal area. -->
+<script language="JavaScript">
+//--------------- LOCALIZEABLE GLOBALS---------------
+var ERROR_No_Save_Path = "请为该文件选择文件路径并输入一个名称。";
+var ERROR_No_Save = "保存文件时出现问题";
+
+OPTIONS_Platforms= new Array("Windows","Mac","UNIX");
+OPTIONS_Delimiters= new Array("Tab","空白键","逗点","分号","冒号");
+
+var LABEL_ExportAs = "表格导出为";
+
+//--------------- END LOCALIZEABLE   ---------------
+</script>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onload="initializeUI()">
+<form>
+  <table cellpadding="4" cellspacing="2">
+    <tr>
+      <td height="28" align="right" valign="baseline" nowrap>定界符:</td>
+      <td height="28" align="left" valign="baseline">
+        <select name="Delimiter" class="oneWordOptionList">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap>换行符:</td>
+      <td align="left" valign="baseline">
+        <select name="WhichPlatform" class="oneWordOptionList">
+        </select>
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

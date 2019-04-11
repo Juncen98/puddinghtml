@@ -1,0 +1,125 @@
+<html>
+<head>
+<link href="mmres://user_interface_reference.css" rel="stylesheet" type="text/css">
+<title>FILEEXISTS</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <div id="Description">
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+      <tr> 
+         <td valign="top" class="name">FILEEXISTS</td>
+         <td valign="top" nowrap class="compatibility">&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+      </tr>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Description</span>
+<p>
+Determines whether a file exists.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Returns</span>
+<p>
+Yes, if the file specified in the parameter exists; No, otherwise.
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Category</span>
+<p>
+System functions, Decision functions
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Function syntax</span><pre>FileExists(absolute_path)
+</pre>    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">See also</span>
+<p>
+DirectoryExists, ExpandPath, GetTemplatePath
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Parameters</span>
+<p>
+
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Usage</span>
+<p>
+To access a file on a remote system, the account (for Windows) or user (for UNIX and Linux) that is running ColdFusion must have permission to access the file, directory, and remote system. For example, if you run ColdFusion MX in the Server Configuration as a Windows service, by default it runs under the local system account, which does not have sufficient privileges to access remote systems. You can change this, however, on the Log On page of the Services Properties dialog box. 
+</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" class="description"><span class="title">Example</span><pre>&lt;h3&gt;FileExists Example&lt;/h3&gt;
+
+&lt;cfset thisPath = ExpandPath(&quot;*.*&quot;)&gt;
+&lt;cfset thisDirectory = GetDirectoryFromPath(thisPath)&gt;
+&lt;cfoutput&gt;
+The current directory is: #GetDirectoryFromPath(thisPath)#
+&lt;cfif IsDefined(&quot;FORM.yourFile&quot;)&gt;
+&lt;cfif FORM.yourFile is not &quot;&quot;&gt;
+&lt;cfset yourFile = FORM.yourFile&gt;
+   &lt;cfif FileExists(ExpandPath(yourfile))&gt;
+   &lt;p&gt;Your file exists in this directory. You entered
+   the correct file name, #GetFileFromPath(&quot;#thisPath#/#yourfile#&quot;)#
+   &lt;cfelse&gt;
+</pre>
+         </td>
+      </tr>
+   </table>
+   </div>
+<div id="ABSOLUTE_PATH">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>  
+<td valign="top" class="name">ABSOLUTE_PATH</td>
+  <td valign="top" nowrap class="compatibility">&nbsp;</td>
+  </tr>
+  <tr>
+  <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+  </tr>
+
+
+<p>An absolute path</p>
+
+  </td>
+  </tr>
+  </table>
+</div>
+
+  </body>
+</html>

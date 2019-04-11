@@ -1,0 +1,35 @@
+<!-- Copyright 2001, 2002, 2003 Macromedia, Inc. All rights reserved. -->
+<html>
+<head>
+<title>±‡º≠±ÍÃ‚</title>
+
+<script language="JavaScript">
+function receiveArguments(newTitle)
+{
+	if (getCurrentValue() == newTitle)
+		return;	//if nothing's changed, no need to set the title (fixes 139861)
+
+	var dom = dw.getDocumentDOM();
+	if (dom)
+		dom.setTitle(newTitle);
+}
+
+function canAcceptCommand()
+{
+	return (dw.getDocumentDOM() != null && dw.getDocumentDOM().documentType != 'XSLT-fragment' && dw.getDocumentDOM().getParseMode() == 'html');
+}
+
+function getCurrentValue()
+{
+	var title = "";
+	var dom = dw.getDocumentDOM(); 
+	if (dom)
+		title = dom.getTitle();	
+	return title;
+}
+</script>
+</head>
+
+<body>
+</body>
+</html>

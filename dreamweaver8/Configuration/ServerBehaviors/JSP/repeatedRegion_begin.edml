@@ -1,0 +1,15 @@
+<participant>
+     <quickSearch><![CDATA[__numRows]]></quickSearch>
+     <insertText location="beforeSelection">
+<![CDATA[
+<% while ((@@rsName@@_hasData)&&(@@loopName@@__numRows-- != 0)) { %>
+]]>
+     </insertText>
+     <searchPatterns whereToSearch="directive">
+       <searchPattern paramNames="rsName,loopName"><![CDATA[/<%\s*while\s*\(\((\w+)_hasData\)\s*&&\s*\((\w+)__numRows--\s*!=\s*0\)\)\s*\{/]]></searchPattern>
+     </searchPatterns>
+     <updatePatterns>
+       <updatePattern paramName="rsName"><![CDATA[/(\b)\w+(_hasData)/]]></updatePattern>
+       <updatePattern paramName="loopName"><![CDATA[/(\b)\w+(__numRows)/]]></updatePattern>
+     </updatePatterns>
+</participant>

@@ -1,0 +1,422 @@
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>CFCHART</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+/************************* GLOBAL VARS **************************/
+
+var FORMATLIST; 
+var PIESLICESTYLELIST; 
+var LABELFORMATLIST; 
+var TIPSTYLELIST; 
+var SERIESPLACEMENTLIST; 
+
+var theUIObjects; 
+
+// Color control elements
+var COLORP_TIPBG,COLORP_BACKGROUND,COLORP_DATABACKGROUND,COLORP_FOREGROUND;  
+var TEXT_TIPBG,TEXT_BACKGROUND,TEXT_DATABACKGROUND,TEXT_FOREGROUND;  
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+  updateColors();
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function updateUI(itemName)
+{
+  switch(itemName)
+  {
+    case "tipbgColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_TIPBG,TEXT_TIPBG,true);
+      break;
+    }
+    case "tipbgcolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_TIPBG,TEXT_TIPBG,true);
+      break;
+    }
+    case "backgroundColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_BACKGROUND,TEXT_BACKGROUND,true);
+      break;
+    }
+    case "backgroundcolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_BACKGROUND,TEXT_BACKGROUND,true);
+      break;
+    }
+    case "databackgroundColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_DATABACKGROUND,TEXT_DATABACKGROUND,true);
+      break;
+    }
+    case "databackgroundcolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_DATABACKGROUND,TEXT_DATABACKGROUND,true);
+      break;
+    }
+    case "foregroundColorPicker":
+    { 
+      tagDialog.updateColorPicker("colorPicker",COLORP_FOREGROUND,TEXT_FOREGROUND,true);
+      break;
+    }
+    case "foregroundcolor":
+    {
+      tagDialog.updateColorPicker("colorField",COLORP_FOREGROUND,TEXT_FOREGROUND,true);
+      break;
+    }
+  }
+}
+
+function updateColors()
+{
+  tagDialog.updateColorPicker("colorField",COLORP_TIPBG,TEXT_TIPBG);
+  tagDialog.updateColorPicker("colorField",COLORP_BACKGROUND,TEXT_BACKGROUND);
+  tagDialog.updateColorPicker("colorField",COLORP_DATABACKGROUND,TEXT_DATABACKGROUND);
+
+  tagDialog.updateColorPicker("colorField",COLORP_FOREGROUND,TEXT_FOREGROUND);
+}
+
+function initializeUI()
+{
+	FORMATLIST = new ListControl("theformat"); 
+  PIESLICESTYLELIST = new ListControl("thepieslicestyle"); 
+  LABELFORMATLIST = new ListControl("thelabelformat"); 
+  TIPSTYLELIST = new ListControl("thetipstyle"); 
+  SERIESPLACEMENTLIST = new ListControl("theseriesplacement"); 
+  
+	theUIObjects  = new Array(FORMATLIST,PIESLICESTYLELIST,LABELFORMATLIST,TIPSTYLELIST,SERIESPLACEMENTLIST); 
+
+  COLORP_TIPBG = dwscripts.findDOMObject("tipbgColorPicker");  
+  TEXT_TIPBG = dwscripts.findDOMObject("thetipbgcolor");
+
+  COLORP_BACKGROUND = dwscripts.findDOMObject("backgroundColorPicker");  
+  TEXT_BACKGROUND = dwscripts.findDOMObject("thebackgroundcolor");
+
+  COLORP_DATABACKGROUND = dwscripts.findDOMObject("databackgroundColorPicker");  
+  TEXT_DATABACKGROUND = dwscripts.findDOMObject("thedatabackgroundcolor");
+
+  COLORP_FOREGROUND = dwscripts.findDOMObject("foregroundColorPicker");  
+  TEXT_FOREGROUND = dwscripts.findDOMObject("theforegroundcolor");  
+
+  updateColors(); 
+  
+  tagDialog.populateDropDownList(FORMATLIST, theChartFormatCap, theChartFormatVal, 0); 
+  tagDialog.populateDropDownList(PIESLICESTYLELIST, theChartPieSliceStyleCap, theChartPieSliceStyleVal, 1); 
+  tagDialog.populateDropDownList(LABELFORMATLIST, theChartLabelformatCap, theChartLabelformatVal, 1); 
+  tagDialog.populateDropDownList(TIPSTYLELIST, theChartTipstyleVal, theChartTipstyleVal, 1); 
+  tagDialog.populateDropDownList(SERIESPLACEMENTLIST, theChartSeriesplacementCap, theChartSeriesplacementVal, 0);   
+}
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="initializeUI()">
+
+<div name="常规"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">文件格式: </td>
+      <td nowrap="nowrap">
+        <select name="theformat" class="oneWordOptionList" id="attr:cfchart:format" attname="format">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">名称: </td>
+      <td nowrap="nowrap">
+        <input name="thename" type="text" class="medTField" id="attr:cfchart:name" attname="name" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">标题: </td>
+      <td nowrap="nowrap"><input name="thetitle" type="text" class="medTField" id="attr:cfchart:title" attname="title" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">样式: </td>
+      <td nowrap="nowrap"><input name="thestyle" type="text" class="medTField" id="attr:cfchart:style" attname="style" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">URL: </td>
+      <td nowrap="nowrap">
+        <input name="theurl" type="text" class="basicTextField" id="attr:cfchart:URL" attname="url" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">缩放前: </td>
+      <td nowrap="nowrap">
+        <input name="thescalefrom" type="text" class="basicTextField" id="attr:cfchart:scalefrom" attname="scalefrom" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">缩放后: </td>
+      <td nowrap="nowrap">
+        <input name="thescaleto" type="text" class="basicTextField" id="attr:cfchart:scaleto" attname="scaleto" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">前景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="foregroundColorPicker" value="" onChange="updateUI('foregroundColorPicker')"> 
+        <input name="theforegroundcolor" type="text" class="smallTField" id="attr:cfchart:foregroundcolor" onBlur="updateUI('foregroundcolor')" value="" attname="foregroundcolor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>   
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">数据背景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="databackgroundColorPicker" value="" onChange="updateUI('databackgroundColorPicker')"> 
+        <input name="thedatabackgroundcolor" type="text" class="smallTField" id="attr:cfchart:databackgroundcolor" onBlur="updateUI('databackgroundcolor')" value="" attname="databackgroundcolor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>   
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">背景颜色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="backgroundColorPicker" value="" onChange="updateUI('backgroundColorPicker')"> 
+        <input name="thebackgroundcolor" type="text" class="smallTField" id="attr:cfchart:backgroundcolor" onBlur="updateUI('backgroundcolor')" value="" attname="backgroundcolor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>   
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">饼图扇形样式: </td>
+      <td nowrap="nowrap">
+        <select name="thepieslicestyle" class="oneWordOptionList" id="attr:cfchart:thepieslicestyle" attname="pieslicestyle">
+        </select>
+      </td>
+    </tr> 
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfchart:showborder" name="theshowborder" attname="showborder" truevalue="yes" falsevalue="no" />
+        显示边框
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfchart:rotated" name="therotated" attname="rotated" truevalue="yes" falsevalue="no" />
+        旋转 
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfchart:sortxaxis" name="thesortxaxis" attname="sortxaxis" truevalue="yes" falsevalue="no" />
+        X 轴排序 
+      </td>
+    </tr>
+  </table> 
+</div> 
+<div name="维数"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">图表高度: </td>
+      <td nowrap="nowrap">
+        <input name="thechartheight" type="text" class="smallNumOrChar" id="attr:cfchart:chartheight" attname="chartheight" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">图表宽度: </td>
+      <td nowrap="nowrap">
+        <input name="thechartwidth" type="text" class="smallNumOrChar" id="attr:cfchart:chartwidth" attname="chartwidth" />
+      </td>
+    </tr>
+  </table> 
+</div> 
+<div name="三维外观"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">X 位移: </td>
+      <td nowrap="nowrap">
+        <input name="thexoffset" type="text" class="basicTextField" id="attr:cfchart:xoffset" attname="xoffset" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">Y 位移: </td>
+      <td nowrap="nowrap">
+        <input name="theyoffset" type="text" class="basicTextField" id="attr:cfchart:yoffset" attname="yoffset" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfchart:rotated" name="theshow3d" attname="show3d" truevalue="yes" falsevalue="no" />
+        显示三维 
+      </td>
+    </tr>
+  </table> 
+</div> 
+<div name="多列数据"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">系列位置: </td>
+      <td nowrap="nowrap">
+        <select name="theseriesplacement" class="oneWordOptionList" id="attr:cfchart:seriesplacement" attname="seriesplacement">
+        </select>
+      </td>
+    </tr> 
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfchart:showlegend" name="theshowlegend" attname="showlegend" truevalue="yes" falsevalue="no" />
+        显示图例 
+      </td>
+    </tr>
+  </table> 
+</div> 
+<div name="提示"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">系列位置: </td>
+      <td nowrap="nowrap">
+        <select name="thetipstyle" class="oneWordOptionList" id="attr:cfchart:tipstyle" attname="tipstyle">
+        </select>
+      </td>
+    </tr> 
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">提示背景色: </td>
+      <td nowrap="nowrap">
+        <input type="mmcolorbutton" name="tipbgColorPicker" value="" onChange="updateUI('tipbgColorPicker')"> 
+        <input name="thetipbgcolor" type="text" class="smallTField" id="attr:cfchart:tipbgcolor" onBlur="updateUI('tipbgcolor')" value="" attname="tipbgcolor">
+        <img src="../../Shared/MM/Images/transparent.gif" width="10" height="1"> <!-- spacer - do not remove --> 
+      </td>
+    </tr>
+  </table> 
+</div> 
+<div name="标记"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">标记大小: </td>
+      <td nowrap="nowrap">
+        <input name="themarkersize" type="text" class="basicTextField" id="attr:cfchart:markersize" attname="markersize" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfchart:showmarkers" name="theshowmarkers" attname="showmarkers" truevalue="yes" falsevalue="no" />
+        显示标记
+      </td>
+    </tr>
+  </table> 
+</div> 
+<div name="标签"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">标签格式: </td>
+      <td nowrap="nowrap">
+        <select name="thelabelformat" class="oneWordOptionList" id="attr:cfchart:labelformat" attname="labelformat">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">标签掩码: </td>
+      <td nowrap="nowrap">
+        <input name="thelabelmask" type="text" class="basicTextField" id="attr:cfchart:labelmask" attname="labelmask" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">X 轴标题: </td>
+      <td nowrap="nowrap">
+        <input name="thexaxistitle" type="text" class="basicTextField" id="attr:cfchart:xaxistitle" attname="xaxistitle" />
+      </td>
+	 </tr>
+	 <tr>
+		 <td align="right" valign="baseline" nowrap="nowrap">X 轴类型: </td>
+	 	 <td nowrap="nowrap">
+        	<input name="thexaxistype" type="text" class="basicTextField" id="attr:cfchart:xaxistype" attname="xaxistype" />
+      	</td>
+	 </tr>
+	 <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">Y 轴标题: </td>
+      <td nowrap="nowrap">
+        <input name="theyaxistitle" type="text" class="basicTextField" id="attr:cfchart:yaxistitle" attname="yaxistitle" />
+      </td>
+    </tr>
+	<tr>
+		<td align="right" valign="baseline" nowrap="nowrap">Y 轴类型: </td>
+	 	 <td nowrap="nowrap">
+        	<input name="theyaxistype" type="text" class="basicTextField" id="attr:cfchart:yaxistype" attname="yaxistype" />
+      	</td>
+	 </tr>
+  </table> 
+</div> 
+<div name="网格线"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">网格线: </td>
+      <td nowrap="nowrap">
+        <input name="thegridlines" type="text" class="basicTextField" id="attr:cfchart:gridlines" attname="gridlines" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfchart:showxgridlines" name="theshowxgridlines" attname="showxgridlines" truevalue="yes" falsevalue="no" />
+        显示 X 网格线
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfchart:showygridlines" name="theshowygridlines" attname="showygridlines" truevalue="yes" falsevalue="no" />
+        显示 Y 网格线
+      </td>
+    </tr>
+  </table> 
+</div> 
+<div name="字体"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">字体名称: </td>
+      <td nowrap="nowrap">
+        <input name="thefont" type="text" class="basicTextField" id="attr:cfchart:font" attname="font" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right" valign="baseline" nowrap="nowrap">字体大小: </td>
+      <td nowrap="nowrap">
+        <input name="thefontsize" type="text" class="smallNumOrChar" id="attr:cfchart:fontsize" attname="fontsize" />
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfchart:fontbold" name="thefontbold" attname="fontbold" truevalue="yes" falsevalue="no" />
+        粗体字体
+      </td>
+    </tr>
+    <tr> 
+      <td valign="baseline" align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input type="checkbox" id="attr:cfchart:fontitalic" name="thefontitalic" attname="fontitalic" truevalue="yes" falsevalue="no" />
+        斜体字体
+      </td>
+    </tr>
+  
+  </table> 
+</div> 
+</body>
+
+</html>

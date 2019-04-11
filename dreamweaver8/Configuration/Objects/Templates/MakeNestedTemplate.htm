@@ -1,0 +1,51 @@
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<!-- Copyright 2002 Macromedia, Inc. All rights reserved. -->
+<title><MMString:LoadString id="insertbar/makeNestedTemplate" /></title>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<script language="javascript" src="../../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<script language="javascript" src="../../Shared/MM/Scripts/CMN/TemplateUtils.js"></script>
+<!-- End removal area. -->
+
+<script language="javascript" >
+
+function isDOMRequired() 
+	{ // Return true, indicating that this object is available in code view.
+	return true;
+	}
+
+function objectTag()
+	{	
+	var curDom = dw.getDocumentDOM();
+	var canSave =  (dw.getFocus() == 'textView' || dw.getFocus(true) == 'html' || dw.getFocus() == 'document') &&
+					dw.canSaveDocumentAsTemplate(curDom) && 
+					curDom && 
+					curDom.getParseMode() == 'html' && 
+					curDom.getFocus() != 'frameset';
+		
+	
+	if (!canSave)
+		alert(MM.CantSaveAsTemplateMessage);
+	else if (curDom.getAttachedTemplate() == "" || curDom.getIsTemplateDocument())
+		alert(MM.MakeInstanceFirst); 
+	else
+		{
+		//Always check if we are saving as template
+		if (curDom)
+			{
+			if (curDom.checkTemplateSyntax())
+				CheckFunkyTemplateNesting();
+			}
+
+		dw.saveDocumentAsTemplate(curDom);
+		}
+		
+   	return "";
+	}
+</script>
+</head>
+
+<body>
+</body>
+</html>

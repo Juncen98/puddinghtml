@@ -1,0 +1,128 @@
+<!-- MENU-LOCATION=NONE -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+
+<HTML>
+<HEAD>
+<!-- Copyright 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+
+<TITLE>记录集</TITLE>
+
+<SCRIPT SRC="../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsServer.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/dwscriptsExtData.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/ServerBehaviorClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/SBDatabaseCallClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/RecordsetDialogClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Common/Scripts/SQLStatementClass.js"></SCRIPT>
+
+<SCRIPT SRC="../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/ConnectionMenu.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/ConnectionTableMenu.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/ConnectionColumnMenu.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/RadioGroup.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/ListMenu.js"></SCRIPT>
+<SCRIPT SRC="../Shared/Controls/Scripts/TextField.js"></SCRIPT>
+
+<SCRIPT SRC="../Shared/MM/Scripts/RsTypeMenu.js"></SCRIPT>
+<SCRIPT SRC="../Shared/UltraDev/Scripts/ParseSimpleSQL.js"></SCRIPT>
+<SCRIPT SRC="../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+
+<SCRIPT SRC="ServerBeh-PHP-SimpRS.js"></SCRIPT>
+
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initializeUI()">
+<form>
+  <TABLE BORDER="0">
+    <TR VALIGN="baseline">
+      <TD ALIGN="right" NOWRAP>名称:</TD>
+      <TD COLSPAN="2" NOWRAP>
+        <input name="RecordsetName" type="text" class="basicTextField" style="width:200px" onBlur="updateUI('RecordsetName','onBlur')">
+        <select name="RsTypeParameter" style="position:absolute; width:80px; visibility:hidden;" wrap="virtual" onChange="updateUI('RsType','onChange')">
+        </select>
+      </TD>
+    </TR>
+	<TR><TD HEIGHT="1"></TD></TR>
+    <TR VALIGN="baseline">
+      <TD ALIGN="right" NOWRAP>连接:</TD>
+      <TD COLSPAN="2" NOWRAP>
+        <select name="ConnectionName" class="connNameList" onChange="updateUI('ConnectionName','onChange')" wrap="virtual">
+        </select>
+        <input type="button" value="定义..." onClick="updateUI('Define','onClick')" name="Define">
+      </TD>
+    </TR>
+    <TR><TD HEIGHT="1"></TD></TR>
+   <TR VALIGN="baseline">
+      <TD ALIGN="right" NOWRAP>表格: </TD>
+      <TD COLSPAN="2" NOWRAP>
+        <select name="TableName" class="connRSTableList" style="width:200px;" onChange="updateUI('TableName','onChange')" wrap="virtual">
+        </select>
+      </TD>
+    </TR>
+    <TR><TD HEIGHT="1"></TD></TR>
+    <TR VALIGN="baseline">
+      <TD ALIGN="right"NOWRAP>列:</TD>
+      <TD WIDTH="1%" NOWRAP>
+	      <input type="radio" name="ColumnType" value="all" checked onClick="updateUI('ColumnType','onClick')">
+		    全部
+        <img src="../Shared/MM/Images/transparent.gif" height="3" width="10">
+	      <input type="radio" name="ColumnType" value="some" onClick="updateUI('ColumnType','onClick')">
+		    选定的:
+      </TD>
+    </TR>
+    <TR>
+      <TD NOWRAP></TD>
+      <TD COLSPAN="2" NOWRAP>
+        <select name="ColumnList" size="5" multiple style="width:250px;" wrap="virtual" onChange="updateUI('ColumnList','onChange')">
+        </select>
+      </TD>
+    </TR>
+    <TR><TD HEIGHT="1"></TD></TR>
+    <TR VALIGN="baseline">
+      <TD ALIGN="right" NOWRAP>筛选: </TD>
+      <TD COLSPAN="2" NOWRAP>
+        <select name="FilterColumn"  style="width:124px" onChange="updateUI('FilterColumn','onChange'); focus(this);">
+          <option value="">无</option>
+        </select>
+        <select name="FilterOperator" style="width:124px" onChange="updateUI('FilterOperator','onChange')">
+          <option value="=" selected>=</option>
+          <option value=">" >&gt;</option>
+          <option value="<" >&lt;</option>
+          <option value=">=" >&gt;=</option>
+          <option value="<=" >&lt;=</option>
+          <option value="<>" >&lt;&gt;</option>
+          <option value="开始于" >begins with</option>
+          <option value="结束于" >ends with</option>
+          <option value="包含" >contains</option>
+        </select>
+      </TD>
+    </TR>
+    <TR><TD HEIGHT="1"></TD></TR>
+    <TR VALIGN="baseline">
+      <TD NOWRAP></TD>
+      <TD COLSPAN="2" NOWRAP>
+        <select name="FilterParameter"  style="width:124px" onChange="updateUI('FilterParameter','onChange')">
+          <option value="" selected>***</option>
+        </select>
+        <input type="text" name="FilterParameterValue" style="width:124px" onBlur="updateUI('FilterParameterValue','onBlur')">
+      </TD>
+    </TR>
+    <TR><TD HEIGHT="1"></TD></TR>
+    <TR VALIGN="baseline">
+      <TD ALIGN="right" NOWRAP>排序:</TD>
+      <TD COLSPAN="2" NOWRAP>
+        <select name="SortColumn"  style="width:124px" onChange="updateUI('SortColumn','onChange')">
+           <option value="">无</option>
+        </select>
+        <select name="SortDirection" style="width:124px" onChange="updateUI('SortDirection','onChange')">
+          <option value="ASC" selected>升序</option>
+          <option value="DESC">降序</option>
+        </select>
+      </TD>
+    </TR>
+  </TABLE>
+</form>
+</BODY>
+</HTML>
+

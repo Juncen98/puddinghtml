@@ -1,0 +1,63 @@
+<!-- Copyright 2001, 2002, 2003, 2004 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>CFTIMER</title>
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Common/Scripts/ListControlClass.js"></script>
+<script src="loc_strings.js"></script>
+<script src="strings.js"></script>
+<script>
+
+/************************* GLOBAL VARS **************************/
+
+var TYPELIST; 
+var theUIObjects; 
+
+/****************************************************************/
+
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj, theUIObjects); 
+}
+
+function initializeUI()
+{
+  TYPELIST = new ListControl("thetype"); 
+
+  theUIObjects  = new Array(TYPELIST); 
+
+  tagDialog.populateDropDownList(TYPELIST, theSelTimerCap, theSelTimerVal, 1); 
+}
+
+</script>
+<link href="../../fields.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="initializeUI();">
+<div name="CFTIMER 标签"> 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">标签: </td>
+      <td nowrap="nowrap"><input name="thelabel" type="text" class="medTField" id="attr:cftimer:label" attname="name" required="true" />
+
+      </td>
+    </tr>
+    <tr>
+      <td valign="baseline" align="right" nowrap="nowrap">类型:</td>
+      <td nowrap="nowrap">
+          <select name="thetype" class="dataTypeList" id="attr:cftimer:type" attname="type" editable="false">
+          </select>
+</td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

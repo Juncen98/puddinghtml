@@ -1,0 +1,117 @@
+<!-- Copyright 2001-2002 Macromedia, Inc. All rights reserved. -->
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>BoundColumn</title>
+  <link rel="stylesheet" href="../../fields.css">
+<script src="../../Shared/Common/Scripts/dwscripts.js"></script>
+<script src="../../Shared/Common/Scripts/tagDialogsCmn.js"></script>
+<script src="../../Shared/Controls/Scripts/MultiStateCheckBox.js"></script>
+<script>
+var theReadOnlyMultiStateCheckBox = new MultiStateCheckBox("thereadonly");
+var theVisibleMultiStateCheckBox = new MultiStateCheckBox("thevisible");
+
+
+function initializeUI() {
+  theReadOnlyMultiStateCheckBox.initializeUI(); 
+  theVisibleMultiStateCheckBox.initializeUI(); 
+}
+  
+function inspectTag(tagNodeObj)
+{
+  tagDialog.inspectTagCommon(tagNodeObj); 
+}
+
+function applyTag(tagNodeObj)
+{
+  tagDialog.applyTagCommon(tagNodeObj); 
+}
+
+function updateUI(itemName)
+{
+  switch(itemName)
+  {
+    case "readonly":
+	{
+	  theReadOnlyMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+    case "visible":
+	{
+	  theVisibleMultiStateCheckBox.updateUI(); 
+	  break; 
+	} 	
+  }
+}
+
+</script>
+
+</head>
+
+<body onLoad="initializeUI()">
+<div name="常规"> 
+  <input type="hidden" name="therunat" attname="runat" value="server" required="true" /> 
+  <table border="0" cellspacing="4">
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">数据字段: </td>
+      <td nowrap="nowrap">
+        <input name="theDataField" TYPE="text" class="basicTextField" id="aspnet:boundcolumn:datafield" attname="DataField" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">数据格式字符串: </td>
+      <td nowrap="nowrap">
+        <input name="thedataformatstring" TYPE="text" class="basicTextField" id="aspnet:boundcolumn:DataFormatString" attname="dataformatstring" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">页脚文本: </td>
+      <td nowrap="nowrap">
+        <input name="thefootertext" TYPE="text" class="basicTextField" id="aspnet:boundcolumn:FooterText" attname="footertext" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">页眉图像 URL: </td>
+      <td nowrap="nowrap">
+        <input name="theheaderimageurl" TYPE="text" class="basicTextField" id="aspnet:boundcolumn:HeaderImageURL" attname="headerimageurl" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">页眉样式: </td>
+      <td nowrap="nowrap">
+        <input name="theheaderstyle" TYPE="text" class="basicTextField" id="aspnet:boundcolumn:HeaderStyle" attname="headerstyle" />
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">标题文本: </td>
+      <td nowrap="nowrap">
+        <input name="theheadertext" TYPE="text" class="basicTextField" id="aspnet:boundcolumn:HeaderText" attname="headertext" />
+      </td>
+    </tr>        
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">排序表达式: </td>
+      <td nowrap="nowrap">
+        <input name="thesortexpression" TYPE="text" class="basicTextField" id="aspnet:boundcolumn:sortexpression" attname="sortexpression" />
+      </td>
+    </tr>     
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="thereadonly" attname="readonly" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('readonly');" > 
+        只读
+      </td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+      <td nowrap="nowrap">
+        <input name="thevisible" attname="visible" type="image" value="disabled" truevalue="true" falsevalue="false" src="../../Shared/MM/Images/checkbox_dis.gif" width="13" height="13" onClick="updateUI('visible');" > 
+        可见
+      </td>
+    </tr> 
+  </table>
+</div>
+</body>
+</html>

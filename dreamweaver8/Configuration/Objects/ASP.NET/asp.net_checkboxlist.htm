@@ -1,0 +1,60 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<html>
+<head>
+<title>ASP:CheckBoxList 控件</title>
+<SCRIPT SRC="../../Shared/MM/Scripts/CMN/UI.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/MM/Scripts/flashObjects.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dwscripts.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/ListControlClass.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Common/Scripts/dotNetUtils.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/UltraDev/Scripts/ssDocManager.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/RecordsetMenu.js"></SCRIPT>
+<SCRIPT SRC="../../Shared/Controls/Scripts/RecordsetColumnMenu.js"></SCRIPT>
+<SCRIPT SRC="../../TagLibraries/ASPNet/strings.js"></SCRIPT>
+<SCRIPT SRC="../../TagLibraries/ASPNet/loc_strings.js"></SCRIPT>
+<script language="javascript" src="../../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<SCRIPT SRC="asp.net_checkboxlist.js"></SCRIPT>
+<SCRIPT>
+// Copyright 2001, 2002, 2003 Macromedia, Inc. All rights reserved.
+//--------------- LOCALIZEABLE GLOBALS---------------
+
+var MENU_None = "无";
+
+//--------------- END LOCALIZEABLE   ---------------
+</SCRIPT>
+</head>
+
+<body onLoad="initializeUI()">
+<form name="theForm">
+  <table border="0" cellpadding="1" cellspacing="4">
+    <tr> 
+      <td nowrap align="right">ID:</td>
+      <td colspan="2"><input name="idField" type="text" id="idField" style="width:100px"  onBlur="updateUI('idField')"></td>
+    </tr>
+    <tr>
+      <td nowrap align="right">工具提示:</td>
+      <td colspan="2" nowrap><input name="toolTip" type="text" id="idField" style="width:200px"  ></td>
+    </tr>
+    <tr> 
+      <td nowrap align="right">数据集:</td>
+      <td colspan="2" nowrap><select name="rsName" id="rsName" style="width:200px"></select></td>
+    </tr>
+    <tr>
+      <td nowrap align="right">获取标签自: </td>
+      <td colspan="2"><select name="labelColumn" id="labelColumn" style="width:200px"></select></td>
+    </tr>
+    <tr> 
+      <td nowrap align="right">获取值自: </td>
+      <td colspan="2"><select name="valueColumn" id="valueColumn" style="width:200px"></select></td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>访问键:</td>
+      <td><input type="text" name="aKey" style="width:35px" value="">
+      </td>
+      <td nowrap><input type="checkbox" name="postBack" value="checkbox">自动回发&nbsp;      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

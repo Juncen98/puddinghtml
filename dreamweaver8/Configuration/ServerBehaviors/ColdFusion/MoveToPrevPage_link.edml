@@ -1,0 +1,12 @@
+<participant version="5.0">
+  <insertText location="nodeAttribute+href" nodeParamName="a__tag">
+    <![CDATA[<cfoutput>#CurrentPage#?PageNum_@@RecordsetName@@=#Max(DecrementValue(PageNum_@@RecordsetName@@),1)#<@ if (@@AddQueryString@@) @>#QueryString_@@RecordsetName@@#<@ endif @>@@Parameters@@</cfoutput>]]>
+  </insertText>
+  <searchPatterns whereToSearch="tag+a">
+    <searchPattern paramNames="RecordsetName,AddQueryString,Parameters" isOptional="false" limitSearch="attribute+href">
+      <![CDATA[/(?:<cfoutput>)*\s*#CurrentPage#\?PageNum_([^\r\n]*?)=#Max\(DecrementValue\(PageNum_[^\r\n]*?\),1\)#(?:#(QueryString)_[^\r\n]*?#\s*)?([^\r\n]*?)\s*(?:<\/cfoutput>)*/i]]>
+    </searchPattern>
+  </searchPatterns>
+  <delete deleteType="tagOnly" />
+  <quickSearch>=#Max(DecrementValue(PageNum_</quickSearch>
+</participant>

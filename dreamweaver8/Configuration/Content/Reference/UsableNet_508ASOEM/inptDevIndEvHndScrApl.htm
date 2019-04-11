@@ -1,0 +1,209 @@
+<html xmlns:un="http://usablenet.com/namespaces/508_rules">
+   <link rel="stylesheet" href="josh.css">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Detailed View for rule: Use device-independent event handlers</title>
+      <!--
+  508/W3C Accessibility Suite OEM V2 for Macromedia Dreamweaver
+  (C) Copyright 2001-2005 UsableNet Inc. All rights reserved.
+  -->
+   </head>
+   <body bgcolor="#ffffff">
+      <div id="Description">
+         <table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">
+            <tr>
+               <td valign="top" nowrap="true" class="name">Use device-independent event handlers</td>
+               <td valign="top" nowrap="true" class="compatibility">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="divider"><img src="dwres:18084" width="100%" height="1"></td>
+            </tr>
+            <tr>
+               <td valign="top" align="right" nowrap="true" colspan="2" class="requirements">WAI / WCAG 1.0 Priority 2 checkpoint 6.4</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Description</b><br>
+                  
+                  
+                  <p>
+                     The page contains handlers for some mouse event for which there is no
+                     corresponding keyboard event handler.
+                     	 
+                  </p>
+                  
+                  <p>
+                     In particular:
+                     
+                  </p>
+                  
+                  <ul>
+                     
+                     <li> the event handler <strong>ondblclick</strong> has no
+                        corresponding, in HTML 4.01, keyboard event; therefore it should not
+                        be used.   
+                        
+                     </li>
+                     
+                     <li> the event handler <strong>onmousedown</strong> has to be
+                        paired with <strong>onkeydown</strong>;
+                        
+                     </li>
+                     
+                     <li> the event handler <strong>onmouseup</strong> has to be
+                        paired with <strong>onkeyup</strong>;
+                        
+                     </li>
+                     
+                     <li> the event handler <strong>onclick</strong> has to be
+                        paired with <strong>onkeypress</strong>;
+                        
+                     </li>
+                     
+                     <li> the event handler <strong>onmouseover</strong> has to be paired
+                        with <strong>onfocus</strong> on links and most form controls
+                        (where it is usually used to implement rollovers);
+                        on text fields within forms, <strong>onclick</strong> should be
+                        <strong>replaced</strong> by <strong>onfocus</strong>, since
+                        onfocus will give the focus to the text fields both in cases where
+                        the user clicks the mouse or control-tabs to that field.
+                        
+                     </li>
+                     
+                     <li> the event handler <strong>onmouseout</strong> should be paired
+                        with <strong>onblur</strong>.
+                        
+                     </li>
+                     
+                  </ul>
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>How to fix</b>
+                  
+                  
+                  <p>
+                     Inspect all of the event handlers defined in the page. Consider
+                     only those handlers that either change the page content (by adding or
+                     removing text, images, layers, or other objects) or the navigation
+                     options (menus, new windows, navbars, links).      
+                     
+                  </p>
+                  
+                  <p>
+                     If any of these are specified using device dependent events
+                     (i.e. ONDBLCLICK, ONCLICK, ONKEYPRESS, ONKEYDOWN, ONMOUSEDOWN,
+                     ONKEYUP, ONMOUSEUP, ONMOUSEOVER, ONMOUSEOUT, ONFOCUS, ONBLUR) then
+                     they should be paired with event handlers for the other device as well.
+                     
+                  </p>
+                  
+                  <p>
+                     In particular:
+                     
+                  </p>
+                  
+                  <ul>
+                     
+                     <li> in links and most form controls, pair ONCLICK with ONKEYPRESS, and
+                        viceversa.  This can be achieved by
+                        defining the one that is missing with the same script used for the
+                        existing one;
+                        
+                     </li>
+                     
+                     <li>  on text fields within forms, replace ONCLICK with ONFOCUS   </li>
+                     
+                     <li> never use ONDBLCLICK, as there is no keyboard equivalent handler.</li>
+                     
+                     <li> always pair ONKEYDOWN with ONMOUSEDOWN;  </li>
+                     
+                     <li> always pair ONKEYUP with ONMOUSEUP;  </li>
+                     
+                     <li> always pair ONMOUSEOVER with ONFOCUS;</li>
+                     
+                     <li> always pair ONMOUSEOUT with ONBLUR.   </li>
+                     
+                  </ul>
+                  
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="clearseparation">&nbsp;</td>
+            </tr>
+            <tr>
+               <td valign="top" colspan="2" class="description"><b>Issue Explanation</b><br>
+                  
+                  
+                  <p>
+                     An event handler is a script that is invoked when a certain event
+                     occurs (e.g, the mouse moves, a key is pressed, the document is
+                     loaded, etc.). Event handlers are attached to HTML elements
+                     via event handler attributes (like "ONMOUSEDOWN", "ONCLICK",
+                     "ONKEYUP", etc.). 
+                     
+                  </p>
+                  
+                  
+                  <p>
+                     Often the effect of an event handler is purely decorative:
+                     highlighting some text, or an image, or changing the color of some
+                     portion of the page. In other cases, however, the event handler performs
+                     more important activities: it validates the inputs to a form; shows
+                     a rollover menu; opens up a new window; etc. <br>
+                     In all of these cases, where the content being provided changes or the
+                     navigation options offered to the visitor change, the event handler
+                     must be made fully accessible to offer the same changes to
+                     users of assistive or limited technology.
+                     
+                  </p>
+                  
+                  <p>
+                     If an event handler refers only to a specific device (like the mouse,
+                     as is the case with "ONMOUSEOVER" for example) then for a browser user
+                     with no mouse (for example a user with motor disabilities or a
+                     driver having to view the website on a PC installed in a car) would
+                     not be able to experience the effect of the handler.
+                     
+                  </p>
+                  
+                  <p>
+                     According to the W3C, <strong>device independence</strong> means (<strong>Web Content Accessibility Guidelines 1.0</strong>
+                     [http://www.w3.org/TR/WCAG10/#device-independent]
+                     ): 
+                     
+                  </p>
+                  
+                  <blockquote>
+                     Users must be able to interact with a user agent (and the document it
+                     renders) using the supported input and output devices of their choice
+                     and according to their needs. Input devices may include pointing
+                     devices, keyboards, Braille devices, head wands, microphones, and
+                     others. Output devices may include monitors, speech synthesizers, and
+                     Braille devices. 
+                     
+                  </blockquote>
+                  
+                  
+               </td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

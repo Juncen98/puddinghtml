@@ -1,0 +1,48 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<HTML>
+<HEAD>
+<!-- Copyright 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<TITLE>图像标签辅助功能属性</TITLE>
+
+<script src="ImageOptions.js"></script>
+<SCRIPT LANGUAGE="javascript" SRC="../Shared/MM/Scripts/CMN/string.js"></SCRIPT>
+<script language="javascript" src="../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY onLoad="initUI()">
+<form name="form1" method="post" action="">
+  <table border="0" cellpadding="2" cellspacing="4">
+    <tr>
+      <td align="right" valign="middle" nowrap>替换文本:</td>
+      <td>
+        <select name="alt" editable="true" edittext="" style="width: 100px">
+          <option value="noAltTag" selected name="noAltTag"></option>
+          <option value="empty" name="empty">&lt;Empty&gt;</option>
+        </select>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td align="right" valign="middle" nowrap>详细说明:</td>
+      <td valign="baseline" nowrap>
+        <input name="longdesc" type="text" class="basicTextField" style="width:200px" value="http://">
+      </td>
+      <td>
+        <input type="image" name="browseBtn" alt="浏览" src="../Shared/MM/Images/folder.gif" onClick="browseForURL()">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="3">如果在插入图像时不想输入此信息， 
+	<a href="" onmousedown="dw.showPreferencesDialog('Accessibility')">请更改“辅助功能”首选参数。</a>
+      </td>
+     </tr>
+    </table>
+   </form>
+</BODY>
+
+</HTML>

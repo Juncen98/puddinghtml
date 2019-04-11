@@ -1,0 +1,11 @@
+<participant version="6.0">
+	<insertText location="beforeSelection">
+	  <![CDATA[<?php if ($totalRows_@@RecordsetName@@ > 0) { // Show if recordset not empty ?>]]>
+	</insertText>
+	<searchPatterns whereToSearch="directive">
+		<searchPattern paramNames="RecordsetName" isOptional="false" limitSearch="all">
+		  <![CDATA[/if \(\$totalRows_([^\r\n]*?) >\s*0\) \{ \/\/ Show if recordset not empty (?=\r\n|\r|\n|\?>)/i]]>
+		</searchPattern>
+	</searchPatterns>
+	<quickSearch>($totalRows_</quickSearch>
+</participant>
