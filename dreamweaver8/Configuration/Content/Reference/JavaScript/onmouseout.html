@@ -1,19 +1,0 @@
-<html>
-<link rel="stylesheet" href="josh.css">
-<body bgcolor="#FFFFFF">
-		<div id="Description">			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="main">				<tr><td valign="top" class="name">onmouseout, onmouseover</td><td valign="top" nowrap class="compatibility">NN <span class="emphasis">2</span> IE <span class="emphasis">3</span> DOM <span class="emphasis">2</span>&nbsp;&nbsp;</td>				</tr>				<tr>					<td valign="top" nowrap class="usage"><p class="literal"></p>					</td><td valign="top" nowrap class="requirements">Bubbles: Yes; Cancelable: Yes&nbsp;&nbsp;</td>				</tr>				<tr>					<td valign="top" colspan="2" class="description"><p>Fire when the user rolls the mouse pointer into(<span class="literal">onmouseover</span>) or out of(<span class="literal">onmouseout</span>) an element's space(including border or padding, but not margin). Each event fires justonce per entry and exit (except in Navigator 4 for Windows, in whichthe event fires repeatedly, similar to<span class="literal">onmousemove</span>).</p>							</td>						</tr>				<tr>
-					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
-				</tr>
-						<tr>							<td colspan="2"><p>			Because the <span class="literal">onmouseout</span> eventdoesn't officially fire until another element in thewindow fires its <span class="literal">onmouseover</span> event (whether youhave a handler for it or not), the <span class="literal">onmouseout</span>event may not fire if the target element is at the edge of a windowor frame, and the user whisks the pointer outside of the currentframe without the first frame's<span class="literal">body</span> element ever receiving the<span class="literal">onmouseover</span> event. If you use<span class="literal">onmouseout</span> events to restore image swaps, the usercould see a stuck image. Leave sufficient space around your swappableimages to account for this behavior.</p>							</td>						</tr>				<tr>
-					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
-				</tr>
-						<tr>							<td colspan="2"><p>			An <span class="literal">event</span> object created from a mouse event hasnumerous properties filled with details such as coordinates of theclick, the mouse button used, whether any modifier keys were helddown during the event, and where the incoming pointer came from oroutgoing pointer has gone. The event handler function can inspectthese properties as needed.</p>							</td>						</tr>				<tr>
-					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
-				</tr>
-						<tr>							<td colspan="2"><p>			Note that in Netscape 6, mouse events can fire on child text nodes ofcontainer-type elements, meaning that the eventobject's <span class="literal">target</span> propertyreferences the node, rather than the element. See Chapter 6 for details about the impact of this W3CDOM-endorsed behavior and cross-browser solutions.</p>							</td>						</tr>				<tr>
-					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>
-				</tr>
-						<tr>							<td colspan="2"><p>			Although these events have been supported in one form or anothersince the early days of scriptable browsers, only modern browsers canfire the event on virtually any other rendered element. For olderbrowsers, the events were limited to <span class="literal">a</span> and<span class="literal">area</span> elements (where <span class="literal">a</span> elementssurrounded images to be swapped).</p>							</td>				</tr>
-				<tr>					<td valign="top" colspan="2" class="CLEARSEPARATION">&nbsp;</td>				</tr>				<tr>					<td valign="top" colspan="2" class="typicaltargets"><span class="title">Typical Targets</span></td>				</tr>				<tr>					<td colspan="2"><p>			All rendered elements, except as noted above.</p>					</td>				</tr>			</table>		</div>
-</body>
-</html>

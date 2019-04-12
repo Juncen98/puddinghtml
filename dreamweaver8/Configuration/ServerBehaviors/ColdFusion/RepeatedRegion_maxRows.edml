@@ -1,7 +1,0 @@
-<participant version="5.0">
-	<insertText location="aboveHTML+60"><![CDATA[<@ if (@@PageSize@@) @><cfset MaxRows_@@RecordsetName@@=@@PageSize@@><@ endif @>]]></insertText>
-	<searchPatterns whereToSearch="tag+CFSET">
-		<searchPattern paramNames="RecordsetName,PageSize" isOptional="false" limitSearch="all"><![CDATA[/(?:\s*<cfset MaxRows_([^\r\n]*?)=([^\r\n]*?)>\s*)/i]]></searchPattern>
-	</searchPatterns>
-	<quickSearch>MaxRows_</quickSearch>
-</participant>

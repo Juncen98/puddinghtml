@@ -1,8 +1,0 @@
-<participant version="6.0">
-	<insertText location="aboveHTML+65"><![CDATA[<@ if (@@AddQueryString@@) @><cfset QueryString_@@RecordsetName@@=Iif(CGI.QUERY_STRING NEQ "",DE("&"&XMLFormat(CGI.QUERY_STRING)),DE(""))><@ endif @>
-]]></insertText>
-	<searchPatterns whereToSearch="tag+CFSET">
-		<searchPattern paramNames="AddQueryString,RecordsetName" isOptional="false" limitSearch="all"><![CDATA[/(?:<cfset (QueryString)_([^\r\n]*?)=Iif\(CGI\.QUERY_STRING NEQ "",DE\("&"&(?:XmlFormat\()?CGI\.QUERY_STRING(?:\))?\),DE\(""\)\)>)/i]]></searchPattern>
-	</searchPatterns>
-	<quickSearch>=Iif(CGI.QUERY_STRING NEQ "",DE</quickSearch>
-</participant>

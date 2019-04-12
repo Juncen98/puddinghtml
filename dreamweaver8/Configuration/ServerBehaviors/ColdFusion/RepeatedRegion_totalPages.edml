@@ -1,7 +1,0 @@
-<participant version="5.0">
-	<insertText location="aboveHTML+60"><![CDATA[<@ if (@@PageSize@@) @><cfset TotalPages_@@RecordsetName@@=Ceiling(@@RecordsetName@@.RecordCount/MaxRows_@@RecordsetName@@)><@ endif @>]]></insertText>
-	<searchPatterns whereToSearch="tag+CFSET">
-		<searchPattern paramNames="RecordsetName" isOptional="false" limitSearch="all"><![CDATA[/<cfset TotalPages_([^\r\n]*?)=Ceiling\([^\r\n]*?\.RecordCount\/MaxRows_[^\r\n]*?\)>/i]]></searchPattern>
-	</searchPatterns>
-	<quickSearch>.RecordCount/MaxRows_</quickSearch>
-</participant>

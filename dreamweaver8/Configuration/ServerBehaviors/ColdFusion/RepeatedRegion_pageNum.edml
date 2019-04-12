@@ -1,7 +1,0 @@
-<participant version="5.0">
-	<insertText location="aboveHTML+30"><![CDATA[<@ if (@@PageSize@@) @><cfparam name="PageNum_@@RecordsetName@@" default="1"><@ endif @>]]></insertText>
-	<searchPatterns whereToSearch="tag+cfparam">
-		<searchPattern paramNames="RecordsetName" isOptional="false" limitSearch="all"><![CDATA[/(?:\s*<cfparam name="PageNum_([^\r\n]*?)" default="1">\s*)/i]]></searchPattern>
-	</searchPatterns>
-	<quickSearch>name="PageNum_</quickSearch>
-</participant>

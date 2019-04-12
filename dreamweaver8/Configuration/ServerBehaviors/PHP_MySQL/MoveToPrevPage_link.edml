@@ -1,8 +1,0 @@
-<participant version="6.0">
-	<insertText location="nodeAttribute+href" nodeParamName="a__tag"><![CDATA[<?php printf("%s?pageNum_@@RecordsetName@@=%d%s", $currentPage, max(0, $pageNum_@@RecordsetName@@ - 1), $queryString_@@RecordsetName@@); ?>]]></insertText>
-	<searchPatterns whereToSearch="tag+a">
-		<searchPattern paramNames="RecordsetName" isOptional="false" limitSearch="attribute+href"><![CDATA[/\s*<\?php printf\("%s\?pageNum_([^\r\n]*?)=%d%s", \$currentPage, max\(0, \$pageNum_[^\r\n]*? - 1\), \$queryString_[^\r\n]*?\); \?>\s*/i]]></searchPattern>
-	</searchPatterns>
-	<delete deleteType="tagOnly" />
-	<quickSearch>printf("%s?pageNum_</quickSearch>
-</participant>

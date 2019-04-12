@@ -1,9 +1,0 @@
-<participant>
-     <insertText location="nodeAttribute" nodeParamName="radioNode">
-<![CDATA[ <cfif (<@if (@@expression1@@.match(/^[\W\d]/) == null)@>isDefined("@@expression1@@") AND <@endif@>@@expression2@@ EQ @@expression1@@)>@@selected@@</cfif>]]>
-     </insertText>
-     <searchPatterns whereToSearch="tag+option">
-       <searchPattern paramNames="expression2,expression1,selected" limitSearch="tagOnly"><![CDATA[/\s<cfif\s*\((?:isDefined\("[^\r\n]*?"\)\s*AND\s*)?([^\r\n]*?)\s*EQ\s*([^\r\n]+?)\s*\)>([^\r\n]*?)<\/cfif>/i]]></searchPattern>
-     </searchPatterns>
-</participant>
-
