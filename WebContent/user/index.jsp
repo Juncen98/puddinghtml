@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html>
 
 	<head>
@@ -26,66 +30,66 @@
 		
 		
 	</script>
-	<script>
-	$(document).ready(function()
-	{
-		$("#register1").find("form").submit(function(e)
-		{
-			e.preventDefault();
-			var json={}
-			var username=$(this).find("#username");
-			if(username.val()=="")
-			{
-				username.focus();
-				return;
-			}
-			else
-				json["username"]=username.val();
-			var password=$(this).find("#password");
-			if(password.val()=="")
-			{
-				password.focus();
-				return;
-			}
-			else
-				json["password"]=password.val();
-			var password1=$(this).find("#password1");
-			
-			if(password1.val()=="")
-			{
-				password1.focus();
-				return;
-			}
-			else
-				json["password1"]=password1.val();
-			if(json["password1"]!=json["password"])
-			{
-				alert("两次输入密码不一致，请重新输入！");
-				return;
-			}
-			var email=$(this).find("#email");
-			if(email.val()=="")
-			{
-				email.focus();
-				return;
-			}
-			else
-				json["email"]=email.val();
-			
-			if(confirm("提交后不可修改，请确认是否提交"))
-			{
-		
-				alert("yeah!");
-			}
-		});
-			
-		
-		
-			
-	});
+ 	<script >
+ 	$(document).ready(function()
+ 			{
+ 				$("#register1").find("form").submit(function(e)
+ 				{
+ 					e.preventDefault();
+ 					var json={}
+ 					var username=$(this).find("#username");
+ 					if(username.val()=="")
+ 					{
+ 						username.focus();
+ 						return;
+ 					}
+ 					else
+ 						json["username"]=username.val();
+ 					var password=$(this).find("#password");
+ 					if(password.val()=="")
+ 					{
+ 						password.focus();
+ 						return;
+ 					}
+ 					else
+ 						json["password"]=password.val();
+ 					var password1=$(this).find("#password1");
+ 					
+ 					if(password1.val()=="")
+ 					{
+ 						password1.focus();
+ 						return;
+ 					}
+ 					else
+ 						json["password1"]=password1.val();
+ 					if(json["password1"]!=json["password"])
+ 					{
+ 						alert("两次输入密码不一致，请重新输入！");
+ 						return;
+ 					}
+ 					var email=$(this).find("#email");
+ 					if(email.val()=="")
+ 					{
+ 						email.focus();
+ 						return;
+ 					}
+ 					else
+ 						json["email"]=email.val();
+ 					
+ 					if(confirm("提交后不可修改，请确认是否提交"))
+ 					{
+ 						console.log(json);
+ 						$.post("../js/register.jsp",json);
+ 						alert("注册成功");
+ 					}
+ 				});
+ 					
+ 				
+ 				
+ 					
+ 			});
 
-
-</script>
+	</script>
 	</head>
 	<style>
 		.row {
@@ -313,22 +317,22 @@
 	                    <h1 class="text-center">注册</h1>
 	                </div>
 	                <div class="modal-body" id="register1">
-	                    <form class="form-group" action="">
+	                    <form class="form-group" action="" method="post">
 	                        <div class="form-group">
 	                            <label for="">用户名</label>
-	                            <input id="username" class="form-control" type="text" placeholder="6-15位字母或数字">
+	                            <input  name="username" id="username" class="form-control" type="text" placeholder="6-15位字母或数字"  value="${param.username}">
 	                        </div>
 	                        <div class="form-group">
 	                            <label for="">密码</label>
-	                            <input id="password" class="form-control" type="password" placeholder="至少6位字母或数字">
+	                            <input id="password" class="form-control" type="password" placeholder="至少6位字母或数字" value="${param.password}">
 	                        </div>
 	                        <div class="form-group">
 	                            <label for="">再次输入密码</label>
-	                            <input id="password1" class="form-control" type="password" placeholder="至少6位字母或数字">
+	                            <input id="password1" class="form-control" type="password" placeholder="至少6位字母或数字" value="${param.password1}">
 	                        </div>
-	                        <div class="form-group">
+	                       <div class="form-group">
 	                            <label for="">邮箱</label>
-	                            <input  id="email" class="form-control" type="email" placeholder="例如:***@***.com">
+	                            <input  id="email" class="form-control" type="email" placeholder="例如:***@***.com"value="${param.email}">
 	                        </div>
 	                        <div class="text-right">
 	                            <button class="btn btn-primary" type="submit" style="background-color: #3a8cd2b3;border: 0px solid transparent;">提交</button>
