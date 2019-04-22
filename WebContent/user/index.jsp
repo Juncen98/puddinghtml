@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.sql.*" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -81,13 +82,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  						console.log(json);
  						$.post("../js/register.jsp",json);
  						alert("注册成功");
+ 						location.reload();
+ 						
  					}
- 				});
+ 					});
+ 				
+ 				
+ 				
+ 				
+ 				$("#login1").find("form").submit(function(e)
+ 		 				{
+ 		 					e.preventDefault();
+ 		 					var json={}
+ 		 					var loginid=$(this).find("#loginid");
+ 		 					
+ 		 					if(loginid.val()=="")
+ 		 					{
+ 		 						loginid.focus();
+ 		 						return;
+ 		 					}
+ 		 					else
+ 		 						json["loginid"]=loginid.val();
+ 		 					var loginpassword=$(this).find("#loginpassword");
+ 		 					if(loginpassword.val()=="")
+ 		 					{
+ 		 						loginpassword.focus();
+ 		 						return;
+ 		 					}
+ 		 					else
+ 		 						json["loginpassword"]=loginpassword.val();
+ 		 					
+ 		 				if(confirm("确认信息无误？"))
+ 		 					{
+ 		 						console.log(json);
+ 		 						$.post("../js/login.jsp",json);
+ 		 						location.reload();
+ 		 					}
+ 		 				});
+ 				
  					
  				
  				
  					
  			});
+ 	
+ 	
 
 	</script>
 	</head>
@@ -359,15 +398,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                <div class="modal-title">
 	                    <h1 class="text-center">登录</h1>
 	                </div>
-	                <div class="modal-body">
+	                <div class="modal-body" id="login1">
 	                    <form class="form-group" action="">
                             <div class="form-group">
                                 <label for="">用户名</label>
-                                <input class="form-control" type="text" placeholder="">
+                                <input class="form-control" type="text" placeholder="" id="loginid"  value="${param.loginid}">
                             </div>
                             <div class="form-group">
                                 <label for="">密码</label>
-                                <input class="form-control" type="password" placeholder="">
+                                <input class="form-control" type="password" placeholder="" id="loginpassword"  value="${param.loginpassword}">
                             </div>
                             <div class="text-right">
                                 <button class="btn btn-primary" type="submit" style="background-color: #3a8cd2b3; border: 0px solid transparent;">登录</button>
